@@ -1,4 +1,4 @@
-import { client } from "lib/client";
+import { client } from "src/lib/client";
 import type { TTagListResponse } from "src/types";
 
 type Args = {
