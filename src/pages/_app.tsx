@@ -1,3 +1,7 @@
+// import "..//tailwindcss/tailwind.css";
+
+// import "@styles/tailwind.css";
+// import "src/styles/global.css";
 import "tailwindcss/tailwind.css";
 
 import { MDXProvider } from "@mdx-js/react";

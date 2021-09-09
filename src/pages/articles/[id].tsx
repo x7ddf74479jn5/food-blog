@@ -10,6 +10,8 @@ import fetchConfig from "src/utils/fetchConfig";
 import fetchTags from "src/utils/fetchTags";
 import mdx2html from "src/utils/mdx2html";
 
+import { isDraft } from "../../utils/isDraft";
+
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const ArticleDetail = ({
@@ -30,7 +32,7 @@ export const ArticleDetail = ({
       {isPreview ? (
         <div>preview</div>
       ) : id ? (
-        <div className="wrapper">
+        <div>
           <MDXRemote {...mdxSource} />
         </div>
       ) : null}
@@ -60,7 +62,7 @@ interface Params extends ParsedUrlQuery {
   slug?: string;
 }
 
-export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ params, preview }) => {
+export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ params, preview, previewData }) => {
   const id = params?.id || params?.slug;
 
   const config = await fetchConfig();
@@ -70,7 +72,7 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
   const article = await client.get<TArticle>({
     endpoint: "articles",
     contentId: id,
-    // queries: { draftKey: previewData.draftKey || "" },
+    queries: { draftKey: isDraft(previewData) ? previewData.draftKey : "" },
   });
 
   const mdxSource = await mdx2html(article.body);
