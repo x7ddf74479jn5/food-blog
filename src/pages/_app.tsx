@@ -1,12 +1,17 @@
 import "tailwindcss/tailwind.css";
 
+import { MDXProvider } from "@mdx-js/react";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
+
+import MDXCustomComponents from "@/components/mdx/MDXCustomComponents";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider attribute="class">
-      <Component {...pageProps} />
+      <MDXProvider components={MDXCustomComponents}>
+        <Component {...pageProps} />
+      </MDXProvider>
     </ThemeProvider>
   );
 };

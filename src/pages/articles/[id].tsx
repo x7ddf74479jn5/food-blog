@@ -1,4 +1,5 @@
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { MDXRemote } from "next-mdx-remote";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
 import type { ParsedUrlQuery } from "node:querystring";
 import { memo } from "react";
@@ -13,7 +14,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const ArticleDetail = ({
   article,
-  // mdxSource,
+  mdxSource,
   // categories: categoriesAtMenu,
   // tags: tagsAtMenu,
   // config,
@@ -24,7 +25,17 @@ export const ArticleDetail = ({
     // image, imageOption, title, category, tags, publishedAt
   } = article;
 
-  return <>{isPreview ? <div>preview</div> : id ? <div>{id}</div> : null}</>;
+  return (
+    <>
+      {isPreview ? (
+        <div>preview</div>
+      ) : id ? (
+        <div className="wrapper">
+          <MDXRemote {...mdxSource} />
+        </div>
+      ) : null}
+    </>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
@@ -64,6 +75,8 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
 
   const mdxSource = await mdx2html(article.body);
 
+  const isPreview = preview === undefined ? false : preview;
+
   return {
     props: {
       article,
@@ -71,7 +84,7 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
       tags,
       categories,
       config,
-      isPreview: preview,
+      isPreview,
     },
   };
 };
