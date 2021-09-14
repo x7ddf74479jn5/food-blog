@@ -10,21 +10,13 @@ const CustomImage: React.VFC<Props> = ({ src, alt = "", width, height, ...otherP
   if (width && height) {
     return (
       <div className="flex relative justify-center items-center mb-4 w-full">
-        <Image
-          {...otherProps}
-          // className={"flex justify-center items-center"}
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          layout="intrinsic"
-        />
+        <Image {...otherProps} src={src} alt={alt} width={width} height={height} layout="intrinsic" />
       </div>
     );
   }
 
   return (
-    <div className="flex relative justify-center items-center mb-4 w-full">
+    <div className="flex relative justify-center items-center mb-4 w-full h-48 lg:h-96">
       <Image {...otherProps} src={src} alt={alt} layout="fill" objectFit="contain" />
     </div>
   );

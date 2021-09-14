@@ -1,11 +1,12 @@
-// import Head from "next/head";
 import NextLink from "next/link";
+import type { ReactElement } from "react";
 import { client } from "src/lib/client";
 import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "src/types";
 import fetchCategories from "src/utils/fetchCategories";
 import fetchConfig from "src/utils/fetchConfig";
 import fetchTags from "src/utils/fetchTags";
 
+import DefaultLayout from "@/components/layouts/DefaultLayout";
 import CustomImage from "@/components/mdx/CustomImage";
 
 type Props = {
@@ -16,18 +17,18 @@ type Props = {
   config: TConfig;
 };
 
-const Home: React.FC<Props> = ({ articles }: Props) => {
+const Home = ({ articles }: Props) => {
   return (
     <div>
-      <h1 className="mb-4 text-4xl font-bold dark:text-red-100">レシピ一覧</h1>
+      <h1 className="mb-4 text-4xl font-bold">レシピ一覧</h1>
       <div className="space-y-12">
         {articles.map((article) => (
           <div key={article.id}>
             <div className="mb-4">
               {/* <Thumbnail slug={article.slug} title={article.title} src={article.thumbnail} /> */}
               {/* <CustomImage src={article.image.url} width={article.image.width} height={article.image.height} /> */}
-              <CustomImage src={article.image.url} width={600} height={400} />
-              {/* <CustomImage src={article.image.url} /> */}
+              {/* <CustomImage src={article.image.url} width={600} height={400} /> */}
+              <CustomImage src={article.image.url} />
             </div>
 
             <h2 className="mb-4 text-2xl font-bold">
@@ -40,6 +41,10 @@ const Home: React.FC<Props> = ({ articles }: Props) => {
       </div>
     </div>
   );
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <DefaultLayout>{page}</DefaultLayout>;
 };
 
 export const getStaticProps = async () => {

@@ -1,7 +1,10 @@
+// import ArticleLayout from "@components/layouts/ArticleLayout";
+import ArticleLayout from "@components/layouts/DefaultLayout";
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
 import type { ParsedUrlQuery } from "node:querystring";
+// import type { ReactElement } from "react";
 import { memo } from "react";
 import { client } from "src/lib/client";
 import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "src/types";
@@ -28,17 +31,21 @@ export const ArticleDetail = ({
   } = article;
 
   return (
-    <>
+    <ArticleLayout>
       {isPreview ? (
         <div>preview</div>
       ) : id ? (
-        <div>
+        <article className="prose prose-green dark:prose-dark">
           <MDXRemote {...mdxSource} />
-        </div>
+        </article>
       ) : null}
-    </>
+    </ArticleLayout>
   );
 };
+
+// ArticleDetail.getLayout = function getLayout(page: ReactElement) {
+//   return <ArticleLayout>{page}</ArticleLayout>;
+// };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
@@ -76,7 +83,6 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
   });
 
   const mdxSource = await mdx2html(article.body);
-
   const isPreview = preview === undefined ? false : preview;
 
   return {
