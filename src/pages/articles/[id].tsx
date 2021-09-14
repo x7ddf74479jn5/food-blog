@@ -10,8 +10,7 @@ import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "s
 
 import { fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
 import mdx2html from "@/utils/mdx/mdx2html";
-
-import { isDraft } from "../../utils/validator/isDraft";
+import { isDraft } from "@/utils/validator/isDraft";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 

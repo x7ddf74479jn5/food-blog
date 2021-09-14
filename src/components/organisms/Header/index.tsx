@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     <header className="py-2">
       <div className="flex justify-between items-center">
         <NextLink href="/" className="text-2xl font-bold text-green-500">
-          {/* {SITE_NAME} */}
+          Site Name
         </NextLink>
 
         <div className="hidden sm:block w-1/3">
