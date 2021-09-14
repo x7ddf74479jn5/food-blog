@@ -1,5 +1,4 @@
-// import ArticleLayout from "@components/layouts/ArticleLayout";
-import ArticleLayout from "@components/layouts/DefaultLayout";
+import ArticleLayout from "@components/layouts/ArticleLayout";
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
@@ -8,12 +7,11 @@ import type { ParsedUrlQuery } from "node:querystring";
 import { memo } from "react";
 import { client } from "src/lib/client";
 import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "src/types";
-import fetchCategories from "src/utils/fetchCategories";
-import fetchConfig from "src/utils/fetchConfig";
-import fetchTags from "src/utils/fetchTags";
-import mdx2html from "src/utils/mdx2html";
 
-import { isDraft } from "../../utils/isDraft";
+import { fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
+import mdx2html from "@/utils/mdx/mdx2html";
+
+import { isDraft } from "../../utils/validator/isDraft";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -72,7 +70,7 @@ interface Params extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ params, preview, previewData }) => {
   const id = params?.id || params?.slug;
 
-  const config = await fetchConfig();
+  const config = (await fetchConfig()) as TConfig;
   const tags = (await fetchTags()) as TTag[];
   const categories = (await fetchCategories()) as TCategory[];
 

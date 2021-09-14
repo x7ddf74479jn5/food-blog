@@ -1,21 +1,14 @@
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import NextLink from "next/link";
 import type { ReactElement } from "react";
 import { client } from "src/lib/client";
 import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "src/types";
-import fetchCategories from "src/utils/fetchCategories";
-import fetchConfig from "src/utils/fetchConfig";
-import fetchTags from "src/utils/fetchTags";
 
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import CustomImage from "@/components/mdx/CustomImage";
+import { fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
 
-type Props = {
-  articles: TArticle[];
-  totalCount: number;
-  categories: TCategory[];
-  tags: TTag[];
-  config: TConfig;
-};
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home = ({ articles }: Props) => {
   return (
@@ -47,10 +40,18 @@ Home.getLayout = function getLayout(page: ReactElement) {
   return <DefaultLayout>{page}</DefaultLayout>;
 };
 
-export const getStaticProps = async () => {
-  const config = await fetchConfig();
-  const categories = await fetchCategories();
-  const tags = await fetchTags();
+type StaticProps = {
+  articles: TArticle[];
+  totalCount: number;
+  categories: TCategory[];
+  tags: TTag[];
+  config: TConfig;
+};
+
+export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+  const config = (await fetchConfig()) as TConfig;
+  const categories = (await fetchCategories()) as TCategory[];
+  const tags = (await fetchTags()) as TTag[];
 
   const data = await client.get<TArticleListResponse>({ endpoint: "articles", queries: { limit: 10, offset: 0 } });
 
