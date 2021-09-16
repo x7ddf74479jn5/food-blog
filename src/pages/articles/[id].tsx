@@ -8,6 +8,7 @@ import { memo } from "react";
 import { client } from "src/lib/client";
 import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "src/types";
 
+import Thumbnail from "@/components/atoms/Thumbnail";
 import { fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { isDraft } from "@/utils/validator/isDraft";
@@ -24,7 +25,9 @@ export const ArticleDetail = ({
 }: Props) => {
   const {
     id,
-    // image, imageOption, title, category, tags, publishedAt
+    image,
+    title,
+    // category, tags, publishedAt
   } = article;
 
   return (
@@ -33,6 +36,11 @@ export const ArticleDetail = ({
         <div>preview</div>
       ) : id ? (
         <article className="prose prose-green dark:prose-dark">
+          <div className="mb-4">
+            <Thumbnail src={image.url} title={title} />
+
+            <h1>{title}</h1>
+          </div>
           <MDXRemote {...mdxSource} />
         </article>
       ) : null}
