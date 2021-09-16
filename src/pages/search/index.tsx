@@ -1,4 +1,3 @@
-// import NextLink from "next/link";
 import NextLink from "@components/atoms/NextLink";
 import { useRouter } from "next/router";
 import type { ReactElement } from "react";
@@ -6,15 +5,19 @@ import type { TArticleListResponse } from "src/types";
 import useSWRImmutable from "swr/immutable";
 
 import Spinner from "@/components/atoms/Spinner";
+import Thumbnail from "@/components/atoms/Thumbnail";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
-import CustomImage from "@/components/mdx/CustomImage";
 
 const Search = () => {
   const router = useRouter();
 
-  const query = router.query.q;
+  const { q, offset } = router.query;
+
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const { data } = useSWRImmutable<TArticleListResponse, Error>(query ? `/api/search?q=${query}` : null, fetcher);
+  const { data } = useSWRImmutable<TArticleListResponse, Error>(
+    q ? `/api/search?q=${q}&offset=${offset ?? 0}` : null,
+    fetcher
+  );
 
   const articles = data?.contents ?? [];
 
@@ -28,10 +31,7 @@ const Search = () => {
           {articles.map((article) => (
             <>
               <div className="mb-4" key={article.id}>
-                {/* <Thumbnail slug={article.slug} title={article.title} src={article.thumbnail} /> */}
-                {/* <CustomImage src={article.image.url} width={article.image.width} height={article.image.height} /> */}
-                {/* <CustomImage src={article.image.url} width={600} height={400} /> */}
-                <CustomImage src={article.image.url} />
+                <Thumbnail src={article.image.url} title={article.title} id={article.id} />
               </div>
 
               <h2 className="mb-4 text-2xl font-bold">
@@ -43,7 +43,7 @@ const Search = () => {
           ))}
         </div>
       ) : (
-        <p className="flex justify-center">レシピが見つかりませんでした</p>
+        <div className="flex justify-center mt-4">レシピが見つかりませんでした</div>
       )}
     </>
   );
