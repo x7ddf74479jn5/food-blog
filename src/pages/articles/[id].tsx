@@ -20,7 +20,7 @@ export const ArticleDetail = ({
   mdxSource,
   // categories: categoriesAtMenu,
   // tags: tagsAtMenu,
-  // config,
+  config,
   isPreview,
 }: Props) => {
   const {
@@ -31,7 +31,7 @@ export const ArticleDetail = ({
   } = article;
 
   return (
-    <ArticleLayout>
+    <ArticleLayout config={config}>
       {isPreview ? (
         <div>preview</div>
       ) : id ? (
@@ -52,13 +52,25 @@ export const ArticleDetail = ({
 //   return <ArticleLayout>{page}</ArticleLayout>;
 // };
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
+export const getStaticPathsFactory = (isPreview?: boolean) => {
+  return async () => {
+    const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
+    const pageName = isPreview ? "preview" : "articles";
+    const paths = data.contents.map((article) => `/${pageName}/${article.id}`);
 
-  const paths = data.contents.map((article) => `/articles/${article.id}`);
-
-  return { paths, fallback: false };
+    return { paths, fallback: false };
+  };
 };
+
+// export const getStaticPaths: GetStaticPaths<Params> = async () => {
+//   const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
+
+//   const paths = data.contents.map((article) => `/articles/${article.id}`);
+
+//   return { paths, fallback: false };
+// };
+
+export const getStaticPaths: GetStaticPaths = getStaticPathsFactory();
 
 type StaticProps = {
   article: TArticle;
@@ -84,7 +96,7 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
   const article = await client.get<TArticle>({
     endpoint: "articles",
     contentId: id,
-    queries: { draftKey: isDraft(previewData) ? previewData.draftKey : "" },
+    queries: preview ? { draftKey: isDraft(previewData) ? previewData.draftKey : "" } : {},
   });
 
   const mdxSource = await mdx2html(article.body);

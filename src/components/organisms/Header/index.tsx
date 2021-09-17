@@ -2,12 +2,16 @@ import NextLink from "@components/atoms/NextLink";
 import ThemeSwitch from "@components/atoms/ThemeSwitch";
 import Search from "@components/molecules/Search";
 
-const Header: React.FC = () => {
+type Props = {
+  siteTitle: string;
+};
+
+const Header: React.FC<Props> = ({ siteTitle }) => {
   return (
     <header className="py-2">
       <div className="flex justify-between items-center">
         <NextLink href="/" className="text-2xl font-bold text-green-500">
-          Site Name
+          {siteTitle}
         </NextLink>
 
         <div className="hidden sm:block w-1/3">
