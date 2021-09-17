@@ -3,7 +3,6 @@ import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "ne
 import { MDXRemote } from "next-mdx-remote";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
 import type { ParsedUrlQuery } from "node:querystring";
-// import type { ReactElement } from "react";
 import { memo } from "react";
 import { client } from "src/lib/client";
 import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "src/types";
@@ -48,10 +47,6 @@ export const ArticleDetail = ({
   );
 };
 
-// ArticleDetail.getLayout = function getLayout(page: ReactElement) {
-//   return <ArticleLayout>{page}</ArticleLayout>;
-// };
-
 export const getStaticPathsFactory = (isPreview?: boolean) => {
   return async () => {
     const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
@@ -61,14 +56,6 @@ export const getStaticPathsFactory = (isPreview?: boolean) => {
     return { paths, fallback: false };
   };
 };
-
-// export const getStaticPaths: GetStaticPaths<Params> = async () => {
-//   const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
-
-//   const paths = data.contents.map((article) => `/articles/${article.id}`);
-
-//   return { paths, fallback: false };
-// };
 
 export const getStaticPaths: GetStaticPaths = getStaticPathsFactory();
 
