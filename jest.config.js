@@ -1,7 +1,7 @@
 // @ts-check
 
 /**
- * @type {import('@jest/types').Config.InitialOptions}
+ * @type {import('@jest/types').Config.InitialOptions}s
  **/
 module.exports = {
   testEnvironment: "jsdom",
@@ -15,6 +15,7 @@ module.exports = {
     "^.+\\.(jpg|jpeg|png|gif|webp|svg)$": `<rootDir>/jest/mockFile.js`,
     // Absolute Imports and Module Path Aliases
     "src/(.*)": "<rootDir>/src/$1",
+    "jest/test-utils": "<rootDir>/jest/test-utils",
   },
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/"],
   transform: {
