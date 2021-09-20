@@ -1,70 +1,79 @@
-// import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-// import { useRouter } from "next/router";
-// import type { TArticleListResponse, TConfig } from "src/types";
-// import useSWRInfinite from "swr/infinite";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 
 // import Spinner from "@/components/atoms/Spinner";
-// import DefaultLayout from "@/components/layouts/DefaultLayout";
-// import ArticleList from "@/components/molecules/ArticleList";
-// import { fetchConfig } from "@/utils/fetcher";
+import DefaultLayout from "@/components/layouts/DefaultLayout";
+import ArticleList from "@/components/molecules/ArticleList";
+// import Pagination from "@/components/molecules/Pagination";
+import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
+// import usePagination from "@/hooks/usePagination/index";
+import type { TConfig } from "@/types/index";
+import { fetchConfig } from "@/utils/fetcher";
 
-// type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-// const Search: NextPage<Props> = ({ config }) => {
-//   const router = useRouter();
+const Search: NextPage<Props> = ({ config }) => {
+  const {
+    data,
+    size,
+    setSize,
+    // isValidating
+  } = useGetArticleListQuery({ perPage: 2 });
 
-//   const { q, offset } = router.query;
+  const handleOnClick = () => {
+    setSize(size + 1);
+  };
 
-//   const getKey = (pageIndex: number, previousPageData: TArticleListResponse) => {
-//     // 最後に到達した
-//     if (previousPageData && !previousPageData.contents) return null;
+  const articles = data ? data.map((r) => (r ? r.contents : [])).flat() : [];
+  const totalCount = data ? data[0]?.totalCount : null;
+  const hasNextPage = totalCount ? articles.length !== totalCount : false;
+  // const { loadMoreRef } = usePagination({ onIntersect: handleOnClick, enabled: hasNextPage });
 
-//     // 最初のページでは、`previousPageData` がありません
-//     if (pageIndex === 0) return `/api/search?limit=1`;
+  // if (!data) return <Spinner />;
 
-//     // API のエンドポイントにカーソルを追加します
-//     return `/api/search?offset=${previousPageData.offset}&limit=1`;
-//   };
-//   const fetcher = (url: string) => fetch(url).then((res) => res.json());
-//   const { data } = useSWRInfinite((pageIndex: number, previousPageData: TArticleListResponse) => {
-//     // 最後に到達した
-//     if (previousPageData && !previousPageData.contents) return null;
+  return (
+    <DefaultLayout config={config}>
+      <h1 className="mb-4 text-4xl font-bold">検索結果</h1>
+      {articles.length > 0 ? (
+        <>
+          <ArticleList articles={articles} />
+          {hasNextPage ? <button onClick={handleOnClick}>loadmore</button> : null}
+          {/* <Pagination hasNextPage={hasNextPage} loadMoreRef={loadMoreRef} /> */}
+        </>
+      ) : (
+        <div className="flex justify-center mt-4">レシピが見つかりませんでした。</div>
+      )}
+    </DefaultLayout>
+    // <DefaultLayout config={config}>
+    //   <h1 className="mb-4 text-4xl font-bold">検索結果</h1>
+    //   {isValidating ? (
+    //     <Spinner />
+    //   ) : articles.length > 0 ? (
+    //     <>
+    //       <ArticleList articles={articles} />
+    //       <button onClick={handleOnClick} className="py-4 text-center dark:text-gray-500">
+    //         もっと読み込む
+    //       </button>
+    //       {/* <Pagination hasNextPage={hasNextPage} loadMoreRef={loadMoreRef} /> */}
+    //     </>
+    //   ) : (
+    //     <div className="flex justify-center mt-4">レシピが見つかりませんでした。</div>
+    //   )}
+    // </DefaultLayout>
+  );
+};
 
-//     // 最初のページでは、`previousPageData` がありません
-//     if (pageIndex === 0) return `/api/search?limit=1`;
+type StaticProps = {
+  config: TConfig;
+};
 
-//     // API のエンドポイントにカーソルを追加します
-//     return `/api/search?offset=${previousPageData.offset}&limit=1`;
-//   }, fetcher);
+export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+  const config = (await fetchConfig()) as TConfig;
 
-//   const articles = data?.map((data) => data.contents);
+  return {
+    props: {
+      config,
+    },
+  };
+};
 
-//   return (
-//     <DefaultLayout config={config}>
-//       <h1 className="mb-4 text-4xl font-bold">検索結果</h1>
-//       {!data ? (
-//         <Spinner />
-//       ) : articles?.length > 0 ? (
-//         <ArticleList articles={articles} />
-//       ) : (
-//         <div className="flex justify-center mt-4">レシピが見つかりませんでした</div>
-//       )}
-//     </DefaultLayout>
-//   );
-// };
-
-// type StaticProps = {
-//   config: TConfig;
-// };
-
-// export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-//   const config = (await fetchConfig()) as TConfig;
-
-//   return {
-//     props: {
-//       config,
-//     },
-//   };
-// };
-
-// export default Search;
+export default Search;

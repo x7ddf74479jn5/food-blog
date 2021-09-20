@@ -1,39 +1,74 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import { useRouter } from "next/router";
-import type { TArticleListResponse, TConfig } from "src/types";
-import useSWRImmutable from "swr/immutable";
 
-import Spinner from "@/components/atoms/Spinner";
+// import Spinner from "@/components/atoms/Spinner";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
+// import Pagination from "@/components/molecules/Pagination";
+import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
+// import usePagination from "@/hooks/usePagination/index";
+import type { TConfig } from "@/types/index";
 import { fetchConfig } from "@/utils/fetcher";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Search: NextPage<Props> = ({ config }) => {
-  const router = useRouter();
+  const {
+    data,
+    size,
+    setSize,
+    // isValidating
+  } = useGetArticleListQuery({ perPage: 2 });
 
-  const { q, offset } = router.query;
+  const handleOnClick = () => {
+    setSize(size + 1);
+  };
 
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const { data } = useSWRImmutable<TArticleListResponse, Error>(
-    q ? `/api/search?q=${q}&offset=${offset ?? 0}` : null,
-    fetcher
-  );
+  const articles = data ? data.map((r) => (r ? r.contents : [])).flat() : [];
+  const totalCount = data ? data[0]?.totalCount : null;
+  const hasNextPage = totalCount ? articles.length !== totalCount : false;
+  // const { loadMoreRef } = usePagination({ onIntersect: handleOnClick, enabled: hasNextPage });
 
-  const articles = data?.contents ?? [];
+  // if (!data) return <Spinner />;
 
   return (
     <DefaultLayout config={config}>
       <h1 className="mb-4 text-4xl font-bold">検索結果</h1>
-      {!data ? (
-        <Spinner />
-      ) : articles?.length > 0 ? (
-        <ArticleList articles={articles} />
+      {articles.length > 0 ? (
+        <>
+          <ArticleList articles={articles} />
+          {hasNextPage ? (
+            <div className="flex justify-center mt-8">
+              <button
+                onClick={handleOnClick}
+                className="dark:text-white dark:bg-gray-700
+py-2 px-2 rounded bg-gray-300"
+              >
+                もっと読み込む
+              </button>
+            </div>
+          ) : null}
+          {/* <Pagination hasNextPage={hasNextPage} loadMoreRef={loadMoreRef} /> */}
+        </>
       ) : (
-        <div className="flex justify-center mt-4">レシピが見つかりませんでした</div>
+        <div className="flex justify-center mt-4">レシピが見つかりませんでした。</div>
       )}
     </DefaultLayout>
+    // <DefaultLayout config={config}>
+    //   <h1 className="mb-4 text-4xl font-bold">検索結果</h1>
+    //   {isValidating ? (
+    //     <Spinner />
+    //   ) : articles.length > 0 ? (
+    //     <>
+    //       <ArticleList articles={articles} />
+    //       <button onClick={handleOnClick} className="py-4 text-center dark:text-gray-500">
+    //         もっと読み込む
+    //       </button>
+    //       {/* <Pagination hasNextPage={hasNextPage} loadMoreRef={loadMoreRef} /> */}
+    //     </>
+    //   ) : (
+    //     <div className="flex justify-center mt-4">レシピが見つかりませんでした。</div>
+    //   )}
+    // </DefaultLayout>
   );
 };
 

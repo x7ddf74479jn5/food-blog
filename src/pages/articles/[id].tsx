@@ -37,9 +37,8 @@ export const ArticleDetail = ({
         <article className="prose prose-green dark:prose-dark">
           <div className="mb-4">
             <Thumbnail src={image.url} title={title} />
-
-            <h1>{title}</h1>
           </div>
+          <h1>{title}</h1>
           <MDXRemote {...mdxSource} />
         </article>
       ) : null}
@@ -49,7 +48,6 @@ export const ArticleDetail = ({
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
-
   const paths = data.contents.map((article) => `/articles/${article.id}`);
 
   return { paths, fallback: false };

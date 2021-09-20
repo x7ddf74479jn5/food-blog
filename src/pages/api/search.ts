@@ -12,7 +12,7 @@ const search = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const data = await client.get<TArticleListResponse>({
     endpoint: "articles",
-    queries: { q: q, limit: Number(limit) ?? 5, offset: Number(offset) ?? 0, orders: "-publishedAt" },
+    queries: { q: q, limit: Number(limit) || 5, offset: Number(offset) || 0, orders: "-publishedAt" },
   });
   res.status(200).json(data);
 };

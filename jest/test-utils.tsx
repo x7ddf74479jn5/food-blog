@@ -84,7 +84,7 @@ const mockRouter: NextRouter = {
 
 export const withMockedRouter = (
   router: Partial<NextRouter> = {},
-  children: React.ReactElement
+  children?: React.ReactElement
 ): React.ReactElement => {
   const mockedRouter: NextRouter = {
     ...mockRouter,
