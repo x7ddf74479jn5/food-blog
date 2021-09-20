@@ -47,17 +47,13 @@ export const ArticleDetail = ({
   );
 };
 
-export const getStaticPathsFactory = (isPreview?: boolean) => {
-  return async () => {
-    const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
-    const pageName = isPreview ? "preview" : "articles";
-    const paths = data.contents.map((article) => `/${pageName}/${article.id}`);
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
+  const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
 
-    return { paths, fallback: false };
-  };
+  const paths = data.contents.map((article) => `/articles/${article.id}`);
+
+  return { paths, fallback: false };
 };
-
-export const getStaticPaths: GetStaticPaths = getStaticPathsFactory();
 
 type StaticProps = {
   article: TArticle;
