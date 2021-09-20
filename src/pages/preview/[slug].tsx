@@ -1,7 +1,10 @@
-import ArticleDetail, { getStaticPathsFactory, getStaticProps as _getStaticProps } from "@pages/articles/[id]";
+import ArticleDetail, { getStaticProps as _getStaticProps } from "@pages/articles/[id]";
+import type { GetStaticPaths } from "next";
+import type { Params } from "next/dist/server/router";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
 
-import type { TArticle, TCategory, TConfig, TTag } from "@/types";
+import { client } from "@/lib/client";
+import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "@/types";
 
 export type Props = {
   article: TArticle;
@@ -20,7 +23,14 @@ const ArticlePreview = (props: Props) => {
   );
 };
 
-export const getStaticPaths = getStaticPathsFactory(true);
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
+  const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
+
+  const paths = data.contents.map((article) => `/articles/${article.id}`);
+
+  return { paths, fallback: false };
+};
+
 export const getStaticProps = _getStaticProps;
 
 export default ArticlePreview;
