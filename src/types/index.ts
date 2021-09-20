@@ -75,3 +75,5 @@ export type TArticleListResponse = TListResponse<TArticle>;
 export type TCategoryListResponse = TListResponse<TCategory>;
 
 export type TTagListResponse = TListResponse<TTag>;
+
+export type TArticleSWRResponse = TArticleListResponse | null;
