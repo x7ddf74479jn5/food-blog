@@ -1,0 +1,11 @@
+.toc {
+  @apply relative pt-2 px-4 pb-2;
+}
+
+.toc-list {
+  @apply ml-4 space-y-4 list-disc;
+}
+
+.toc-list .toc-list-item {
+  @apply mx-0 p-0;
+}

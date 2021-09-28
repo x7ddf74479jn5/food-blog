@@ -17,13 +17,11 @@ export const TOC = ({ isSide = false }: Props) => {
   const [isHidden, setIsHidden] = useState(true);
 
   useEffect(() => {
-    const isUnnecessary = (isDesktop && !isSide) || (!isDesktop && isSide);
     const isExists = !!document.querySelectorAll("h2, h3, h4, h5, h6")?.length;
 
     if (!unmountRef.current) {
-      setIsHidden(isUnnecessary || !isExists);
+      setIsHidden(!isExists);
     }
-
     return () => {
       unmountRef.current = true;
     };
@@ -49,9 +47,13 @@ export const TOC = ({ isSide = false }: Props) => {
       tocbot.destroy();
     };
   }, [isHidden]);
-
   // eslint-disable-next-line tailwindcss/no-custom-classname
-  return isHidden ? null : <aside id="js-toc" className="toc" />;
+  return isHidden ? null : (
+    <aside className="lg:sticky top-3 mb-4 w-full lg:w-1/3 h-full text-sm dark:text-white bg-gray-50 dark:bg-gray-700">
+      <h2 className="pt-2 pb-2 pl-2 border-b-2">目次</h2>
+      <div id="js-toc" className="toc" />
+    </aside>
+  );
 };
 
 export default memo(TOC);

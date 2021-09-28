@@ -1,4 +1,4 @@
-import "tailwindcss/tailwind.css";
+import "@/styles/global.css";
 
 import { MDXProvider } from "@mdx-js/react";
 import type { NextPage } from "next";

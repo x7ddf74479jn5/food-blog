@@ -1,4 +1,5 @@
 import Meta from "@/components/molecules/Meta";
+import { TOC } from "@/components/molecules/TOC/index";
 import Header from "@/components/organisms/Header";
 import type { TConfig } from "@/types";
 
@@ -12,9 +13,12 @@ const ArticleLayout: React.FC<Props> = ({ children, config }: Props) => {
   return (
     <>
       <Meta />
-      <div className="px-4 mx-auto max-w-prose">
+      <div className="px-4 mx-auto max-w-screen-lg">
         <Header siteTitle={config.siteTitle} />
-        <main className="pt-4 pb-12">{children}</main>
+        <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start mt-4">
+          <main className="pb-12">{children}</main>
+          <TOC isSide />
+        </div>
       </div>
     </>
   );

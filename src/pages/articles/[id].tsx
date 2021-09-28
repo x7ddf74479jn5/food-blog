@@ -39,7 +39,9 @@ export const ArticleDetail = ({
             <Thumbnail src={image.url} title={title} />
           </div>
           <h1>{title}</h1>
-          <MDXRemote {...mdxSource} />
+          <div id="js-toc-content">
+            <MDXRemote {...mdxSource} />
+          </div>
         </article>
       ) : null}
     </ArticleLayout>
