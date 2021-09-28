@@ -19,7 +19,7 @@ const ArticleList: React.VFC<Props> = ({ articles }) => {
             <NextLink href={`/articles/${article.id}`}>{article.title}</NextLink>
           </h2>
 
-          <p className="dark:text-gray-300">{article.description}</p>
+          <p className="dark:text-gray-300 line-clamp-2">{article.description}</p>
         </div>
       ))}
     </div>
