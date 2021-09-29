@@ -1,4 +1,5 @@
 import { withPerformance } from "storybook-addon-performance";
+import "@styles/global.css";
 
 /** Mock next/image to <img /> */
 import "./mocks/NextImage";
