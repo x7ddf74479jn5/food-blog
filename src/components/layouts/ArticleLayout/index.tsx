@@ -1,3 +1,4 @@
+import BackLinks from "@/components/molecules/BackLinks";
 import Meta from "@/components/molecules/Meta";
 import { TOC } from "@/components/molecules/TOC/index";
 import Header from "@/components/organisms/Header";
@@ -7,9 +8,13 @@ type Props = {
   children: React.ReactNode;
   pageTitle?: string;
   config: TConfig;
+  backLinks: Array<{
+    href: string;
+    label: string;
+  }>;
 };
 
-const ArticleLayout: React.FC<Props> = ({ children, config }: Props) => {
+const ArticleLayout: React.FC<Props> = ({ children, config, backLinks }: Props) => {
   return (
     <>
       <Meta />
@@ -19,6 +24,7 @@ const ArticleLayout: React.FC<Props> = ({ children, config }: Props) => {
           <main className="pb-12">{children}</main>
           <TOC isSide />
         </div>
+        <BackLinks links={backLinks} />
       </div>
     </>
   );

@@ -12,6 +12,7 @@ import Thumbnail from "@/components/atoms/Thumbnail";
 import TagList from "@/components/molecules/TagList";
 import { fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
 import mdx2html from "@/utils/mdx/mdx2html";
+import { UrlTable } from "@/utils/paths/url";
 import { isDraft } from "@/utils/validator/isDraft";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -33,8 +34,10 @@ export const ArticleDetail = ({
     // publishedAt
   } = article;
 
+  const backLinks = [{ href: UrlTable.home, label: "レシピ一覧へ" }];
+
   return (
-    <ArticleLayout config={config}>
+    <ArticleLayout config={config} backLinks={backLinks}>
       {isPreview ? (
         <div>preview</div>
       ) : id ? (
