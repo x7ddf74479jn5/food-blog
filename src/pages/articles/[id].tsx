@@ -7,7 +7,9 @@ import { memo } from "react";
 import { client } from "src/lib/client";
 import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "src/types";
 
+import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
 import Thumbnail from "@/components/atoms/Thumbnail";
+import TagList from "@/components/molecules/TagList";
 import { fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { isDraft } from "@/utils/validator/isDraft";
@@ -26,7 +28,9 @@ export const ArticleDetail = ({
     id,
     image,
     title,
-    // category, tags, publishedAt
+    category,
+    tags,
+    // publishedAt
   } = article;
 
   return (
@@ -39,6 +43,11 @@ export const ArticleDetail = ({
             <Thumbnail src={image.url} title={title} />
           </div>
           <h1>{title}</h1>
+          <div className="flex flex-row gap-2 items-center">
+            <span>カテゴリー：</span>
+            <ButtonCategory category={category} />
+          </div>
+          <TagList tags={tags} />
           <div id="js-toc-content">
             <MDXRemote {...mdxSource} />
           </div>
