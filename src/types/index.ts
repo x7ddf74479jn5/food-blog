@@ -5,18 +5,20 @@ export type TDateCommon = {
   revisedAt: string;
 };
 
+export type TCategoryOrTagColor = "green" | "blue" | "indigo" | "purple" | "red" | "yellow" | "pink" | "gray";
+
 export type TCategory = {
   id: string;
   slug: string;
   name: string;
-  color: string;
+  color: TCategoryOrTagColor;
 } & TDateCommon;
 
 export type TTag = {
   id: string;
   slug: string;
   name: string;
-  color: string;
+  color: TCategoryOrTagColor;
 } & TDateCommon;
 
 export type TImage = {
