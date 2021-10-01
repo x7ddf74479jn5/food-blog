@@ -61,6 +61,7 @@ export type TConfig = {
   siteKeywords: string[];
   siteImage: TImage;
   profile: TProfile;
+  twitterId: string;
 } & TDateCommon;
 
 export type TResources = "article" | "note";

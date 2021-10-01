@@ -15,6 +15,8 @@ import mdx2html from "@/utils/mdx/mdx2html";
 import { UrlTable } from "@/utils/paths/url";
 import { isDraft } from "@/utils/validator/isDraft";
 
+import { getBackLinks } from "../../utils/paths/url";
+
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const ArticleDetail = ({
@@ -34,10 +36,11 @@ export const ArticleDetail = ({
     // publishedAt
   } = article;
 
-  const backLinks = [{ href: UrlTable.home, label: "レシピ一覧へ" }];
+  const url = new URL(id ?? "", config.host).toString();
+  const backLinks = getBackLinks([UrlTable.home]);
 
   return (
-    <ArticleLayout config={config} backLinks={backLinks}>
+    <ArticleLayout url={url} config={config} pageTitle={title} backLinks={backLinks}>
       {isPreview ? (
         <div>preview</div>
       ) : id ? (
