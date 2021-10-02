@@ -1,19 +1,4 @@
-import NextLink from "@/components/atoms/NextLink";
-import type { TTag } from "@/types";
-import { getBGColor } from "@/utils/formatter";
+import { ButtonTagColored } from "./Colored";
+import { ButtonTagPlain } from "./Plain";
 
-type Props = {
-  tag: TTag;
-};
-
-const ButtonTag = ({ tag }: Props) => {
-  const BGColor = getBGColor(tag.color);
-
-  return (
-    <NextLink href={`/tags/${tag.slug}`}>
-      <div className={`inline-block py-1 px-2 text-white  ${BGColor} rounded-lg`}>{tag.name}</div>
-    </NextLink>
-  );
-};
-
-export default ButtonTag;
+export { ButtonTagColored, ButtonTagPlain };
