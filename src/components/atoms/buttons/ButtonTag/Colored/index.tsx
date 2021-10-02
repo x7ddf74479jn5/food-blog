@@ -11,7 +11,7 @@ export const ButtonTagColored = ({ tag }: Props) => {
 
   return (
     <NextLink href={`/tags/${tag.slug}`}>
-      <div className={`inline-block py-1 px-2 text-white  ${BGColor} rounded-lg`}>{tag.name}</div>
+      <div className={`inline-block py-1 px-2 text-white  ${BGColor} rounded-lg`}>#{tag.name}</div>
     </NextLink>
   );
 };
