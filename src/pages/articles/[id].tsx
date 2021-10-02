@@ -9,7 +9,7 @@ import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "s
 
 import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
 import Thumbnail from "@/components/atoms/Thumbnail";
-import TagList from "@/components/molecules/TagList";
+import { TagListColored } from "@/components/molecules/TagList";
 import { fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { UrlTable } from "@/utils/paths/url";
@@ -53,7 +53,7 @@ export const ArticleDetail = ({
             <span>カテゴリー：</span>
             <ButtonCategory category={category} />
           </div>
-          <TagList tags={tags} />
+          <TagListColored tags={tags} />
           <div id="js-toc-content">
             <MDXRemote {...mdxSource} />
           </div>

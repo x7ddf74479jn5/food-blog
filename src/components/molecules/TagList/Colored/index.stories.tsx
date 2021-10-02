@@ -3,14 +3,14 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import type { TTag } from "@/types";
 
-import TagList from ".";
+import { TagListColored } from ".";
 
 export default {
-  title: "Molecules/TagList",
-  component: TagList,
-} as ComponentMeta<typeof TagList>;
+  title: "Molecules/TagList/Colored",
+  component: TagListColored,
+} as ComponentMeta<typeof TagListColored>;
 
-const Template: ComponentStory<typeof TagList> = (args) => <TagList {...args} />;
+const Template: ComponentStory<typeof TagListColored> = (args) => <TagListColored {...args} />;
 
 export const Default = Template.bind({});
 Default.args = { tags: [tags.rice, tags.komatsuna, tags.mozzarella, tags.preparation] as TTag[] };
