@@ -1,4 +1,4 @@
-import ButtonTag from "@/components/atoms/buttons/ButtonTag";
+import { ButtonTagColored } from "@/components/atoms/buttons/ButtonTag";
 import type { TTag } from "@/types";
 
 type Props = {
@@ -11,7 +11,7 @@ const TagList = ({ tags }: Props) => {
       <span>タグ：</span>
       {tags.map((tag) => (
         <div key={tag.id} className="">
-          <ButtonTag tag={tag} />
+          <ButtonTagColored tag={tag} />
         </div>
       ))}
     </div>

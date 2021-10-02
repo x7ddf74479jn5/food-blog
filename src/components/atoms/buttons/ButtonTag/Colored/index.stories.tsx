@@ -1,0 +1,16 @@
+import { tags } from "@mocks/data/tags";
+import type { ComponentMeta, ComponentStory } from "@storybook/react";
+
+import type { TTag } from "@/types";
+
+import { ButtonTagColored } from ".";
+
+export default {
+  title: "Atoms/buttons/ButtonTag/Colored",
+  component: ButtonTagColored,
+} as ComponentMeta<typeof ButtonTagColored>;
+
+const Template: ComponentStory<typeof ButtonTagColored> = (args) => <ButtonTagColored {...args} />;
+
+export const Default = Template.bind({});
+Default.args = { tag: tags.rice as TTag };

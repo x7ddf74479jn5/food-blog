@@ -5,14 +5,14 @@ type Table = {
 export const UrlTable = {
   home: "/",
   root: "/",
-  categories: "/categories",
-  tags: "/tags",
+  categories: "/articles/categories",
+  tags: "/articles/tags",
 };
 
 const labelTable: Table = {
   "/": "レシピ一覧へ",
-  "/categories": "カテゴリー別一覧へ",
-  "/tags": "タグ別一覧へ",
+  "/articles/categories": "カテゴリー別一覧へ",
+  "/articles/tags": "タグ別一覧へ",
 };
 
 export const getBackLinks = (paths: string[]): { href: string; label: string }[] => {
