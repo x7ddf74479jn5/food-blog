@@ -80,3 +80,5 @@ export type TCategoryListResponse = TListResponse<TCategory>;
 export type TTagListResponse = TListResponse<TTag>;
 
 export type TArticleSWRResponse = TArticleListResponse | null;
+
+export type TComparatorArticle = (a: TArticle, b: TArticle) => number;

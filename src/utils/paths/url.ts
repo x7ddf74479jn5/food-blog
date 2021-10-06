@@ -5,6 +5,7 @@ type Table = {
 export const UrlTable = {
   home: "/",
   root: "/",
+  articles: "/articles",
   categories: "/articles/categories",
   tags: "/articles/tags",
 };
