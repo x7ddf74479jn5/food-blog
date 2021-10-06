@@ -2,6 +2,7 @@ import { categories } from "./categories";
 import { tags } from "./tags";
 
 export const article1 = {
+  id: "1",
   title: "基本の一番だしの作り方",
   description:
     "だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。",
@@ -40,4 +41,5 @@ export const article1 = {
 だし昆布の表面の白い粉は「うま味」成分なので、取り除かずにそのままお使いください。`,
   category: categories.rice,
   tags: [tags.preparation, tags.misoSoup, tags.udon],
+  imageOptions: {},
 };

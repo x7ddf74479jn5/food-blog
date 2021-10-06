@@ -3,7 +3,8 @@ import BackLinks from "@/components/molecules/BackLinks";
 import Meta from "@/components/molecules/Meta";
 import { TOC } from "@/components/molecules/TOC/index";
 import Header from "@/components/organisms/Header";
-import type { TConfig } from "@/types";
+import { RelatedArticles } from "@/components/organisms/RelatedArticles";
+import type { TArticle, TConfig } from "@/types";
 
 type Props = {
   url: string;
@@ -14,9 +15,10 @@ type Props = {
     href: string;
     label: string;
   }>;
+  relatedArticles: TArticle[];
 };
 
-const ArticleLayout: React.FC<Props> = ({ url, children, config, pageTitle, backLinks }: Props) => {
+const ArticleLayout: React.FC<Props> = ({ url, children, config, pageTitle, backLinks, relatedArticles }: Props) => {
   return (
     <>
       <Meta />
@@ -27,6 +29,7 @@ const ArticleLayout: React.FC<Props> = ({ url, children, config, pageTitle, back
           <aside className="lg:sticky top-3 mb-4 w-full lg:w-1/3 h-full">
             <TOC isSide />
             <ShareButtons url={url} title={pageTitle} twitterId={config.twitterId} />
+            <RelatedArticles relatedArticles={relatedArticles} />
           </aside>
         </div>
         <BackLinks links={backLinks} />

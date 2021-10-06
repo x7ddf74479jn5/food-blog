@@ -11,11 +11,11 @@ import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
 import Thumbnail from "@/components/atoms/Thumbnail";
 import { TagListColored } from "@/components/molecules/TagList";
 import { fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
+import { getRelatedArticles } from "@/utils/fetcher/fetchRelatedArticle";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { UrlTable } from "@/utils/paths/url";
+import { getBackLinks } from "@/utils/paths/url";
 import { isDraft } from "@/utils/validator/isDraft";
-
-import { getBackLinks } from "../../utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -26,6 +26,7 @@ export const ArticleDetail = ({
   // tags: tagsAtMenu,
   config,
   isPreview,
+  relatedArticles,
 }: Props) => {
   const {
     id,
@@ -40,7 +41,7 @@ export const ArticleDetail = ({
   const backLinks = getBackLinks([UrlTable.home]);
 
   return (
-    <ArticleLayout url={url} config={config} pageTitle={title} backLinks={backLinks}>
+    <ArticleLayout url={url} config={config} pageTitle={title} backLinks={backLinks} relatedArticles={relatedArticles}>
       {isPreview ? (
         <div>preview</div>
       ) : id ? (
@@ -77,6 +78,7 @@ type StaticProps = {
   tags: TTag[];
   config: TConfig;
   isPreview?: boolean;
+  relatedArticles: TArticle[];
 };
 
 interface Params extends ParsedUrlQuery {
@@ -97,6 +99,8 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
     queries: preview ? { draftKey: isDraft(previewData) ? previewData.draftKey : "" } : {},
   });
 
+  const relatedArticles = await getRelatedArticles(article);
+
   const mdxSource = await mdx2html(article.body);
   const isPreview = preview === undefined ? false : preview;
 
@@ -108,6 +112,7 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
       categories,
       config,
       isPreview,
+      relatedArticles,
     },
   };
 };
