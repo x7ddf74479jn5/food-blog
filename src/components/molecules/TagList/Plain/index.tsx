@@ -5,13 +5,11 @@ type Props = {
   tags: TTag[];
 };
 
-export const TagListPlainText: React.VFC<Props> = ({ tags }) => {
+export const TagListPlain: React.VFC<Props> = ({ tags }) => {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-x-2 gap-y-1">
       {(tags || []).map((tag) => (
-        <div className="wrapitem" key={tag.id}>
-          <ButtonTagPlain tag={tag} />
-        </div>
+        <ButtonTagPlain tag={tag} key={tag.id} />
       ))}
     </div>
   );

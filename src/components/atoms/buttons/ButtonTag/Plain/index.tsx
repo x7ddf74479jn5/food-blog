@@ -8,6 +8,6 @@ type Props = {
 
 export const ButtonTagPlain: React.FC<Props> = ({ tag }) => (
   <NextLink href={`${UrlTable.tags}/${tag.slug}`}>
-    <span>{`#${tag.name}`}</span>
+    <span className="inline-block text-sm leading-tight text-gray-600 dak:text-white">{`#${tag.name}`}</span>
   </NextLink>
 );
