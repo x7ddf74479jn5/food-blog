@@ -8,9 +8,9 @@ type Props = {
 
 const ArticleList: React.VFC<Props> = ({ articles }) => {
   return (
-    <div className="space-y-12">
+    <section className="space-y-12">
       {articles.map((article) => (
-        <div key={article.id}>
+        <article key={article.id}>
           <div className="mb-4">
             <Thumbnail src={article.image.url} title={article.title} id={article.id} />
           </div>
@@ -20,9 +20,9 @@ const ArticleList: React.VFC<Props> = ({ articles }) => {
           </h2>
 
           <p className="dark:text-gray-300 line-clamp-2">{article.description}</p>
-        </div>
+        </article>
       ))}
-    </div>
+    </section>
   );
 };
 

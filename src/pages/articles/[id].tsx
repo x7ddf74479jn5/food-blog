@@ -50,11 +50,13 @@ export const ArticleDetail = ({
             <Thumbnail src={image.url} title={title} />
           </div>
           <h1>{title}</h1>
-          <div className="flex flex-row gap-2 items-center">
-            <span>カテゴリー：</span>
-            <ButtonCategory category={category} />
+          <div className="flex flex-col gap-4 p-2 sm:p-4 bg-gray-50 dark:bg-gray-700 ">
+            <div className="flex flex-row gap-2 items-center">
+              <span>カテゴリー：</span>
+              <ButtonCategory category={category} />
+            </div>
+            <TagListColored tags={tags} />
           </div>
-          <TagListColored tags={tags} />
           <div id="js-toc-content">
             <MDXRemote {...mdxSource} />
           </div>

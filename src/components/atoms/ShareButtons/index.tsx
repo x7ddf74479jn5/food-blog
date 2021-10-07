@@ -17,30 +17,30 @@ type Props = {
 
 export const ShareButtons: React.FC<Props> = ({ url, title, twitterId }) => {
   return (
-    <div className="flex flex-row gap-4">
+    <div className="flex flex-row gap-4 justify-center items-center">
       <TwitterShareButton url={url} title={title} via={twitterId}>
         <Tooltip label="Twitterでシェア">
-          <FaTwitter className="text-gray-400 hover:text-green-500" size={24} />
+          <FaTwitter className="hover:text-[#1DA1F2] text-gray-400" size={24} />
         </Tooltip>
       </TwitterShareButton>
       <FacebookShareButton url={url} title={title}>
         <Tooltip label="Facebookでシェア">
-          <FaFacebook className="text-gray-400 hover:text-green-500" size={24} />
+          <FaFacebook className="hover:text-[#3b5998] text-gray-400" size={24} />
         </Tooltip>
       </FacebookShareButton>
       <LineShareButton url={url} title={title}>
         <Tooltip label="LINEでシェア">
-          <FaLine className="text-gray-400 hover:text-green-500" size={24} />
+          <FaLine className="hover:text-[#00B900] text-gray-400" size={24} />
         </Tooltip>
       </LineShareButton>
       <PocketShareButton url={url} title={title}>
         <Tooltip label="Pocketに保存">
-          <FaGetPocket className="text-gray-400 hover:text-green-500" size={24} />
+          <FaGetPocket className="hover:text-[#ee4056] text-gray-400" size={24} />
         </Tooltip>
       </PocketShareButton>
       <HatenaShareButton url={url} title={title}>
         <Tooltip label="はてなブックマークでシェア">
-          <SiHatenabookmark className="text-gray-400 hover:text-green-500" size={24} />
+          <SiHatenabookmark className="hover:text-[#00A4DE] text-gray-400" size={24} />
         </Tooltip>
       </HatenaShareButton>
     </div>
