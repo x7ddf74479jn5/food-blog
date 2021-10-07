@@ -1,12 +1,17 @@
+import type { TArticle } from "@/types";
+
 import { categories } from "./categories";
 import { tags } from "./tags";
+import { dateCommon } from "./utils";
+import { writers } from "./writers";
 
-export const article1 = {
+const articleStock = {
   id: "1",
   title: "基本の一番だしの作り方",
+  writer: writers.pandashark,
   description:
     "だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。",
-  image: "mocks/data/images/5026416_s.jpg",
+  image: { url: "/images/5026416_s.jpg", height: 427, width: 640 },
   excerpt:
     "だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。",
   body: `**分量： 800ml**
@@ -41,5 +46,13 @@ export const article1 = {
 だし昆布の表面の白い粉は「うま味」成分なので、取り除かずにそのままお使いください。`,
   category: categories.rice,
   tags: [tags.preparation, tags.misoSoup, tags.udon],
-  imageOptions: {},
+  imageOption: null,
+};
+
+type TArticleCollection = {
+  [key: string]: TArticle;
+};
+
+export const articles: TArticleCollection = {
+  stock: { ...dateCommon, ...articleStock },
 };
