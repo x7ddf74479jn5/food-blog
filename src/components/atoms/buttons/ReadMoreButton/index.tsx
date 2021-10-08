@@ -8,8 +8,7 @@ export const ReadMoreButton: React.VFC<ReadMoreButtonProps> = ({ handleOnClick }
   return (
     <button
       onClick={handleOnClick}
-      className="dark:text-white dark:bg-gray-700
-py-2 px-4 rounded-xl bg-gray-300 flex flex-row justify-center items-center gap-2"
+      className="flex flex-row gap-2 justify-center items-center py-2 px-4 text-white bg-green-700 hover:bg-opacity-90 rounded-xl border-2 border-green-600"
     >
       <FaChevronDown />
       <span>もっと読み込む</span>
