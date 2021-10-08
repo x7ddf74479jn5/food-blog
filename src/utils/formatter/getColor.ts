@@ -8,7 +8,7 @@ const BGColors = {
   blue: "bg-blue-700",
   indigo: "bg-indigo-700",
   purple: "bg-purple-700",
-  gray: "bg-gray-700",
+  gray: "bg-gray-500",
 };
 
 const borderColors = {
