@@ -6,7 +6,7 @@ import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 import type { ReactElement, ReactNode } from "react";
 
-import MDXCustomComponents from "@/components/mdx/MDXCustomComponents";
+import MDXCustomComponents from "@/components/atoms/mdx";
 import { usePageView } from "@/lib/gtag";
 
 type NextPageWithLayout = NextPage & {
