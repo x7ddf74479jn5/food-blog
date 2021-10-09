@@ -1,8 +1,15 @@
-export const config = {
+import type { TConfig } from "@/types/config";
+
+import { dateCommon } from "./utils";
+
+export const mockConfig: TConfig = {
+  ...dateCommon,
   apiHost: "https://food-blog.microcms.io/api/v1/",
   host: "https://food-blog-chi.vercel.app/",
-  title: "Food Blog",
-  description: "料理レシピを紹介するブログ",
-  keywords: ["料理"],
-  image: "https://food-blog-chi.vercel.app/site_image.jpg",
+  siteTitle: "Food Blog",
+  siteDescription: "料理レシピを紹介するブログ",
+  siteKeywords: ["料理"],
+  siteImage: { url: "https://food-blog-chi.vercel.app/site_image.jpg", width: 100, height: 100 },
+  organization: "Pandashark",
+  twitterId: "@pandashark6",
 };

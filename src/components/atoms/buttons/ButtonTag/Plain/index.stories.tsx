@@ -1,4 +1,4 @@
-import { tags } from "@mocks/data/tags";
+import { mockTags } from "@mocks/data/tags";
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import { ButtonTagPlain } from ".";
@@ -11,4 +11,4 @@ export default {
 const Template: ComponentStory<typeof ButtonTagPlain> = (args) => <ButtonTagPlain {...args} />;
 
 export const Default = Template.bind({});
-Default.args = { tag: tags.rice };
+Default.args = { tag: mockTags.rice };

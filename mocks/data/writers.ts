@@ -6,7 +6,7 @@ type TWriterCollection = {
   [key: string]: TWriter;
 };
 
-export const writers: TWriterCollection = {
+export const mockWriters: TWriterCollection = {
   pandashark: {
     ...dateCommon,
     id: "1",

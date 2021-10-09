@@ -6,7 +6,7 @@ type TCategoryCollection = {
   [key: string]: TCategory;
 };
 
-export const categories: TCategoryCollection = {
+export const mockCategories: TCategoryCollection = {
   rice: {
     ...dateCommon,
     id: "1",

@@ -1,4 +1,4 @@
-import { articles } from "@mocks/data/articles";
+import { mockArticles } from "@mocks/data/articles";
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import { ArticleTipWithThumb } from ".";
@@ -12,5 +12,5 @@ const Template: ComponentStory<typeof ArticleTipWithThumb> = (args) => <ArticleT
 
 export const Default = Template.bind({});
 Default.args = {
-  article: articles.stock,
+  article: mockArticles.stock,
 };

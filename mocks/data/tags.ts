@@ -6,7 +6,7 @@ type TTagCollection = {
   [key: string]: TTag;
 };
 
-export const tags: TTagCollection = {
+export const mockTags: TTagCollection = {
   komatsuna: { ...dateCommon, id: "1", slug: "komatshna", name: "小松菜", color: "green" as const },
   mozzarella: { ...dateCommon, id: "2", slug: "mozzarella", name: "モッツァレラ", color: "pink" as const },
   lettuce: { ...dateCommon, id: "3", slug: "lettuce", name: "レタス", color: "green" as const },
