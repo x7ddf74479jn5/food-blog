@@ -12,6 +12,6 @@ const Template: ComponentStory<typeof SiteTitle> = (args) => <SiteTitle {...args
 
 export const Default = Template.bind({});
 Default.args = {
-  siteTitle: mockConfig.siteTitle,
+  title: mockConfig.siteTitle,
   size: "text-2xl",
 };
