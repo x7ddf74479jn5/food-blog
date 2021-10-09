@@ -1,10 +1,9 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import { client } from "src/lib/client";
-import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "src/types";
+import type { TArticle, TCategory, TConfig, TTag } from "src/types";
 
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
-import { fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
+import { fetchArticles, fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -26,11 +25,12 @@ type StaticProps = {
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const config = (await fetchConfig()) as TConfig;
-  const categories = (await fetchCategories()) as TCategory[];
-  const tags = (await fetchTags()) as TTag[];
-
-  const data = await client.get<TArticleListResponse>({ endpoint: "articles", queries: { limit: 5, offset: 0 } });
+  const [_config, _categories, _tags, data] = await Promise.all([
+    fetchConfig(),
+    fetchCategories(),
+    fetchTags(),
+    fetchArticles({ limit: 5, offset: 0 }),
+  ]);
 
   const { contents: articles, totalCount } = data;
 
@@ -38,10 +38,11 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     props: {
       articles,
       totalCount,
-      categories,
-      tags,
-      config,
+      categories: _categories as TCategory[],
+      tags: _tags as TTag[],
+      config: _config as TConfig,
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 

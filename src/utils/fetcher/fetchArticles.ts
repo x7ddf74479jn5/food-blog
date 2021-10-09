@@ -1,6 +1,41 @@
+import type { QueriesType } from "microcms-js-sdk/dist/cjs/types";
+
 import { client } from "@/lib/client";
 import type { TArticle, TArticleListResponse, TTag } from "@/types";
 import { HttpError } from "@/utils/error/Http";
+
+export const fetchArticles = async (queries: QueriesType): Promise<TArticleListResponse> => {
+  try {
+    const data = await client.get<TArticleListResponse>({
+      endpoint: "articles",
+      queries: queries,
+    });
+    return data;
+  } catch (error) {
+    if (error instanceof HttpError) {
+      console.error(error);
+      throw error;
+    }
+    throw error;
+  }
+};
+
+export const fetchArticle = async (id: string, queries?: QueriesType): Promise<TArticle> => {
+  try {
+    const data = await client.get<TArticle>({
+      endpoint: `articles`,
+      contentId: id,
+      queries: queries,
+    });
+    return data;
+  } catch (error) {
+    if (error instanceof HttpError) {
+      console.error(error);
+      throw error;
+    }
+    throw error;
+  }
+};
 
 /**
  * 走査対象のタグを重複なし2個ずつにグループ化
@@ -69,18 +104,7 @@ export const fetchRelatedArticles = async (
 ): Promise<TArticle[]> => {
   const filters = getTagFilters(article, filterType, excluded);
   if (!filters) return [];
-  try {
-    const data = await client.get<TArticleListResponse>({
-      endpoint: "articles",
-      queries: { filters: filters, limit: 20 },
-    });
-    return data.contents;
-  } catch (error) {
-    if (error instanceof HttpError)
-      // eslint-disable-next-line no-console
-      console.log(error);
-    return [];
-  }
+  return (await fetchArticles({ filters })).contents;
 };
 
 export const getRelatedArticles = async (article: TArticle, limit = 4) => {

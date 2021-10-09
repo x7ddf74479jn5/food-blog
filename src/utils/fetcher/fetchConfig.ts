@@ -5,14 +5,14 @@ import { HttpError } from "@/utils/error/Http";
 
 export const fetchConfig = async () => {
   try {
-    const data = await client.get<TConfig>({ endpoint: "configs" }).then((res) => res);
-
+    const data = await client.get<TConfig>({ endpoint: "configs" });
     return data;
   } catch (error) {
     if (error instanceof HttpError) {
-      // eslint-disable-next-line no-console
-      console.log(error);
+      console.error(error);
+      throw error;
     }
+    throw error;
   }
 };
 
