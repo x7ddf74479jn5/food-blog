@@ -1,6 +1,7 @@
 import NextLink from "@components/atoms/NextLink";
 import ThemeSwitch from "@components/atoms/ThemeSwitch";
 import Search from "@components/molecules/Search";
+import { memo } from "react";
 
 type Props = {
   siteTitle: string;
@@ -30,4 +31,4 @@ const Header: React.FC<Props> = ({ siteTitle }) => {
   );
 };
 
-export default Header;
+export default memo(Header);
