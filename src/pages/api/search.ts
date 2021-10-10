@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { client } from "@/lib/client";
-import type { TArticleListResponse } from "@/types";
+import { fetchArticles } from "@/utils/fetcher";
 
 const search = async (req: NextApiRequest, res: NextApiResponse) => {
   const { q, offset, limit } = req.query;
@@ -10,10 +9,13 @@ const search = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const data = await client.get<TArticleListResponse>({
-    endpoint: "articles",
-    queries: { q: q, limit: Number(limit) || 5, offset: Number(offset) || 0, orders: "-publishedAt" },
+  const data = await fetchArticles({
+    q: q,
+    limit: Number(limit) || 5,
+    offset: Number(offset) || 0,
+    orders: "-publishedAt",
   });
+
   res.status(200).json(data);
 };
 

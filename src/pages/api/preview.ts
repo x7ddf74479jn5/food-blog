@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { client } from "@/lib/client";
-import type { TArticle } from "@/types/index";
+import { fetchArticle } from "@/utils/fetcher/fetchArticles";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!req.query.slug) {
@@ -12,11 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).end();
   }
 
-  const content = await client.get<TArticle>({
-    endpoint: "articles",
-    contentId: req.query.slug,
-    queries: { draftKey: req.query.draftKey },
-  });
+  const content = await fetchArticle(req.query.slug, { draftKey: req.query.draftKey });
 
   if (!content) {
     return res.status(401).json({ message: "Invalid slug" });
