@@ -1,5 +1,4 @@
-import Meta from "@/components/molecules/Meta";
-import Header from "@/components/organisms/Header";
+import { RootLayout } from "@/components/layouts/RootLayout";
 import type { TConfig } from "@/types";
 
 type Props = {
@@ -10,13 +9,9 @@ type Props = {
 
 const DefaultLayout: React.FC<Props> = ({ children, config }: Props) => {
   return (
-    <>
-      <Meta />
-      <div className="px-4 mx-auto max-w-prose">
-        <Header siteTitle={config.siteTitle} />
-        <main className="pt-4 pb-12">{children}</main>
-      </div>
-    </>
+    <RootLayout config={config}>
+      <main className="pt-4 pb-12 max-w-prose">{children}</main>
+    </RootLayout>
   );
 };
 

@@ -7,7 +7,8 @@ import { DefaultSeo } from "next-seo";
 import { ThemeProvider } from "next-themes";
 import type { ReactElement, ReactNode } from "react";
 
-import MDXCustomComponents from "@/components/mdx/MDXCustomComponents";
+import MDXCustomComponents from "@/components/atoms/mdx";
+import { usePageView } from "@/lib/gtag";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -19,7 +20,8 @@ type AppPropsWithLayout = AppProps & {
 };
 
 const App = ({ Component, pageProps }: AppPropsWithLayout): ReactNode => {
-  // Use the layout defined at the page level, if available
+  usePageView();
+
   const getLayout = Component.getLayout ?? ((page) => page);
   return getLayout(
     <DefaultSeo>

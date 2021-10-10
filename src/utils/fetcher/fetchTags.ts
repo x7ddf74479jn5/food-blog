@@ -1,5 +1,5 @@
 import { client } from "src/lib/client";
-import type { TTagListResponse } from "src/types";
+import type { TTag, TTagListResponse } from "src/types";
 
 import { HttpError } from "@/utils/error/Http";
 
@@ -12,14 +12,15 @@ export const fetchTags = async (props?: Args) => {
   try {
     const data = await client.get<TTagListResponse>({ endpoint: "tags" });
     if (slug) {
-      return data.contents.find((item) => item.slug === slug);
+      return data.contents.find((item) => item.slug === slug) as TTag;
     }
     return data.contents;
   } catch (error) {
     if (error instanceof HttpError) {
-      // eslint-disable-next-line no-console
-      console.log(error);
+      console.error(error);
+      throw error;
     }
+    throw error;
   }
 };
 

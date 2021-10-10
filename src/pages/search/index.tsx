@@ -1,74 +1,45 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 
-// import Spinner from "@/components/atoms/Spinner";
+import Spinner from "@/components/atoms/Spinner";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
-// import Pagination from "@/components/molecules/Pagination";
+import Pagination from "@/components/molecules/Pagination";
 import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
-// import usePagination from "@/hooks/usePagination/index";
+import Error404 from "@/pages/404";
 import type { TConfig } from "@/types/index";
 import { fetchConfig } from "@/utils/fetcher";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Search: NextPage<Props> = ({ config }) => {
-  const {
-    data,
-    size,
-    setSize,
-    // isValidating
-  } = useGetArticleListQuery({ perPage: 2 });
+  const { data, error, size, setSize, isValidating } = useGetArticleListQuery({ perPage: 2 });
+
+  if (error) return <Error404 config={config} />;
 
   const handleOnClick = () => {
     setSize(size + 1);
   };
 
   const articles = data ? data.map((r) => (r ? r.contents : [])).flat() : [];
-  const totalCount = data ? data[0]?.totalCount : null;
+  const totalCount = data ? data[0]?.totalCount : 0;
   const hasNextPage = totalCount ? articles.length !== totalCount : false;
-  // const { loadMoreRef } = usePagination({ onIntersect: handleOnClick, enabled: hasNextPage });
-
-  // if (!data) return <Spinner />;
 
   return (
     <DefaultLayout config={config}>
       <h1 className="mb-4 text-4xl font-bold">検索結果</h1>
-      {articles.length > 0 ? (
+      {!data ? (
+        <div className="flex fixed inset-0 justify-center items-center w-full h-screen ">
+          <Spinner size="w-32 h-32" />
+        </div>
+      ) : articles.length > 0 ? (
         <>
           <ArticleList articles={articles} />
-          {hasNextPage ? (
-            <div className="flex justify-center mt-8">
-              <button
-                onClick={handleOnClick}
-                className="dark:text-white dark:bg-gray-700
-py-2 px-2 rounded bg-gray-300"
-              >
-                もっと読み込む
-              </button>
-            </div>
-          ) : null}
-          {/* <Pagination hasNextPage={hasNextPage} loadMoreRef={loadMoreRef} /> */}
+          <Pagination hasNextPage={hasNextPage} isValidating={isValidating} onClick={handleOnClick} />
         </>
       ) : (
         <div className="flex justify-center mt-4">レシピが見つかりませんでした。</div>
       )}
     </DefaultLayout>
-    // <DefaultLayout config={config}>
-    //   <h1 className="mb-4 text-4xl font-bold">検索結果</h1>
-    //   {isValidating ? (
-    //     <Spinner />
-    //   ) : articles.length > 0 ? (
-    //     <>
-    //       <ArticleList articles={articles} />
-    //       <button onClick={handleOnClick} className="py-4 text-center dark:text-gray-500">
-    //         もっと読み込む
-    //       </button>
-    //       {/* <Pagination hasNextPage={hasNextPage} loadMoreRef={loadMoreRef} /> */}
-    //     </>
-    //   ) : (
-    //     <div className="flex justify-center mt-4">レシピが見つかりませんでした。</div>
-    //   )}
-    // </DefaultLayout>
   );
 };
 

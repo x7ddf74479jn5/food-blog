@@ -1,15 +1,19 @@
+import { ReadMoreButton } from "@/components/atoms/buttons/ReadMoreButton/index";
+import Spinner from "@/components/atoms/Spinner";
+
 type Props = {
   hasNextPage: boolean;
-  loadMoreRef: (node: HTMLParagraphElement) => void;
+  isValidating: boolean;
+  onClick: () => void;
 };
 
-const Pagination: React.FC<Props> = ({ hasNextPage, loadMoreRef }: Props) => {
+const Pagination: React.FC<Props> = ({ hasNextPage, isValidating, onClick }: Props) => {
   return (
     <>
       {hasNextPage ? (
-        <p {...{ ref: loadMoreRef }} className="py-4 text-center dark:text-gray-500">
-          Loading...
-        </p>
+        <div className="flex justify-center mt-8">
+          {isValidating ? <Spinner size="w-8 h-8" /> : <ReadMoreButton handleOnClick={onClick} />}
+        </div>
       ) : null}
     </>
   );
