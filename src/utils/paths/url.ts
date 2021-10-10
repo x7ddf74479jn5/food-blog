@@ -8,6 +8,7 @@ export const UrlTable = {
   articles: "/articles",
   categories: "/articles/categories",
   tags: "/articles/tags",
+  preview: "/preview",
 };
 
 const labelTable: Table = {

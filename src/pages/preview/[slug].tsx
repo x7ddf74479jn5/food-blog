@@ -1,21 +1,12 @@
+import type { ArticleDetailProps } from "@pages/articles/[id]";
 import ArticleDetail, { getStaticProps as _getStaticProps } from "@pages/articles/[id]";
 import type { GetStaticPaths } from "next";
 import type { Params } from "next/dist/server/router";
-import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
 
-import { client } from "@/lib/client";
-import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "@/types";
+import { fetchArticles } from "@/utils/fetcher";
+import { UrlTable } from "@/utils/paths/url";
 
-export type Props = {
-  article: TArticle;
-  mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>;
-  tags: TTag[];
-  categories: TCategory[];
-  config: TConfig;
-  isPreview: boolean;
-};
-
-const ArticlePreview = (props: Props) => {
+const ArticlePreview = (props: ArticleDetailProps) => {
   return (
     <>
       <ArticleDetail {...props} isPreview />
@@ -24,11 +15,10 @@ const ArticlePreview = (props: Props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
+  const data = await fetchArticles();
+  const paths = data.contents.map((article) => `${UrlTable.preview}/${article.id}`);
 
-  const paths = data.contents.map((article) => `/articles/${article.id}`);
-
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps = _getStaticProps;

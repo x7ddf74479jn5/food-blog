@@ -18,9 +18,10 @@ import { fetchArticle, getRelatedArticles } from "@/utils/fetcher/fetchArticles"
 import mdx2html from "@/utils/mdx/mdx2html";
 import { UrlTable } from "@/utils/paths/url";
 import { getBackLinks } from "@/utils/paths/url";
+import { isDraft } from "@/utils/validator";
 // import { isDraft } from "@/utils/validator/isDraft";
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+export type ArticleDetailProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const ArticleDetail = ({
   article,
@@ -30,7 +31,7 @@ export const ArticleDetail = ({
   config,
   isPreview,
   relatedArticles,
-}: Props) => {
+}: ArticleDetailProps) => {
   const { id, image, title, category, tags, writer, publishedAt } = article;
 
   const url = new URL(id ?? "", config.host).toString();
@@ -41,43 +42,44 @@ export const ArticleDetail = ({
 
   return (
     <ArticleLayout url={url} config={config} pageTitle={title} backLinks={backLinks} relatedArticles={relatedArticles}>
-      {isPreview ? (
-        <div>preview</div>
-      ) : id ? (
-        <article className="prose prose-green dark:prose-dark">
-          <div className="mb-4">
-            <Thumbnail src={image.url} title={title} />
-          </div>
-          <h1>{title}</h1>
-          <div className="flex flex-row justify-around mb-4">
-            <div className="flex flex-row gap-2 items-center">
-              <FaRegCalendar />
-              <TextDate date={safeDate} />
+      {id ? (
+        <>
+          {isPreview && <div className="mb-4 text-center text-white bg-red-500">Preview mode enabled</div>}
+          <article className="prose prose-green dark:prose-dark">
+            <div className="mb-4">
+              <Thumbnail src={image.url} title={title} />
             </div>
-            <div className="flex flex-row gap-2 items-center">
-              <FaPen />
-              <img
-                src={avatar.url}
-                alt={writerName}
-                width={32}
-                height={32}
-                className="rounded-full"
-                style={{ margin: 0 }}
-              />
-              <span>{writerName}</span>
+            <h1>{title}</h1>
+            <div className="flex flex-row justify-around mb-4">
+              <div className="flex flex-row gap-2 items-center">
+                <FaRegCalendar />
+                <TextDate date={safeDate} />
+              </div>
+              <div className="flex flex-row gap-2 items-center">
+                <FaPen />
+                <img
+                  src={avatar.url}
+                  alt={writerName}
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                  style={{ margin: 0 }}
+                />
+                <span>{writerName}</span>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col gap-4 p-2 sm:p-4 bg-gray-50 dark:bg-gray-700 ">
-            <div className="flex flex-row gap-2 items-center">
-              <span className="text-black dark:text-white">カテゴリー：</span>
-              <ButtonCategory category={category} />
+            <div className="flex flex-col gap-4 p-2 sm:p-4 bg-gray-50 dark:bg-gray-700 ">
+              <div className="flex flex-row gap-2 items-center">
+                <span className="text-black dark:text-white">カテゴリー：</span>
+                <ButtonCategory category={category} />
+              </div>
+              <TagListColored tags={tags} />
             </div>
-            <TagListColored tags={tags} />
-          </div>
-          <div id="js-toc-content">
-            <MDXRemote {...mdxSource} />
-          </div>
-        </article>
+            <div id="js-toc-content">
+              <MDXRemote {...mdxSource} />
+            </div>
+          </article>
+        </>
       ) : null}
     </ArticleLayout>
   );
@@ -90,7 +92,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths, fallback: "blocking" };
 };
 
-type StaticProps = {
+export type ArticlesStaticProps = {
   article: TArticle;
   mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>;
   categories: TCategory[];
@@ -105,27 +107,19 @@ interface Params extends ParsedUrlQuery {
   slug?: string;
 }
 
-export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({
-  params,
-  preview,
-  // previewData
-}) => {
+export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async ({ params, preview, previewData }) => {
   const id = params?.id || params?.slug;
   if (!id) {
     throw new Error("Error: ID not found");
   }
   try {
-    // const article = await client.get<TArticle>({
-    //   endpoint: "articles",
-    //   contentId: id,
-    //   queries: preview ? { draftKey: isDraft(previewData) ? previewData.draftKey : "" } : {},
-    // });
+    const queries = preview ? { draftKey: isDraft(previewData) ? previewData.draftKey : "" } : {};
 
     const [_config, _tags, _categories, article] = await Promise.all([
       fetchConfig(),
       fetchTags(),
       fetchCategories(),
-      fetchArticle(id),
+      fetchArticle(id, queries),
     ]);
 
     const relatedArticles = await getRelatedArticles(article);

@@ -4,7 +4,7 @@ import { client } from "@/lib/client";
 import type { TArticle, TArticleListResponse, TTag } from "@/types";
 import { HttpError } from "@/utils/error/Http";
 
-export const fetchArticles = async (queries: QueriesType): Promise<TArticleListResponse> => {
+export const fetchArticles = async (queries?: QueriesType): Promise<TArticleListResponse> => {
   try {
     const data = await client.get<TArticleListResponse>({
       endpoint: "articles",
