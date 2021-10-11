@@ -5,7 +5,7 @@ import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
 import Pagination from "@/components/molecules/Pagination";
 import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
-import Error404 from "@/pages/404";
+import Error404 from "@/pages/404/index.page";
 import type { TConfig } from "@/types/index";
 import { fetchConfig } from "@/utils/fetcher";
 

@@ -1,8 +1,8 @@
-import type { ArticleDetailProps } from "@pages/articles/[id]";
-import ArticleDetail, { getStaticProps as _getStaticProps } from "@pages/articles/[id]";
 import type { GetStaticPaths } from "next";
 import type { Params } from "next/dist/server/router";
 
+import type { ArticleDetailProps } from "@/pages/articles/[id].page";
+import ArticleDetail, { getStaticProps as _getStaticProps } from "@/pages/articles/[id].page";
 import { fetchArticles } from "@/utils/fetcher";
 import { UrlTable } from "@/utils/paths/url";
 
