@@ -10,7 +10,7 @@ type Props = {
 const DefaultLayout: React.FC<Props> = ({ children, config }: Props) => {
   return (
     <RootLayout config={config}>
-      <main className="pt-4 pb-12 max-w-prose">{children}</main>
+      <main className="overflow-hidden pt-4 pb-12 max-w-prose">{children}</main>
     </RootLayout>
   );
 };

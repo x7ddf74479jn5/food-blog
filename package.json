@@ -49,6 +49,7 @@
     "remark-slug": "7.0.0",
     "remark-unwrap-images": "3.0.0",
     "schema-dts": "1.0.0",
+    "slick-carousel": "1.8.1",
     "swr": "^1.0.0",
     "tocbot": "4.13.4"
   },
@@ -71,6 +72,7 @@
     "@types/mdx-js__react": "1.5.4",
     "@types/node": "16.9.0",
     "@types/react": "17.0.20",
+    "@types/react-slick": "0.23.6",
     "@types/react-test-renderer": "17.0.1",
     "@types/testing-library__react": "10.2.0",
     "@typescript-eslint/eslint-plugin": "4.31.0",

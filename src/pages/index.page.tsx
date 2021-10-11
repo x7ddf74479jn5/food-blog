@@ -3,6 +3,7 @@ import type { TArticle, TCategory, TConfig, TTag } from "src/types";
 
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
+import { SlickArticles } from "@/components/organisms/SlickArticles";
 import { fetchArticles, fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -10,6 +11,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const Home = ({ articles, config }: Props) => {
   return (
     <DefaultLayout config={config}>
+      <SlickArticles articles={articles} />
       <h1 className="mb-4 text-4xl font-bold">レシピ一覧</h1>
       <ArticleList articles={articles} />
     </DefaultLayout>
