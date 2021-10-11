@@ -1,6 +1,7 @@
 import { memo, useEffect, useRef, useState } from "react";
 import * as tocbot from "tocbot";
 
+import { SideSectionContainer } from "@/components/atoms/containers/SideSectionContainer";
 import useWindowSize from "@/hooks/useWindowSize";
 
 type Props = {
@@ -49,10 +50,9 @@ export const TOC = ({ isSide = false }: Props) => {
   }, [isHidden]);
   // eslint-disable-next-line tailwindcss/no-custom-classname
   return isHidden ? null : (
-    <section className="p-2 dark:text-white bg-gray-50 dark:bg-gray-700">
-      <h2 className="pb-2 pl-2 border-b-2">目次</h2>
+    <SideSectionContainer header="目次">
       <div id="js-toc" className="toc" />
-    </section>
+    </SideSectionContainer>
   );
 };
 
