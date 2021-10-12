@@ -1,20 +1,22 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import type { TArticle, TCategory, TConfig, TTag } from "src/types";
+import type { TArticle, TCategory, TConfig, TPickup, TTag } from "src/types";
 
-import DefaultLayout from "@/components/layouts/DefaultLayout";
+import HomeLayout from "@/components/layouts/HomeLayout";
 import ArticleList from "@/components/molecules/ArticleList";
-import { SlickArticles } from "@/components/organisms/SlickArticles";
-import { fetchArticles, fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
+import { getNewDate } from "@/utils/date/getNewDate";
+import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTags } from "@/utils/fetcher";
+import { UrlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Home = ({ articles, config }: Props) => {
+const Home = ({ articles, config, pickup }: Props) => {
+  const url = UrlTable.home;
+  const title = config.siteTitle;
   return (
-    <DefaultLayout config={config}>
-      <SlickArticles articles={articles} />
+    <HomeLayout pickup={pickup} url={url} pageTitle={title} config={config}>
       <h1 className="mb-4 text-4xl font-bold">レシピ一覧</h1>
       <ArticleList articles={articles} />
-    </DefaultLayout>
+    </HomeLayout>
   );
 };
 
@@ -24,14 +26,16 @@ type StaticProps = {
   categories: TCategory[];
   tags: TTag[];
   config: TConfig;
+  pickup: TPickup;
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const [_config, _categories, _tags, data] = await Promise.all([
+  const [_config, _categories, _tags, data, pickup] = await Promise.all([
     fetchConfig(),
     fetchCategories(),
     fetchTags(),
     fetchArticles({ limit: 5, offset: 0 }),
+    fetchPickupArticles(getNewDate()),
   ]);
 
   const { contents: articles, totalCount } = data;
@@ -43,6 +47,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
       categories: _categories as TCategory[],
       tags: _tags as TTag[],
       config: _config as TConfig,
+      pickup,
     },
     revalidate: 60 * 60 * 24,
   };

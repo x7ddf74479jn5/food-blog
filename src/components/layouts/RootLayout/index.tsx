@@ -19,9 +19,7 @@ export const RootLayout: React.FC<RootLayoutProps> = ({ config, children }) => {
       <Meta />
       <div className="flex flex-col px-4 mx-auto mb-16 max-w-screen-lg min-h-screen">
         <Header siteTitle={siteTitle} />
-        <div className="grid flex-1 justify-center">
-          <LayoutErrorBoundary>{children}</LayoutErrorBoundary>
-        </div>
+        <LayoutErrorBoundary>{children}</LayoutErrorBoundary>
         <Footer siteTitle={siteTitle} organization={organization} />
       </div>
     </>
