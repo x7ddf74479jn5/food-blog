@@ -13,11 +13,13 @@ type Props = {
   url: string;
   title: string;
   twitterId?: string;
+  direction?: "row" | "column";
 };
 
-export const ShareButtons: React.FC<Props> = ({ url, title, twitterId }) => {
+export const ShareButtons: React.FC<Props> = ({ url, title, twitterId, direction = "row" }) => {
+  const _direction = direction === "row" ? "flex-row" : "flex-col";
   return (
-    <div className="flex flex-row gap-4 justify-center items-center">
+    <div className={`flex ${_direction} gap-4 justify-center items-center`}>
       <TwitterShareButton url={url} title={title} via={twitterId}>
         <Tooltip label="Twitterでシェア">
           <FaTwitter className="hover:text-[#1DA1F2] text-gray-400" size={24} />
