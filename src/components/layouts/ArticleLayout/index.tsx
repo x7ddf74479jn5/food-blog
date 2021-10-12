@@ -22,15 +22,15 @@ const ArticleLayout: React.FC<Props> = ({ url, children, config, pageTitle, back
   const BackLinks = dynamic(() => import("@/components/molecules/BackLinks"));
   return (
     <RootLayout config={config}>
-      <div className="mb-32">
-        <div className="flex flex-col lg:flex-row gap-16 items-center lg:items-start mt-4 mb-8">
-          <main className="pb-12">{children}</main>
-          <aside className="flex lg:sticky top-3 flex-col gap-y-8 mb-4 w-full lg:w-1/3 h-full">
-            <TOC isSide />
-            <ShareButtons url={url} title={pageTitle} twitterId={config.twitterId} />
-            <RelatedArticles relatedArticles={relatedArticles} />
-          </aside>
-        </div>
+      <div className="flex flex-col lg:flex-row gap-16 items-center lg:items-start mt-4 mb-8">
+        <main className="pb-12">{children}</main>
+        <aside className="flex lg:sticky top-8 flex-col gap-y-8 mb-4 w-full lg:w-1/3 h-full">
+          <TOC isSide />
+          <ShareButtons url={url} title={pageTitle} twitterId={config.twitterId} />
+          <RelatedArticles relatedArticles={relatedArticles} />
+        </aside>
+      </div>
+      <div className="mt-8 mb-16">
         <BackLinks links={backLinks} />
       </div>
     </RootLayout>

@@ -8,6 +8,8 @@ import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
 import Error404 from "@/pages/404/index.page";
 import type { TConfig } from "@/types/index";
 import { fetchConfig } from "@/utils/fetcher";
+import { UrlTable } from "@/utils/paths/url";
+import { getBackLinks } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -24,8 +26,12 @@ const Search: NextPage<Props> = ({ config }) => {
   const totalCount = data ? data[0]?.totalCount : 0;
   const hasNextPage = totalCount ? articles.length !== totalCount : false;
 
+  const url = UrlTable.home;
+  const title = config.siteTitle;
+  const backLinks = getBackLinks([UrlTable.home]);
+
   return (
-    <DefaultLayout config={config}>
+    <DefaultLayout config={config} pageTitle={title} url={url} backLinks={backLinks}>
       <h1 className="mb-4 text-4xl font-bold">検索結果</h1>
       {!data ? (
         <div className="flex fixed inset-0 justify-center items-center w-full h-screen ">
