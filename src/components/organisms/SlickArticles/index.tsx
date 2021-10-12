@@ -3,9 +3,11 @@ import type { Settings } from "react-slick";
 import Slick from "react-slick";
 
 import Thumbnail from "@/components/atoms/Thumbnail";
-import type { TArticle } from "@/types";
+import type { TPickup } from "@/types";
 
 const settings: Settings = {
+  pauseOnHover: true,
+  arrows: false,
   infinite: true,
   slidesToShow: 2,
   autoplay: true,
@@ -22,15 +24,17 @@ const settings: Settings = {
 };
 
 type SlickArticlesProps = {
-  articles: TArticle[];
+  pickup: TPickup;
 };
 
-export const SlickArticles: React.VFC<SlickArticlesProps> = ({ articles }) => {
+export const SlickArticles: React.VFC<SlickArticlesProps> = ({ pickup }) => {
+  const { articles, description } = pickup;
   return (
-    <section className="mb-16">
+    <section>
       <div className="flex flex-row gap-1 items-center pl-1 mb-2 text-xl">
         <FaLightbulb className="text-yellow-400" />
         <h2 className="font-bold">PICKUP</h2>
+        <span className="flex-1 text-sm text-center break-words">{description}</span>
       </div>
       <Slick {...settings}>
         {articles.map((article) => (

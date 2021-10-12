@@ -2,6 +2,7 @@ import type { QueriesType } from "microcms-js-sdk/dist/cjs/types";
 
 import { client } from "@/lib/client";
 import type { TArticle, TArticleListResponse, TTag } from "@/types";
+import type { TPickupListResponse } from "@/types/pickup";
 import { HttpError } from "@/utils/error/Http";
 
 export const fetchArticles = async (queries?: QueriesType): Promise<TArticleListResponse> => {
@@ -112,4 +113,23 @@ export const getRelatedArticles = async (article: TArticle, limit = 4) => {
   const pairs = await fetchRelatedArticles(article, "pairs", trios);
 
   return [...trios, ...pairs].slice(0, limit);
+};
+
+export const fetchPickupArticles = async (date: Date) => {
+  const _date = date.toISOString();
+  const filters = `startDate[less_than]${_date}[and]endDate[greater_than]${_date}`;
+  const limit = 1;
+  try {
+    const data = await client.get<TPickupListResponse>({
+      endpoint: "pickups",
+      queries: { limit, orders: "-publishedAt", filters: filters },
+    });
+    return data.contents[limit - 1];
+  } catch (error) {
+    if (error instanceof HttpError) {
+      console.error(error);
+      throw error;
+    }
+    throw error;
+  }
 };
