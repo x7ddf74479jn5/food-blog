@@ -3,8 +3,8 @@ import dynamic from "next/dynamic";
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
 import { ShareButtons } from "@/components/atoms/ShareButtons/index";
 import { RootLayout } from "@/components/layouts/RootLayout";
+import { CategoryMenu } from "@/components/molecules/CategoryMenu";
 import { TOC } from "@/components/molecules/TOC/index";
-import { CategoryMenu } from "@/components/organisms/CategoryMenu";
 import { RelatedArticles } from "@/components/organisms/RelatedArticles";
 import type { TArticle, TCategory, TConfig } from "@/types";
 

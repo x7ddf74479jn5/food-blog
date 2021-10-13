@@ -2,7 +2,7 @@ import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
 import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
-import { CategoryMenu } from "@/components/organisms/CategoryMenu";
+import { CategoryMenu } from "@/components/molecules/CategoryMenu";
 import { SlickArticles } from "@/components/organisms/SlickArticles/index";
 import useWindowSize from "@/hooks/useWindowSize";
 import type { TCategory, TConfig, TPickup } from "@/types";
