@@ -26,7 +26,7 @@ export type ArticleDetailProps = InferGetStaticPropsType<typeof getStaticProps>;
 export const ArticleDetail = ({
   article,
   mdxSource,
-  // categories: categoriesAtMenu,
+  categories: categoriesAtMenu,
   // tags: tagsAtMenu,
   config,
   isPreview,
@@ -41,7 +41,14 @@ export const ArticleDetail = ({
   const { name: writerName, avatar } = writer;
 
   return (
-    <ArticleLayout url={url} config={config} pageTitle={title} backLinks={backLinks} relatedArticles={relatedArticles}>
+    <ArticleLayout
+      url={url}
+      config={config}
+      pageTitle={title}
+      backLinks={backLinks}
+      relatedArticles={relatedArticles}
+      categories={categoriesAtMenu}
+    >
       {id ? (
         <>
           {isPreview && <div className="mb-4 text-center text-white bg-red-500">Preview mode enabled</div>}

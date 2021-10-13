@@ -9,11 +9,11 @@ import { UrlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Home = ({ articles, config, pickup }: Props) => {
+const Home = ({ articles, config, pickup, categories }: Props) => {
   const url = UrlTable.home;
   const title = config.siteTitle;
   return (
-    <HomeLayout pickup={pickup} url={url} pageTitle={title} config={config}>
+    <HomeLayout pickup={pickup} url={url} pageTitle={title} config={config} categories={categories}>
       <h1 className="mb-4 text-4xl font-bold">レシピ一覧</h1>
       <ArticleList articles={articles} />
     </HomeLayout>

@@ -6,14 +6,14 @@ import ArticleList from "@/components/molecules/ArticleList";
 import Pagination from "@/components/molecules/Pagination";
 import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
 import Error404 from "@/pages/404/index.page";
-import type { TConfig } from "@/types/index";
-import { fetchConfig } from "@/utils/fetcher";
+import type { TCategory, TConfig } from "@/types/index";
+import { fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { UrlTable } from "@/utils/paths/url";
 import { getBackLinks } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Search: NextPage<Props> = ({ config }) => {
+const Search: NextPage<Props> = ({ config, categories }) => {
   const { data, error, size, setSize, isValidating } = useGetArticleListQuery({ perPage: 2 });
 
   if (error) return <Error404 config={config} />;
@@ -31,34 +31,40 @@ const Search: NextPage<Props> = ({ config }) => {
   const backLinks = getBackLinks([UrlTable.home]);
 
   return (
-    <DefaultLayout config={config} pageTitle={title} url={url} backLinks={backLinks}>
+    <DefaultLayout config={config} pageTitle={title} url={url} backLinks={backLinks} categories={categories}>
       <h1 className="mb-4 text-4xl font-bold">検索結果</h1>
-      {!data ? (
-        <div className="flex fixed inset-0 justify-center items-center w-full h-screen ">
-          <Spinner size="w-32 h-32" />
-        </div>
-      ) : articles.length > 0 ? (
-        <>
-          <ArticleList articles={articles} />
-          <Pagination hasNextPage={hasNextPage} isValidating={isValidating} onClick={handleOnClick} />
-        </>
-      ) : (
-        <div className="flex justify-center mt-4">レシピが見つかりませんでした。</div>
-      )}
+      <div className="w-full min-h-screen">
+        {!data ? (
+          <div className="flex fixed inset-0 justify-center items-center w-full h-screen ">
+            <Spinner size="w-32 h-32" />
+          </div>
+        ) : articles.length > 0 ? (
+          <>
+            <ArticleList articles={articles} />
+            <Pagination hasNextPage={hasNextPage} isValidating={isValidating} onClick={handleOnClick} />
+          </>
+        ) : (
+          <div className="flex justify-center mt-4">レシピが見つかりませんでした。</div>
+        )}
+      </div>
     </DefaultLayout>
   );
 };
 
 type StaticProps = {
   config: TConfig;
+  categories: TCategory[];
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const config = (await fetchConfig()) as TConfig;
+  // const config = (await fetchConfig()) as TConfig;
+  // fetchCategories()
+  const [config, _categories] = await Promise.all([fetchConfig(), fetchCategories()]);
 
   return {
     props: {
       config,
+      categories: _categories as TCategory[],
     },
   };
 };
