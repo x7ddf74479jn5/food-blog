@@ -5,6 +5,9 @@ import { ShareButtons } from ".";
 export default {
   title: "Atoms/buttons/ShareButtons",
   component: ShareButtons,
+  argTypes: {
+    direction: { type: "radio", control: ["row", "column"] },
+  },
 } as ComponentMeta<typeof ShareButtons>;
 
 const Template: ComponentStory<typeof ShareButtons> = (args) => (
@@ -13,9 +16,17 @@ const Template: ComponentStory<typeof ShareButtons> = (args) => (
   </div>
 );
 
-export const Default = Template.bind({});
-Default.args = {
+export const Horizontal = Template.bind({});
+Horizontal.args = {
   url: "url",
   title: "title",
   twitterId: "twitterId",
+};
+
+export const Vertical = Template.bind({});
+Vertical.args = {
+  url: "url",
+  title: "title",
+  twitterId: "twitterId",
+  direction: "column",
 };

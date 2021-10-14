@@ -10,7 +10,7 @@ type Args = {
 export const fetchCategories = async (props?: Args) => {
   const { slug } = props || {};
   try {
-    const data = await client.get<TCategoryListResponse>({ endpoint: "categories" });
+    const data = await client.get<TCategoryListResponse>({ endpoint: "categories", queries: { limit: 100 } });
 
     if (slug) {
       return data.contents.find((item) => item.slug === slug) as TCategory;

@@ -1,4 +1,6 @@
 import "@/styles/global.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { MDXProvider } from "@mdx-js/react";
 import type { NextPage } from "next";

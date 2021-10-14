@@ -10,7 +10,7 @@ type Args = {
 export const fetchTags = async (props?: Args) => {
   const { slug } = props || {};
   try {
-    const data = await client.get<TTagListResponse>({ endpoint: "tags" });
+    const data = await client.get<TTagListResponse>({ endpoint: "tags", queries: { limit: 100 } });
     if (slug) {
       return data.contents.find((item) => item.slug === slug) as TTag;
     }
