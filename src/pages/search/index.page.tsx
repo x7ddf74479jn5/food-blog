@@ -1,19 +1,20 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 
+import { getNewDate } from "@//utils/date/getNewDate";
 import Spinner from "@/components/atoms/Spinner";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
 import Pagination from "@/components/molecules/Pagination";
 import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
 import Error404 from "@/pages/404/index.page";
-import type { TCategory, TConfig } from "@/types/index";
-import { fetchCategories, fetchConfig } from "@/utils/fetcher";
+import type { TCategory, TConfig, TPickup } from "@/types/index";
+import { fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
 import { UrlTable } from "@/utils/paths/url";
 import { getBackLinks } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Search: NextPage<Props> = ({ config, categories }) => {
+const Search: NextPage<Props> = ({ config, categories, pickup }) => {
   const { data, error, size, setSize, isValidating } = useGetArticleListQuery({ perPage: 2 });
 
   if (error) return <Error404 config={config} />;
@@ -31,7 +32,14 @@ const Search: NextPage<Props> = ({ config, categories }) => {
   const backLinks = getBackLinks([UrlTable.home]);
 
   return (
-    <DefaultLayout config={config} pageTitle={title} url={url} backLinks={backLinks} categories={categories}>
+    <DefaultLayout
+      config={config}
+      pageTitle={title}
+      url={url}
+      backLinks={backLinks}
+      categories={categories}
+      pickup={pickup}
+    >
       <h1 className="mb-4 text-4xl font-bold">検索結果</h1>
       <div className="w-full min-h-screen">
         {!data ? (
@@ -54,18 +62,23 @@ const Search: NextPage<Props> = ({ config, categories }) => {
 type StaticProps = {
   config: TConfig;
   categories: TCategory[];
+  pickup: TPickup;
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  // const config = (await fetchConfig()) as TConfig;
-  // fetchCategories()
-  const [config, _categories] = await Promise.all([fetchConfig(), fetchCategories()]);
+  const [config, _categories, pickup] = await Promise.all([
+    fetchConfig(),
+    fetchCategories(),
+    fetchPickupArticles(getNewDate()),
+  ]);
 
   return {
     props: {
       config,
       categories: _categories as TCategory[],
+      pickup,
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 

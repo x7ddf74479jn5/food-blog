@@ -1,13 +1,16 @@
 import dynamic from "next/dynamic";
 
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
+import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
+import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
 import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { CategoryMenu } from "@/components/molecules/CategoryMenu";
+import { PickupArticles } from "@/components/organisms/PickupArticles/index";
 import useWindowSize from "@/hooks/useWindowSize";
-import type { TCategory, TConfig } from "@/types";
+import type { TCategory, TConfig, TPickup } from "@/types";
 
 type Props = {
   children: React.ReactNode;
@@ -19,9 +22,10 @@ type Props = {
     label: string;
   }>;
   categories: TCategory[];
+  pickup: TPickup;
 };
 
-const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, backLinks, categories }: Props) => {
+const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, backLinks, categories, pickup }: Props) => {
   const BackLinks = dynamic(() => import("@/components/molecules/BackLinks"));
   const size = useWindowSize();
   const isMobile = size.width < 768;
@@ -41,9 +45,14 @@ const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, back
           <CategoryMenu categories={categories} columns="grid-cols-3 sm:grid-cols-5 md:grid-cols-1" />
         </AsideContainer>
       </MiddleAreaContainer>
-      <div className="mt-8 mb-16">
-        <BackLinks links={backLinks} />
-      </div>
+      <BottomAreaContainer>
+        <ContainerWithOrder order="order-1 lg:order-2" className="flex-grow">
+          <PickupArticles pickupArticles={pickup.articles} />
+        </ContainerWithOrder>
+        <ContainerWithOrder order="order-2 lg:order-1" className="flex-shrink">
+          <BackLinks links={backLinks} />
+        </ContainerWithOrder>
+      </BottomAreaContainer>
     </RootLayout>
   );
 };

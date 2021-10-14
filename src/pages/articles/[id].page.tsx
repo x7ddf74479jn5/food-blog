@@ -6,20 +6,20 @@ import type { ParsedUrlQuery } from "node:querystring";
 import { memo } from "react";
 import { FaPen, FaRegCalendar } from "react-icons/fa";
 import { client } from "src/lib/client";
-import type { TArticle, TArticleListResponse, TCategory, TConfig, TTag } from "src/types";
+import type { TArticle, TArticleListResponse, TCategory, TConfig, TPickup } from "src/types";
 
 import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
 import TextDate from "@/components/atoms/texts/TextDate/index";
 import Thumbnail from "@/components/atoms/Thumbnail";
 import { TagListColored } from "@/components/molecules/TagList";
+import { getNewDate } from "@/utils/date/getNewDate";
 import getSafeDate from "@/utils/date/getSafeDate";
-import { fetchCategories, fetchConfig, fetchTags } from "@/utils/fetcher";
-import { fetchArticle, getRelatedArticles } from "@/utils/fetcher/fetchArticles";
+import { fetchCategories, fetchConfig } from "@/utils/fetcher";
+import { fetchArticle, fetchPickupArticles, getRelatedArticles } from "@/utils/fetcher/fetchArticles";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { UrlTable } from "@/utils/paths/url";
 import { getBackLinks } from "@/utils/paths/url";
 import { isDraft } from "@/utils/validator";
-// import { isDraft } from "@/utils/validator/isDraft";
 
 export type ArticleDetailProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -27,10 +27,10 @@ export const ArticleDetail = ({
   article,
   mdxSource,
   categories: categoriesAtMenu,
-  // tags: tagsAtMenu,
   config,
   isPreview,
   relatedArticles,
+  pickup,
 }: ArticleDetailProps) => {
   const { id, image, title, category, tags, writer, publishedAt } = article;
 
@@ -48,6 +48,7 @@ export const ArticleDetail = ({
       backLinks={backLinks}
       relatedArticles={relatedArticles}
       categories={categoriesAtMenu}
+      pickup={pickup}
     >
       {id ? (
         <>
@@ -103,10 +104,10 @@ export type ArticlesStaticProps = {
   article: TArticle;
   mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>;
   categories: TCategory[];
-  tags: TTag[];
   config: TConfig;
   isPreview?: boolean;
   relatedArticles: TArticle[];
+  pickup: TPickup;
 };
 
 interface Params extends ParsedUrlQuery {
@@ -122,11 +123,11 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
   try {
     const queries = preview ? { draftKey: isDraft(previewData) ? previewData.draftKey : "" } : {};
 
-    const [_config, _tags, _categories, article] = await Promise.all([
+    const [_config, _categories, article, pickup] = await Promise.all([
       fetchConfig(),
-      fetchTags(),
       fetchCategories(),
       fetchArticle(id, queries),
+      fetchPickupArticles(getNewDate()),
     ]);
 
     const relatedArticles = await getRelatedArticles(article);
@@ -139,10 +140,10 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
         article,
         mdxSource,
         categories: _categories as TCategory[],
-        tags: _tags as TTag[],
         config: _config as TConfig,
         isPreview,
         relatedArticles,
+        pickup,
       },
       revalidate: 60 * 60 * 24,
     };
