@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
+import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
 import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { CategoryMenu } from "@/components/molecules/CategoryMenu";
@@ -26,7 +27,7 @@ const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, back
   const isMobile = size.width < 768;
   return (
     <RootLayout config={config}>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-16 justify-center items-center md:items-stretch mb-16">
+      <MiddleAreaContainer>
         <AsideContainer side="left">
           <ShareButtons
             url={url}
@@ -39,7 +40,7 @@ const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, back
         <AsideContainer side="right">
           <CategoryMenu categories={categories} columns="grid-cols-3 sm:grid-cols-5 md:grid-cols-1" />
         </AsideContainer>
-      </div>
+      </MiddleAreaContainer>
       <div className="mt-8 mb-16">
         <BackLinks links={backLinks} />
       </div>

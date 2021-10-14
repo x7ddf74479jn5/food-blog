@@ -1,5 +1,6 @@
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
+import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
 import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { CategoryMenu } from "@/components/molecules/CategoryMenu";
@@ -25,7 +26,7 @@ const HomeLayout: React.FC<Props> = ({ pickup, url, pageTitle, children, config,
       <div className="px-0 md:px-16 mt-8 md:mt-16 mb-16">
         <SlickArticles pickup={pickup} />
       </div>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-16 justify-center items-center md:items-stretch mb-16">
+      <MiddleAreaContainer>
         <AsideContainer side="left">
           <ShareButtons
             url={url}
@@ -38,7 +39,7 @@ const HomeLayout: React.FC<Props> = ({ pickup, url, pageTitle, children, config,
         <AsideContainer side="right">
           <CategoryMenu categories={categories} columns="grid-cols-3 sm:grid-cols-5 md:grid-cols-1" />
         </AsideContainer>
-      </div>
+      </MiddleAreaContainer>
     </RootLayout>
   );
 };
