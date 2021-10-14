@@ -122,7 +122,7 @@ export const fetchPickupArticles = async (date: Date) => {
   try {
     const data = await client.get<TPickupListResponse>({
       endpoint: "pickups",
-      queries: { limit, orders: "-publishedAt", filters: filters },
+      queries: { limit, orders: "-publishedAt", filters: filters, depth: 2 },
     });
     return data.contents[limit - 1];
   } catch (error) {
