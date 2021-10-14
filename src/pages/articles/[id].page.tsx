@@ -5,8 +5,7 @@ import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
 import type { ParsedUrlQuery } from "node:querystring";
 import { memo } from "react";
 import { FaPen, FaRegCalendar } from "react-icons/fa";
-import { client } from "src/lib/client";
-import type { TArticle, TArticleListResponse, TCategory, TConfig, TPickup } from "src/types";
+import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
 
 import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
 import TextDate from "@/components/atoms/texts/TextDate/index";
@@ -15,7 +14,7 @@ import { TagListColored } from "@/components/molecules/TagList";
 import { getNewDate } from "@/utils/date/getNewDate";
 import getSafeDate from "@/utils/date/getSafeDate";
 import { fetchCategories, fetchConfig } from "@/utils/fetcher";
-import { fetchArticle, fetchPickupArticles, getRelatedArticles } from "@/utils/fetcher/fetchArticles";
+import { fetchArticle, fetchArticles, fetchPickupArticles, getRelatedArticles } from "@/utils/fetcher/fetchArticles";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { UrlTable } from "@/utils/paths/url";
 import { getBackLinks } from "@/utils/paths/url";
@@ -93,9 +92,14 @@ export const ArticleDetail = ({
   );
 };
 
+interface Params extends ParsedUrlQuery {
+  id?: string;
+  slug?: string;
+}
+
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const data = await client.get<TArticleListResponse>({ endpoint: "articles" });
-  const paths = data.contents.map((article) => `/articles/${article.id}`);
+  const data = await fetchArticles();
+  const paths = data.contents.map((article) => `${UrlTable.articles}/${article.id}`);
 
   return { paths, fallback: "blocking" };
 };
@@ -109,11 +113,6 @@ export type ArticlesStaticProps = {
   relatedArticles: TArticle[];
   pickup: TPickup;
 };
-
-interface Params extends ParsedUrlQuery {
-  id?: string;
-  slug?: string;
-}
 
 export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async ({ params, preview, previewData }) => {
   const id = params?.id || params?.slug;
