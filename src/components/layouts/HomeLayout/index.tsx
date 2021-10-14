@@ -23,7 +23,7 @@ const HomeLayout: React.FC<Props> = ({ pickup, url, pageTitle, children, config,
 
   return (
     <RootLayout config={config}>
-      <div className="px-0 md:px-16 mt-8 md:mt-16 mb-16">
+      <div className="px-0 md:px-16 mt-8 md:mt-16">
         <SlickArticles pickup={pickup} />
       </div>
       <MiddleAreaContainer>
