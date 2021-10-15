@@ -1,14 +1,16 @@
 import { fetchArticles, fetchPickupArticles, fetchRelatedArticles, getRelatedArticles } from "./fetchArticles";
-import { fetchCategories } from "./fetchCategories";
+import { fetchCategories, fetchCategory } from "./fetchCategories";
 import { fetchConfig } from "./fetchConfig";
-import { fetchTags } from "./fetchTags";
+import { fetchTag, fetchTags } from "./fetchTags";
 
 export {
   fetchArticles,
   fetchCategories,
+  fetchCategory,
   fetchConfig,
   fetchPickupArticles,
   fetchRelatedArticles,
+  fetchTag,
   fetchTags,
   getRelatedArticles,
 };

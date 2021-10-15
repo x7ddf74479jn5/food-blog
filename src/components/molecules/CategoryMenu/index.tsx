@@ -18,7 +18,7 @@ export const CategoryMenu: React.VFC<CategoryMenuProps> = ({ categories, columns
           <div className="flex flex-col justify-center items-center" key={category.id}>
             <NextLink href={`${UrlTable.categories}/${category.slug}`}>
               <Image src={category.image.url} alt={category.slug} width={128} height={128} objectFit="cover" />
-              <p className="text-sm">{category.name}</p>
+              <p className="text-sm text-center">{category.name}</p>
             </NextLink>
           </div>
         ))}

@@ -138,8 +138,8 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
       props: {
         article,
         mdxSource,
-        categories: _categories as TCategory[],
-        config: _config as TConfig,
+        categories: _categories,
+        config: _config,
         isPreview,
         relatedArticles,
         pickup,

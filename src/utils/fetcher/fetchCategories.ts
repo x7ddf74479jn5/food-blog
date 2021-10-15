@@ -3,18 +3,25 @@ import type { TCategory, TCategoryListResponse } from "src/types";
 
 import { HttpError } from "@/utils/error/Http";
 
-type Args = {
-  slug?: string;
+export const fetchCategory = async (slug: string): Promise<TCategory> => {
+  try {
+    const data = await client.get<TCategoryListResponse>({
+      endpoint: "categories",
+      queries: { filters: `slug[equals]${slug}` },
+    });
+    return data.contents[0];
+  } catch (error) {
+    if (error instanceof HttpError) {
+      console.error(error);
+      throw error;
+    }
+    throw error;
+  }
 };
 
-export const fetchCategories = async (props?: Args) => {
-  const { slug } = props || {};
+export const fetchCategories = async (): Promise<TCategory[]> => {
   try {
     const data = await client.get<TCategoryListResponse>({ endpoint: "categories", queries: { limit: 100 } });
-
-    if (slug) {
-      return data.contents.find((item) => item.slug === slug) as TCategory;
-    }
     return data.contents;
   } catch (error) {
     if (error instanceof HttpError) {

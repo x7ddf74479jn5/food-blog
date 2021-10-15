@@ -5,13 +5,13 @@ import { getNewDate } from "@//utils/date/getNewDate";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
 import type { TArticle, TCategory, TConfig, TPickup, TTag } from "@/types/index";
-import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTags } from "@/utils/fetcher";
+import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTag, fetchTags } from "@/utils/fetcher";
 import { UrlTable } from "@/utils/paths/url";
 import { getBackLinks } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Tags: NextPage<Props> = ({ articles, config, categories, pickup }) => {
+const Tags: NextPage<Props> = ({ articles, tag, config, categories, pickup }) => {
   const url = UrlTable.home;
   const title = config.siteTitle;
   const backLinks = getBackLinks([UrlTable.home]);
@@ -25,7 +25,7 @@ const Tags: NextPage<Props> = ({ articles, config, categories, pickup }) => {
       categories={categories}
       pickup={pickup}
     >
-      <h1 className="mb-4 text-4xl font-bold">タグ一覧</h1>
+      <h1 className="mb-4 text-4xl font-bold">タグ：{tag.name}</h1>
       <div className="w-full min-h-screen">
         <ArticleList articles={articles} />
       </div>
@@ -38,13 +38,14 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const data = (await fetchTags()) as TTag[];
+  const data = await fetchTags();
   const paths = data.map((tag) => `${UrlTable.tags}/${tag.slug}`);
 
   return { paths, fallback: "blocking" };
 };
 
 type StaticProps = {
+  tag: TTag;
   categories: TCategory[];
   config: TConfig;
   articles: TArticle[];
@@ -56,7 +57,7 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
   if (!slug) {
     throw new Error("Error: ID not found");
   }
-  const tag = (await fetchTags({ slug })) as TTag;
+  const tag = await fetchTag(slug);
 
   const [_articles, config, _categories, pickup] = await Promise.all([
     fetchArticles({ filters: `tags[contains]${tag.id}` }),
@@ -68,8 +69,9 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
   return {
     props: {
       articles: _articles.contents,
+      tag,
       config,
-      categories: _categories as TCategory[],
+      categories: _categories,
       pickup,
     },
     revalidate: 60 * 60 * 24,

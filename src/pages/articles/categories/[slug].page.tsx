@@ -5,13 +5,13 @@ import { getNewDate } from "@//utils/date/getNewDate";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
 import type { TArticle, TCategory, TConfig, TPickup } from "@/types/index";
-import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
+import { fetchArticles, fetchCategories, fetchCategory, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
 import { UrlTable } from "@/utils/paths/url";
 import { getBackLinks } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Categories: NextPage<Props> = ({ articles, config, categories, pickup }) => {
+const Categories: NextPage<Props> = ({ articles, category, config, categories, pickup }) => {
   const url = UrlTable.home;
   const title = config.siteTitle;
   const backLinks = getBackLinks([UrlTable.home]);
@@ -25,7 +25,7 @@ const Categories: NextPage<Props> = ({ articles, config, categories, pickup }) =
       categories={categories}
       pickup={pickup}
     >
-      <h1 className="mb-4 text-4xl font-bold">カテゴリー一覧</h1>
+      <h1 className="mb-4 text-4xl font-bold">カテゴリー：{category.name}</h1>
       <div className="w-full min-h-screen">
         <ArticleList articles={articles} />
       </div>
@@ -38,13 +38,14 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const data = (await fetchCategories()) as TCategory[];
+  const data = await fetchCategories();
   const paths = data.map((category) => `${UrlTable.categories}/${category.slug}`);
 
   return { paths, fallback: "blocking" };
 };
 
 type StaticProps = {
+  category: TCategory;
   categories: TCategory[];
   config: TConfig;
   articles: TArticle[];
@@ -57,7 +58,7 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
     throw new Error("Error: ID not found");
   }
 
-  const category = (await fetchCategories({ slug })) as TCategory;
+  const category = await fetchCategory(slug);
 
   const [_articles, config, _categories, pickup] = await Promise.all([
     fetchArticles({ filters: `category[equals]${category.id}` }),
@@ -69,8 +70,9 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
   return {
     props: {
       articles: _articles.contents,
+      category,
       config,
-      categories: _categories as TCategory[],
+      categories: _categories,
       pickup,
     },
     revalidate: 60 * 60 * 24,

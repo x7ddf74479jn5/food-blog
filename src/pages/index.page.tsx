@@ -1,5 +1,5 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import type { TArticle, TCategory, TConfig, TPickup, TTag } from "src/types";
+import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
 
 import HomeLayout from "@/components/layouts/HomeLayout";
 import ArticleList from "@/components/molecules/ArticleList";
@@ -24,7 +24,6 @@ type StaticProps = {
   articles: TArticle[];
   totalCount: number;
   categories: TCategory[];
-  tags: TTag[];
   config: TConfig;
   pickup: TPickup;
 };
@@ -39,14 +38,12 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   ]);
 
   const { contents: articles, totalCount } = data;
-
   return {
     props: {
       articles,
       totalCount,
-      categories: _categories as TCategory[],
-      tags: _tags as TTag[],
-      config: _config as TConfig,
+      categories: _categories,
+      config: _config,
       pickup,
     },
     revalidate: 60 * 60 * 24,
