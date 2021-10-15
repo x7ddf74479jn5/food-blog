@@ -15,7 +15,7 @@ import { getBackLinks } from "@/utils/paths/url";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Search: NextPage<Props> = ({ config, categories, pickup }) => {
-  const { data, error, size, setSize, isValidating } = useGetArticleListQuery({ perPage: 2 });
+  const { data, error, size, setSize, isValidating, keyword } = useGetArticleListQuery({ perPage: 2 });
 
   if (error) return <Error404 config={config} />;
 
@@ -40,7 +40,7 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
       categories={categories}
       pickup={pickup}
     >
-      <h1 className="mb-4 text-4xl font-bold">検索結果</h1>
+      <h1 className="mb-4 text-4xl font-bold">検索結果：{keyword}</h1>
       <div className="w-full min-h-screen">
         {!data ? (
           <div className="flex fixed inset-0 justify-center items-center w-full h-screen ">
@@ -75,7 +75,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   return {
     props: {
       config,
-      categories: _categories as TCategory[],
+      categories: _categories,
       pickup,
     },
     revalidate: 60 * 60 * 24,

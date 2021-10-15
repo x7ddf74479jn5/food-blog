@@ -23,12 +23,14 @@ const useGetArticleListQuery = ({ perPage = 4, options }: Arguments) => {
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-  return useSWRInfinite<TArticleSWRResponse, Error>(getKey, fetcher, {
+  const result = useSWRInfinite<TArticleSWRResponse, Error>(getKey, fetcher, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
     ...options,
   });
+
+  return { keyword: q, ...result } as const;
 };
 
 export default useGetArticleListQuery;
