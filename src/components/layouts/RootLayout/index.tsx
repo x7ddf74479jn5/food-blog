@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 
-import Meta from "@/components/molecules/Meta";
 import Header from "@/components/organisms/Header";
 import type { TConfig } from "@/types";
 
@@ -16,7 +15,6 @@ export const RootLayout: React.FC<RootLayoutProps> = ({ config, children }) => {
   const { siteTitle, organization } = config;
   return (
     <>
-      <Meta />
       <div className="flex flex-col px-4 mx-auto mb-16 max-w-screen-lg min-h-screen">
         <Header siteTitle={siteTitle} />
         <LayoutErrorBoundary>{children}</LayoutErrorBoundary>
