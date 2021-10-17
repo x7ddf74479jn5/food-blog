@@ -1,6 +1,5 @@
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
+const withBundleAnalyzer =
+  process.env.ANALYZE === "true" ? require("@next/bundle-analyzer")({ enabled: true }) : (config) => config;
 const withPWA = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
 
