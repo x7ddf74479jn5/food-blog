@@ -3,3 +3,4 @@
 **/.next/*
 **/.vercel/*
 /.eslintrc.js
+**/public/*
