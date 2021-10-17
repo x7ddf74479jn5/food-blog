@@ -1,6 +1,9 @@
-{
-    "name": "",
-    "short_name": "",
+{  
+    "name": "Food Blog",
+    "short_name": "Food Blog",
+    "scope":"/",
+    "start_url": "/?source=pwa",
+    "description": "料理レシピを紹介するブログ。",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
