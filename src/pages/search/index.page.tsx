@@ -28,7 +28,8 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
   const totalCount = data ? data[0]?.totalCount : 0;
   const hasNextPage = totalCount ? articles.length !== totalCount : false;
 
-  const { siteTitle: title, host } = config;
+  const { host } = config;
+  const title = "検索結果";
   const url = new URL(`${UrlTable.search}/q=${keyword ?? ""}`, host).toString();
   const backLinks = getBackLinks([UrlTable.home]);
 

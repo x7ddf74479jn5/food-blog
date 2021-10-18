@@ -13,7 +13,8 @@ import { getBackLinks } from "@/utils/paths/url";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Categories: NextPage<Props> = ({ articles, category, config, categories, pickup }) => {
-  const { siteTitle: title, host } = config;
+  const { host } = config;
+  const title = category.name;
   const url = new URL(`${UrlTable.categories}/${category.slug}`, host).toString();
   const backLinks = getBackLinks([UrlTable.home]);
 

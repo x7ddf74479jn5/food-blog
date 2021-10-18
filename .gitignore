@@ -38,3 +38,4 @@ yarn-error.log*
 
 # project
 _posts
+public/sw.js.map
