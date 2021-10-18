@@ -38,4 +38,11 @@ yarn-error.log*
 
 # project
 _posts
-public/sw.js.map
+**/public/precache.*.*.js
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/precache.*.*.js.map
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
