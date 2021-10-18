@@ -8,6 +8,7 @@ import { FaPen, FaRegCalendar } from "react-icons/fa";
 import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
 
 import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
+import { HtmlHeadBase, HtmlHeadJsonLt } from "@/components/atoms/meta";
 import TextDate from "@/components/atoms/texts/TextDate/index";
 import Thumbnail from "@/components/atoms/Thumbnail";
 import { TagListColored } from "@/components/molecules/TagList";
@@ -15,6 +16,7 @@ import { getNewDate } from "@/utils/date/getNewDate";
 import getSafeDate from "@/utils/date/getSafeDate";
 import { fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { fetchArticle, fetchArticles, fetchPickupArticles, getRelatedArticles } from "@/utils/fetcher/fetchArticles";
+import getExcerpt from "@/utils/formatter/getExcerpt";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { UrlTable } from "@/utils/paths/url";
 import { getBackLinks } from "@/utils/paths/url";
@@ -31,12 +33,13 @@ export const ArticleDetail = ({
   relatedArticles,
   pickup,
 }: ArticleDetailProps) => {
-  const { id, image, title, category, tags, writer, publishedAt } = article;
+  const { id, image, title, description, category, tags, writer, publishedAt, updatedAt } = article;
+  const { host } = config;
 
-  const url = new URL(id ?? "", config.host).toString();
+  const url = new URL(id ?? "", host).toString();
   const backLinks = getBackLinks([UrlTable.home]);
-
-  const safeDate = getSafeDate(publishedAt);
+  const safePublishedAt = getSafeDate(publishedAt);
+  const safeModifiedAt = getSafeDate(updatedAt);
   const { name: writerName, avatar } = writer;
 
   return (
@@ -49,6 +52,16 @@ export const ArticleDetail = ({
       categories={categoriesAtMenu}
       pickup={pickup}
     >
+      <HtmlHeadBase indexUrl={host} title={title} url={url} image={image.url} />
+      <HtmlHeadJsonLt
+        url={url}
+        title={title}
+        image={image.url}
+        datePublished={safePublishedAt.toISOString()}
+        dateModified={safeModifiedAt.toISOString()}
+        authorName={writerName}
+        description={getExcerpt(description)}
+      />
       {id ? (
         <>
           {isPreview && <div className="mb-4 text-center text-white bg-red-500">Preview mode enabled</div>}
@@ -60,10 +73,11 @@ export const ArticleDetail = ({
             <div className="flex flex-row justify-around mb-4">
               <div className="flex flex-row gap-2 items-center">
                 <FaRegCalendar />
-                <TextDate date={safeDate} />
+                <TextDate date={safePublishedAt} />
               </div>
               <div className="flex flex-row gap-2 items-center">
                 <FaPen />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={avatar.url}
                   alt={writerName}

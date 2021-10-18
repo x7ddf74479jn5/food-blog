@@ -1,19 +1,19 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
 
+import { HtmlHeadBase } from "@/components/atoms/meta";
 import HomeLayout from "@/components/layouts/HomeLayout";
 import ArticleList from "@/components/molecules/ArticleList";
 import { getNewDate } from "@/utils/date/getNewDate";
 import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTags } from "@/utils/fetcher";
-import { UrlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home = ({ articles, config, pickup, categories }: Props) => {
-  const url = UrlTable.home;
-  const title = config.siteTitle;
+  const { siteTitle: title, host } = config;
   return (
-    <HomeLayout pickup={pickup} url={url} pageTitle={title} config={config} categories={categories}>
+    <HomeLayout pickup={pickup} url={host} pageTitle={title} config={config} categories={categories}>
+      <HtmlHeadBase indexUrl={host} title={title} />
       <h1 className="mb-4 text-4xl font-bold">レシピ一覧</h1>
       <ArticleList articles={articles} />
     </HomeLayout>

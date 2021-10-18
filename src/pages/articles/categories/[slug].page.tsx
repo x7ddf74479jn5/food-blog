@@ -2,6 +2,7 @@ import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage 
 import type { ParsedUrlQuery } from "node:querystring";
 
 import { getNewDate } from "@//utils/date/getNewDate";
+import { HtmlHeadBase } from "@/components/atoms/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
 import type { TArticle, TCategory, TConfig, TPickup } from "@/types/index";
@@ -12,8 +13,8 @@ import { getBackLinks } from "@/utils/paths/url";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Categories: NextPage<Props> = ({ articles, category, config, categories, pickup }) => {
-  const url = UrlTable.home;
-  const title = config.siteTitle;
+  const { siteTitle: title, host } = config;
+  const url = new URL(`${UrlTable.categories}/${category.slug}`, host).toString();
   const backLinks = getBackLinks([UrlTable.home]);
 
   return (
@@ -25,6 +26,8 @@ const Categories: NextPage<Props> = ({ articles, category, config, categories, p
       categories={categories}
       pickup={pickup}
     >
+      <HtmlHeadBase indexUrl={host} title={title} url={url} image={category.image.url} />
+
       <h1 className="mb-4 text-4xl font-bold">カテゴリー：{category.name}</h1>
       <div className="w-full min-h-screen">
         <ArticleList articles={articles} />

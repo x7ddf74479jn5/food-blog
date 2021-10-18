@@ -6,11 +6,11 @@ type HtmlHeadBaseProps = {
   indexUrl: string;
   title: string;
   description?: string;
-  url: string;
-  image: string;
+  url?: string;
+  image?: string;
 };
 
-export const HtmlHeadBase: React.FC<HtmlHeadBaseProps> = ({ title, description, url, image }) => {
+export const HtmlHeadBase: React.FC<HtmlHeadBaseProps> = ({ indexUrl, title, description, url, image }) => {
   const seoProps: NextSeoProps = {
     title,
     description: description,
@@ -52,7 +52,7 @@ export const HtmlHeadBase: React.FC<HtmlHeadBaseProps> = ({ title, description, 
       },
       {
         rel: "canonical",
-        href: url,
+        href: url || indexUrl,
       },
     ],
     additionalMetaTags: [
@@ -72,8 +72,8 @@ export const HtmlHeadBase: React.FC<HtmlHeadBaseProps> = ({ title, description, 
   };
 
   if (seoProps.openGraph) {
-    seoProps.openGraph.url = url;
-    seoProps.openGraph.images = [{ url: image }];
+    if (url) seoProps.openGraph.url = url;
+    if (url && image) seoProps.openGraph.images = [{ url: image }];
   }
 
   return <NextSeo {...seoProps} />;

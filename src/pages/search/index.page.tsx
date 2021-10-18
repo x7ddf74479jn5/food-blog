@@ -1,6 +1,7 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 
 import { getNewDate } from "@//utils/date/getNewDate";
+import { HtmlHeadBase } from "@/components/atoms/meta";
 import Spinner from "@/components/atoms/Spinner";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
@@ -27,8 +28,8 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
   const totalCount = data ? data[0]?.totalCount : 0;
   const hasNextPage = totalCount ? articles.length !== totalCount : false;
 
-  const url = UrlTable.home;
-  const title = config.siteTitle;
+  const { siteTitle: title, host } = config;
+  const url = new URL(`${UrlTable.search}/q=${keyword ?? ""}`, host).toString();
   const backLinks = getBackLinks([UrlTable.home]);
 
   return (
@@ -40,6 +41,7 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
       categories={categories}
       pickup={pickup}
     >
+      <HtmlHeadBase indexUrl={host} title={title} url={url} />
       <h1 className="mb-4 text-4xl font-bold">検索結果：{keyword}</h1>
       <div className="w-full min-h-screen">
         {!data ? (
