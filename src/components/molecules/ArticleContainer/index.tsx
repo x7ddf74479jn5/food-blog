@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 
+import { HttpErrorBoundary } from "@/components/atoms/error";
 import ArticleList from "@/components/molecules/ArticleList";
 import { ArticleSkeltonList } from "@/components/molecules/ArticleSkeltonList";
-import { HttpErrorBoundary } from "@/components/molecules/HttpErrorBoundary";
 import Pagination from "@/components/molecules/Pagination";
 import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
 

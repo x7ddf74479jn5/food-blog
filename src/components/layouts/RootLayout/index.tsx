@@ -1,9 +1,8 @@
 import dynamic from "next/dynamic";
 
+import { LayoutErrorBoundary } from "@/components/atoms/error";
 import Header from "@/components/organisms/Header";
 import type { TConfig } from "@/types";
-
-import { LayoutErrorBoundary } from "../LayoutErrorBoundary";
 
 type RootLayoutProps = {
   config: TConfig;
