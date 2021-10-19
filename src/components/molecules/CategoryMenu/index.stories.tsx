@@ -8,7 +8,11 @@ export default {
   component: CategoryMenu,
 } as ComponentMeta<typeof CategoryMenu>;
 
-const Template: ComponentStory<typeof CategoryMenu> = (args) => <CategoryMenu {...args} />;
+const Template: ComponentStory<typeof CategoryMenu> = (args) => (
+  <div className="w-48 h-48">
+    <CategoryMenu {...args} />
+  </div>
+);
 
 export const Default = Template.bind({});
 Default.args = {

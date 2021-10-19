@@ -4,7 +4,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { SiteTitle } from ".";
 
 export default {
-  title: "Atoms/buttons/SiteTitle",
+  title: "Atoms/SiteTitle",
   component: SiteTitle,
 } as ComponentMeta<typeof SiteTitle>;
 

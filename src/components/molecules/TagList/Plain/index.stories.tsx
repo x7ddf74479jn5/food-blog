@@ -4,7 +4,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { TagListPlain } from ".";
 
 export default {
-  title: "Molecules/TagList/TagListPlain",
+  title: "Molecules/TagList/Plain",
   component: TagListPlain,
 } as ComponentMeta<typeof TagListPlain>;
 

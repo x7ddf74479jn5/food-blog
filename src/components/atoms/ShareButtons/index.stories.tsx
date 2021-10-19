@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ShareButtons } from ".";
 
 export default {
-  title: "Atoms/buttons/ShareButtons",
+  title: "Atoms/ShareButtons",
   component: ShareButtons,
   argTypes: {
     direction: { type: "radio", control: ["row", "column"] },
