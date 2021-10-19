@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/atoms/buttons/ButtonTagPlain snapshot 1`] = `
+<a
+  href="/articles/tags/rice"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #ごはん
+  </span>
+</a>
+`;

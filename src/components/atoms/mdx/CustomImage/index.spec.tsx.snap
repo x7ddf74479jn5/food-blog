@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/atoms/mdx/CustomImage snapshot 1`] = `
+<div
+  className="flex relative justify-center items-center mb-4 w-full h-48 lg:h-96"
+>
+  <div
+    style={
+      Object {
+        "bottom": 0,
+        "boxSizing": "border-box",
+        "display": "block",
+        "left": 0,
+        "margin": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <img
+      alt=""
+      data-nimg="fill"
+      decoding="async"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      style={
+        Object {
+          "border": "none",
+          "bottom": 0,
+          "boxSizing": "border-box",
+          "display": "block",
+          "height": 0,
+          "left": 0,
+          "margin": "auto",
+          "maxHeight": "100%",
+          "maxWidth": "100%",
+          "minHeight": "100%",
+          "minWidth": "100%",
+          "objectFit": "contain",
+          "objectPosition": undefined,
+          "padding": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": 0,
+        }
+      }
+    />
+    <noscript>
+      <img
+        alt=""
+        data-nimg="fill"
+        decoding="async"
+        loading="lazy"
+        sizes="100vw"
+        src="/_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=3840&q=75"
+        srcSet="/_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=640&q=75 640w, /_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=750&q=75 750w, /_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=828&q=75 828w, /_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=3840&q=75 3840w"
+        style={
+          Object {
+            "border": "none",
+            "bottom": 0,
+            "boxSizing": "border-box",
+            "display": "block",
+            "height": 0,
+            "left": 0,
+            "margin": "auto",
+            "maxHeight": "100%",
+            "maxWidth": "100%",
+            "minHeight": "100%",
+            "minWidth": "100%",
+            "objectFit": "contain",
+            "objectPosition": undefined,
+            "padding": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "width": 0,
+          }
+        }
+      />
+    </noscript>
+  </div>
+</div>
+`;
+
+exports[`components/atoms/mdx/CustomImage snapshot 2`] = `
+<div
+  className="flex relative justify-center items-center mb-4 w-full"
+>
+  <div
+    style={
+      Object {
+        "boxSizing": "border-box",
+        "display": "inline-block",
+        "margin": 0,
+        "maxWidth": "100%",
+        "overflow": "hidden",
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "boxSizing": "border-box",
+          "display": "block",
+          "maxWidth": "100%",
+        }
+      }
+    >
+      <img
+        alt=""
+        aria-hidden={true}
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+        style={
+          Object {
+            "border": "none",
+            "display": "block",
+            "margin": 0,
+            "maxWidth": "100%",
+            "padding": 0,
+          }
+        }
+      />
+    </div>
+    <img
+      alt=""
+      data-nimg="intrinsic"
+      decoding="async"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      style={
+        Object {
+          "border": "none",
+          "bottom": 0,
+          "boxSizing": "border-box",
+          "display": "block",
+          "height": 0,
+          "left": 0,
+          "margin": "auto",
+          "maxHeight": "100%",
+          "maxWidth": "100%",
+          "minHeight": "100%",
+          "minWidth": "100%",
+          "objectFit": undefined,
+          "objectPosition": undefined,
+          "padding": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": 0,
+        }
+      }
+    />
+    <noscript>
+      <img
+        alt=""
+        data-nimg="intrinsic"
+        decoding="async"
+        loading="lazy"
+        src="/_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=256&q=75"
+        srcSet="/_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fmocks%2Fdata%2Fimages%2F2996666_s.jpg&w=256&q=75 2x"
+        style={
+          Object {
+            "border": "none",
+            "bottom": 0,
+            "boxSizing": "border-box",
+            "display": "block",
+            "height": 0,
+            "left": 0,
+            "margin": "auto",
+            "maxHeight": "100%",
+            "maxWidth": "100%",
+            "minHeight": "100%",
+            "minWidth": "100%",
+            "objectFit": undefined,
+            "objectPosition": undefined,
+            "padding": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "width": 0,
+          }
+        }
+      />
+    </noscript>
+  </div>
+</div>
+`;

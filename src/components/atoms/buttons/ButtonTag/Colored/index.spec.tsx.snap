@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/atoms/buttons/ButtonTagColored snapshot 1`] = `
+<a
+  href="/articles/tags/rice"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  <div
+    className="inline-block py-1 px-2 text-white  bg-yellow-700 rounded-lg"
+  >
+    #
+    ごはん
+  </div>
+</a>
+`;

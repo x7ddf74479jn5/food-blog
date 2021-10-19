@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/atoms/mdx/CustomLink snapshot 1`] = `
+<a
+  href="https://www.example.com/"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  external link
+</a>
+`;
+
+exports[`components/atoms/mdx/CustomLink snapshot 2`] = `
+<a
+  href="/"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  Home
+</a>
+`;

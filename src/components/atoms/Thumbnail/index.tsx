@@ -1,5 +1,6 @@
-import NextLink from "@components/atoms/NextLink";
 import Image from "next/image";
+
+import NextLink from "@/components/atoms/NextLink";
 
 type Props = {
   title: string;

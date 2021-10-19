@@ -1,4 +1,3 @@
-import Tooltip from "@components/atoms/Tooltip";
 import { FaFacebook, FaGetPocket, FaLine, FaTwitter } from "react-icons/fa";
 import { SiHatenabookmark } from "react-icons/si";
 import {
@@ -8,6 +7,8 @@ import {
   PocketShareButton,
   TwitterShareButton,
 } from "react-share";
+
+import Tooltip from "@/components/atoms/Tooltip";
 
 type Props = {
   url: string;

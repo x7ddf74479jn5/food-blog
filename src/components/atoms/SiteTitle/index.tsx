@@ -1,4 +1,4 @@
-import NextLink from "@components/atoms/NextLink";
+import NextLink from "@/components/atoms/NextLink";
 
 type SiteTitleProps = {
   size: string;
