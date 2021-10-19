@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.1",
+    "@tailwindcss/aspect-ratio": "0.3.0",
     "@tailwindcss/line-clamp": "0.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "date-fns": "2.23.0",

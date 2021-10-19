@@ -14,6 +14,7 @@ module.exports = withBundleAnalyzer(
     },
     pageExtensions: ["page.tsx", "page.ts"],
     pwa: {
+      disable: process.env.NODE_ENV === "development",
       dest: "public",
       runtimeCaching,
     },
