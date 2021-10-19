@@ -16,6 +16,9 @@ module.exports = {
     // Absolute Imports and Module Path Aliases
     "src/(.*)": "<rootDir>/src/$1",
     "jest/test-utils": "<rootDir>/jest/test-utils",
+    "mocks/(.*)": "<rootDir>/mocks/$1",
+    "@/components/(.*)": "<rootDir>/src/components/$1",
+    "@/utils/(.*)": "<rootDir>/src/utils/$1",
   },
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/"],
   transform: {
