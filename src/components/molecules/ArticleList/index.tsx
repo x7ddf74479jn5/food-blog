@@ -1,26 +1,15 @@
-import NextLink from "@/components/atoms/NextLink";
-import Thumbnail from "@/components/atoms/Thumbnail";
+import { ArticleItem } from "@/components/molecules/ArticleItem";
 import type { TArticle } from "@/types";
 
-type Props = {
+type ArticleListProps = {
   articles: TArticle[];
 };
 
-const ArticleList: React.VFC<Props> = ({ articles }) => {
+const ArticleList: React.VFC<ArticleListProps> = ({ articles }) => {
   return (
     <section className="space-y-12">
       {articles.map((article) => (
-        <article key={article.id}>
-          <div className="mb-4">
-            <Thumbnail src={article.image.url} title={article.title} id={article.id} />
-          </div>
-
-          <h2 className="mb-4 text-2xl font-bold">
-            <NextLink href={`/articles/${article.id}`}>{article.title}</NextLink>
-          </h2>
-
-          <p className="dark:text-gray-300 line-clamp-2">{article.description}</p>
-        </article>
+        <ArticleItem key={article.id} article={article} />
       ))}
     </section>
   );
