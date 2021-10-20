@@ -3,6 +3,7 @@ import type { RenderResult } from "@testing-library/react";
 import { render } from "@testing-library/react";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import React from "react";
+import { SWRConfig } from "swr";
 
 import { mockRouter } from "./mocks";
 
@@ -11,7 +12,11 @@ import { mockRouter } from "./mocks";
 // const mockContextValue = {};
 
 export const Providers: React.ComponentType<{ children?: React.ReactNode }> = ({ children }) => {
-  return <RouterContext.Provider value={mockRouter}>{children}</RouterContext.Provider>;
+  return (
+    <SWRConfig value={{ dedupingInterval: 0 }}>
+      <RouterContext.Provider value={mockRouter}>{children}</RouterContext.Provider>;
+    </SWRConfig>
+  );
 };
 
 const customRender = (ui: React.ReactElement, options = {}): RenderResult<typeof Queries, HTMLElement> => {
