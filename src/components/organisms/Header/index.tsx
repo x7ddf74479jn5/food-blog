@@ -1,7 +1,8 @@
-import NextLink from "@components/atoms/NextLink";
-import ThemeSwitch from "@components/atoms/ThemeSwitch";
-import Search from "@components/molecules/Search";
 import { memo } from "react";
+
+import NextLink from "@/components/atoms/NextLink";
+import ThemeSwitch from "@/components/atoms/ThemeSwitch";
+import Search from "@/components/molecules/Search";
 
 type Props = {
   siteTitle: string;
