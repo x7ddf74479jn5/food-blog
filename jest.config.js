@@ -18,6 +18,7 @@ module.exports = {
     "jest/test-utils": "<rootDir>/jest/test-utils",
     "mocks/(.*)": "<rootDir>/mocks/$1",
     "@/components/(.*)": "<rootDir>/src/components/$1",
+    "@/hooks/(.*)": "<rootDir>/src/hooks/$1",
     "@/utils/(.*)": "<rootDir>/src/utils/$1",
   },
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/"],
