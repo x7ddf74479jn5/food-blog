@@ -1,30 +1,13 @@
-import { Suspense } from "react";
-
-import { HttpErrorBoundary } from "@/components/atoms/error";
 import ArticleList from "@/components/molecules/ArticleList";
-import { ArticleSkeltonList } from "@/components/molecules/ArticleSkeltonList";
 import Pagination from "@/components/molecules/Pagination";
 import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
 
-export const ArticleContainer: React.VFC = () => {
-  const methods = useGetArticleListQuery({
+export const Component: React.VFC = () => {
+  const { data, error, size, setSize, isValidating } = useGetArticleListQuery({
     perPage: 2,
     options: { suspense: true },
   });
-
-  return (
-    <HttpErrorBoundary callback={methods.revalidate}>
-      <Suspense fallback={<ArticleSkeltonList />}>
-        <Component methods={methods} />
-      </Suspense>
-    </HttpErrorBoundary>
-  );
-};
-
-export default ArticleContainer;
-
-export const Component: React.VFC<{ methods: ReturnType<typeof useGetArticleListQuery> }> = ({ methods }) => {
-  const { data, error, size, setSize, isValidating } = methods;
+  // const ArticleList = dynamic(() => import("@/components/molecules/ArticleList"),{ssr:false});
   const handleOnClick = () => {
     setSize(size + 1);
   };
@@ -44,3 +27,5 @@ export const Component: React.VFC<{ methods: ReturnType<typeof useGetArticleList
     </>
   );
 };
+
+export default Component;
