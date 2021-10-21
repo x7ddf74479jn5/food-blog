@@ -34,3 +34,10 @@ export const reTestCase = {
   anyWord: expect.stringMatching(/\w+/),
   anyImage: expect.stringMatching(/^(data:image\/gif)|\.(png|webp|jpeg|jpg|svg)$/),
 };
+
+type ErrorComponentProps = {
+  message?: string;
+};
+export const ErrorComponent: React.VFC<ErrorComponentProps> = ({ message }) => {
+  throw new Error(message);
+};

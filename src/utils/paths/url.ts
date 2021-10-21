@@ -10,6 +10,7 @@ export const UrlTable = {
   tags: "/articles/tags",
   preview: "/preview",
   search: "/search",
+  apiSearch: "/api/search",
 };
 
 const labelTable: Table = {

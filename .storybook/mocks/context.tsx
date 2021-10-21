@@ -23,7 +23,7 @@ export const withContext = (storyFn: () => StoryFnReactReturnType) => {
   // </StateContext.Provider>
 };
 
-export const withRouterContext = (storyFn: () => StoryFnReactReturnType, options: Partial<NextRouter>) => {
+export const withRouterContext = (storyFn: () => StoryFnReactReturnType, options?: Partial<NextRouter>) => {
   const mockedRouter: NextRouter = {
     route: "/",
     pathname: "/",
