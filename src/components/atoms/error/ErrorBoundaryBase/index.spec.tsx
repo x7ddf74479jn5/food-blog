@@ -1,15 +1,15 @@
 import { ErrorComponent } from "jest/test-utils";
 import renderer from "react-test-renderer";
 
-import { HttpErrorBoundary } from ".";
+import { ErrorBoundaryBase } from ".";
 
-describe("components/atoms/error/HttpErrorBoundary", () => {
+describe("components/atoms/error/ErrorBoundaryBase", () => {
   it("snapshot", () => {
     const tree = renderer
       .create(
-        <HttpErrorBoundary>
-          <ErrorComponent />
-        </HttpErrorBoundary>
+        <ErrorBoundaryBase>
+          <ErrorComponent message="Error message" />
+        </ErrorBoundaryBase>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
