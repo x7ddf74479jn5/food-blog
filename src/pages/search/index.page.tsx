@@ -1,10 +1,10 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 
 import { getNewDate } from "@//utils/date/getNewDate";
 import { HtmlHeadBase } from "@/components/atoms/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
+import { ArticleContainer } from "@/components/molecules/ArticleContainer/index";
 import type { TCategory, TConfig, TPickup } from "@/types";
 import { fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
 import { UrlTable } from "@/utils/paths/url";
@@ -20,8 +20,6 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
   const title = "検索結果";
   const url = new URL(`${UrlTable.search}/q=${keyword ?? ""}`, host).toString();
   const backLinks = getBackLinks([UrlTable.home]);
-
-  const ArticleContainer = dynamic(() => import("@/components/molecules/ArticleContainer"), { ssr: false });
 
   return (
     <DefaultLayout

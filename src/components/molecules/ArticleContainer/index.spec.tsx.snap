@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/molecules/ArticleContainer snapshot 1`] = `
+<div
+  className="flex flex-col gap-4 justify-center items-center"
+  role="alert"
+>
+  <p>
+    Something went wrong:
+  </p>
+  <pre>
+    Cannot read property 'query' of null
+  </pre>
+  <button
+    onClick={[Function]}
+  >
+    Try again
+  </button>
+</div>
+`;
