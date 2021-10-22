@@ -1,7 +1,10 @@
 import { rest } from "msw";
 
-import { mockLogin, mockLogout } from "./api/auth";
+import { mockGetArticle, mockGetArticles } from "./api/articles";
 
-const API = "https://localhost:3000/api";
+const API_HOST = process.env.API_HOST;
 
-export const handlers = [rest.post(`${API}/login`, mockLogin), rest.post(`${API}/logout`, mockLogout)];
+export const handlers = [
+  rest.get(`${API_HOST}/articles`, mockGetArticles),
+  rest.get(`${API_HOST}/articles/:id`, mockGetArticle),
+];
