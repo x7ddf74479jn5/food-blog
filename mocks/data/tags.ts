@@ -18,4 +18,5 @@ export const mockTags: TTagCollection = {
   misoSoup: { ...dateCommon, id: "9", slug: "miso_soup", name: "味噌汁", color: "gray" as const },
   tomato: { ...dateCommon, id: "10", slug: "tomato", name: "トマト", color: "green" as const },
   preparation: { ...dateCommon, id: "11", slug: "preparation", name: "仕込み", color: "gray" as const },
+  ooba: { ...dateCommon, id: "12", slug: "ooba", name: "大葉", color: "green" as const },
 };
