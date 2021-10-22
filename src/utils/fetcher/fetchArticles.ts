@@ -15,24 +15,23 @@ export const fetchArticles = async (queries?: QueriesType): Promise<TArticleList
   } catch (error) {
     if (error instanceof HttpError) {
       console.error(error);
-      throw error;
+      throw new Error("記事の取得に失敗しました。");
     }
     throw error;
   }
 };
 
-export const fetchArticle = async (id: string, queries?: QueriesType): Promise<TArticle> => {
+export const fetchArticle = async (id: string): Promise<TArticle> => {
   try {
     const data = await client.get<TArticle>({
       endpoint: `articles`,
       contentId: id,
-      queries: queries,
     });
     return data;
   } catch (error) {
     if (error instanceof HttpError) {
       console.error(error);
-      throw error;
+      throw new Error("記事の取得に失敗しました。");
     }
     throw error;
   }
@@ -53,7 +52,9 @@ const buildTagPairsFilter = (tags: TTag[], excludedId: string[] = []) => {
     }
   }
 
-  const excluded = excludedId ? excludedId.map((id) => `id[not_equals]${id}`) : [];
+  const excluded = excludedId.map((id) => `id[not_equals]${id}`).join("[and]");
+
+  if (_pairs.length === 0) return excluded;
 
   return [_pairs.join("[or]"), excluded].join("[and]");
 };
@@ -75,14 +76,16 @@ const buildTagTriosFilter = (tags: TTag[], excludedId: string[] = []) => {
     }
   }
 
-  const excluded = excludedId.map((id) => `id[not_equals]${id}`);
+  const excluded = excludedId.map((id) => `id[not_equals]${id}`).join("[and]");
+
+  if (_trios.length === 0) return excluded;
 
   return [_trios.join("[or]"), excluded].join("[and]");
 };
 
 type TFilterType = "pairs" | "trios";
 
-const getTagFilters = (article: TArticle, variant: TFilterType, excluded: TArticle[] = []) => {
+export const getTagFilters = (article: TArticle, variant: TFilterType, excluded: TArticle[] = []) => {
   // 自身と除外する記事
   const _excludedIds = [article.id, ...excluded.map((article) => article.id)];
   switch (variant) {
@@ -128,7 +131,7 @@ export const fetchPickupArticles = async (date: Date) => {
   } catch (error) {
     if (error instanceof HttpError) {
       console.error(error);
-      throw error;
+      throw new Error("記事の取得に失敗しました。");
     }
     throw error;
   }

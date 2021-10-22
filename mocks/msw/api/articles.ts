@@ -19,11 +19,11 @@ export const mockGetArticles: ResponseResolver<RestRequest, RestContext> = async
 
   const q = req.url.searchParams.get("q");
   const limit = req.url.searchParams.get("limit") ?? 5;
-  const offset = req.url.searchParams.get("offset") ?? 0;
+  const offset = Number(req.url.searchParams.get("offset")) ?? 0;
   let articles: TArticle[] = [];
 
   if (q) {
-    articles = searchArticlesByQ(q);
+    articles = searchArticlesByQ(q).slice(offset, Number(limit));
     return res(
       ctx.status(200),
       ctx.json({
@@ -35,7 +35,7 @@ export const mockGetArticles: ResponseResolver<RestRequest, RestContext> = async
     );
   }
 
-  articles = Object.values(mockArticles);
+  articles = Object.values(mockArticles).slice(offset, Number(limit));
 
   return res(
     ctx.status(200),
@@ -60,19 +60,7 @@ export const mockGetArticle: ResponseResolver<RestRequest, RestContext> = async 
   }
 
   const id = String(req.params.id);
-  const limit = req.url.searchParams.get("limit") ?? 5;
-  const offset = req.url.searchParams.get("offset") ?? 0;
-
   const article = findArticle(id);
-  const articles = article ? [article] : [];
 
-  return res(
-    ctx.status(200),
-    ctx.json({
-      contents: articles,
-      totalCount: articles.length,
-      offset: offset,
-      limit: limit,
-    })
-  );
+  return res(ctx.status(200), ctx.json(article));
 };
