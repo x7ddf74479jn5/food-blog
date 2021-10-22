@@ -156,7 +156,7 @@ const articleTacoRice = {
 ## ポイント
 ひき肉を炒める際、汁気がなくなるまで炒めることで、肉にしっかり味が染み込みます。`,
   category: mockCategories.rice,
-  tags: [mockTags.rice, mockTags.minced_meat, mockTags.lettuce, mockTags.onion, mockTags.tomato],
+  tags: [mockTags.rice, mockTags.mincedMeat, mockTags.lettuce, mockTags.onion, mockTags.tomato],
   imageOption: null,
 };
 

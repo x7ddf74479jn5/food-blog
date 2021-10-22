@@ -24,7 +24,7 @@ export const mockGetArticles: ResponseResolver<RestRequest, RestContext> = async
 
   if (q) {
     articles = searchArticlesByQ(q);
-    res(
+    return res(
       ctx.status(200),
       ctx.json({
         contents: articles,
