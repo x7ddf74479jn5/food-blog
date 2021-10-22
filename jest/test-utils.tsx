@@ -13,7 +13,7 @@ import { mockRouter } from "./mocks";
 
 export const Providers: React.ComponentType<{ children?: React.ReactNode }> = ({ children }) => {
   return (
-    <SWRConfig value={{ dedupingInterval: 0 }}>
+    <SWRConfig value={{ dedupingInterval: 0, provider: () => new Map() }}>
       <RouterContext.Provider value={mockRouter}>{children}</RouterContext.Provider>
     </SWRConfig>
   );

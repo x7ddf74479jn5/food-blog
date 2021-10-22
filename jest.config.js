@@ -20,6 +20,7 @@ module.exports = {
     "@/components/(.*)": "<rootDir>/src/components/$1",
     "@/hooks/(.*)": "<rootDir>/src/hooks/$1",
     "@/utils/(.*)": "<rootDir>/src/utils/$1",
+    "@/lib/(.*)": "<rootDir>/src/lib/$1",
   },
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/"],
   transform: {
