@@ -9,11 +9,11 @@ export const fetchCategory = async (slug: string): Promise<TCategory> => {
       endpoint: "categories",
       queries: { filters: `slug[equals]${slug}` },
     });
-    return data.contents[0];
+    return data.contents[0] ?? [];
   } catch (error) {
     if (error instanceof HttpError) {
       console.error(error);
-      throw error;
+      throw new Error("カテゴリー情報の取得に失敗しました。");
     }
     throw error;
   }
@@ -26,7 +26,7 @@ export const fetchCategories = async (): Promise<TCategory[]> => {
   } catch (error) {
     if (error instanceof HttpError) {
       console.error(error);
-      throw error;
+      throw new Error("カテゴリー情報の取得に失敗しました。");
     }
     throw error;
   }
