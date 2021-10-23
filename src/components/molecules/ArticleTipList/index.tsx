@@ -13,17 +13,17 @@ export const ArticleTipWithThumb: React.VFC<Props> = ({ article }) => {
   const { id, title, tags, image } = article;
   return (
     <NextLink href={`${UrlTable.articles}/${id}`}>
-      <div className="flex flex-row max-h-36 ">
+      <article className="flex flex-row max-h-36 ">
         <div className="flex-shrink-0 mt-1 mr-4">
           <Image src={image.url} alt={title} width={32} height={32} objectFit="cover"></Image>
         </div>
         <div className="flex flex-col flex-grow">
-          <div className="">{title}</div>
+          <div>{title}</div>
           <div className="flex-grow">
             <TagListPlain tags={tags} />
           </div>
         </div>
-      </div>
+      </article>
     </NextLink>
   );
 };
