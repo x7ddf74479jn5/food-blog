@@ -4,4 +4,5 @@ export type { TConfig } from "./config";
 export type { TPickup } from "./pickup";
 export type { TProfile } from "./profile";
 export type { TTag, TTagListResponse } from "./tag";
+export type { TCategoryOrTagColor } from "./utils";
 export type { TWriter, TWriterListResponse } from "./writer";
