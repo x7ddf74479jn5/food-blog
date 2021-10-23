@@ -3,6 +3,8 @@ import type { ResponseResolver, RestContext, RestRequest } from "msw";
 
 import type { TArticle } from "@/types";
 
+import { findContent } from "./utils";
+
 const searchArticlesByQ = (q: string): TArticle[] => {
   return Object.values(mockArticles).filter((article) => {
     const json = JSON.stringify(article);
@@ -48,10 +50,6 @@ export const mockGetArticles: ResponseResolver<RestRequest, RestContext> = async
   );
 };
 
-const findArticle = (id: string): TArticle | undefined => {
-  return Object.values(mockArticles).find((article) => article.id === id);
-};
-
 export const mockGetArticle: ResponseResolver<RestRequest, RestContext> = async (req, res, ctx) => {
   const apiKey = req.headers.get("X-API-KEY");
 
@@ -60,7 +58,7 @@ export const mockGetArticle: ResponseResolver<RestRequest, RestContext> = async 
   }
 
   const id = String(req.params.id);
-  const article = findArticle(id);
+  const article = findContent<TArticle>(id, mockArticles);
 
   return res(ctx.status(200), ctx.json(article));
 };
