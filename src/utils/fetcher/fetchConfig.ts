@@ -10,7 +10,7 @@ export const fetchConfig = async () => {
   } catch (error) {
     if (error instanceof HttpError) {
       console.error(error);
-      throw error;
+      throw new Error("設定情報の取得に失敗しました。");
     }
     throw error;
   }
