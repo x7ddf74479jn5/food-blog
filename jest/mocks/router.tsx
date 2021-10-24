@@ -1,6 +1,9 @@
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import type { NextRouter } from "next/router";
 
+export type { NextRouter };
+export { RouterContext };
+
 export const mockRouter: NextRouter = {
   route: "/",
   pathname: "/",

@@ -1,11 +1,10 @@
 import type Queries from "@testing-library/dom/types/queries";
 import type { RenderResult } from "@testing-library/react";
 import { render } from "@testing-library/react";
-import { RouterContext } from "next/dist/shared/lib/router-context";
 import React from "react";
 import { SWRConfig } from "swr";
 
-import { mockRouter } from "./mocks";
+import { mockRouter, RouterContext } from "./mocks";
 
 // const mockInitialState = {};
 
