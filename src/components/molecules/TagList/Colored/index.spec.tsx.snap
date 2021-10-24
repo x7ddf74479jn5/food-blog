@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/molecules/TagListColored snapshot 1`] = `
+<div
+  className="flex flex-row flex-wrap gap-2 items-center"
+>
+  <a
+    href="/articles/tags/komatshna"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-green-700 rounded-lg"
+    >
+      #
+      小松菜
+    </div>
+  </a>
+  <a
+    href="/articles/tags/mozzarella"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-pink-700 rounded-lg"
+    >
+      #
+      モッツァレラ
+    </div>
+  </a>
+  <a
+    href="/articles/tags/lettuce"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-green-700 rounded-lg"
+    >
+      #
+      レタス
+    </div>
+  </a>
+  <a
+    href="/articles/tags/minced_meat"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-red-700 rounded-lg"
+    >
+      #
+      挽き肉
+    </div>
+  </a>
+  <a
+    href="/articles/tags/rice"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-yellow-700 rounded-lg"
+    >
+      #
+      ごはん
+    </div>
+  </a>
+  <a
+    href="/articles/tags/aburaage"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-gray-500 rounded-lg"
+    >
+      #
+      油揚げ
+    </div>
+  </a>
+  <a
+    href="/articles/tags/onion"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-green-700 rounded-lg"
+    >
+      #
+      玉ねぎ
+    </div>
+  </a>
+  <a
+    href="/articles/tags/udon"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-yellow-700 rounded-lg"
+    >
+      #
+      うどん
+    </div>
+  </a>
+  <a
+    href="/articles/tags/miso_soup"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-gray-500 rounded-lg"
+    >
+      #
+      味噌汁
+    </div>
+  </a>
+  <a
+    href="/articles/tags/tomato"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-green-700 rounded-lg"
+    >
+      #
+      トマト
+    </div>
+  </a>
+  <a
+    href="/articles/tags/preparation"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-gray-500 rounded-lg"
+    >
+      #
+      仕込み
+    </div>
+  </a>
+  <a
+    href="/articles/tags/ooba"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="inline-block py-1 px-2 text-white  bg-green-700 rounded-lg"
+    >
+      #
+      大葉
+    </div>
+  </a>
+</div>
+`;
