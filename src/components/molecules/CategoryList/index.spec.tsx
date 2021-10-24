@@ -2,7 +2,7 @@ import { mockCategories } from "@mocks/data";
 import React from "react";
 import renderer from "react-test-renderer";
 
-import { CategoryList } from "../CategoryList";
+import { CategoryList } from ".";
 
 describe("components/molecules/CategoryList", () => {
   const mockCategoryList = Object.values(mockCategories);

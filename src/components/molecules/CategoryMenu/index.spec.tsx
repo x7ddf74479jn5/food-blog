@@ -5,7 +5,7 @@ import renderer from "react-test-renderer";
 
 import { UrlTable } from "@/utils/paths/url";
 
-import { CategoryMenu } from "../CategoryMenu";
+import { CategoryMenu } from ".";
 
 describe("components/molecules/CategoryMenu", () => {
   const mockCategoryList = Object.values(mockCategories);
