@@ -11,7 +11,7 @@ export const CategoryList: React.VFC<CategoryListProps> = ({ categories }) => {
     <>
       {categories.map((category) => (
         <div className="flex flex-col justify-center items-center " key={category.id}>
-          <div className="">
+          <div className="w-10 h-10">
             <Image src={category.image.url} alt={category.slug} width={128} height={128} objectFit="cover" />
           </div>
           <p className="text-sm">{category.name}</p>
