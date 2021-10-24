@@ -59,4 +59,43 @@ module.exports = {
       { components: ["Link"], specialLink: ["hrefLeft", "hrefRight"], aspects: ["invalidHref", "preferButton"] },
     ],
   },
+  overrides: [
+    {
+      files: ["src/pages/**/*.page.tsx", "src/pages/api/**/*.page.ts"],
+      rules: {
+        "import/no-default-export": "off",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          { selector: ["typeAlias", "typeParameter"], format: ["PascalCase"] },
+          { selector: ["classProperty", "typeProperty", "method"], format: ["camelCase"] },
+          { selector: "variable", types: ["boolean"], format: ["PascalCase"], prefix: ["is", "has", "should"] },
+        ],
+      },
+    },
+    {
+      files: ["src/type/**/*.d.ts"],
+      rules: {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          { selector: ["typeAlias", "typeParameter"], format: ["PascalCase"] },
+          { selector: ["classProperty", "method"], format: ["camelCase"] },
+          { selector: "variable", types: ["boolean"], format: ["PascalCase"], prefix: ["is", "has", "should"] },
+        ],
+      },
+    },
+    {
+      files: ["src/components/**/*.spec.tsx", "src/components/**/*.test.tsx"],
+      rules: {
+        "react/jsx-handler-names": [
+          "error",
+          {
+            eventHandlerPrefix: "mockHandle",
+            eventHandlerPropPrefix: "on",
+            checkLocalVariables: true,
+            checkInlineFunction: true,
+          },
+        ],
+      },
+    },
+  ],
 };
