@@ -21,11 +21,12 @@ export const fetchArticles = async (queries?: QueriesType): Promise<TArticleList
   }
 };
 
-export const fetchArticle = async (id: string): Promise<TArticle> => {
+export const fetchArticle = async (id: string, queries?: QueriesType): Promise<TArticle> => {
   try {
     const data = await client.get<TArticle>({
       endpoint: `articles`,
       contentId: id,
+      queries,
     });
     return data;
   } catch (error) {
