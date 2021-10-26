@@ -25,3 +25,5 @@ export type TListResponse<T> = {
   offset?: number;
   limit?: number;
 };
+
+export type Obj<T = any> = Record<string, T>;
