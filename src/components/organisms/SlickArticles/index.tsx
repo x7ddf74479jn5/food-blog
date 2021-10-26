@@ -40,7 +40,7 @@ export const SlickArticles: React.VFC<SlickArticlesProps> = ({ pickup }) => {
         {articles.map((article) => (
           <article className="relative px-1" key={article.id}>
             <Thumbnail src={article.image.url} title={article.title} id={article.id} />
-            <div className="">
+            <div>
               <h3 className="inline-block absolute bottom-3 p-1 w-[calc(100%-0.5rem)] text-sm font-semibold text-white truncate bg-black bg-opacity-25 ">
                 {article.title}
               </h3>
