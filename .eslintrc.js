@@ -89,8 +89,8 @@ module.exports = {
         "react/jsx-handler-names": [
           "error",
           {
-            eventHandlerPrefix: "mockHandle",
-            eventHandlerPropPrefix: "on",
+            eventHandlerPrefix: "handle",
+            eventHandlerPropPrefix: "mockHandle",
             checkLocalVariables: true,
             checkInlineFunction: true,
           },
