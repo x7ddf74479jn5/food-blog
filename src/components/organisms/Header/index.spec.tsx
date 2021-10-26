@@ -4,7 +4,7 @@ import renderer from "react-test-renderer";
 
 import Header from "../Header";
 
-describe("components/molecules/Header", () => {
+describe("components/organisms/Header", () => {
   const { siteTitle } = mockConfig;
   it("snapshot", () => {
     const tree = renderer.create(<Header siteTitle={siteTitle} />).toJSON();

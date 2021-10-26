@@ -4,7 +4,7 @@ import renderer from "react-test-renderer";
 
 import Footer from ".";
 
-describe("components/molecules/Footer", () => {
+describe("components/organisms/Footer", () => {
   const { organization, siteTitle } = mockConfig;
   it("snapshot", () => {
     const tree = renderer.create(<Footer organization={organization} siteTitle={siteTitle} />).toJSON();
