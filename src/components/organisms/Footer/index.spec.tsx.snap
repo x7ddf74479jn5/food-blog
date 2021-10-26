@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/molecules/Footer snapshot 1`] = `
+<footer
+  className="flex flex-row gap-2 place-content-center py-2 mx-auto mt-auto w-full text-xs bg-gray-50 dark:bg-gray-700"
+>
+  <a
+    className="text-xs font-bold text-green-500"
+    href="/"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Food Blog
+  </a>
+  <span
+    className=""
+  >
+    ©︎ 2021 
+    Pandashark
+  </span>
+</footer>
+`;

@@ -48,4 +48,5 @@ module.exports = {
   globalSetup: "<rootDir>/jest/setupEnv.ts",
   setupFilesAfterEnv: ["<rootDir>/jest/jest.setup.js"],
   snapshotResolver: "<rootDir>/jest/jest.snapshot.js",
+  verbose: true,
 };
