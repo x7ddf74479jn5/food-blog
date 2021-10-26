@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components/molecules/Header snapshot 1`] = `
+exports[`components/organisms/Header snapshot 1`] = `
 <header
   className="py-2"
 >

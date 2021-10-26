@@ -391,7 +391,7 @@ exports[`components/layouts/ArticleLayout snapshot 1`] = `
               className="grid grid-flow-row gap-2 grid-cols-3 sm:grid-cols-5 md:grid-cols-1"
             >
               <div
-                className="flex flex-col justify-center items-center"
+                className="flex flex-col justify-center items-center w-24 h-full"
               >
                 <a
                   href="/articles/categories/rice"
@@ -503,7 +503,7 @@ exports[`components/layouts/ArticleLayout snapshot 1`] = `
                 </a>
               </div>
               <div
-                className="flex flex-col justify-center items-center"
+                className="flex flex-col justify-center items-center w-24 h-full"
               >
                 <a
                   href="/articles/categories/salad"
@@ -615,7 +615,7 @@ exports[`components/layouts/ArticleLayout snapshot 1`] = `
                 </a>
               </div>
               <div
-                className="flex flex-col justify-center items-center"
+                className="flex flex-col justify-center items-center w-24 h-full"
               >
                 <a
                   href="/articles/categories/tips"

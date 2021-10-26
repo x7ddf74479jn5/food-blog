@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/molecules/ArticleTipList ArticleTipWithThumb snapshot 1`] = `
-<a
-  href="/articles/1"
-  onClick={[Function]}
-  onMouseEnter={[Function]}
+<article
+  className="flex flex-row max-h-36 "
 >
-  <article
-    className="flex flex-row max-h-36 "
+  <a
+    href="/articles/1"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
       className="flex-shrink-0 mt-1 mr-4"
@@ -110,69 +110,73 @@ exports[`components/molecules/ArticleTipList ArticleTipWithThumb snapshot 1`] = 
         </noscript>
       </div>
     </div>
-    <div
-      className="flex flex-col flex-grow"
+  </a>
+  <div
+    className="flex flex-col flex-grow"
+  >
+    <a
+      href="/articles/1"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
     >
-      <div>
-        基本の一番だしの作り方
-      </div>
+      基本の一番だしの作り方
+    </a>
+    <div
+      className="flex-grow"
+    >
       <div
-        className="flex-grow"
+        className="flex flex-wrap gap-x-2 gap-y-1"
       >
-        <div
-          className="flex flex-wrap gap-x-2 gap-y-1"
+        <a
+          href="/articles/tags/preparation"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
         >
-          <a
-            href="/articles/tags/preparation"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
+          <span
+            className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
           >
-            <span
-              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-            >
-              #仕込み
-            </span>
-          </a>
-          <a
-            href="/articles/tags/miso_soup"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
+            #仕込み
+          </span>
+        </a>
+        <a
+          href="/articles/tags/miso_soup"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <span
+            className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
           >
-            <span
-              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-            >
-              #味噌汁
-            </span>
-          </a>
-          <a
-            href="/articles/tags/udon"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
+            #味噌汁
+          </span>
+        </a>
+        <a
+          href="/articles/tags/udon"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <span
+            className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
           >
-            <span
-              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-            >
-              #うどん
-            </span>
-          </a>
-        </div>
+            #うどん
+          </span>
+        </a>
       </div>
     </div>
-  </article>
-</a>
+  </div>
+</article>
 `;
 
 exports[`components/molecules/ArticleTipList ArticleTipWithThumbList snapshot 1`] = `
 <div
   className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-x-1 md:gap-x-1 lg:gap-x-1 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 pb-2"
 >
-  <a
-    href="/articles/1"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
+  <article
+    className="flex flex-row max-h-36 "
   >
-    <article
-      className="flex flex-row max-h-36 "
+    <a
+      href="/articles/1"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
     >
       <div
         className="flex-shrink-0 mt-1 mr-4"
@@ -275,63 +279,67 @@ exports[`components/molecules/ArticleTipList ArticleTipWithThumbList snapshot 1`
           </noscript>
         </div>
       </div>
-      <div
-        className="flex flex-col flex-grow"
+    </a>
+    <div
+      className="flex flex-col flex-grow"
+    >
+      <a
+        href="/articles/1"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
       >
-        <div>
-          基本の一番だしの作り方
-        </div>
+        基本の一番だしの作り方
+      </a>
+      <div
+        className="flex-grow"
+      >
         <div
-          className="flex-grow"
+          className="flex flex-wrap gap-x-2 gap-y-1"
         >
-          <div
-            className="flex flex-wrap gap-x-2 gap-y-1"
+          <a
+            href="/articles/tags/preparation"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <a
-              href="/articles/tags/preparation"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #仕込み
-              </span>
-            </a>
-            <a
-              href="/articles/tags/miso_soup"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+              #仕込み
+            </span>
+          </a>
+          <a
+            href="/articles/tags/miso_soup"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #味噌汁
-              </span>
-            </a>
-            <a
-              href="/articles/tags/udon"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+              #味噌汁
+            </span>
+          </a>
+          <a
+            href="/articles/tags/udon"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #うどん
-              </span>
-            </a>
-          </div>
+              #うどん
+            </span>
+          </a>
         </div>
       </div>
-    </article>
-  </a>
-  <a
-    href="/articles/2"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
+    </div>
+  </article>
+  <article
+    className="flex flex-row max-h-36 "
   >
-    <article
-      className="flex flex-row max-h-36 "
+    <a
+      href="/articles/2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
     >
       <div
         className="flex-shrink-0 mt-1 mr-4"
@@ -434,63 +442,67 @@ exports[`components/molecules/ArticleTipList ArticleTipWithThumbList snapshot 1`
           </noscript>
         </div>
       </div>
-      <div
-        className="flex flex-col flex-grow"
+    </a>
+    <div
+      className="flex flex-col flex-grow"
+    >
+      <a
+        href="/articles/2"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
       >
-        <div>
-          新玉ねぎとトマトのシンプルサラダの作り方
-        </div>
+        新玉ねぎとトマトのシンプルサラダの作り方
+      </a>
+      <div
+        className="flex-grow"
+      >
         <div
-          className="flex-grow"
+          className="flex flex-wrap gap-x-2 gap-y-1"
         >
-          <div
-            className="flex flex-wrap gap-x-2 gap-y-1"
+          <a
+            href="/articles/tags/tomato"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <a
-              href="/articles/tags/tomato"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #トマト
-              </span>
-            </a>
-            <a
-              href="/articles/tags/onion"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+              #トマト
+            </span>
+          </a>
+          <a
+            href="/articles/tags/onion"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #玉ねぎ
-              </span>
-            </a>
-            <a
-              href="/articles/tags/ooba"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+              #玉ねぎ
+            </span>
+          </a>
+          <a
+            href="/articles/tags/ooba"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #大葉
-              </span>
-            </a>
-          </div>
+              #大葉
+            </span>
+          </a>
         </div>
       </div>
-    </article>
-  </a>
-  <a
-    href="/articles/3"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
+    </div>
+  </article>
+  <article
+    className="flex flex-row max-h-36 "
   >
-    <article
-      className="flex flex-row max-h-36 "
+    <a
+      href="/articles/3"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
     >
       <div
         className="flex-shrink-0 mt-1 mr-4"
@@ -593,52 +605,56 @@ exports[`components/molecules/ArticleTipList ArticleTipWithThumbList snapshot 1`
           </noscript>
         </div>
       </div>
-      <div
-        className="flex flex-col flex-grow"
+    </a>
+    <div
+      className="flex flex-col flex-grow"
+    >
+      <a
+        href="/articles/3"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
       >
-        <div>
-          栄養たっぷり小松菜と油揚げのおひたしの作り方
-        </div>
+        栄養たっぷり小松菜と油揚げのおひたしの作り方
+      </a>
+      <div
+        className="flex-grow"
+      >
         <div
-          className="flex-grow"
+          className="flex flex-wrap gap-x-2 gap-y-1"
         >
-          <div
-            className="flex flex-wrap gap-x-2 gap-y-1"
+          <a
+            href="/articles/tags/aburaage"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <a
-              href="/articles/tags/aburaage"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #油揚げ
-              </span>
-            </a>
-            <a
-              href="/articles/tags/komatshna"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+              #油揚げ
+            </span>
+          </a>
+          <a
+            href="/articles/tags/komatshna"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #小松菜
-              </span>
-            </a>
-          </div>
+              #小松菜
+            </span>
+          </a>
         </div>
       </div>
-    </article>
-  </a>
-  <a
-    href="/articles/4"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
+    </div>
+  </article>
+  <article
+    className="flex flex-row max-h-36 "
   >
-    <article
-      className="flex flex-row max-h-36 "
+    <a
+      href="/articles/4"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
     >
       <div
         className="flex-shrink-0 mt-1 mr-4"
@@ -741,77 +757,81 @@ exports[`components/molecules/ArticleTipList ArticleTipWithThumbList snapshot 1`
           </noscript>
         </div>
       </div>
-      <div
-        className="flex flex-col flex-grow"
+    </a>
+    <div
+      className="flex flex-col flex-grow"
+    >
+      <a
+        href="/articles/4"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
       >
-        <div>
-          熊本県産玉ねぎを使った絶品タコライスの作り方
-        </div>
+        熊本県産玉ねぎを使った絶品タコライスの作り方
+      </a>
+      <div
+        className="flex-grow"
+      >
         <div
-          className="flex-grow"
+          className="flex flex-wrap gap-x-2 gap-y-1"
         >
-          <div
-            className="flex flex-wrap gap-x-2 gap-y-1"
+          <a
+            href="/articles/tags/rice"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <a
-              href="/articles/tags/rice"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #ごはん
-              </span>
-            </a>
-            <a
-              href="/articles/tags/minced_meat"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+              #ごはん
+            </span>
+          </a>
+          <a
+            href="/articles/tags/minced_meat"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #挽き肉
-              </span>
-            </a>
-            <a
-              href="/articles/tags/lettuce"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+              #挽き肉
+            </span>
+          </a>
+          <a
+            href="/articles/tags/lettuce"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #レタス
-              </span>
-            </a>
-            <a
-              href="/articles/tags/onion"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+              #レタス
+            </span>
+          </a>
+          <a
+            href="/articles/tags/onion"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #玉ねぎ
-              </span>
-            </a>
-            <a
-              href="/articles/tags/tomato"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+              #玉ねぎ
+            </span>
+          </a>
+          <a
+            href="/articles/tags/tomato"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #トマト
-              </span>
-            </a>
-          </div>
+              #トマト
+            </span>
+          </a>
         </div>
       </div>
-    </article>
-  </a>
+    </div>
+  </article>
 </div>
 `;
