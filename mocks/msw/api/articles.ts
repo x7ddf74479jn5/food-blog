@@ -13,10 +13,10 @@ const searchArticlesByQ = (q: string): TArticle[] => {
 };
 
 export const mockGetArticles: ResponseResolver<RestRequest, RestContext> = async (req, res, ctx) => {
-  const apiKey = req.headers.get("X-API-KEY");
+  const apiKey = req.headers.get("X_MICROCMS_API_KEY ");
 
   if (!apiKey) {
-    res(ctx.status(400, "Invalid X-API-KEY"));
+    res(ctx.status(400, "Invalid X_MICROCMS_API_KEY "));
   }
 
   const q = req.url.searchParams.get("q");
@@ -51,10 +51,10 @@ export const mockGetArticles: ResponseResolver<RestRequest, RestContext> = async
 };
 
 export const mockGetArticle: ResponseResolver<RestRequest, RestContext> = async (req, res, ctx) => {
-  const apiKey = req.headers.get("X-API-KEY");
+  const apiKey = req.headers.get("X_MICROCMS_API_KEY ");
 
   if (!apiKey) {
-    res(ctx.status(400, "Invalid X-API-KEY"));
+    res(ctx.status(400, "Invalid X_MICROCMS_API_KEY "));
   }
 
   const id = String(req.params.id);
