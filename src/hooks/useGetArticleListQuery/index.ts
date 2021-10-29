@@ -17,8 +17,6 @@ const useGetArticleListQuery = ({ perPage = 4, options }: Arguments) => {
   const q = router.query.q;
   const keyRef = useRef("");
 
-  // if (!q) return;
-
   const getKey = (pageIndex: number, previousPageData: TArticleSWRResponse) => {
     let key;
 
