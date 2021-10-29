@@ -8,7 +8,7 @@ import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
 
 export const ArticleContainer: React.VFC = () => {
   const methods = useGetArticleListQuery({
-    perPage: 2,
+    perPage: 4,
     options: { suspense: true },
   });
 
@@ -24,14 +24,7 @@ export const ArticleContainer: React.VFC = () => {
 export default ArticleContainer;
 
 export const Component: React.VFC<{ methods: ReturnType<typeof useGetArticleListQuery> }> = ({ methods }) => {
-  const { data, error, size, setSize, isValidating } = methods;
-  const handleOnClick = () => {
-    setSize(size + 1);
-  };
-
-  const articles = data ? data.map((r) => (r ? r.contents : [])).flat() : [];
-  const totalCount = data ? data[0]?.totalCount : 0;
-  const hasNextPage = totalCount ? articles.length !== totalCount : false;
+  const { articles, hasNextPage, error, isValidating, paginate: handlePaginate } = methods;
 
   if (error) return <div className="flex justify-center mt-16">エラーが発生しました。</div>;
 
@@ -40,7 +33,7 @@ export const Component: React.VFC<{ methods: ReturnType<typeof useGetArticleList
   return (
     <>
       <ArticleList articles={articles} />
-      <Pagination hasNextPage={hasNextPage} isValidating={isValidating} onClick={handleOnClick} />
+      <Pagination hasNextPage={hasNextPage} isValidating={isValidating} onClick={handlePaginate} />
     </>
   );
 };
