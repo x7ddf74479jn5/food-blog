@@ -6,7 +6,10 @@ export const getSearchParams = (req: RestRequest<DefaultRequestBody, Record<stri
   limit = Number(limit);
   const offset = Number(req.url.searchParams.get("offset")) ?? 0;
   const filters = req.url.searchParams.get("filters");
-  return { apiKey, limit, offset, filters };
+  const q = req.url.searchParams.get("q");
+  const id = String(req.params.id);
+
+  return { apiKey, limit, offset, filters, q, id };
 };
 
 export const findContent = <T extends Record<string, any>>(id: string, objects: Record<string, T>): T | undefined => {
