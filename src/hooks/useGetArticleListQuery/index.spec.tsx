@@ -40,11 +40,13 @@ describe("hooks/useGetArticleListQuery", () => {
   it("OK: useSWRInfiniteが呼び出される", () => {
     const limit = 2;
 
-    renderHook(() => useGetArticleListQuery({ perPage: limit }), {
+    const { result, unmount } = renderHook(() => useGetArticleListQuery({ perPage: limit }), {
       wrapper: Wrapper,
     });
 
+    expect(result).toBeTruthy();
     expect(spyUseSWRInfinite).toBeCalledTimes(1);
+    unmount();
   });
 
   it("OK: APIの結果が正しい", () => {
