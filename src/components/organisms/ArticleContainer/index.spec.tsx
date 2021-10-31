@@ -1,62 +1,196 @@
-import { render, screen } from "jest/test-utils";
-// import { server } from "mocks/msw/server";
-// import { Suspense } from "react";
+import { mockArticles } from "@mocks/data";
+import { fireEvent, render, screen } from "jest/test-utils";
 import renderer from "react-test-renderer";
 
-// import { HttpErrorBoundary } from "@/components/atoms/error";
-// import { ArticleSkeltonList } from "@/components/molecules/ArticleSkeltonList";
+import * as useGetArticleQuery from "@/hooks/useGetArticleListQuery";
+
 import { ArticleContainer } from ".";
-import Component from "./Component";
 
-// beforeAll(() => server.listen());
-// afterAll(() => server.close());
-
-// jest.mock("@/hooks/useGetArticleListQuery", () => {
-//   const useGetArticleListQuery = jest.fn().mockReturnValue({});
-// });
-
-// const mockRouter = { query: { q: "copy" } };
+let spyUseGetArticleQuery: jest.SpyInstance;
+const mockPaginate = jest.fn();
 
 describe("components/molecules/ArticleContainer", () => {
-  it("should ", async () => {
-    // <HttpErrorBoundary>
-    //   <Suspense fallback={<ArticleSkeltonList />}>
-    //     <Component />
-    //   </Suspense>
-    // </HttpErrorBoundary>;
+  describe("OK: データがある", () => {
+    describe("次ページがある", () => {
+      beforeEach(() => {
+        spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
+        spyUseGetArticleQuery.mockReturnValue({
+          articles: [mockArticles.stock],
+          hasNextPage: true,
+          error: undefined,
+          isValidating: false,
+          paginate: mockPaginate,
+          setSize: jest.fn(),
+          size: 1,
+          data: [],
+          getCurrentKey: jest.fn(),
+          revalidate: jest.fn(),
+          mutate: jest.fn(),
+        });
+      });
+      afterEach(() => {
+        jest.clearAllMocks();
+        jest.restoreAllMocks();
+      });
 
-    await render(<ArticleContainer />);
-    // await Component;
-    await Component;
+      it("Snapshot", () => {
+        const tree = renderer.create(<ArticleContainer />).toJSON();
+        expect(tree).toMatchSnapshot();
+      });
 
-    // await render(
-    //   <HttpErrorBoundary>
-    //     <Suspense fallback={<ArticleSkeltonList />}>
-    //       <Component />
-    //     </Suspense>
-    //   </HttpErrorBoundary>
-    // );
-    // await Component;
+      it("OK: 初期レンダリング", () => {
+        render(<ArticleContainer />);
+        const article = screen.getByRole("article");
+        expect(article).toBeInTheDocument();
+        const button = screen.getByRole("button");
+        expect(button).toBeInTheDocument();
+      });
 
-    screen.debug();
+      it("Interaction", () => {
+        render(<ArticleContainer />);
+        const button = screen.getByRole("button");
+        expect(button).toBeInTheDocument();
+        expect(button).toBeEnabled();
+        fireEvent.click(button);
+        expect(mockPaginate).toBeCalled();
+      });
+    });
+
+    describe("次ページがない", () => {
+      beforeEach(() => {
+        spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
+        spyUseGetArticleQuery.mockReturnValue({
+          articles: [mockArticles.stock],
+          hasNextPage: false,
+          error: undefined,
+          isValidating: false,
+          paginate: mockPaginate,
+          setSize: jest.fn(),
+          size: 1,
+          data: [],
+          getCurrentKey: jest.fn(),
+          revalidate: jest.fn(),
+          mutate: jest.fn(),
+        });
+      });
+      afterEach(() => {
+        jest.clearAllMocks();
+        jest.restoreAllMocks();
+      });
+      it("Snapshot", () => {
+        const tree = renderer.create(<ArticleContainer />).toJSON();
+        expect(tree).toMatchSnapshot();
+      });
+
+      it("OK: 初期レンダリング", () => {
+        render(<ArticleContainer />);
+        const article = screen.getByRole("article");
+        expect(article).toBeInTheDocument();
+        const button = screen.queryByRole("button");
+        expect(button).not.toBeInTheDocument();
+      });
+    });
+
+    describe("ローディング", () => {
+      beforeEach(() => {
+        spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
+        spyUseGetArticleQuery.mockReturnValue({
+          articles: [mockArticles.stock],
+          hasNextPage: true,
+          error: undefined,
+          isValidating: true,
+          paginate: mockPaginate,
+          setSize: jest.fn(),
+          size: 1,
+          data: [],
+          getCurrentKey: jest.fn(),
+          revalidate: jest.fn(),
+          mutate: jest.fn(),
+        });
+      });
+      afterEach(() => {
+        jest.clearAllMocks();
+        jest.restoreAllMocks();
+      });
+
+      it("Snapshot", () => {
+        const tree = renderer.create(<ArticleContainer />).toJSON();
+        expect(tree).toMatchSnapshot();
+      });
+
+      it("OK: 初期レンダリング", () => {
+        render(<ArticleContainer />);
+        const button = screen.queryByRole("button");
+        expect(button).not.toBeInTheDocument();
+      });
+    });
   });
 
-  it("snapshot", async () => {
-    await Component;
+  describe("OK: データがない", () => {
+    beforeEach(() => {
+      spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
+      spyUseGetArticleQuery.mockReturnValue({
+        articles: [],
+        hasNextPage: false,
+        error: undefined,
+        isValidating: false,
+        paginate: mockPaginate,
+        setSize: jest.fn(),
+        size: 1,
+        data: [],
+        getCurrentKey: jest.fn(),
+        revalidate: jest.fn(),
+        mutate: jest.fn(),
+      });
+    });
 
-    // const test = withMockedRouter(
-    //   mockRouter,
-    //   <HttpErrorBoundary>
-    //     <Suspense fallback={<ArticleSkeltonList />}>
-    //       <Component />
-    //     </Suspense>
-    //   </HttpErrorBoundary>
-    // );
+    it("Snapshot", () => {
+      const tree = renderer.create(<ArticleContainer />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
 
-    // const tree = await renderer.create(test).toJSON();
-    // const tree = await renderer.create(<Component />).toJSON();
-    const tree = await renderer.create(<ArticleContainer />).toJSON();
-    // await Component;
-    expect(tree).toMatchSnapshot();
+    it("OK: 初期レンダリング", () => {
+      const { container } = render(<ArticleContainer />);
+
+      const article = screen.queryByRole("article");
+      expect(article).not.toBeInTheDocument();
+      const button = screen.queryByRole("button");
+      expect(button).not.toBeInTheDocument();
+      expect(container).toHaveTextContent("レシピが見つかりませんでした。");
+    });
+  });
+
+  describe("NG:  エラー", () => {
+    beforeEach(() => {
+      spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
+      spyUseGetArticleQuery.mockReturnValue({
+        articles: [],
+        hasNextPage: false,
+        error: new Error(),
+        isValidating: false,
+        paginate: mockPaginate,
+        setSize: jest.fn(),
+        size: 1,
+        data: [],
+        getCurrentKey: jest.fn(),
+        revalidate: jest.fn(),
+        mutate: jest.fn(),
+      });
+    });
+
+    it("Snapshot", () => {
+      const tree = renderer.create(<ArticleContainer />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it("OK: 初期レンダリング", () => {
+      const { container } = render(<ArticleContainer />);
+
+      const article = screen.queryByRole("article");
+      expect(article).not.toBeInTheDocument();
+      const button = screen.queryByRole("button");
+      expect(button).not.toBeInTheDocument();
+      expect(container).toHaveTextContent("エラーが発生しました。");
+    });
   });
 });
