@@ -8,7 +8,7 @@ import { FaPen, FaRegCalendar } from "react-icons/fa";
 import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
 
 import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
-import { HtmlHeadBase, HtmlHeadJsonLt } from "@/components/atoms/meta";
+import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/atoms/meta";
 import TextDate from "@/components/atoms/texts/TextDate/index";
 import Thumbnail from "@/components/atoms/Thumbnail";
 import { TagListColored } from "@/components/molecules/TagList";
@@ -53,7 +53,7 @@ export const ArticleDetail = ({
       pickup={pickup}
     >
       <HtmlHeadBase indexUrl={host} title={title} url={url} image={image.url} />
-      <HtmlHeadJsonLt
+      <HtmlHeadJsonLd
         url={url}
         title={title}
         image={image.url}
