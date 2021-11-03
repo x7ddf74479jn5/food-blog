@@ -22,7 +22,6 @@ const Home = ({ articles, config, pickup, categories }: Props) => {
 
 type StaticProps = {
   articles: TArticle[];
-  totalCount: number;
   categories: TCategory[];
   config: TConfig;
   pickup: TPickup;
@@ -37,11 +36,10 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     fetchPickupArticles(getNewDate()),
   ]);
 
-  const { contents: articles, totalCount } = data;
+  const { contents: articles } = data;
   return {
     props: {
       articles,
-      totalCount,
       categories: _categories,
       config: _config,
       pickup,
