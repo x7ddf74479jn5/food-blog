@@ -1,11 +1,11 @@
-import type { QueriesType } from "microcms-js-sdk/dist/cjs/types";
+import type { MicroCMSQueries } from "microcms-js-sdk/dist/cjs/types";
 
 import { client } from "@/lib/client";
 import type { TArticle, TArticleListResponse, TTag } from "@/types";
 import type { TPickupListResponse } from "@/types/pickup";
 import { HttpError } from "@/utils/error/Http";
 
-export const fetchArticles = async (queries?: QueriesType): Promise<TArticleListResponse> => {
+export const fetchArticles = async (queries?: MicroCMSQueries): Promise<TArticleListResponse> => {
   try {
     const data = await client.get<TArticleListResponse>({
       endpoint: "articles",
@@ -21,7 +21,7 @@ export const fetchArticles = async (queries?: QueriesType): Promise<TArticleList
   }
 };
 
-export const fetchArticle = async (id: string, queries?: QueriesType): Promise<TArticle> => {
+export const fetchArticle = async (id: string, queries?: MicroCMSQueries): Promise<TArticle> => {
   try {
     const data = await client.get<TArticle>({
       endpoint: `articles`,
