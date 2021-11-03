@@ -21,6 +21,7 @@ module.exports = {
     "@/hooks/(.*)": "<rootDir>/src/hooks/$1",
     "@/utils/(.*)": "<rootDir>/src/utils/$1",
     "@/lib/(.*)": "<rootDir>/src/lib/$1",
+    "@/pages/(.*)": "<rootDir>/src/pages/$1",
   },
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/"],
   transform: {
