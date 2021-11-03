@@ -81,6 +81,8 @@ describe("pages/categories", () => {
     );
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent(`タグ：${mockTagRice.name}`);
+    const title = screen.getByTitle(mockTagRice.name);
+    expect(title).toBeTruthy();
     unmount();
   });
 });

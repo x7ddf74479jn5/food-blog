@@ -80,6 +80,8 @@ describe("pages/categories", () => {
     );
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent(`カテゴリー：${mockCategoryRice.name}`);
+    const title = screen.getByTitle(mockCategoryRice.name);
+    expect(title).toBeTruthy();
     unmount();
   });
 });

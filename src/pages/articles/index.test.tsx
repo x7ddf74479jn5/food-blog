@@ -39,7 +39,6 @@ jest.mock("next-mdx-remote", () => {
 
 describe("pages/categories", () => {
   const mockCategoryList = Object.values(mockCategories);
-  const mockCategoryRice = mockCategories.rice;
   const mockArticleList = Object.values(mockArticles);
   const mockArticleStock = mockArticles.stock;
   console.warn = jest.fn();
@@ -74,8 +73,10 @@ describe("pages/categories", () => {
   it.skip("getStaticProps", async () => {
     const result = await getStaticProps({
       params: {
-        slug: mockCategoryRice.slug,
+        id: mockArticleStock.id,
       },
+      preview: undefined,
+      previewData: undefined,
     });
 
     if ("props" in result) {
@@ -106,6 +107,8 @@ describe("pages/categories", () => {
 
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent(mockArticleStock.title);
+    const title = screen.getByTitle(mockArticleStock.title);
+    expect(title).toBeTruthy();
     unmount();
   });
 });
