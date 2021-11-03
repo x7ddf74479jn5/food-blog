@@ -4,6 +4,8 @@ import renderer from "react-test-renderer";
 import { LayoutErrorBoundary } from ".";
 
 describe("components/atoms/error/LayoutErrorBoundary", () => {
+  console.error = jest.fn();
+
   it("snapshot", () => {
     const tree = renderer
       .create(

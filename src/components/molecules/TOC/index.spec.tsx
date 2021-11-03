@@ -9,6 +9,8 @@ jest.mock("@/hooks/useWindowSize", () => {
 });
 
 describe("components/molecules/TOC", () => {
+  console.warn = jest.fn();
+
   const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <div>
       <div id="js-toc-content" className="hidden">

@@ -4,6 +4,8 @@ import renderer from "react-test-renderer";
 import { ErrorBoundaryBase } from ".";
 
 describe("components/atoms/error/ErrorBoundaryBase", () => {
+  console.error = jest.fn();
+
   it("snapshot", () => {
     const tree = renderer
       .create(
