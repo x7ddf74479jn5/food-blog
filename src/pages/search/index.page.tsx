@@ -15,7 +15,6 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const Search: NextPage<Props> = ({ config, categories, pickup }) => {
   const router = useRouter();
   const keyword = router.query.q;
-
   const { host } = config;
   const title = `検索結果：${keyword}`;
   const url = new URL(`${UrlTable.search}/q=${keyword ?? ""}`, host).toString();
