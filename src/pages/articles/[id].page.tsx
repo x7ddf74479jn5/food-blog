@@ -1,4 +1,3 @@
-import ArticleLayout from "@components/layouts/ArticleLayout";
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
@@ -11,6 +10,7 @@ import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
 import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/atoms/meta";
 import TextDate from "@/components/atoms/texts/TextDate/index";
 import Thumbnail from "@/components/atoms/Thumbnail";
+import ArticleLayout from "@/components/layouts/ArticleLayout";
 import { TagListColored } from "@/components/molecules/TagList";
 import { getNewDate } from "@/utils/date/getNewDate";
 import getSafeDate from "@/utils/date/getSafeDate";
