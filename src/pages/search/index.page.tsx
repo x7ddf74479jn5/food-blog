@@ -1,11 +1,11 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useRouter } from "next/router";
 
-import { getNewDate } from "@//utils/date/getNewDate";
 import { HtmlHeadBase } from "@/components/atoms/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleContainer } from "@/components/organisms/ArticleContainer/index";
 import type { TCategory, TConfig, TPickup } from "@/types";
+import { getNewDate } from "@/utils/date/getNewDate";
 import { fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
 import { UrlTable } from "@/utils/paths/url";
 import { getBackLinks } from "@/utils/paths/url";
