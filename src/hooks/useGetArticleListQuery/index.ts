@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { mutate } from "swr";
 import type { SWRInfiniteConfiguration } from "swr/infinite";
 import useSWRInfinite from "swr/infinite";
@@ -47,17 +47,17 @@ const useGetArticleListQuery = ({ perPage = 4, options }: Arguments) => {
 
   const { size, setSize, data } = result;
 
-  const getCurrentKey = () => {
+  const getCurrentKey = useCallback(() => {
     return keyRef.current;
-  };
+  }, [keyRef]);
 
-  const revalidate = () => {
+  const revalidate = useCallback(() => {
     mutate(keyRef.current);
-  };
+  }, [keyRef]);
 
-  const paginate = () => {
+  const paginate = useCallback(() => {
     setSize(size + 1);
-  };
+  }, [setSize, size]);
 
   const articles = data ? data.map((r) => (r ? r.contents : [])).flat() : [];
   const totalCount = data ? data[0]?.totalCount : 0;

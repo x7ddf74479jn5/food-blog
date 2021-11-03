@@ -23,24 +23,37 @@ Array [
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
-          <div
+          <span
             style={
               Object {
+                "background": "none",
+                "border": 0,
                 "boxSizing": "border-box",
                 "display": "inline-block",
+                "height": "initial",
                 "margin": 0,
                 "maxWidth": "100%",
+                "opacity": 1,
                 "overflow": "hidden",
+                "padding": 0,
                 "position": "relative",
+                "width": "initial",
               }
             }
           >
-            <div
+            <span
               style={
                 Object {
+                  "background": "none",
+                  "border": 0,
                   "boxSizing": "border-box",
                   "display": "block",
+                  "height": "initial",
+                  "margin": 0,
                   "maxWidth": "100%",
+                  "opacity": 1,
+                  "padding": 0,
+                  "width": "initial",
                 }
               }
             >
@@ -50,15 +63,19 @@ Array [
                 src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                 style={
                   Object {
-                    "border": "none",
+                    "background": "none",
+                    "border": 0,
                     "display": "block",
+                    "height": "initial",
                     "margin": 0,
                     "maxWidth": "100%",
+                    "opacity": 1,
                     "padding": 0,
+                    "width": "initial",
                   }
                 }
               />
-            </div>
+            </span>
             <img
               alt="Cover Image for 基本の一番だしの作り方"
               data-nimg="intrinsic"
@@ -119,7 +136,7 @@ Array [
                 }
               />
             </noscript>
-          </div>
+          </span>
         </a>
       </div>
       <h2
@@ -165,24 +182,37 @@ Array [
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
-          <div
+          <span
             style={
               Object {
+                "background": "none",
+                "border": 0,
                 "boxSizing": "border-box",
                 "display": "inline-block",
+                "height": "initial",
                 "margin": 0,
                 "maxWidth": "100%",
+                "opacity": 1,
                 "overflow": "hidden",
+                "padding": 0,
                 "position": "relative",
+                "width": "initial",
               }
             }
           >
-            <div
+            <span
               style={
                 Object {
+                  "background": "none",
+                  "border": 0,
                   "boxSizing": "border-box",
                   "display": "block",
+                  "height": "initial",
+                  "margin": 0,
                   "maxWidth": "100%",
+                  "opacity": 1,
+                  "padding": 0,
+                  "width": "initial",
                 }
               }
             >
@@ -192,15 +222,19 @@ Array [
                 src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                 style={
                   Object {
-                    "border": "none",
+                    "background": "none",
+                    "border": 0,
                     "display": "block",
+                    "height": "initial",
                     "margin": 0,
                     "maxWidth": "100%",
+                    "opacity": 1,
                     "padding": 0,
+                    "width": "initial",
                   }
                 }
               />
-            </div>
+            </span>
             <img
               alt="Cover Image for 基本の一番だしの作り方"
               data-nimg="intrinsic"
@@ -261,7 +295,7 @@ Array [
                 }
               />
             </noscript>
-          </div>
+          </span>
         </a>
       </div>
       <h2
@@ -329,24 +363,37 @@ exports[`components/molecules/ArticleContainer OK: データがある 次ペー
         onClick={[Function]}
         onMouseEnter={[Function]}
       >
-        <div
+        <span
           style={
             Object {
+              "background": "none",
+              "border": 0,
               "boxSizing": "border-box",
               "display": "inline-block",
+              "height": "initial",
               "margin": 0,
               "maxWidth": "100%",
+              "opacity": 1,
               "overflow": "hidden",
+              "padding": 0,
               "position": "relative",
+              "width": "initial",
             }
           }
         >
-          <div
+          <span
             style={
               Object {
+                "background": "none",
+                "border": 0,
                 "boxSizing": "border-box",
                 "display": "block",
+                "height": "initial",
+                "margin": 0,
                 "maxWidth": "100%",
+                "opacity": 1,
+                "padding": 0,
+                "width": "initial",
               }
             }
           >
@@ -356,15 +403,19 @@ exports[`components/molecules/ArticleContainer OK: データがある 次ペー
               src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
               style={
                 Object {
-                  "border": "none",
+                  "background": "none",
+                  "border": 0,
                   "display": "block",
+                  "height": "initial",
                   "margin": 0,
                   "maxWidth": "100%",
+                  "opacity": 1,
                   "padding": 0,
+                  "width": "initial",
                 }
               }
             />
-          </div>
+          </span>
           <img
             alt="Cover Image for 基本の一番だしの作り方"
             data-nimg="intrinsic"
@@ -425,7 +476,7 @@ exports[`components/molecules/ArticleContainer OK: データがある 次ペー
               }
             />
           </noscript>
-        </div>
+        </span>
       </a>
     </div>
     <h2
