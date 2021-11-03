@@ -1,11 +1,11 @@
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import type { ParsedUrlQuery } from "node:querystring";
 
-import { getNewDate } from "@//utils/date/getNewDate";
 import { HtmlHeadBase } from "@/components/atoms/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
 import type { TArticle, TCategory, TConfig, TPickup } from "@/types/index";
+import { getNewDate } from "@/utils/date/getNewDate";
 import { fetchArticles, fetchCategories, fetchCategory, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
 import { UrlTable } from "@/utils/paths/url";
 import { getBackLinks } from "@/utils/paths/url";
