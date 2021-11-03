@@ -8,24 +8,37 @@ Array [
     <div
       className="w-10 h-10"
     >
-      <div
+      <span
         style={
           Object {
+            "background": "none",
+            "border": 0,
             "boxSizing": "border-box",
             "display": "inline-block",
+            "height": "initial",
             "margin": 0,
             "maxWidth": "100%",
+            "opacity": 1,
             "overflow": "hidden",
+            "padding": 0,
             "position": "relative",
+            "width": "initial",
           }
         }
       >
-        <div
+        <span
           style={
             Object {
+              "background": "none",
+              "border": 0,
               "boxSizing": "border-box",
               "display": "block",
+              "height": "initial",
+              "margin": 0,
               "maxWidth": "100%",
+              "opacity": 1,
+              "padding": 0,
+              "width": "initial",
             }
           }
         >
@@ -35,15 +48,19 @@ Array [
             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
             style={
               Object {
-                "border": "none",
+                "background": "none",
+                "border": 0,
                 "display": "block",
+                "height": "initial",
                 "margin": 0,
                 "maxWidth": "100%",
+                "opacity": 1,
                 "padding": 0,
+                "width": "initial",
               }
             }
           />
-        </div>
+        </span>
         <img
           alt="rice"
           data-nimg="intrinsic"
@@ -104,7 +121,7 @@ Array [
             }
           />
         </noscript>
-      </div>
+      </span>
     </div>
     <p
       className="text-sm"
@@ -118,24 +135,37 @@ Array [
     <div
       className="w-10 h-10"
     >
-      <div
+      <span
         style={
           Object {
+            "background": "none",
+            "border": 0,
             "boxSizing": "border-box",
             "display": "inline-block",
+            "height": "initial",
             "margin": 0,
             "maxWidth": "100%",
+            "opacity": 1,
             "overflow": "hidden",
+            "padding": 0,
             "position": "relative",
+            "width": "initial",
           }
         }
       >
-        <div
+        <span
           style={
             Object {
+              "background": "none",
+              "border": 0,
               "boxSizing": "border-box",
               "display": "block",
+              "height": "initial",
+              "margin": 0,
               "maxWidth": "100%",
+              "opacity": 1,
+              "padding": 0,
+              "width": "initial",
             }
           }
         >
@@ -145,15 +175,19 @@ Array [
             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
             style={
               Object {
-                "border": "none",
+                "background": "none",
+                "border": 0,
                 "display": "block",
+                "height": "initial",
                 "margin": 0,
                 "maxWidth": "100%",
+                "opacity": 1,
                 "padding": 0,
+                "width": "initial",
               }
             }
           />
-        </div>
+        </span>
         <img
           alt="salad"
           data-nimg="intrinsic"
@@ -214,7 +248,7 @@ Array [
             }
           />
         </noscript>
-      </div>
+      </span>
     </div>
     <p
       className="text-sm"
@@ -228,24 +262,37 @@ Array [
     <div
       className="w-10 h-10"
     >
-      <div
+      <span
         style={
           Object {
+            "background": "none",
+            "border": 0,
             "boxSizing": "border-box",
             "display": "inline-block",
+            "height": "initial",
             "margin": 0,
             "maxWidth": "100%",
+            "opacity": 1,
             "overflow": "hidden",
+            "padding": 0,
             "position": "relative",
+            "width": "initial",
           }
         }
       >
-        <div
+        <span
           style={
             Object {
+              "background": "none",
+              "border": 0,
               "boxSizing": "border-box",
               "display": "block",
+              "height": "initial",
+              "margin": 0,
               "maxWidth": "100%",
+              "opacity": 1,
+              "padding": 0,
+              "width": "initial",
             }
           }
         >
@@ -255,15 +302,19 @@ Array [
             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
             style={
               Object {
-                "border": "none",
+                "background": "none",
+                "border": 0,
                 "display": "block",
+                "height": "initial",
                 "margin": 0,
                 "maxWidth": "100%",
+                "opacity": 1,
                 "padding": 0,
+                "width": "initial",
               }
             }
           />
-        </div>
+        </span>
         <img
           alt="tips"
           data-nimg="intrinsic"
@@ -324,7 +375,7 @@ Array [
             }
           />
         </noscript>
-      </div>
+      </span>
     </div>
     <p
       className="text-sm"

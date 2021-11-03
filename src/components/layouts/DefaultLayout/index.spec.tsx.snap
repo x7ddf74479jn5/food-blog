@@ -391,24 +391,37 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                   onClick={[Function]}
                   onMouseEnter={[Function]}
                 >
-                  <div
+                  <span
                     style={
                       Object {
+                        "background": "none",
+                        "border": 0,
                         "boxSizing": "border-box",
                         "display": "inline-block",
+                        "height": "initial",
                         "margin": 0,
                         "maxWidth": "100%",
+                        "opacity": 1,
                         "overflow": "hidden",
+                        "padding": 0,
                         "position": "relative",
+                        "width": "initial",
                       }
                     }
                   >
-                    <div
+                    <span
                       style={
                         Object {
+                          "background": "none",
+                          "border": 0,
                           "boxSizing": "border-box",
                           "display": "block",
+                          "height": "initial",
+                          "margin": 0,
                           "maxWidth": "100%",
+                          "opacity": 1,
+                          "padding": 0,
+                          "width": "initial",
                         }
                       }
                     >
@@ -418,15 +431,19 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                         style={
                           Object {
-                            "border": "none",
+                            "background": "none",
+                            "border": 0,
                             "display": "block",
+                            "height": "initial",
                             "margin": 0,
                             "maxWidth": "100%",
+                            "opacity": 1,
                             "padding": 0,
+                            "width": "initial",
                           }
                         }
                       />
-                    </div>
+                    </span>
                     <img
                       alt="rice"
                       data-nimg="intrinsic"
@@ -487,7 +504,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                         }
                       />
                     </noscript>
-                  </div>
+                  </span>
                   <p
                     className="text-sm text-center"
                   >
@@ -503,24 +520,37 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                   onClick={[Function]}
                   onMouseEnter={[Function]}
                 >
-                  <div
+                  <span
                     style={
                       Object {
+                        "background": "none",
+                        "border": 0,
                         "boxSizing": "border-box",
                         "display": "inline-block",
+                        "height": "initial",
                         "margin": 0,
                         "maxWidth": "100%",
+                        "opacity": 1,
                         "overflow": "hidden",
+                        "padding": 0,
                         "position": "relative",
+                        "width": "initial",
                       }
                     }
                   >
-                    <div
+                    <span
                       style={
                         Object {
+                          "background": "none",
+                          "border": 0,
                           "boxSizing": "border-box",
                           "display": "block",
+                          "height": "initial",
+                          "margin": 0,
                           "maxWidth": "100%",
+                          "opacity": 1,
+                          "padding": 0,
+                          "width": "initial",
                         }
                       }
                     >
@@ -530,15 +560,19 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                         style={
                           Object {
-                            "border": "none",
+                            "background": "none",
+                            "border": 0,
                             "display": "block",
+                            "height": "initial",
                             "margin": 0,
                             "maxWidth": "100%",
+                            "opacity": 1,
                             "padding": 0,
+                            "width": "initial",
                           }
                         }
                       />
-                    </div>
+                    </span>
                     <img
                       alt="salad"
                       data-nimg="intrinsic"
@@ -599,7 +633,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                         }
                       />
                     </noscript>
-                  </div>
+                  </span>
                   <p
                     className="text-sm text-center"
                   >
@@ -615,24 +649,37 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                   onClick={[Function]}
                   onMouseEnter={[Function]}
                 >
-                  <div
+                  <span
                     style={
                       Object {
+                        "background": "none",
+                        "border": 0,
                         "boxSizing": "border-box",
                         "display": "inline-block",
+                        "height": "initial",
                         "margin": 0,
                         "maxWidth": "100%",
+                        "opacity": 1,
                         "overflow": "hidden",
+                        "padding": 0,
                         "position": "relative",
+                        "width": "initial",
                       }
                     }
                   >
-                    <div
+                    <span
                       style={
                         Object {
+                          "background": "none",
+                          "border": 0,
                           "boxSizing": "border-box",
                           "display": "block",
+                          "height": "initial",
+                          "margin": 0,
                           "maxWidth": "100%",
+                          "opacity": 1,
+                          "padding": 0,
+                          "width": "initial",
                         }
                       }
                     >
@@ -642,15 +689,19 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                         style={
                           Object {
-                            "border": "none",
+                            "background": "none",
+                            "border": 0,
                             "display": "block",
+                            "height": "initial",
                             "margin": 0,
                             "maxWidth": "100%",
+                            "opacity": 1,
                             "padding": 0,
+                            "width": "initial",
                           }
                         }
                       />
-                    </div>
+                    </span>
                     <img
                       alt="tips"
                       data-nimg="intrinsic"
@@ -711,7 +762,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                         }
                       />
                     </noscript>
-                  </div>
+                  </span>
                   <p
                     className="text-sm text-center"
                   >
@@ -753,24 +804,37 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
               <div
                 className="flex-shrink-0 mt-1 mr-4"
               >
-                <div
+                <span
                   style={
                     Object {
+                      "background": "none",
+                      "border": 0,
                       "boxSizing": "border-box",
                       "display": "inline-block",
+                      "height": "initial",
                       "margin": 0,
                       "maxWidth": "100%",
+                      "opacity": 1,
                       "overflow": "hidden",
+                      "padding": 0,
                       "position": "relative",
+                      "width": "initial",
                     }
                   }
                 >
-                  <div
+                  <span
                     style={
                       Object {
+                        "background": "none",
+                        "border": 0,
                         "boxSizing": "border-box",
                         "display": "block",
+                        "height": "initial",
+                        "margin": 0,
                         "maxWidth": "100%",
+                        "opacity": 1,
+                        "padding": 0,
+                        "width": "initial",
                       }
                     }
                   >
@@ -780,15 +844,19 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                       src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style={
                         Object {
-                          "border": "none",
+                          "background": "none",
+                          "border": 0,
                           "display": "block",
+                          "height": "initial",
                           "margin": 0,
                           "maxWidth": "100%",
+                          "opacity": 1,
                           "padding": 0,
+                          "width": "initial",
                         }
                       }
                     />
-                  </div>
+                  </span>
                   <img
                     alt="基本の一番だしの作り方"
                     data-nimg="intrinsic"
@@ -849,7 +917,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                       }
                     />
                   </noscript>
-                </div>
+                </span>
               </div>
             </a>
             <div
@@ -916,24 +984,37 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
               <div
                 className="flex-shrink-0 mt-1 mr-4"
               >
-                <div
+                <span
                   style={
                     Object {
+                      "background": "none",
+                      "border": 0,
                       "boxSizing": "border-box",
                       "display": "inline-block",
+                      "height": "initial",
                       "margin": 0,
                       "maxWidth": "100%",
+                      "opacity": 1,
                       "overflow": "hidden",
+                      "padding": 0,
                       "position": "relative",
+                      "width": "initial",
                     }
                   }
                 >
-                  <div
+                  <span
                     style={
                       Object {
+                        "background": "none",
+                        "border": 0,
                         "boxSizing": "border-box",
                         "display": "block",
+                        "height": "initial",
+                        "margin": 0,
                         "maxWidth": "100%",
+                        "opacity": 1,
+                        "padding": 0,
+                        "width": "initial",
                       }
                     }
                   >
@@ -943,15 +1024,19 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                       src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style={
                         Object {
-                          "border": "none",
+                          "background": "none",
+                          "border": 0,
                           "display": "block",
+                          "height": "initial",
                           "margin": 0,
                           "maxWidth": "100%",
+                          "opacity": 1,
                           "padding": 0,
+                          "width": "initial",
                         }
                       }
                     />
-                  </div>
+                  </span>
                   <img
                     alt="新玉ねぎとトマトのシンプルサラダの作り方"
                     data-nimg="intrinsic"
@@ -1012,7 +1097,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                       }
                     />
                   </noscript>
-                </div>
+                </span>
               </div>
             </a>
             <div
@@ -1079,24 +1164,37 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
               <div
                 className="flex-shrink-0 mt-1 mr-4"
               >
-                <div
+                <span
                   style={
                     Object {
+                      "background": "none",
+                      "border": 0,
                       "boxSizing": "border-box",
                       "display": "inline-block",
+                      "height": "initial",
                       "margin": 0,
                       "maxWidth": "100%",
+                      "opacity": 1,
                       "overflow": "hidden",
+                      "padding": 0,
                       "position": "relative",
+                      "width": "initial",
                     }
                   }
                 >
-                  <div
+                  <span
                     style={
                       Object {
+                        "background": "none",
+                        "border": 0,
                         "boxSizing": "border-box",
                         "display": "block",
+                        "height": "initial",
+                        "margin": 0,
                         "maxWidth": "100%",
+                        "opacity": 1,
+                        "padding": 0,
+                        "width": "initial",
                       }
                     }
                   >
@@ -1106,15 +1204,19 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                       src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style={
                         Object {
-                          "border": "none",
+                          "background": "none",
+                          "border": 0,
                           "display": "block",
+                          "height": "initial",
                           "margin": 0,
                           "maxWidth": "100%",
+                          "opacity": 1,
                           "padding": 0,
+                          "width": "initial",
                         }
                       }
                     />
-                  </div>
+                  </span>
                   <img
                     alt="栄養たっぷり小松菜と油揚げのおひたしの作り方"
                     data-nimg="intrinsic"
@@ -1175,7 +1277,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                       }
                     />
                   </noscript>
-                </div>
+                </span>
               </div>
             </a>
             <div
@@ -1231,24 +1333,37 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
               <div
                 className="flex-shrink-0 mt-1 mr-4"
               >
-                <div
+                <span
                   style={
                     Object {
+                      "background": "none",
+                      "border": 0,
                       "boxSizing": "border-box",
                       "display": "inline-block",
+                      "height": "initial",
                       "margin": 0,
                       "maxWidth": "100%",
+                      "opacity": 1,
                       "overflow": "hidden",
+                      "padding": 0,
                       "position": "relative",
+                      "width": "initial",
                     }
                   }
                 >
-                  <div
+                  <span
                     style={
                       Object {
+                        "background": "none",
+                        "border": 0,
                         "boxSizing": "border-box",
                         "display": "block",
+                        "height": "initial",
+                        "margin": 0,
                         "maxWidth": "100%",
+                        "opacity": 1,
+                        "padding": 0,
+                        "width": "initial",
                       }
                     }
                   >
@@ -1258,15 +1373,19 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                       src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                       style={
                         Object {
-                          "border": "none",
+                          "background": "none",
+                          "border": 0,
                           "display": "block",
+                          "height": "initial",
                           "margin": 0,
                           "maxWidth": "100%",
+                          "opacity": 1,
                           "padding": 0,
+                          "width": "initial",
                         }
                       }
                     />
-                  </div>
+                  </span>
                   <img
                     alt="熊本県産玉ねぎを使った絶品タコライスの作り方"
                     data-nimg="intrinsic"
@@ -1327,7 +1446,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                       }
                     />
                   </noscript>
-                </div>
+                </span>
               </div>
             </a>
             <div

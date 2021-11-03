@@ -14,24 +14,37 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
         onClick={[Function]}
         onMouseEnter={[Function]}
       >
-        <div
+        <span
           style={
             Object {
+              "background": "none",
+              "border": 0,
               "boxSizing": "border-box",
               "display": "inline-block",
+              "height": "initial",
               "margin": 0,
               "maxWidth": "100%",
+              "opacity": 1,
               "overflow": "hidden",
+              "padding": 0,
               "position": "relative",
+              "width": "initial",
             }
           }
         >
-          <div
+          <span
             style={
               Object {
+                "background": "none",
+                "border": 0,
                 "boxSizing": "border-box",
                 "display": "block",
+                "height": "initial",
+                "margin": 0,
                 "maxWidth": "100%",
+                "opacity": 1,
+                "padding": 0,
+                "width": "initial",
               }
             }
           >
@@ -41,15 +54,19 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
               style={
                 Object {
-                  "border": "none",
+                  "background": "none",
+                  "border": 0,
                   "display": "block",
+                  "height": "initial",
                   "margin": 0,
                   "maxWidth": "100%",
+                  "opacity": 1,
                   "padding": 0,
+                  "width": "initial",
                 }
               }
             />
-          </div>
+          </span>
           <img
             alt="Cover Image for 基本の一番だしの作り方"
             data-nimg="intrinsic"
@@ -110,7 +127,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               }
             />
           </noscript>
-        </div>
+        </span>
       </a>
     </div>
     <h2
@@ -140,24 +157,37 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
         onClick={[Function]}
         onMouseEnter={[Function]}
       >
-        <div
+        <span
           style={
             Object {
+              "background": "none",
+              "border": 0,
               "boxSizing": "border-box",
               "display": "inline-block",
+              "height": "initial",
               "margin": 0,
               "maxWidth": "100%",
+              "opacity": 1,
               "overflow": "hidden",
+              "padding": 0,
               "position": "relative",
+              "width": "initial",
             }
           }
         >
-          <div
+          <span
             style={
               Object {
+                "background": "none",
+                "border": 0,
                 "boxSizing": "border-box",
                 "display": "block",
+                "height": "initial",
+                "margin": 0,
                 "maxWidth": "100%",
+                "opacity": 1,
+                "padding": 0,
+                "width": "initial",
               }
             }
           >
@@ -167,15 +197,19 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
               style={
                 Object {
-                  "border": "none",
+                  "background": "none",
+                  "border": 0,
                   "display": "block",
+                  "height": "initial",
                   "margin": 0,
                   "maxWidth": "100%",
+                  "opacity": 1,
                   "padding": 0,
+                  "width": "initial",
                 }
               }
             />
-          </div>
+          </span>
           <img
             alt="Cover Image for 新玉ねぎとトマトのシンプルサラダの作り方"
             data-nimg="intrinsic"
@@ -236,7 +270,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               }
             />
           </noscript>
-        </div>
+        </span>
       </a>
     </div>
     <h2
@@ -266,24 +300,37 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
         onClick={[Function]}
         onMouseEnter={[Function]}
       >
-        <div
+        <span
           style={
             Object {
+              "background": "none",
+              "border": 0,
               "boxSizing": "border-box",
               "display": "inline-block",
+              "height": "initial",
               "margin": 0,
               "maxWidth": "100%",
+              "opacity": 1,
               "overflow": "hidden",
+              "padding": 0,
               "position": "relative",
+              "width": "initial",
             }
           }
         >
-          <div
+          <span
             style={
               Object {
+                "background": "none",
+                "border": 0,
                 "boxSizing": "border-box",
                 "display": "block",
+                "height": "initial",
+                "margin": 0,
                 "maxWidth": "100%",
+                "opacity": 1,
+                "padding": 0,
+                "width": "initial",
               }
             }
           >
@@ -293,15 +340,19 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
               style={
                 Object {
-                  "border": "none",
+                  "background": "none",
+                  "border": 0,
                   "display": "block",
+                  "height": "initial",
                   "margin": 0,
                   "maxWidth": "100%",
+                  "opacity": 1,
                   "padding": 0,
+                  "width": "initial",
                 }
               }
             />
-          </div>
+          </span>
           <img
             alt="Cover Image for 栄養たっぷり小松菜と油揚げのおひたしの作り方"
             data-nimg="intrinsic"
@@ -362,7 +413,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               }
             />
           </noscript>
-        </div>
+        </span>
       </a>
     </div>
     <h2
@@ -392,24 +443,37 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
         onClick={[Function]}
         onMouseEnter={[Function]}
       >
-        <div
+        <span
           style={
             Object {
+              "background": "none",
+              "border": 0,
               "boxSizing": "border-box",
               "display": "inline-block",
+              "height": "initial",
               "margin": 0,
               "maxWidth": "100%",
+              "opacity": 1,
               "overflow": "hidden",
+              "padding": 0,
               "position": "relative",
+              "width": "initial",
             }
           }
         >
-          <div
+          <span
             style={
               Object {
+                "background": "none",
+                "border": 0,
                 "boxSizing": "border-box",
                 "display": "block",
+                "height": "initial",
+                "margin": 0,
                 "maxWidth": "100%",
+                "opacity": 1,
+                "padding": 0,
+                "width": "initial",
               }
             }
           >
@@ -419,15 +483,19 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
               style={
                 Object {
-                  "border": "none",
+                  "background": "none",
+                  "border": 0,
                   "display": "block",
+                  "height": "initial",
                   "margin": 0,
                   "maxWidth": "100%",
+                  "opacity": 1,
                   "padding": 0,
+                  "width": "initial",
                 }
               }
             />
-          </div>
+          </span>
           <img
             alt="Cover Image for 熊本県産玉ねぎを使った絶品タコライスの作り方"
             data-nimg="intrinsic"
@@ -488,7 +556,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               }
             />
           </noscript>
-        </div>
+        </span>
       </a>
     </div>
     <h2

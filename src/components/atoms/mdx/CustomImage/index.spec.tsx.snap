@@ -4,18 +4,24 @@ exports[`components/atoms/mdx/CustomImage snapshot 1`] = `
 <div
   className="flex relative justify-center items-center mb-4 w-full h-48 lg:h-96"
 >
-  <div
+  <span
     style={
       Object {
+        "background": "none",
+        "border": 0,
         "bottom": 0,
         "boxSizing": "border-box",
         "display": "block",
+        "height": "initial",
         "left": 0,
         "margin": 0,
+        "opacity": 1,
         "overflow": "hidden",
+        "padding": 0,
         "position": "absolute",
         "right": 0,
         "top": 0,
+        "width": "initial",
       }
     }
   >
@@ -80,7 +86,7 @@ exports[`components/atoms/mdx/CustomImage snapshot 1`] = `
         }
       />
     </noscript>
-  </div>
+  </span>
 </div>
 `;
 
@@ -88,24 +94,37 @@ exports[`components/atoms/mdx/CustomImage snapshot 2`] = `
 <div
   className="flex relative justify-center items-center mb-4 w-full"
 >
-  <div
+  <span
     style={
       Object {
+        "background": "none",
+        "border": 0,
         "boxSizing": "border-box",
         "display": "inline-block",
+        "height": "initial",
         "margin": 0,
         "maxWidth": "100%",
+        "opacity": 1,
         "overflow": "hidden",
+        "padding": 0,
         "position": "relative",
+        "width": "initial",
       }
     }
   >
-    <div
+    <span
       style={
         Object {
+          "background": "none",
+          "border": 0,
           "boxSizing": "border-box",
           "display": "block",
+          "height": "initial",
+          "margin": 0,
           "maxWidth": "100%",
+          "opacity": 1,
+          "padding": 0,
+          "width": "initial",
         }
       }
     >
@@ -115,15 +134,19 @@ exports[`components/atoms/mdx/CustomImage snapshot 2`] = `
         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
         style={
           Object {
-            "border": "none",
+            "background": "none",
+            "border": 0,
             "display": "block",
+            "height": "initial",
             "margin": 0,
             "maxWidth": "100%",
+            "opacity": 1,
             "padding": 0,
+            "width": "initial",
           }
         }
       />
-    </div>
+    </span>
     <img
       alt=""
       data-nimg="intrinsic"
@@ -184,6 +207,6 @@ exports[`components/atoms/mdx/CustomImage snapshot 2`] = `
         }
       />
     </noscript>
-  </div>
+  </span>
 </div>
 `;
