@@ -5,7 +5,7 @@ import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { CategoryMenu } from "@/components/molecules/CategoryMenu";
 import { SlickArticles } from "@/components/organisms/SlickArticles/index";
-import useWindowSize from "@/hooks/useWindowSize";
+import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup } from "@/types";
 
 type Props = {
@@ -18,8 +18,7 @@ type Props = {
 };
 
 const HomeLayout: React.FC<Props> = ({ pickup, url, pageTitle, children, config, categories }: Props) => {
-  const size = useWindowSize();
-  const isMobile = size.width < 768;
+  const isSmallOrDown = useMedia("<=", "sm");
 
   return (
     <RootLayout config={config}>
@@ -32,7 +31,7 @@ const HomeLayout: React.FC<Props> = ({ pickup, url, pageTitle, children, config,
             url={url}
             title={pageTitle}
             twitterId={config.twitterId}
-            direction={isMobile ? "row" : "column"}
+            direction={isSmallOrDown ? "row" : "column"}
           />
         </AsideContainer>
         <MainContainer>{children}</MainContainer>

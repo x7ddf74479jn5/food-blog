@@ -39,7 +39,7 @@ const ArticleLayout: React.FC<Props> = ({
     <RootLayout config={config}>
       <div className="flex flex-col lg:flex-row gap-16 items-center lg:items-start mt-4 mb-8 lg:mb-16 ">
         <main className="pb-12">{children}</main>
-        <aside className="flex lg:sticky top-8 flex-col gap-y-8 items-center w-full lg:w-1/3 h-full">
+        <aside className="flex lg:sticky top-8 flex-col gap-y-8 items-center w-full lg:w-1/3 max-w-[fit-content] h-full">
           <ContainerWithOrder order="order-1 lg:order-4">
             <TOC isSide />
           </ContainerWithOrder>

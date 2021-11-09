@@ -2,7 +2,7 @@ import { memo, useEffect, useRef, useState } from "react";
 import * as tocbot from "tocbot";
 
 import { SideSectionContainer } from "@/components/atoms/containers/SideSectionContainer";
-import useWindowSize from "@/hooks/useWindowSize";
+import { useMedia } from "@/hooks/useMedia";
 
 type Props = {
   isSide?: boolean;
@@ -13,8 +13,7 @@ const TARGET_NODES = "h1, h2, h3, h4, h5, h6";
 // @see https://tscanlin.github.io/tocbot/
 export const TOC = ({ isSide = false }: Props) => {
   const unmountRef = useRef(false);
-  const size = useWindowSize();
-  const isDesktop = size.width >= 1080;
+  const isLargeOrUp = useMedia(">=", "lg");
   const [isHidden, setIsHidden] = useState(true);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export const TOC = ({ isSide = false }: Props) => {
     return () => {
       unmountRef.current = true;
     };
-  }, [isDesktop, isSide]);
+  }, [isLargeOrUp, isSide]);
 
   useEffect(() => {
     if (isHidden) {

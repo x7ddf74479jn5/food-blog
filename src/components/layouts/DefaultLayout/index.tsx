@@ -9,7 +9,7 @@ import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { CategoryMenu } from "@/components/molecules/CategoryMenu";
 import { PickupArticles } from "@/components/organisms/PickupArticles/index";
-import useWindowSize from "@/hooks/useWindowSize";
+import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup } from "@/types";
 
 type Props = {
@@ -27,8 +27,8 @@ type Props = {
 
 const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, backLinks, categories, pickup }: Props) => {
   const BackLinks = dynamic(() => import("@/components/molecules/BackLinks"));
-  const size = useWindowSize();
-  const isMobile = size.width < 768;
+  const isSmallOrDown = useMedia("<=", "sm");
+
   return (
     <RootLayout config={config}>
       <MiddleAreaContainer>
@@ -37,7 +37,7 @@ const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, back
             url={url}
             title={pageTitle}
             twitterId={config.twitterId}
-            direction={isMobile ? "row" : "column"}
+            direction={isSmallOrDown ? "row" : "column"}
           />
         </AsideContainer>
         <MainContainer>{children}</MainContainer>
