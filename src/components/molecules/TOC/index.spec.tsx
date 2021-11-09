@@ -3,11 +3,6 @@ import React from "react";
 
 import { TOC } from ".";
 
-jest.mock("@/hooks/useWindowSize", () => {
-  const useWindowSize = jest.fn().mockReturnValue({ width: 2000, height: 2000 });
-  return useWindowSize;
-});
-
 describe("components/molecules/TOC", () => {
   console.warn = jest.fn();
 

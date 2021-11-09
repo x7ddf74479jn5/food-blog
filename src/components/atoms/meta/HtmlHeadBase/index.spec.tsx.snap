@@ -18,16 +18,16 @@ Array [
     name="description"
   />,
   <meta
-    content="https://food-blog-chi.vercel.app/articles/1"
-    property="og:url"
-  />,
-  <meta
     content="基本の一番だしの作り方"
     property="og:title"
   />,
   <meta
     content="だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。"
     property="og:description"
+  />,
+  <meta
+    content="https://food-blog-chi.vercel.app/articles/1"
+    property="og:url"
   />,
   <meta
     content="/images/5026416_s.jpg"

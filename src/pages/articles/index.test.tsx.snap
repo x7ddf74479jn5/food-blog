@@ -119,12 +119,12 @@ exports[`pages/categories snapshot 1`] = `
         name="googlebot"
       />
       <meta
-        content="https://food-blog-chi.vercel.app/1"
-        property="og:url"
-      />
-      <meta
         content="基本の一番だしの作り方"
         property="og:title"
+      />
+      <meta
+        content="https://food-blog-chi.vercel.app/1"
+        property="og:url"
       />
       <meta
         content="/images/5026416_s.jpg"
@@ -1485,7 +1485,7 @@ exports[`pages/categories snapshot 1`] = `
             カテゴリー
           </h2>
           <div
-            className="grid grid-flow-row gap-2 grid-cols-3 md:grid-cols-5 lg:grid-cols-3"
+            className="grid grid-flow-row gap-2 place-items-center grid-cols-3 md:grid-cols-5 lg:grid-cols-3"
           >
             <div
               className="flex flex-col justify-center items-center w-24 h-full"
