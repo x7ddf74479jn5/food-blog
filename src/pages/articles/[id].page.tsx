@@ -37,7 +37,7 @@ export const ArticleDetail = ({
   const { host } = config;
 
   const url = new URL(id ?? "", host).toString();
-  const backLinks = getBackLinks([UrlTable.home]);
+  const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
   const safePublishedAt = getSafeDate(publishedAt);
   const safeModifiedAt = getSafeDate(updatedAt);
   const { name: writerName, avatar } = writer;

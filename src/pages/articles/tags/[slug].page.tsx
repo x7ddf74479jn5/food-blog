@@ -16,7 +16,7 @@ const Tags: NextPage<Props> = ({ articles, tag, config, categories, pickup }) =>
   const { host } = config;
   const title = tag.name;
   const url = new URL(`${UrlTable.tags}/${tag.slug}`, host).toString();
-  const backLinks = getBackLinks([UrlTable.home]);
+  const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
 
   return (
     <DefaultLayout

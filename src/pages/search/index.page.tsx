@@ -18,7 +18,7 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
   const { host } = config;
   const title = `検索結果：${keyword}`;
   const url = new URL(`${UrlTable.search}/q=${keyword ?? ""}`, host).toString();
-  const backLinks = getBackLinks([UrlTable.home]);
+  const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
 
   return (
     <DefaultLayout
