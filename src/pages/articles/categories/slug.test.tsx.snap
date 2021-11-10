@@ -101,86 +101,11 @@ exports[`pages/categories snapshot 1`] = `
       </div>
     </div>
   </header>
-  <title>
-    カテゴリー一覧
-  </title>
-  <meta
-    content="index,follow"
-    name="robots"
-  />
-  <meta
-    content="index,follow"
-    name="googlebot"
-  />
-  <meta
-    content="カテゴリー一覧"
-    property="og:title"
-  />
-  <meta
-    content="https://food-blog-chi.vercel.app/articles/categories"
-    property="og:url"
-  />
-  <meta
-    content="#00a300"
-    name="msapplication-TileColor"
-  />
-  <meta
-    content="/favicon/browserconfig.xml"
-    name="msapplication-config"
-  />
-  <meta
-    content="#fff"
-    name="theme-color"
-  />
-  <link
-    href="/favicon/apple-touch-icon.png"
-    rel="apple-touch-icon"
-    sizes="180x180"
-  />
-  <link
-    href="/favicon/favicon-32x32.png"
-    rel="icon"
-    sizes="32x32"
-    type="image/png"
-  />
-  <link
-    href="/favicon/favicon-16x16.png"
-    rel="icon"
-    sizes="16x16"
-    type="image/png"
-  />
-  <link
-    href="/favicon/favicon.ico"
-    rel="icon"
-  />
-  <link
-    href="/favicon/site_manifest.json"
-    rel="manifest"
-  />
-  <link
-    color="#5bbad5"
-    href="/favicon/safari-pinned-tab.svg"
-    rel="mask-icon"
-  />
-  <link
-    href="/feed.xml"
-    rel="alternate"
-    type="application/rss+xml"
-  />
-  <link
-    href="https://food-blog-chi.vercel.app/articles/categories"
-    rel="canonical"
-  />
-  <h1
-    className="mb-4 text-4xl font-bold"
-  >
-    カテゴリー一覧
-  </h1>
   <div
     className="flex flex-col md:flex-row gap-4 md:gap-16 justify-center items-center md:items-stretch mb-16"
   >
     <aside
-      className="flex flex-col flex-1 order-2 md:order-1  gap-y-8 items-center md:mt-16 w-full  min-w-max lg:w-1/3 h-auto lg:w-full"
+      className="flex flex-col flex-1 order-2 md:order-1  gap-y-8 items-center md:mt-16 w-full  min-w-max lg:w-1/3 h-auto undefined"
     >
       <div
         className="flex flex-col h-full"
@@ -252,7 +177,7 @@ exports[`pages/categories snapshot 1`] = `
                   "padding": 0,
                 }
               }
-              title="カテゴリー一覧"
+              title="ご飯物"
             >
               <div
                 className="group inline-block relative cursor-pointer"
@@ -434,390 +359,1081 @@ exports[`pages/categories snapshot 1`] = `
       </div>
     </aside>
     <main
-      className="grid order-1 md:order-2 grid-cols-3 sm:grid-cols-5 lg:grid-cols-6 gap-2 mt-4 mb-12"
+      className="overflow-hidden flex-auto order-1 md:order-2 pb-12 mt-8 md:mt-16 mb-0 w-full max-w-prose"
     >
-      <div
-        className="flex flex-col justify-center items-center "
+      <title>
+        ご飯物
+      </title>
+      <meta
+        content="index,follow"
+        name="robots"
+      />
+      <meta
+        content="index,follow"
+        name="googlebot"
+      />
+      <meta
+        content="ご飯物"
+        property="og:title"
+      />
+      <meta
+        content="https://food-blog-chi.vercel.app/articles/categories/rice"
+        property="og:url"
+      />
+      <meta
+        content="/images/3129120_s.jpg"
+        property="og:image"
+      />
+      <meta
+        content="#00a300"
+        name="msapplication-TileColor"
+      />
+      <meta
+        content="/favicon/browserconfig.xml"
+        name="msapplication-config"
+      />
+      <meta
+        content="#fff"
+        name="theme-color"
+      />
+      <link
+        href="/favicon/apple-touch-icon.png"
+        rel="apple-touch-icon"
+        sizes="180x180"
+      />
+      <link
+        href="/favicon/favicon-32x32.png"
+        rel="icon"
+        sizes="32x32"
+        type="image/png"
+      />
+      <link
+        href="/favicon/favicon-16x16.png"
+        rel="icon"
+        sizes="16x16"
+        type="image/png"
+      />
+      <link
+        href="/favicon/favicon.ico"
+        rel="icon"
+      />
+      <link
+        href="/favicon/site_manifest.json"
+        rel="manifest"
+      />
+      <link
+        color="#5bbad5"
+        href="/favicon/safari-pinned-tab.svg"
+        rel="mask-icon"
+      />
+      <link
+        href="/feed.xml"
+        rel="alternate"
+        type="application/rss+xml"
+      />
+      <link
+        href="https://food-blog-chi.vercel.app/articles/categories/rice"
+        rel="canonical"
+      />
+      <h1
+        className="mb-4 text-4xl font-bold"
       >
-        <div
-          className="w-auto"
-        >
-          <span
-            style={
-              Object {
-                "background": "none",
-                "border": 0,
-                "boxSizing": "border-box",
-                "display": "inline-block",
-                "height": "initial",
-                "margin": 0,
-                "maxWidth": "100%",
-                "opacity": 1,
-                "overflow": "hidden",
-                "padding": 0,
-                "position": "relative",
-                "width": "initial",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "background": "none",
-                  "border": 0,
-                  "boxSizing": "border-box",
-                  "display": "block",
-                  "height": "initial",
-                  "margin": 0,
-                  "maxWidth": "100%",
-                  "opacity": 1,
-                  "padding": 0,
-                  "width": "initial",
-                }
-              }
-            >
-              <img
-                alt=""
-                aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
-                style={
-                  Object {
-                    "background": "none",
-                    "border": 0,
-                    "display": "block",
-                    "height": "initial",
-                    "margin": 0,
-                    "maxWidth": "100%",
-                    "opacity": 1,
-                    "padding": 0,
-                    "width": "initial",
-                  }
-                }
-              />
-            </span>
-            <img
-              alt="rice"
-              data-nimg="intrinsic"
-              decoding="async"
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              style={
-                Object {
-                  "border": "none",
-                  "bottom": 0,
-                  "boxSizing": "border-box",
-                  "display": "block",
-                  "height": 0,
-                  "left": 0,
-                  "margin": "auto",
-                  "maxHeight": "100%",
-                  "maxWidth": "100%",
-                  "minHeight": "100%",
-                  "minWidth": "100%",
-                  "objectFit": "cover",
-                  "objectPosition": undefined,
-                  "padding": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                  "width": 0,
-                }
-              }
-            />
-            <noscript>
-              <img
-                alt="rice"
-                data-nimg="intrinsic"
-                decoding="async"
-                loading="lazy"
-                src="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=256&q=75"
-                srcSet="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F3129120_s.jpg&w=256&q=75 2x"
-                style={
-                  Object {
-                    "border": "none",
-                    "bottom": 0,
-                    "boxSizing": "border-box",
-                    "display": "block",
-                    "height": 0,
-                    "left": 0,
-                    "margin": "auto",
-                    "maxHeight": "100%",
-                    "maxWidth": "100%",
-                    "minHeight": "100%",
-                    "minWidth": "100%",
-                    "objectFit": "cover",
-                    "objectPosition": undefined,
-                    "padding": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                    "width": 0,
-                  }
-                }
-              />
-            </noscript>
-          </span>
-        </div>
-        <p
-          className="text-sm"
-        >
-          ご飯物
-        </p>
-      </div>
+        カテゴリー：
+        ご飯物
+      </h1>
       <div
-        className="flex flex-col justify-center items-center "
+        className="w-full min-h-screen"
       >
-        <div
-          className="w-auto"
+        <section
+          className="space-y-12"
         >
-          <span
-            style={
-              Object {
-                "background": "none",
-                "border": 0,
-                "boxSizing": "border-box",
-                "display": "inline-block",
-                "height": "initial",
-                "margin": 0,
-                "maxWidth": "100%",
-                "opacity": 1,
-                "overflow": "hidden",
-                "padding": 0,
-                "position": "relative",
-                "width": "initial",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "background": "none",
-                  "border": 0,
-                  "boxSizing": "border-box",
-                  "display": "block",
-                  "height": "initial",
-                  "margin": 0,
-                  "maxWidth": "100%",
-                  "opacity": 1,
-                  "padding": 0,
-                  "width": "initial",
-                }
-              }
+          <article>
+            <div
+              className="mb-4"
             >
-              <img
-                alt=""
-                aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
-                style={
-                  Object {
-                    "background": "none",
-                    "border": 0,
-                    "display": "block",
-                    "height": "initial",
-                    "margin": 0,
-                    "maxWidth": "100%",
-                    "opacity": 1,
-                    "padding": 0,
-                    "width": "initial",
+              <a
+                aria-label="基本の一番だしの作り方"
+                href="/articles/1"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                <span
+                  style={
+                    Object {
+                      "background": "none",
+                      "border": 0,
+                      "boxSizing": "border-box",
+                      "display": "inline-block",
+                      "height": "initial",
+                      "margin": 0,
+                      "maxWidth": "100%",
+                      "opacity": 1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "relative",
+                      "width": "initial",
+                    }
                   }
-                }
-              />
-            </span>
-            <img
-              alt="salad"
-              data-nimg="intrinsic"
-              decoding="async"
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              style={
-                Object {
-                  "border": "none",
-                  "bottom": 0,
-                  "boxSizing": "border-box",
-                  "display": "block",
-                  "height": 0,
-                  "left": 0,
-                  "margin": "auto",
-                  "maxHeight": "100%",
-                  "maxWidth": "100%",
-                  "minHeight": "100%",
-                  "minWidth": "100%",
-                  "objectFit": "cover",
-                  "objectPosition": undefined,
-                  "padding": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                  "width": 0,
-                }
-              }
-            />
-            <noscript>
-              <img
-                alt="salad"
-                data-nimg="intrinsic"
-                decoding="async"
-                loading="lazy"
-                src="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=256&q=75"
-                srcSet="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F2996666_s.jpg&w=256&q=75 2x"
-                style={
-                  Object {
-                    "border": "none",
-                    "bottom": 0,
-                    "boxSizing": "border-box",
-                    "display": "block",
-                    "height": 0,
-                    "left": 0,
-                    "margin": "auto",
-                    "maxHeight": "100%",
-                    "maxWidth": "100%",
-                    "minHeight": "100%",
-                    "minWidth": "100%",
-                    "objectFit": "cover",
-                    "objectPosition": undefined,
-                    "padding": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                    "width": 0,
-                  }
-                }
-              />
-            </noscript>
-          </span>
-        </div>
-        <p
-          className="text-sm"
-        >
-          サラダ
-        </p>
-      </div>
-      <div
-        className="flex flex-col justify-center items-center "
-      >
-        <div
-          className="w-auto"
-        >
-          <span
-            style={
-              Object {
-                "background": "none",
-                "border": 0,
-                "boxSizing": "border-box",
-                "display": "inline-block",
-                "height": "initial",
-                "margin": 0,
-                "maxWidth": "100%",
-                "opacity": 1,
-                "overflow": "hidden",
-                "padding": 0,
-                "position": "relative",
-                "width": "initial",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "background": "none",
-                  "border": 0,
-                  "boxSizing": "border-box",
-                  "display": "block",
-                  "height": "initial",
-                  "margin": 0,
-                  "maxWidth": "100%",
-                  "opacity": 1,
-                  "padding": 0,
-                  "width": "initial",
-                }
-              }
+                >
+                  <span
+                    style={
+                      Object {
+                        "background": "none",
+                        "border": 0,
+                        "boxSizing": "border-box",
+                        "display": "block",
+                        "height": "initial",
+                        "margin": 0,
+                        "maxWidth": "100%",
+                        "opacity": 1,
+                        "padding": 0,
+                        "width": "initial",
+                      }
+                    }
+                  >
+                    <img
+                      alt=""
+                      aria-hidden={true}
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+                      style={
+                        Object {
+                          "background": "none",
+                          "border": 0,
+                          "display": "block",
+                          "height": "initial",
+                          "margin": 0,
+                          "maxWidth": "100%",
+                          "opacity": 1,
+                          "padding": 0,
+                          "width": "initial",
+                        }
+                      }
+                    />
+                  </span>
+                  <img
+                    alt="Cover Image for 基本の一番だしの作り方"
+                    data-nimg="intrinsic"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style={
+                      Object {
+                        "border": "none",
+                        "bottom": 0,
+                        "boxSizing": "border-box",
+                        "display": "block",
+                        "height": 0,
+                        "left": 0,
+                        "margin": "auto",
+                        "maxHeight": "100%",
+                        "maxWidth": "100%",
+                        "minHeight": "100%",
+                        "minWidth": "100%",
+                        "objectFit": undefined,
+                        "objectPosition": undefined,
+                        "padding": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "width": 0,
+                      }
+                    }
+                  />
+                  <noscript>
+                    <img
+                      alt="Cover Image for 基本の一番だしの作り方"
+                      data-nimg="intrinsic"
+                      decoding="async"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75"
+                      srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=1920&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75 2x"
+                      style={
+                        Object {
+                          "border": "none",
+                          "bottom": 0,
+                          "boxSizing": "border-box",
+                          "display": "block",
+                          "height": 0,
+                          "left": 0,
+                          "margin": "auto",
+                          "maxHeight": "100%",
+                          "maxWidth": "100%",
+                          "minHeight": "100%",
+                          "minWidth": "100%",
+                          "objectFit": undefined,
+                          "objectPosition": undefined,
+                          "padding": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                          "width": 0,
+                        }
+                      }
+                    />
+                  </noscript>
+                </span>
+              </a>
+            </div>
+            <h2
+              className="mb-4 text-2xl font-bold"
             >
-              <img
-                alt=""
-                aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
-                style={
-                  Object {
-                    "background": "none",
-                    "border": 0,
-                    "display": "block",
-                    "height": "initial",
-                    "margin": 0,
-                    "maxWidth": "100%",
-                    "opacity": 1,
-                    "padding": 0,
-                    "width": "initial",
+              <a
+                href="/articles/1"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                基本の一番だしの作り方
+              </a>
+            </h2>
+            <p
+              className="dark:text-gray-300 line-clamp-2"
+            >
+              だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。
+            </p>
+          </article>
+          <article>
+            <div
+              className="mb-4"
+            >
+              <a
+                aria-label="新玉ねぎとトマトのシンプルサラダの作り方"
+                href="/articles/2"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                <span
+                  style={
+                    Object {
+                      "background": "none",
+                      "border": 0,
+                      "boxSizing": "border-box",
+                      "display": "inline-block",
+                      "height": "initial",
+                      "margin": 0,
+                      "maxWidth": "100%",
+                      "opacity": 1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "relative",
+                      "width": "initial",
+                    }
                   }
-                }
-              />
-            </span>
-            <img
-              alt="tips"
-              data-nimg="intrinsic"
-              decoding="async"
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              style={
-                Object {
-                  "border": "none",
-                  "bottom": 0,
-                  "boxSizing": "border-box",
-                  "display": "block",
-                  "height": 0,
-                  "left": 0,
-                  "margin": "auto",
-                  "maxHeight": "100%",
-                  "maxWidth": "100%",
-                  "minHeight": "100%",
-                  "minWidth": "100%",
-                  "objectFit": "cover",
-                  "objectPosition": undefined,
-                  "padding": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                  "width": 0,
-                }
-              }
-            />
-            <noscript>
-              <img
-                alt="tips"
-                data-nimg="intrinsic"
-                decoding="async"
-                loading="lazy"
-                src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=256&q=75"
-                srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=256&q=75 2x"
-                style={
-                  Object {
-                    "border": "none",
-                    "bottom": 0,
-                    "boxSizing": "border-box",
-                    "display": "block",
-                    "height": 0,
-                    "left": 0,
-                    "margin": "auto",
-                    "maxHeight": "100%",
-                    "maxWidth": "100%",
-                    "minHeight": "100%",
-                    "minWidth": "100%",
-                    "objectFit": "cover",
-                    "objectPosition": undefined,
-                    "padding": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                    "width": 0,
+                >
+                  <span
+                    style={
+                      Object {
+                        "background": "none",
+                        "border": 0,
+                        "boxSizing": "border-box",
+                        "display": "block",
+                        "height": "initial",
+                        "margin": 0,
+                        "maxWidth": "100%",
+                        "opacity": 1,
+                        "padding": 0,
+                        "width": "initial",
+                      }
+                    }
+                  >
+                    <img
+                      alt=""
+                      aria-hidden={true}
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+                      style={
+                        Object {
+                          "background": "none",
+                          "border": 0,
+                          "display": "block",
+                          "height": "initial",
+                          "margin": 0,
+                          "maxWidth": "100%",
+                          "opacity": 1,
+                          "padding": 0,
+                          "width": "initial",
+                        }
+                      }
+                    />
+                  </span>
+                  <img
+                    alt="Cover Image for 新玉ねぎとトマトのシンプルサラダの作り方"
+                    data-nimg="intrinsic"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style={
+                      Object {
+                        "border": "none",
+                        "bottom": 0,
+                        "boxSizing": "border-box",
+                        "display": "block",
+                        "height": 0,
+                        "left": 0,
+                        "margin": "auto",
+                        "maxHeight": "100%",
+                        "maxWidth": "100%",
+                        "minHeight": "100%",
+                        "minWidth": "100%",
+                        "objectFit": undefined,
+                        "objectPosition": undefined,
+                        "padding": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "width": 0,
+                      }
+                    }
+                  />
+                  <noscript>
+                    <img
+                      alt="Cover Image for 新玉ねぎとトマトのシンプルサラダの作り方"
+                      data-nimg="intrinsic"
+                      decoding="async"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=3840&q=75"
+                      srcSet="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=1920&q=75 1x, /_next/image?url=%2Fimages%2F2996666_s.jpg&w=3840&q=75 2x"
+                      style={
+                        Object {
+                          "border": "none",
+                          "bottom": 0,
+                          "boxSizing": "border-box",
+                          "display": "block",
+                          "height": 0,
+                          "left": 0,
+                          "margin": "auto",
+                          "maxHeight": "100%",
+                          "maxWidth": "100%",
+                          "minHeight": "100%",
+                          "minWidth": "100%",
+                          "objectFit": undefined,
+                          "objectPosition": undefined,
+                          "padding": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                          "width": 0,
+                        }
+                      }
+                    />
+                  </noscript>
+                </span>
+              </a>
+            </div>
+            <h2
+              className="mb-4 text-2xl font-bold"
+            >
+              <a
+                href="/articles/2"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                新玉ねぎとトマトのシンプルサラダの作り方
+              </a>
+            </h2>
+            <p
+              className="dark:text-gray-300 line-clamp-2"
+            >
+              スライストマトに、たっぷりのサラダ玉ねぎと大葉を乗せ、オリーブオイル、ポン酢、醤油、にんにくで作った特製ドレッシングをかけるだけの簡単・極旨サラダです。
+            </p>
+          </article>
+          <article>
+            <div
+              className="mb-4"
+            >
+              <a
+                aria-label="栄養たっぷり小松菜と油揚げのおひたしの作り方"
+                href="/articles/3"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                <span
+                  style={
+                    Object {
+                      "background": "none",
+                      "border": 0,
+                      "boxSizing": "border-box",
+                      "display": "inline-block",
+                      "height": "initial",
+                      "margin": 0,
+                      "maxWidth": "100%",
+                      "opacity": 1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "relative",
+                      "width": "initial",
+                    }
                   }
-                }
-              />
-            </noscript>
-          </span>
-        </div>
-        <p
-          className="text-sm"
-        >
-          料理基礎
-        </p>
+                >
+                  <span
+                    style={
+                      Object {
+                        "background": "none",
+                        "border": 0,
+                        "boxSizing": "border-box",
+                        "display": "block",
+                        "height": "initial",
+                        "margin": 0,
+                        "maxWidth": "100%",
+                        "opacity": 1,
+                        "padding": 0,
+                        "width": "initial",
+                      }
+                    }
+                  >
+                    <img
+                      alt=""
+                      aria-hidden={true}
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+                      style={
+                        Object {
+                          "background": "none",
+                          "border": 0,
+                          "display": "block",
+                          "height": "initial",
+                          "margin": 0,
+                          "maxWidth": "100%",
+                          "opacity": 1,
+                          "padding": 0,
+                          "width": "initial",
+                        }
+                      }
+                    />
+                  </span>
+                  <img
+                    alt="Cover Image for 栄養たっぷり小松菜と油揚げのおひたしの作り方"
+                    data-nimg="intrinsic"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style={
+                      Object {
+                        "border": "none",
+                        "bottom": 0,
+                        "boxSizing": "border-box",
+                        "display": "block",
+                        "height": 0,
+                        "left": 0,
+                        "margin": "auto",
+                        "maxHeight": "100%",
+                        "maxWidth": "100%",
+                        "minHeight": "100%",
+                        "minWidth": "100%",
+                        "objectFit": undefined,
+                        "objectPosition": undefined,
+                        "padding": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "width": 0,
+                      }
+                    }
+                  />
+                  <noscript>
+                    <img
+                      alt="Cover Image for 栄養たっぷり小松菜と油揚げのおひたしの作り方"
+                      data-nimg="intrinsic"
+                      decoding="async"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2F4966941_s.jpg&w=3840&q=75"
+                      srcSet="/_next/image?url=%2Fimages%2F4966941_s.jpg&w=1920&q=75 1x, /_next/image?url=%2Fimages%2F4966941_s.jpg&w=3840&q=75 2x"
+                      style={
+                        Object {
+                          "border": "none",
+                          "bottom": 0,
+                          "boxSizing": "border-box",
+                          "display": "block",
+                          "height": 0,
+                          "left": 0,
+                          "margin": "auto",
+                          "maxHeight": "100%",
+                          "maxWidth": "100%",
+                          "minHeight": "100%",
+                          "minWidth": "100%",
+                          "objectFit": undefined,
+                          "objectPosition": undefined,
+                          "padding": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                          "width": 0,
+                        }
+                      }
+                    />
+                  </noscript>
+                </span>
+              </a>
+            </div>
+            <h2
+              className="mb-4 text-2xl font-bold"
+            >
+              <a
+                href="/articles/3"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                栄養たっぷり小松菜と油揚げのおひたしの作り方
+              </a>
+            </h2>
+            <p
+              className="dark:text-gray-300 line-clamp-2"
+            >
+              小松菜と油揚げのおひたしは、茹でた子大豆もやしと焼いた油揚げを混ぜた、栄養たっぷりの料理です。かつおぶしを乗せ、オリーブオイル、レモン果汁、醤油をかけてお召し上がりください。前菜やビールのおつまみにピッタリです♪
+            </p>
+          </article>
+          <article>
+            <div
+              className="mb-4"
+            >
+              <a
+                aria-label="熊本県産玉ねぎを使った絶品タコライスの作り方"
+                href="/articles/4"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                <span
+                  style={
+                    Object {
+                      "background": "none",
+                      "border": 0,
+                      "boxSizing": "border-box",
+                      "display": "inline-block",
+                      "height": "initial",
+                      "margin": 0,
+                      "maxWidth": "100%",
+                      "opacity": 1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "relative",
+                      "width": "initial",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "background": "none",
+                        "border": 0,
+                        "boxSizing": "border-box",
+                        "display": "block",
+                        "height": "initial",
+                        "margin": 0,
+                        "maxWidth": "100%",
+                        "opacity": 1,
+                        "padding": 0,
+                        "width": "initial",
+                      }
+                    }
+                  >
+                    <img
+                      alt=""
+                      aria-hidden={true}
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+                      style={
+                        Object {
+                          "background": "none",
+                          "border": 0,
+                          "display": "block",
+                          "height": "initial",
+                          "margin": 0,
+                          "maxWidth": "100%",
+                          "opacity": 1,
+                          "padding": 0,
+                          "width": "initial",
+                        }
+                      }
+                    />
+                  </span>
+                  <img
+                    alt="Cover Image for 熊本県産玉ねぎを使った絶品タコライスの作り方"
+                    data-nimg="intrinsic"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style={
+                      Object {
+                        "border": "none",
+                        "bottom": 0,
+                        "boxSizing": "border-box",
+                        "display": "block",
+                        "height": 0,
+                        "left": 0,
+                        "margin": "auto",
+                        "maxHeight": "100%",
+                        "maxWidth": "100%",
+                        "minHeight": "100%",
+                        "minWidth": "100%",
+                        "objectFit": undefined,
+                        "objectPosition": undefined,
+                        "padding": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "width": 0,
+                      }
+                    }
+                  />
+                  <noscript>
+                    <img
+                      alt="Cover Image for 熊本県産玉ねぎを使った絶品タコライスの作り方"
+                      data-nimg="intrinsic"
+                      decoding="async"
+                      loading="lazy"
+                      src="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=3840&q=75"
+                      srcSet="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=1920&q=75 1x, /_next/image?url=%2Fimages%2F3129120_s.jpg&w=3840&q=75 2x"
+                      style={
+                        Object {
+                          "border": "none",
+                          "bottom": 0,
+                          "boxSizing": "border-box",
+                          "display": "block",
+                          "height": 0,
+                          "left": 0,
+                          "margin": "auto",
+                          "maxHeight": "100%",
+                          "maxWidth": "100%",
+                          "minHeight": "100%",
+                          "minWidth": "100%",
+                          "objectFit": undefined,
+                          "objectPosition": undefined,
+                          "padding": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                          "width": 0,
+                        }
+                      }
+                    />
+                  </noscript>
+                </span>
+              </a>
+            </div>
+            <h2
+              className="mb-4 text-2xl font-bold"
+            >
+              <a
+                href="/articles/4"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                熊本県産玉ねぎを使った絶品タコライスの作り方
+              </a>
+            </h2>
+            <p
+              className="dark:text-gray-300 line-clamp-2"
+            >
+              タコライスは沖縄県の料理ですが、今では日本のどこのご家庭でも食されるようになりました。この「絶品タコライス」は、熊本県産の完全無農薬サラダ玉ねぎを使用しており、この玉ねぎの甘さとタコライスに入ったチリパウダーの辛さが口の中で絶妙にマッチします。ご飯ものだけどビールとの相性は抜群！子供たちも大好きな料理です♪
+            </p>
+          </article>
+        </section>
       </div>
     </main>
+    <aside
+      className="flex flex-col flex-1 order-3 gap-y-8 items-center md:mt-16 w-full  min-w-max lg:w-1/3 h-auto undefined"
+    >
+      <div
+        className="flex flex-col h-full"
+      >
+        <div
+          className="flex md:sticky md:top-16"
+        >
+          <section
+            className="container p-2 dark:text-white bg-gray-50 dark:bg-gray-700"
+          >
+            <h2
+              className="px-2 pb-2 mb-2 border-b-2"
+            >
+              カテゴリー
+            </h2>
+            <div
+              className="grid grid-flow-row gap-2 place-items-center grid-cols-3 sm:grid-cols-5 md:grid-cols-1"
+            >
+              <div
+                className="flex flex-col justify-center items-center w-24 h-full"
+              >
+                <a
+                  href="/articles/categories/rice"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    style={
+                      Object {
+                        "background": "none",
+                        "border": 0,
+                        "boxSizing": "border-box",
+                        "display": "inline-block",
+                        "height": "initial",
+                        "margin": 0,
+                        "maxWidth": "100%",
+                        "opacity": 1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "relative",
+                        "width": "initial",
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "background": "none",
+                          "border": 0,
+                          "boxSizing": "border-box",
+                          "display": "block",
+                          "height": "initial",
+                          "margin": 0,
+                          "maxWidth": "100%",
+                          "opacity": 1,
+                          "padding": 0,
+                          "width": "initial",
+                        }
+                      }
+                    >
+                      <img
+                        alt=""
+                        aria-hidden={true}
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                        style={
+                          Object {
+                            "background": "none",
+                            "border": 0,
+                            "display": "block",
+                            "height": "initial",
+                            "margin": 0,
+                            "maxWidth": "100%",
+                            "opacity": 1,
+                            "padding": 0,
+                            "width": "initial",
+                          }
+                        }
+                      />
+                    </span>
+                    <img
+                      alt="rice"
+                      data-nimg="intrinsic"
+                      decoding="async"
+                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                      style={
+                        Object {
+                          "border": "none",
+                          "bottom": 0,
+                          "boxSizing": "border-box",
+                          "display": "block",
+                          "height": 0,
+                          "left": 0,
+                          "margin": "auto",
+                          "maxHeight": "100%",
+                          "maxWidth": "100%",
+                          "minHeight": "100%",
+                          "minWidth": "100%",
+                          "objectFit": "cover",
+                          "objectPosition": undefined,
+                          "padding": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                          "width": 0,
+                        }
+                      }
+                    />
+                    <noscript>
+                      <img
+                        alt="rice"
+                        data-nimg="intrinsic"
+                        decoding="async"
+                        loading="lazy"
+                        src="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=256&q=75"
+                        srcSet="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F3129120_s.jpg&w=256&q=75 2x"
+                        style={
+                          Object {
+                            "border": "none",
+                            "bottom": 0,
+                            "boxSizing": "border-box",
+                            "display": "block",
+                            "height": 0,
+                            "left": 0,
+                            "margin": "auto",
+                            "maxHeight": "100%",
+                            "maxWidth": "100%",
+                            "minHeight": "100%",
+                            "minWidth": "100%",
+                            "objectFit": "cover",
+                            "objectPosition": undefined,
+                            "padding": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "width": 0,
+                          }
+                        }
+                      />
+                    </noscript>
+                  </span>
+                  <p
+                    className="text-sm text-center"
+                  >
+                    ご飯物
+                  </p>
+                </a>
+              </div>
+              <div
+                className="flex flex-col justify-center items-center w-24 h-full"
+              >
+                <a
+                  href="/articles/categories/salad"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    style={
+                      Object {
+                        "background": "none",
+                        "border": 0,
+                        "boxSizing": "border-box",
+                        "display": "inline-block",
+                        "height": "initial",
+                        "margin": 0,
+                        "maxWidth": "100%",
+                        "opacity": 1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "relative",
+                        "width": "initial",
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "background": "none",
+                          "border": 0,
+                          "boxSizing": "border-box",
+                          "display": "block",
+                          "height": "initial",
+                          "margin": 0,
+                          "maxWidth": "100%",
+                          "opacity": 1,
+                          "padding": 0,
+                          "width": "initial",
+                        }
+                      }
+                    >
+                      <img
+                        alt=""
+                        aria-hidden={true}
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                        style={
+                          Object {
+                            "background": "none",
+                            "border": 0,
+                            "display": "block",
+                            "height": "initial",
+                            "margin": 0,
+                            "maxWidth": "100%",
+                            "opacity": 1,
+                            "padding": 0,
+                            "width": "initial",
+                          }
+                        }
+                      />
+                    </span>
+                    <img
+                      alt="salad"
+                      data-nimg="intrinsic"
+                      decoding="async"
+                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                      style={
+                        Object {
+                          "border": "none",
+                          "bottom": 0,
+                          "boxSizing": "border-box",
+                          "display": "block",
+                          "height": 0,
+                          "left": 0,
+                          "margin": "auto",
+                          "maxHeight": "100%",
+                          "maxWidth": "100%",
+                          "minHeight": "100%",
+                          "minWidth": "100%",
+                          "objectFit": "cover",
+                          "objectPosition": undefined,
+                          "padding": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                          "width": 0,
+                        }
+                      }
+                    />
+                    <noscript>
+                      <img
+                        alt="salad"
+                        data-nimg="intrinsic"
+                        decoding="async"
+                        loading="lazy"
+                        src="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=256&q=75"
+                        srcSet="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F2996666_s.jpg&w=256&q=75 2x"
+                        style={
+                          Object {
+                            "border": "none",
+                            "bottom": 0,
+                            "boxSizing": "border-box",
+                            "display": "block",
+                            "height": 0,
+                            "left": 0,
+                            "margin": "auto",
+                            "maxHeight": "100%",
+                            "maxWidth": "100%",
+                            "minHeight": "100%",
+                            "minWidth": "100%",
+                            "objectFit": "cover",
+                            "objectPosition": undefined,
+                            "padding": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "width": 0,
+                          }
+                        }
+                      />
+                    </noscript>
+                  </span>
+                  <p
+                    className="text-sm text-center"
+                  >
+                    サラダ
+                  </p>
+                </a>
+              </div>
+              <div
+                className="flex flex-col justify-center items-center w-24 h-full"
+              >
+                <a
+                  href="/articles/categories/tips"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    style={
+                      Object {
+                        "background": "none",
+                        "border": 0,
+                        "boxSizing": "border-box",
+                        "display": "inline-block",
+                        "height": "initial",
+                        "margin": 0,
+                        "maxWidth": "100%",
+                        "opacity": 1,
+                        "overflow": "hidden",
+                        "padding": 0,
+                        "position": "relative",
+                        "width": "initial",
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "background": "none",
+                          "border": 0,
+                          "boxSizing": "border-box",
+                          "display": "block",
+                          "height": "initial",
+                          "margin": 0,
+                          "maxWidth": "100%",
+                          "opacity": 1,
+                          "padding": 0,
+                          "width": "initial",
+                        }
+                      }
+                    >
+                      <img
+                        alt=""
+                        aria-hidden={true}
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                        style={
+                          Object {
+                            "background": "none",
+                            "border": 0,
+                            "display": "block",
+                            "height": "initial",
+                            "margin": 0,
+                            "maxWidth": "100%",
+                            "opacity": 1,
+                            "padding": 0,
+                            "width": "initial",
+                          }
+                        }
+                      />
+                    </span>
+                    <img
+                      alt="tips"
+                      data-nimg="intrinsic"
+                      decoding="async"
+                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                      style={
+                        Object {
+                          "border": "none",
+                          "bottom": 0,
+                          "boxSizing": "border-box",
+                          "display": "block",
+                          "height": 0,
+                          "left": 0,
+                          "margin": "auto",
+                          "maxHeight": "100%",
+                          "maxWidth": "100%",
+                          "minHeight": "100%",
+                          "minWidth": "100%",
+                          "objectFit": "cover",
+                          "objectPosition": undefined,
+                          "padding": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                          "width": 0,
+                        }
+                      }
+                    />
+                    <noscript>
+                      <img
+                        alt="tips"
+                        data-nimg="intrinsic"
+                        decoding="async"
+                        loading="lazy"
+                        src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=256&q=75"
+                        srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=256&q=75 2x"
+                        style={
+                          Object {
+                            "border": "none",
+                            "bottom": 0,
+                            "boxSizing": "border-box",
+                            "display": "block",
+                            "height": 0,
+                            "left": 0,
+                            "margin": "auto",
+                            "maxHeight": "100%",
+                            "maxWidth": "100%",
+                            "minHeight": "100%",
+                            "minWidth": "100%",
+                            "objectFit": "cover",
+                            "objectPosition": undefined,
+                            "padding": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "width": 0,
+                          }
+                        }
+                      />
+                    </noscript>
+                  </span>
+                  <p
+                    className="text-sm text-center"
+                  >
+                    料理基礎
+                  </p>
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </aside>
   </div>
   <div
     className="flex flex-col lg:flex-row gap-8 mb-16"
@@ -1574,36 +2190,6 @@ exports[`pages/categories snapshot 1`] = `
     <div
       className="flex flex-col order-2 lg:order-1 items-center w-full flex-shrink"
     >
-      <div
-        className="flex flex-col space-y-2 align-top "
-      >
-        <a
-          className="flex flex-row gap-2 items-center"
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          <svg
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            strokeWidth="0"
-            style={
-              Object {
-                "color": undefined,
-              }
-            }
-            viewBox="0 0 320 512"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
-            />
-          </svg>
-          レシピ一覧へ
-        </a>
-      </div>
        
     </div>
   </div>

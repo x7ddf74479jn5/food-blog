@@ -12,7 +12,7 @@ import { getBackLinks } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Categories: NextPage<Props> = ({ articles, category, config, categories, pickup }) => {
+const Category: NextPage<Props> = ({ articles, category, config, categories, pickup }) => {
   const { host } = config;
   const title = category.name;
   const url = new URL(`${UrlTable.categories}/${category.slug}`, host).toString();
@@ -83,4 +83,4 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
   };
 };
 
-export default Categories;
+export default Category;
