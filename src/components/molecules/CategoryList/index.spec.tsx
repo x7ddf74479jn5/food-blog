@@ -7,7 +7,7 @@ import { CategoryList } from ".";
 describe("components/molecules/CategoryList", () => {
   const mockCategoryList = Object.values(mockCategories);
   it("snapshot", () => {
-    const tree = renderer.create(<CategoryList categories={mockCategoryList} />).toJSON();
+    const tree = renderer.create(<CategoryList categories={mockCategoryList} width={128} height={128} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

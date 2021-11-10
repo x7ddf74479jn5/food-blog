@@ -4,15 +4,17 @@ import type { TCategory } from "@/types";
 
 type CategoryListProps = {
   categories: TCategory[];
+  width: number;
+  height: number;
 };
 
-export const CategoryList: React.VFC<CategoryListProps> = ({ categories }) => {
+export const CategoryList: React.VFC<CategoryListProps> = ({ categories, width, height }) => {
   return (
     <>
       {categories.map((category) => (
         <div className="flex flex-col justify-center items-center " key={category.id}>
-          <div className="w-10 h-10">
-            <Image src={category.image.url} alt={category.slug} width={128} height={128} objectFit="cover" />
+          <div className="w-auto">
+            <Image src={category.image.url} alt={category.slug} width={width} height={height} objectFit="cover" />
           </div>
           <p className="text-sm">{category.name}</p>
         </div>

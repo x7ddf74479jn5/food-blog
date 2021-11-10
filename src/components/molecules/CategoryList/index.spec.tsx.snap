@@ -6,7 +6,7 @@ Array [
     className="flex flex-col justify-center items-center "
   >
     <div
-      className="w-10 h-10"
+      className="w-auto"
     >
       <span
         style={
@@ -133,7 +133,7 @@ Array [
     className="flex flex-col justify-center items-center "
   >
     <div
-      className="w-10 h-10"
+      className="w-auto"
     >
       <span
         style={
@@ -260,7 +260,7 @@ Array [
     className="flex flex-col justify-center items-center "
   >
     <div
-      className="w-10 h-10"
+      className="w-auto"
     >
       <span
         style={

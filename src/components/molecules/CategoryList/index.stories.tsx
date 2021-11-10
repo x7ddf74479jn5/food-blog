@@ -13,4 +13,6 @@ const Template: ComponentStory<typeof CategoryList> = (args) => <CategoryList {.
 export const Default = Template.bind({});
 Default.args = {
   categories: Object.values(mockCategories),
+  width: 128,
+  height: 128,
 };
