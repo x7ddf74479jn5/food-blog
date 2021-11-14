@@ -5,6 +5,14 @@ module.exports = {
   theme: {
     extend: {
       typography: (theme) => ({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        DEFAULT: {
+          css: {
+            a: {
+              color: theme("colors.green.700"),
+            },
+          },
+        },
         dark: {
           css: {
             color: theme("colors.gray.300"),
@@ -16,6 +24,14 @@ module.exports = {
             },
             strong: {
               color: theme("colors.gray.300"),
+            },
+            a: {
+              color: theme("colors.green.400"),
+            },
+            li: {
+              "&::before": {
+                color: theme("colors.gray.300"),
+              },
             },
           },
         },
