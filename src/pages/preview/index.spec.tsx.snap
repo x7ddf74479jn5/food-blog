@@ -215,7 +215,7 @@ Array [
           Preview mode enabled
         </div>
         <article
-          className="prose prose-sm md:prose dark:prose-dark"
+          className="prose md:prose prose-sm dark:prose-dark"
         >
           <div
             className="mb-4"

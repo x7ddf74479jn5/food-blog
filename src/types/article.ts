@@ -13,6 +13,7 @@ export type TArticle = {
   body: string;
   category: TCategory;
   tags: TTag[];
+  linkCardArticles: TArticle[];
   imageOption: TImageOption | null;
 } & TDateCommon;
 

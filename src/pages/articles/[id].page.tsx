@@ -40,6 +40,7 @@ export const ArticleDetail = ({
   const safePublishedAt = getSafeDate(publishedAt);
   const safeModifiedAt = getSafeDate(updatedAt);
   const { name: writerName, avatar } = writer;
+  const data = { articles: linkCardArticles };
 
   return (
     <ArticleLayout
@@ -96,7 +97,7 @@ export const ArticleDetail = ({
               <TagListColored tags={tags} />
             </div>
             <div id="js-toc-content">
-              <MDXRemote {...mdxSource} scope={{ articles: linkCardArticles }} />
+              <MDXRemote {...mdxSource} scope={data} />
             </div>
           </article>
         </>

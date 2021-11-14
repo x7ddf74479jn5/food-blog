@@ -26,7 +26,10 @@ export const fetchArticle = async (id: string, queries?: MicroCMSQueries): Promi
     const data = await client.get<TArticle>({
       endpoint: `articles`,
       contentId: id,
-      queries,
+      queries: {
+        depth: 2,
+        ...queries,
+      },
     });
     return data;
   } catch (error) {
