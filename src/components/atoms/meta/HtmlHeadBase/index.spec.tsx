@@ -53,7 +53,7 @@ describe("components/atoms/meta/HtmlHeadBase", () => {
     expect(container.querySelector('link[rel="canonical"]')?.attributes.getNamedItem("href")?.value).toBe(url);
     expect(container.querySelector('link[rel="alternate"]')?.attributes.getNamedItem("href")?.value).toBe("/feed.xml");
     expect(container.querySelector('link[rel="manifest"]')?.attributes.getNamedItem("href")?.value).toBe(
-      "/favicon/site_manifest.json"
+      "/favicon/site_webmanifest.json"
     );
   });
 });

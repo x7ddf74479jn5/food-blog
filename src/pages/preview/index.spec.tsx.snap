@@ -169,7 +169,7 @@ Array [
           rel="icon"
         />
         <link
-          href="/favicon/site_manifest.json"
+          href="/favicon/site_webmanifest.json"
           rel="manifest"
         />
         <link
