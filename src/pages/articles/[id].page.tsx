@@ -33,9 +33,8 @@ export const ArticleDetail = ({
   relatedArticles,
   pickup,
 }: ArticleDetailProps) => {
-  const { id, image, title, description, category, tags, writer, publishedAt, updatedAt } = article;
+  const { id, image, title, description, category, tags, writer, linkCardArticles, publishedAt, updatedAt } = article;
   const { host } = config;
-
   const url = new URL(id ?? "", host).toString();
   const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
   const safePublishedAt = getSafeDate(publishedAt);
@@ -65,7 +64,7 @@ export const ArticleDetail = ({
       {id ? (
         <>
           {isPreview && <div className="mb-4 text-center text-white bg-red-500">Preview mode enabled</div>}
-          <article className="prose prose-green dark:prose-dark">
+          <article className="prose md:prose prose-sm dark:prose-dark">
             <div className="mb-4">
               <Thumbnail src={image.url} title={title} />
             </div>
@@ -89,7 +88,7 @@ export const ArticleDetail = ({
                 <span>{writerName}</span>
               </div>
             </div>
-            <div className="flex flex-col gap-4 p-2 sm:p-4 bg-gray-50 dark:bg-gray-700 ">
+            <div className="flex flex-col gap-4 p-2 sm:p-4 bg-gray-50 dark:bg-gray-700">
               <div className="flex flex-row gap-2 items-center">
                 <span className="text-black dark:text-white">カテゴリー：</span>
                 <ButtonCategory category={category} />
@@ -97,7 +96,7 @@ export const ArticleDetail = ({
               <TagListColored tags={tags} />
             </div>
             <div id="js-toc-content">
-              <MDXRemote {...mdxSource} />
+              <MDXRemote {...mdxSource} scope={{ articles: linkCardArticles }} />
             </div>
           </article>
         </>

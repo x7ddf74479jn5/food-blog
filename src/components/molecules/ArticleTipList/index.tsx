@@ -15,7 +15,7 @@ export const ArticleTipWithThumb: React.VFC<Props> = ({ article }) => {
     <article className="flex flex-row max-h-36 ">
       <NextLink href={`${UrlTable.articles}/${id}`}>
         <div className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]">
-          <Image src={image.url} alt={title} width={32} height={32} objectFit="cover" />
+          <Image src={image.url} alt={title} width={48} height={48} objectFit="cover" />
         </div>
       </NextLink>
       <div className="flex flex-col flex-grow">
