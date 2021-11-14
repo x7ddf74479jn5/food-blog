@@ -18,7 +18,6 @@ export const TOC = ({ isSide = false }: Props) => {
 
   useEffect(() => {
     const isExists = !!document.querySelectorAll("h2, h3, h4, h5, h6")?.length;
-
     if (!unmountRef.current) {
       setIsHidden(!isExists);
     }
@@ -46,7 +45,7 @@ export const TOC = ({ isSide = false }: Props) => {
     return () => {
       tocbot.destroy();
     };
-  }, [isHidden]);
+  });
   // eslint-disable-next-line tailwindcss/no-custom-classname
   return isHidden ? null : (
     <SideSectionContainer header="目次">
