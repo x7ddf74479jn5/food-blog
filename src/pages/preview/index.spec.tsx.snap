@@ -757,7 +757,7 @@ Array [
                   onMouseEnter={[Function]}
                 >
                   <div
-                    className="flex-shrink-0 mt-1 mr-4"
+                    className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
                   >
                     <span
                       style={
@@ -937,7 +937,7 @@ Array [
                   onMouseEnter={[Function]}
                 >
                   <div
-                    className="flex-shrink-0 mt-1 mr-4"
+                    className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
                   >
                     <span
                       style={
@@ -1117,7 +1117,7 @@ Array [
                   onMouseEnter={[Function]}
                 >
                   <div
-                    className="flex-shrink-0 mt-1 mr-4"
+                    className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
                   >
                     <span
                       style={
@@ -1286,7 +1286,7 @@ Array [
                   onMouseEnter={[Function]}
                 >
                   <div
-                    className="flex-shrink-0 mt-1 mr-4"
+                    className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
                   >
                     <span
                       style={
@@ -1916,7 +1916,7 @@ Array [
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="flex-shrink-0 mt-1 mr-4"
+                  className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
                 >
                   <span
                     style={
@@ -2096,7 +2096,7 @@ Array [
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="flex-shrink-0 mt-1 mr-4"
+                  className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
                 >
                   <span
                     style={
@@ -2276,7 +2276,7 @@ Array [
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="flex-shrink-0 mt-1 mr-4"
+                  className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
                 >
                   <span
                     style={
@@ -2445,7 +2445,7 @@ Array [
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="flex-shrink-0 mt-1 mr-4"
+                  className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
                 >
                   <span
                     style={

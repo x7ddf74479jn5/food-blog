@@ -395,7 +395,7 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
               onMouseEnter={[Function]}
             >
               <div
-                className="flex-shrink-0 mt-1 mr-4"
+                className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
               >
                 <span
                   style={
@@ -575,7 +575,7 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
               onMouseEnter={[Function]}
             >
               <div
-                className="flex-shrink-0 mt-1 mr-4"
+                className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
               >
                 <span
                   style={
@@ -755,7 +755,7 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
               onMouseEnter={[Function]}
             >
               <div
-                className="flex-shrink-0 mt-1 mr-4"
+                className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
               >
                 <span
                   style={
@@ -924,7 +924,7 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
               onMouseEnter={[Function]}
             >
               <div
-                className="flex-shrink-0 mt-1 mr-4"
+                className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
               >
                 <span
                   style={
