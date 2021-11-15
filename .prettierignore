@@ -1,6 +1,0 @@
-node_modules
-.next
-.vercel
-yarn.lock
-package-lock.json
-public
