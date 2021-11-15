@@ -13,8 +13,8 @@ export type TArticle = {
   body: string;
   category: TCategory;
   tags: TTag[];
-  linkCardArticles: TArticle[];
-  imageOption: TImageOption | null;
+  linkCardArticles?: TArticle[];
+  imageOption?: TImageOption | null;
 } & TDateCommon;
 
 export type TArticleListResponse = TListResponse<TArticle>;

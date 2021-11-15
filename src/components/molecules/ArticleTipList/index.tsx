@@ -21,7 +21,7 @@ export const ArticleTipWithThumb: React.VFC<Props> = ({ article }) => {
       <div className="flex flex-col flex-grow">
         <NextLink href={`${UrlTable.articles}/${id}`}>{title}</NextLink>
         <div className="flex-grow">
-          <TagListPlain tags={tags} />
+          <TagListPlain tags={tags} hasLink />
         </div>
       </div>
     </article>
