@@ -8,10 +8,12 @@ export default {
 } as ComponentMeta<typeof Callout>;
 
 const Template: ComponentStory<typeof Callout> = (args) => (
-  <Callout {...args}>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia reiciendis maiores iusto quaerat a, autem commodi
-    perspiciatis, minus corrupti neque aperiam explicabo doloribus quae qui numquam repellat est dolorum! Ex.
-  </Callout>
+  <div className="max-w-lg">
+    <Callout {...args}>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia reiciendis maiores iusto quaerat a, autem
+      commodi perspiciatis, minus corrupti neque aperiam explicabo doloribus quae qui numquam repellat est dolorum! Ex.
+    </Callout>
+  </div>
 );
 
 export const Default = Template.bind({});

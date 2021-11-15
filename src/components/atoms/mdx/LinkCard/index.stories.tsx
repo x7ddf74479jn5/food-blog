@@ -8,7 +8,11 @@ export default {
   component: LinkCard,
 } as ComponentMeta<typeof LinkCard>;
 
-const Template: ComponentStory<typeof LinkCard> = (args) => <LinkCard {...args} />;
+const Template: ComponentStory<typeof LinkCard> = (args) => (
+  <div className="max-w-lg">
+    <LinkCard {...args} />
+  </div>
+);
 
 export const Default = Template.bind({});
 Default.args = {
