@@ -521,10 +521,10 @@ exports[`pages/categories snapshot 1`] = `
                 />
               </svg>
               <div
-                className="inline-block absolute bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-4 h-3 w-3 rotate-45"
+                className="inline-block absolute z-10 text-white bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-4 h-3 w-3 rotate-45"
               />
               <div
-                className="inline-block absolute bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-8 p-1 text-xs leading-snug}"
+                className="inline-block absolute z-10 text-white bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-8 p-1 text-xs leading-snug}"
               >
                 Twitterでシェア
               </div>
@@ -569,10 +569,10 @@ exports[`pages/categories snapshot 1`] = `
                 />
               </svg>
               <div
-                className="inline-block absolute bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-4 h-3 w-3 rotate-45"
+                className="inline-block absolute z-10 text-white bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-4 h-3 w-3 rotate-45"
               />
               <div
-                className="inline-block absolute bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-8 p-1 text-xs leading-snug}"
+                className="inline-block absolute z-10 text-white bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-8 p-1 text-xs leading-snug}"
               >
                 Facebookでシェア
               </div>
@@ -616,10 +616,10 @@ exports[`pages/categories snapshot 1`] = `
                 />
               </svg>
               <div
-                className="inline-block absolute bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-4 h-3 w-3 rotate-45"
+                className="inline-block absolute z-10 text-white bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-4 h-3 w-3 rotate-45"
               />
               <div
-                className="inline-block absolute bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-8 p-1 text-xs leading-snug}"
+                className="inline-block absolute z-10 text-white bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-8 p-1 text-xs leading-snug}"
               >
                 LINEでシェア
               </div>
@@ -663,10 +663,10 @@ exports[`pages/categories snapshot 1`] = `
                 />
               </svg>
               <div
-                className="inline-block absolute bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-4 h-3 w-3 rotate-45"
+                className="inline-block absolute z-10 text-white bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-4 h-3 w-3 rotate-45"
               />
               <div
-                className="inline-block absolute bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-8 p-1 text-xs leading-snug}"
+                className="inline-block absolute z-10 text-white bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-8 p-1 text-xs leading-snug}"
               >
                 Pocketに保存
               </div>
@@ -712,10 +712,10 @@ exports[`pages/categories snapshot 1`] = `
                 />
               </svg>
               <div
-                className="inline-block absolute bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-4 h-3 w-3 rotate-45"
+                className="inline-block absolute z-10 text-white bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-4 h-3 w-3 rotate-45"
               />
               <div
-                className="inline-block absolute bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-8 p-1 text-xs leading-snug}"
+                className="inline-block absolute z-10 text-white bg-gray-500 left-1/2 rounded-sm transform -translate-x-1/2 whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in -bottom-8 p-1 text-xs leading-snug}"
               >
                 はてなブックマークでシェア
               </div>
