@@ -17,6 +17,7 @@ type TwoColumnLayoutProps = {
   host: string;
   url: string;
   title: string;
+  heading: string;
   backLinks: Array<{
     href: string;
     label: string;
@@ -29,6 +30,7 @@ export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = ({
   pickup,
   host,
   title,
+  heading,
   url,
   backLinks,
 }) => {
@@ -36,8 +38,8 @@ export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = ({
 
   return (
     <RootLayout config={config}>
-      <HtmlHeadBase indexUrl={host} title={title} url={url} />
-      <h1 className="mb-4 text-4xl font-bold">{title}</h1>
+      <HtmlHeadBase indexUrl={host} pageTitle={title} url={url} />
+      <h1 className="flex justify-center my-8 text-4xl font-bold">{heading}</h1>
       <MiddleAreaContainer>
         <AsideContainer className="lg:w-full" side="left">
           <ShareButtons
