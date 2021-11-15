@@ -8,7 +8,10 @@ describe("components/molecules/TagListPlain", () => {
   const mockTagList = Object.values(mockTags);
 
   it("snapshot", () => {
-    const tree = renderer.create(<TagListPlain tags={mockTagList} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const linkedTagList = renderer.create(<TagListPlain tags={mockTagList} hasLink />).toJSON();
+    expect(linkedTagList).toMatchSnapshot();
+
+    const tagList = renderer.create(<TagListPlain tags={mockTagList} hasLink={false} />).toJSON();
+    expect(tagList).toMatchSnapshot();
   });
 });

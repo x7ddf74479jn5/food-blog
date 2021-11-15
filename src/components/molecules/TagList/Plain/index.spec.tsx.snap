@@ -138,3 +138,70 @@ exports[`components/molecules/TagListPlain snapshot 1`] = `
   </a>
 </div>
 `;
+
+exports[`components/molecules/TagListPlain snapshot 2`] = `
+<div
+  className="flex flex-wrap gap-x-2 gap-y-1"
+>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #小松菜
+  </span>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #モッツァレラ
+  </span>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #レタス
+  </span>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #挽き肉
+  </span>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #ごはん
+  </span>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #油揚げ
+  </span>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #玉ねぎ
+  </span>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #うどん
+  </span>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #味噌汁
+  </span>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #トマト
+  </span>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #仕込み
+  </span>
+  <span
+    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+  >
+    #大葉
+  </span>
+</div>
+`;

@@ -11,4 +11,7 @@ export default {
 const Template: ComponentStory<typeof ButtonTagPlain> = (args) => <ButtonTagPlain {...args} />;
 
 export const Default = Template.bind({});
-Default.args = { tag: mockTags.rice };
+Default.args = {
+  tag: mockTags.rice,
+  hasLink: true,
+};

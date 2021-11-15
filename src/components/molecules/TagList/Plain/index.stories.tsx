@@ -11,4 +11,7 @@ export default {
 const Template: ComponentStory<typeof TagListPlain> = (args) => <TagListPlain {...args} />;
 
 export const Default = Template.bind({});
-Default.args = { tags: [mockTags.rice, mockTags.komatsuna, mockTags.mozzarella, mockTags.preparation] };
+Default.args = {
+  tags: [mockTags.rice, mockTags.komatsuna, mockTags.mozzarella, mockTags.preparation],
+  hasLink: true,
+};
