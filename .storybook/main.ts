@@ -18,6 +18,7 @@ module.exports = {
     },
     "@storybook/addon-a11y",
     "storybook-addon-performance",
+    "storybook-tailwind-dark-mode",
   ],
   typescript: {
     check: false,
