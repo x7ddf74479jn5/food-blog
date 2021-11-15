@@ -8,18 +8,22 @@ import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
 
 import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
 import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/atoms/meta";
-import TextDate from "@/components/atoms/texts/TextDate/index";
+import TextDate from "@/components/atoms/texts/TextDate";
 import Thumbnail from "@/components/atoms/Thumbnail";
 import ArticleLayout from "@/components/layouts/ArticleLayout";
 import { TagListColored } from "@/components/molecules/TagList";
-import { getNewDate } from "@/utils/date/getNewDate";
-import getSafeDate from "@/utils/date/getSafeDate";
-import { fetchCategories, fetchConfig } from "@/utils/fetcher";
-import { fetchArticle, fetchArticles, fetchPickupArticles, getRelatedArticles } from "@/utils/fetcher/fetchArticles";
-import getExcerpt from "@/utils/formatter/getExcerpt";
+import { getNewDate, getSafeDate } from "@/utils/date";
+import {
+  fetchArticle,
+  fetchArticles,
+  fetchCategories,
+  fetchConfig,
+  fetchPickupArticles,
+  getRelatedArticles,
+} from "@/utils/fetcher";
+import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
 import mdx2html from "@/utils/mdx/mdx2html";
-import { UrlTable } from "@/utils/paths/url";
-import { getBackLinks } from "@/utils/paths/url";
+import { getBackLinks, UrlTable } from "@/utils/paths/url";
 import { isDraft } from "@/utils/validator";
 
 export type ArticleDetailProps = InferGetStaticPropsType<typeof getStaticProps>;
@@ -34,25 +38,26 @@ export const ArticleDetail = ({
   pickup,
 }: ArticleDetailProps) => {
   const { id, image, title, description, category, tags, writer, linkCardArticles, publishedAt, updatedAt } = article;
-  const { host } = config;
-  const url = new URL(id ?? "", host).toString();
+  const { siteTitle, host } = config;
+  const url = formatPageUrl(id ?? "", host);
   const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
   const safePublishedAt = getSafeDate(publishedAt);
   const safeModifiedAt = getSafeDate(updatedAt);
   const { name: writerName, avatar } = writer;
   const data = { articles: linkCardArticles };
+  const pageTitle = formatPageTitle(title, siteTitle);
 
   return (
     <ArticleLayout
       url={url}
       config={config}
-      pageTitle={title}
+      pageTitle={pageTitle}
       backLinks={backLinks}
       relatedArticles={relatedArticles}
       categories={categoriesAtMenu}
       pickup={pickup}
     >
-      <HtmlHeadBase indexUrl={host} title={title} url={url} image={image.url} />
+      <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} image={image.url} />
       <HtmlHeadJsonLd
         url={url}
         title={title}

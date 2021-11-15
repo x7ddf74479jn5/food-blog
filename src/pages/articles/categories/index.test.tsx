@@ -3,6 +3,8 @@ import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
 
+import { formatPageTitle } from "@/utils/formatter";
+
 import Categories, { getStaticProps } from "./index.page";
 
 beforeAll(() => server.listen());
@@ -50,9 +52,10 @@ describe("pages/categories", () => {
   it("OK: 初期レンダリング", async () => {
     const { unmount } = render(<Categories categories={mockCategoryList} config={mockConfig} pickup={mockPickup} />);
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1).toHaveTextContent(`カテゴリー一覧`);
-    const title = screen.getByTitle(`カテゴリー一覧`);
-    expect(title).toBeTruthy();
+    const expectedHeading = `カテゴリー一覧`;
+    expect(h1).toHaveTextContent(expectedHeading);
+    const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
+    expect(document.title).toBe(expectedTitle);
     unmount();
   });
 });

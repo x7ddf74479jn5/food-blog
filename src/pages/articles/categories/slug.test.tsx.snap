@@ -135,7 +135,7 @@ exports[`pages/categories snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#1DA1F2] text-gray-400"
+                  className="text-gray-400 hover:text-[#1DA1F2]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -177,13 +177,13 @@ exports[`pages/categories snapshot 1`] = `
                   "padding": 0,
                 }
               }
-              title="ご飯物"
+              title="カテゴリー：ご飯物 | Food Blog"
             >
               <div
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#3b5998] text-gray-400"
+                  className="text-gray-400 hover:text-[#3b5998]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -230,7 +230,7 @@ exports[`pages/categories snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#00B900] text-gray-400"
+                  className="text-gray-400 hover:text-[#00B900]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -277,7 +277,7 @@ exports[`pages/categories snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#ee4056] text-gray-400"
+                  className="text-gray-400 hover:text-[#ee4056]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -324,7 +324,7 @@ exports[`pages/categories snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#00A4DE] text-gray-400"
+                  className="text-gray-400 hover:text-[#00A4DE]"
                   fill="currentColor"
                   height={24}
                   role="img"
@@ -362,7 +362,7 @@ exports[`pages/categories snapshot 1`] = `
       className="overflow-hidden flex-auto order-1 md:order-2 pb-12 mt-8 md:mt-16 mb-0 w-full max-w-prose"
     >
       <title>
-        ご飯物
+        カテゴリー：ご飯物 | Food Blog
       </title>
       <meta
         content="index,follow"
@@ -373,7 +373,7 @@ exports[`pages/categories snapshot 1`] = `
         name="googlebot"
       />
       <meta
-        content="ご飯物"
+        content="カテゴリー：ご飯物 | Food Blog"
         property="og:title"
       />
       <meta
@@ -438,8 +438,7 @@ exports[`pages/categories snapshot 1`] = `
       <h1
         className="mb-4 text-4xl font-bold"
       >
-        カテゴリー：
-        ご飯物
+        カテゴリー：ご飯物
       </h1>
       <div
         className="w-full min-h-screen"

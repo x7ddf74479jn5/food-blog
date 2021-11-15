@@ -4,18 +4,26 @@ import React from "react";
 
 type HtmlHeadBaseProps = {
   indexUrl: string;
-  title: string;
+  pageTitle?: string;
+  siteTitle?: string;
   description?: string;
   url?: string;
   image?: string;
 };
 
-export const HtmlHeadBase: React.FC<HtmlHeadBaseProps> = ({ indexUrl, title, description, url, image }) => {
+export const HtmlHeadBase: React.FC<HtmlHeadBaseProps> = ({
+  indexUrl,
+  pageTitle,
+  siteTitle,
+  description,
+  url,
+  image,
+}) => {
   const seoProps: NextSeoProps = {
-    title,
+    title: pageTitle,
     description: description,
     openGraph: {
-      title,
+      title: pageTitle ?? siteTitle,
       description,
     },
     additionalLinkTags: [

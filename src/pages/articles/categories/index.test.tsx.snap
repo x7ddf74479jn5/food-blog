@@ -102,7 +102,7 @@ exports[`pages/categories snapshot 1`] = `
     </div>
   </header>
   <title>
-    カテゴリー一覧
+    カテゴリー一覧 | Food Blog
   </title>
   <meta
     content="index,follow"
@@ -113,7 +113,7 @@ exports[`pages/categories snapshot 1`] = `
     name="googlebot"
   />
   <meta
-    content="カテゴリー一覧"
+    content="カテゴリー一覧 | Food Blog"
     property="og:title"
   />
   <meta
@@ -172,7 +172,7 @@ exports[`pages/categories snapshot 1`] = `
     rel="canonical"
   />
   <h1
-    className="mb-4 text-4xl font-bold"
+    className="flex justify-center my-8 text-4xl font-bold"
   >
     カテゴリー一覧
   </h1>
@@ -210,7 +210,7 @@ exports[`pages/categories snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#1DA1F2] text-gray-400"
+                  className="text-gray-400 hover:text-[#1DA1F2]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -252,13 +252,13 @@ exports[`pages/categories snapshot 1`] = `
                   "padding": 0,
                 }
               }
-              title="カテゴリー一覧"
+              title="カテゴリー一覧 | Food Blog"
             >
               <div
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#3b5998] text-gray-400"
+                  className="text-gray-400 hover:text-[#3b5998]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -305,7 +305,7 @@ exports[`pages/categories snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#00B900] text-gray-400"
+                  className="text-gray-400 hover:text-[#00B900]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -352,7 +352,7 @@ exports[`pages/categories snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#ee4056] text-gray-400"
+                  className="text-gray-400 hover:text-[#ee4056]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -399,7 +399,7 @@ exports[`pages/categories snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#00A4DE] text-gray-400"
+                  className="text-gray-400 hover:text-[#00A4DE]"
                   fill="currentColor"
                   height={24}
                   role="img"

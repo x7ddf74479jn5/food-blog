@@ -1,6 +1,5 @@
 module.exports = {
   defaultTitle: "Food Blog",
-  titleTemplate: "%s | Food Blog",
   description: "料理レシピを紹介するブログ",
   openGraph: {
     type: "website",

@@ -3,20 +3,29 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { TwoColumnLayout } from "@/components/layouts/TwoColumnLayout";
 import { CategoryList } from "@/components/molecules/CategoryList";
 import type { TCategory, TConfig, TPickup } from "@/types";
-import { getNewDate } from "@/utils/date/getNewDate";
+import { getNewDate } from "@/utils/date";
 import { fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
-import { UrlTable } from "@/utils/paths/url";
-import { getBackLinks } from "@/utils/paths/url";
+import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
+import { getBackLinks, UrlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Categories: NextPage<Props> = ({ config, categories, pickup }) => {
-  const { host } = config;
-  const title = "カテゴリー一覧";
-  const url = new URL(UrlTable.categories, host).toString();
+  const { siteTitle, host } = config;
+  const heading = "カテゴリー一覧";
+  const pageTitle = formatPageTitle(heading, siteTitle);
+  const url = formatPageUrl(UrlTable.categories, host);
   const backLinks = getBackLinks([UrlTable.home]);
   return (
-    <TwoColumnLayout config={config} pickup={pickup} host={host} url={url} title={title} backLinks={backLinks}>
+    <TwoColumnLayout
+      config={config}
+      pickup={pickup}
+      host={host}
+      url={url}
+      title={pageTitle}
+      backLinks={backLinks}
+      heading={heading}
+    >
       <CategoryList categories={categories} width={128} height={128} />
     </TwoColumnLayout>
   );

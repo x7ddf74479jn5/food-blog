@@ -3,7 +3,7 @@
 exports[`components/atoms/meta/HtmlHeadBase snapshot 1`] = `
 Array [
   <title>
-    基本の一番だしの作り方
+    基本の一番だしの作り方 | Food Blog
   </title>,
   <meta
     content="index,follow"
@@ -18,7 +18,7 @@ Array [
     name="description"
   />,
   <meta
-    content="基本の一番だしの作り方"
+    content="基本の一番だしの作り方 | Food Blog"
     property="og:title"
   />,
   <meta

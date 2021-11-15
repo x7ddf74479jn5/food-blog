@@ -4,32 +4,32 @@ import type { ParsedUrlQuery } from "node:querystring";
 import { HtmlHeadBase } from "@/components/atoms/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
-import type { TArticle, TCategory, TConfig, TPickup } from "@/types/index";
-import { getNewDate } from "@/utils/date/getNewDate";
+import type { TArticle, TCategory, TConfig, TPickup } from "@/types";
+import { getNewDate } from "@/utils/date";
 import { fetchArticles, fetchCategories, fetchCategory, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
-import { UrlTable } from "@/utils/paths/url";
-import { getBackLinks } from "@/utils/paths/url";
+import { formatPageTitle } from "@/utils/formatter";
+import { getBackLinks, UrlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Category: NextPage<Props> = ({ articles, category, config, categories, pickup }) => {
-  const { host } = config;
-  const title = category.name;
+  const { siteTitle, host } = config;
+  const heading = `カテゴリー：${category.name}`;
+  const pageTitle = formatPageTitle(heading, siteTitle);
   const url = new URL(`${UrlTable.categories}/${category.slug}`, host).toString();
   const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
 
   return (
     <DefaultLayout
       config={config}
-      pageTitle={title}
+      pageTitle={pageTitle}
       url={url}
       backLinks={backLinks}
       categories={categories}
       pickup={pickup}
     >
-      <HtmlHeadBase indexUrl={host} title={title} url={url} image={category.image.url} />
-
-      <h1 className="mb-4 text-4xl font-bold">カテゴリー：{category.name}</h1>
+      <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} image={category.image.url} />
+      <h1 className="mb-4 text-4xl font-bold">{heading}</h1>
       <div className="w-full min-h-screen">
         <ArticleList articles={articles} />
       </div>

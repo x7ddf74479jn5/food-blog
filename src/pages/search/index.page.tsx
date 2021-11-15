@@ -5,32 +5,33 @@ import { HtmlHeadBase } from "@/components/atoms/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleContainer } from "@/components/organisms/ArticleContainer/index";
 import type { TCategory, TConfig, TPickup } from "@/types";
-import { getNewDate } from "@/utils/date/getNewDate";
+import { getNewDate } from "@/utils/date";
 import { fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
-import { UrlTable } from "@/utils/paths/url";
-import { getBackLinks } from "@/utils/paths/url";
+import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
+import { getBackLinks, UrlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Search: NextPage<Props> = ({ config, categories, pickup }) => {
   const router = useRouter();
   const keyword = router.query.q;
-  const { host } = config;
-  const title = `検索結果：${keyword}`;
-  const url = new URL(`${UrlTable.search}/q=${keyword ?? ""}`, host).toString();
+  const { siteTitle, host } = config;
+  const heading = `検索結果：${keyword}`;
+  const pageTitle = formatPageTitle(heading, siteTitle);
+  const url = formatPageUrl(`${UrlTable.search}/q=${keyword ?? ""}`, host);
   const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
 
   return (
     <DefaultLayout
       config={config}
-      pageTitle={title}
+      pageTitle={pageTitle}
       url={url}
       backLinks={backLinks}
       categories={categories}
       pickup={pickup}
     >
-      <HtmlHeadBase indexUrl={host} title={title} url={url} />
-      <h1 className="mb-4 text-4xl font-bold">検索結果：{keyword}</h1>
+      <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} />
+      <h1 className="mb-4 text-4xl font-bold">{heading}</h1>
       <div className="w-full min-h-screen">
         {keyword ? <ArticleContainer /> : <div className="flex justify-center mt-16">検索語句を入力してください。</div>}
       </div>

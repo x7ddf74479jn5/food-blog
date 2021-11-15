@@ -2,6 +2,7 @@ import { mockArticles, mockConfig } from "@mocks/data";
 import { render } from "jest/test-utils";
 import renderer from "react-test-renderer";
 
+import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { UrlTable } from "@/utils/paths/url";
 
 import { HtmlHeadBase } from ".";
@@ -19,20 +20,23 @@ jest.mock("next/head", () => {
 describe("components/atoms/meta/HtmlHeadBase", () => {
   const { title, description, image, id } = mockArticles.stock;
   const imageUrl = image.url;
-  const indexUrl = mockConfig.host;
-  const url = new URL(`${UrlTable.articles}/${id}`, indexUrl).toString();
+  const { host: indexUrl, siteTitle } = mockConfig;
+  const pageTitle = formatPageTitle(title, siteTitle);
+  const url = formatPageUrl(`${UrlTable.articles}/${id}`, indexUrl);
   it("snapshot", () => {
     const tree = renderer
-      .create(<HtmlHeadBase indexUrl={indexUrl} title={title} url={url} description={description} image={imageUrl} />)
+      .create(
+        <HtmlHeadBase indexUrl={indexUrl} pageTitle={pageTitle} url={url} description={description} image={imageUrl} />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("OK: 出力結果が正しい", () => {
     const { container } = render(
-      <HtmlHeadBase indexUrl={indexUrl} title={title} url={url} description={description} image={imageUrl} />
+      <HtmlHeadBase indexUrl={indexUrl} pageTitle={pageTitle} url={url} description={description} image={imageUrl} />
     );
-    expect(container.querySelector("title")).toHaveTextContent(title);
+    expect(container.querySelector("title")).toHaveTextContent(pageTitle);
     expect(container.querySelector('meta[name="robots"]')?.attributes.getNamedItem("content")?.value).toBe(
       "index,follow"
     );
@@ -43,7 +47,9 @@ describe("components/atoms/meta/HtmlHeadBase", () => {
       description
     );
     expect(container.querySelector('meta[property="og:url"]')?.attributes.getNamedItem("content")?.value).toBe(url);
-    expect(container.querySelector('meta[property="og:title"]')?.attributes.getNamedItem("content")?.value).toBe(title);
+    expect(container.querySelector('meta[property="og:title"]')?.attributes.getNamedItem("content")?.value).toBe(
+      pageTitle
+    );
     expect(container.querySelector('meta[property="og:image"]')?.attributes.getNamedItem("content")?.value).toBe(
       imageUrl
     );

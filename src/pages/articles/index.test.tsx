@@ -3,6 +3,7 @@ import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
 
+import { formatPageTitle } from "@/utils/formatter";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { UrlTable } from "@/utils/paths/url";
 
@@ -107,8 +108,8 @@ describe("pages/categories", () => {
 
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent(mockArticleStock.title);
-    const title = screen.getByTitle(mockArticleStock.title);
-    expect(title).toBeTruthy();
+    const expectedTitle = formatPageTitle(mockArticleStock.title, mockConfig.siteTitle);
+    expect(document.title).toBe(expectedTitle);
     unmount();
   });
 });

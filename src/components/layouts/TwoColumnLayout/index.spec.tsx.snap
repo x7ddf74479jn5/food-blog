@@ -102,9 +102,9 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
     </div>
   </header>
   <h1
-    className="mb-4 text-4xl font-bold"
+    className="flex justify-center my-8 text-4xl font-bold"
   >
-    基本の一番だしの作り方
+    title
   </h1>
   <div
     className="flex flex-col md:flex-row gap-4 md:gap-16 justify-center items-center md:items-stretch mb-16"
@@ -140,7 +140,7 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#1DA1F2] text-gray-400"
+                  className="text-gray-400 hover:text-[#1DA1F2]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -182,13 +182,13 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
                   "padding": 0,
                 }
               }
-              title="基本の一番だしの作り方"
+              title="基本の一番だしの作り方 | Food Blog"
             >
               <div
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#3b5998] text-gray-400"
+                  className="text-gray-400 hover:text-[#3b5998]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -235,7 +235,7 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#00B900] text-gray-400"
+                  className="text-gray-400 hover:text-[#00B900]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -282,7 +282,7 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#ee4056] text-gray-400"
+                  className="text-gray-400 hover:text-[#ee4056]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -329,7 +329,7 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#00A4DE] text-gray-400"
+                  className="text-gray-400 hover:text-[#00A4DE]"
                   fill="currentColor"
                   height={24}
                   role="img"

@@ -4,6 +4,8 @@ import { render, screen, withMockedRouter } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
 
+import { formatPageTitle } from "@/utils/formatter";
+
 import Search, { getStaticProps } from "./index.page";
 
 beforeAll(() => server.listen());
@@ -58,12 +60,11 @@ describe("pages/categories", () => {
     const { unmount } = render(
       withMockedRouter(mockRouter, <Search categories={mockCategoryList} config={mockConfig} pickup={mockPickup} />)
     );
-    const expectedTitle = `検索結果：keyword`;
-    const expectedH1 = expectedTitle;
+    const expectedHeading = `検索結果：keyword`;
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1).toHaveTextContent(expectedH1);
-    const title = screen.getByTitle(expectedTitle);
-    expect(title).toBeTruthy();
+    expect(h1).toHaveTextContent(expectedHeading);
+    const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
+    expect(document.title).toBe(expectedTitle);
     unmount();
   });
 });

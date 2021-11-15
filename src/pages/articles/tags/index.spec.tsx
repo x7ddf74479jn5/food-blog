@@ -3,6 +3,7 @@ import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
 
+import { formatPageTitle } from "@/utils/formatter";
 import { UrlTable } from "@/utils/paths/url";
 
 import Tags, { getStaticPaths, getStaticProps } from "./[slug].page";
@@ -80,9 +81,10 @@ describe("pages/categories", () => {
       />
     );
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1).toHaveTextContent(`タグ：${mockTagRice.name}`);
-    const title = screen.getByTitle(mockTagRice.name);
-    expect(title).toBeTruthy();
+    const expectedHeading = `タグ：${mockTagRice.name}`;
+    expect(h1).toHaveTextContent(expectedHeading);
+    const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
+    expect(document.title).toBe(expectedTitle);
     unmount();
   });
 });

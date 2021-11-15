@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components/layouts/ArticleLayout snapshot 1`] = `
+exports[`components/layouts/HomeLayout snapshot 1`] = `
 <div
   className="flex flex-col px-4 mx-auto mb-16 max-w-screen-lg min-h-screen"
 >
@@ -142,7 +142,7 @@ exports[`components/layouts/ArticleLayout snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#1DA1F2] text-gray-400"
+                  className="text-gray-400 hover:text-[#1DA1F2]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -184,13 +184,13 @@ exports[`components/layouts/ArticleLayout snapshot 1`] = `
                   "padding": 0,
                 }
               }
-              title="基本の一番だしの作り方"
+              title="基本の一番だしの作り方 | Food Blog"
             >
               <div
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#3b5998] text-gray-400"
+                  className="text-gray-400 hover:text-[#3b5998]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -237,7 +237,7 @@ exports[`components/layouts/ArticleLayout snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#00B900] text-gray-400"
+                  className="text-gray-400 hover:text-[#00B900]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -284,7 +284,7 @@ exports[`components/layouts/ArticleLayout snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#ee4056] text-gray-400"
+                  className="text-gray-400 hover:text-[#ee4056]"
                   fill="currentColor"
                   height={24}
                   stroke="currentColor"
@@ -331,7 +331,7 @@ exports[`components/layouts/ArticleLayout snapshot 1`] = `
                 className="group inline-block relative cursor-pointer"
               >
                 <svg
-                  className="hover:text-[#00A4DE] text-gray-400"
+                  className="text-gray-400 hover:text-[#00A4DE]"
                   fill="currentColor"
                   height={24}
                   role="img"
