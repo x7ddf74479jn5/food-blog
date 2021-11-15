@@ -13,7 +13,9 @@ type CategoryMenuProps = {
 export const CategoryMenu: React.VFC<CategoryMenuProps> = ({ categories, columns }) => {
   return (
     <SideSectionContainer header="カテゴリー">
-      <div className={`grid grid-flow-row gap-2 place-items-center ${columns}`}>
+      <div
+        className={`grid grid-flow-row gap-2 md:max-h-[calc(28rem+8rem)] md:overflow-y-auto place-items-center ${columns}`}
+      >
         {categories.map((category) => (
           <div className="flex flex-col justify-center items-center w-24 h-full" key={category.id}>
             <NextLink href={`${UrlTable.categories}/${category.slug}`}>

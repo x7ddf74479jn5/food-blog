@@ -1035,7 +1035,7 @@ exports[`pages/categories snapshot 1`] = `
               カテゴリー
             </h2>
             <div
-              className="grid grid-flow-row gap-2 place-items-center grid-cols-3 sm:grid-cols-5 md:grid-cols-1"
+              className="grid grid-flow-row gap-2 md:max-h-[calc(28rem+8rem)] md:overflow-y-auto place-items-center grid-cols-3 sm:grid-cols-5 md:grid-cols-1"
             >
               <div
                 className="flex flex-col justify-center items-center w-24 h-full"
