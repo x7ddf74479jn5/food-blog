@@ -1,10 +1,10 @@
 import { FaChevronDown } from "react-icons/fa";
 
-type ReadMoreButtonProps = {
+type LoadMoreButtonProps = {
   handleOnClick: () => void;
 };
 
-export const ReadMoreButton: React.VFC<ReadMoreButtonProps> = ({ handleOnClick }) => {
+export const LoadMoreButton: React.VFC<LoadMoreButtonProps> = ({ handleOnClick }) => {
   return (
     <button
       onClick={handleOnClick}

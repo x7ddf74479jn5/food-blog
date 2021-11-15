@@ -1,13 +1,13 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { ReadMoreButton } from ".";
+import { LoadMoreButton } from ".";
 
 export default {
-  title: "Atoms/buttons/ReadMoreButton",
-  component: ReadMoreButton,
-} as ComponentMeta<typeof ReadMoreButton>;
+  title: "Atoms/buttons/LoadMoreButton",
+  component: LoadMoreButton,
+} as ComponentMeta<typeof LoadMoreButton>;
 
-const Template: ComponentStory<typeof ReadMoreButton> = (args) => <ReadMoreButton {...args} />;
+const Template: ComponentStory<typeof LoadMoreButton> = (args) => <LoadMoreButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

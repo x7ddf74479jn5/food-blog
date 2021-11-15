@@ -1,4 +1,4 @@
-import { ReadMoreButton } from "@/components/atoms/buttons/ReadMoreButton/index";
+import { LoadMoreButton } from "@/components/atoms/buttons/LoadMoreButton/index";
 import Spinner from "@/components/atoms/Spinner";
 
 type Props = {
@@ -12,7 +12,7 @@ const Pagination: React.FC<Props> = ({ hasNextPage, isValidating, onClick }: Pro
     <>
       {hasNextPage ? (
         <div className="flex justify-center mt-8">
-          {isValidating ? <Spinner size="w-8 h-8" /> : <ReadMoreButton handleOnClick={onClick} />}
+          {isValidating ? <Spinner size="w-8 h-8" /> : <LoadMoreButton handleOnClick={onClick} />}
         </div>
       ) : null}
     </>
