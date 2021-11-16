@@ -52,11 +52,12 @@ const Search: React.FC = () => {
         <input
           type="search"
           placeholder="Search..."
-          className="w-full text-sm dark:text-gray-100 bg-gray-100 dark:bg-gray-700 focus:outline-none"
+          className="w-full dark:text-gray-100 bg-gray-100 dark:bg-gray-700 focus:outline-none"
           onChange={handleChange}
           onFocus={handleFocus}
           onKeyPress={handleKeyPress}
           value={query}
+          inputMode="text"
         />
       </div>
     </div>
