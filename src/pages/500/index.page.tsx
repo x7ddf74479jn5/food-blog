@@ -6,15 +6,15 @@ import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 
 import { getStaticProps as _getStaticProps } from "../_error/index.page";
 
-type Error404Props = InferGetStaticPropsType<typeof getStaticProps>;
+type Error500Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Error404: NextPage<Error404Props> = ({ config }) => (
+const Error500: NextPage<Error500Props> = ({ config }) => (
   <RootLayout config={config}>
     <HtmlHeadNoIndex />
-    <ErrorFallback heading="404 - Not Found" message="ページが見つかりませんでした。" />
+    <ErrorFallback heading="500 - Internal Server Error" message="サーバー側で問題が発生しました。" />
   </RootLayout>
 );
 
 export const getStaticProps = _getStaticProps;
 
-export default Error404;
+export default Error500;
