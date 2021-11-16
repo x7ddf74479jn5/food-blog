@@ -7,7 +7,7 @@ import { UrlTable } from "@/utils/paths/url";
 
 const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
   return (
-    <div className="flex flex-col gap-8 justify-center items-center" role="alert">
+    <div className="flex flex-col gap-8 justify-center items-center mt-8" role="alert">
       <FaRegTired className="w-32 h-32 text-gray-500" />
       <p>Something went wrong:</p>
       <pre>{error.message}</pre>

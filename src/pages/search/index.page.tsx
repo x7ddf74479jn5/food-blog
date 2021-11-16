@@ -16,7 +16,7 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
   const router = useRouter();
   const keyword = router.query.q;
   const { siteTitle, host } = config;
-  const heading = `検索結果：${keyword}`;
+  const heading = `検索結果：${keyword ?? ""}`;
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = formatPageUrl(`${UrlTable.search}/q=${keyword ?? ""}`, host);
   const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
@@ -32,7 +32,7 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
     >
       <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} />
       <h1 className="mb-4 text-4xl font-bold">{heading}</h1>
-      <div className="w-full min-h-screen">
+      <div className="w-full">
         {keyword ? <ArticleContainer /> : <div className="flex justify-center mt-16">検索語句を入力してください。</div>}
       </div>
     </DefaultLayout>
