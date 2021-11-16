@@ -44,7 +44,7 @@ const ArticleLayout: React.FC<Props> = ({
             <TOC isSide />
           </ContainerWithOrder>
           <ContainerWithOrder order="order-2 lg:order-3">
-            <ShareButtons url={url} title={pageTitle} twitterId={config.twitterId} />
+            <ShareButtons url={url} title={pageTitle} />
           </ContainerWithOrder>
           <ContainerWithOrder order="order-3 lg:order-2">
             <RelatedArticles relatedArticles={relatedArticles} />

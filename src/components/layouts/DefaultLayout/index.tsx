@@ -33,12 +33,7 @@ const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, back
     <RootLayout config={config}>
       <MiddleAreaContainer>
         <AsideContainer side="left">
-          <ShareButtons
-            url={url}
-            title={pageTitle}
-            twitterId={config.twitterId}
-            direction={isSmallOrDown ? "row" : "column"}
-          />
+          <ShareButtons url={url} title={pageTitle} direction={isSmallOrDown ? "row" : "column"} />
         </AsideContainer>
         <MainContainer>{children}</MainContainer>
         <AsideContainer side="right">

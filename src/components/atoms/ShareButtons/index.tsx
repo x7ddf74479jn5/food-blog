@@ -14,15 +14,15 @@ import Tooltip from "@/components/atoms/Tooltip";
 type Props = {
   url: string;
   title: string;
-  twitterId?: string;
   direction?: "row" | "column";
 };
 
-export const ShareButtons: React.FC<Props> = ({ url, title, twitterId, direction = "row" }) => {
+export const ShareButtons: React.FC<Props> = ({ url, title, direction = "row" }) => {
   const _direction = direction === "row" ? "flex-row" : "flex-col";
+
   return (
     <div className={`flex ${_direction} gap-4 justify-center items-center`}>
-      <TwitterShareButton url={url} title={title} via={twitterId}>
+      <TwitterShareButton url={url} title={title}>
         <Tooltip label="Twitterでシェア">
           <FaTwitter className="text-gray-400 hover:text-[#1DA1F2]" size={24} />
         </Tooltip>

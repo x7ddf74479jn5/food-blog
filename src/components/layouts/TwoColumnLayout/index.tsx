@@ -42,12 +42,7 @@ export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = ({
       <h1 className="flex justify-center my-8 text-4xl font-bold">{heading}</h1>
       <MiddleAreaContainer>
         <AsideContainer className="lg:w-full" side="left">
-          <ShareButtons
-            url={url}
-            title={title}
-            twitterId={config.twitterId}
-            direction={isSmallOrDown ? "row" : "column"}
-          />
+          <ShareButtons url={url} title={title} direction={isSmallOrDown ? "row" : "column"} />
         </AsideContainer>
         <main className="grid order-1 md:order-2 grid-cols-3 sm:grid-cols-5 lg:grid-cols-6 gap-2 mt-4 mb-12">
           {children}
