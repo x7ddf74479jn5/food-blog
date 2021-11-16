@@ -21,7 +21,7 @@ jest.mock("next/head", () => {
   };
 });
 
-describe("pages/categories", () => {
+describe("pages/articles/tags", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockTagRice = mockTags.rice;
   const mockArticleList = Object.values(mockArticles);

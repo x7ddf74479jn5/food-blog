@@ -21,7 +21,7 @@ jest.mock("next/head", () => {
   };
 });
 
-describe("pages/categories", () => {
+describe("pages/search", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockCategoryRice = mockCategories.rice;
   const mockRouter: Partial<NextRouter> = {

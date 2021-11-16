@@ -28,7 +28,7 @@ jest.mock("react-slick", () => {
   };
 });
 
-describe("pages/categories", () => {
+describe("pages/index", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockCategoryRice = mockCategories.rice;
   const mockArticleList = Object.values(mockArticles);

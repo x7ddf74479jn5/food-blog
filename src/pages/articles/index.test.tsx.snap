@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pages/categories snapshot 1`] = `
+exports[`pages/articles snapshot 1`] = `
 <div
   className="flex flex-col px-4 mx-auto mb-16 max-w-screen-lg min-h-screen"
 >
@@ -46,7 +46,8 @@ exports[`pages/categories snapshot 1`] = `
               />
             </svg>
             <input
-              className="w-full text-sm dark:text-gray-100 bg-gray-100 dark:bg-gray-700 focus:outline-none"
+              className="w-full dark:text-gray-100 bg-gray-100 dark:bg-gray-700 focus:outline-none"
+              inputMode="text"
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
@@ -89,7 +90,8 @@ exports[`pages/categories snapshot 1`] = `
             />
           </svg>
           <input
-            className="w-full text-sm dark:text-gray-100 bg-gray-100 dark:bg-gray-700 focus:outline-none"
+            className="w-full dark:text-gray-100 bg-gray-100 dark:bg-gray-700 focus:outline-none"
+            inputMode="text"
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
@@ -164,7 +166,7 @@ exports[`pages/categories snapshot 1`] = `
         rel="icon"
       />
       <link
-        href="/favicon/site_webmanifest.json"
+        href="/favicon/site.webmanifest"
         rel="manifest"
       />
       <link

@@ -38,7 +38,7 @@ jest.mock("next-mdx-remote", () => {
   };
 });
 
-describe("pages/categories", () => {
+describe("pages/articles", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockArticleList = Object.values(mockArticles);
   const mockArticleStock = mockArticles.stock;
