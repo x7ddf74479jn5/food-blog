@@ -67,7 +67,7 @@ Array [
     rel="icon"
   />,
   <link
-    href="/favicon/site_webmanifest.json"
+    href="/favicon/site.webmanifest"
     rel="manifest"
   />,
   <link

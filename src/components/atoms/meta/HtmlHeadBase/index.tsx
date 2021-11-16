@@ -50,7 +50,7 @@ export const HtmlHeadBase: React.FC<HtmlHeadBaseProps> = ({
       },
       {
         rel: "manifest",
-        href: "/favicon/site_webmanifest.json",
+        href: "/favicon/site.webmanifest",
       },
       { rel: "mask-icon", href: "/favicon/safari-pinned-tab.svg", color: "#5bbad5" },
       {
