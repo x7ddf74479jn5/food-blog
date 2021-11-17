@@ -20,13 +20,11 @@ export const Horizontal = Template.bind({});
 Horizontal.args = {
   url: "url",
   title: "title",
-  twitterId: "twitterId",
 };
 
 export const Vertical = Template.bind({});
 Vertical.args = {
   url: "url",
   title: "title",
-  twitterId: "twitterId",
   direction: "column",
 };
