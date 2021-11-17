@@ -6,7 +6,7 @@ import renderer from "react-test-renderer";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { UrlTable } from "@/utils/paths/url";
 
-import ArticlePreview, { getStaticPaths, getStaticProps } from "./[slug].page";
+import ArticlePreview, { getStaticPaths, getStaticProps } from "./[id].page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
