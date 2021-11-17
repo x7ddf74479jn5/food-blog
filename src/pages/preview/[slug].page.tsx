@@ -5,7 +5,6 @@ import { HtmlHeadNoIndex } from "@/components/atoms/meta";
 import type { ArticleDetailProps } from "@/pages/articles/[id].page";
 import ArticleDetail, { getStaticProps as _getStaticProps } from "@/pages/articles/[id].page";
 import { fetchArticles } from "@/utils/fetcher";
-import { UrlTable } from "@/utils/paths/url";
 
 const ArticlePreview = (props: ArticleDetailProps) => {
   return (
@@ -18,7 +17,9 @@ const ArticlePreview = (props: ArticleDetailProps) => {
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const data = await fetchArticles();
-  const paths = data.contents.map((article) => `${UrlTable.preview}/${article.id}`);
+  const paths = data.contents.map((article) => {
+    return { params: { id: article.id } };
+  });
 
   return { paths, fallback: "blocking" };
 };

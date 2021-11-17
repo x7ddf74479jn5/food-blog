@@ -43,7 +43,9 @@ interface Params extends ParsedUrlQuery {
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const data = await fetchCategories();
-  const paths = data.map((category) => `${UrlTable.categories}/${category.slug}`);
+  const paths = data.map((category) => {
+    return { params: { slug: category.slug } };
+  });
 
   return { paths, fallback: "blocking" };
 };

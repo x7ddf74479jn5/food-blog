@@ -39,7 +39,7 @@ export const ArticleDetail = ({
 }: ArticleDetailProps) => {
   const { id, image, title, description, category, tags, writer, linkCardArticles, publishedAt, updatedAt } = article;
   const { siteTitle, host } = config;
-  const url = formatPageUrl(id ?? "", host);
+  const url = formatPageUrl(`${UrlTable.articles}/${id}`, host);
   const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
   const safePublishedAt = getSafeDate(publishedAt);
   const safeModifiedAt = getSafeDate(updatedAt);
@@ -113,12 +113,13 @@ export const ArticleDetail = ({
 
 interface Params extends ParsedUrlQuery {
   id?: string;
-  slug?: string;
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const data = await fetchArticles();
-  const paths = data.contents.map((article) => `${UrlTable.articles}/${article.id}`);
+  const paths = data.contents.map((article) => {
+    return { params: { id: article.id } };
+  });
 
   return { paths, fallback: "blocking" };
 };
@@ -134,7 +135,7 @@ export type ArticlesStaticProps = {
 };
 
 export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async ({ params, preview, previewData }) => {
-  const id = params?.id || params?.slug;
+  const id = params?.id;
   if (!id) {
     throw new Error("Error: ID not found");
   }
