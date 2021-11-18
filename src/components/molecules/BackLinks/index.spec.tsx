@@ -2,12 +2,12 @@ import { render, screen } from "jest/test-utils";
 import React from "react";
 import renderer from "react-test-renderer";
 
-import { getBackLinks, UrlTable } from "@/utils/paths/url";
+import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 import BackLinks from "../BackLinks";
 
 describe("components/molecules/BackLinks", () => {
-  const mockBackLinks = getBackLinks([UrlTable.home]);
+  const mockBackLinks = getBackLinks([urlTable.home]);
 
   it("snapshot", () => {
     const tree = renderer.create(<BackLinks links={mockBackLinks} />).toJSON();
@@ -17,7 +17,7 @@ describe("components/molecules/BackLinks", () => {
   it("OK: 表示が正しい", () => {
     render(<BackLinks links={mockBackLinks} />);
     const anchor = screen.getByRole("link");
-    expect(anchor).toHaveAttribute("href", UrlTable.home);
+    expect(anchor).toHaveAttribute("href", urlTable.home);
     expect(anchor).toHaveTextContent(mockBackLinks[0].label);
   });
 });

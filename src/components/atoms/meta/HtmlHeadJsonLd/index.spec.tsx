@@ -1,7 +1,7 @@
 import { mockArticles, mockConfig } from "@mocks/data";
 import renderer from "react-test-renderer";
 
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import { HtmlHeadJsonLd } from ".";
 
@@ -19,7 +19,7 @@ describe("components/atoms/meta/HtmlHeadJsonLd", () => {
   const { title, description, image, id, publishedAt, updatedAt, writer } = mockArticles.stock;
   const imageUrl = image.url;
   const indexUrl = mockConfig.host;
-  const url = new URL(`${UrlTable.articles}/${id}`, indexUrl).toString();
+  const url = new URL(`${urlTable.articles}/${id}`, indexUrl).toString();
 
   it("snapshot", () => {
     const tree = renderer

@@ -1,6 +1,7 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
 
+import { LoadMoreButton } from "@/components/atoms/buttons/LoadMoreButton";
 import { HtmlHeadBase } from "@/components/atoms/meta";
 import HomeLayout from "@/components/layouts/HomeLayout";
 import ArticleList from "@/components/molecules/ArticleList";
@@ -16,12 +17,18 @@ const Home = ({ articles, config, pickup, categories }: Props) => {
       <HtmlHeadBase indexUrl={host} siteTitle={title} />
       <h1 className="mb-4 text-4xl font-bold">レシピ一覧</h1>
       <ArticleList articles={articles} />
+      <LoadMoreButton
+        handleOnClick={() => {
+          return;
+        }}
+      />
     </HomeLayout>
   );
 };
 
 type StaticProps = {
   articles: TArticle[];
+  totalCount: number;
   categories: TCategory[];
   config: TConfig;
   pickup: TPickup;
@@ -36,10 +43,11 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     fetchPickupArticles(getNewDate()),
   ]);
 
-  const { contents: articles } = data;
+  const { contents: articles, totalCount } = data;
   return {
     props: {
       articles,
+      totalCount,
       categories: _categories,
       config: _config,
       pickup,

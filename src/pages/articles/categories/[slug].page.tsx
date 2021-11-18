@@ -8,7 +8,7 @@ import type { TArticle, TCategory, TConfig, TPickup } from "@/types";
 import { getNewDate } from "@/utils/date";
 import { fetchArticles, fetchCategories, fetchCategory, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
 import { formatPageTitle } from "@/utils/formatter";
-import { getBackLinks, UrlTable } from "@/utils/paths/url";
+import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -16,8 +16,8 @@ const Category: NextPage<Props> = ({ articles, category, config, categories, pic
   const { siteTitle, host } = config;
   const heading = `カテゴリー：${category.name}`;
   const pageTitle = formatPageTitle(heading, siteTitle);
-  const url = new URL(`${UrlTable.categories}/${category.slug}`, host).toString();
-  const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
+  const url = new URL(`${urlTable.categories}/${category.slug}`, host).toString();
+  const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
 
   return (
     <DefaultLayout

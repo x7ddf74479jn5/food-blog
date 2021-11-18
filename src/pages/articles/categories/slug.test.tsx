@@ -4,7 +4,7 @@ import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
 
 import { formatPageTitle } from "@/utils/formatter";
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import Category, { getStaticPaths, getStaticProps } from "./[slug].page";
 
@@ -45,7 +45,7 @@ describe("pages/articles/categories/[slug]", () => {
   it.skip("getStaticPaths", async () => {
     const { paths, fallback } = await getStaticPaths({});
     expect(fallback).toBe("blocking");
-    const expectedPaths = mockCategoryList.map((category) => `${UrlTable.categories}/${category.slug}`);
+    const expectedPaths = mockCategoryList.map((category) => `${urlTable.categories}/${category.slug}`);
     expect(paths).toStrictEqual(expectedPaths);
   });
 

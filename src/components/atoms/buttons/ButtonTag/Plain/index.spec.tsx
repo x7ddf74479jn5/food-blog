@@ -2,7 +2,7 @@ import { render, screen } from "jest/test-utils";
 import { mockTags } from "mocks/data";
 import renderer from "react-test-renderer";
 
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import { ButtonTagPlain } from ".";
 
@@ -25,6 +25,6 @@ describe("components/atoms/buttons/ButtonTagPlain", () => {
   it("OK: aタグのhrefが正しい", () => {
     render(<ButtonTagPlain hasLink tag={tagRice} />);
     const anchor = screen.getByRole("link");
-    expect(anchor).toHaveAttribute("href", `${UrlTable.tags}/${tagRice.slug}`);
+    expect(anchor).toHaveAttribute("href", `${urlTable.tags}/${tagRice.slug}`);
   });
 });

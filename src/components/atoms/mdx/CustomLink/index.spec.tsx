@@ -1,13 +1,13 @@
 import { render, screen } from "jest/test-utils";
 import renderer from "react-test-renderer";
 
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import CustomLink from ".";
 
 describe("components/atoms/mdx/CustomLink", () => {
   const externalHref = "https://www.example.com/";
-  const internalHref = UrlTable.home;
+  const internalHref = urlTable.home;
   it("snapshot", () => {
     const external = renderer.create(<CustomLink href={externalHref}>external link</CustomLink>).toJSON();
     expect(external).toMatchSnapshot();

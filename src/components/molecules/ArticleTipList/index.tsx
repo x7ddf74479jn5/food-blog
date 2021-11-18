@@ -3,7 +3,7 @@ import Image from "next/image";
 import NextLink from "@/components/atoms/NextLink";
 import { TagListPlain } from "@/components/molecules/TagList";
 import type { TArticle } from "@/types";
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 type Props = {
   article: TArticle;
@@ -13,13 +13,13 @@ export const ArticleTipWithThumb: React.VFC<Props> = ({ article }) => {
   const { id, title, tags, image } = article;
   return (
     <article className="flex flex-row max-h-36 ">
-      <NextLink href={`${UrlTable.articles}/${id}`}>
+      <NextLink href={`${urlTable.articles}/${id}`}>
         <div className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]">
           <Image src={image.url} alt={title} width={48} height={48} objectFit="cover" />
         </div>
       </NextLink>
       <div className="flex flex-col flex-grow">
-        <NextLink href={`${UrlTable.articles}/${id}`}>{title}</NextLink>
+        <NextLink href={`${urlTable.articles}/${id}`}>{title}</NextLink>
         <div className="flex-grow">
           <TagListPlain tags={tags} hasLink />
         </div>

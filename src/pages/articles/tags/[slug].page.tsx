@@ -8,7 +8,7 @@ import type { TArticle, TCategory, TConfig, TPickup, TTag } from "@/types";
 import { getNewDate } from "@/utils/date";
 import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTag, fetchTags } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
-import { getBackLinks, UrlTable } from "@/utils/paths/url";
+import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -16,8 +16,8 @@ const Tags: NextPage<Props> = ({ articles, tag, config, categories, pickup }) =>
   const { siteTitle, host } = config;
   const heading = `タグ：${tag.name}`;
   const pageTitle = formatPageTitle(heading, siteTitle);
-  const url = formatPageUrl(`${UrlTable.tags}/${tag.slug}`, host);
-  const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
+  const url = formatPageUrl(`${urlTable.tags}/${tag.slug}`, host);
+  const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
 
   return (
     <DefaultLayout

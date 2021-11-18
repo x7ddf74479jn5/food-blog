@@ -5,7 +5,7 @@ import renderer from "react-test-renderer";
 
 import { formatPageTitle } from "@/utils/formatter";
 import mdx2html from "@/utils/mdx/mdx2html";
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import ArticleDetail, { getStaticPaths, getStaticProps } from "./[id].page";
 
@@ -66,7 +66,7 @@ describe("pages/articles", () => {
   it.skip("getStaticPaths", async () => {
     const { paths, fallback } = await getStaticPaths({});
     expect(fallback).toBe("blocking");
-    const expectedPaths = mockArticleList.map((article) => `${UrlTable.articles}/${article.id}`);
+    const expectedPaths = mockArticleList.map((article) => `${urlTable.articles}/${article.id}`);
     expect(paths).toStrictEqual(expectedPaths);
   });
 

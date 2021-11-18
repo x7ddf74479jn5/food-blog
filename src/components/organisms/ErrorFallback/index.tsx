@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 import { FaChevronLeft, FaRegTired } from "react-icons/fa";
 
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 type ErrorFallbackProps = { heading: string; message: string };
 
 export const ErrorFallback: React.VFC<ErrorFallbackProps> = ({ heading, message }) => {
   const router = useRouter();
-  const handleClick = () => router.push(UrlTable.home);
+  const handleClick = () => router.push(urlTable.home);
 
   return (
     <div className="flex flex-col gap-12 justify-center items-center mt-8" role="alert">

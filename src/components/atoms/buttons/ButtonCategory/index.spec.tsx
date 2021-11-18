@@ -2,7 +2,7 @@ import { render, screen } from "jest/test-utils";
 import { mockCategories } from "mocks/data/categories";
 import renderer from "react-test-renderer";
 
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import ButtonCategory from ".";
 
@@ -21,6 +21,6 @@ describe("components/atoms/buttons/ButtonCategory", () => {
   it("OK: aタグのhrefが正しい", () => {
     render(<ButtonCategory category={categoryRice} />);
     const anchor = screen.getByRole("link");
-    expect(anchor).toHaveAttribute("href", `${UrlTable.categories}/${categoryRice.slug}`);
+    expect(anchor).toHaveAttribute("href", `${urlTable.categories}/${categoryRice.slug}`);
   });
 });

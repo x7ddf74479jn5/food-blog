@@ -1,6 +1,6 @@
 import NextLink from "@/components/atoms/NextLink";
 import type { TTag } from "@/types";
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 type Props = {
   tag: TTag;
@@ -10,7 +10,7 @@ type Props = {
 export const ButtonTagPlain: React.FC<Props> = ({ tag, hasLink }) => {
   if (hasLink) {
     return (
-      <NextLink href={`${UrlTable.tags}/${tag.slug}`}>
+      <NextLink href={`${urlTable.tags}/${tag.slug}`}>
         <span className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300">{`#${tag.name}`}</span>
       </NextLink>
     );

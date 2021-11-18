@@ -6,7 +6,7 @@ import type { TCategory, TConfig, TPickup } from "@/types";
 import { getNewDate } from "@/utils/date";
 import { fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
-import { getBackLinks, UrlTable } from "@/utils/paths/url";
+import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -14,8 +14,8 @@ const Categories: NextPage<Props> = ({ config, categories, pickup }) => {
   const { siteTitle, host } = config;
   const heading = "カテゴリー一覧";
   const pageTitle = formatPageTitle(heading, siteTitle);
-  const url = formatPageUrl(UrlTable.categories, host);
-  const backLinks = getBackLinks([UrlTable.home]);
+  const url = formatPageUrl(urlTable.categories, host);
+  const backLinks = getBackLinks([urlTable.home]);
   return (
     <TwoColumnLayout
       config={config}

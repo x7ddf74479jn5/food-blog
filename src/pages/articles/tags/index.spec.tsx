@@ -4,7 +4,7 @@ import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
 
 import { formatPageTitle } from "@/utils/formatter";
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import Tags, { getStaticPaths, getStaticProps } from "./[slug].page";
 
@@ -46,7 +46,7 @@ describe("pages/articles/tags", () => {
   it.skip("getStaticPaths", async () => {
     const { paths, fallback } = await getStaticPaths({});
     expect(fallback).toBe("blocking");
-    const expectedPaths = mockTagList.map((tag) => `${UrlTable.tags}/${tag.slug}`);
+    const expectedPaths = mockTagList.map((tag) => `${urlTable.tags}/${tag.slug}`);
     expect(paths).toStrictEqual(expectedPaths);
   });
 

@@ -2,7 +2,7 @@ import { mockArticles, mockCategories, mockConfig, mockPickup } from "mocks/data
 import renderer from "react-test-renderer";
 
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import HomeLayout from ".";
 
@@ -21,7 +21,7 @@ describe("components/layouts/HomeLayout", () => {
   const { title, id } = articleStock;
   const { siteTitle, host } = mockConfig;
   const pageTitle = formatPageTitle(title, siteTitle);
-  const url = formatPageUrl(`${UrlTable.articles}/${id}`, host);
+  const url = formatPageUrl(`${urlTable.articles}/${id}`, host);
   const categories = Object.values(mockCategories);
   it("snapshot", () => {
     const tree = renderer

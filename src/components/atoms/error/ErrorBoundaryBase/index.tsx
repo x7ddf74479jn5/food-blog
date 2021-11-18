@@ -3,7 +3,7 @@ import type { FallbackProps } from "react-error-boundary";
 import { ErrorBoundary } from "react-error-boundary";
 import { FaChevronLeft, FaRegTired } from "react-icons/fa";
 
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
   return (
@@ -31,7 +31,7 @@ export const ErrorBoundaryBase: React.FC<{ children: React.ReactNode; callback?:
 
   const handleReset = () => {
     callback && callback();
-    router.push(UrlTable.home);
+    router.push(urlTable.home);
   };
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback} onReset={handleReset}>

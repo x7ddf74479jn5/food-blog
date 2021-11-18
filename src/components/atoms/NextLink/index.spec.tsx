@@ -1,12 +1,12 @@
 import { render, screen } from "jest/test-utils";
 import renderer from "react-test-renderer";
 
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import NextLink from ".";
 
 describe("components/atoms/NextLink", () => {
-  const homeUrl = UrlTable.home;
+  const homeUrl = urlTable.home;
   it("snapshot", () => {
     const tree = renderer.create(<NextLink href={homeUrl}>Home</NextLink>).toJSON();
     expect(tree).toMatchSnapshot();

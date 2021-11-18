@@ -3,7 +3,7 @@ import { render } from "jest/test-utils";
 import renderer from "react-test-renderer";
 
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import { HtmlHeadBase } from ".";
 
@@ -22,7 +22,7 @@ describe("components/atoms/meta/HtmlHeadBase", () => {
   const imageUrl = image.url;
   const { host: indexUrl, siteTitle } = mockConfig;
   const pageTitle = formatPageTitle(title, siteTitle);
-  const url = formatPageUrl(`${UrlTable.articles}/${id}`, indexUrl);
+  const url = formatPageUrl(`${urlTable.articles}/${id}`, indexUrl);
   it("snapshot", () => {
     const tree = renderer
       .create(

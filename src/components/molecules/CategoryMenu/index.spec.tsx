@@ -3,7 +3,7 @@ import { mockCategories } from "mocks/data";
 import React from "react";
 import renderer from "react-test-renderer";
 
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import { CategoryMenu } from ".";
 
@@ -26,7 +26,7 @@ describe("components/molecules/CategoryMenu", () => {
     for (let i = 0; i < mockCategoryList.length; i++) {
       const anchor = anchors[i];
       const category = mockCategoryList[i];
-      expect(anchor).toHaveAttribute("href", `${UrlTable.categories}/${category.slug}`);
+      expect(anchor).toHaveAttribute("href", `${urlTable.categories}/${category.slug}`);
       expect(anchor).toHaveTextContent(category.name);
     }
   });

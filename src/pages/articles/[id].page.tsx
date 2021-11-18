@@ -23,7 +23,7 @@ import {
 } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
 import mdx2html from "@/utils/mdx/mdx2html";
-import { getBackLinks, UrlTable } from "@/utils/paths/url";
+import { getBackLinks, urlTable } from "@/utils/paths/url";
 import { isDraft } from "@/utils/validator";
 
 export type ArticleDetailProps = InferGetStaticPropsType<typeof getStaticProps>;
@@ -39,8 +39,8 @@ export const ArticleDetail = ({
 }: ArticleDetailProps) => {
   const { id, image, title, description, category, tags, writer, linkCardArticles, publishedAt, updatedAt } = article;
   const { siteTitle, host } = config;
-  const url = formatPageUrl(`${UrlTable.articles}/${id}`, host);
-  const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
+  const url = formatPageUrl(`${urlTable.articles}/${id}`, host);
+  const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
   const safePublishedAt = getSafeDate(publishedAt);
   const safeModifiedAt = getSafeDate(updatedAt);
   const { name: writerName, avatar } = writer;

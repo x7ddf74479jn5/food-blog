@@ -4,7 +4,7 @@ import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
 
 import mdx2html from "@/utils/mdx/mdx2html";
-import { UrlTable } from "@/utils/paths/url";
+import { urlTable } from "@/utils/paths/url";
 
 import ArticlePreview, { getStaticPaths, getStaticProps } from "./[id].page";
 
@@ -65,7 +65,7 @@ describe("pages/preview", () => {
   it.skip("getStaticPaths", async () => {
     const { paths, fallback } = await getStaticPaths({});
     expect(fallback).toBe("blocking");
-    const expectedPaths = mockArticleList.map((article) => `${UrlTable.preview}/${article.id}`);
+    const expectedPaths = mockArticleList.map((article) => `${urlTable.preview}/${article.id}`);
     expect(paths).toStrictEqual(expectedPaths);
   });
 
