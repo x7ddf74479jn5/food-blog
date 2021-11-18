@@ -27,3 +27,9 @@ export type TListResponse<T> = {
 };
 
 export type Obj<T = any> = Record<string, T>;
+
+export type ValueOf<T> = T[keyof T];
+
+export type MappedConst<T extends string> = {
+  [K in T]: K;
+};
