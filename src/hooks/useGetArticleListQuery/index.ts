@@ -1,47 +1,55 @@
-import { useRouter } from "next/router";
 import { useCallback, useRef } from "react";
 import { mutate } from "swr";
 import type { SWRInfiniteConfiguration } from "swr/infinite";
 import useSWRInfinite from "swr/infinite";
 
-import type { TArticleSWRResponse } from "@/types";
-import { UrlTable } from "@/utils/paths/url";
+import type { Obj, TApiRoute, TArticleListResponse, TArticleSWRResponse, TQueryOptions } from "@/types";
+
+const composeQueryString = (queries: Obj<string | number>) =>
+  Object.entries(queries)
+    .map(([key, value]) => `${key}=${value}`)
+    .join("&");
 
 type Arguments = {
-  perPage?: number;
+  endpoint: TApiRoute;
+  getKeyOptions?: TQueryOptions;
+  fetcher?: (url?: string) => Promise<TArticleListResponse>;
+  fallbackData?: TArticleListResponse[];
   options?: SWRInfiniteConfiguration;
 };
 
-const useGetArticleListQuery = ({ perPage = 4, options }: Arguments) => {
-  const router = useRouter();
-  const q = router.query.q;
+const useGetArticleListQuery = ({ endpoint, fetcher, getKeyOptions, fallbackData, options }: Arguments) => {
   const keyRef = useRef("");
+  const defaultLimit = 2;
+  const defaultKeyOptions = {
+    limit: defaultLimit,
+  };
+  const defaultFetcher = (url: string): Promise<TArticleListResponse> => fetch(url).then((res) => res.json());
 
   const getKey = (pageIndex: number, previousPageData: TArticleSWRResponse) => {
-    let key;
-
     if (previousPageData && !previousPageData.contents) return null;
 
     if (pageIndex === 0) {
-      key = `${UrlTable.apiSearch}?q=${q}&limit=${perPage}&pageIndex=${pageIndex}&previousPageData=${previousPageData}`;
+      const key = `${endpoint}?${composeQueryString({ ...defaultKeyOptions, ...getKeyOptions, pageIndex })}`;
       keyRef.current = key;
 
       return key;
     }
 
-    const offset = previousPageData?.offset !== undefined ? previousPageData.offset + perPage : 0;
-    key = `${UrlTable.apiSearch}?q=${q}&offset=${offset}&limit=${perPage}&pageIndex=${pageIndex}&previousPageData=${previousPageData}`;
+    const offset =
+      previousPageData?.offset !== undefined ? previousPageData.offset + (getKeyOptions?.limit ?? defaultLimit) : 0;
+    const key = `${endpoint}?${composeQueryString({ ...defaultKeyOptions, ...getKeyOptions, offset, pageIndex })}`;
     keyRef.current = key;
 
     return key;
   };
 
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-  const result = useSWRInfinite<TArticleSWRResponse, Error>(getKey, fetcher, {
+  const result = useSWRInfinite<TArticleSWRResponse, Error>(getKey, fetcher ?? defaultFetcher, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
+    suspense: true,
+    fallbackData,
     ...options,
   });
 

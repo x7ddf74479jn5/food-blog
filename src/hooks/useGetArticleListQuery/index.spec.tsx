@@ -7,7 +7,7 @@ import { SWRConfig } from "swr";
 import * as swr from "swr";
 import * as useSWRInfinite from "swr/infinite";
 
-import { UrlTable } from "@/utils/paths/url";
+import { apiRoute } from "@/utils/paths/url";
 
 import useGetArticleListQuery from ".";
 
@@ -25,6 +25,7 @@ afterEach(() => {
 
 describe("hooks/useGetArticleListQuery", () => {
   const q = "作り方";
+  const endpoint = apiRoute.apiArticles;
   const router: Partial<NextRouter> = {
     query: { q },
   };
@@ -38,9 +39,7 @@ describe("hooks/useGetArticleListQuery", () => {
   const mockArticleList = Object.values(mockArticles);
 
   it("OK: useSWRInfiniteが呼び出される", () => {
-    const limit = 2;
-
-    const { result, unmount } = renderHook(() => useGetArticleListQuery({ perPage: limit }), {
+    const { result, unmount } = renderHook(() => useGetArticleListQuery({ endpoint }), {
       wrapper: Wrapper,
     });
 
@@ -49,53 +48,95 @@ describe("hooks/useGetArticleListQuery", () => {
     unmount();
   });
 
-  it("OK: APIの結果が正しい", () => {
+  describe("OK: APIの結果が正しい", () => {
     const limit = 2;
     const mockSetSize = jest.fn();
     const offset = 0;
+    beforeEach(() => {
+      spyUseSWRInfinite.mockImplementationOnce((getKey, _fetcher, _options) => {
+        let size = 0;
+        getKey(size, null);
+        size++;
 
-    spyUseSWRInfinite.mockImplementationOnce((getKey) => {
-      let size = 0;
-      getKey(size, null);
-      size++;
+        return {
+          size,
+          setSize: mockSetSize,
+          data: [
+            {
+              contents: mockArticleList.slice(offset, offset + limit),
+              totalCount: mockArticleList.length,
+              offset,
+              limit,
+            },
+          ],
+        };
+      });
+    });
 
-      return {
-        size,
-        setSize: mockSetSize,
-        data: [
-          {
-            contents: mockArticleList.slice(offset, offset + limit),
-            totalCount: mockArticleList.length,
-            offset,
-            limit,
-          },
-        ],
+    it("default", () => {
+      const args = {
+        endpoint,
+        getKeyOptions: undefined,
+        fetcher: undefined,
+        fallbackData: undefined,
+        options: undefined,
       };
+
+      const { result } = renderHook(() => useGetArticleListQuery(args), {
+        wrapper: Wrapper,
+      });
+      renderResult = result;
+      const { getCurrentKey, size, articles, hasNextPage, paginate, revalidate } = renderResult.current;
+
+      expect(spyUseSWRInfinite).toBeCalledTimes(1);
+      const key = getCurrentKey();
+      const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&pageIndex=0`;
+      expect(key).toBe(expectedKey);
+
+      expect(articles).toStrictEqual(mockArticleList.slice(0, 2));
+      expect(hasNextPage).toBeTruthy();
+      expect(size).toBe(1);
+
+      paginate();
+      expect(mockSetSize).toBeCalledWith(2);
+
+      revalidate();
+      expect(spyMutate).toHaveBeenCalledWith(expectedKey);
     });
 
-    const { result } = renderHook(() => useGetArticleListQuery({ perPage: limit }), {
-      wrapper: Wrapper,
+    it("custom", () => {
+      const args = {
+        endpoint,
+        getKeyOptions: { q },
+        fetcher: undefined,
+        fallbackData: undefined,
+        options: undefined,
+      };
+
+      const { result } = renderHook(() => useGetArticleListQuery(args), {
+        wrapper: Wrapper,
+      });
+      renderResult = result;
+      const { getCurrentKey, size, articles, hasNextPage, paginate, revalidate } = renderResult.current;
+
+      expect(spyUseSWRInfinite).toBeCalledTimes(1);
+      const key = getCurrentKey();
+      const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&q=${q}&pageIndex=0`;
+      expect(key).toBe(expectedKey);
+
+      expect(articles).toStrictEqual(mockArticleList.slice(0, 2));
+      expect(hasNextPage).toBeTruthy();
+      expect(size).toBe(1);
+
+      paginate();
+      expect(mockSetSize).toBeCalledWith(2);
+
+      revalidate();
+      expect(spyMutate).toHaveBeenCalledWith(expectedKey);
     });
-    renderResult = result;
-    const { getCurrentKey, size, articles, hasNextPage, paginate, revalidate } = renderResult.current;
-
-    expect(spyUseSWRInfinite).toBeCalledTimes(1);
-    const key = getCurrentKey();
-    const expectedKey = `${UrlTable.apiSearch}?q=${q}&limit=${limit}&pageIndex=0&previousPageData=null`;
-    expect(key).toBe(expectedKey);
-
-    expect(articles).toStrictEqual(mockArticleList.slice(0, 2));
-    expect(hasNextPage).toBeTruthy();
-    expect(size).toBe(1);
-
-    paginate();
-    expect(mockSetSize).toBeCalledWith(2);
-
-    revalidate();
-    expect(spyMutate).toHaveBeenCalledWith(expectedKey);
   });
 
-  describe("OK: keyとarticlesの対応が正しい", () => {
+  describe.only("OK: keyとarticlesの対応が正しい", () => {
     it("1st: 取得数/総取得数/総記事数 2/2/4", () => {
       const limit = 2;
       const mockSetSize = jest.fn();
@@ -120,14 +161,14 @@ describe("hooks/useGetArticleListQuery", () => {
         };
       });
 
-      const { result } = renderHook(() => useGetArticleListQuery({ perPage: limit }), {
+      const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
         wrapper: Wrapper,
       });
       renderResult = result;
       const { getCurrentKey, size, articles, hasNextPage } = renderResult.current;
 
       const key = getCurrentKey();
-      const expectedKey = `${UrlTable.apiSearch}?q=${q}&limit=${limit}&pageIndex=0&previousPageData=null`;
+      const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&pageIndex=0`;
       expect(key).toBe(expectedKey);
       expect(articles).toStrictEqual(mockArticleList.slice(0, 2));
       expect(hasNextPage).toBeTruthy();
@@ -164,14 +205,14 @@ describe("hooks/useGetArticleListQuery", () => {
         };
       });
 
-      const { result } = renderHook(() => useGetArticleListQuery({ perPage: limit }), {
+      const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
         wrapper: Wrapper,
       });
       renderResult = result;
       const { getCurrentKey, size, articles, hasNextPage } = renderResult.current;
 
       const key = getCurrentKey();
-      const expectedKey = `${UrlTable.apiSearch}?q=${q}&offset=${offset}&limit=${limit}&pageIndex=1&previousPageData=[object Object]`;
+      const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&offset=${offset}&pageIndex=1`;
       expect(key).toBe(expectedKey);
       expect(articles).toStrictEqual(mockArticleList.slice(0, 4));
       expect(hasNextPage).toBeFalsy();
@@ -213,14 +254,14 @@ describe("hooks/useGetArticleListQuery", () => {
         };
       });
 
-      const { result } = renderHook(() => useGetArticleListQuery({ perPage: limit }), {
+      const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
         wrapper: Wrapper,
       });
       renderResult = result;
       const { getCurrentKey, size, articles, hasNextPage } = renderResult.current;
 
       const key = getCurrentKey();
-      const expectedKey = `${UrlTable.apiSearch}?q=${q}&offset=${offset}&limit=${limit}&pageIndex=2&previousPageData=[object Object]`;
+      const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&offset=${offset}&pageIndex=2`;
       expect(key).toBe(expectedKey);
       expect(articles).toStrictEqual(mockArticleList.slice(0, 4));
       expect(hasNextPage).toBeFalsy();

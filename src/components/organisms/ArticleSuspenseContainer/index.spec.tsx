@@ -4,13 +4,13 @@ import renderer from "react-test-renderer";
 
 import * as useGetArticleQuery from "@/hooks/useGetArticleListQuery";
 
-import { ArticleContainer } from ".";
+import { ArticleSuspenseContainer } from ".";
 
 let spyUseGetArticleQuery: jest.SpyInstance;
 const mockPaginate = jest.fn();
 
-describe("components/molecules/ArticleContainer", () => {
-  describe("OK: データがある", () => {
+describe("components/molecules/ArticleSuspenseContainer", () => {
+  describe("OK: データがある", () => {
     describe("次ページがある", () => {
       beforeEach(() => {
         spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
@@ -34,12 +34,12 @@ describe("components/molecules/ArticleContainer", () => {
       });
 
       it("Snapshot", () => {
-        const tree = renderer.create(<ArticleContainer />).toJSON();
+        const tree = renderer.create(<ArticleSuspenseContainer />).toJSON();
         expect(tree).toMatchSnapshot();
       });
 
       it("OK: 初期レンダリング", () => {
-        render(<ArticleContainer />);
+        render(<ArticleSuspenseContainer />);
         const article = screen.getByRole("article");
         expect(article).toBeInTheDocument();
         const button = screen.getByRole("button");
@@ -47,7 +47,7 @@ describe("components/molecules/ArticleContainer", () => {
       });
 
       it("Interaction", () => {
-        render(<ArticleContainer />);
+        render(<ArticleSuspenseContainer />);
         const button = screen.getByRole("button");
         expect(button).toBeInTheDocument();
         expect(button).toBeEnabled();
@@ -78,12 +78,12 @@ describe("components/molecules/ArticleContainer", () => {
         jest.restoreAllMocks();
       });
       it("Snapshot", () => {
-        const tree = renderer.create(<ArticleContainer />).toJSON();
+        const tree = renderer.create(<ArticleSuspenseContainer />).toJSON();
         expect(tree).toMatchSnapshot();
       });
 
       it("OK: 初期レンダリング", () => {
-        render(<ArticleContainer />);
+        render(<ArticleSuspenseContainer />);
         const article = screen.getByRole("article");
         expect(article).toBeInTheDocument();
         const button = screen.queryByRole("button");
@@ -114,12 +114,12 @@ describe("components/molecules/ArticleContainer", () => {
       });
 
       it("Snapshot", () => {
-        const tree = renderer.create(<ArticleContainer />).toJSON();
+        const tree = renderer.create(<ArticleSuspenseContainer />).toJSON();
         expect(tree).toMatchSnapshot();
       });
 
       it("OK: 初期レンダリング", () => {
-        render(<ArticleContainer />);
+        render(<ArticleSuspenseContainer />);
         const button = screen.queryByRole("button");
         expect(button).not.toBeInTheDocument();
       });
@@ -145,12 +145,12 @@ describe("components/molecules/ArticleContainer", () => {
     });
 
     it("Snapshot", () => {
-      const tree = renderer.create(<ArticleContainer />).toJSON();
+      const tree = renderer.create(<ArticleSuspenseContainer />).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it("OK: 初期レンダリング", () => {
-      const { container } = render(<ArticleContainer />);
+      const { container } = render(<ArticleSuspenseContainer />);
 
       const article = screen.queryByRole("article");
       expect(article).not.toBeInTheDocument();
@@ -179,12 +179,12 @@ describe("components/molecules/ArticleContainer", () => {
     });
 
     it("Snapshot", () => {
-      const tree = renderer.create(<ArticleContainer />).toJSON();
+      const tree = renderer.create(<ArticleSuspenseContainer />).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it("OK: 初期レンダリング", () => {
-      const { container } = render(<ArticleContainer />);
+      const { container } = render(<ArticleSuspenseContainer />);
 
       const article = screen.queryByRole("article");
       expect(article).not.toBeInTheDocument();

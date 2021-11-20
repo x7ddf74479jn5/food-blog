@@ -1,8 +1,14 @@
-type Table = {
-  [key: string]: string;
-};
+import type { Obj } from "@/types";
 
-export const UrlTable = {
+type Table = Obj<string>;
+
+export const apiRoute = {
+  apiSearch: "/api/search",
+  apiPreview: "/api/preview",
+  apiArticles: "/api/articles",
+} as const;
+
+export const urlTable = {
   home: "/",
   root: "/",
   articles: "/articles",
@@ -10,8 +16,7 @@ export const UrlTable = {
   tags: "/articles/tags",
   preview: "/preview",
   search: "/search",
-  apiSearch: "/api/search",
-};
+} as const;
 
 const labelTable: Table = {
   "/": "レシピ一覧へ",

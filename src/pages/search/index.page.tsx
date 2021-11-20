@@ -3,23 +3,25 @@ import { useRouter } from "next/router";
 
 import { HtmlHeadBase } from "@/components/atoms/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
-import { ArticleContainer } from "@/components/organisms/ArticleContainer/index";
-import type { TCategory, TConfig, TPickup } from "@/types";
+import { ArticleSuspenseContainer } from "@/components/organisms/ArticleSuspenseContainer/index";
+import type { TCategory, TConfig, TPickup, TQueryOptions } from "@/types";
 import { getNewDate } from "@/utils/date";
 import { fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
-import { getBackLinks, UrlTable } from "@/utils/paths/url";
+import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Search: NextPage<Props> = ({ config, categories, pickup }) => {
   const router = useRouter();
-  const keyword = router.query.q;
+  const q = router.query.q?.toString();
   const { siteTitle, host } = config;
-  const heading = `検索結果：${keyword ?? ""}`;
+  const heading = `検索結果：${q ?? ""}`;
   const pageTitle = formatPageTitle(heading, siteTitle);
-  const url = formatPageUrl(`${UrlTable.search}/q=${keyword ?? ""}`, host);
-  const backLinks = getBackLinks([UrlTable.home, UrlTable.categories]);
+  const url = formatPageUrl(`${urlTable.search}/q=${q ?? ""}`, host);
+  const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
+  const queryOptions: TQueryOptions = {};
+  // const queryOptions: TQueryOptions = { q };
 
   return (
     <DefaultLayout
@@ -33,7 +35,11 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
       <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} />
       <h1 className="mb-4 text-4xl font-bold">{heading}</h1>
       <div className="w-full">
-        {keyword ? <ArticleContainer /> : <div className="flex justify-center mt-16">検索語句を入力してください。</div>}
+        {q ? (
+          <ArticleSuspenseContainer queryOptions={queryOptions} />
+        ) : (
+          <div className="flex justify-center mt-16">検索語句を入力してください。</div>
+        )}
       </div>
     </DefaultLayout>
   );

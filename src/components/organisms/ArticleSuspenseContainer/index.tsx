@@ -5,27 +5,35 @@ import ArticleList from "@/components/molecules/ArticleList";
 import { ArticleSkeltonList } from "@/components/molecules/ArticleSkeltonList";
 import Pagination from "@/components/molecules/Pagination";
 import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
+import type { TQueryOptions } from "@/types";
+import { apiRoute } from "@/utils/paths/url";
 
-export const ArticleContainer: React.VFC = () => {
+type ArticleSuspenseContainerProps = {
+  queryOptions?: TQueryOptions;
+};
+
+export const ArticleSuspenseContainer: React.VFC<ArticleSuspenseContainerProps> = ({ queryOptions }) => {
   const [callback, setCallback] = useState<VoidFunction | undefined>(undefined);
 
   return (
     <HttpErrorBoundary callback={callback}>
       <Suspense fallback={<ArticleSkeltonList />}>
-        <Component setCallback={setCallback} />
+        <Component setCallback={setCallback} queryOptions={queryOptions} />
       </Suspense>
     </HttpErrorBoundary>
   );
 };
 
-export default ArticleContainer;
+export default ArticleSuspenseContainer;
 
 export const Component: React.VFC<{
   setCallback: React.Dispatch<React.SetStateAction<VoidFunction | undefined>>;
-}> = ({ setCallback }) => {
+  queryOptions?: TQueryOptions;
+}> = ({ setCallback, queryOptions }) => {
   const methods = useGetArticleListQuery({
-    perPage: 4,
-    options: { suspense: true },
+    endpoint: apiRoute.apiArticles,
+    // endpoint: apiRoute.apiSearch,
+    getKeyOptions: queryOptions,
   });
   const { articles, hasNextPage, error, isValidating, paginate: handlePaginate, revalidate } = methods;
 
