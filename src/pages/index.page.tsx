@@ -1,39 +1,34 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
+import dynamic from "next/dynamic";
 
-import { LoadMoreButton } from "@/components/atoms/buttons/LoadMoreButton";
 import { HtmlHeadBase } from "@/components/atoms/meta";
 import { HeadingOne } from "@/components/atoms/texts/Heading";
 import HomeLayout from "@/components/layouts/HomeLayout";
-import ArticleList from "@/components/molecules/ArticleList";
-// import { ArticleSuspenseContainer } from "@/components/organisms/ArticleSuspenseContainer";
+import type { TArticleListResponse, TCategory, TConfig, TPickup } from "@/types";
 import { getNewDate } from "@/utils/date";
 import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTags } from "@/utils/fetcher";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Home = ({ articles, config, pickup, categories }: Props) => {
+const Home = ({ data, config, pickup, categories }: Props) => {
   const { siteTitle: title, host } = config;
+  const ArticleSuspenseContainer = dynamic(() => import("@/components/organisms/ArticleSuspenseContainer"), {
+    ssr: false,
+  });
+
   return (
     <HomeLayout pickup={pickup} url={host} pageTitle={title} config={config} categories={categories}>
       <HtmlHeadBase indexUrl={host} siteTitle={title} />
       <div className="mb-8">
         <HeadingOne>レシピ一覧</HeadingOne>
       </div>
-      {/* <ArticleSuspenseContainer /> */}
-      <ArticleList articles={articles} />
-      <LoadMoreButton
-        handleOnClick={() => {
-          return;
-        }}
-      />
+      <ArticleSuspenseContainer fallbackData={data} />
     </HomeLayout>
   );
 };
 
 type StaticProps = {
-  articles: TArticle[];
-  totalCount: number;
+  data: TArticleListResponse;
   categories: TCategory[];
   config: TConfig;
   pickup: TPickup;
@@ -48,11 +43,9 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     fetchPickupArticles(getNewDate()),
   ]);
 
-  const { contents: articles, totalCount } = data;
   return {
     props: {
-      articles,
-      totalCount,
+      data,
       categories: _categories,
       config: _config,
       pickup,

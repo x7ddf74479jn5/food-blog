@@ -32,10 +32,14 @@ describe("pages/index", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockCategoryRice = mockCategories.rice;
   const mockArticleList = Object.values(mockArticles);
+  const mockData = {
+    contents: mockArticleList,
+    totalCount: mockArticleList.length,
+  };
 
   it("snapshot", () => {
     const tree = renderer
-      .create(<Home categories={mockCategoryList} config={mockConfig} articles={mockArticleList} pickup={mockPickup} />)
+      .create(<Home categories={mockCategoryList} config={mockConfig} data={mockData} pickup={mockPickup} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -49,8 +53,8 @@ describe("pages/index", () => {
     });
 
     if ("props" in result) {
-      const { articles, categories, config, pickup } = result.props;
-      expect(articles).toStrictEqual(mockArticleList);
+      const { data, categories, config, pickup } = result.props;
+      expect(data.contents).toStrictEqual(mockArticleList);
       expect(categories).toStrictEqual(mockCategoryList);
       expect(pickup).toStrictEqual(mockPickup);
       expect(config).toStrictEqual(mockConfig);
@@ -61,7 +65,7 @@ describe("pages/index", () => {
 
   it("OK: 初期レンダリング", async () => {
     const { unmount } = render(
-      <Home categories={mockCategoryList} config={mockConfig} articles={mockArticleList} pickup={mockPickup} />
+      <Home categories={mockCategoryList} config={mockConfig} data={mockData} pickup={mockPickup} />
     );
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent("レシピ一覧");

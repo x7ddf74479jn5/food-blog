@@ -14,13 +14,13 @@ type Arguments = {
   endpoint: TApiRoute;
   getKeyOptions?: TQueryOptions;
   fetcher?: (url?: string) => Promise<TArticleListResponse>;
-  fallbackData?: TArticleListResponse[];
+  fallbackData?: TArticleListResponse;
   options?: SWRInfiniteConfiguration;
 };
 
 const useGetArticleListQuery = ({ endpoint, fetcher, getKeyOptions, fallbackData, options }: Arguments) => {
   const keyRef = useRef("");
-  const defaultLimit = 2;
+  const defaultLimit = 10;
   const defaultKeyOptions = {
     limit: defaultLimit,
   };
@@ -49,7 +49,7 @@ const useGetArticleListQuery = ({ endpoint, fetcher, getKeyOptions, fallbackData
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
     suspense: true,
-    fallbackData,
+    fallbackData: fallbackData ? [fallbackData] : undefined,
     ...options,
   });
 

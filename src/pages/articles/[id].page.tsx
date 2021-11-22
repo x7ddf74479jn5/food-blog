@@ -142,7 +142,7 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
   try {
     const queries = preview ? { draftKey: isDraft(previewData) ? previewData.draftKey : "" } : {};
 
-    const [_config, _categories, article, pickup] = await Promise.all([
+    const [config, categories, article, pickup] = await Promise.all([
       fetchConfig(),
       fetchCategories(),
       fetchArticle(id, queries),
@@ -158,8 +158,8 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
       props: {
         article,
         mdxSource,
-        categories: _categories,
-        config: _config,
+        categories,
+        config,
         isPreview,
         relatedArticles,
         pickup,

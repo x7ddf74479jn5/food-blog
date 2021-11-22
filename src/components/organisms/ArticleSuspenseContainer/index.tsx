@@ -1,22 +1,26 @@
-import { Suspense, useState } from "react";
+import { Suspense, useCallback, useRef } from "react";
 
 import { HttpErrorBoundary } from "@/components/atoms/error";
 import ArticleList from "@/components/molecules/ArticleList";
 import { ArticleSkeltonList } from "@/components/molecules/ArticleSkeltonList";
 import Pagination from "@/components/molecules/Pagination";
 import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
-import type { TQueryOptions } from "@/types";
+import type { TArticleListResponse, TQueryOptions } from "@/types";
 import { apiRoute } from "@/utils/paths/url";
 
 type ArticleSuspenseContainerProps = {
   queryOptions?: TQueryOptions;
+  fallbackData?: TArticleListResponse;
 };
 
 export const ArticleSuspenseContainer: React.VFC<ArticleSuspenseContainerProps> = ({ queryOptions }) => {
-  const [callback, setCallback] = useState<VoidFunction | undefined>(undefined);
+  const callbackRef = useRef<VoidFunction | undefined>(undefined);
+  const setCallback = useCallback((cb) => {
+    callbackRef.current = cb;
+  }, []);
 
   return (
-    <HttpErrorBoundary callback={callback}>
+    <HttpErrorBoundary callback={callbackRef.current}>
       <Suspense fallback={<ArticleSkeltonList />}>
         <Component setCallback={setCallback} queryOptions={queryOptions} />
       </Suspense>
@@ -29,13 +33,19 @@ export default ArticleSuspenseContainer;
 export const Component: React.VFC<{
   setCallback: React.Dispatch<React.SetStateAction<VoidFunction | undefined>>;
   queryOptions?: TQueryOptions;
+  fallbackData?: TArticleListResponse;
 }> = ({ setCallback, queryOptions }) => {
-  const methods = useGetArticleListQuery({
+  const {
+    articles,
+    hasNextPage,
+    error,
+    isValidating,
+    paginate: handlePaginate,
+    revalidate,
+  } = useGetArticleListQuery({
     endpoint: apiRoute.apiArticles,
-    // endpoint: apiRoute.apiSearch,
     getKeyOptions: queryOptions,
   });
-  const { articles, hasNextPage, error, isValidating, paginate: handlePaginate, revalidate } = methods;
 
   setCallback(revalidate);
 

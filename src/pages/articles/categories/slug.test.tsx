@@ -25,6 +25,10 @@ describe("pages/articles/categories/[slug]", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockCategoryRice = mockCategories.rice;
   const mockArticleList = Object.values(mockArticles);
+  const mockData = {
+    contents: mockArticleList,
+    totalCount: mockArticleList.length,
+  };
 
   it("snapshot", () => {
     const tree = renderer
@@ -33,7 +37,7 @@ describe("pages/articles/categories/[slug]", () => {
           category={mockCategoryRice}
           categories={mockCategoryList}
           config={mockConfig}
-          articles={mockArticleList}
+          data={mockData}
           pickup={mockPickup}
         />
       )
@@ -58,8 +62,8 @@ describe("pages/articles/categories/[slug]", () => {
     });
 
     if ("props" in result) {
-      const { articles, category, categories, config, pickup } = result.props;
-      expect(articles).toStrictEqual(mockArticleList);
+      const { data, category, categories, config, pickup } = result.props;
+      expect(data.contents).toStrictEqual(mockArticleList);
       expect(category).toBe(mockCategoryRice.slug);
       expect(categories).toStrictEqual(mockCategoryList);
       expect(pickup).toStrictEqual(mockPickup);
@@ -75,7 +79,7 @@ describe("pages/articles/categories/[slug]", () => {
         category={mockCategoryRice}
         categories={mockCategoryList}
         config={mockConfig}
-        articles={mockArticleList}
+        data={mockData}
         pickup={mockPickup}
       />
     );

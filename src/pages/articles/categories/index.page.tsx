@@ -38,7 +38,7 @@ type StaticProps = {
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const [config, _categories, pickup] = await Promise.all([
+  const [config, categories, pickup] = await Promise.all([
     fetchConfig(),
     fetchCategories(),
     fetchPickupArticles(getNewDate()),
@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   return {
     props: {
       config,
-      categories: _categories,
+      categories,
       pickup,
     },
     revalidate: 60 * 60 * 24,

@@ -26,17 +26,15 @@ describe("pages/articles/tags", () => {
   const mockTagRice = mockTags.rice;
   const mockArticleList = Object.values(mockArticles);
   const mockTagList = Object.values(mockTags);
+  const mockData = {
+    contents: mockArticleList,
+    totalCount: mockArticleList.length,
+  };
 
   it("snapshot", () => {
     const tree = renderer
       .create(
-        <Tags
-          config={mockConfig}
-          articles={mockArticleList}
-          pickup={mockPickup}
-          tag={mockTagRice}
-          categories={mockCategoryList}
-        />
+        <Tags config={mockConfig} data={mockData} pickup={mockPickup} tag={mockTagRice} categories={mockCategoryList} />
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
@@ -59,8 +57,8 @@ describe("pages/articles/tags", () => {
     });
 
     if ("props" in result) {
-      const { articles, tag, categories, config, pickup } = result.props;
-      expect(articles).toStrictEqual(mockArticleList);
+      const { data, tag, categories, config, pickup } = result.props;
+      expect(data.contents).toStrictEqual(mockArticleList);
       expect(tag).toBe(mockTagRice.slug);
       expect(categories).toStrictEqual(mockCategoryList);
       expect(pickup).toStrictEqual(mockPickup);
@@ -72,13 +70,7 @@ describe("pages/articles/tags", () => {
 
   it("OK: 初期レンダリング", async () => {
     const { unmount } = render(
-      <Tags
-        tag={mockTagRice}
-        categories={mockCategoryList}
-        config={mockConfig}
-        articles={mockArticleList}
-        pickup={mockPickup}
-      />
+      <Tags tag={mockTagRice} categories={mockCategoryList} config={mockConfig} data={mockData} pickup={mockPickup} />
     );
     const h1 = screen.getByRole("heading", { level: 1 });
     const expectedHeading = `タグ：${mockTagRice.name}`;

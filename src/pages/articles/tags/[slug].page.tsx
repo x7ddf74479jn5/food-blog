@@ -1,11 +1,11 @@
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import dynamic from "next/dynamic";
 import type { ParsedUrlQuery } from "node:querystring";
 
 import { HtmlHeadBase } from "@/components/atoms/meta";
 import { HeadingOne } from "@/components/atoms/texts/Heading";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
-import ArticleList from "@/components/molecules/ArticleList";
-import type { TArticle, TCategory, TConfig, TPickup, TTag } from "@/types";
+import type { TArticleListResponse, TCategory, TConfig, TPickup, TTag } from "@/types";
 import { getNewDate } from "@/utils/date";
 import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTag, fetchTags } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
@@ -13,12 +13,15 @@ import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Tags: NextPage<Props> = ({ articles, tag, config, categories, pickup }) => {
+const Tags: NextPage<Props> = ({ data, tag, config, categories, pickup }) => {
   const { siteTitle, host } = config;
   const heading = `タグ：${tag.name}`;
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = formatPageUrl(`${urlTable.tags}/${tag.slug}`, host);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
+  const ArticleSuspenseContainer = dynamic(() => import("@/components/organisms/ArticleSuspenseContainer"), {
+    ssr: false,
+  });
 
   return (
     <DefaultLayout
@@ -32,9 +35,9 @@ const Tags: NextPage<Props> = ({ articles, tag, config, categories, pickup }) =>
       <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} />
       <div className="mb-8">
         <HeadingOne>{heading}</HeadingOne>
-      </div>{" "}
+      </div>
       <div className="w-full min-h-screen">
-        <ArticleList articles={articles} />
+        <ArticleSuspenseContainer fallbackData={data} />
       </div>
     </DefaultLayout>
   );
@@ -57,7 +60,7 @@ type StaticProps = {
   tag: TTag;
   categories: TCategory[];
   config: TConfig;
-  articles: TArticle[];
+  data: TArticleListResponse;
   pickup: TPickup;
 };
 
@@ -68,7 +71,7 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
   }
   const tag = await fetchTag(slug);
 
-  const [_articles, config, _categories, pickup] = await Promise.all([
+  const [data, config, categories, pickup] = await Promise.all([
     fetchArticles({ filters: `tags[contains]${tag.id}` }),
     fetchConfig(),
     fetchCategories(),
@@ -77,10 +80,10 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
 
   return {
     props: {
-      articles: _articles.contents,
+      data,
       tag,
       config,
-      categories: _categories,
+      categories,
       pickup,
     },
     revalidate: 60 * 60 * 24,
