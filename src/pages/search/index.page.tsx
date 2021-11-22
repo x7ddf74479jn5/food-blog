@@ -2,6 +2,7 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useRouter } from "next/router";
 
 import { HtmlHeadBase } from "@/components/atoms/meta";
+import { HeadingOne } from "@/components/atoms/texts/Heading";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSuspenseContainer } from "@/components/organisms/ArticleSuspenseContainer/index";
 import type { TCategory, TConfig, TPickup, TQueryOptions } from "@/types";
@@ -20,8 +21,7 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = formatPageUrl(`${urlTable.search}/q=${q ?? ""}`, host);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
-  const queryOptions: TQueryOptions = {};
-  // const queryOptions: TQueryOptions = { q };
+  const queryOptions: TQueryOptions = { q };
 
   return (
     <DefaultLayout
@@ -33,7 +33,9 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
       pickup={pickup}
     >
       <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} />
-      <h1 className="mb-4 text-4xl font-bold">{heading}</h1>
+      <div className="mb-8">
+        <HeadingOne>{heading}</HeadingOne>
+      </div>
       <div className="w-full">
         {q ? (
           <ArticleSuspenseContainer queryOptions={queryOptions} />

@@ -4,6 +4,7 @@ import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithO
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
 import { HtmlHeadBase } from "@/components/atoms/meta";
 import { ShareButtons } from "@/components/atoms/ShareButtons";
+import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import BackLinks from "@/components/molecules/BackLinks";
 import { PickupArticles } from "@/components/organisms/PickupArticles/index";
@@ -39,7 +40,9 @@ export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = ({
   return (
     <RootLayout config={config}>
       <HtmlHeadBase indexUrl={host} pageTitle={title} url={url} />
-      <h1 className="flex justify-center my-8 text-4xl font-bold">{heading}</h1>
+      <div className="my-8">
+        <HeadingOne>{heading}</HeadingOne>
+      </div>
       <MiddleAreaContainer>
         <AsideContainer className="lg:w-full" side="left">
           <ShareButtons url={url} title={title} direction={isSmallOrDown ? "row" : "column"} />

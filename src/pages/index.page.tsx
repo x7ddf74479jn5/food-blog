@@ -3,8 +3,10 @@ import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
 
 import { LoadMoreButton } from "@/components/atoms/buttons/LoadMoreButton";
 import { HtmlHeadBase } from "@/components/atoms/meta";
+import { HeadingOne } from "@/components/atoms/texts/Heading";
 import HomeLayout from "@/components/layouts/HomeLayout";
 import ArticleList from "@/components/molecules/ArticleList";
+// import { ArticleSuspenseContainer } from "@/components/organisms/ArticleSuspenseContainer";
 import { getNewDate } from "@/utils/date";
 import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTags } from "@/utils/fetcher";
 
@@ -15,7 +17,10 @@ const Home = ({ articles, config, pickup, categories }: Props) => {
   return (
     <HomeLayout pickup={pickup} url={host} pageTitle={title} config={config} categories={categories}>
       <HtmlHeadBase indexUrl={host} siteTitle={title} />
-      <h1 className="mb-4 text-4xl font-bold">レシピ一覧</h1>
+      <div className="mb-8">
+        <HeadingOne>レシピ一覧</HeadingOne>
+      </div>
+      {/* <ArticleSuspenseContainer /> */}
       <ArticleList articles={articles} />
       <LoadMoreButton
         handleOnClick={() => {

@@ -2,6 +2,7 @@ import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage 
 import type { ParsedUrlQuery } from "node:querystring";
 
 import { HtmlHeadBase } from "@/components/atoms/meta";
+import { HeadingOne } from "@/components/atoms/texts/Heading";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import ArticleList from "@/components/molecules/ArticleList";
 import type { TArticle, TCategory, TConfig, TPickup } from "@/types";
@@ -29,7 +30,9 @@ const Category: NextPage<Props> = ({ articles, category, config, categories, pic
       pickup={pickup}
     >
       <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} image={category.image.url} />
-      <h1 className="mb-4 text-4xl font-bold">{heading}</h1>
+      <div className="mb-8">
+        <HeadingOne>{heading}</HeadingOne>
+      </div>
       <div className="w-full min-h-screen">
         <ArticleList articles={articles} />
       </div>
