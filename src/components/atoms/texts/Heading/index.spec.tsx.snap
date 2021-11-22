@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/atoms/HeadingOne snapshot 1`] = `
+<h1
+  className="text-4xl font-bold"
+>
+  Heading 1
+</h1>
+`;
