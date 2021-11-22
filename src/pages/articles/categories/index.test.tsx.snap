@@ -173,11 +173,15 @@ exports[`pages/articles/categories snapshot 1`] = `
     href="https://food-blog-chi.vercel.app/articles/categories"
     rel="canonical"
   />
-  <h1
-    className="flex justify-center my-8 text-4xl font-bold"
+  <div
+    className="my-8"
   >
-    カテゴリー一覧
-  </h1>
+    <h1
+      className="flex justify-center text-4xl font-bold"
+    >
+      カテゴリー一覧
+    </h1>
+  </div>
   <div
     className="flex flex-col md:flex-row gap-4 md:gap-16 justify-center items-center md:items-stretch mb-16"
   >

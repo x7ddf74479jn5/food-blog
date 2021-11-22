@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components/molecules/ArticleContainer NG:  エラー Snapshot 1`] = `
+exports[`components/molecules/ArticleSuspenseContainer NG:  エラー Snapshot 1`] = `
 <div
   className="flex justify-center mt-16"
 >
@@ -8,7 +8,15 @@ exports[`components/molecules/ArticleContainer NG:  エラー Snapshot 1`] = `
 </div>
 `;
 
-exports[`components/molecules/ArticleContainer OK: データがある ローディング Snapshot 1`] = `
+exports[`components/molecules/ArticleSuspenseContainer OK: データがない Snapshot 1`] = `
+<div
+  className="flex justify-center mt-16"
+>
+  レシピが見つかりませんでした。
+</div>
+`;
+
+exports[`components/molecules/ArticleSuspenseContainer OK: データがある ローディング Snapshot 1`] = `
 Array [
   <section
     className="space-y-12"
@@ -167,7 +175,7 @@ Array [
 ]
 `;
 
-exports[`components/molecules/ArticleContainer OK: データがある 次ページがある Snapshot 1`] = `
+exports[`components/molecules/ArticleSuspenseContainer OK: データがある 次ページがある Snapshot 1`] = `
 Array [
   <section
     className="space-y-12"
@@ -349,7 +357,7 @@ Array [
 ]
 `;
 
-exports[`components/molecules/ArticleContainer OK: データがある 次ページがない Snapshot 1`] = `
+exports[`components/molecules/ArticleSuspenseContainer OK: データがある 次ページがない Snapshot 1`] = `
 <section
   className="space-y-12"
 >
@@ -497,12 +505,4 @@ exports[`components/molecules/ArticleContainer OK: データがある 次ペー
     </p>
   </article>
 </section>
-`;
-
-exports[`components/molecules/ArticleContainer OK: データがない Snapshot 1`] = `
-<div
-  className="flex justify-center mt-16"
->
-  レシピが見つかりませんでした。
-</div>
 `;

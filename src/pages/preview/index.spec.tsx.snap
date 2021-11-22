@@ -130,7 +130,7 @@ Array [
           property="og:title"
         />
         <meta
-          content="https://food-blog-chi.vercel.app/1"
+          content="https://food-blog-chi.vercel.app/articles/1"
           property="og:url"
         />
         <meta
@@ -185,7 +185,7 @@ Array [
           type="application/rss+xml"
         />
         <link
-          href="https://food-blog-chi.vercel.app/1"
+          href="https://food-blog-chi.vercel.app/articles/1"
           rel="canonical"
         />
         <script
@@ -196,7 +196,7 @@ Array [
     \\"@type\\": \\"Blog\\",
     \\"mainEntityOfPage\\": {
       \\"@type\\": \\"WebPage\\",
-      \\"@id\\": \\"https://food-blog-chi.vercel.app/1\\"
+      \\"@id\\": \\"https://food-blog-chi.vercel.app/articles/1\\"
     },
     \\"headline\\": \\"基本の一番だしの作り方\\",
     \\"image\\": [

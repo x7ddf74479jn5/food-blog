@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components/atoms/buttons/ReadMoreButton snapshot 1`] = `
+exports[`components/atoms/buttons/LoadMoreButton snapshot 1`] = `
 <button
   className="flex flex-row gap-2 justify-center items-center py-2 px-4 text-white bg-green-700 hover:bg-opacity-90 rounded-xl border-2 border-green-600"
   onClick={[MockFunction]}

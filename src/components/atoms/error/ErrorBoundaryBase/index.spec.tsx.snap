@@ -2,7 +2,7 @@
 
 exports[`components/atoms/error/ErrorBoundaryBase snapshot 1`] = `
 <div
-  className="flex flex-col gap-8 justify-center items-center"
+  className="flex flex-col gap-8 justify-center items-center mt-8"
   role="alert"
 >
   <svg

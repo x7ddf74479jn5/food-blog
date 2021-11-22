@@ -433,11 +433,15 @@ exports[`pages/search snapshot 1`] = `
         href="https://food-blog-chi.vercel.app/search/q=keyword"
         rel="canonical"
       />
-      <h1
-        className="mb-4 text-4xl font-bold"
+      <div
+        className="mb-8"
       >
-        検索結果：keyword
-      </h1>
+        <h1
+          className="flex justify-center text-4xl font-bold"
+        >
+          検索結果：keyword
+        </h1>
+      </div>
       <div
         className="w-full"
       >
