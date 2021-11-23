@@ -13,7 +13,7 @@ type ArticleSuspenseContainerProps = {
   fallbackData?: TArticleListResponse;
 };
 
-export const ArticleSuspenseContainer: React.VFC<ArticleSuspenseContainerProps> = ({ queryOptions }) => {
+export const ArticleSuspenseContainer: React.VFC<ArticleSuspenseContainerProps> = ({ queryOptions, fallbackData }) => {
   const callbackRef = useRef<VoidFunction | undefined>(undefined);
   const setCallback = useCallback((cb) => {
     callbackRef.current = cb;
@@ -22,7 +22,7 @@ export const ArticleSuspenseContainer: React.VFC<ArticleSuspenseContainerProps> 
   return (
     <HttpErrorBoundary callback={callbackRef.current}>
       <Suspense fallback={<ArticleSkeltonList />}>
-        <Component setCallback={setCallback} queryOptions={queryOptions} />
+        <Component setCallback={setCallback} queryOptions={queryOptions} fallbackData={fallbackData} />
       </Suspense>
     </HttpErrorBoundary>
   );
@@ -34,7 +34,7 @@ export const Component: React.VFC<{
   setCallback: React.Dispatch<React.SetStateAction<VoidFunction | undefined>>;
   queryOptions?: TQueryOptions;
   fallbackData?: TArticleListResponse;
-}> = ({ setCallback, queryOptions }) => {
+}> = ({ setCallback, queryOptions, fallbackData }) => {
   const {
     articles,
     hasNextPage,
@@ -45,6 +45,7 @@ export const Component: React.VFC<{
   } = useGetArticleListQuery({
     endpoint: apiRoute.apiArticles,
     getKeyOptions: queryOptions,
+    fallbackData: fallbackData && fallbackData,
   });
 
   setCallback(revalidate);

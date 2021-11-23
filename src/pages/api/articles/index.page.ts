@@ -4,8 +4,13 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { fetchArticles } from "@/utils/fetcher";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { limit, offset } = req.query;
-  let queries: MicroCMSQueries = { limit: Number(limit), offset: Number(offset), orders: "-publishedAt" };
+  const { limit, offset, filters } = req.query;
+  let queries: MicroCMSQueries = {
+    limit: limit ? Number(limit) : undefined,
+    offset: offset ? Number(offset) : undefined,
+    orders: "-publishedAt",
+    filters: String(filters),
+  };
 
   if ("q" in req.query) {
     const { q } = req.query;
