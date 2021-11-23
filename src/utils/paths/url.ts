@@ -3,7 +3,6 @@ import type { Obj } from "@/types";
 type Table = Obj<string>;
 
 export const apiRoute = {
-  apiSearch: "/api/search",
   apiPreview: "/api/preview",
   apiArticles: "/api/articles",
 } as const;

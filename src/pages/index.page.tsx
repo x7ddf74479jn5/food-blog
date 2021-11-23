@@ -6,7 +6,7 @@ import { HtmlHeadBase } from "@/components/functions/meta";
 import HomeLayout from "@/components/layouts/HomeLayout";
 import type { TArticleListResponse, TCategory, TConfig, TPickup } from "@/types";
 import { getNewDate } from "@/utils/date";
-import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTags } from "@/utils/fetcher";
+import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -35,10 +35,9 @@ type StaticProps = {
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const [_config, _categories, _tags, data, pickup] = await Promise.all([
+  const [config, categories, data, pickup] = await Promise.all([
     fetchConfig(),
     fetchCategories(),
-    fetchTags(),
     fetchArticles({ limit: 5, offset: 0 }),
     fetchPickupArticles(getNewDate()),
   ]);
@@ -46,8 +45,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   return {
     props: {
       data,
-      categories: _categories,
-      config: _config,
+      categories,
+      config,
       pickup,
     },
     revalidate: 60 * 60 * 24,
