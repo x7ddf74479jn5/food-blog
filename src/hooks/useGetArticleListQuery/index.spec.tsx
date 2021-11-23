@@ -49,7 +49,7 @@ describe("hooks/useGetArticleListQuery", () => {
   });
 
   describe("OK: APIの結果が正しい", () => {
-    const limit = 2;
+    const limit = 10;
     const mockSetSize = jest.fn();
     const offset = 0;
     beforeEach(() => {
@@ -138,7 +138,7 @@ describe("hooks/useGetArticleListQuery", () => {
 
   describe.only("OK: keyとarticlesの対応が正しい", () => {
     it("1st: 取得数/総取得数/総記事数 2/2/4", () => {
-      const limit = 2;
+      const limit = 10;
       const mockSetSize = jest.fn();
       const offset = 0;
 
@@ -176,7 +176,7 @@ describe("hooks/useGetArticleListQuery", () => {
     });
 
     it("2nd: 取得数/総取得数/総記事数 2/4/4", () => {
-      const limit = 2;
+      const limit = 10;
       const mockSetSize = jest.fn();
       let offset = 0;
       spyUseSWRInfinite.mockImplementation((getKey) => {
@@ -220,7 +220,7 @@ describe("hooks/useGetArticleListQuery", () => {
     });
 
     it("3rd 取得数/総取得数/総記事数 0/4/4", () => {
-      const limit = 2;
+      const limit = 10;
       const mockSetSize = jest.fn();
       let offset = 2;
       spyUseSWRInfinite.mockImplementation((getKey) => {
