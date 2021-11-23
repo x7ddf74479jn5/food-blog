@@ -1,19 +1,23 @@
 import { useRouter } from "next/router";
 import { FaChevronLeft, FaRegTired } from "react-icons/fa";
 
+import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { urlTable } from "@/utils/paths/url";
 
-type ErrorFallbackProps = { heading: string; message: string };
+type ErrorFallbackProps = { heading: string; message: string; onReset?: () => void };
 
-export const ErrorFallback: React.VFC<ErrorFallbackProps> = ({ heading, message }) => {
+export const ErrorFallback: React.VFC<ErrorFallbackProps> = ({ heading, message, onReset }) => {
   const router = useRouter();
-  const handleClick = () => router.push(urlTable.home);
+  const handleClick = () => {
+    onReset && onReset();
+    router.push(urlTable.home);
+  };
 
   return (
     <div className="flex flex-col gap-12 justify-center items-center mt-8" role="alert">
       <FaRegTired className="w-32 h-32 text-gray-500" />
       <div className="flex flex-col gap-8 mx-auto text-center">
-        <h1 className="text-4xl">{heading}</h1>
+        <HeadingOne>{heading}</HeadingOne>
         <p>{message}</p>
       </div>
       <button

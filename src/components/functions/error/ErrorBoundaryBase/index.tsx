@@ -1,25 +1,14 @@
-import { useRouter } from "next/router";
 import type { FallbackProps } from "react-error-boundary";
 import { ErrorBoundary } from "react-error-boundary";
-import { FaChevronLeft, FaRegTired } from "react-icons/fa";
 
-import { urlTable } from "@/utils/paths/url";
+import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 
-const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
+const FallbackComponent = ({ error, resetErrorBoundary }: FallbackProps) => {
+  const handleReset = () => resetErrorBoundary();
+  console.error(error);
+
   return (
-    <div className="flex flex-col gap-8 justify-center items-center mt-8" role="alert">
-      <FaRegTired className="w-32 h-32 text-gray-500" />
-      <p>Something went wrong:</p>
-      <pre>{error.message}</pre>
-      <button
-        // eslint-disable-next-line react/jsx-handler-names
-        onClick={resetErrorBoundary}
-        className="flex flex-row gap-2 justify-center items-center py-2 px-4 text-white bg-green-700 hover:bg-opacity-90 rounded-xl border-2 border-green-600"
-      >
-        <FaChevronLeft />
-        <span>Homeに戻る</span>
-      </button>
-    </div>
+    <ErrorFallback heading="Something went wrong" message="サイト上で問題が発生しました。" onReset={handleReset} />
   );
 };
 
@@ -27,14 +16,12 @@ export const ErrorBoundaryBase: React.FC<{ children: React.ReactNode; callback?:
   children,
   callback,
 }) => {
-  const router = useRouter();
-
   const handleReset = () => {
     callback && callback();
-    router.push(urlTable.home);
   };
+
   return (
-    <ErrorBoundary FallbackComponent={ErrorFallback} onReset={handleReset}>
+    <ErrorBoundary FallbackComponent={FallbackComponent} onReset={handleReset}>
       {children}
     </ErrorBoundary>
   );

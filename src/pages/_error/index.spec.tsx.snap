@@ -130,7 +130,7 @@ exports[`pages/_error snapshot 1`] = `
       className="flex flex-col gap-8 mx-auto text-center"
     >
       <h1
-        className="text-4xl"
+        className="flex justify-center text-4xl font-bold"
       >
         Unhandled Error
       </h1>
