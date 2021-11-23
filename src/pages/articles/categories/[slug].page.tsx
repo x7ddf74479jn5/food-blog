@@ -22,6 +22,7 @@ const Category: NextPage<Props> = ({ data, category, config, categories, pickup 
   const ArticleSuspenseContainer = dynamic(() => import("@/components/organisms/ArticleSuspenseContainer"), {
     ssr: false,
   });
+  const queryOptions = { filters: `category[equals]${category.id}` };
 
   return (
     <DefaultLayout
@@ -37,7 +38,7 @@ const Category: NextPage<Props> = ({ data, category, config, categories, pickup 
         <HeadingOne>{heading}</HeadingOne>
       </div>
       <div className="w-full min-h-screen">
-        <ArticleSuspenseContainer fallbackData={data} />
+        <ArticleSuspenseContainer fallbackData={data} queryOptions={queryOptions} />
       </div>
     </DefaultLayout>
   );
