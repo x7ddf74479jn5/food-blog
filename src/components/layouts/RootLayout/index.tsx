@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-import { LayoutErrorBoundary } from "@/components/atoms/error";
+import { LayoutErrorBoundary } from "@/components/functions/error";
 import Header from "@/components/organisms/Header";
 import type { TConfig } from "@/types";
 

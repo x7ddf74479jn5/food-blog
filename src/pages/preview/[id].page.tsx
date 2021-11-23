@@ -1,7 +1,7 @@
 import type { GetStaticPaths } from "next";
 import type { Params } from "next/dist/server/router";
 
-import { HtmlHeadNoIndex } from "@/components/atoms/meta";
+import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import type { ArticleDetailProps } from "@/pages/articles/[id].page";
 import ArticleDetail, { getStaticProps as _getStaticProps } from "@/pages/articles/[id].page";
 import { fetchArticles } from "@/utils/fetcher";

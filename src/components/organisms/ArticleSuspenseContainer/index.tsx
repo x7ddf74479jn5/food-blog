@@ -1,6 +1,6 @@
 import { Suspense, useCallback, useRef } from "react";
 
-import { HttpErrorBoundary } from "@/components/atoms/error";
+import { HttpErrorBoundary } from "@/components/functions/error";
 import ArticleList from "@/components/molecules/ArticleList";
 import { ArticleSkeltonList } from "@/components/molecules/ArticleSkeltonList";
 import Pagination from "@/components/molecules/Pagination";

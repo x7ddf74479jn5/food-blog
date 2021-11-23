@@ -2,8 +2,8 @@ import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage 
 import dynamic from "next/dynamic";
 import type { ParsedUrlQuery } from "node:querystring";
 
-import { HtmlHeadBase } from "@/components/atoms/meta";
 import { HeadingOne } from "@/components/atoms/texts/Heading";
+import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import type { TArticleListResponse, TCategory, TConfig, TPickup, TTag } from "@/types";
 import { getNewDate } from "@/utils/date";

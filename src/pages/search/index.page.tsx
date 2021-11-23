@@ -1,8 +1,8 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useRouter } from "next/router";
 
-import { HtmlHeadBase } from "@/components/atoms/meta";
 import { HeadingOne } from "@/components/atoms/texts/Heading";
+import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSuspenseContainer } from "@/components/organisms/ArticleSuspenseContainer/index";
 import type { TCategory, TConfig, TPickup, TQueryOptions } from "@/types";

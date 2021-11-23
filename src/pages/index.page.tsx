@@ -1,8 +1,8 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import dynamic from "next/dynamic";
 
-import { HtmlHeadBase } from "@/components/atoms/meta";
 import { HeadingOne } from "@/components/atoms/texts/Heading";
+import { HtmlHeadBase } from "@/components/functions/meta";
 import HomeLayout from "@/components/layouts/HomeLayout";
 import type { TArticleListResponse, TCategory, TConfig, TPickup } from "@/types";
 import { getNewDate } from "@/utils/date";

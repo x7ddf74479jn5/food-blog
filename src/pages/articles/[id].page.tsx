@@ -7,9 +7,9 @@ import { FaPen, FaRegCalendar } from "react-icons/fa";
 import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
 
 import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
-import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/atoms/meta";
 import TextDate from "@/components/atoms/texts/TextDate";
 import Thumbnail from "@/components/atoms/Thumbnail";
+import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/functions/meta";
 import ArticleLayout from "@/components/layouts/ArticleLayout";
 import { TagListColored } from "@/components/molecules/TagList";
 import { getNewDate, getSafeDate } from "@/utils/date";
