@@ -38,7 +38,6 @@ export const Component: React.VFC<{
   const {
     articles,
     hasNextPage,
-    error,
     isValidating,
     paginate: handlePaginate,
     revalidate,
@@ -49,8 +48,6 @@ export const Component: React.VFC<{
   });
 
   setCallback(revalidate);
-
-  if (error) return <div className="flex justify-center mt-16">エラーが発生しました。</div>;
 
   if (!isValidating && articles.length === 0)
     return <div className="flex justify-center mt-16">レシピが見つかりませんでした。</div>;
