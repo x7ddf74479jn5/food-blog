@@ -20,7 +20,7 @@ export const LinkCard: React.VFC<LinkCardProps> = ({ article }) => {
           <div className="flex flex-col flex-wrap flex-grow p-4">
             <div className="flex flex-wrap">{title}</div>
             <div className="flex-grow">
-              <TagListPlain tags={tags} hasLink />
+              <TagListPlain tags={tags} />
             </div>
           </div>
         </article>

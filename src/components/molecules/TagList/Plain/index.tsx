@@ -3,10 +3,10 @@ import type { TTag } from "@/types";
 
 type Props = {
   tags: TTag[];
-  hasLink: boolean;
+  hasLink?: boolean;
 };
 
-export const TagListPlain: React.VFC<Props> = ({ tags, hasLink }) => {
+export const TagListPlain: React.VFC<Props> = ({ tags, hasLink = false }) => {
   return (
     <div className="flex flex-wrap gap-x-2 gap-y-1">
       {(tags || []).map((tag) => (

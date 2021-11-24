@@ -4,10 +4,10 @@ import { urlTable } from "@/utils/paths/url";
 
 type Props = {
   tag: TTag;
-  hasLink: boolean;
+  hasLink?: boolean;
 };
 
-export const ButtonTagPlain: React.FC<Props> = ({ tag, hasLink }) => {
+export const ButtonTagPlain: React.FC<Props> = ({ tag, hasLink = false }) => {
   if (hasLink) {
     return (
       <NextLink href={`${urlTable.tags}/${tag.slug}`}>

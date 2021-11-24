@@ -140,39 +140,21 @@ exports[`components/atoms/mdx/LinkCard snapshot 1`] = `
           <div
             className="flex flex-wrap gap-x-2 gap-y-1"
           >
-            <a
-              href="/articles/tags/preparation"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #仕込み
-              </span>
-            </a>
-            <a
-              href="/articles/tags/miso_soup"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+              #仕込み
+            </span>
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #味噌汁
-              </span>
-            </a>
-            <a
-              href="/articles/tags/udon"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
+              #味噌汁
+            </span>
+            <span
+              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
             >
-              <span
-                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-              >
-                #うどん
-              </span>
-            </a>
+              #うどん
+            </span>
           </div>
         </div>
       </div>
