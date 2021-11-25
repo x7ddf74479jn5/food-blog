@@ -9,6 +9,7 @@ import { ThemeProvider } from "next-themes";
 import type { ReactNode } from "react";
 
 import MDXCustomComponents from "@/components/atoms/mdx";
+import { SearchHistoryProvider } from "@/context/SearchHistoryContext";
 import { GoogleAnalytics, usePageView } from "@/lib/gtag";
 
 import SEO from "../../next-seo.config";
@@ -18,13 +19,17 @@ const App = ({ Component, pageProps }: AppPropsWithLayout): ReactNode => {
 
   const getLayout = Component.getLayout ?? ((page) => page);
   return getLayout(
-    <ThemeProvider attribute="class">
-      <MDXProvider components={MDXCustomComponents}>
-        <DefaultSeo {...SEO} />
-        <GoogleAnalytics />
-        <Component {...pageProps} />
-      </MDXProvider>
-    </ThemeProvider>
+    <>
+      <DefaultSeo {...SEO} />
+      <GoogleAnalytics />
+      <ThemeProvider attribute="class">
+        <MDXProvider components={MDXCustomComponents}>
+          <SearchHistoryProvider>
+            <Component {...pageProps} />
+          </SearchHistoryProvider>
+        </MDXProvider>
+      </ThemeProvider>
+    </>
   );
 };
 

@@ -1,8 +1,9 @@
 import type Queries from "@testing-library/dom/types/queries";
 import type { RenderResult } from "@testing-library/react";
 import { render } from "@testing-library/react";
-import React from "react";
 import { SWRConfig } from "swr";
+
+import { SearchHistoryProvider } from "@/context";
 
 import { mockRouter, RouterContext } from "./mocks";
 
@@ -13,7 +14,9 @@ import { mockRouter, RouterContext } from "./mocks";
 export const Providers: React.ComponentType<{ children?: React.ReactNode }> = ({ children }) => {
   return (
     <SWRConfig value={{ dedupingInterval: 0, provider: () => new Map() }}>
-      <RouterContext.Provider value={mockRouter}>{children}</RouterContext.Provider>
+      <RouterContext.Provider value={mockRouter}>
+        <SearchHistoryProvider>{children}</SearchHistoryProvider>
+      </RouterContext.Provider>
     </SWRConfig>
   );
 };
