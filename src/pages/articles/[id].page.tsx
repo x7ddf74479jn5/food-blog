@@ -7,6 +7,7 @@ import { FaPen, FaRegCalendar } from "react-icons/fa";
 import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
 
 import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
+import MDXCustomComponents from "@/components/atoms/mdx";
 import TextDate from "@/components/atoms/texts/TextDate";
 import Thumbnail from "@/components/atoms/Thumbnail";
 import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/functions/meta";
@@ -102,7 +103,7 @@ export const ArticleDetail = ({
               <TagListColored tags={tags} />
             </div>
             <div id="js-toc-content">
-              <MDXRemote {...mdxSource} scope={data} />
+              <MDXRemote {...mdxSource} components={MDXCustomComponents} scope={data} />
             </div>
           </article>
         </>

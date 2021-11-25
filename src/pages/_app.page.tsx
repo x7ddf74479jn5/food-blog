@@ -2,13 +2,13 @@ import "@/styles/global.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { MDXProvider } from "@mdx-js/react";
+// import { MDXProvider } from "@mdx-js/react";
 import type { AppPropsWithLayout } from "next/app";
 import { DefaultSeo } from "next-seo";
 import { ThemeProvider } from "next-themes";
 import type { ReactNode } from "react";
 
-import MDXCustomComponents from "@/components/atoms/mdx";
+// import MDXCustomComponents from "@/components/atoms/mdx";
 import { SearchHistoryProvider } from "@/context/SearchHistoryContext";
 import { GoogleAnalytics, usePageView } from "@/lib/gtag";
 
@@ -23,11 +23,9 @@ const App = ({ Component, pageProps }: AppPropsWithLayout): ReactNode => {
       <DefaultSeo {...SEO} />
       <GoogleAnalytics />
       <ThemeProvider attribute="class">
-        <MDXProvider components={MDXCustomComponents}>
-          <SearchHistoryProvider>
-            <Component {...pageProps} />
-          </SearchHistoryProvider>
-        </MDXProvider>
+        <SearchHistoryProvider>
+          <Component {...pageProps} />
+        </SearchHistoryProvider>
       </ThemeProvider>
     </>
   );
