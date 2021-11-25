@@ -69,8 +69,6 @@ describe("pages/index", () => {
     );
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent("レシピ一覧");
-    const title = screen.getByTitle(mockConfig.siteTitle);
-    expect(title).toBeTruthy();
     unmount();
   });
 });

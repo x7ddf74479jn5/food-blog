@@ -126,7 +126,7 @@ describe("components/molecules/ArticleSuspenseContainer", () => {
     });
   });
 
-  describe("OK: データがない", () => {
+  describe("OK: データがない", () => {
     beforeEach(() => {
       spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
       spyUseGetArticleQuery.mockReturnValue({
@@ -157,40 +157,6 @@ describe("components/molecules/ArticleSuspenseContainer", () => {
       const button = screen.queryByRole("button");
       expect(button).not.toBeInTheDocument();
       expect(container).toHaveTextContent("レシピが見つかりませんでした。");
-    });
-  });
-
-  describe("NG:  エラー", () => {
-    beforeEach(() => {
-      spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
-      spyUseGetArticleQuery.mockReturnValue({
-        articles: [],
-        hasNextPage: false,
-        error: new Error(),
-        isValidating: false,
-        paginate: mockPaginate,
-        setSize: jest.fn(),
-        size: 1,
-        data: [],
-        getCurrentKey: jest.fn(),
-        revalidate: jest.fn(),
-        mutate: jest.fn(),
-      });
-    });
-
-    it("Snapshot", () => {
-      const tree = renderer.create(<ArticleSuspenseContainer />).toJSON();
-      expect(tree).toMatchSnapshot();
-    });
-
-    it("OK: 初期レンダリング", () => {
-      const { container } = render(<ArticleSuspenseContainer />);
-
-      const article = screen.queryByRole("article");
-      expect(article).not.toBeInTheDocument();
-      const button = screen.queryByRole("button");
-      expect(button).not.toBeInTheDocument();
-      expect(container).toHaveTextContent("エラーが発生しました。");
     });
   });
 });

@@ -4,7 +4,7 @@ exports[`components/molecules/ArticleSuspenseContainer NG:  エラー Snapshot 
 <div
   className="flex justify-center mt-16"
 >
-  エラーが発生しました。
+  レシピが見つかりませんでした。
 </div>
 `;
 

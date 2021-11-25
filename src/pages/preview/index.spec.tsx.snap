@@ -56,6 +56,7 @@ Array [
                 onChange={[Function]}
                 onFocus={[Function]}
                 onKeyPress={[Function]}
+                onSubmit={[Function]}
                 placeholder="Search..."
                 type="search"
                 value=""
@@ -100,6 +101,7 @@ Array [
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
+              onSubmit={[Function]}
               placeholder="Search..."
               type="search"
               value=""
