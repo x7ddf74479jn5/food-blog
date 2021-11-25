@@ -1,7 +1,8 @@
+import dynamic from "next/dynamic";
+
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
-import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { CategoryMenu } from "@/components/molecules/CategoryMenu";
 import { SlickArticles } from "@/components/organisms/SlickArticles/index";
@@ -19,6 +20,7 @@ type Props = {
 
 const HomeLayout: React.FC<Props> = ({ pickup, url, pageTitle, children, config, categories }: Props) => {
   const isSmallOrDown = useMedia("<=", "sm");
+  const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons"));
 
   return (
     <RootLayout config={config}>

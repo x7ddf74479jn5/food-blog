@@ -5,7 +5,6 @@ import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaCon
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
-import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { CategoryMenu } from "@/components/molecules/CategoryMenu";
 import { PickupArticles } from "@/components/organisms/PickupArticles/index";
@@ -27,6 +26,7 @@ type Props = {
 
 const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, backLinks, categories, pickup }: Props) => {
   const BackLinks = dynamic(() => import("@/components/molecules/BackLinks"));
+  const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons"));
   const isSmallOrDown = useMedia("<=", "sm");
 
   return (
