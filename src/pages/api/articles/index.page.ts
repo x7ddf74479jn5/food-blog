@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     limit: limit ? Number(limit) : undefined,
     offset: offset ? Number(offset) : undefined,
     orders: "-publishedAt",
-    filters: String(filters),
+    filters: filters ? String(filters) : undefined,
   };
 
   if ("q" in req.query) {
