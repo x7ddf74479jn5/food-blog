@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { HeadingOne } from ".";
 
 export default {
-  title: "Atoms/HeadingOne",
+  title: "Atoms/texts/HeadingOne",
   component: HeadingOne,
   argTypes: {
     date: { control: { type: "date" } },
