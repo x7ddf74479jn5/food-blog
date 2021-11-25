@@ -2,25 +2,10 @@ import React from "react";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import { StoryFnReactReturnType } from "@storybook/react/dist/ts3.9/client/preview/types";
 import { NextRouter } from "next/router";
-
-// const initialState = {
-//   isOpen: false,
-//   type: undefined,
-//   data: null,
-// };
-
-// const mockDispatchContextValue = {
-//   open: () => {},
-//   close: () => {},
-// };
+import { SearchHistoryProvider } from "@/context";
 
 export const withContext = (storyFn: () => StoryFnReactReturnType) => {
-  return storyFn();
-  // <StateContext.Provider value={initialState}>
-  //   <DispatchContext.Provider value={mockDispatchContextValue}>
-  //     {storyFn()}
-  //   </DispatchContext.Provider>
-  // </StateContext.Provider>
+  return <SearchHistoryProvider>{storyFn()}</SearchHistoryProvider>;
 };
 
 export const withRouterContext = (storyFn: () => StoryFnReactReturnType, options?: Partial<NextRouter>) => {

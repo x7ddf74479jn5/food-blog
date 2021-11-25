@@ -41,6 +41,7 @@ module.exports = {
           "@pages": toPath("../src/pages"),
           "@types": toPath("../src/types"),
           "@components": toPath("../src/components"),
+          "@context": toPath("../src/context"),
           "@utils": toPath("../src/utils"),
           "@mocks": toPath("../mocks"),
         },
