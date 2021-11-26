@@ -165,7 +165,6 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
         relatedArticles,
         pickup,
       },
-      revalidate: 60 * 60 * 24,
     };
   } catch (error) {
     return { notFound: true };

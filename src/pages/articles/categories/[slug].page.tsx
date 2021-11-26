@@ -88,7 +88,6 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
       categories,
       pickup,
     },
-    revalidate: 60 * 60 * 24,
   };
 };
 

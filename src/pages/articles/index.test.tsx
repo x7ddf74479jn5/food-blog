@@ -89,8 +89,6 @@ describe("pages/articles", () => {
       expect(relatedArticles).toStrictEqual(mockArticleList);
       expect(isPreview).toBeFalsy();
     }
-
-    expect(result.revalidate).toBe(60 * 60 * 24);
   });
 
   it("OK: 初期レンダリング", async () => {

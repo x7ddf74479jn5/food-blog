@@ -45,8 +45,6 @@ describe("pages/articles/categories", () => {
       expect(pickup).toStrictEqual(mockPickup);
       expect(config).toStrictEqual(mockConfig);
     }
-
-    expect(result.revalidate).toBe(60 * 60 * 24);
   });
 
   it("OK: 初期レンダリング", async () => {

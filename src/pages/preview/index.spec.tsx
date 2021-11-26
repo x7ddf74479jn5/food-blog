@@ -88,8 +88,6 @@ describe("pages/preview", () => {
       expect(relatedArticles).toStrictEqual(mockArticleList);
       expect(isPreview).toBeTruthy();
     }
-
-    expect(result.revalidate).toBe(60 * 60 * 24);
   });
 
   it("OK: 初期レンダリング", async () => {

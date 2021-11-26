@@ -49,7 +49,6 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
       config,
       pickup,
     },
-    revalidate: 60 * 60 * 24,
   };
 };
 
