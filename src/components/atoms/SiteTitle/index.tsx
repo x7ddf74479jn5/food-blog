@@ -7,7 +7,7 @@ type SiteTitleProps = {
 
 export const SiteTitle: React.FC<SiteTitleProps> = ({ size, title }) => {
   return (
-    <NextLink href="/" className={`${size} font-bold text-green-500`}>
+    <NextLink href="/" className={`${size} font-bold text-green-600`}>
       {title}
     </NextLink>
   );

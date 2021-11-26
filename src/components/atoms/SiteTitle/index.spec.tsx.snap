@@ -2,7 +2,7 @@
 
 exports[`components/atoms/SiteTitle snapshot 1`] = `
 <a
-  className="text-2xl font-bold text-green-500"
+  className="text-2xl font-bold text-green-600"
   href="/"
   onClick={[Function]}
   onMouseEnter={[Function]}
