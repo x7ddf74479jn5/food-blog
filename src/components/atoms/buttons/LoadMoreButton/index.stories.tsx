@@ -12,5 +12,5 @@ const Template: ComponentStory<typeof LoadMoreButton> = (args) => <LoadMoreButto
 export const Default = Template.bind({});
 Default.args = {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  handleOnClick: () => {},
+  onClick: () => {},
 };

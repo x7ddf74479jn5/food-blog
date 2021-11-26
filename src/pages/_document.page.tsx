@@ -5,7 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className="text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900">
+        <body className="text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900" style={{ overflowAnchor: "none" }}>
           <Main />
           <NextScript />
         </body>
