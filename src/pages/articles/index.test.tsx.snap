@@ -11,7 +11,7 @@ exports[`pages/articles snapshot 1`] = `
       className="flex justify-between items-center"
     >
       <a
-        className="text-2xl font-bold text-green-500"
+        className="text-2xl font-bold text-green-600"
         href="/"
         onClick={[Function]}
         onMouseEnter={[Function]}
@@ -251,7 +251,7 @@ exports[`pages/articles snapshot 1`] = `
               <img
                 alt=""
                 aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                 style={
                   Object {
                     "background": "none",
@@ -301,8 +301,8 @@ exports[`pages/articles snapshot 1`] = `
                 data-nimg="intrinsic"
                 decoding="async"
                 loading="lazy"
-                src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75"
-                srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=1920&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75 2x"
+                src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=1920&q=75"
+                srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=640&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=1920&q=75 2x"
                 style={
                   Object {
                     "border": "none",

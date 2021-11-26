@@ -9,7 +9,7 @@ type Props = {
 };
 
 const Thumbnail: React.FC<Props> = ({ title, src, id }: Props) => {
-  const image = <Image src={src} alt={`Cover Image for ${title}`} width={1280} height={720} />;
+  const image = <Image src={src} alt={`Cover Image for ${title}`} width={640} height={480} />;
   return (
     <>
       {id ? (

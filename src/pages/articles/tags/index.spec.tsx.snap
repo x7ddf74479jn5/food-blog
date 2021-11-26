@@ -11,7 +11,7 @@ exports[`pages/articles/tags snapshot 1`] = `
       className="flex justify-between items-center"
     >
       <a
-        className="text-2xl font-bold text-green-500"
+        className="text-2xl font-bold text-green-600"
         href="/"
         onClick={[Function]}
         onMouseEnter={[Function]}
