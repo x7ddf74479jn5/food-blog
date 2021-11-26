@@ -781,34 +781,17 @@ exports[`pages/_offline snapshot 1`] = `
             >
               カテゴリー
             </h2>
-            <div
+            <ul
               className="grid grid-flow-row gap-2 md:max-h-[calc(28rem+8rem)] md:overflow-y-auto place-items-center grid-cols-3 sm:grid-cols-5 md:grid-cols-1"
             >
-              <div
-                className="flex flex-col justify-center items-center w-24 h-full"
-              >
-                <a
-                  href="/articles/categories/rice"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
+              <li>
+                <div
+                  className="flex flex-col justify-center items-center w-24 h-full"
                 >
-                  <span
-                    style={
-                      Object {
-                        "background": "none",
-                        "border": 0,
-                        "boxSizing": "border-box",
-                        "display": "inline-block",
-                        "height": "initial",
-                        "margin": 0,
-                        "maxWidth": "100%",
-                        "opacity": 1,
-                        "overflow": "hidden",
-                        "padding": 0,
-                        "position": "relative",
-                        "width": "initial",
-                      }
-                    }
+                  <a
+                    href="/articles/categories/rice"
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
                   >
                     <span
                       style={
@@ -816,24 +799,24 @@ exports[`pages/_offline snapshot 1`] = `
                           "background": "none",
                           "border": 0,
                           "boxSizing": "border-box",
-                          "display": "block",
+                          "display": "inline-block",
                           "height": "initial",
                           "margin": 0,
                           "maxWidth": "100%",
                           "opacity": 1,
+                          "overflow": "hidden",
                           "padding": 0,
+                          "position": "relative",
                           "width": "initial",
                         }
                       }
                     >
-                      <img
-                        alt=""
-                        aria-hidden={true}
-                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                      <span
                         style={
                           Object {
                             "background": "none",
                             "border": 0,
+                            "boxSizing": "border-box",
                             "display": "block",
                             "height": "initial",
                             "margin": 0,
@@ -843,44 +826,31 @@ exports[`pages/_offline snapshot 1`] = `
                             "width": "initial",
                           }
                         }
-                      />
-                    </span>
-                    <img
-                      alt="rice"
-                      data-nimg="intrinsic"
-                      decoding="async"
-                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                      style={
-                        Object {
-                          "border": "none",
-                          "bottom": 0,
-                          "boxSizing": "border-box",
-                          "display": "block",
-                          "height": 0,
-                          "left": 0,
-                          "margin": "auto",
-                          "maxHeight": "100%",
-                          "maxWidth": "100%",
-                          "minHeight": "100%",
-                          "minWidth": "100%",
-                          "objectFit": "cover",
-                          "objectPosition": undefined,
-                          "padding": 0,
-                          "position": "absolute",
-                          "right": 0,
-                          "top": 0,
-                          "width": 0,
-                        }
-                      }
-                    />
-                    <noscript>
+                      >
+                        <img
+                          alt=""
+                          aria-hidden={true}
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style={
+                            Object {
+                              "background": "none",
+                              "border": 0,
+                              "display": "block",
+                              "height": "initial",
+                              "margin": 0,
+                              "maxWidth": "100%",
+                              "opacity": 1,
+                              "padding": 0,
+                              "width": "initial",
+                            }
+                          }
+                        />
+                      </span>
                       <img
                         alt="rice"
                         data-nimg="intrinsic"
                         decoding="async"
-                        loading="lazy"
-                        src="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=256&q=75"
-                        srcSet="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F3129120_s.jpg&w=256&q=75 2x"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                         style={
                           Object {
                             "border": "none",
@@ -904,40 +874,55 @@ exports[`pages/_offline snapshot 1`] = `
                           }
                         }
                       />
-                    </noscript>
-                  </span>
-                  <p
-                    className="text-sm text-center"
-                  >
-                    ご飯物
-                  </p>
-                </a>
-              </div>
-              <div
-                className="flex flex-col justify-center items-center w-24 h-full"
-              >
-                <a
-                  href="/articles/categories/salad"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
+                      <noscript>
+                        <img
+                          alt="rice"
+                          data-nimg="intrinsic"
+                          decoding="async"
+                          loading="lazy"
+                          src="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=256&q=75"
+                          srcSet="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F3129120_s.jpg&w=256&q=75 2x"
+                          style={
+                            Object {
+                              "border": "none",
+                              "bottom": 0,
+                              "boxSizing": "border-box",
+                              "display": "block",
+                              "height": 0,
+                              "left": 0,
+                              "margin": "auto",
+                              "maxHeight": "100%",
+                              "maxWidth": "100%",
+                              "minHeight": "100%",
+                              "minWidth": "100%",
+                              "objectFit": "cover",
+                              "objectPosition": undefined,
+                              "padding": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                              "width": 0,
+                            }
+                          }
+                        />
+                      </noscript>
+                    </span>
+                    <p
+                      className="text-sm text-center"
+                    >
+                      ご飯物
+                    </p>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div
+                  className="flex flex-col justify-center items-center w-24 h-full"
                 >
-                  <span
-                    style={
-                      Object {
-                        "background": "none",
-                        "border": 0,
-                        "boxSizing": "border-box",
-                        "display": "inline-block",
-                        "height": "initial",
-                        "margin": 0,
-                        "maxWidth": "100%",
-                        "opacity": 1,
-                        "overflow": "hidden",
-                        "padding": 0,
-                        "position": "relative",
-                        "width": "initial",
-                      }
-                    }
+                  <a
+                    href="/articles/categories/salad"
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
                   >
                     <span
                       style={
@@ -945,24 +930,24 @@ exports[`pages/_offline snapshot 1`] = `
                           "background": "none",
                           "border": 0,
                           "boxSizing": "border-box",
-                          "display": "block",
+                          "display": "inline-block",
                           "height": "initial",
                           "margin": 0,
                           "maxWidth": "100%",
                           "opacity": 1,
+                          "overflow": "hidden",
                           "padding": 0,
+                          "position": "relative",
                           "width": "initial",
                         }
                       }
                     >
-                      <img
-                        alt=""
-                        aria-hidden={true}
-                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                      <span
                         style={
                           Object {
                             "background": "none",
                             "border": 0,
+                            "boxSizing": "border-box",
                             "display": "block",
                             "height": "initial",
                             "margin": 0,
@@ -972,44 +957,31 @@ exports[`pages/_offline snapshot 1`] = `
                             "width": "initial",
                           }
                         }
-                      />
-                    </span>
-                    <img
-                      alt="salad"
-                      data-nimg="intrinsic"
-                      decoding="async"
-                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                      style={
-                        Object {
-                          "border": "none",
-                          "bottom": 0,
-                          "boxSizing": "border-box",
-                          "display": "block",
-                          "height": 0,
-                          "left": 0,
-                          "margin": "auto",
-                          "maxHeight": "100%",
-                          "maxWidth": "100%",
-                          "minHeight": "100%",
-                          "minWidth": "100%",
-                          "objectFit": "cover",
-                          "objectPosition": undefined,
-                          "padding": 0,
-                          "position": "absolute",
-                          "right": 0,
-                          "top": 0,
-                          "width": 0,
-                        }
-                      }
-                    />
-                    <noscript>
+                      >
+                        <img
+                          alt=""
+                          aria-hidden={true}
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style={
+                            Object {
+                              "background": "none",
+                              "border": 0,
+                              "display": "block",
+                              "height": "initial",
+                              "margin": 0,
+                              "maxWidth": "100%",
+                              "opacity": 1,
+                              "padding": 0,
+                              "width": "initial",
+                            }
+                          }
+                        />
+                      </span>
                       <img
                         alt="salad"
                         data-nimg="intrinsic"
                         decoding="async"
-                        loading="lazy"
-                        src="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=256&q=75"
-                        srcSet="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F2996666_s.jpg&w=256&q=75 2x"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                         style={
                           Object {
                             "border": "none",
@@ -1033,40 +1005,55 @@ exports[`pages/_offline snapshot 1`] = `
                           }
                         }
                       />
-                    </noscript>
-                  </span>
-                  <p
-                    className="text-sm text-center"
-                  >
-                    サラダ
-                  </p>
-                </a>
-              </div>
-              <div
-                className="flex flex-col justify-center items-center w-24 h-full"
-              >
-                <a
-                  href="/articles/categories/tips"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
+                      <noscript>
+                        <img
+                          alt="salad"
+                          data-nimg="intrinsic"
+                          decoding="async"
+                          loading="lazy"
+                          src="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=256&q=75"
+                          srcSet="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F2996666_s.jpg&w=256&q=75 2x"
+                          style={
+                            Object {
+                              "border": "none",
+                              "bottom": 0,
+                              "boxSizing": "border-box",
+                              "display": "block",
+                              "height": 0,
+                              "left": 0,
+                              "margin": "auto",
+                              "maxHeight": "100%",
+                              "maxWidth": "100%",
+                              "minHeight": "100%",
+                              "minWidth": "100%",
+                              "objectFit": "cover",
+                              "objectPosition": undefined,
+                              "padding": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                              "width": 0,
+                            }
+                          }
+                        />
+                      </noscript>
+                    </span>
+                    <p
+                      className="text-sm text-center"
+                    >
+                      サラダ
+                    </p>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div
+                  className="flex flex-col justify-center items-center w-24 h-full"
                 >
-                  <span
-                    style={
-                      Object {
-                        "background": "none",
-                        "border": 0,
-                        "boxSizing": "border-box",
-                        "display": "inline-block",
-                        "height": "initial",
-                        "margin": 0,
-                        "maxWidth": "100%",
-                        "opacity": 1,
-                        "overflow": "hidden",
-                        "padding": 0,
-                        "position": "relative",
-                        "width": "initial",
-                      }
-                    }
+                  <a
+                    href="/articles/categories/tips"
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
                   >
                     <span
                       style={
@@ -1074,24 +1061,24 @@ exports[`pages/_offline snapshot 1`] = `
                           "background": "none",
                           "border": 0,
                           "boxSizing": "border-box",
-                          "display": "block",
+                          "display": "inline-block",
                           "height": "initial",
                           "margin": 0,
                           "maxWidth": "100%",
                           "opacity": 1,
+                          "overflow": "hidden",
                           "padding": 0,
+                          "position": "relative",
                           "width": "initial",
                         }
                       }
                     >
-                      <img
-                        alt=""
-                        aria-hidden={true}
-                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                      <span
                         style={
                           Object {
                             "background": "none",
                             "border": 0,
+                            "boxSizing": "border-box",
                             "display": "block",
                             "height": "initial",
                             "margin": 0,
@@ -1101,44 +1088,31 @@ exports[`pages/_offline snapshot 1`] = `
                             "width": "initial",
                           }
                         }
-                      />
-                    </span>
-                    <img
-                      alt="tips"
-                      data-nimg="intrinsic"
-                      decoding="async"
-                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                      style={
-                        Object {
-                          "border": "none",
-                          "bottom": 0,
-                          "boxSizing": "border-box",
-                          "display": "block",
-                          "height": 0,
-                          "left": 0,
-                          "margin": "auto",
-                          "maxHeight": "100%",
-                          "maxWidth": "100%",
-                          "minHeight": "100%",
-                          "minWidth": "100%",
-                          "objectFit": "cover",
-                          "objectPosition": undefined,
-                          "padding": 0,
-                          "position": "absolute",
-                          "right": 0,
-                          "top": 0,
-                          "width": 0,
-                        }
-                      }
-                    />
-                    <noscript>
+                      >
+                        <img
+                          alt=""
+                          aria-hidden={true}
+                          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                          style={
+                            Object {
+                              "background": "none",
+                              "border": 0,
+                              "display": "block",
+                              "height": "initial",
+                              "margin": 0,
+                              "maxWidth": "100%",
+                              "opacity": 1,
+                              "padding": 0,
+                              "width": "initial",
+                            }
+                          }
+                        />
+                      </span>
                       <img
                         alt="tips"
                         data-nimg="intrinsic"
                         decoding="async"
-                        loading="lazy"
-                        src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=256&q=75"
-                        srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=256&q=75 2x"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                         style={
                           Object {
                             "border": "none",
@@ -1162,16 +1136,48 @@ exports[`pages/_offline snapshot 1`] = `
                           }
                         }
                       />
-                    </noscript>
-                  </span>
-                  <p
-                    className="text-sm text-center"
-                  >
-                    料理基礎
-                  </p>
-                </a>
-              </div>
-            </div>
+                      <noscript>
+                        <img
+                          alt="tips"
+                          data-nimg="intrinsic"
+                          decoding="async"
+                          loading="lazy"
+                          src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=256&q=75"
+                          srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=256&q=75 2x"
+                          style={
+                            Object {
+                              "border": "none",
+                              "bottom": 0,
+                              "boxSizing": "border-box",
+                              "display": "block",
+                              "height": 0,
+                              "left": 0,
+                              "margin": "auto",
+                              "maxHeight": "100%",
+                              "maxWidth": "100%",
+                              "minHeight": "100%",
+                              "minWidth": "100%",
+                              "objectFit": "cover",
+                              "objectPosition": undefined,
+                              "padding": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                              "width": 0,
+                            }
+                          }
+                        />
+                      </noscript>
+                    </span>
+                    <p
+                      className="text-sm text-center"
+                    >
+                      料理基礎
+                    </p>
+                  </a>
+                </div>
+              </li>
+            </ul>
           </section>
         </div>
       </div>

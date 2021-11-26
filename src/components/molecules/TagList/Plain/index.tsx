@@ -8,10 +8,12 @@ type Props = {
 
 export const TagListPlain: React.VFC<Props> = ({ tags, hasLink = false }) => {
   return (
-    <div className="flex flex-wrap gap-x-2 gap-y-1">
+    <ul className="flex flex-wrap gap-x-2 gap-y-1">
       {(tags || []).map((tag) => (
-        <ButtonTagPlain tag={tag} key={tag.id} hasLink={hasLink} />
+        <li key={tag.id}>
+          <ButtonTagPlain tag={tag} hasLink={hasLink} />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };

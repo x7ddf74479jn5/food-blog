@@ -1,53 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components/molecules/ArticleSuspenseContainer NG:  エラー Snapshot 1`] = `
-<div
-  className="flex justify-center mt-16"
->
-  レシピが見つかりませんでした。
-</div>
-`;
-
-exports[`components/molecules/ArticleSuspenseContainer OK: データがない Snapshot 1`] = `
-<div
-  className="flex justify-center mt-16"
->
-  レシピが見つかりませんでした。
-</div>
-`;
-
 exports[`components/molecules/ArticleSuspenseContainer OK: データがある ローディング Snapshot 1`] = `
-Array [
-  <section
+<section>
+  <ul
     className="space-y-12"
   >
-    <article>
-      <div
-        className="mb-4"
-      >
-        <a
-          aria-label="基本の一番だしの作り方"
-          href="/articles/1"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
+    <li>
+      <article>
+        <div
+          className="mb-4"
         >
-          <span
-            style={
-              Object {
-                "background": "none",
-                "border": 0,
-                "boxSizing": "border-box",
-                "display": "inline-block",
-                "height": "initial",
-                "margin": 0,
-                "maxWidth": "100%",
-                "opacity": 1,
-                "overflow": "hidden",
-                "padding": 0,
-                "position": "relative",
-                "width": "initial",
-              }
-            }
+          <a
+            aria-label="基本の一番だしの作り方"
+            href="/articles/1"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
             <span
               style={
@@ -55,24 +22,24 @@ Array [
                   "background": "none",
                   "border": 0,
                   "boxSizing": "border-box",
-                  "display": "block",
+                  "display": "inline-block",
                   "height": "initial",
                   "margin": 0,
                   "maxWidth": "100%",
                   "opacity": 1,
+                  "overflow": "hidden",
                   "padding": 0,
+                  "position": "relative",
                   "width": "initial",
                 }
               }
             >
-              <img
-                alt=""
-                aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+              <span
                 style={
                   Object {
                     "background": "none",
                     "border": 0,
+                    "boxSizing": "border-box",
                     "display": "block",
                     "height": "initial",
                     "margin": 0,
@@ -82,44 +49,31 @@ Array [
                     "width": "initial",
                   }
                 }
-              />
-            </span>
-            <img
-              alt="Cover Image for 基本の一番だしの作り方"
-              data-nimg="intrinsic"
-              decoding="async"
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              style={
-                Object {
-                  "border": "none",
-                  "bottom": 0,
-                  "boxSizing": "border-box",
-                  "display": "block",
-                  "height": 0,
-                  "left": 0,
-                  "margin": "auto",
-                  "maxHeight": "100%",
-                  "maxWidth": "100%",
-                  "minHeight": "100%",
-                  "minWidth": "100%",
-                  "objectFit": undefined,
-                  "objectPosition": undefined,
-                  "padding": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                  "width": 0,
-                }
-              }
-            />
-            <noscript>
+              >
+                <img
+                  alt=""
+                  aria-hidden={true}
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+                  style={
+                    Object {
+                      "background": "none",
+                      "border": 0,
+                      "display": "block",
+                      "height": "initial",
+                      "margin": 0,
+                      "maxWidth": "100%",
+                      "opacity": 1,
+                      "padding": 0,
+                      "width": "initial",
+                    }
+                  }
+                />
+              </span>
               <img
                 alt="Cover Image for 基本の一番だしの作り方"
                 data-nimg="intrinsic"
                 decoding="async"
-                loading="lazy"
-                src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75"
-                srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=1920&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75 2x"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 style={
                   Object {
                     "border": "none",
@@ -143,70 +97,85 @@ Array [
                   }
                 }
               />
-            </noscript>
-          </span>
-        </a>
-      </div>
-      <h2
-        className="mb-4 text-2xl font-bold"
-      >
-        <a
-          href="/articles/1"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
+              <noscript>
+                <img
+                  alt="Cover Image for 基本の一番だしの作り方"
+                  data-nimg="intrinsic"
+                  decoding="async"
+                  loading="lazy"
+                  src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75"
+                  srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=1920&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75 2x"
+                  style={
+                    Object {
+                      "border": "none",
+                      "bottom": 0,
+                      "boxSizing": "border-box",
+                      "display": "block",
+                      "height": 0,
+                      "left": 0,
+                      "margin": "auto",
+                      "maxHeight": "100%",
+                      "maxWidth": "100%",
+                      "minHeight": "100%",
+                      "minWidth": "100%",
+                      "objectFit": undefined,
+                      "objectPosition": undefined,
+                      "padding": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "width": 0,
+                    }
+                  }
+                />
+              </noscript>
+            </span>
+          </a>
+        </div>
+        <h2
+          className="mb-4 text-2xl font-bold"
         >
-          基本の一番だしの作り方
-        </a>
-      </h2>
-      <p
-        className="dark:text-gray-300 line-clamp-2"
-      >
-        だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。
-      </p>
-    </article>
-  </section>,
+          <a
+            href="/articles/1"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            基本の一番だしの作り方
+          </a>
+        </h2>
+        <p
+          className="dark:text-gray-300 line-clamp-2"
+        >
+          だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。
+        </p>
+      </article>
+    </li>
+  </ul>
   <div
     className="flex justify-center mt-8"
   >
     <div
       className="w-8 h-8 rounded-full border-b-2 border-green-500 animate-spin"
     />
-  </div>,
-]
+  </div>
+</section>
 `;
 
 exports[`components/molecules/ArticleSuspenseContainer OK: データがある 次ページがある Snapshot 1`] = `
-Array [
-  <section
+<section>
+  <ul
     className="space-y-12"
   >
-    <article>
-      <div
-        className="mb-4"
-      >
-        <a
-          aria-label="基本の一番だしの作り方"
-          href="/articles/1"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
+    <li>
+      <article>
+        <div
+          className="mb-4"
         >
-          <span
-            style={
-              Object {
-                "background": "none",
-                "border": 0,
-                "boxSizing": "border-box",
-                "display": "inline-block",
-                "height": "initial",
-                "margin": 0,
-                "maxWidth": "100%",
-                "opacity": 1,
-                "overflow": "hidden",
-                "padding": 0,
-                "position": "relative",
-                "width": "initial",
-              }
-            }
+          <a
+            aria-label="基本の一番だしの作り方"
+            href="/articles/1"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
             <span
               style={
@@ -214,24 +183,24 @@ Array [
                   "background": "none",
                   "border": 0,
                   "boxSizing": "border-box",
-                  "display": "block",
+                  "display": "inline-block",
                   "height": "initial",
                   "margin": 0,
                   "maxWidth": "100%",
                   "opacity": 1,
+                  "overflow": "hidden",
                   "padding": 0,
+                  "position": "relative",
                   "width": "initial",
                 }
               }
             >
-              <img
-                alt=""
-                aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+              <span
                 style={
                   Object {
                     "background": "none",
                     "border": 0,
+                    "boxSizing": "border-box",
                     "display": "block",
                     "height": "initial",
                     "margin": 0,
@@ -241,44 +210,31 @@ Array [
                     "width": "initial",
                   }
                 }
-              />
-            </span>
-            <img
-              alt="Cover Image for 基本の一番だしの作り方"
-              data-nimg="intrinsic"
-              decoding="async"
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              style={
-                Object {
-                  "border": "none",
-                  "bottom": 0,
-                  "boxSizing": "border-box",
-                  "display": "block",
-                  "height": 0,
-                  "left": 0,
-                  "margin": "auto",
-                  "maxHeight": "100%",
-                  "maxWidth": "100%",
-                  "minHeight": "100%",
-                  "minWidth": "100%",
-                  "objectFit": undefined,
-                  "objectPosition": undefined,
-                  "padding": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                  "width": 0,
-                }
-              }
-            />
-            <noscript>
+              >
+                <img
+                  alt=""
+                  aria-hidden={true}
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+                  style={
+                    Object {
+                      "background": "none",
+                      "border": 0,
+                      "display": "block",
+                      "height": "initial",
+                      "margin": 0,
+                      "maxWidth": "100%",
+                      "opacity": 1,
+                      "padding": 0,
+                      "width": "initial",
+                    }
+                  }
+                />
+              </span>
               <img
                 alt="Cover Image for 基本の一番だしの作り方"
                 data-nimg="intrinsic"
                 decoding="async"
-                loading="lazy"
-                src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75"
-                srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=1920&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75 2x"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 style={
                   Object {
                     "border": "none",
@@ -302,28 +258,60 @@ Array [
                   }
                 }
               />
-            </noscript>
-          </span>
-        </a>
-      </div>
-      <h2
-        className="mb-4 text-2xl font-bold"
-      >
-        <a
-          href="/articles/1"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
+              <noscript>
+                <img
+                  alt="Cover Image for 基本の一番だしの作り方"
+                  data-nimg="intrinsic"
+                  decoding="async"
+                  loading="lazy"
+                  src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75"
+                  srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=1920&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75 2x"
+                  style={
+                    Object {
+                      "border": "none",
+                      "bottom": 0,
+                      "boxSizing": "border-box",
+                      "display": "block",
+                      "height": 0,
+                      "left": 0,
+                      "margin": "auto",
+                      "maxHeight": "100%",
+                      "maxWidth": "100%",
+                      "minHeight": "100%",
+                      "minWidth": "100%",
+                      "objectFit": undefined,
+                      "objectPosition": undefined,
+                      "padding": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "width": 0,
+                    }
+                  }
+                />
+              </noscript>
+            </span>
+          </a>
+        </div>
+        <h2
+          className="mb-4 text-2xl font-bold"
         >
-          基本の一番だしの作り方
-        </a>
-      </h2>
-      <p
-        className="dark:text-gray-300 line-clamp-2"
-      >
-        だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。
-      </p>
-    </article>
-  </section>,
+          <a
+            href="/articles/1"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            基本の一番だしの作り方
+          </a>
+        </h2>
+        <p
+          className="dark:text-gray-300 line-clamp-2"
+        >
+          だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。
+        </p>
+      </article>
+    </li>
+  </ul>
   <div
     className="flex justify-center mt-8"
   >
@@ -353,156 +341,168 @@ Array [
         もっと読み込む
       </span>
     </button>
-  </div>,
-]
+  </div>
+</section>
 `;
 
 exports[`components/molecules/ArticleSuspenseContainer OK: データがある 次ページがない Snapshot 1`] = `
-<section
-  className="space-y-12"
->
-  <article>
-    <div
-      className="mb-4"
-    >
-      <a
-        aria-label="基本の一番だしの作り方"
-        href="/articles/1"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
-      >
-        <span
-          style={
-            Object {
-              "background": "none",
-              "border": 0,
-              "boxSizing": "border-box",
-              "display": "inline-block",
-              "height": "initial",
-              "margin": 0,
-              "maxWidth": "100%",
-              "opacity": 1,
-              "overflow": "hidden",
-              "padding": 0,
-              "position": "relative",
-              "width": "initial",
-            }
-          }
+<section>
+  <ul
+    className="space-y-12"
+  >
+    <li>
+      <article>
+        <div
+          className="mb-4"
         >
-          <span
-            style={
-              Object {
-                "background": "none",
-                "border": 0,
-                "boxSizing": "border-box",
-                "display": "block",
-                "height": "initial",
-                "margin": 0,
-                "maxWidth": "100%",
-                "opacity": 1,
-                "padding": 0,
-                "width": "initial",
-              }
-            }
+          <a
+            aria-label="基本の一番だしの作り方"
+            href="/articles/1"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <img
-              alt=""
-              aria-hidden={true}
-              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+            <span
               style={
                 Object {
                   "background": "none",
                   "border": 0,
-                  "display": "block",
+                  "boxSizing": "border-box",
+                  "display": "inline-block",
                   "height": "initial",
                   "margin": 0,
                   "maxWidth": "100%",
                   "opacity": 1,
+                  "overflow": "hidden",
                   "padding": 0,
+                  "position": "relative",
                   "width": "initial",
                 }
               }
-            />
-          </span>
-          <img
-            alt="Cover Image for 基本の一番だしの作り方"
-            data-nimg="intrinsic"
-            decoding="async"
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            style={
-              Object {
-                "border": "none",
-                "bottom": 0,
-                "boxSizing": "border-box",
-                "display": "block",
-                "height": 0,
-                "left": 0,
-                "margin": "auto",
-                "maxHeight": "100%",
-                "maxWidth": "100%",
-                "minHeight": "100%",
-                "minWidth": "100%",
-                "objectFit": undefined,
-                "objectPosition": undefined,
-                "padding": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-                "width": 0,
-              }
-            }
-          />
-          <noscript>
-            <img
-              alt="Cover Image for 基本の一番だしの作り方"
-              data-nimg="intrinsic"
-              decoding="async"
-              loading="lazy"
-              src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75"
-              srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=1920&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75 2x"
-              style={
-                Object {
-                  "border": "none",
-                  "bottom": 0,
-                  "boxSizing": "border-box",
-                  "display": "block",
-                  "height": 0,
-                  "left": 0,
-                  "margin": "auto",
-                  "maxHeight": "100%",
-                  "maxWidth": "100%",
-                  "minHeight": "100%",
-                  "minWidth": "100%",
-                  "objectFit": undefined,
-                  "objectPosition": undefined,
-                  "padding": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                  "width": 0,
+            >
+              <span
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
                 }
-              }
-            />
-          </noscript>
-        </span>
-      </a>
-    </div>
-    <h2
-      className="mb-4 text-2xl font-bold"
-    >
-      <a
-        href="/articles/1"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
-      >
-        基本の一番だしの作り方
-      </a>
-    </h2>
-    <p
-      className="dark:text-gray-300 line-clamp-2"
-    >
-      だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。
-    </p>
-  </article>
+              >
+                <img
+                  alt=""
+                  aria-hidden={true}
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+                  style={
+                    Object {
+                      "background": "none",
+                      "border": 0,
+                      "display": "block",
+                      "height": "initial",
+                      "margin": 0,
+                      "maxWidth": "100%",
+                      "opacity": 1,
+                      "padding": 0,
+                      "width": "initial",
+                    }
+                  }
+                />
+              </span>
+              <img
+                alt="Cover Image for 基本の一番だしの作り方"
+                data-nimg="intrinsic"
+                decoding="async"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+              <noscript>
+                <img
+                  alt="Cover Image for 基本の一番だしの作り方"
+                  data-nimg="intrinsic"
+                  decoding="async"
+                  loading="lazy"
+                  src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75"
+                  srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=1920&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=3840&q=75 2x"
+                  style={
+                    Object {
+                      "border": "none",
+                      "bottom": 0,
+                      "boxSizing": "border-box",
+                      "display": "block",
+                      "height": 0,
+                      "left": 0,
+                      "margin": "auto",
+                      "maxHeight": "100%",
+                      "maxWidth": "100%",
+                      "minHeight": "100%",
+                      "minWidth": "100%",
+                      "objectFit": undefined,
+                      "objectPosition": undefined,
+                      "padding": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "width": 0,
+                    }
+                  }
+                />
+              </noscript>
+            </span>
+          </a>
+        </div>
+        <h2
+          className="mb-4 text-2xl font-bold"
+        >
+          <a
+            href="/articles/1"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            基本の一番だしの作り方
+          </a>
+        </h2>
+        <p
+          className="dark:text-gray-300 line-clamp-2"
+        >
+          だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。
+        </p>
+      </article>
+    </li>
+  </ul>
 </section>
+`;
+
+exports[`components/molecules/ArticleSuspenseContainer OK: データがない Snapshot 1`] = `
+<div
+  className="flex justify-center mt-16"
+>
+  レシピが見つかりませんでした。
+</div>
 `;

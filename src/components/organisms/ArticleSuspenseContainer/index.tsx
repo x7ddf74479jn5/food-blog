@@ -53,9 +53,9 @@ export const Component: React.VFC<{
     return <div className="flex justify-center mt-16">レシピが見つかりませんでした。</div>;
 
   return (
-    <>
+    <section>
       <ArticleList articles={articles} />
       <Pagination hasNextPage={hasNextPage} isValidating={isValidating} onClick={handlePaginate} />
-    </>
+    </section>
   );
 };

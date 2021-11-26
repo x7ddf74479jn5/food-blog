@@ -7,11 +7,13 @@ type ArticleListProps = {
 
 const ArticleList: React.VFC<ArticleListProps> = ({ articles }) => {
   return (
-    <section className="space-y-12">
+    <ul className="space-y-12">
       {articles.map((article) => (
-        <ArticleItem key={article.id} article={article} />
+        <li key={article.id}>
+          <ArticleItem article={article} />
+        </li>
       ))}
-    </section>
+    </ul>
   );
 };
 

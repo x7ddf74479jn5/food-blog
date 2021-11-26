@@ -137,25 +137,31 @@ exports[`components/atoms/mdx/LinkCard snapshot 1`] = `
         <div
           className="flex-grow"
         >
-          <div
+          <ul
             className="flex flex-wrap gap-x-2 gap-y-1"
           >
-            <span
-              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-            >
-              #仕込み
-            </span>
-            <span
-              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-            >
-              #味噌汁
-            </span>
-            <span
-              className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
-            >
-              #うどん
-            </span>
-          </div>
+            <li>
+              <span
+                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+              >
+                #仕込み
+              </span>
+            </li>
+            <li>
+              <span
+                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+              >
+                #味噌汁
+              </span>
+            </li>
+            <li>
+              <span
+                className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+              >
+                #うどん
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
     </article>

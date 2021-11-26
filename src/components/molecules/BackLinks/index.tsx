@@ -11,14 +11,16 @@ export type Props = {
 
 const BackLinks: React.FC<Props> = ({ links }) => {
   return (
-    <div className="flex flex-col space-y-2 align-top ">
+    <ul className="flex flex-col space-y-2 align-top ">
       {links.map((link, index) => (
-        <NextLink key={index} href={link.href} className="flex flex-row gap-2 items-center">
-          <FaChevronLeft />
-          {link.label}
-        </NextLink>
+        <li key={index}>
+          <NextLink href={link.href} className="flex flex-row gap-2 items-center">
+            <FaChevronLeft />
+            {link.label}
+          </NextLink>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

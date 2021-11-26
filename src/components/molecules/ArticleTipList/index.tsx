@@ -34,10 +34,12 @@ export type ArticleTipWithThumbListProps = {
 
 export const ArticleTipWithThumbList: React.VFC<ArticleTipWithThumbListProps> = ({ articles }) => {
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-x-1 md:gap-x-1 lg:gap-x-1 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 pb-2">
+    <ul className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-x-1 md:gap-x-1 lg:gap-x-1 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 pb-2">
       {articles.map((article) => (
-        <ArticleTipWithThumb key={article.id} article={article} />
+        <li key={article.id}>
+          <ArticleTipWithThumb article={article} />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
