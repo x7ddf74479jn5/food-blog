@@ -7,12 +7,10 @@ type Props = {
 
 export const TagListColored = ({ tags }: Props) => {
   return (
-    <ul className="flex flex-row flex-wrap gap-2 items-center">
+    <div className="flex flex-row flex-wrap gap-2 items-center">
       {tags.map((tag) => (
-        <li key={tag.id}>
-          <ButtonTagColored tag={tag} />
-        </li>
+        <ButtonTagColored tag={tag} key={tag.id} />
       ))}
-    </ul>
+    </div>
   );
 };

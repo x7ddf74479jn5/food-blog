@@ -425,52 +425,46 @@ exports[`pages/articles snapshot 1`] = `
               </div>
             </a>
           </div>
-          <ul
+          <div
             className="flex flex-row flex-wrap gap-2 items-center"
           >
-            <li>
-              <a
-                href="/articles/tags/preparation"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
+            <a
+              href="/articles/tags/preparation"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              <div
+                className="inline-block py-1 px-2 text-white  bg-gray-500 rounded-lg"
               >
-                <div
-                  className="inline-block py-1 px-2 text-white  bg-gray-500 rounded-lg"
-                >
-                  #
-                  仕込み
-                </div>
-              </a>
-            </li>
-            <li>
-              <a
-                href="/articles/tags/miso_soup"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
+                #
+                仕込み
+              </div>
+            </a>
+            <a
+              href="/articles/tags/miso_soup"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              <div
+                className="inline-block py-1 px-2 text-white  bg-gray-500 rounded-lg"
               >
-                <div
-                  className="inline-block py-1 px-2 text-white  bg-gray-500 rounded-lg"
-                >
-                  #
-                  味噌汁
-                </div>
-              </a>
-            </li>
-            <li>
-              <a
-                href="/articles/tags/udon"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
+                #
+                味噌汁
+              </div>
+            </a>
+            <a
+              href="/articles/tags/udon"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              <div
+                className="inline-block py-1 px-2 text-white  bg-yellow-700 rounded-lg"
               >
-                <div
-                  className="inline-block py-1 px-2 text-white  bg-yellow-700 rounded-lg"
-                >
-                  #
-                  うどん
-                </div>
-              </a>
-            </li>
-          </ul>
+                #
+                うどん
+              </div>
+            </a>
+          </div>
         </div>
         <div
           id="js-toc-content"
