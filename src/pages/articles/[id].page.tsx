@@ -25,7 +25,6 @@ import {
 import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
-import { isDraft } from "@/utils/validator";
 
 export type ArticleDetailProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -68,46 +67,42 @@ export const ArticleDetail = ({
         authorName={writerName}
         description={getExcerpt(description)}
       />
-      {id ? (
-        <>
-          {isPreview && <div className="mb-4 text-center text-white bg-red-500">Preview mode enabled</div>}
-          <article className="prose md:prose prose-sm dark:prose-dark">
-            <div className="mb-4">
-              <Thumbnail src={image.url} title={title} />
-            </div>
-            <h1>{title}</h1>
-            <div className="flex flex-row justify-around mb-4">
-              <div className="flex flex-row gap-2 items-center">
-                <FaRegCalendar />
-                <TextDate date={safePublishedAt} />
-              </div>
-              <div className="flex flex-row gap-2 items-center">
-                <FaPen />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={avatar.url}
-                  alt={writerName}
-                  width={32}
-                  height={32}
-                  className="rounded-full"
-                  style={{ margin: 0 }}
-                />
-                <span>{writerName}</span>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4 p-2 sm:p-4 bg-gray-50 dark:bg-gray-700">
-              <div className="flex flex-row gap-2 items-center">
-                <span className="text-black dark:text-white">カテゴリー：</span>
-                <ButtonCategory category={category} />
-              </div>
-              <TagListColored tags={tags} />
-            </div>
-            <div id="js-toc-content">
-              <MDXRemote {...mdxSource} components={MDXCustomComponents} scope={data} />
-            </div>
-          </article>
-        </>
-      ) : null}
+      {isPreview && <div className="mb-4 text-center text-white bg-red-500">Preview mode enabled</div>}
+      <article className="prose md:prose prose-sm dark:prose-dark">
+        <div className="mb-4">
+          <Thumbnail src={image.url} title={title} />
+        </div>
+        <h1>{title}</h1>
+        <div className="flex flex-row justify-around mb-4">
+          <div className="flex flex-row gap-2 items-center">
+            <FaRegCalendar />
+            <TextDate date={safePublishedAt} />
+          </div>
+          <div className="flex flex-row gap-2 items-center">
+            <FaPen />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={avatar.url}
+              alt={writerName}
+              width={32}
+              height={32}
+              className="rounded-full"
+              style={{ margin: 0 }}
+            />
+            <span>{writerName}</span>
+          </div>
+        </div>
+        <div className="flex flex-col gap-4 p-2 sm:p-4 bg-gray-50 dark:bg-gray-700">
+          <div className="flex flex-row gap-2 items-center">
+            <span className="text-black dark:text-white">カテゴリー：</span>
+            <ButtonCategory category={category} />
+          </div>
+          <TagListColored tags={tags} />
+        </div>
+        <div id="js-toc-content">
+          <MDXRemote {...mdxSource} components={MDXCustomComponents} scope={data} />
+        </div>
+      </article>
     </ArticleLayout>
   );
 };
@@ -135,25 +130,22 @@ export type ArticlesStaticProps = {
   pickup: TPickup;
 };
 
-export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async ({ params, preview, previewData }) => {
+export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async ({ params }) => {
   const id = params?.id;
   if (!id) {
     throw new Error("Error: ID not found");
   }
   try {
-    const queries = preview ? { draftKey: isDraft(previewData) ? previewData.draftKey : "" } : {};
-
     const [config, categories, article, pickup] = await Promise.all([
       fetchConfig(),
       fetchCategories(),
-      fetchArticle(id, queries),
+      fetchArticle(id),
       fetchPickupArticles(getNewDate()),
     ]);
 
     const relatedArticles = await getRelatedArticles(article);
 
     const mdxSource = await mdx2html(article.body);
-    const isPreview = preview === undefined ? false : preview;
 
     return {
       props: {
@@ -161,7 +153,7 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
         mdxSource,
         categories,
         config,
-        isPreview,
+        isPreview: false,
         relatedArticles,
         pickup,
       },

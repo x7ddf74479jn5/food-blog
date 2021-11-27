@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const [config, categories, data, pickup] = await Promise.all([
     fetchConfig(),
     fetchCategories(),
-    fetchArticles({ limit: 5, offset: 0 }),
+    fetchArticles({ limit: 10, offset: 0 }),
     fetchPickupArticles(getNewDate()),
   ]);
 
