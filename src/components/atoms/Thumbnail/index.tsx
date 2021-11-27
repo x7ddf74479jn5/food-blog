@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import NextLink from "@/components/atoms/NextLink";
+import { urlTable } from "@/utils/paths/url";
 
 type Props = {
   title: string;
@@ -9,11 +10,11 @@ type Props = {
 };
 
 const Thumbnail: React.FC<Props> = ({ title, src, id }: Props) => {
-  const image = <Image src={src} alt={`Cover Image for ${title}`} width={640} height={480} />;
+  const image = <Image src={src} alt={`Cover Image for ${title}`} width={640} height={360} objectFit="cover" />;
   return (
     <>
       {id ? (
-        <NextLink href={`/articles/${id}`} aria-label={title}>
+        <NextLink href={`${urlTable.articles}/${id}`} aria-label={title}>
           {image}
         </NextLink>
       ) : (
