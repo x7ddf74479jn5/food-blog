@@ -15,7 +15,7 @@ describe("pages/api/preview", () => {
     const _mockReq = {
       ...mockReq,
       query: {
-        slug: "slug",
+        id: "id",
         draftKey: "draftKey",
       },
     } as unknown as NextApiRequest;
@@ -26,9 +26,9 @@ describe("pages/api/preview", () => {
 
     await preview(_mockReq, mockRes);
 
-    expect(spyFetchArticle).toBeCalledWith("slug", { draftKey: "draftKey" });
+    expect(spyFetchArticle).toBeCalledWith("id", { draftKey: "draftKey" });
     expect(mockRes.setPreviewData).toBeCalledWith({
-      slug: articleStock.id,
+      id: articleStock.id,
       draftKey: "draftKey",
     });
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -36,11 +36,11 @@ describe("pages/api/preview", () => {
     expect(mockRes.end).toBeCalledWith("Preview mode enabled");
   });
 
-  it("NG: slugが不正", async () => {
+  it("NG: idが不正", async () => {
     const _mockReq = {
       ...mockReq,
       query: {
-        slug: undefined,
+        id: undefined,
       },
     } as unknown as NextApiRequest;
 
@@ -54,7 +54,7 @@ describe("pages/api/preview", () => {
     const _mockReq = {
       ...mockReq,
       query: {
-        slug: "slug",
+        id: "id",
         draftKey: undefined,
       },
     } as unknown as NextApiRequest;
@@ -65,11 +65,11 @@ describe("pages/api/preview", () => {
     expect(mockRes.status).toBeCalledWith(400);
   });
 
-  it("NG: slugが不正", async () => {
+  it("NG: idが不正", async () => {
     const _mockReq = {
       ...mockReq,
       query: {
-        slug: undefined,
+        id: undefined,
       },
     } as unknown as NextApiRequest;
 
@@ -83,7 +83,7 @@ describe("pages/api/preview", () => {
     const _mockReq = {
       ...mockReq,
       query: {
-        slug: "slug",
+        id: "id",
         draftKey: "draftKey",
       },
     } as unknown as NextApiRequest;
@@ -94,8 +94,8 @@ describe("pages/api/preview", () => {
 
     await preview(_mockReq, mockRes);
 
-    expect(spyFetchArticle).toBeCalledWith("slug", { draftKey: "draftKey" });
+    expect(spyFetchArticle).toBeCalledWith("id", { draftKey: "draftKey" });
     expect(mockRes.status).toBeCalledWith(401);
-    expect(mockRes.json).toBeCalledWith({ message: "Invalid slug" });
+    expect(mockRes.json).toBeCalledWith({ message: "Invalid id" });
   });
 });
