@@ -52,7 +52,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               <img
                 alt=""
                 aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                 style={
                   Object {
                     "background": "none",
@@ -86,7 +86,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
                   "maxWidth": "100%",
                   "minHeight": "100%",
                   "minWidth": "100%",
-                  "objectFit": undefined,
+                  "objectFit": "cover",
                   "objectPosition": undefined,
                   "padding": 0,
                   "position": "absolute",
@@ -117,7 +117,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
                     "maxWidth": "100%",
                     "minHeight": "100%",
                     "minWidth": "100%",
-                    "objectFit": undefined,
+                    "objectFit": "cover",
                     "objectPosition": undefined,
                     "padding": 0,
                     "position": "absolute",
@@ -197,7 +197,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               <img
                 alt=""
                 aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                 style={
                   Object {
                     "background": "none",
@@ -231,7 +231,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
                   "maxWidth": "100%",
                   "minHeight": "100%",
                   "minWidth": "100%",
-                  "objectFit": undefined,
+                  "objectFit": "cover",
                   "objectPosition": undefined,
                   "padding": 0,
                   "position": "absolute",
@@ -262,7 +262,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
                     "maxWidth": "100%",
                     "minHeight": "100%",
                     "minWidth": "100%",
-                    "objectFit": undefined,
+                    "objectFit": "cover",
                     "objectPosition": undefined,
                     "padding": 0,
                     "position": "absolute",
@@ -342,7 +342,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               <img
                 alt=""
                 aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                 style={
                   Object {
                     "background": "none",
@@ -376,7 +376,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
                   "maxWidth": "100%",
                   "minHeight": "100%",
                   "minWidth": "100%",
-                  "objectFit": undefined,
+                  "objectFit": "cover",
                   "objectPosition": undefined,
                   "padding": 0,
                   "position": "absolute",
@@ -407,7 +407,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
                     "maxWidth": "100%",
                     "minHeight": "100%",
                     "minWidth": "100%",
-                    "objectFit": undefined,
+                    "objectFit": "cover",
                     "objectPosition": undefined,
                     "padding": 0,
                     "position": "absolute",
@@ -487,7 +487,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
               <img
                 alt=""
                 aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                 style={
                   Object {
                     "background": "none",
@@ -521,7 +521,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
                   "maxWidth": "100%",
                   "minHeight": "100%",
                   "minWidth": "100%",
-                  "objectFit": undefined,
+                  "objectFit": "cover",
                   "objectPosition": undefined,
                   "padding": 0,
                   "position": "absolute",
@@ -552,7 +552,7 @@ exports[`components/molecules/ArticleList snapshot 1`] = `
                     "maxWidth": "100%",
                     "minHeight": "100%",
                     "minWidth": "100%",
-                    "objectFit": undefined,
+                    "objectFit": "cover",
                     "objectPosition": undefined,
                     "padding": 0,
                     "position": "absolute",
