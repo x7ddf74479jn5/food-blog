@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components/molecules/ArticleSuspenseContainer OK: データがある ローディング Snapshot 1`] = `
+exports[`components/organisms/ArticleSWRContainer OK: データがある ローディング Snapshot 1`] = `
 <section>
   <ul
     className="space-y-12"
@@ -161,7 +161,7 @@ exports[`components/molecules/ArticleSuspenseContainer OK: データがある �
 </section>
 `;
 
-exports[`components/molecules/ArticleSuspenseContainer OK: データがある 次ページがある Snapshot 1`] = `
+exports[`components/organisms/ArticleSWRContainer OK: データがある 次ページがある Snapshot 1`] = `
 <section>
   <ul
     className="space-y-12"
@@ -345,7 +345,7 @@ exports[`components/molecules/ArticleSuspenseContainer OK: データがある �
 </section>
 `;
 
-exports[`components/molecules/ArticleSuspenseContainer OK: データがある 次ページがない Snapshot 1`] = `
+exports[`components/organisms/ArticleSWRContainer OK: データがある 次ページがない Snapshot 1`] = `
 <section>
   <ul
     className="space-y-12"
@@ -499,7 +499,7 @@ exports[`components/molecules/ArticleSuspenseContainer OK: データがある �
 </section>
 `;
 
-exports[`components/molecules/ArticleSuspenseContainer OK: データがない Snapshot 1`] = `
+exports[`components/organisms/ArticleSWRContainer OK: データがない Snapshot 1`] = `
 <div
   className="flex justify-center mt-16"
 >

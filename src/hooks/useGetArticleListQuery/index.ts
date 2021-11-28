@@ -48,7 +48,6 @@ const useGetArticleListQuery = ({ endpoint, fetcher, getKeyOptions, fallbackData
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-    suspense: true,
     fallbackData: fallbackData ? [fallbackData] : undefined,
     ...options,
   });

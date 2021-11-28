@@ -36,7 +36,12 @@ describe("hooks/useGetArticleListQuery", () => {
     );
   };
   let renderResult: RenderResult<ReturnType<typeof useGetArticleListQuery>>;
-  const mockArticleList = Object.values(mockArticles);
+  // 4 * 3 articles
+  const mockArticleList = [
+    ...Object.values(mockArticles),
+    ...Object.values(mockArticles),
+    ...Object.values(mockArticles),
+  ];
 
   it("OK: useSWRInfiniteが呼び出される", () => {
     const { result, unmount } = renderHook(() => useGetArticleListQuery({ endpoint }), {
@@ -93,7 +98,7 @@ describe("hooks/useGetArticleListQuery", () => {
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&pageIndex=0`;
       expect(key).toBe(expectedKey);
 
-      expect(articles).toStrictEqual(mockArticleList.slice(0, 2));
+      expect(articles).toStrictEqual(mockArticleList.slice(0, 10));
       expect(hasNextPage).toBeTruthy();
       expect(size).toBe(1);
 
@@ -124,7 +129,7 @@ describe("hooks/useGetArticleListQuery", () => {
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&q=${q}&pageIndex=0`;
       expect(key).toBe(expectedKey);
 
-      expect(articles).toStrictEqual(mockArticleList.slice(0, 2));
+      expect(articles).toStrictEqual(mockArticleList.slice(0, 10));
       expect(hasNextPage).toBeTruthy();
       expect(size).toBe(1);
 
@@ -136,8 +141,8 @@ describe("hooks/useGetArticleListQuery", () => {
     });
   });
 
-  describe.only("OK: keyとarticlesの対応が正しい", () => {
-    it("1st: 取得数/総取得数/総記事数 2/2/4", () => {
+  describe("OK: keyとarticlesの対応が正しい", () => {
+    it("1st: 取得数/総取得数/総記事数 10/10/12", () => {
       const limit = 10;
       const mockSetSize = jest.fn();
       const offset = 0;
@@ -152,7 +157,7 @@ describe("hooks/useGetArticleListQuery", () => {
           setSize: mockSetSize,
           data: [
             {
-              contents: mockArticleList.slice(0, 2),
+              contents: mockArticleList.slice(0, 10),
               totalCount: mockArticleList.length,
               offset,
               limit,
@@ -170,18 +175,18 @@ describe("hooks/useGetArticleListQuery", () => {
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&pageIndex=0`;
       expect(key).toBe(expectedKey);
-      expect(articles).toStrictEqual(mockArticleList.slice(0, 2));
+      expect(articles).toStrictEqual(mockArticleList.slice(0, 10));
       expect(hasNextPage).toBeTruthy();
       expect(size).toBe(1);
     });
 
-    it("2nd: 取得数/総取得数/総記事数 2/4/4", () => {
+    it("2nd: 取得数/総取得数/総記事数 2/12/12", () => {
       const limit = 10;
       const mockSetSize = jest.fn();
-      let offset = 0;
+      let offset = 10;
       spyUseSWRInfinite.mockImplementation((getKey) => {
         let size = 1;
-        getKey(size, { contents: mockArticleList.slice(0, 2), offset, limit });
+        getKey(size, { contents: mockArticleList.slice(0, 10), offset, limit });
         size++;
         offset += limit;
 
@@ -190,15 +195,15 @@ describe("hooks/useGetArticleListQuery", () => {
           setSize: mockSetSize,
           data: [
             {
-              contents: mockArticleList.slice(0, 2),
+              contents: mockArticleList.slice(0, 10),
               totalCount: mockArticleList.length,
-              offset,
+              offset: 0,
               limit,
             },
             {
-              contents: mockArticleList.slice(2, 4),
+              contents: mockArticleList.slice(10, 12),
               totalCount: mockArticleList.length,
-              offset,
+              offset: 10,
               limit,
             },
           ],
@@ -214,15 +219,15 @@ describe("hooks/useGetArticleListQuery", () => {
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&offset=${offset}&pageIndex=1`;
       expect(key).toBe(expectedKey);
-      expect(articles).toStrictEqual(mockArticleList.slice(0, 4));
+      expect(articles).toStrictEqual(mockArticleList.slice(0, 12));
       expect(hasNextPage).toBeFalsy();
       expect(size).toBe(2);
     });
 
-    it("3rd 取得数/総取得数/総記事数 0/4/4", () => {
+    it("3rd 取得数/総取得数/総記事数 0/12/12", () => {
       const limit = 10;
       const mockSetSize = jest.fn();
-      let offset = 2;
+      let offset = 12;
       spyUseSWRInfinite.mockImplementation((getKey) => {
         const size = 2;
         getKey(size, { contents: mockArticleList.slice(2, 4), offset, limit });
@@ -233,21 +238,21 @@ describe("hooks/useGetArticleListQuery", () => {
           setSize: mockSetSize,
           data: [
             {
-              contents: mockArticleList.slice(0, 2),
+              contents: mockArticleList.slice(0, 10),
               totalCount: mockArticleList.length,
               offset: 0,
               limit,
             },
             {
-              contents: mockArticleList.slice(2, 4),
+              contents: mockArticleList.slice(10, 12),
               totalCount: mockArticleList.length,
-              offset: 2,
+              offset: 10,
               limit,
             },
             {
               contents: [],
               totalCount: mockArticleList.length,
-              offset: 4,
+              offset: 12,
               limit,
             },
           ],
@@ -263,7 +268,7 @@ describe("hooks/useGetArticleListQuery", () => {
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&offset=${offset}&pageIndex=2`;
       expect(key).toBe(expectedKey);
-      expect(articles).toStrictEqual(mockArticleList.slice(0, 4));
+      expect(articles).toStrictEqual(mockArticleList.slice(0, 12));
       expect(hasNextPage).toBeFalsy();
       expect(size).toBe(2);
     });

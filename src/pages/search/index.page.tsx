@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
-import { ArticleSuspenseContainer } from "@/components/organisms/ArticleSuspenseContainer/index";
+import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
 import type { TCategory, TConfig, TPickup, TQueryOptions } from "@/types";
 import { getNewDate } from "@/utils/date";
 import { fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
@@ -38,7 +38,7 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
       </div>
       <div className="w-full">
         {q ? (
-          <ArticleSuspenseContainer queryOptions={queryOptions} />
+          <ArticleSWRContainer queryOptions={queryOptions} />
         ) : (
           <div className="flex justify-center mt-16">検索語句を入力してください。</div>
         )}

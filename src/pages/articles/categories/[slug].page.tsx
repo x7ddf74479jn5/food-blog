@@ -1,10 +1,10 @@
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import dynamic from "next/dynamic";
 import type { ParsedUrlQuery } from "node:querystring";
 
 import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
+import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
 import type { TArticleListResponse, TCategory, TConfig, TPickup } from "@/types";
 import { getNewDate } from "@/utils/date";
 import { fetchArticles, fetchCategories, fetchCategory, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
@@ -19,9 +19,6 @@ const Category: NextPage<Props> = ({ data, category, config, categories, pickup 
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = new URL(`${urlTable.categories}/${category.slug}`, host).toString();
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
-  const ArticleSuspenseContainer = dynamic(() => import("@/components/organisms/ArticleSuspenseContainer"), {
-    ssr: false,
-  });
   const queryOptions = { filters: `category[equals]${category.id}` };
 
   return (
@@ -38,7 +35,7 @@ const Category: NextPage<Props> = ({ data, category, config, categories, pickup 
         <HeadingOne>{heading}</HeadingOne>
       </div>
       <div className="w-full min-h-screen">
-        <ArticleSuspenseContainer fallbackData={data} queryOptions={queryOptions} />
+        <ArticleSWRContainer fallbackData={data} queryOptions={queryOptions} />
       </div>
     </DefaultLayout>
   );

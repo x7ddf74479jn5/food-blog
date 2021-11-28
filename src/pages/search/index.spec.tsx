@@ -1,6 +1,6 @@
 import { mockCategories, mockConfig, mockPickup } from "@mocks/data";
 import type { NextRouter } from "jest/test-utils";
-import { render, screen, withMockedRouter } from "jest/test-utils";
+import { act, render, screen, withMockedRouter } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
 
@@ -29,6 +29,7 @@ describe("pages/search", () => {
       q: "keyword",
     },
   };
+
   it("snapshot", () => {
     const tree = renderer
       .create(
@@ -54,15 +55,18 @@ describe("pages/search", () => {
     }
   });
 
-  it("OK: 初期レンダリング", async () => {
-    const { unmount } = render(
-      withMockedRouter(mockRouter, <Search categories={mockCategoryList} config={mockConfig} pickup={mockPickup} />)
-    );
-    const expectedHeading = `検索結果：keyword`;
-    const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1).toHaveTextContent(expectedHeading);
-    const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
-    expect(document.title).toBe(expectedTitle);
-    unmount();
+  it("OK: 初期レンダリング", () => {
+    act(() => {
+      const result = render(
+        withMockedRouter(mockRouter, <Search categories={mockCategoryList} config={mockConfig} pickup={mockPickup} />)
+      );
+
+      const expectedHeading = `検索結果：keyword`;
+      const h1 = screen.getByRole("heading", { level: 1 });
+      expect(h1).toHaveTextContent(expectedHeading);
+      const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
+      expect(document.title).toBe(expectedTitle);
+      result.unmount();
+    });
   });
 });

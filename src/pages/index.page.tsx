@@ -1,9 +1,9 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import dynamic from "next/dynamic";
 
 import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import HomeLayout from "@/components/layouts/HomeLayout";
+import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
 import type { TArticleListResponse, TCategory, TConfig, TPickup } from "@/types";
 import { getNewDate } from "@/utils/date";
 import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
@@ -12,9 +12,6 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home = ({ data, config, pickup, categories }: Props) => {
   const { siteTitle: title, host } = config;
-  const ArticleSuspenseContainer = dynamic(() => import("@/components/organisms/ArticleSuspenseContainer"), {
-    ssr: false,
-  });
 
   return (
     <HomeLayout pickup={pickup} url={host} pageTitle={title} config={config} categories={categories}>
@@ -22,7 +19,7 @@ const Home = ({ data, config, pickup, categories }: Props) => {
       <div className="mb-8">
         <HeadingOne>レシピ一覧</HeadingOne>
       </div>
-      <ArticleSuspenseContainer fallbackData={data} />
+      <ArticleSWRContainer fallbackData={data} />
     </HomeLayout>
   );
 };
