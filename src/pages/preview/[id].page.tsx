@@ -1,4 +1,4 @@
-import type { GetServerSideProps, GetStaticPaths } from "next";
+import type { GetStaticPaths, GetStaticProps } from "next";
 import type { Params } from "next/dist/server/router";
 
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
@@ -22,9 +22,9 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths: [], fallback: "blocking" };
 };
 
-export const getServerSideProps: GetServerSideProps<ArticlesStaticProps, Params> = async ({
+export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async ({
   params,
-  preview,
+  preview: isPreview,
   previewData,
 }) => {
   const id = params?.id;
@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps<ArticlesStaticProps, Params>
     throw new Error("Error: ID not found");
   }
   try {
-    const queries = preview ? { draftKey: isDraft(previewData) ? previewData.draftKey : "" } : {};
+    const queries = isPreview ? { draftKey: isDraft(previewData) ? previewData.draftKey : "" } : {};
 
     const [config, categories, article, pickup] = await Promise.all([
       fetchConfig(),
@@ -42,9 +42,7 @@ export const getServerSideProps: GetServerSideProps<ArticlesStaticProps, Params>
     ]);
 
     const relatedArticles = await getRelatedArticles(article);
-
     const mdxSource = await mdx2html(article.body);
-    const isPreview = preview === undefined ? false : preview;
 
     return {
       props: {
