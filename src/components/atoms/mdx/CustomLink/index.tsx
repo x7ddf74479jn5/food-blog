@@ -5,18 +5,18 @@ type Props = {
   children: React.ReactNode;
 };
 
-const CustomLink: React.FC<Props> = ({ href, ...otherProps }) => {
-  const isInternalLink = href.substr(0, 1) === "/" ? true : false;
+const CustomLink: React.FC<Props> = ({ href, children }) => {
+  const isInternalLink = href.startsWith("/") ? true : false;
 
   return (
     <>
       {isInternalLink ? (
         <Link href={href}>
-          <a>{otherProps.children}</a>
+          <a>{children}</a>
         </Link>
       ) : (
         <a href={href} target="_blank" rel="noopener noreferrer">
-          {otherProps.children}
+          {children}
         </a>
       )}
     </>
