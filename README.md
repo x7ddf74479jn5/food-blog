@@ -58,18 +58,18 @@ export const mdx2html = async (source: string) => {
 
 ```jsx
 // MDX内のリンクを外部リンクか内部リンクか判定し、最適化しているカスタムコンポーネントの例です。
-const CustomLink: React.FC<Props> = ({ href, ...otherProps }) => {
-  const isInternalLink = href.substr(0, 1) === "/" ? true : false;
+const CustomLink: React.FC<Props> = ({ href, children }) => {
+  const isInternalLink = href.startsWith("/") ? true : false;
 
   return (
     <>
       {isInternalLink ? (
         <Link href={href}>
-          <a>{otherProps.children}</a>
+          <a>{children}</a>
         </Link>
       ) : (
         <a href={href} target="_blank" rel="noopener noreferrer">
-          {otherProps.children}
+          {children}
         </a>
       )}
     </>
