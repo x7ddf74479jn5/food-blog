@@ -1,9 +1,9 @@
-import type { GetStaticPaths, GetStaticProps } from "next";
+import type { GetServerSideProps } from "next";
 import type { Params } from "next/dist/server/router";
 
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import type { ArticleDetailProps, ArticlesStaticProps } from "@/pages/articles/[id].page";
-import ArticleDetail, { getStaticProps as _getStaticProps } from "@/pages/articles/[id].page";
+import ArticleDetail from "@/pages/articles/[id].page";
 import { getNewDate } from "@/utils/date";
 import { fetchArticle, fetchCategories, fetchConfig, fetchPickupArticles, getRelatedArticles } from "@/utils/fetcher";
 import mdx2html from "@/utils/mdx/mdx2html";
@@ -18,11 +18,7 @@ const ArticlePreview = (props: ArticleDetailProps) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  return { paths: [], fallback: true };
-};
-
-export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async ({
+export const getServerSideProps: GetServerSideProps<ArticlesStaticProps, Params> = async ({
   params,
   preview: isPreview,
   previewData,
