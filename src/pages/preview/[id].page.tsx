@@ -19,7 +19,7 @@ const ArticlePreview = (props: ArticleDetailProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  return { paths: [], fallback: "blocking" };
+  return { paths: [], fallback: true };
 };
 
 export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async ({
