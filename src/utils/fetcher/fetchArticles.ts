@@ -9,7 +9,7 @@ export const fetchArticles = async (queries?: MicroCMSQueries): Promise<TArticle
   try {
     const data = await client.get<TArticleListResponse>({
       endpoint: "articles",
-      queries: queries,
+      queries: { limit: 1000, ...queries },
     });
     return data;
   } catch (error) {

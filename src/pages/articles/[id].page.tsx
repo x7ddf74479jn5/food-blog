@@ -14,7 +14,14 @@ import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/functions/meta";
 import ArticleLayout from "@/components/layouts/ArticleLayout";
 import { TagListColored } from "@/components/molecules/TagList";
 import { getNewDate, getSafeDate } from "@/utils/date";
-import { fetchArticle, fetchCategories, fetchConfig, fetchPickupArticles, getRelatedArticles } from "@/utils/fetcher";
+import {
+  fetchArticle,
+  fetchArticles,
+  fetchCategories,
+  fetchConfig,
+  fetchPickupArticles,
+  getRelatedArticles,
+} from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
@@ -105,7 +112,12 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  return { paths: [], fallback: "blocking" };
+  const data = await fetchArticles();
+  const paths = data.contents.map((article) => {
+    return { params: { id: article.id } };
+  });
+
+  return { paths, fallback: "blocking" };
 };
 
 export type ArticlesStaticProps = {
