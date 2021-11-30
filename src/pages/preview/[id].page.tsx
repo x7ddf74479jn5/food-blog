@@ -19,17 +19,15 @@ const ArticlePreview = (props: ArticleDetailProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps<ArticlesStaticProps, Params> = async ({
-  params,
   preview: isPreview,
   previewData,
 }) => {
-  const id = params?.id;
-  if (!id) {
-    throw new Error("Error: ID not found");
-  }
-  try {
-    const queries = isPreview ? { draftKey: isDraft(previewData) ? previewData.draftKey : "" } : {};
+  if (!isPreview || !isDraft(previewData)) throw new Error("Error: previewData not found");
 
+  const { id, draftKey } = previewData;
+
+  try {
+    const queries = { draftKey };
     const [config, categories, article, pickup] = await Promise.all([
       fetchConfig(),
       fetchCategories(),
