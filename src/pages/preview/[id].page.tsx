@@ -4,14 +4,9 @@ import type { Params } from "next/dist/server/router";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import type { ArticleDetailProps, ArticlesStaticProps } from "@/pages/articles/[id].page";
 import ArticleDetail from "@/pages/articles/[id].page";
+import type { TArticle } from "@/types";
 import { getNewDate } from "@/utils/date";
-import {
-  fetchArticle,
-  fetchCategories,
-  fetchConfig,
-  fetchPickupArticles,
-  // getRelatedArticles
-} from "@/utils/fetcher";
+import { fetchArticle, fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
 import mdx2html from "@/utils/mdx/mdx2html";
 import { isDraft } from "@/utils/validator";
 
@@ -29,7 +24,6 @@ export const getServerSideProps: GetServerSideProps<ArticlesStaticProps, Params>
   preview: isPreview,
   previewData,
 }) => {
-  console.info(isPreview, previewData);
   if (!isPreview || !isDraft(previewData)) throw new Error("Error: previewData not found");
 
   const { id, draftKey } = previewData;
@@ -42,11 +36,10 @@ export const getServerSideProps: GetServerSideProps<ArticlesStaticProps, Params>
       fetchArticle(id, queries),
       fetchPickupArticles(getNewDate()),
     ]);
-    console.info(config, categories, article, pickup);
-    const relatedArticles = [] as any[];
-    // const relatedArticles = await getRelatedArticles(article);
+
+    const relatedArticles: TArticle[] = [];
     const mdxSource = await mdx2html(article.body);
-    console.info(mdxSource);
+
     return {
       props: {
         article,
