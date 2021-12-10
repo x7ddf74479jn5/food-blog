@@ -7,7 +7,7 @@ import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
 import type { TArticleListResponse, TCategory, TConfig, TPickup, TTag } from "@/types";
 import { getNewDate } from "@/utils/date";
-import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTag } from "@/utils/fetcher";
+import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTag, fetchTags } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
@@ -46,7 +46,12 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  return { paths: [], fallback: "blocking" };
+  const data = await fetchTags();
+  const paths = data.map((tag) => {
+    return { params: { slug: tag.slug } };
+  });
+
+  return { paths, fallback: "blocking" };
 };
 
 type StaticProps = {
