@@ -5,12 +5,12 @@ import NextLink from "@/components/atoms/NextLink";
 import type { TCategory } from "@/types";
 import { urlTable } from "@/utils/paths/url";
 
-type CategoryMenuProps = {
+type CategoryListSideProps = {
   categories: TCategory[];
   columns: string;
 };
 
-export const CategoryMenu: React.VFC<CategoryMenuProps> = ({ categories, columns }) => {
+export const CategoryListSide: React.VFC<CategoryListSideProps> = ({ categories, columns }) => {
   return (
     <SideSectionContainer header="カテゴリー">
       <ul

@@ -4,7 +4,7 @@ import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
 import { RootLayout } from "@/components/layouts/RootLayout";
-import { CategoryMenu } from "@/components/molecules/CategoryMenu";
+import { CategoryListSide } from "@/components/molecules/CategoryListSide";
 import { SlickArticles } from "@/components/organisms/SlickArticles/index";
 import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup } from "@/types";
@@ -33,7 +33,7 @@ const HomeLayout: React.FC<Props> = ({ pickup, url, pageTitle, children, config,
         </AsideContainer>
         <MainContainer>{children}</MainContainer>
         <AsideContainer side="right">
-          <CategoryMenu categories={categories} columns="grid-cols-3 sm:grid-cols-5 md:grid-cols-1" />
+          <CategoryListSide categories={categories} columns="grid-cols-3 sm:grid-cols-5 md:grid-cols-1" />
         </AsideContainer>
       </MiddleAreaContainer>
     </RootLayout>

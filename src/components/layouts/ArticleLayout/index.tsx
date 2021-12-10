@@ -4,7 +4,7 @@ import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaCon
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
 import { ShareButtons } from "@/components/atoms/ShareButtons/index";
 import { RootLayout } from "@/components/layouts/RootLayout";
-import { CategoryMenu } from "@/components/molecules/CategoryMenu";
+import { CategoryListSide } from "@/components/molecules/CategoryListSide";
 import { TOC } from "@/components/molecules/TOC/index";
 import { PickupArticles } from "@/components/organisms/PickupArticles/index";
 import { RelatedArticles } from "@/components/organisms/RelatedArticles";
@@ -50,7 +50,7 @@ const ArticleLayout: React.FC<Props> = ({
             <RelatedArticles relatedArticles={relatedArticles} />
           </ContainerWithOrder>
           <ContainerWithOrder order="order-4 lg:order-1">
-            <CategoryMenu categories={categories} columns="grid-cols-3 md:grid-cols-5 lg:grid-cols-3" />
+            <CategoryListSide categories={categories} columns="grid-cols-3 md:grid-cols-5 lg:grid-cols-3" />
           </ContainerWithOrder>
         </aside>
       </div>

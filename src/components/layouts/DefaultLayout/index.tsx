@@ -6,7 +6,7 @@ import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithO
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
 import { RootLayout } from "@/components/layouts/RootLayout";
-import { CategoryMenu } from "@/components/molecules/CategoryMenu";
+import { CategoryListSide } from "@/components/molecules/CategoryListSide";
 import { PickupArticles } from "@/components/organisms/PickupArticles/index";
 import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup } from "@/types";
@@ -37,7 +37,7 @@ const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, back
         </AsideContainer>
         <MainContainer>{children}</MainContainer>
         <AsideContainer side="right">
-          <CategoryMenu categories={categories} columns="grid-cols-3 sm:grid-cols-5 md:grid-cols-1" />
+          <CategoryListSide categories={categories} columns="grid-cols-3 sm:grid-cols-5 md:grid-cols-1" />
         </AsideContainer>
       </MiddleAreaContainer>
       <BottomAreaContainer>

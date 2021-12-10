@@ -1,16 +1,16 @@
 import { mockCategories } from "@mocks/data/categories";
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { CategoryMenu } from ".";
+import { CategoryListSide } from ".";
 
 export default {
   title: "molecules/CategoryMenu",
-  component: CategoryMenu,
-} as ComponentMeta<typeof CategoryMenu>;
+  component: CategoryListSide,
+} as ComponentMeta<typeof CategoryListSide>;
 
-const Template: ComponentStory<typeof CategoryMenu> = (args) => (
+const Template: ComponentStory<typeof CategoryListSide> = (args) => (
   <div className="w-48 h-48">
-    <CategoryMenu {...args} />
+    <CategoryListSide {...args} />
   </div>
 );
 
