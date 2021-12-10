@@ -6,7 +6,7 @@ export default {
   title: "Atoms/ShareButtons",
   component: ShareButtons,
   argTypes: {
-    direction: { type: "radio", control: ["row", "column"] },
+    direction: { control: "radio", options: ["row", "column"] },
   },
 } as ComponentMeta<typeof ShareButtons>;
 
