@@ -47,9 +47,7 @@ export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = ({
         <AsideContainer className="lg:w-full" side="left">
           <ShareButtons url={url} title={title} direction={isSmallOrDown ? "row" : "column"} />
         </AsideContainer>
-        <main className="grid order-1 md:order-2 grid-cols-3 sm:grid-cols-5 lg:grid-cols-6 gap-2 mt-4 mb-12">
-          {children}
-        </main>
+        <main>{children}</main>
       </MiddleAreaContainer>
       <BottomAreaContainer>
         <ContainerWithOrder order="order-1 lg:order-2" className="flex-grow">
