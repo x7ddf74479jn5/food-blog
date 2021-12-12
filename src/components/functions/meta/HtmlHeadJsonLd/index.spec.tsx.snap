@@ -1,27 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components/atoms/meta/HtmlHeadJsonLd snapshot 1`] = `
-<script
-  dangerouslySetInnerHTML={
-    Object {
-      "__html": "{
-    \\"@context\\": \\"https://schema.org\\",
-    \\"@type\\": \\"Blog\\",
-    \\"mainEntityOfPage\\": {
-      \\"@type\\": \\"WebPage\\",
-      \\"@id\\": \\"https://food-blog-chi.vercel.app/articles/1\\"
-    },
-    \\"headline\\": \\"基本の一番だしの作り方\\",
-    \\"image\\": [
-      \\"/images/5026416_s.jpg\\"
-     ],
-    \\"datePublished\\": \\"2020-12-12T00:00:00+09:00\\",
-    \\"dateModified\\": \\"2020-12-12T00:00:00+09:00\\",
-    \\"author\\": {\\"@type\\": \\"Person\\",\\"name\\": \\"pandashark\\"},
-    \\"description\\": \\"だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。\\"
-  }",
-    }
-  }
-  type="application/ld+json"
-/>
-`;
+exports[`components/atoms/meta/HtmlHeadJsonLd snapshot 1`] = `null`;
