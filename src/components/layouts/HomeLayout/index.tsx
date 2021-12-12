@@ -23,7 +23,7 @@ const HomeLayout: React.FC<Props> = ({ pickup, url, pageTitle, children, config,
   const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons"));
 
   return (
-    <RootLayout config={config}>
+    <RootLayout config={config} categories={categories}>
       <div className="px-0 md:px-16 mt-8 md:mt-16">
         <SlickArticles pickup={pickup} />
       </div>

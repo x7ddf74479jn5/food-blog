@@ -9,7 +9,7 @@ import { RootLayout } from "@/components/layouts/RootLayout";
 import BackLinks from "@/components/molecules/BackLinks";
 import { PickupArticles } from "@/components/organisms/PickupArticles/index";
 import { useMedia } from "@/hooks/useMedia/index";
-import type { TConfig, TPickup } from "@/types";
+import type { TCategory, TConfig, TPickup } from "@/types";
 
 type TwoColumnLayoutProps = {
   children: React.ReactNode;
@@ -23,6 +23,7 @@ type TwoColumnLayoutProps = {
     href: string;
     label: string;
   }>;
+  categories: TCategory[];
 };
 
 export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = ({
@@ -34,11 +35,12 @@ export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = ({
   heading,
   url,
   backLinks,
+  categories,
 }) => {
   const isSmallOrDown = useMedia("<=", "sm");
 
   return (
-    <RootLayout config={config}>
+    <RootLayout config={config} categories={categories}>
       <HtmlHeadBase indexUrl={host} pageTitle={title} url={url} />
       <div className="my-8">
         <HeadingOne>{heading}</HeadingOne>

@@ -36,7 +36,7 @@ const ArticleLayout: React.FC<Props> = ({
 }: Props) => {
   const BackLinks = dynamic(() => import("@/components/molecules/BackLinks"));
   return (
-    <RootLayout config={config}>
+    <RootLayout config={config} categories={categories}>
       <div className="flex flex-col lg:flex-row gap-16 items-center lg:items-start mt-4 mb-8 lg:mb-16 ">
         <main className="pb-12">{children}</main>
         <aside className="flex lg:sticky top-8 flex-col gap-y-8 items-center w-full lg:w-1/3 h-full">

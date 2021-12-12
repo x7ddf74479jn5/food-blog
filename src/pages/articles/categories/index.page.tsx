@@ -25,6 +25,7 @@ const Categories: NextPage<Props> = ({ config, categories, pickup }) => {
       title={pageTitle}
       backLinks={backLinks}
       heading={heading}
+      categories={categories}
     >
       <CategoryList categories={categories} width={128} height={128} />
     </TwoColumnLayout>

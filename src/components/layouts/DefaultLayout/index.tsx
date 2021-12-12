@@ -30,7 +30,7 @@ const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, back
   const isSmallOrDown = useMedia("<=", "sm");
 
   return (
-    <RootLayout config={config}>
+    <RootLayout config={config} categories={categories}>
       <MiddleAreaContainer>
         <AsideContainer side="left">
           <ShareButtons url={url} title={pageTitle} direction={isSmallOrDown ? "row" : "column"} />
