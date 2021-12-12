@@ -3,13 +3,13 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
-import type { TConfig } from "@/types";
-import { fetchConfig } from "@/utils/fetcher";
+import type { TCategory, TConfig } from "@/types";
+import { fetchCategories, fetchConfig } from "@/utils/fetcher";
 
 type ErrorProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const ErrorPage: NextPage<ErrorProps> = ({ config }) => (
-  <RootLayout config={config}>
+const ErrorPage: NextPage<ErrorProps> = ({ config, categories }) => (
+  <RootLayout config={config} categories={categories}>
     <HtmlHeadNoIndex />
     <ErrorFallback heading="Unhandled Error" message="サイト上で問題が発生しました。" />
   </RootLayout>
@@ -17,14 +17,17 @@ const ErrorPage: NextPage<ErrorProps> = ({ config }) => (
 
 type StaticProps = {
   config: TConfig;
+  categories: TCategory[];
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const _config = await fetchConfig();
+  const config = await fetchConfig();
+  const categories = await fetchCategories();
 
   return {
     props: {
-      config: _config as TConfig,
+      config,
+      categories,
     },
   };
 };

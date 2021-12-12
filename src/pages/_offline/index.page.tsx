@@ -9,8 +9,8 @@ import { getStaticProps as _getStaticProps } from "../_error/index.page";
 
 type OfflineProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Offline: NextPage<OfflineProps> = ({ config }) => (
-  <RootLayout config={config}>
+const Offline: NextPage<OfflineProps> = ({ config, categories }) => (
+  <RootLayout config={config} categories={categories}>
     <HtmlHeadNoIndex />
     <div className="flex flex-col gap-12 justify-center items-center mt-8" role="alert">
       <FaRegTired className="w-32 h-32 text-gray-500" />
