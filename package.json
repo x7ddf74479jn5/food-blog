@@ -26,6 +26,7 @@
     "printWidth": 120
   },
   "dependencies": {
+    "@headlessui/react": "1.4.2",
     "@tailwindcss/aspect-ratio": "0.4.0",
     "@tailwindcss/line-clamp": "0.3.0",
     "@tailwindcss/typography": "^0.5.0",
