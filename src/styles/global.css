@@ -2,3 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 @import "./toc.css";
+@import "./carousel.css";

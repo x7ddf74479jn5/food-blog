@@ -8,6 +8,7 @@ import type { TPickup } from "@/types";
 const settings: Settings = {
   pauseOnHover: true,
   arrows: false,
+  dots: true,
   infinite: true,
   slidesToShow: 2,
   autoplay: true,
