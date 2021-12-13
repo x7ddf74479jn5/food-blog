@@ -25,7 +25,7 @@ export const CategoryMenuItem: React.VFC<CategoryMenuItemProps> = ({ slug, text 
     if (!asPath.startsWith(urlTable.categories)) {
       return false;
     }
-    if (slug === router.query.slug || slug === undefined) {
+    if (slug === router.query.slug) {
       return true;
     }
     return false;
