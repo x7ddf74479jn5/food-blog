@@ -23,7 +23,7 @@ import {
   getRelatedArticles,
 } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
-import mdx2html from "@/utils/mdx/mdx2html";
+import { mdx2html } from "@/utils/mdx/mdx2html";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 export type ArticleDetailProps = InferGetStaticPropsType<typeof getStaticProps>;

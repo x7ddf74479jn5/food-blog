@@ -7,7 +7,7 @@ import ArticleDetail from "@/pages/articles/[id].page";
 import type { TArticle } from "@/types";
 import { getNewDate } from "@/utils/date";
 import { fetchArticle, fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
-import mdx2html from "@/utils/mdx/mdx2html";
+import { mdx2html } from "@/utils/mdx/mdx2html";
 import { isDraft } from "@/utils/validator";
 
 const ArticlePreview = (props: ArticleDetailProps) => {

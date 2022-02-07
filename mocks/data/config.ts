@@ -11,5 +11,7 @@ export const mockConfig: TConfig = {
   siteKeywords: ["料理"],
   siteImage: { url: "https://food-blog-chi.vercel.app/site_image.jpg", width: 100, height: 100 },
   organization: "Pandashark",
+  officialSite: "https://next-portfolio-livid.vercel.app/",
   twitterId: "@pandashark6",
+  email: "x7ddf74479jn5@gmail.com",
 };

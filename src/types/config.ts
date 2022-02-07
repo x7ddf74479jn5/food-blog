@@ -9,4 +9,6 @@ export type TConfig = {
   siteImage: TImage;
   twitterId: string;
   organization: string;
+  officialSite: string;
+  email: string;
 } & TDateCommon;

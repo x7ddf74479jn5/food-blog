@@ -14,5 +14,3 @@ export const mdx2html = async (source: string) => {
 
   return mdxSource;
 };
-
-export default mdx2html;

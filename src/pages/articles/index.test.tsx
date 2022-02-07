@@ -4,7 +4,7 @@ import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
 
 import { formatPageTitle } from "@/utils/formatter";
-import mdx2html from "@/utils/mdx/mdx2html";
+import { mdx2html } from "@/utils/mdx/mdx2html";
 import { urlTable } from "@/utils/paths/url";
 
 import ArticleDetail, { getStaticPaths, getStaticProps } from "./[id].page";
