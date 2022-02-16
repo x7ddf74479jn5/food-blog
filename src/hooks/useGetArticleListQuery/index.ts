@@ -3,9 +3,9 @@ import { mutate } from "swr";
 import type { SWRInfiniteConfiguration } from "swr/infinite";
 import useSWRInfinite from "swr/infinite";
 
-import type { Obj, TApiRoute, TArticleListResponse, TArticleSWRResponse, TQueryOptions } from "@/types";
+import type { TApiRoute, TArticleListResponse, TArticleSWRResponse, TQueryOptions } from "@/types";
 
-const composeQueryString = (queries: Obj<string | number>) =>
+const composeQueryString = (queries: Record<string, string | number>) =>
   Object.entries(queries)
     .map(([key, value]) => `${key}=${value}`)
     .join("&");

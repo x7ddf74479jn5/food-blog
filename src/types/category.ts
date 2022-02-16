@@ -1,11 +1,12 @@
-import type { TCategoryOrTagColor, TDateCommon, TImage, TListResponse } from "@/types/utils";
+import type { MicroCMSListContent, MicroCMSListResponse } from "microcms-js-sdk";
+
+import type { TCategoryOrTagColor, TImage } from "@/types/utils";
 
 export type TCategory = {
-  id: string;
   slug: string;
   name: string;
   color: TCategoryOrTagColor;
   image: TImage;
-} & TDateCommon;
+} & MicroCMSListContent;
 
-export type TCategoryListResponse = TListResponse<TCategory>;
+export type TCategoryListResponse = MicroCMSListResponse<TCategory>;

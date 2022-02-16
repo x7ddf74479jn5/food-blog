@@ -1,4 +1,6 @@
-import type { TDateCommon, TImage } from "@/types/utils";
+import type { MicroCMSObjectContent } from "microcms-js-sdk";
+
+import type { TImage } from "@/types/utils";
 
 export type TConfig = {
   host: string;
@@ -11,4 +13,4 @@ export type TConfig = {
   organization: string;
   officialSite: string;
   email: string;
-} & TDateCommon;
+} & MicroCMSObjectContent;

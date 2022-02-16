@@ -1,6 +1,4 @@
-import type { Obj } from "@/types";
-
-type Table = Obj<string>;
+type Table = Record<string, string>;
 
 export const apiRoute = {
   apiPreview: "/api/preview",

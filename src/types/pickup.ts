@@ -1,15 +1,13 @@
-import type { TArticle } from "@/types/article";
-import type { TDateCommon } from "@/types/utils";
+import type { MicroCMSListContent, MicroCMSListResponse } from "microcms-js-sdk";
 
-import type { TListResponse } from "./utils";
+import type { TArticle } from "@/types/article";
 
 export type TPickup = {
-  id: string;
   name: string;
   description: string;
   startDate: Date;
   endDate: Date;
   articles: TArticle[];
-} & TDateCommon;
+} & MicroCMSListContent;
 
-export type TPickupListResponse = TListResponse<TPickup>;
+export type TPickupListResponse = MicroCMSListResponse<TPickup>;

@@ -1,10 +1,11 @@
+import type { MicroCMSListContent, MicroCMSListResponse } from "microcms-js-sdk";
+
 import type { TCategory } from "@/types/category";
 import type { TTag } from "@/types/tag";
-import type { TDateCommon, TImage, TImageOption, TListResponse } from "@/types/utils";
+import type { TImage, TImageOption } from "@/types/utils";
 import type { TWriter } from "@/types/writer";
 
 export type TArticle = {
-  id: string;
   image: TImage;
   title: string;
   writer: TWriter;
@@ -15,9 +16,9 @@ export type TArticle = {
   tags: TTag[];
   linkCardArticles?: TArticle[];
   imageOption?: TImageOption | null;
-} & TDateCommon;
+} & MicroCMSListContent;
 
-export type TArticleListResponse = TListResponse<TArticle>;
+export type TArticleListResponse = MicroCMSListResponse<TArticle>;
 
 export type TArticleSWRResponse = TArticleListResponse | null;
 

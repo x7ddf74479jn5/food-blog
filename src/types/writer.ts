@@ -1,12 +1,13 @@
-import type { TDateCommon, TImage, TListResponse } from "@/types/utils";
+import type { MicroCMSListContent, MicroCMSListResponse } from "microcms-js-sdk";
+
+import type { TImage } from "@/types/utils";
 
 export type TWriter = {
-  id: string;
   name: string;
   description: string;
   fullName: string;
   twitterAccountName: string;
   avatar: TImage;
-} & TDateCommon;
+} & MicroCMSListContent;
 
-export type TWriterListResponse = TListResponse<TWriter>;
+export type TWriterListResponse = MicroCMSListResponse<TWriter>;

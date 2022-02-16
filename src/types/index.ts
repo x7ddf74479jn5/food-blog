@@ -4,7 +4,6 @@ export type { TConfig } from "./config";
 export type { TQueryOptions } from "./microcms";
 export type { TApiRoute, TAppUrl } from "./path";
 export type { TPickup } from "./pickup";
-export type { TProfile } from "./profile";
 export type { TTag, TTagListResponse } from "./tag";
-export type { Obj, TCategoryOrTagColor, ValueOf } from "./utils";
+export type { TCategoryOrTagColor, ValueOf } from "./utils";
 export type { TWriter, TWriterListResponse } from "./writer";

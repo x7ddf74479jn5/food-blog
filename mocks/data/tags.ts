@@ -1,9 +1,11 @@
+import type { MicroCMSListContent } from "microcms-js-sdk";
+
 import type { TTag } from "@/types";
 
 import { dateCommon } from "./utils";
 
 type TTagCollection = {
-  [key: string]: TTag;
+  [key: string]: TTag & MicroCMSListContent;
 };
 
 export const mockTags: TTagCollection = {

@@ -1,9 +1,10 @@
 import { dateCommon } from "@mocks/data/utils";
+import type { MicroCMSListContent } from "microcms-js-sdk";
 
 import type { TWriter } from "@/types";
 
 type TWriterCollection = {
-  [key: string]: TWriter;
+  [key: string]: TWriter & MicroCMSListContent;
 };
 
 export const mockWriters: TWriterCollection = {
