@@ -13,7 +13,7 @@ import Thumbnail from "@/components/atoms/Thumbnail";
 import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/functions/meta";
 import ArticleLayout from "@/components/layouts/ArticleLayout";
 import { TagListColored } from "@/components/molecules/TagList";
-import { getNewDate, getSafeDate } from "@/utils/date";
+import { getSafeDate } from "@/utils/date";
 import {
   fetchArticle,
   fetchArticles,
@@ -140,7 +140,7 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
       fetchConfig(),
       fetchCategories(),
       fetchArticle(id),
-      fetchPickupArticles(getNewDate()),
+      fetchPickupArticles(new Date()),
     ]);
 
     const relatedArticles = await getRelatedArticles(article);

@@ -1,7 +1,6 @@
-import { getNewDate } from "./getNewDate";
 // publishedAtが存在しないケースがあるための対策
 export const getSafeDate = (_date: any): Date => {
-  const current = getNewDate();
+  const current = new Date();
   let date = _date ?? current;
   if (typeof date === "string") {
     date = new Date(date);

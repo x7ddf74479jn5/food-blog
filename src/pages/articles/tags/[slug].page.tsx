@@ -6,7 +6,6 @@ import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
 import type { TArticleListResponse, TCategory, TConfig, TPickup, TTag } from "@/types";
-import { getNewDate } from "@/utils/date";
 import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles, fetchTag, fetchTags } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
@@ -73,7 +72,7 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
     fetchArticles({ filters: `tags[contains]${tag.id}` }),
     fetchConfig(),
     fetchCategories(),
-    fetchPickupArticles(getNewDate()),
+    fetchPickupArticles(new Date()),
   ]);
 
   return {

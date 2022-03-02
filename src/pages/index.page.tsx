@@ -5,7 +5,6 @@ import { HtmlHeadBase } from "@/components/functions/meta";
 import HomeLayout from "@/components/layouts/HomeLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
 import type { TArticleListResponse, TCategory, TConfig, TPickup } from "@/types";
-import { getNewDate } from "@/utils/date";
 import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
 import { generatedRssFeed } from "@/utils/rss/rss";
 
@@ -37,7 +36,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     fetchConfig(),
     fetchCategories(),
     fetchArticles({ limit: 10, offset: 0 }),
-    fetchPickupArticles(getNewDate()),
+    fetchPickupArticles(new Date()),
   ]);
 
   generatedRssFeed(config, data.contents);
