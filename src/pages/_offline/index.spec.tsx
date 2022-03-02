@@ -1,4 +1,4 @@
-import { mockArticles, mockCategories, mockConfig, mockPickup } from "@mocks/data";
+import { dateCommon, mockArticles, mockCategories, mockConfig, mockPickup } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
@@ -35,6 +35,9 @@ describe("pages/_offline", () => {
   const mockData = {
     contents: mockArticleList,
     totalCount: mockArticleList.length,
+    dateCommon,
+    limit: 10,
+    offset: 0,
   };
 
   it("snapshot", () => {
