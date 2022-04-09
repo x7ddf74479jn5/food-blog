@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { LoadMoreButton } from "@/components/atoms/buttons/LoadMoreButton/index";
 import Spinner from "@/components/atoms/Spinner";
 
@@ -19,4 +21,4 @@ const Pagination: React.FC<Props> = ({ hasNextPage, isValidating, onClick: handl
   );
 };
 
-export default Pagination;
+export default memo(Pagination);

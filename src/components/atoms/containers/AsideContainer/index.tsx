@@ -1,10 +1,12 @@
+import { memo } from "react";
+
 type AsideContainerProps = {
   children: React.ReactNode;
   className?: string;
   side: "left" | "right";
 };
 
-export const AsideContainer: React.FC<AsideContainerProps> = ({ children, side, className }) => {
+export const AsideContainer: React.FC<AsideContainerProps> = memo(({ children, side, className }) => {
   const _side = side === "left" ? "order-2 md:order-1 " : "order-3";
   return (
     <aside
@@ -15,4 +17,6 @@ export const AsideContainer: React.FC<AsideContainerProps> = ({ children, side, 
       </div>
     </aside>
   );
-};
+});
+
+AsideContainer.displayName = "AsideContainer";

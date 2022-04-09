@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { memo } from "react";
 
 import NextLink from "@/components/atoms/NextLink";
 import { TagListPlain } from "@/components/molecules/TagList";
@@ -32,7 +33,7 @@ export type ArticleTipWithThumbListProps = {
   articles: TArticle[];
 };
 
-export const ArticleTipWithThumbList: React.VFC<ArticleTipWithThumbListProps> = ({ articles }) => {
+export const ArticleTipWithThumbList: React.VFC<ArticleTipWithThumbListProps> = memo(({ articles }) => {
   return (
     <ul className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-x-1 md:gap-x-1 lg:gap-x-1 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 pb-2">
       {articles.map((article) => (
@@ -42,4 +43,6 @@ export const ArticleTipWithThumbList: React.VFC<ArticleTipWithThumbListProps> = 
       ))}
     </ul>
   );
-};
+});
+
+ArticleTipWithThumbList.displayName = "ArticleTipWithThumbList";

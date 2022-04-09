@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { memo } from "react";
 
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
@@ -52,4 +53,4 @@ const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, back
   );
 };
 
-export default DefaultLayout;
+export default memo(DefaultLayout);

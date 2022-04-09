@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import NextLink from "@/components/atoms/NextLink";
 import Thumbnail from "@/components/atoms/Thumbnail";
 import type { TArticle } from "@/types";
@@ -7,7 +9,7 @@ type ArticleItem = {
   article: TArticle;
 };
 
-export const ArticleItem: React.VFC<ArticleItem> = ({ article }) => {
+export const ArticleItem: React.VFC<ArticleItem> = memo(({ article }) => {
   return (
     <article>
       <div className="mb-4">
@@ -19,4 +21,6 @@ export const ArticleItem: React.VFC<ArticleItem> = ({ article }) => {
       <p className="dark:text-gray-300 line-clamp-2">{article.description}</p>
     </article>
   );
-};
+});
+
+ArticleItem.displayName = "ArticleItem";

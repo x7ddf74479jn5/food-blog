@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { FallbackProps } from "react-error-boundary";
 import { ErrorBoundary } from "react-error-boundary";
 
@@ -12,17 +13,18 @@ const FallbackComponent = ({ error, resetErrorBoundary }: FallbackProps) => {
   );
 };
 
-export const ErrorBoundaryBase: React.FC<{ children: React.ReactNode; callback?: () => void }> = ({
-  children,
-  callback,
-}) => {
-  const handleReset = () => {
-    callback && callback();
-  };
+export const ErrorBoundaryBase: React.FC<{ children: React.ReactNode; callback?: () => void }> = memo(
+  ({ children, callback }) => {
+    const handleReset = () => {
+      callback && callback();
+    };
 
-  return (
-    <ErrorBoundary FallbackComponent={FallbackComponent} onReset={handleReset}>
-      {children}
-    </ErrorBoundary>
-  );
-};
+    return (
+      <ErrorBoundary FallbackComponent={FallbackComponent} onReset={handleReset}>
+        {children}
+      </ErrorBoundary>
+    );
+  }
+);
+
+ErrorBoundaryBase.displayName = "ErrorBoundaryBase";

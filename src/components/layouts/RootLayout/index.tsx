@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { memo } from "react";
 
 import { LayoutErrorBoundary } from "@/components/functions/error";
 import Header from "@/components/organisms/Header";
@@ -10,7 +11,7 @@ type RootLayoutProps = {
   children: React.ReactNode;
 };
 
-export const RootLayout: React.FC<RootLayoutProps> = ({ config, categories, children }) => {
+export const RootLayout: React.FC<RootLayoutProps> = memo(({ config, categories, children }) => {
   const Footer = dynamic(() => import("@/components/organisms/Footer"));
   const { siteTitle, organization } = config;
   return (
@@ -22,4 +23,6 @@ export const RootLayout: React.FC<RootLayoutProps> = ({ config, categories, chil
       </div>
     </>
   );
-};
+});
+
+RootLayout.displayName = "RootLayout";

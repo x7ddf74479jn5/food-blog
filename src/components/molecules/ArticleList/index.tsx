@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { ArticleItem } from "@/components/molecules/ArticleItem";
 import type { TArticle } from "@/types";
 
@@ -17,4 +19,4 @@ const ArticleList: React.VFC<ArticleListProps> = ({ articles }) => {
   );
 };
 
-export default ArticleList;
+export default memo(ArticleList);

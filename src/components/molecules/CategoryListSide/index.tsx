@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { memo } from "react";
 
 import { SideSectionContainer } from "@/components/atoms/containers/SideSectionContainer/index";
 import NextLink from "@/components/atoms/NextLink";
@@ -10,7 +11,7 @@ type CategoryListSideProps = {
   columns: string;
 };
 
-export const CategoryListSide: React.VFC<CategoryListSideProps> = ({ categories, columns }) => {
+export const CategoryListSide: React.VFC<CategoryListSideProps> = memo(({ categories, columns }) => {
   return (
     <SideSectionContainer header="カテゴリー">
       <ul
@@ -29,4 +30,6 @@ export const CategoryListSide: React.VFC<CategoryListSideProps> = ({ categories,
       </ul>
     </SideSectionContainer>
   );
-};
+});
+
+CategoryListSide.displayName = "CategoryListSide";

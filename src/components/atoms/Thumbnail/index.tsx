@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { memo } from "react";
 
 import NextLink from "@/components/atoms/NextLink";
 import { urlTable } from "@/utils/paths/url";
@@ -24,4 +25,4 @@ const Thumbnail: React.FC<Props> = ({ title, src, id }: Props) => {
   );
 };
 
-export default Thumbnail;
+export default memo(Thumbnail);

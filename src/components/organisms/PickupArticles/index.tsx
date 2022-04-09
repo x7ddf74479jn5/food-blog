@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { SideSectionContainer } from "@/components/atoms/containers/SideSectionContainer";
 import { ArticleTipWithThumbList } from "@/components/molecules/ArticleTipList";
 import type { TArticle } from "@/types/";
@@ -6,7 +8,7 @@ type PickupArticlesProps = {
   pickupArticles: TArticle[];
 };
 
-export const PickupArticles: React.FC<PickupArticlesProps> = ({ pickupArticles }) => {
+export const PickupArticles: React.FC<PickupArticlesProps> = memo(({ pickupArticles }) => {
   return (
     <SideSectionContainer header="PICKUP">
       {pickupArticles.length > 0 ? (
@@ -16,4 +18,6 @@ export const PickupArticles: React.FC<PickupArticlesProps> = ({ pickupArticles }
       )}
     </SideSectionContainer>
   );
-};
+});
+
+PickupArticles.displayName = "PickupArticles";
