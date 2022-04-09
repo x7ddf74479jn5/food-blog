@@ -28,8 +28,8 @@ const Search: React.FC = () => {
       { shallow: true }
     );
 
-    if (!histories.includes(query)) {
-      setHistories((prev) => [query, ...prev].slice(0.5));
+    if (!histories.includes(query) && query !== "") {
+      setHistories((prev) => [query, ...prev].slice(0, 5));
     }
 
     setQuery("");
