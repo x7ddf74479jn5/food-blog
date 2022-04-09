@@ -16,7 +16,7 @@ export default {
 
 const Template: ComponentStory<typeof CategoryMenu> = (args) => <CategoryMenu {...args} />;
 
-export const HasNextPage = Template.bind({});
-HasNextPage.args = {
+export const Default = Template.bind({});
+Default.args = {
   categories: Object.values(mockCategories),
 };
