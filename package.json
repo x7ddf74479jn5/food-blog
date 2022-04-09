@@ -15,7 +15,7 @@
     "test": "run-p -l -c --aggregate-output lint:* unit",
     "unit": "jest",
     "storybook": "start-storybook -p 6006 -s ./mocks/data",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -s ./mocks/data"
   },
   "babel": {
     "presets": [
