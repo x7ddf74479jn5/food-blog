@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { FaLightbulb } from "react-icons/fa";
 import type { Settings } from "react-slick";
 import Slick from "react-slick";
@@ -28,7 +29,7 @@ type SlickArticlesProps = {
   pickup: TPickup;
 };
 
-export const SlickArticles: React.VFC<SlickArticlesProps> = ({ pickup }) => {
+export const SlickArticles: React.VFC<SlickArticlesProps> = memo(({ pickup }) => {
   const { articles, description } = pickup;
   return (
     <section>
@@ -51,4 +52,6 @@ export const SlickArticles: React.VFC<SlickArticlesProps> = ({ pickup }) => {
       </Slick>
     </section>
   );
-};
+});
+
+SlickArticles.displayName = "SlickArticles";
