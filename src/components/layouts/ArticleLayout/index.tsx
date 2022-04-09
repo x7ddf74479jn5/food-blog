@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { memo, useMemo } from "react";
 
 import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
@@ -34,7 +35,7 @@ const ArticleLayout: React.FC<Props> = ({
   categories,
   pickup,
 }: Props) => {
-  const BackLinks = dynamic(() => import("@/components/molecules/BackLinks"));
+  const BackLinks = useMemo(() => dynamic(() => import("@/components/molecules/BackLinks")), []);
   return (
     <RootLayout config={config} categories={categories}>
       <div className="flex flex-col lg:flex-row gap-16 items-center lg:items-start mt-4 mb-8 lg:mb-16 ">
@@ -66,4 +67,4 @@ const ArticleLayout: React.FC<Props> = ({
   );
 };
 
-export default ArticleLayout;
+export default memo(ArticleLayout);

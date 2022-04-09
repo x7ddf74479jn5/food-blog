@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { memo, useMemo } from "react";
 
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
@@ -20,7 +21,7 @@ type Props = {
 
 const HomeLayout: React.FC<Props> = ({ pickup, url, pageTitle, children, config, categories }: Props) => {
   const isSmallOrDown = useMedia("<=", "sm");
-  const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons"));
+  const ShareButtons = useMemo(() => dynamic(() => import("@/components/atoms/ShareButtons")), []);
 
   return (
     <RootLayout config={config} categories={categories}>
@@ -40,4 +41,4 @@ const HomeLayout: React.FC<Props> = ({ pickup, url, pageTitle, children, config,
   );
 };
 
-export default HomeLayout;
+export default memo(HomeLayout);

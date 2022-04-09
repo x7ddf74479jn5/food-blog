@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { SideSectionContainer } from "@/components/atoms/containers/SideSectionContainer";
 import { ArticleTipWithThumbList } from "@/components/molecules/ArticleTipList";
 import type { TArticle } from "@/types/";
@@ -6,7 +8,7 @@ type Props = {
   relatedArticles: TArticle[];
 };
 
-export const RelatedArticles: React.FC<Props> = ({ relatedArticles }) => {
+export const RelatedArticles: React.FC<Props> = memo(({ relatedArticles }) => {
   return (
     <SideSectionContainer header="関連レシピ">
       {relatedArticles.length > 0 ? (
@@ -16,4 +18,6 @@ export const RelatedArticles: React.FC<Props> = ({ relatedArticles }) => {
       )}
     </SideSectionContainer>
   );
-};
+});
+
+RelatedArticles.displayName = "RelatedArticles";

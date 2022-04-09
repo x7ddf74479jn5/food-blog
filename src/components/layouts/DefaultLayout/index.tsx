@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
@@ -26,8 +26,8 @@ type Props = {
 };
 
 const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, backLinks, categories, pickup }: Props) => {
-  const BackLinks = dynamic(() => import("@/components/molecules/BackLinks"));
-  const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons"));
+  const BackLinks = useMemo(() => dynamic(() => import("@/components/molecules/BackLinks")), []);
+  const ShareButtons = useMemo(() => dynamic(() => import("@/components/atoms/ShareButtons")), []);
   const isSmallOrDown = useMedia("<=", "sm");
 
   return (
