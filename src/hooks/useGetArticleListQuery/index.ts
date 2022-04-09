@@ -1,5 +1,4 @@
-import { useCallback, useRef } from "react";
-import { mutate } from "swr";
+import { useCallback, useMemo, useRef } from "react";
 import type { SWRInfiniteConfiguration } from "swr/infinite";
 import useSWRInfinite from "swr/infinite";
 
@@ -52,25 +51,33 @@ const useGetArticleListQuery = ({ endpoint, fetcher, getKeyOptions, fallbackData
     ...options,
   });
 
-  const { size, setSize, data } = result;
+  const { size, setSize, mutate, data, ...rest } = result;
 
   const getCurrentKey = useCallback(() => {
     return keyRef.current;
   }, [keyRef]);
 
   const revalidate = useCallback(() => {
-    mutate(keyRef.current);
-  }, [keyRef]);
+    mutate();
+  }, [mutate]);
 
   const paginate = useCallback(() => {
     setSize(size + 1);
   }, [setSize, size]);
 
-  const articles = data ? data.map((r) => (r ? r.contents : [])).flat() : [];
-  const totalCount = data ? data[0]?.totalCount : 0;
-  const hasNextPage = totalCount ? articles.length !== totalCount : false;
+  const articles = useMemo(() => {
+    return data ? data.map((r) => (r ? r.contents : [])).flat() : [];
+  }, [data]);
 
-  return { ...result, getCurrentKey, revalidate, paginate, hasNextPage, articles } as const;
+  const totalCount = useMemo(() => {
+    return data ? data[0]?.totalCount : 0;
+  }, [data]);
+
+  const hasNextPage = useMemo(() => {
+    return totalCount ? articles.length !== totalCount : false;
+  }, [articles.length, totalCount]);
+
+  return { ...rest, getCurrentKey, revalidate, paginate, hasNextPage, articles } as const;
 };
 
 export default useGetArticleListQuery;
