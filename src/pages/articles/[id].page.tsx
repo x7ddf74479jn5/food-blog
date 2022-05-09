@@ -68,7 +68,7 @@ export const ArticleDetail = ({
         description={getExcerpt(description)}
       />
       {isPreview && <div className="mb-4 text-center text-white bg-red-500">Preview mode enabled</div>}
-      <article className="prose md:prose prose-sm dark:prose-dark">
+      <article className="prose dark:prose-dark">
         <div className="mb-4">
           <Thumbnail src={image.url} title={title} />
         </div>
