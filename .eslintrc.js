@@ -73,7 +73,7 @@ module.exports = {
       },
     },
     {
-      files: ["src/type/**/*.d.ts"],
+      files: ["src/type/**/*.d.ts", "jest.config.js"],
       rules: {
         "@typescript-eslint/naming-convention": [
           "error",
