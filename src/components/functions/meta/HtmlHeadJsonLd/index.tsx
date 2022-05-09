@@ -1,4 +1,4 @@
-import { BlogJsonLd } from "next-seo";
+import { ArticleJsonLd } from "next-seo";
 
 type HtmlHeadJsonLtJsonLdProps = {
   url: string;
@@ -20,7 +20,7 @@ export const HtmlHeadJsonLd: React.VFC<HtmlHeadJsonLtJsonLdProps> = ({
   description,
 }) => {
   return (
-    <BlogJsonLd
+    <ArticleJsonLd
       url={url}
       title={title}
       images={[image]}
