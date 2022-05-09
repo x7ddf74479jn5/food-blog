@@ -3,6 +3,9 @@ const withBundleAnalyzer =
 const withPWA = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
 
+/**
+ * @type {import('next').NextConfig}
+ **/
 module.exports = withBundleAnalyzer(
   withPWA({
     i18n: { locales: ["ja"], defaultLocale: "ja" },
@@ -18,6 +21,14 @@ module.exports = withBundleAnalyzer(
       dest: "public",
       runtimeCaching,
       buildExcludes: [/middleware-manifest.json$/],
+    },
+    future: { strictPostcssConfiguration: true },
+    swcMinify: true,
+    compiler: {
+      reactRemoveProperties: true,
+      removeConsole: {
+        exclude: ["error", "warn", "info"],
+      },
     },
   })
 );
