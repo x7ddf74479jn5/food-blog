@@ -4,7 +4,6 @@ import { renderHook } from "@testing-library/react-hooks";
 import { withMockedRouter } from "jest/test-utils";
 import type { NextRouter } from "next/router";
 import { SWRConfig } from "swr";
-import * as swr from "swr";
 import * as useSWRInfinite from "swr/infinite";
 
 import { apiRoute } from "@/utils/paths/url";
@@ -16,7 +15,8 @@ let spyMutate: jest.SpyInstance;
 
 beforeAll(() => {
   spyUseSWRInfinite = jest.spyOn(useSWRInfinite, "default");
-  spyMutate = jest.spyOn(swr, "mutate");
+  // spyMutate = jest.spyOn(swr, "mutate");
+  spyMutate = jest.fn();
 });
 
 afterEach(() => {
@@ -64,6 +64,7 @@ describe("hooks/useGetArticleListQuery", () => {
         size++;
 
         return {
+          mutate: spyMutate,
           size,
           setSize: mockSetSize,
           data: [
@@ -91,7 +92,7 @@ describe("hooks/useGetArticleListQuery", () => {
         wrapper: Wrapper,
       });
       renderResult = result;
-      const { getCurrentKey, size, articles, hasNextPage, paginate, revalidate } = renderResult.current;
+      const { getCurrentKey, articles, hasNextPage, paginate, revalidate } = renderResult.current;
 
       expect(spyUseSWRInfinite).toBeCalledTimes(1);
       const key = getCurrentKey();
@@ -100,13 +101,12 @@ describe("hooks/useGetArticleListQuery", () => {
 
       expect(articles).toStrictEqual(mockArticleList.slice(0, 10));
       expect(hasNextPage).toBeTruthy();
-      expect(size).toBe(1);
 
       paginate();
       expect(mockSetSize).toBeCalledWith(2);
 
       revalidate();
-      expect(spyMutate).toHaveBeenCalledWith(expectedKey);
+      expect(spyMutate).toHaveBeenCalledTimes(1);
     });
 
     it("custom", () => {
@@ -122,7 +122,7 @@ describe("hooks/useGetArticleListQuery", () => {
         wrapper: Wrapper,
       });
       renderResult = result;
-      const { getCurrentKey, size, articles, hasNextPage, paginate, revalidate } = renderResult.current;
+      const { getCurrentKey, articles, hasNextPage, paginate, revalidate } = renderResult.current;
 
       expect(spyUseSWRInfinite).toBeCalledTimes(1);
       const key = getCurrentKey();
@@ -131,13 +131,12 @@ describe("hooks/useGetArticleListQuery", () => {
 
       expect(articles).toStrictEqual(mockArticleList.slice(0, 10));
       expect(hasNextPage).toBeTruthy();
-      expect(size).toBe(1);
 
       paginate();
       expect(mockSetSize).toBeCalledWith(2);
 
       revalidate();
-      expect(spyMutate).toHaveBeenCalledWith(expectedKey);
+      expect(spyMutate).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -170,14 +169,13 @@ describe("hooks/useGetArticleListQuery", () => {
         wrapper: Wrapper,
       });
       renderResult = result;
-      const { getCurrentKey, size, articles, hasNextPage } = renderResult.current;
+      const { getCurrentKey, articles, hasNextPage } = renderResult.current;
 
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&pageIndex=0`;
       expect(key).toBe(expectedKey);
       expect(articles).toStrictEqual(mockArticleList.slice(0, 10));
       expect(hasNextPage).toBeTruthy();
-      expect(size).toBe(1);
     });
 
     it("2nd: 取得数/総取得数/総記事数 2/12/12", () => {
@@ -214,14 +212,13 @@ describe("hooks/useGetArticleListQuery", () => {
         wrapper: Wrapper,
       });
       renderResult = result;
-      const { getCurrentKey, size, articles, hasNextPage } = renderResult.current;
+      const { getCurrentKey, articles, hasNextPage } = renderResult.current;
 
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&offset=${offset}&pageIndex=1`;
       expect(key).toBe(expectedKey);
       expect(articles).toStrictEqual(mockArticleList.slice(0, 12));
       expect(hasNextPage).toBeFalsy();
-      expect(size).toBe(2);
     });
 
     it("3rd 取得数/総取得数/総記事数 0/12/12", () => {
@@ -263,14 +260,13 @@ describe("hooks/useGetArticleListQuery", () => {
         wrapper: Wrapper,
       });
       renderResult = result;
-      const { getCurrentKey, size, articles, hasNextPage } = renderResult.current;
+      const { getCurrentKey, articles, hasNextPage } = renderResult.current;
 
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&offset=${offset}&pageIndex=2`;
       expect(key).toBe(expectedKey);
       expect(articles).toStrictEqual(mockArticleList.slice(0, 12));
       expect(hasNextPage).toBeFalsy();
-      expect(size).toBe(2);
     });
   });
 });
