@@ -6,7 +6,7 @@ import { dateCommon } from "./utils";
 import { mockWriters } from "./writers";
 
 const articleStock = {
-  id: "1",
+  id: "p97vmuno3jdn",
   title: "基本の一番だしの作り方",
   writer: mockWriters.pandashark,
   description:
@@ -50,7 +50,7 @@ const articleStock = {
 };
 
 const articleTomatoSalad = {
-  id: "2",
+  id: "mm8oec5icb",
   title: "新玉ねぎとトマトのシンプルサラダの作り方",
   writer: mockWriters.pandashark,
   description:
@@ -81,7 +81,7 @@ const articleTomatoSalad = {
 };
 
 const articleOhitashi = {
-  id: "3",
+  id: "3y-w7i75kmd",
   title: "栄養たっぷり小松菜と油揚げのおひたしの作り方",
   writer: mockWriters.pandashark,
   description:
@@ -114,7 +114,7 @@ const articleOhitashi = {
 };
 
 const articleTacoRice = {
-  id: "4",
+  id: "q_y-lyvhew",
   title: "熊本県産玉ねぎを使った絶品タコライスの作り方",
   writer: mockWriters.pandashark,
   description:
