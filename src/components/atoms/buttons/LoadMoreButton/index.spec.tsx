@@ -1,5 +1,4 @@
-import userEvent from "@testing-library/user-event";
-import { render, screen } from "jest/test-utils";
+import { fireEvent, render, screen } from "jest/test-utils";
 import renderer from "react-test-renderer";
 
 import { LoadMoreButton } from ".";
@@ -19,7 +18,7 @@ describe("components/atoms/buttons/LoadMoreButton", () => {
   it("OK: クリックイベントが発火する", () => {
     render(<LoadMoreButton onClick={mockHandleClick} />);
     const button = screen.getByRole("button");
-    userEvent.click(button);
+    fireEvent.click(button);
     expect(mockHandleClick).toBeCalled();
   });
 });

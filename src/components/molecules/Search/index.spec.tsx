@@ -1,4 +1,5 @@
 import userEvent from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event/dist/types/setup";
 import { render, screen } from "jest/test-utils";
 import React from "react";
 import renderer from "react-test-renderer";
@@ -27,38 +28,46 @@ describe("components/molecules/Search", () => {
     expect(input).toHaveAttribute("type", "search");
   });
 
-  it("OK: 入力イベント", () => {
-    render(<Search />);
-    const input = screen.getByRole("searchbox");
-    expect(input).toHaveValue("");
+  describe("interaction", () => {
+    let user: UserEvent;
 
-    const testText = "test";
-    userEvent.type(input, testText);
-    expect(input).toHaveValue(testText);
-  });
+    beforeEach(() => {
+      user = userEvent.setup();
+    });
 
-  it("OK: 検索イベント", () => {
-    render(<Search />);
-    const input = screen.getByRole("searchbox");
-    expect(input).toHaveValue("");
+    it("OK: 入力イベント", async () => {
+      render(<Search />);
+      const input = screen.getByRole("searchbox");
+      expect(input).toHaveValue("");
 
-    const testText = "test";
-    userEvent.type(input, testText);
-    expect(input).toHaveValue(testText);
+      const testText = "test";
+      await user.type(input, testText);
+      expect(input).toHaveValue(testText);
+    });
 
-    userEvent.type(input, "{enter}");
-    expect(push).toBeCalledWith({ pathname: "/search", query: { q: testText } }, undefined, { shallow: true });
-  });
+    it("OK: 検索イベント", async () => {
+      render(<Search />);
+      const input = screen.getByRole("searchbox");
+      expect(input).toHaveValue("");
 
-  it("OK: フォーカスイベント", () => {
-    const { container } = render(<Search />);
-    const input = screen.getByRole("searchbox");
+      const testText = "test";
+      await user.type(input, testText);
+      expect(input).toHaveValue(testText);
 
-    expect(input).not.toHaveFocus();
-    userEvent.click(input);
-    expect(input).toHaveFocus();
+      await user.type(input, "{enter}");
+      expect(push).toBeCalledWith({ pathname: "/search", query: { q: testText } }, undefined, { shallow: true });
+    });
 
-    userEvent.click(container);
-    expect(input).not.toHaveFocus();
+    it("OK: フォーカスイベント", async () => {
+      const { container } = render(<Search />);
+      const input = screen.getByRole("searchbox");
+
+      expect(input).not.toHaveFocus();
+      await user.click(input);
+      expect(input).toHaveFocus();
+
+      await user.click(container);
+      expect(input).not.toHaveFocus();
+    });
   });
 });

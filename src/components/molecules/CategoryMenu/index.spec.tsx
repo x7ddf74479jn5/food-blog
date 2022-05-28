@@ -1,6 +1,5 @@
 import { mockCategories } from "@mocks/data";
-import userEvent from "@testing-library/user-event";
-import { render, screen } from "jest/test-utils";
+import { fireEvent, render, screen } from "jest/test-utils";
 import React from "react";
 import renderer from "react-test-renderer";
 
@@ -23,12 +22,12 @@ describe("components/molecules/CategoryMenu", () => {
     expect(button).toBeEnabled();
   });
 
-  it.only("OK: メニュー展開後の表示が正しい", () => {
+  it("OK: メニュー展開後の表示が正しい", () => {
     render(<CategoryMenu categories={mockCategoryList} />);
     const button = screen.getByRole("button", { name: "カテゴリー" });
     expect(button).toBeEnabled();
 
-    userEvent.click(button);
+    fireEvent.click(button);
     const menuItems = screen.getAllByRole("menuitem");
     const labels = ["一覧", ...mockCategoryList.map((category) => category.name)];
     const hrefs = [
