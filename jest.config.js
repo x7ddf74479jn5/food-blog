@@ -8,7 +8,8 @@ const createJestConfig = nextJest({ dir: "./" });
  * @type {import('@jest/types').Config.InitialOptions}
  **/
 const customJestConfig = {
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-environment-jsdom",
+  testPathIgnorePatterns: ["<rootDir>/e2e/"],
   verbose: true,
   setupFilesAfterEnv: ["<rootDir>/jest/jest.setup.js"],
   moduleNameMapper: {
