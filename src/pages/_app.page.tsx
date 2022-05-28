@@ -11,6 +11,11 @@ import { GoogleAnalytics, usePageView } from "@/lib/gtag";
 
 import SEO from "../../next-seo.config";
 
+if (process.env.NODE_ENV === "test") {
+  require("../../mocks/msw/worker");
+  console.info("MSW is enabled");
+}
+
 const App = ({ Component, pageProps }: AppProps) => {
   usePageView();
 
