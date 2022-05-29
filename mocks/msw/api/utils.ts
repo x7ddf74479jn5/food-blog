@@ -1,6 +1,6 @@
-import type { DefaultRequestBody, RestRequest } from "msw";
+import type { DefaultBodyType, RestRequest } from "msw";
 
-export const getSearchParams = (req: RestRequest<DefaultRequestBody, Record<string, any>>) => {
+export const getSearchParams = (req: RestRequest<DefaultBodyType, Record<string, any>>) => {
   const apiKey = req.headers.get("X_MICROCMS_API_KEY ");
   let limit = req.url.searchParams.get("limit") ?? 5;
   limit = Number(limit);
