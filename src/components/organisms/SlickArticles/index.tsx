@@ -43,6 +43,9 @@ export const SlickArticles: React.VFC<SlickArticlesProps> = memo(({ pickup }) =>
         <h2 className="font-bold">PICKUP</h2>
         <span className="flex-1 text-sm text-center break-words">{description}</span>
       </div>
+      {/* FIXME: reason is upgrade to React 18 */}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
       <Slick {...getSettings(isMobile)}>
         {articles.map((article) => (
           <article className="relative px-1" key={article.id}>
