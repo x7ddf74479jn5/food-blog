@@ -16,7 +16,7 @@
     "unit": "jest",
     "e2e": "playwright test",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -s ./mocks/data"
+    "build-storybook": "build-storybook"
   },
   "babel": {
     "presets": [
