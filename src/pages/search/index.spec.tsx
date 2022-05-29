@@ -55,9 +55,9 @@ describe("pages/search", () => {
     }
   });
 
-  it("OK: 初期レンダリング", () => {
-    act(() => {
-      const result = render(
+  it("OK: 初期レンダリング", async () => {
+    await act(async () => {
+      const result = await render(
         withMockedRouter(mockRouter, <Search categories={mockCategoryList} config={mockConfig} pickup={mockPickup} />)
       );
 

@@ -31,11 +31,12 @@ describe("components/molecules/Pagination", () => {
     expect(button).toBeEnabled();
   });
 
-  it("OK: click eventが発火する", () => {
+  it("OK: click eventが発火する", async () => {
+    const user = userEvent.setup();
     render(<Pagination hasNextPage={true} isValidating={false} onClick={mockHandleClick} />);
     const button = screen.getByRole("button");
     expect(button).toBeEnabled();
-    userEvent.click(button);
+    await user.click(button);
     expect(mockHandleClick).toBeCalled();
   });
 });

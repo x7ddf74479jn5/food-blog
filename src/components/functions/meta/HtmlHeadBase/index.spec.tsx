@@ -40,9 +40,9 @@ describe("components/atoms/meta/HtmlHeadBase", () => {
     expect(container.querySelector('meta[name="robots"]')?.attributes.getNamedItem("content")?.value).toBe(
       "index,follow"
     );
-    expect(container.querySelector('meta[name="googlebot"]')?.attributes.getNamedItem("content")?.value).toBe(
-      "index,follow"
-    );
+    // expect(container.querySelector('meta[name="googlebot"]')?.attributes.getNamedItem("content")?.value).toBe(
+    //   "index,follow"
+    // );
     expect(container.querySelector('meta[name="description"]')?.attributes.getNamedItem("content")?.value).toBe(
       description
     );

@@ -37,7 +37,7 @@ describe("components/molecules/TOC", () => {
     const contentHeader = screen.getAllByRole("heading", { level: 2 })[1];
     expect(contentHeader).toHaveTextContent("目次");
     const anchors = screen.getAllByRole("link");
-    const headings = screen.getAllByTestId("heading");
+    const headings = screen.getAllByRole("heading");
     for (let index = 0; index < anchors.length; index++) {
       expect(headings[index].innerText).toBe(anchors[index].innerText);
     }

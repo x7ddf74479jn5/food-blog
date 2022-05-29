@@ -58,7 +58,7 @@ exports[`components/molecules/CategoryMenu snapshot 1`] = `
               <img
                 alt=""
                 aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27128%27%20height=%27128%27/%3e"
                 style={
                   Object {
                     "background": "none",
@@ -78,6 +78,8 @@ exports[`components/molecules/CategoryMenu snapshot 1`] = `
               alt="rice"
               data-nimg="intrinsic"
               decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
               src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
               style={
                 Object {
@@ -108,8 +110,8 @@ exports[`components/molecules/CategoryMenu snapshot 1`] = `
                 data-nimg="intrinsic"
                 decoding="async"
                 loading="lazy"
-                src="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=256&q=75"
-                srcSet="/_next/image?url=%2Fimages%2F3129120_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F3129120_s.jpg&w=256&q=75 2x"
+                src="/_next/image?url=%2F3129120_s.jpg&w=256&q=75"
+                srcSet="/_next/image?url=%2F3129120_s.jpg&w=128&q=75 1x, /_next/image?url=%2F3129120_s.jpg&w=256&q=75 2x"
                 style={
                   Object {
                     "border": "none",
@@ -189,7 +191,7 @@ exports[`components/molecules/CategoryMenu snapshot 1`] = `
               <img
                 alt=""
                 aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27128%27%20height=%27128%27/%3e"
                 style={
                   Object {
                     "background": "none",
@@ -209,6 +211,8 @@ exports[`components/molecules/CategoryMenu snapshot 1`] = `
               alt="salad"
               data-nimg="intrinsic"
               decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
               src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
               style={
                 Object {
@@ -239,8 +243,8 @@ exports[`components/molecules/CategoryMenu snapshot 1`] = `
                 data-nimg="intrinsic"
                 decoding="async"
                 loading="lazy"
-                src="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=256&q=75"
-                srcSet="/_next/image?url=%2Fimages%2F2996666_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F2996666_s.jpg&w=256&q=75 2x"
+                src="/_next/image?url=%2F2996666_s.jpg&w=256&q=75"
+                srcSet="/_next/image?url=%2F2996666_s.jpg&w=128&q=75 1x, /_next/image?url=%2F2996666_s.jpg&w=256&q=75 2x"
                 style={
                   Object {
                     "border": "none",
@@ -320,7 +324,7 @@ exports[`components/molecules/CategoryMenu snapshot 1`] = `
               <img
                 alt=""
                 aria-hidden={true}
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27128%27%20height=%27128%27/%3e"
                 style={
                   Object {
                     "background": "none",
@@ -340,6 +344,8 @@ exports[`components/molecules/CategoryMenu snapshot 1`] = `
               alt="tips"
               data-nimg="intrinsic"
               decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
               src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
               style={
                 Object {
@@ -370,8 +376,8 @@ exports[`components/molecules/CategoryMenu snapshot 1`] = `
                 data-nimg="intrinsic"
                 decoding="async"
                 loading="lazy"
-                src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=256&q=75"
-                srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=128&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=256&q=75 2x"
+                src="/_next/image?url=%2F5026416_s.jpg&w=256&q=75"
+                srcSet="/_next/image?url=%2F5026416_s.jpg&w=128&q=75 1x, /_next/image?url=%2F5026416_s.jpg&w=256&q=75 2x"
                 style={
                   Object {
                     "border": "none",

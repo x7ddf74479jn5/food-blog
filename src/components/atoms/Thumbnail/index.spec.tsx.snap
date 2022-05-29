@@ -38,7 +38,7 @@ exports[`components/atoms/Thumbnail snapshot 1`] = `
     <img
       alt=""
       aria-hidden={true}
-      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+      src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27640%27%20height=%27360%27/%3e"
       style={
         Object {
           "background": "none",
@@ -58,6 +58,8 @@ exports[`components/atoms/Thumbnail snapshot 1`] = `
     alt="Cover Image for 基本の一番だしの作り方"
     data-nimg="intrinsic"
     decoding="async"
+    onError={[Function]}
+    onLoad={[Function]}
     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
     style={
       Object {

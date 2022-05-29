@@ -10,7 +10,6 @@ import { mdx2html } from "@/utils/mdx/mdx2html";
 import { isDraft } from "@/utils/validator";
 
 const ArticlePreview = (props: ArticleDetailProps) => {
-  console.info(props);
   return (
     <>
       <HtmlHeadNoIndex />

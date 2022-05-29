@@ -9,11 +9,12 @@ describe("components/atoms/ThemeSwitch", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("OK: スイッチが正常に切り替わる", () => {
+  it("OK: スイッチが正常に切り替わる", async () => {
+    const user = userEvent.setup();
     render(<ThemeSwitch />);
     const checkbox = screen.getByRole("switch");
     expect(checkbox).not.toBeChecked();
-    userEvent.click(checkbox);
+    await user.click(checkbox);
     expect(checkbox).toBeChecked();
   });
 });

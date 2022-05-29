@@ -24,7 +24,7 @@ jest.mock("@/utils/mdx/mdx2html", () => {
   return {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     __esModule: true,
-    default: jest.fn(),
+    mdx2html: jest.fn(),
   };
 });
 jest.mock("next-mdx-remote", () => {
@@ -54,6 +54,7 @@ describe("pages/preview", () => {
           article={mockArticleStock}
           mdxSource={mdxSource}
           relatedArticles={mockArticleList}
+          isPreview
         />
       )
       .toJSON();
@@ -70,6 +71,7 @@ describe("pages/preview", () => {
         article={mockArticleStock}
         mdxSource={mdxSource}
         relatedArticles={mockArticleList}
+        isPreview
       />
     );
 
