@@ -47,6 +47,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
             </svg>
             <input
               className="w-full dark:text-gray-100 bg-gray-100 dark:bg-gray-700 focus:outline-none"
+              enterKeyHint="search"
               inputMode="text"
               onChange={[Function]}
               onFocus={[Function]}
@@ -126,6 +127,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
           </svg>
           <input
             className="w-full dark:text-gray-100 bg-gray-100 dark:bg-gray-700 focus:outline-none"
+            enterKeyHint="search"
             inputMode="text"
             onChange={[Function]}
             onFocus={[Function]}

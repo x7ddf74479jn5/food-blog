@@ -91,6 +91,7 @@ const Search: React.FC = () => {
           onSubmit={handleSubmit}
           value={query}
           inputMode="text"
+          enterKeyHint="search"
         />
       </div>
       {isActive && histories && histories.length > 0 && (
