@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 import type Event from "@/types/gtm-event";
 
-export const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || "";
+export const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 
 export const existsGaId = GA_ID !== "";
 
