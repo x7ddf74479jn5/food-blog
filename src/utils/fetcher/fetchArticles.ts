@@ -4,6 +4,7 @@ import { client } from "@/lib/client";
 import type { TArticle, TArticleListResponse, TTag } from "@/types";
 import type { TPickupListResponse } from "@/types/pickup";
 import { HttpError } from "@/utils/error/Http";
+import { runReport } from "@/utils/ga/report";
 
 export const fetchArticles = async (queries?: MicroCMSQueries): Promise<TArticleListResponse> => {
   try {
@@ -139,4 +140,28 @@ export const fetchPickupArticles = async (date: Date) => {
     }
     throw error;
   }
+};
+
+export const getPopularArticles = async () => {
+  const report = await runReport();
+
+  if (!report) return [];
+
+  const ids = report.map((item) => item.id);
+  const filters = ids.map((id) => `contentId[equals]${id}`).join("[or]");
+  const limit = 5;
+
+  const response = await await fetchArticles({ filters, limit });
+
+  const articles = response.contents
+    .map((article) => {
+      const r = report.find((row) => row.id === article.id);
+      if (!r) throw new Error("Mismatch of report and response");
+      return { ...article, order: r?.order };
+    })
+    .sort((a, b) => {
+      return a.order < b.order ? -1 : 1;
+    });
+
+  return articles;
 };
