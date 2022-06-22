@@ -51,3 +51,4 @@ _posts
 /playwright-report/
 /playwright/.cache/
 credentials.json
+tsconfig.tsbuildinfo

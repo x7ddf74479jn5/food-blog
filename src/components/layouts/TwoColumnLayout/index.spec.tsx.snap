@@ -144,9 +144,7 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
   <div
     className="my-8"
   >
-    <h1
-      className="flex justify-center text-4xl font-bold"
-    >
+    <h1>
       title
     </h1>
   </div>
@@ -415,7 +413,7 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
     className="flex flex-col lg:flex-row gap-8 mb-16"
   >
     <div
-      className="flex flex-col order-1 lg:order-2 items-center w-full flex-grow"
+      className="flex flex-col order-1 lg:order-2 items-center w-full grow"
     >
       <section
         className="container p-2 dark:text-white bg-gray-50 dark:bg-gray-700"
@@ -1206,7 +1204,7 @@ exports[`components/layouts/TwoColumnLayout snapshot 1`] = `
        
     </div>
     <div
-      className="flex flex-col order-2 lg:order-1 items-center w-full flex-shrink"
+      className="flex flex-col order-2 lg:order-1 items-center w-full shrink"
     >
       <ul
         className="flex flex-col space-y-2 align-top "

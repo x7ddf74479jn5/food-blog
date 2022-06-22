@@ -3,3 +3,9 @@
 @tailwind utilities;
 @import "./toc.css";
 @import "./carousel.css";
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold text-center;
+  }
+}

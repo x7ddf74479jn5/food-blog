@@ -27,9 +27,7 @@ exports[`components/atoms/error/LayoutErrorBoundary snapshot 1`] = `
   <div
     className="flex flex-col gap-8 mx-auto text-center"
   >
-    <h1
-      className="flex justify-center text-4xl font-bold"
-    >
+    <h1>
       Something went wrong
     </h1>
     <p>
@@ -37,7 +35,7 @@ exports[`components/atoms/error/LayoutErrorBoundary snapshot 1`] = `
     </p>
   </div>
   <button
-    className="flex flex-row gap-2 justify-center items-center py-2 px-4 text-white bg-green-700 hover:bg-opacity-90 rounded-xl border-2 border-green-600"
+    className="flex flex-row gap-2 justify-center items-center py-2 px-4 text-white bg-green-700 hover:bg-green-700/90 rounded-xl border-2 border-green-600"
     onClick={[Function]}
   >
     <svg

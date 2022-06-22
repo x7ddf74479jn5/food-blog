@@ -5,7 +5,6 @@ import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaCon
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
 import { ShareButtons } from "@/components/atoms/ShareButtons";
-import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import BackLinks from "@/components/molecules/BackLinks";
@@ -36,7 +35,7 @@ export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = memo(
       <RootLayout config={config} categories={categories}>
         <HtmlHeadBase indexUrl={host} pageTitle={title} url={url} />
         <div className="my-8">
-          <HeadingOne>{heading}</HeadingOne>
+          <h1>{heading}</h1>
         </div>
         <MiddleAreaContainer>
           <AsideContainer className="lg:w-full" side="left">
@@ -45,10 +44,10 @@ export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = memo(
           <main>{children}</main>
         </MiddleAreaContainer>
         <BottomAreaContainer>
-          <ContainerWithOrder order="order-1 lg:order-2" className="flex-grow">
+          <ContainerWithOrder order="order-1 lg:order-2" className="grow">
             <PickupArticles pickupArticles={pickup.articles} />
           </ContainerWithOrder>
-          <ContainerWithOrder order="order-2 lg:order-1" className="flex-shrink">
+          <ContainerWithOrder order="order-2 lg:order-1" className="shrink">
             <BackLinks links={backLinks} />
           </ContainerWithOrder>
         </BottomAreaContainer>

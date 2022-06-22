@@ -1,7 +1,6 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useRouter } from "next/router";
 
-import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
@@ -34,7 +33,7 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
     >
       <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} />
       <div className="mb-8">
-        <HeadingOne>{heading}</HeadingOne>
+        <h1>{heading}</h1>
       </div>
       <div className="w-full">
         {q ? (

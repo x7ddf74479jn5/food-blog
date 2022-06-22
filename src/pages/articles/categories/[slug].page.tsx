@@ -1,7 +1,6 @@
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import type { ParsedUrlQuery } from "node:querystring";
 
-import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
@@ -32,7 +31,7 @@ const Category: NextPage<Props> = ({ data, category, config, categories, pickup 
     >
       <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} image={category.image.url} />
       <div className="mb-8">
-        <HeadingOne>{heading}</HeadingOne>
+        <h1>{heading}</h1>
       </div>
       <div className="w-full min-h-screen">
         <ArticleSWRContainer fallbackData={data} queryOptions={queryOptions} />

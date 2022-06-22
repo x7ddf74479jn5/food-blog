@@ -1,6 +1,5 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 
-import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import HomeLayout from "@/components/layouts/HomeLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
@@ -18,7 +17,7 @@ const Home = ({ data, config, pickup, categories }: Props) => {
     <HomeLayout pickup={pickup} url={host} pageTitle={title} config={config} categories={categories}>
       <HtmlHeadBase indexUrl={host} siteTitle={title} />
       <div className="mb-8">
-        <HeadingOne>レシピ一覧</HeadingOne>
+        <h1>レシピ一覧</h1>
       </div>
       <ArticleSWRContainer fallbackData={data} />
     </HomeLayout>
