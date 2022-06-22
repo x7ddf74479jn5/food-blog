@@ -4,8 +4,9 @@ import type { Params } from "next/dist/server/router";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import type { ArticleDetailProps, ArticlesStaticProps } from "@/pages/articles/[id].page";
 import ArticleDetail from "@/pages/articles/[id].page";
+import { getPickupArticles } from "@/services/article";
 import type { TArticle } from "@/types";
-import { fetchArticle, fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
+import { fetchArticle, fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { mdx2html } from "@/utils/mdx/mdx2html";
 import { isDraft } from "@/utils/validator";
 
@@ -32,7 +33,7 @@ export const getServerSideProps: GetServerSideProps<ArticlesStaticProps, Params>
       fetchConfig(),
       fetchCategories(),
       fetchArticle(id, queries),
-      fetchPickupArticles(new Date()),
+      getPickupArticles(new Date()),
     ]);
 
     const relatedArticles: TArticle[] = [];

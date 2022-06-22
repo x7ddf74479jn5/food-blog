@@ -5,8 +5,9 @@ import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
+import { getPickupArticles } from "@/services/article";
 import type { TArticleListResponse, TCategory, TConfig, TPickup } from "@/types";
-import { fetchArticles, fetchCategories, fetchCategory, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
+import { fetchArticles, fetchCategories, fetchCategory, fetchConfig } from "@/utils/fetcher";
 import { formatPageTitle } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
@@ -73,7 +74,7 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
     fetchArticles({ filters: `category[equals]${category.id}` }),
     fetchConfig(),
     fetchCategories(),
-    fetchPickupArticles(new Date()),
+    getPickupArticles(new Date()),
   ]);
 
   return {

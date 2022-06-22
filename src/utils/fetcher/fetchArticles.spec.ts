@@ -1,8 +1,9 @@
 import { mockArticles } from "@mocks/data";
 import { server } from "mocks/msw/server";
 
+import { getTagFilters } from "@/services/article";
+
 import { fetchArticle, fetchArticles } from ".";
-import { getTagFilters } from "./fetchArticles";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());

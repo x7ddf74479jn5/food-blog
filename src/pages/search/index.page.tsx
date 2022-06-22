@@ -5,8 +5,9 @@ import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
+import { getPickupArticles } from "@/services/article";
 import type { TCategory, TConfig, TPickup, TQueryOptions } from "@/types";
-import { fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
+import { fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
@@ -56,7 +57,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const [config, categories, pickup] = await Promise.all([
     fetchConfig(),
     fetchCategories(),
-    fetchPickupArticles(new Date()),
+    getPickupArticles(new Date()),
   ]);
 
   return {

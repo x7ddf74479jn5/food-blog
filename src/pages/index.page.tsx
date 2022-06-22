@@ -4,8 +4,9 @@ import { HeadingOne } from "@/components/atoms/texts/Heading";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import HomeLayout from "@/components/layouts/HomeLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
+import { getPickupArticles } from "@/services/article";
 import type { TArticleListResponse, TCategory, TConfig, TPickup } from "@/types";
-import { fetchArticles, fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
+import { fetchArticles, fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { generatedRssFeed } from "@/utils/rss/rss";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -36,7 +37,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     fetchConfig(),
     fetchCategories(),
     fetchArticles({ limit: 10, offset: 0 }),
-    fetchPickupArticles(new Date()),
+    getPickupArticles(new Date()),
   ]);
 
   generatedRssFeed(config, data.contents);

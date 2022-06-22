@@ -2,8 +2,9 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 
 import { TwoColumnLayout } from "@/components/layouts/TwoColumnLayout";
 import { CategoryList } from "@/components/molecules/CategoryList";
+import { getPickupArticles } from "@/services/article";
 import type { TCategory, TConfig, TPickup } from "@/types";
-import { fetchCategories, fetchConfig, fetchPickupArticles } from "@/utils/fetcher";
+import { fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
@@ -41,7 +42,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const [config, categories, pickup] = await Promise.all([
     fetchConfig(),
     fetchCategories(),
-    fetchPickupArticles(new Date()),
+    getPickupArticles(new Date()),
   ]);
 
   return {

@@ -13,15 +13,9 @@ import Thumbnail from "@/components/atoms/Thumbnail";
 import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/functions/meta";
 import ArticleLayout from "@/components/layouts/ArticleLayout";
 import { TagListColored } from "@/components/molecules/TagList";
+import { getPickupArticles, getRelatedArticles } from "@/services/article";
 import { getSafeDate } from "@/utils/date";
-import {
-  fetchArticle,
-  fetchArticles,
-  fetchCategories,
-  fetchConfig,
-  fetchPickupArticles,
-  getRelatedArticles,
-} from "@/utils/fetcher";
+import { fetchArticle, fetchArticles, fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
 import { mdx2html } from "@/utils/mdx/mdx2html";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
@@ -92,7 +86,7 @@ export const ArticleDetail = ({
             <span>{writerName}</span>
           </div>
         </div>
-        <div className="flex flex-col gap-4 p-2 sm:p-4 bg-gray-50 dark:bg-gray-700">
+        <div className="flex flex-col gap-4 p-2 bg-gray-50 dark:bg-gray-700 sm:p-4">
           <div className="flex flex-row gap-2 items-center">
             <span className="text-black dark:text-white">カテゴリー：</span>
             <ButtonCategory category={category} />
@@ -135,15 +129,17 @@ export type ArticlesStaticProps = {
 
 export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async ({ params }) => {
   const id = params?.id;
+
   if (!id) {
     throw new Error("Error: ID not found");
   }
+
   try {
     const [config, categories, article, pickup] = await Promise.all([
       fetchConfig(),
       fetchCategories(),
       fetchArticle(id),
-      fetchPickupArticles(new Date()),
+      getPickupArticles(new Date()),
     ]);
 
     const relatedArticles = await getRelatedArticles(article);
