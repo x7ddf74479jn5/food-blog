@@ -600,7 +600,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
           PICKUP
         </h2>
         <ul
-          className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-x-1 md:gap-x-1 lg:gap-x-1 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 pb-2"
+          className="grid gap-2 pb-2 sm:grid-cols-2 sm:gap-x-1 sm:gap-y-3 md:grid-cols-2 md:gap-x-1 md:gap-y-3 lg:grid-cols-1 lg:gap-x-1 lg:gap-y-3"
         >
           <li>
             <article
@@ -612,7 +612,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
+                  className="shrink-0 mt-1 mr-4 min-w-[max-content]"
                 >
                   <span
                     style={
@@ -733,7 +733,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                 </div>
               </a>
               <div
-                className="flex flex-col flex-grow"
+                className="flex flex-col grow"
               >
                 <a
                   href="/articles/p97vmuno3jdn"
@@ -743,7 +743,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                   基本の一番だしの作り方
                 </a>
                 <div
-                  className="flex-grow"
+                  className="grow"
                 >
                   <ul
                     className="flex flex-wrap gap-x-2 gap-y-1"
@@ -802,7 +802,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
+                  className="shrink-0 mt-1 mr-4 min-w-[max-content]"
                 >
                   <span
                     style={
@@ -923,7 +923,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                 </div>
               </a>
               <div
-                className="flex flex-col flex-grow"
+                className="flex flex-col grow"
               >
                 <a
                   href="/articles/mm8oec5icb"
@@ -933,7 +933,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                   新玉ねぎとトマトのシンプルサラダの作り方
                 </a>
                 <div
-                  className="flex-grow"
+                  className="grow"
                 >
                   <ul
                     className="flex flex-wrap gap-x-2 gap-y-1"
@@ -992,7 +992,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
+                  className="shrink-0 mt-1 mr-4 min-w-[max-content]"
                 >
                   <span
                     style={
@@ -1113,7 +1113,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                 </div>
               </a>
               <div
-                className="flex flex-col flex-grow"
+                className="flex flex-col grow"
               >
                 <a
                   href="/articles/3y-w7i75kmd"
@@ -1123,7 +1123,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                   栄養たっぷり小松菜と油揚げのおひたしの作り方
                 </a>
                 <div
-                  className="flex-grow"
+                  className="grow"
                 >
                   <ul
                     className="flex flex-wrap gap-x-2 gap-y-1"
@@ -1169,7 +1169,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]"
+                  className="shrink-0 mt-1 mr-4 min-w-[max-content]"
                 >
                   <span
                     style={
@@ -1290,7 +1290,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                 </div>
               </a>
               <div
-                className="flex flex-col flex-grow"
+                className="flex flex-col grow"
               >
                 <a
                   href="/articles/q_y-lyvhew"
@@ -1300,7 +1300,7 @@ exports[`components/layouts/DefaultLayout snapshot 1`] = `
                   熊本県産玉ねぎを使った絶品タコライスの作り方
                 </a>
                 <div
-                  className="flex-grow"
+                  className="grow"
                 >
                   <ul
                     className="flex flex-wrap gap-x-2 gap-y-1"

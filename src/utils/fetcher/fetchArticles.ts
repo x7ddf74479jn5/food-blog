@@ -45,7 +45,11 @@ export const fetchPickupArticles = async (queries: MicroCMSQueries) => {
   try {
     const data = await client.get<TPickupListResponse>({
       endpoint: "pickups",
-      queries,
+      queries: {
+        orders: "-publishedAt",
+        depth: 2,
+        ...queries,
+      },
     });
     return data;
   } catch (error) {
