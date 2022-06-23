@@ -9,8 +9,9 @@ import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaCon
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { CategoryListSide } from "@/components/molecules/CategoryListSide";
 import { PickupArticles } from "@/components/organisms/PickupArticles/index";
+import { PopularArticles } from "@/components/organisms/PopularArticles";
 import { useMedia } from "@/hooks/useMedia";
-import type { TCategory, TConfig, TPickup } from "@/types";
+import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 
 type Props = {
   children: React.ReactNode;
@@ -23,9 +24,19 @@ type Props = {
   }>;
   categories: TCategory[];
   pickup: TPickup;
+  popularArticles: TRankedArticle[];
 };
 
-const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, backLinks, categories, pickup }: Props) => {
+const DefaultLayout: React.FC<Props> = ({
+  url,
+  pageTitle,
+  children,
+  config,
+  backLinks,
+  categories,
+  pickup,
+  popularArticles,
+}: Props) => {
   const BackLinks = useMemo(() => dynamic(() => import("@/components/molecules/BackLinks")), []);
   const ShareButtons = useMemo(() => dynamic(() => import("@/components/atoms/ShareButtons")), []);
   const isSmallOrDown = useMedia("<=", "sm");
@@ -42,10 +53,11 @@ const DefaultLayout: React.FC<Props> = ({ url, pageTitle, children, config, back
         </AsideContainer>
       </MiddleAreaContainer>
       <BottomAreaContainer>
-        <ContainerWithOrder order="order-1 lg:order-2" className="flex-grow">
+        <ContainerWithOrder order="order-1 lg:order-2" className="grow">
           <PickupArticles pickupArticles={pickup.articles} />
+          <PopularArticles popularArticles={popularArticles} />
         </ContainerWithOrder>
-        <ContainerWithOrder order="order-2 lg:order-1" className="flex-shrink">
+        <ContainerWithOrder order="order-2 lg:order-1" className="shrink">
           <BackLinks links={backLinks} />
         </ContainerWithOrder>
       </BottomAreaContainer>

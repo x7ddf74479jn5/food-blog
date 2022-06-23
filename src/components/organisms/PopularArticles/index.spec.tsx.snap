@@ -1,0 +1,807 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/RelatedArticles 記事がある snapshot 1`] = `
+<section
+  className="container p-2 dark:text-white bg-gray-50 dark:bg-gray-700"
+>
+  <h2
+    className="px-2 pb-2 mb-2 border-b-2"
+  >
+    人気レシピ
+  </h2>
+  <ul
+    className="grid gap-2 pb-2 sm:grid-cols-2 sm:gap-x-1 sm:gap-y-3 md:grid-cols-2 md:gap-x-1 md:gap-y-3 lg:grid-cols-1 lg:gap-x-1 lg:gap-y-3"
+  >
+    <li>
+      <article
+        className="flex flex-row max-h-36 "
+      >
+        <a
+          href="/articles/p97vmuno3jdn"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="shrink-0 mt-1 mr-4 min-w-[max-content]"
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "inline-block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "relative",
+                  "width": "initial",
+                }
+              }
+            >
+              <span
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  aria-hidden={true}
+                  src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2748%27%20height=%2748%27/%3e"
+                  style={
+                    Object {
+                      "background": "none",
+                      "border": 0,
+                      "display": "block",
+                      "height": "initial",
+                      "margin": 0,
+                      "maxWidth": "100%",
+                      "opacity": 1,
+                      "padding": 0,
+                      "width": "initial",
+                    }
+                  }
+                />
+              </span>
+              <img
+                alt="基本の一番だしの作り方"
+                data-nimg="intrinsic"
+                decoding="async"
+                onError={[Function]}
+                onLoad={[Function]}
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": "cover",
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+              <noscript>
+                <img
+                  alt="基本の一番だしの作り方"
+                  data-nimg="intrinsic"
+                  decoding="async"
+                  loading="lazy"
+                  src="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=96&q=75"
+                  srcSet="/_next/image?url=%2Fimages%2F5026416_s.jpg&w=48&q=75 1x, /_next/image?url=%2Fimages%2F5026416_s.jpg&w=96&q=75 2x"
+                  style={
+                    Object {
+                      "border": "none",
+                      "bottom": 0,
+                      "boxSizing": "border-box",
+                      "display": "block",
+                      "height": 0,
+                      "left": 0,
+                      "margin": "auto",
+                      "maxHeight": "100%",
+                      "maxWidth": "100%",
+                      "minHeight": "100%",
+                      "minWidth": "100%",
+                      "objectFit": "cover",
+                      "objectPosition": undefined,
+                      "padding": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "width": 0,
+                    }
+                  }
+                />
+              </noscript>
+            </span>
+          </div>
+        </a>
+        <div
+          className="flex flex-col grow"
+        >
+          <a
+            href="/articles/p97vmuno3jdn"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            基本の一番だしの作り方
+          </a>
+          <div
+            className="grow"
+          >
+            <ul
+              className="flex flex-wrap gap-x-2 gap-y-1"
+            >
+              <li>
+                <a
+                  href="/articles/tags/preparation"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #仕込み
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/articles/tags/miso_soup"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #味噌汁
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/articles/tags/udon"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #うどん
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </li>
+    <li>
+      <article
+        className="flex flex-row max-h-36 "
+      >
+        <a
+          href="/articles/mm8oec5icb"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="shrink-0 mt-1 mr-4 min-w-[max-content]"
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "inline-block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "relative",
+                  "width": "initial",
+                }
+              }
+            >
+              <span
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  aria-hidden={true}
+                  src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2748%27%20height=%2748%27/%3e"
+                  style={
+                    Object {
+                      "background": "none",
+                      "border": 0,
+                      "display": "block",
+                      "height": "initial",
+                      "margin": 0,
+                      "maxWidth": "100%",
+                      "opacity": 1,
+                      "padding": 0,
+                      "width": "initial",
+                    }
+                  }
+                />
+              </span>
+              <img
+                alt="新玉ねぎとトマトのシンプルサラダの作り方"
+                data-nimg="intrinsic"
+                decoding="async"
+                onError={[Function]}
+                onLoad={[Function]}
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": "cover",
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+              <noscript>
+                <img
+                  alt="新玉ねぎとトマトのシンプルサラダの作り方"
+                  data-nimg="intrinsic"
+                  decoding="async"
+                  loading="lazy"
+                  src="/_next/image?url=%2F2996666_s.jpg&w=96&q=75"
+                  srcSet="/_next/image?url=%2F2996666_s.jpg&w=48&q=75 1x, /_next/image?url=%2F2996666_s.jpg&w=96&q=75 2x"
+                  style={
+                    Object {
+                      "border": "none",
+                      "bottom": 0,
+                      "boxSizing": "border-box",
+                      "display": "block",
+                      "height": 0,
+                      "left": 0,
+                      "margin": "auto",
+                      "maxHeight": "100%",
+                      "maxWidth": "100%",
+                      "minHeight": "100%",
+                      "minWidth": "100%",
+                      "objectFit": "cover",
+                      "objectPosition": undefined,
+                      "padding": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "width": 0,
+                    }
+                  }
+                />
+              </noscript>
+            </span>
+          </div>
+        </a>
+        <div
+          className="flex flex-col grow"
+        >
+          <a
+            href="/articles/mm8oec5icb"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            新玉ねぎとトマトのシンプルサラダの作り方
+          </a>
+          <div
+            className="grow"
+          >
+            <ul
+              className="flex flex-wrap gap-x-2 gap-y-1"
+            >
+              <li>
+                <a
+                  href="/articles/tags/tomato"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #トマト
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/articles/tags/onion"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #玉ねぎ
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/articles/tags/ooba"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #大葉
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </li>
+    <li>
+      <article
+        className="flex flex-row max-h-36 "
+      >
+        <a
+          href="/articles/3y-w7i75kmd"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="shrink-0 mt-1 mr-4 min-w-[max-content]"
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "inline-block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "relative",
+                  "width": "initial",
+                }
+              }
+            >
+              <span
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  aria-hidden={true}
+                  src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2748%27%20height=%2748%27/%3e"
+                  style={
+                    Object {
+                      "background": "none",
+                      "border": 0,
+                      "display": "block",
+                      "height": "initial",
+                      "margin": 0,
+                      "maxWidth": "100%",
+                      "opacity": 1,
+                      "padding": 0,
+                      "width": "initial",
+                    }
+                  }
+                />
+              </span>
+              <img
+                alt="栄養たっぷり小松菜と油揚げのおひたしの作り方"
+                data-nimg="intrinsic"
+                decoding="async"
+                onError={[Function]}
+                onLoad={[Function]}
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": "cover",
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+              <noscript>
+                <img
+                  alt="栄養たっぷり小松菜と油揚げのおひたしの作り方"
+                  data-nimg="intrinsic"
+                  decoding="async"
+                  loading="lazy"
+                  src="/_next/image?url=%2F4966941_s.jpg&w=96&q=75"
+                  srcSet="/_next/image?url=%2F4966941_s.jpg&w=48&q=75 1x, /_next/image?url=%2F4966941_s.jpg&w=96&q=75 2x"
+                  style={
+                    Object {
+                      "border": "none",
+                      "bottom": 0,
+                      "boxSizing": "border-box",
+                      "display": "block",
+                      "height": 0,
+                      "left": 0,
+                      "margin": "auto",
+                      "maxHeight": "100%",
+                      "maxWidth": "100%",
+                      "minHeight": "100%",
+                      "minWidth": "100%",
+                      "objectFit": "cover",
+                      "objectPosition": undefined,
+                      "padding": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "width": 0,
+                    }
+                  }
+                />
+              </noscript>
+            </span>
+          </div>
+        </a>
+        <div
+          className="flex flex-col grow"
+        >
+          <a
+            href="/articles/3y-w7i75kmd"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            栄養たっぷり小松菜と油揚げのおひたしの作り方
+          </a>
+          <div
+            className="grow"
+          >
+            <ul
+              className="flex flex-wrap gap-x-2 gap-y-1"
+            >
+              <li>
+                <a
+                  href="/articles/tags/aburaage"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #油揚げ
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/articles/tags/komatshna"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #小松菜
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </li>
+    <li>
+      <article
+        className="flex flex-row max-h-36 "
+      >
+        <a
+          href="/articles/q_y-lyvhew"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="shrink-0 mt-1 mr-4 min-w-[max-content]"
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "inline-block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "relative",
+                  "width": "initial",
+                }
+              }
+            >
+              <span
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  aria-hidden={true}
+                  src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2748%27%20height=%2748%27/%3e"
+                  style={
+                    Object {
+                      "background": "none",
+                      "border": 0,
+                      "display": "block",
+                      "height": "initial",
+                      "margin": 0,
+                      "maxWidth": "100%",
+                      "opacity": 1,
+                      "padding": 0,
+                      "width": "initial",
+                    }
+                  }
+                />
+              </span>
+              <img
+                alt="熊本県産玉ねぎを使った絶品タコライスの作り方"
+                data-nimg="intrinsic"
+                decoding="async"
+                onError={[Function]}
+                onLoad={[Function]}
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": "cover",
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+              <noscript>
+                <img
+                  alt="熊本県産玉ねぎを使った絶品タコライスの作り方"
+                  data-nimg="intrinsic"
+                  decoding="async"
+                  loading="lazy"
+                  src="/_next/image?url=%2F3129120_s.jpg&w=96&q=75"
+                  srcSet="/_next/image?url=%2F3129120_s.jpg&w=48&q=75 1x, /_next/image?url=%2F3129120_s.jpg&w=96&q=75 2x"
+                  style={
+                    Object {
+                      "border": "none",
+                      "bottom": 0,
+                      "boxSizing": "border-box",
+                      "display": "block",
+                      "height": 0,
+                      "left": 0,
+                      "margin": "auto",
+                      "maxHeight": "100%",
+                      "maxWidth": "100%",
+                      "minHeight": "100%",
+                      "minWidth": "100%",
+                      "objectFit": "cover",
+                      "objectPosition": undefined,
+                      "padding": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "width": 0,
+                    }
+                  }
+                />
+              </noscript>
+            </span>
+          </div>
+        </a>
+        <div
+          className="flex flex-col grow"
+        >
+          <a
+            href="/articles/q_y-lyvhew"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            熊本県産玉ねぎを使った絶品タコライスの作り方
+          </a>
+          <div
+            className="grow"
+          >
+            <ul
+              className="flex flex-wrap gap-x-2 gap-y-1"
+            >
+              <li>
+                <a
+                  href="/articles/tags/rice"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #ごはん
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/articles/tags/minced_meat"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #挽き肉
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/articles/tags/lettuce"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #レタス
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/articles/tags/onion"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #玉ねぎ
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/articles/tags/tomato"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <span
+                    className="inline-block text-sm leading-tight text-gray-600 dark:text-gray-300"
+                  >
+                    #トマト
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </li>
+  </ul>
+</section>
+`;
+
+exports[`components/organisms/RelatedArticles 記事がない snapshot 1`] = `
+<section
+  className="container p-2 dark:text-white bg-gray-50 dark:bg-gray-700"
+>
+  <h2
+    className="px-2 pb-2 mb-2 border-b-2"
+  >
+    人気レシピ
+  </h2>
+  <p
+    className="text-center"
+  >
+    レシピは見つかりませんでした
+  </p>
+</section>
+`;

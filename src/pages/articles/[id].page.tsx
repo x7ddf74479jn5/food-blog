@@ -4,7 +4,7 @@ import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
 import type { ParsedUrlQuery } from "node:querystring";
 import { memo } from "react";
 import { FaPen, FaRegCalendar } from "react-icons/fa";
-import type { TArticle, TCategory, TConfig, TPickup } from "src/types";
+import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle } from "src/types";
 
 import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
 import MDXCustomComponents from "@/components/atoms/mdx";
@@ -13,7 +13,7 @@ import Thumbnail from "@/components/atoms/Thumbnail";
 import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/functions/meta";
 import ArticleLayout from "@/components/layouts/ArticleLayout";
 import { TagListColored } from "@/components/molecules/TagList";
-import { getPickupArticles, getRelatedArticles } from "@/services/article";
+import { getPickupArticles, getPopularArticles, getRelatedArticles } from "@/services/article";
 import { getSafeDate } from "@/utils/date";
 import { fetchArticle, fetchArticles, fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
@@ -30,6 +30,7 @@ export const ArticleDetail = ({
   isPreview,
   relatedArticles,
   pickup,
+  popularArticles,
 }: ArticleDetailProps) => {
   const { id, image, title, description, category, tags, writer, linkCardArticles, publishedAt, updatedAt } = article;
   const { siteTitle, host } = config;
@@ -50,6 +51,7 @@ export const ArticleDetail = ({
       relatedArticles={relatedArticles}
       categories={categoriesAtMenu}
       pickup={pickup}
+      popularArticles={popularArticles}
     >
       <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} image={image.url} />
       <HtmlHeadJsonLd
@@ -125,6 +127,7 @@ export type ArticlesStaticProps = {
   isPreview?: boolean;
   relatedArticles: TArticle[];
   pickup: TPickup;
+  popularArticles: TRankedArticle[];
 };
 
 export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async ({ params }) => {
@@ -135,11 +138,12 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
   }
 
   try {
-    const [config, categories, article, pickup] = await Promise.all([
+    const [config, categories, article, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
       fetchCategories(),
       fetchArticle(id),
       getPickupArticles(new Date()),
+      getPopularArticles(),
     ]);
 
     const relatedArticles = await getRelatedArticles(article);
@@ -155,6 +159,7 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
         isPreview: false,
         relatedArticles,
         pickup,
+        popularArticles,
       },
     };
   } catch (error) {

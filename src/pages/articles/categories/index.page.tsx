@@ -2,15 +2,15 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 
 import { TwoColumnLayout } from "@/components/layouts/TwoColumnLayout";
 import { CategoryList } from "@/components/molecules/CategoryList";
-import { getPickupArticles } from "@/services/article";
-import type { TCategory, TConfig, TPickup } from "@/types";
+import { getPickupArticles, getPopularArticles } from "@/services/article";
+import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 import { fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Categories: NextPage<Props> = ({ config, categories, pickup }) => {
+const Categories: NextPage<Props> = ({ config, categories, pickup, popularArticles }) => {
   const { siteTitle, host } = config;
   const heading = "カテゴリー一覧";
   const pageTitle = formatPageTitle(heading, siteTitle);
@@ -26,6 +26,7 @@ const Categories: NextPage<Props> = ({ config, categories, pickup }) => {
       backLinks={backLinks}
       heading={heading}
       categories={categories}
+      popularArticles={popularArticles}
     >
       <CategoryList categories={categories} width={128} height={128} />
     </TwoColumnLayout>
@@ -36,13 +37,15 @@ type StaticProps = {
   config: TConfig;
   categories: TCategory[];
   pickup: TPickup;
+  popularArticles: TRankedArticle[];
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const [config, categories, pickup] = await Promise.all([
+  const [config, categories, pickup, popularArticles] = await Promise.all([
     fetchConfig(),
     fetchCategories(),
     getPickupArticles(new Date()),
+    getPopularArticles(),
   ]);
 
   return {
@@ -50,6 +53,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
       config,
       categories,
       pickup,
+      popularArticles,
     },
   };
 };

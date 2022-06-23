@@ -8,8 +8,9 @@ import { RootLayout } from "@/components/layouts/RootLayout";
 import { CategoryListSide } from "@/components/molecules/CategoryListSide";
 import { TOC } from "@/components/molecules/TOC/index";
 import { PickupArticles } from "@/components/organisms/PickupArticles/index";
+import { PopularArticles } from "@/components/organisms/PopularArticles";
 import { RelatedArticles } from "@/components/organisms/RelatedArticles";
-import type { TArticle, TCategory, TConfig, TPickup } from "@/types";
+import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 
 type Props = {
   url: string;
@@ -23,6 +24,7 @@ type Props = {
   relatedArticles: TArticle[];
   categories: TCategory[];
   pickup: TPickup;
+  popularArticles: TRankedArticle[];
 };
 
 const ArticleLayout: React.FC<Props> = ({
@@ -34,13 +36,14 @@ const ArticleLayout: React.FC<Props> = ({
   relatedArticles,
   categories,
   pickup,
+  popularArticles,
 }: Props) => {
   const BackLinks = useMemo(() => dynamic(() => import("@/components/molecules/BackLinks")), []);
   return (
     <RootLayout config={config} categories={categories}>
-      <div className="flex flex-col lg:flex-row gap-16 items-center lg:items-start mt-4 mb-8 lg:mb-16 ">
+      <div className="flex flex-col gap-16 items-center mt-4 mb-8 lg:flex-row lg:items-start lg:mb-16 ">
         <main className="pb-12">{children}</main>
-        <aside className="flex lg:sticky top-8 flex-col gap-y-8 items-center w-full lg:w-1/3 h-full">
+        <aside className="flex top-8 flex-col gap-y-8 items-center w-full h-full lg:sticky lg:w-1/3">
           <ContainerWithOrder order="order-1 lg:order-4">
             <TOC isSide />
           </ContainerWithOrder>
@@ -56,10 +59,11 @@ const ArticleLayout: React.FC<Props> = ({
         </aside>
       </div>
       <BottomAreaContainer>
-        <ContainerWithOrder order="order-1 lg:order-2" className="flex-grow">
+        <ContainerWithOrder order="order-1 lg:order-2" className="grow">
           <PickupArticles pickupArticles={pickup.articles} />
+          <PopularArticles popularArticles={popularArticles} />
         </ContainerWithOrder>
-        <ContainerWithOrder order="order-2 lg:order-1" className="flex-shrink">
+        <ContainerWithOrder order="order-2 lg:order-1" className="shrink">
           <BackLinks links={backLinks} />
         </ContainerWithOrder>
       </BottomAreaContainer>

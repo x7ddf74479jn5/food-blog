@@ -4,7 +4,7 @@ import type { Params } from "next/dist/server/router";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import type { ArticleDetailProps, ArticlesStaticProps } from "@/pages/articles/[id].page";
 import ArticleDetail from "@/pages/articles/[id].page";
-import { getPickupArticles } from "@/services/article";
+import { getPickupArticles, getPopularArticles } from "@/services/article";
 import type { TArticle } from "@/types";
 import { fetchArticle, fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { mdx2html } from "@/utils/mdx/mdx2html";
@@ -29,11 +29,12 @@ export const getServerSideProps: GetServerSideProps<ArticlesStaticProps, Params>
 
   try {
     const queries = { draftKey };
-    const [config, categories, article, pickup] = await Promise.all([
+    const [config, categories, article, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
       fetchCategories(),
       fetchArticle(id, queries),
       getPickupArticles(new Date()),
+      getPopularArticles(),
     ]);
 
     const relatedArticles: TArticle[] = [];
@@ -48,6 +49,7 @@ export const getServerSideProps: GetServerSideProps<ArticlesStaticProps, Params>
         isPreview,
         relatedArticles,
         pickup,
+        popularArticles,
       },
     };
   } catch (error) {

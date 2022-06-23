@@ -4,15 +4,15 @@ import { useRouter } from "next/router";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
-import { getPickupArticles } from "@/services/article";
-import type { TCategory, TConfig, TPickup, TQueryOptions } from "@/types";
+import { getPickupArticles, getPopularArticles } from "@/services/article";
+import type { TCategory, TConfig, TPickup, TQueryOptions, TRankedArticle } from "@/types";
 import { fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Search: NextPage<Props> = ({ config, categories, pickup }) => {
+const Search: NextPage<Props> = ({ config, categories, pickup, popularArticles }) => {
   const router = useRouter();
   const q = router.query.q?.toString();
   const { siteTitle, host } = config;
@@ -30,6 +30,7 @@ const Search: NextPage<Props> = ({ config, categories, pickup }) => {
       backLinks={backLinks}
       categories={categories}
       pickup={pickup}
+      popularArticles={popularArticles}
     >
       <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} />
       <div className="mb-8">
@@ -50,13 +51,15 @@ type StaticProps = {
   config: TConfig;
   categories: TCategory[];
   pickup: TPickup;
+  popularArticles: TRankedArticle[];
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const [config, categories, pickup] = await Promise.all([
+  const [config, categories, pickup, popularArticles] = await Promise.all([
     fetchConfig(),
     fetchCategories(),
     getPickupArticles(new Date()),
+    getPopularArticles(),
   ]);
 
   return {
@@ -64,6 +67,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
       config,
       categories,
       pickup,
+      popularArticles,
     },
   };
 };

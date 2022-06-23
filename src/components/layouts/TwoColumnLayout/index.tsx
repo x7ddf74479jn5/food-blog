@@ -9,8 +9,9 @@ import { HtmlHeadBase } from "@/components/functions/meta";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import BackLinks from "@/components/molecules/BackLinks";
 import { PickupArticles } from "@/components/organisms/PickupArticles/index";
+import { PopularArticles } from "@/components/organisms/PopularArticles";
 import { useMedia } from "@/hooks/useMedia/index";
-import type { TCategory, TConfig, TPickup } from "@/types";
+import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 
 type TwoColumnLayoutProps = {
   children: React.ReactNode;
@@ -25,10 +26,11 @@ type TwoColumnLayoutProps = {
     label: string;
   }>;
   categories: TCategory[];
+  popularArticles: TRankedArticle[];
 };
 
 export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = memo(
-  ({ children, config, pickup, host, title, heading, url, backLinks, categories }) => {
+  ({ children, config, pickup, host, title, heading, url, backLinks, categories, popularArticles }) => {
     const isSmallOrDown = useMedia("<=", "sm");
 
     return (
@@ -46,6 +48,7 @@ export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = memo(
         <BottomAreaContainer>
           <ContainerWithOrder order="order-1 lg:order-2" className="grow">
             <PickupArticles pickupArticles={pickup.articles} />
+            <PopularArticles popularArticles={popularArticles} />
           </ContainerWithOrder>
           <ContainerWithOrder order="order-2 lg:order-1" className="shrink">
             <BackLinks links={backLinks} />

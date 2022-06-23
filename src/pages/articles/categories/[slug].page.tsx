@@ -4,15 +4,15 @@ import type { ParsedUrlQuery } from "node:querystring";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
-import { getPickupArticles } from "@/services/article";
-import type { TArticleListResponse, TCategory, TConfig, TPickup } from "@/types";
+import { getPickupArticles, getPopularArticles } from "@/services/article";
+import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 import { fetchArticles, fetchCategories, fetchCategory, fetchConfig } from "@/utils/fetcher";
 import { formatPageTitle } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Category: NextPage<Props> = ({ data, category, config, categories, pickup }) => {
+const Category: NextPage<Props> = ({ data, category, config, categories, pickup, popularArticles }) => {
   const { siteTitle, host } = config;
   const heading = `カテゴリー：${category.name}`;
   const pageTitle = formatPageTitle(heading, siteTitle);
@@ -28,6 +28,7 @@ const Category: NextPage<Props> = ({ data, category, config, categories, pickup 
       backLinks={backLinks}
       categories={categories}
       pickup={pickup}
+      popularArticles={popularArticles}
     >
       <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} image={category.image.url} />
       <div className="mb-8">
@@ -59,6 +60,7 @@ type StaticProps = {
   config: TConfig;
   data: TArticleListResponse;
   pickup: TPickup;
+  popularArticles: TRankedArticle[];
 };
 
 export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ params }) => {
@@ -69,11 +71,12 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
 
   const category = await fetchCategory(slug);
 
-  const [data, config, categories, pickup] = await Promise.all([
+  const [data, config, categories, pickup, popularArticles] = await Promise.all([
     fetchArticles({ filters: `category[equals]${category.id}` }),
     fetchConfig(),
     fetchCategories(),
     getPickupArticles(new Date()),
+    getPopularArticles(),
   ]);
 
   return {
@@ -83,6 +86,7 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
       config,
       categories,
       pickup,
+      popularArticles,
     },
   };
 };
