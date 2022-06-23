@@ -1,4 +1,10 @@
-export type { TArticle, TArticleListResponse, TArticleSWRResponse, TComparatorArticle } from "./article";
+export type {
+  TArticle,
+  TArticleListResponse,
+  TArticleSWRResponse,
+  TComparatorArticle,
+  TRankedArticle,
+} from "./article";
 export type { TCategory, TCategoryListResponse } from "./category";
 export type { TConfig } from "./config";
 export type { TQueryOptions } from "./microcms";

@@ -23,3 +23,5 @@ export type TArticleListResponse = MicroCMSListResponse<TArticle>;
 export type TArticleSWRResponse = TArticleListResponse | null;
 
 export type TComparatorArticle = (a: TArticle, b: TArticle) => number;
+
+export type TRankedArticle = TArticle & { order: number };

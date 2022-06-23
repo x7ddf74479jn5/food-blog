@@ -1,4 +1,4 @@
-import type { TArticle, TTag } from "@/types";
+import type { TArticle, TRankedArticle, TTag } from "@/types";
 import { fetchArticles, fetchPickupArticles } from "@/utils/fetcher";
 import { runReport } from "@/utils/ga/report";
 
@@ -95,10 +95,15 @@ export const getPopularArticles = async () => {
 
   const res = await await fetchArticles({ filters, limit });
 
-  const articles = res.contents
+  const articles: TRankedArticle[] = res.contents
     .map((article) => {
       const r = report.find((row) => row.id === article.id);
-      if (!r) throw new Error("Mismatch between report and response");
+
+      if (!r) {
+        console.error("Mismatch between report and response");
+        return { ...article, order: Infinity };
+      }
+
       return { ...article, order: r?.order };
     })
     .sort((a, b) => {

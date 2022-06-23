@@ -1,23 +1,23 @@
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 
-// const credentialsJsonPath = "./credentials.json";
-
-const projectId = process.env.GA_PROPERTY_ID;
-const credential = JSON.parse(Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, "base64").toString());
+const credentials = JSON.parse(Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, "base64").toString());
+const projectId = process.env.GCP_PROJECT_ID;
 const propertyId = 293317598;
-
 const analyticsDataClient = new BetaAnalyticsDataClient({
-  // keyFilename: credentialsJsonPath,
-  credential,
+  credentials,
   projectId,
 });
 
 type ReportRow = {
-  id: string;
+  id: string; // 記事ID
   pageViews: string;
   order: number;
 };
 
+/**
+ * 閲覧数の多いページの内、レシピ記事以外のページを除外して返す
+ * 4ヶ月前から前日までの期間で算定
+ */
 export const runReport = async () => {
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
@@ -54,6 +54,7 @@ export const runReport = async () => {
         },
       },
     ],
+    limit: 100,
   });
 
   if (response?.rows?.length === 0) return;
@@ -69,8 +70,7 @@ export const runReport = async () => {
     const pageViews = row.metricValues[0].value;
 
     if (!id || !pageViews) return acc;
-
-    return [...acc, { id, pageViews, order: ++index }];
+    return [...acc, { id, pageViews, order: index }];
   }, [] as ReportRow[]);
 
   return result;
