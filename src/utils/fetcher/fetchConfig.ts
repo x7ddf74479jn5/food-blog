@@ -1,6 +1,5 @@
-import { client } from "src/lib/client";
-import type { TConfig } from "src/types";
-
+import { client } from "@/lib/client";
+import type { TConfig } from "@/types";
 import { HttpError } from "@/utils/error/Http";
 
 export const fetchConfig = async () => {

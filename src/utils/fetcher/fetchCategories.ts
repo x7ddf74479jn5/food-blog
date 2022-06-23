@@ -1,6 +1,5 @@
-import { client } from "src/lib/client";
-import type { TCategory, TCategoryListResponse } from "src/types";
-
+import { client } from "@/lib/client";
+import type { TCategory, TCategoryListResponse } from "@/types";
 import { HttpError } from "@/utils/error/Http";
 
 export const fetchCategory = async (slug: string): Promise<TCategory> => {

@@ -797,9 +797,7 @@ exports[`pages/_offline snapshot 1`] = `
       <div
         className="mb-8"
       >
-        <h1
-          className="flex justify-center text-4xl font-bold"
-        >
+        <h1>
           レシピ一覧
         </h1>
       </div>

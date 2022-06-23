@@ -1,4 +1,4 @@
-export { mockArticles } from "./articles";
+export { mockArticles, mockPopularArticles } from "./articles";
 export { mockCategories } from "./categories";
 export { mockConfig } from "./config";
 export { mockPickup } from "./pickup";

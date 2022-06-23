@@ -1,4 +1,4 @@
-import { mockArticles, mockCategories, mockConfig, mockPickup } from "@mocks/data";
+import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
@@ -57,6 +57,7 @@ describe("pages/articles", () => {
           article={mockArticleStock}
           mdxSource={mdxSource}
           relatedArticles={mockArticleList}
+          popularArticles={mockPopularArticles}
         />
       )
       .toJSON();
@@ -102,6 +103,7 @@ describe("pages/articles", () => {
         article={mockArticleStock}
         mdxSource={mdxSource}
         relatedArticles={mockArticleList}
+        popularArticles={mockPopularArticles}
       />
     );
 

@@ -1,6 +1,5 @@
-import { client } from "src/lib/client";
-import type { TTag, TTagListResponse } from "src/types";
-
+import { client } from "@/lib/client";
+import type { TTag, TTagListResponse } from "@/types";
 import { HttpError } from "@/utils/error/Http";
 
 export const fetchTag = async (slug: string): Promise<TTag> => {

@@ -1,12 +1,7 @@
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 
-const credentials = JSON.parse(Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, "base64").toString());
 const projectId = process.env.GCP_PROJECT_ID;
 const propertyId = 293317598;
-const analyticsDataClient = new BetaAnalyticsDataClient({
-  credentials,
-  projectId,
-});
 
 type ReportRow = {
   id: string; // 記事ID
@@ -19,6 +14,12 @@ type ReportRow = {
  * 4ヶ月前から前日までの期間で算定
  */
 export const runReport = async () => {
+  const credentials = JSON.parse(Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, "base64").toString());
+
+  const analyticsDataClient = new BetaAnalyticsDataClient({
+    credentials,
+    projectId,
+  });
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [

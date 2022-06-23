@@ -4,7 +4,6 @@ import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
 import type { ParsedUrlQuery } from "node:querystring";
 import { memo } from "react";
 import { FaPen, FaRegCalendar } from "react-icons/fa";
-import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle } from "src/types";
 
 import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
 import MDXCustomComponents from "@/components/atoms/mdx";
@@ -14,6 +13,7 @@ import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/functions/meta";
 import ArticleLayout from "@/components/layouts/ArticleLayout";
 import { TagListColored } from "@/components/molecules/TagList";
 import { getPickupArticles, getPopularArticles, getRelatedArticles } from "@/services/article";
+import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 import { getSafeDate } from "@/utils/date";
 import { fetchArticle, fetchArticles, fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";

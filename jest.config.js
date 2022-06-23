@@ -13,7 +13,6 @@ const customJestConfig = {
   verbose: true,
   setupFilesAfterEnv: ["<rootDir>/jest/jest.setup.js"],
   moduleNameMapper: {
-    "src/(.*)": "<rootDir>/src/$1",
     "mocks/(.*)": "<rootDir>/mocks/$1",
     "@/(.*)": "<rootDir>/src/$1",
     "jest/test-utils": "<rootDir>/jest/test-utils",

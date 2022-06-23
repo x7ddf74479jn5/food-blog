@@ -1,4 +1,4 @@
-import type { TArticle } from "@/types";
+import type { TArticle, TRankedArticle } from "@/types";
 
 import { mockCategories } from "./categories";
 import { mockTags } from "./tags";
@@ -173,3 +173,8 @@ export const mockArticles: TArticleCollection = {
   ohitashi: { ...dateCommon, ...articleOhitashi },
   tacoRice: { ...dateCommon, ...articleTacoRice },
 };
+
+export const mockPopularArticles: TRankedArticle[] = Object.values(mockArticles).map((article, index) => ({
+  ...article,
+  order: ++index,
+}));

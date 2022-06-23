@@ -1,4 +1,4 @@
-import { mockCategories, mockConfig, mockPickup } from "@mocks/data";
+import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
@@ -26,7 +26,14 @@ describe("pages/articles/categories", () => {
 
   it("snapshot", () => {
     const tree = renderer
-      .create(<Categories categories={mockCategoryList} config={mockConfig} pickup={mockPickup} />)
+      .create(
+        <Categories
+          categories={mockCategoryList}
+          config={mockConfig}
+          pickup={mockPickup}
+          popularArticles={mockPopularArticles}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -48,7 +55,14 @@ describe("pages/articles/categories", () => {
   });
 
   it("OK: 初期レンダリング", async () => {
-    const { unmount } = render(<Categories categories={mockCategoryList} config={mockConfig} pickup={mockPickup} />);
+    const { unmount } = render(
+      <Categories
+        categories={mockCategoryList}
+        config={mockConfig}
+        pickup={mockPickup}
+        popularArticles={mockPopularArticles}
+      />
+    );
     const h1 = screen.getByRole("heading", { level: 1 });
     const expectedHeading = `カテゴリー一覧`;
     expect(h1).toHaveTextContent(expectedHeading);

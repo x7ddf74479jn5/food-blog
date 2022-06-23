@@ -1,4 +1,4 @@
-import { mockCategories, mockConfig, mockPickup } from "@mocks/data";
+import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
 import type { NextRouter } from "jest/test-utils";
 import { act, render, screen, withMockedRouter } from "jest/test-utils";
 import { server } from "mocks/msw/server";
@@ -33,7 +33,15 @@ describe("pages/search", () => {
   it("snapshot", () => {
     const tree = renderer
       .create(
-        withMockedRouter(mockRouter, <Search categories={mockCategoryList} config={mockConfig} pickup={mockPickup} />)
+        withMockedRouter(
+          mockRouter,
+          <Search
+            categories={mockCategoryList}
+            config={mockConfig}
+            pickup={mockPickup}
+            popularArticles={mockPopularArticles}
+          />
+        )
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
@@ -58,7 +66,15 @@ describe("pages/search", () => {
   it("OK: 初期レンダリング", async () => {
     await act(async () => {
       const result = await render(
-        withMockedRouter(mockRouter, <Search categories={mockCategoryList} config={mockConfig} pickup={mockPickup} />)
+        withMockedRouter(
+          mockRouter,
+          <Search
+            categories={mockCategoryList}
+            config={mockConfig}
+            pickup={mockPickup}
+            popularArticles={mockPopularArticles}
+          />
+        )
       );
 
       const expectedHeading = `検索結果：keyword`;

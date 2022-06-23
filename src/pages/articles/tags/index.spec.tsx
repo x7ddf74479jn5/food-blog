@@ -1,4 +1,12 @@
-import { dateCommon, mockArticles, mockCategories, mockConfig, mockPickup, mockTags } from "@mocks/data";
+import {
+  dateCommon,
+  mockArticles,
+  mockCategories,
+  mockConfig,
+  mockPickup,
+  mockPopularArticles,
+  mockTags,
+} from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
@@ -37,7 +45,14 @@ describe("pages/articles/tags", () => {
   it("snapshot", () => {
     const tree = renderer
       .create(
-        <Tags config={mockConfig} data={mockData} pickup={mockPickup} tag={mockTagRice} categories={mockCategoryList} />
+        <Tags
+          config={mockConfig}
+          data={mockData}
+          pickup={mockPickup}
+          tag={mockTagRice}
+          categories={mockCategoryList}
+          popularArticles={mockPopularArticles}
+        />
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
@@ -71,7 +86,14 @@ describe("pages/articles/tags", () => {
 
   it("OK: 初期レンダリング", async () => {
     const { unmount } = render(
-      <Tags tag={mockTagRice} categories={mockCategoryList} config={mockConfig} data={mockData} pickup={mockPickup} />
+      <Tags
+        tag={mockTagRice}
+        categories={mockCategoryList}
+        config={mockConfig}
+        data={mockData}
+        pickup={mockPickup}
+        popularArticles={mockPopularArticles}
+      />
     );
     const h1 = screen.getByRole("heading", { level: 1 });
     const expectedHeading = `タグ：${mockTagRice.name}`;
