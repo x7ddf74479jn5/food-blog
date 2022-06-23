@@ -10,18 +10,18 @@ type Props = {
   article: TArticle;
 };
 
-export const ArticleTipWithThumb: React.VFC<Props> = ({ article }) => {
+export const ArticleTipWithThumb: React.FC<Props> = ({ article }) => {
   const { id, title, tags, image } = article;
   return (
     <article className="flex flex-row max-h-36 ">
       <NextLink href={`${urlTable.articles}/${id}`}>
-        <div className="flex-shrink-0 mt-1 mr-4 min-w-[max-content]">
+        <div className="shrink-0 mt-1 mr-4 min-w-[max-content]">
           <Image src={image.url} alt={title} width={48} height={48} objectFit="cover" />
         </div>
       </NextLink>
-      <div className="flex flex-col flex-grow">
+      <div className="flex flex-col grow">
         <NextLink href={`${urlTable.articles}/${id}`}>{title}</NextLink>
-        <div className="flex-grow">
+        <div className="grow">
           <TagListPlain tags={tags} hasLink />
         </div>
       </div>
@@ -33,9 +33,9 @@ export type ArticleTipWithThumbListProps = {
   articles: TArticle[];
 };
 
-export const ArticleTipWithThumbList: React.VFC<ArticleTipWithThumbListProps> = memo(({ articles }) => {
+export const ArticleTipWithThumbList: React.FC<ArticleTipWithThumbListProps> = memo(({ articles }) => {
   return (
-    <ul className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-x-1 md:gap-x-1 lg:gap-x-1 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 pb-2">
+    <ul className="grid gap-2 pb-2 sm:grid-cols-2 sm:gap-x-1 sm:gap-y-3 md:grid-cols-2 md:gap-x-1 md:gap-y-3 lg:grid-cols-1 lg:gap-x-1 lg:gap-y-3">
       {articles.map((article) => (
         <li key={article.id}>
           <ArticleTipWithThumb article={article} />
