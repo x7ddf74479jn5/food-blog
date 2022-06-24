@@ -1,4 +1,4 @@
-import { mockArticles, mockCategories, mockConfig, mockPickup } from "mocks/data";
+import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "mocks/data";
 import renderer from "react-test-renderer";
 
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
@@ -24,6 +24,7 @@ describe("components/layouts/DefaultLayout", () => {
           backLinks={[{ href: urlTable.home, label: "Home" }]}
           categories={categories}
           pickup={mockPickup}
+          popularArticles={mockPopularArticles}
         >
           children
         </DefaultLayout>

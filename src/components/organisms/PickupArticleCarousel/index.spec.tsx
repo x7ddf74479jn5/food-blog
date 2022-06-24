@@ -2,7 +2,7 @@ import { mockPickup } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 import renderer from "react-test-renderer";
 
-import { SlickArticles } from ".";
+import { PickupArticleCarousel } from ".";
 
 jest.mock("react-slick", () => {
   return {
@@ -14,15 +14,15 @@ jest.mock("react-slick", () => {
   };
 });
 
-describe("components/organisms/SlickArticles", () => {
+describe("components/organisms/PickupArticleCarousel", () => {
   const { description, articles } = mockPickup;
   it("snapshot", () => {
-    const tree = renderer.create(<SlickArticles pickup={mockPickup} />).toJSON();
+    const tree = renderer.create(<PickupArticleCarousel pickup={mockPickup} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("OK: 初期表示が正しい", () => {
-    const { container } = render(<SlickArticles pickup={mockPickup} />);
+    const { container } = render(<PickupArticleCarousel pickup={mockPickup} />);
     expect(container).toHaveTextContent("PICKUP");
     expect(container).toHaveTextContent(description);
     const articleEls = screen.getAllByRole("article");

@@ -1,4 +1,4 @@
-import { dateCommon, mockArticles, mockCategories, mockConfig, mockPickup } from "@mocks/data";
+import { dateCommon, mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
@@ -42,7 +42,15 @@ describe("pages/_offline", () => {
 
   it("snapshot", () => {
     const tree = renderer
-      .create(<Home categories={mockCategoryList} config={mockConfig} data={mockData} pickup={mockPickup} />)
+      .create(
+        <Home
+          categories={mockCategoryList}
+          config={mockConfig}
+          data={mockData}
+          pickup={mockPickup}
+          popularArticles={mockPopularArticles}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -68,7 +76,13 @@ describe("pages/_offline", () => {
 
   it("OK: 初期レンダリング", async () => {
     const { unmount } = render(
-      <Home categories={mockCategoryList} config={mockConfig} data={mockData} pickup={mockPickup} />
+      <Home
+        categories={mockCategoryList}
+        config={mockConfig}
+        data={mockData}
+        pickup={mockPickup}
+        popularArticles={mockPopularArticles}
+      />
     );
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent("レシピ一覧");
