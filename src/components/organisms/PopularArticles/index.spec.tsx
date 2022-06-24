@@ -4,7 +4,7 @@ import renderer from "react-test-renderer";
 
 import { PopularArticles } from ".";
 
-describe("components/organisms/RelatedArticles", () => {
+describe("components/organisms/PopularArticles", () => {
   const mockArticleList = Object.values(mockArticles).map((article, index) => ({ ...article, order: ++index }));
   describe("記事がある", () => {
     it("snapshot", () => {
