@@ -15,6 +15,8 @@ export const urlTable = {
   search: "/search",
 } as const;
 
+export type UrlTableValue = typeof urlTable[keyof typeof urlTable];
+
 const labelTable = {
   [urlTable.home]: "レシピ一覧へ",
   [urlTable.categories]: "カテゴリー別一覧へ",

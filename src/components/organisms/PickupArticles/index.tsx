@@ -10,7 +10,7 @@ type PickupArticlesProps = {
 
 export const PickupArticles: React.FC<PickupArticlesProps> = memo(({ pickupArticles }) => {
   return (
-    <SideSectionContainer header="PICKUP">
+    <SideSectionContainer header="PICKUP" href="/articles/pickup">
       {pickupArticles.length > 0 ? (
         <ArticleTipWithThumbList articles={pickupArticles} />
       ) : (

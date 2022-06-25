@@ -12,7 +12,12 @@ type PopularArticleCarouselProps = {
 export const PopularArticleCarousel: React.FC<PopularArticleCarouselProps> = memo(({ articles }) => {
   return (
     <section>
-      <SlickContainer description="人気記事ランキング" title="POPULAR" Icon={<IoPodium className="text-yellow-400" />}>
+      <SlickContainer
+        description="人気記事ランキング"
+        title="POPULAR"
+        href="/articles/popular"
+        Icon={<IoPodium className="text-yellow-400" />}
+      >
         {articles.map((article) => (
           <article className="px-2" key={article.id}>
             <div className="relative">

@@ -11,9 +11,9 @@ type CategoryListSideProps = {
   columns: string;
 };
 
-export const CategoryListSide: React.VFC<CategoryListSideProps> = memo(({ categories, columns }) => {
+export const CategoryListSide: React.FC<CategoryListSideProps> = memo(({ categories, columns }) => {
   return (
-    <SideSectionContainer header="カテゴリー">
+    <SideSectionContainer header="カテゴリー" href="/articles/categories">
       <ul
         className={`grid grid-flow-row gap-2 md:max-h-[calc(28rem+8rem)] md:overflow-y-auto place-items-center ${columns}`}
       >

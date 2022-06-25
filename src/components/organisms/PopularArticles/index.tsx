@@ -10,7 +10,7 @@ type Props = {
 
 export const PopularArticles: React.FC<Props> = memo(({ popularArticles }) => {
   return (
-    <SideSectionContainer header="人気レシピ">
+    <SideSectionContainer header="人気レシピ" href="/articles/popular">
       {popularArticles.length > 0 ? (
         <ArticleTipWithThumbList articles={popularArticles} />
       ) : (

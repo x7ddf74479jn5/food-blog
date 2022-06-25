@@ -14,12 +14,16 @@ export const PickupArticleCarousel: React.FC<PickupArticleCarouselProps> = memo(
 
   return (
     <section>
-      <SlickContainer description={description} title="PICKUP" Icon={<FaLightbulb className="text-yellow-400" />}>
+      <SlickContainer
+        description={description}
+        title="PICKUP"
+        href="/articles/pickup"
+        Icon={<FaLightbulb className="text-yellow-400" />}
+      >
         {articles.map((article) => (
           <article className="px-2" key={article.id}>
             <div className="relative">
               <Thumbnail src={article.image.url} title={article.title} id={article.id} />
-              <div className="absolute top-0 left-0 p-2 text-sm font-semibold text-white bg-black/25">T</div>
               <h3 className="block absolute bottom-3 p-1 w-full text-sm font-semibold text-white truncate bg-black/25">
                 {article.title}
               </h3>

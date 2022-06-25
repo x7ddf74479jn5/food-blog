@@ -18,7 +18,7 @@ describe("components/organisms/SlickContainer", () => {
   it("snapshot", () => {
     const tree = renderer
       .create(
-        <SlickContainer title="title" description="description" Icon={<IoPodium />}>
+        <SlickContainer title="title" description="description" href="/" Icon={<IoPodium />}>
           Children
         </SlickContainer>
       )
@@ -28,7 +28,7 @@ describe("components/organisms/SlickContainer", () => {
 
   it("OK: 初期表示が正しい", () => {
     const { container } = render(
-      <SlickContainer title="title" description="description" Icon={<IoPodium />}>
+      <SlickContainer title="title" description="description" href="/" Icon={<IoPodium />}>
         Children
       </SlickContainer>
     );

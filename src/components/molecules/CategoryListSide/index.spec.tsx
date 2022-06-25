@@ -1,4 +1,4 @@
-import { render, screen } from "jest/test-utils";
+import { render, screen, within } from "jest/test-utils";
 import { mockCategories } from "mocks/data";
 import React from "react";
 import renderer from "react-test-renderer";
@@ -20,8 +20,10 @@ describe("components/molecules/CategoryMenu", () => {
 
     const header = screen.getByRole("heading");
     expect(header).toHaveTextContent("カテゴリー");
+    expect(screen.getByRole("link", { name: "カテゴリー" })).toHaveAttribute("href", urlTable.categories);
 
-    const anchors = screen.getAllByRole("link");
+    const ul = screen.getByRole("list");
+    const anchors = within(ul).getAllByRole("link");
 
     for (let i = 0; i < mockCategoryList.length; i++) {
       const anchor = anchors[i];
