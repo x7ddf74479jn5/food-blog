@@ -8,7 +8,8 @@ import { urlTable } from "@/utils/paths/url";
 
 type CategoryMenuItemProps = {
   text: string;
-  slug?: string | undefined;
+  href: string;
+  disabled?: boolean;
 };
 
 const menuItemCss = {
@@ -17,25 +18,12 @@ const menuItemCss = {
   common: "flex justify-between w-full px-4 py-2 text-sm leading-5 text-left focus:outline-none cursor-pointer",
 };
 
-export const CategoryMenuItem: React.VFC<CategoryMenuItemProps> = ({ slug, text }) => {
-  const router = useRouter();
-  const asPath = router.asPath;
-
-  const isCurrentPage = () => {
-    if (!asPath.startsWith(urlTable.categories)) {
-      return false;
-    }
-    if (slug === router.query.slug) {
-      return true;
-    }
-    return false;
-  };
-
+export const CategoryMenuItem: React.FC<CategoryMenuItemProps> = ({ href, text, disabled }) => {
   return (
-    <Menu.Item disabled={isCurrentPage()}>
+    <Menu.Item disabled={disabled}>
       {({ active }) => (
         <NextLink
-          href={`${urlTable.categories}/${slug ?? ""}`}
+          href={href}
           className={`${active ? menuItemCss.activeTrue : menuItemCss.activeFalse} ${menuItemCss.common}`}
         >
           {text}
@@ -50,19 +38,45 @@ type CategoryMenuItemsProps = {
   categories: TCategory[];
 };
 
-const CategoryMenuItems: React.VFC<CategoryMenuItemsProps> = ({ open, categories }) => {
+const CategoryMenuItems: React.FC<CategoryMenuItemsProps> = ({ open, categories }) => {
+  const router = useRouter();
+  const asPath = router.asPath;
+
+  const isCurrentPage = (slug: string) => {
+    if (!asPath.startsWith(urlTable.categories)) {
+      return false;
+    }
+    if (slug === router.query.slug) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <>
       {open && (
         <Menu.Items
           static
-          className="absolute right-0 z-10 mt-1 w-28 bg-white dark:bg-gray-700 rounded-md border border-gray-200 dark:border-gray-600 shadow-lg outline-none"
+          className="absolute right-0 z-10 mt-1 w-28 bg-white dark:bg-gray-700 rounded-md border border-gray-200 dark:border-gray-600 outline-none shadow-lg"
         >
-          <div className="py-1">
-            <CategoryMenuItem text="一覧" />
-            {categories.map((category) => (
-              <CategoryMenuItem key={category.id} slug={category.slug} text={category.name} />
-            ))}
+          <div className="py-1 divide-y divide-gray-100 dark:divide-gray-600">
+            <div className="">
+              <CategoryMenuItem text="一覧" href={urlTable.categories} disabled={asPath === urlTable.categories} />
+            </div>
+            <div>
+              <CategoryMenuItem text="おすすめ" href={urlTable.pickup} disabled={asPath === urlTable.pickup} />
+              <CategoryMenuItem text="人気" href={urlTable.popular} disabled={asPath === urlTable.popular} />
+            </div>
+            <div>
+              {categories.map((category) => (
+                <CategoryMenuItem
+                  key={category.id}
+                  href={`${urlTable.categories}/${category.slug}`}
+                  text={category.name}
+                  disabled={isCurrentPage(category.slug)}
+                />
+              ))}
+            </div>
           </div>
         </Menu.Items>
       )}
@@ -74,14 +88,14 @@ type CategoryMenuProps = {
   categories: TCategory[];
 };
 
-export const CategoryMenu: React.VFC<CategoryMenuProps> = memo(({ categories }) => {
+export const CategoryMenu: React.FC<CategoryMenuProps> = memo(({ categories }) => {
   return (
     <div className="inline-block relative text-left">
       <Menu>
         {({ open }) => (
           <>
             <span className="rounded-md shadow-sm">
-              <Menu.Button className="inline-flex justify-center py-1 px-3 w-full text-sm font-medium leading-5 text-gray-700 hover:text-gray-500 dark:text-gray-100 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-500 dark:hover:border-gray-400 transition duration-150 ease-in-out focus:outline-none">
+              <Menu.Button className="inline-flex justify-center py-1 px-3 w-full text-sm font-medium leading-5 text-gray-700 hover:text-gray-500 dark:text-gray-100 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-500 dark:hover:border-gray-400 focus:outline-none transition duration-150 ease-in-out">
                 <span>カテゴリー</span>
                 <svg className="-mr-1 ml-2 w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                   <path
