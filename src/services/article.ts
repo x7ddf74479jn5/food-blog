@@ -93,7 +93,7 @@ export const getPopularArticles = async () => {
   const filters = ids.map((id) => `contentId[equals]${id}`).join("[or]");
   const limit = 5;
 
-  const res = await await fetchArticles({ filters, limit });
+  const res = await fetchArticles({ filters, limit });
 
   const articles: TRankedArticle[] = res.contents
     .map((article) => {

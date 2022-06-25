@@ -9,6 +9,7 @@ export const urlTable = {
   articles: "/articles",
   categories: "/articles/categories",
   tags: "/articles/tags",
+  pickup: "/articles/pickup",
   preview: "/preview",
   search: "/search",
 } as const;
