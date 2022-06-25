@@ -1,5 +1,5 @@
 import { mockCategories, mockConfig } from "@mocks/data";
-import { render, screen } from "jest/test-utils";
+import { render, screen, withMockedRouter } from "jest/test-utils";
 import renderer from "react-test-renderer";
 
 import Header from "../Header";
@@ -9,7 +9,9 @@ describe("components/organisms/Header", () => {
   const categoryList = Object.values(mockCategories);
 
   it("snapshot", () => {
-    const tree = renderer.create(<Header categories={categoryList} siteTitle={siteTitle} />).toJSON();
+    const tree = renderer
+      .create(withMockedRouter({ asPath: "/" }, <Header categories={categoryList} siteTitle={siteTitle} />))
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 

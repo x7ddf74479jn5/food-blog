@@ -1,3 +1,4 @@
+import { withMockedRouter } from "jest/test-utils";
 import { mockCategories, mockConfig } from "mocks/data";
 import renderer from "react-test-renderer";
 
@@ -8,9 +9,12 @@ describe("components/layouts/RootLayout", () => {
   it("snapshot", () => {
     const tree = renderer
       .create(
-        <RootLayout categories={categoryList} config={mockConfig}>
-          children
-        </RootLayout>
+        withMockedRouter(
+          { asPath: "/" },
+          <RootLayout categories={categoryList} config={mockConfig}>
+            children
+          </RootLayout>
+        )
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

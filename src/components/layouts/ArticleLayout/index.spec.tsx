@@ -1,3 +1,4 @@
+import { withMockedRouter } from "jest/test-utils";
 import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "mocks/data";
 import renderer from "react-test-renderer";
 
@@ -17,18 +18,22 @@ describe("components/layouts/ArticleLayout", () => {
   it("snapshot", () => {
     const tree = renderer
       .create(
-        <ArticleLayout
-          url={url}
-          pageTitle={pageTitle}
-          config={mockConfig}
-          backLinks={[{ href: urlTable.home, label: "Home" }]}
-          relatedArticles={relatedArticles}
-          categories={categories}
-          pickup={mockPickup}
-          popularArticles={mockPopularArticles}
-        >
-          children
-        </ArticleLayout>
+        withMockedRouter(
+          { asPath: "/" },
+
+          <ArticleLayout
+            url={url}
+            pageTitle={pageTitle}
+            config={mockConfig}
+            backLinks={[{ href: urlTable.home, label: "Home" }]}
+            relatedArticles={relatedArticles}
+            categories={categories}
+            pickup={mockPickup}
+            popularArticles={mockPopularArticles}
+          >
+            children
+          </ArticleLayout>
+        )
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

@@ -1,5 +1,5 @@
 import { dateCommon, mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
-import { render, screen } from "jest/test-utils";
+import { render, screen, withMockedRouter } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 import renderer from "react-test-renderer";
 
@@ -36,14 +36,17 @@ describe("pages/articles/categories/[slug]", () => {
   it("snapshot", () => {
     const tree = renderer
       .create(
-        <Category
-          category={mockCategoryRice}
-          categories={mockCategoryList}
-          config={mockConfig}
-          data={mockData}
-          pickup={mockPickup}
-          popularArticles={mockPopularArticles}
-        />
+        withMockedRouter(
+          { asPath: "/" },
+          <Category
+            category={mockCategoryRice}
+            categories={mockCategoryList}
+            config={mockConfig}
+            data={mockData}
+            pickup={mockPickup}
+            popularArticles={mockPopularArticles}
+          />
+        )
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
