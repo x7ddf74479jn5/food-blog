@@ -1,10 +1,16 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import BackLinks from ".";
+import { withRouterContext } from ".storybook/mocks/context";
 
 export default {
   title: "molecules/BackLinks",
   component: BackLinks,
+  decorators: [
+    (storyFn) => {
+      return withRouterContext(storyFn, { asPath: "/" });
+    },
+  ],
 } as ComponentMeta<typeof BackLinks>;
 
 const Template: ComponentStory<typeof BackLinks> = (args) => <BackLinks {...args} />;

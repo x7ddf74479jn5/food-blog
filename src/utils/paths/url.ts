@@ -1,5 +1,3 @@
-type Table = Record<string, string>;
-
 export const apiRoute = {
   apiPreview: "/api/preview",
   apiArticles: "/api/articles",
@@ -15,13 +13,15 @@ export const urlTable = {
   search: "/search",
 } as const;
 
-const labelTable: Table = {
-  "/": "レシピ一覧へ",
-  "/articles/categories": "カテゴリー別一覧へ",
-  "/articles/tags": "タグ別一覧へ",
-};
+const labelTable = {
+  [urlTable.home]: "レシピ一覧へ",
+  [urlTable.categories]: "カテゴリー別一覧へ",
+  [urlTable.tags]: "タグ別一覧へ",
+} as const;
 
-export const getBackLinks = (paths: string[]): { href: string; label: string }[] => {
+type LabelTableKey = keyof typeof labelTable;
+
+export const getBackLinks = (paths: LabelTableKey[]): { href: string; label: string }[] => {
   return paths.map((path) => {
     return { href: path, label: labelTable[path] };
   });

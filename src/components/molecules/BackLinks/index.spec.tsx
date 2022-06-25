@@ -16,6 +16,8 @@ describe("components/molecules/BackLinks", () => {
 
   it("OK: 表示が正しい", () => {
     render(<BackLinks links={mockBackLinks} />);
+    const button = screen.getByRole("button", { name: "前のページへ" });
+    expect(button).toBeInTheDocument();
     const anchor = screen.getByRole("link");
     expect(anchor).toHaveAttribute("href", urlTable.home);
     expect(anchor).toHaveTextContent(mockBackLinks[0].label);
