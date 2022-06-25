@@ -10,6 +10,7 @@ export const urlTable = {
   categories: "/articles/categories",
   tags: "/articles/tags",
   pickup: "/articles/pickup",
+  popular: "/articles/popular",
   preview: "/preview",
   search: "/search",
 } as const;
