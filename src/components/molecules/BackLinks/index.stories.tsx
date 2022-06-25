@@ -1,7 +1,7 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
+import { withRouterContext } from "../../../../.storybook/mocks/context";
 import BackLinks from ".";
-import { withRouterContext } from ".storybook/mocks/context";
 
 export default {
   title: "molecules/BackLinks",
