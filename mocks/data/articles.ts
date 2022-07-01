@@ -1,3 +1,5 @@
+import path from "path";
+
 import type { TArticle, TRankedArticle } from "@/types";
 
 import { mockCategories } from "./categories";
@@ -5,13 +7,15 @@ import { mockTags } from "./tags";
 import { dateCommon } from "./utils";
 import { mockWriters } from "./writers";
 
+const toPath = (fileName: string) => path.join(process.cwd(), "images", fileName);
+
 const articleStock = {
   id: "p97vmuno3jdn",
   title: "基本の一番だしの作り方",
   writer: mockWriters.pandashark,
   description:
     "だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。",
-  image: { url: "/images/5026416_s.jpg", height: 427, width: 640 },
+  image: { url: toPath("5026416_s.jpg"), height: 427, width: 640 },
   excerpt:
     "だし昆布と鰹節（削り節）から取った出汁は、味噌汁、そば、うどん、煮物、鍋料理など、多くの和食に使用できます。",
   body: `**分量： 800ml**
