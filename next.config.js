@@ -17,7 +17,7 @@ module.exports = withBundleAnalyzer(
     },
     pageExtensions: ["page.tsx", "page.ts"],
     pwa: {
-      disable: process.env.NODE_ENV === "development",
+      disable: process.env.NODE_ENV !== "production",
       dest: "public",
       runtimeCaching,
       buildExcludes: [/middleware-manifest.json$/],

@@ -113,5 +113,8 @@
   "lint-staged": {
     "*.{ts,tsx}": "yarn fix:eslint",
     "*": "yarn fix:prettier"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

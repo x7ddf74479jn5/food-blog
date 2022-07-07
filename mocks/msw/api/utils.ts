@@ -1,7 +1,7 @@
 import type { DefaultBodyType, RestRequest } from "msw";
 
 export const getSearchParams = (req: RestRequest<DefaultBodyType, Record<string, any>>) => {
-  const apiKey = req.headers.get("X_MICROCMS_API_KEY ");
+  const apiKey = req.headers.get("x-microcms-api-key");
   let limit = req.url.searchParams.get("limit") ?? 5;
   limit = Number(limit);
   const offset = Number(req.url.searchParams.get("offset")) ?? 0;
