@@ -16,7 +16,7 @@ export const RootLayout: React.FC<RootLayoutProps> = memo(({ config, categories,
   const { siteTitle, organization } = config;
   return (
     <>
-      <div className="flex flex-col px-4 mx-auto mb-16 max-w-screen-lg min-h-screen">
+      <div className="flex flex-col px-4 mx-auto mb-16 max-w-screen-xl min-h-screen">
         <Header siteTitle={siteTitle} categories={categories} />
         <LayoutErrorBoundary>{children}</LayoutErrorBoundary>
         <Footer siteTitle={siteTitle} organization={organization} />

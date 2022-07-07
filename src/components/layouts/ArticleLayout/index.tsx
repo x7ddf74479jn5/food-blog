@@ -41,7 +41,7 @@ const ArticleLayout: React.FC<Props> = ({
   const BackLinks = useMemo(() => dynamic(() => import("@/components/molecules/BackLinks")), []);
   return (
     <RootLayout config={config} categories={categories}>
-      <div className="flex flex-col gap-16 items-center mt-4 mb-8 lg:flex-row lg:items-start lg:mb-16 ">
+      <div className="flex flex-col gap-16 items-center mt-4 mb-8 lg:flex-row lg:justify-between lg:items-start lg:mb-16 ">
         <main className="pb-12">{children}</main>
         <aside className="flex top-8 flex-col gap-y-8 items-center w-full h-full lg:sticky lg:w-1/3">
           <ContainerWithOrder order="order-1 lg:order-4">

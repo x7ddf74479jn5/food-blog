@@ -11,7 +11,7 @@ type ReportRow = {
 
 /**
  * 閲覧数の多いページの内、レシピ記事以外のページを除外して返す
- * 4ヶ月前から前日までの期間で算定
+ * 3ヶ月前から前日までの期間で算定
  */
 export const runReport = async () => {
   const credentials = JSON.parse(Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, "base64").toString());

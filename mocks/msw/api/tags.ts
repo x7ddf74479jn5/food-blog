@@ -10,7 +10,7 @@ export const mockGetTags: ResponseResolver<RestRequest, RestContext> = async (re
   const { apiKey, limit, offset, filters } = getSearchParams(req);
 
   if (!apiKey) {
-    res(ctx.status(400, "Invalid X_MICROCMS_API_KEY "));
+    res(ctx.status(400, "Invalid X_MICROCMS_API_KEY"));
   }
 
   let tags: TTag[] = [];

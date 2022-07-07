@@ -55,7 +55,7 @@ const articleTomatoSalad = {
   writer: mockWriters.pandashark,
   description:
     "スライストマトに、たっぷりのサラダ玉ねぎと大葉を乗せ、オリーブオイル、ポン酢、醤油、にんにくで作った特製ドレッシングをかけるだけの簡単・極旨サラダです。",
-  image: { url: "/2996666_s.jpg", height: 427, width: 640 },
+  image: { url: "/images/2996666_s.jpg", height: 427, width: 640 },
   excerpt: "",
   body: `**分量： 2人分**
 
@@ -86,7 +86,7 @@ const articleOhitashi = {
   writer: mockWriters.pandashark,
   description:
     "小松菜と油揚げのおひたしは、茹でた子大豆もやしと焼いた油揚げを混ぜた、栄養たっぷりの料理です。かつおぶしを乗せ、オリーブオイル、レモン果汁、醤油をかけてお召し上がりください。前菜やビールのおつまみにピッタリです♪",
-  image: { url: "/4966941_s.jpg", height: 427, width: 640 },
+  image: { url: "/images/4966941_s.jpg", height: 427, width: 640 },
   excerpt: "",
   body: `**分量： 2人分**
 
@@ -119,7 +119,7 @@ const articleTacoRice = {
   writer: mockWriters.pandashark,
   description:
     "タコライスは沖縄県の料理ですが、今では日本のどこのご家庭でも食されるようになりました。この「絶品タコライス」は、熊本県産の完全無農薬サラダ玉ねぎを使用しており、この玉ねぎの甘さとタコライスに入ったチリパウダーの辛さが口の中で絶妙にマッチします。ご飯ものだけどビールとの相性は抜群！子供たちも大好きな料理です♪",
-  image: { url: "/3129120_s.jpg", height: 427, width: 640 },
+  image: { url: "/images/3129120_s.jpg", height: 427, width: 640 },
   excerpt: "",
   body: `**分量： 2人分**
 

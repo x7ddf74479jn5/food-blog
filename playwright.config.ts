@@ -99,7 +99,7 @@ const config: PlaywrightTestConfig = {
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: "NODE_ENV=test yarn dev",
+    command: "NEXT_PUBLIC_MSW_ENABLED=true yarn dev",
     port: 3000,
   },
 };

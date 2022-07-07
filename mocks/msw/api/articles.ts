@@ -16,7 +16,7 @@ export const mockGetArticles: ResponseResolver<RestRequest, RestContext> = async
   const { apiKey, q, limit, offset } = getSearchParams(req);
 
   if (!apiKey) {
-    res(ctx.status(400, "Invalid X_MICROCMS_API_KEY "));
+    res(ctx.status(400, "Invalid X_MICROCMS_API_KEY"));
   }
 
   let articles: TArticle[] = [];
@@ -51,7 +51,7 @@ export const mockGetArticle: ResponseResolver<RestRequest, RestContext> = async 
   const { apiKey, id } = getSearchParams(req);
 
   if (!apiKey) {
-    res(ctx.status(400, "Invalid X_MICROCMS_API_KEY "));
+    res(ctx.status(400, "Invalid X_MICROCMS_API_KEY"));
   }
 
   const article = findContent<TArticle>(id, mockArticles);
