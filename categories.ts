@@ -2,8 +2,10 @@ import { dateCommon } from "@mocks/data/utils";
 
 import type { TCategory } from "@/types";
 
+type TMockCategoryKey = "rice" | "salad" | "tips";
+
 type TCategoryCollection = {
-  [key: string]: TCategory;
+  [P in TMockCategoryKey]: TCategory;
 };
 
 export const mockCategories: TCategoryCollection = {
@@ -13,7 +15,7 @@ export const mockCategories: TCategoryCollection = {
     slug: "rice",
     name: "ご飯物",
     color: "gray" as const,
-    image: { url: "/3129120_s.jpg", width: 100, height: 100 },
+    image: { url: "/images/3129120_s.jpg", width: 100, height: 100 },
   },
   salad: {
     ...dateCommon,
@@ -21,7 +23,7 @@ export const mockCategories: TCategoryCollection = {
     slug: "salad",
     name: "サラダ",
     color: "gray" as const,
-    image: { url: "/2996666_s.jpg", width: 100, height: 100 },
+    image: { url: "/images/2996666_s.jpg", width: 100, height: 100 },
   },
   tips: {
     ...dateCommon,
@@ -29,6 +31,6 @@ export const mockCategories: TCategoryCollection = {
     slug: "tips",
     name: "料理基礎",
     color: "gray" as const,
-    image: { url: "/5026416_s.jpg", width: 100, height: 100 },
+    image: { url: "/images/5026416_s.jpg", width: 100, height: 100 },
   },
 };

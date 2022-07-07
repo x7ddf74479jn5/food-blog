@@ -4,8 +4,22 @@ import type { TTag } from "@/types";
 
 import { dateCommon } from "./utils";
 
+type TMockTagKey =
+  | "komatsuna"
+  | "mozzarella"
+  | "lettuce"
+  | "mincedMeat"
+  | "rice"
+  | "aburaage"
+  | "onion"
+  | "udon"
+  | "misoSoup"
+  | "tomato"
+  | "preparation"
+  | "ooba";
+
 type TTagCollection = {
-  [key: string]: TTag & MicroCMSListContent;
+  [P in TMockTagKey]: TTag & MicroCMSListContent;
 };
 
 export const mockTags: TTagCollection = {
