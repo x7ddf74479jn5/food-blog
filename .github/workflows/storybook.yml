@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -31,7 +32,7 @@ jobs:
         run: yarn build-storybook
 
       - name: deploy storybook
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+        uses: JamesIves/github-pages-deploy-action@4.3.4
         with:
           branch: gh-pages
           folder: storybook-static
