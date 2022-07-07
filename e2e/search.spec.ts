@@ -19,11 +19,11 @@ test("search", async ({ page }) => {
   await expect(page.locator("h2", { hasText: stock.title })).toBeDefined();
 
   // Wait for the page to load
-  await page.locator("a", { hasText: stock.title }).waitFor();
+  await page.locator("a", { hasText: stock.title }).first().waitFor();
 
   // Go to the article page
   await Promise.all([
-    page.locator("a", { hasText: stock.title }).click(),
+    page.locator("a", { hasText: stock.title }).first().click(),
     page.waitForNavigation(/*{ url: 'http://localhost:3000/articles/p97vmuno3jdn' }*/),
   ]);
 
