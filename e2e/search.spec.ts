@@ -6,7 +6,7 @@ const { stock } = mockArticles;
 
 test("search", async ({ page }) => {
   // Go to http://localhost:3000/
-  await page.goto("http://localhost:3000/");
+  await page.goto("https://food-blog-chi.vercel.app/");
   // Fill input[placeholder="Search\.\.\."]
   await page.locator("input[placeholder='Search\\.\\.\\.'] >> nth=0").fill(stock.title);
 
@@ -28,6 +28,6 @@ test("search", async ({ page }) => {
   ]);
 
   await expect(page.locator("h1")).toHaveText(stock.title);
-  await expect(page).toHaveURL(`http://localhost:3000/articles/${stock.id}`);
+  await expect(page).toHaveURL(`https://food-blog-chi.vercel.app/articles/${stock.id}`);
   await expect(page).toHaveTitle(`${stock.title} | ${mockConfig.siteTitle}`);
 });

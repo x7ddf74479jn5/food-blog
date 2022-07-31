@@ -98,10 +98,10 @@ const config: PlaywrightTestConfig = {
   // outputDir: 'test-results/',
 
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: "NEXT_PUBLIC_MSW_ENABLED=true yarn dev",
-    port: 3000,
-  },
+  // webServer: {
+  //   command: "NEXT_PUBLIC_MSW_ENABLED=true yarn dev",
+  //   port: 3000,
+  // },
 };
 
 export default config;
