@@ -12,7 +12,7 @@ type CategoryListProps = {
 
 export const CategoryList: React.VFC<CategoryListProps> = ({ categories, width, height }) => {
   return (
-    <ul className="grid order-1 md:order-2 grid-cols-3 sm:grid-cols-5 lg:grid-cols-6 gap-2 mt-4 mb-12">
+    <ul className="grid order-1 grid-cols-3 gap-2 mt-4 mb-12 sm:grid-cols-5 md:order-2 lg:grid-cols-6">
       {categories.map((category) => (
         <li key={category.id}>
           <NextLink href={`${urlTable.categories}/${category.slug}`}>

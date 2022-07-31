@@ -1,15 +1,9 @@
-import { memo } from "react";
+type MainContainerProps = React.PropsWithChildren<object>;
 
-type MainContainerProps = {
-  children: React.ReactNode;
-};
-
-export const MainContainer: React.FC<MainContainerProps> = memo(({ children }) => {
+export const MainContainer: React.FC<MainContainerProps> = ({ children }) => {
   return (
-    <main className="overflow-hidden flex-auto order-1 md:order-2 pb-12 mt-8 md:mt-16 mb-0 w-full max-w-prose">
+    <main className="overflow-hidden flex-auto order-1 pb-12 mt-8 mb-0 w-full max-w-prose md:order-2 md:mt-16">
       {children}
     </main>
   );
-});
-
-MainContainer.displayName = "MainContainer";
+};

@@ -16,7 +16,7 @@ const Header: React.FC<Props> = ({ siteTitle, categories }) => {
     <header className="py-2">
       <div className="flex justify-between items-center">
         <SiteTitle size="text-2xl" title={siteTitle} />
-        <div className="hidden sm:block w-1/3">
+        <div className="hidden w-1/3 sm:block">
           <Search />
         </div>
         <div className="flex items-center space-x-4">
@@ -24,7 +24,7 @@ const Header: React.FC<Props> = ({ siteTitle, categories }) => {
           <CategoryMenu categories={categories} />
         </div>
       </div>
-      <div className="block sm:hidden mt-2">
+      <div className="block mt-2 sm:hidden">
         <Search />
       </div>
     </header>
