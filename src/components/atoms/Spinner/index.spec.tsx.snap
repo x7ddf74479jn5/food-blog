@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`components/atoms/Spinner snapshot 1`] = `
-<div
-  className="w-32 h-32 rounded-full border-b-2 border-green-500 animate-spin"
-/>
-`;
