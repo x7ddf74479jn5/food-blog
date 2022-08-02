@@ -1,7 +1,6 @@
 import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
-import { render, screen, withMockedRouter } from "jest/test-utils";
+import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
-import renderer from "react-test-renderer";
 
 import { mdx2html } from "@/utils/mdx/mdx2html";
 
@@ -41,29 +40,6 @@ describe("pages/preview", () => {
   const mockArticleList = Object.values(mockArticles);
   const mockArticleStock = mockArticles.stock;
   console.warn = jest.fn();
-
-  it("snapshot", async () => {
-    const mdxSource = await mdx2html(mockArticleStock.body);
-
-    const tree = renderer
-      .create(
-        withMockedRouter(
-          { asPath: "/" },
-          <ArticlePreview
-            categories={mockCategoryList}
-            config={mockConfig}
-            pickup={mockPickup}
-            article={mockArticleStock}
-            mdxSource={mdxSource}
-            relatedArticles={mockArticleList}
-            popularArticles={mockPopularArticles}
-            isPreview
-          />
-        )
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 
   it("OK: 初期レンダリング", async () => {
     const mdxSource = await mdx2html(mockArticleStock.body);

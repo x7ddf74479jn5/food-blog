@@ -1,7 +1,6 @@
 import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
-import { render, screen, withMockedRouter } from "jest/test-utils";
+import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
-import renderer from "react-test-renderer";
 
 import { formatPageTitle } from "@/utils/formatter";
 import { mdx2html } from "@/utils/mdx/mdx2html";
@@ -44,28 +43,6 @@ describe("pages/articles", () => {
   const mockArticleList = Object.values(mockArticles);
   const mockArticleStock = mockArticles.stock;
   console.warn = jest.fn();
-
-  it("snapshot", async () => {
-    const mdxSource = await mdx2html(mockArticleStock.body);
-
-    const tree = renderer
-      .create(
-        withMockedRouter(
-          { asPath: "/" },
-          <ArticleDetail
-            categories={mockCategoryList}
-            config={mockConfig}
-            pickup={mockPickup}
-            article={mockArticleStock}
-            mdxSource={mdxSource}
-            relatedArticles={mockArticleList}
-            popularArticles={mockPopularArticles}
-          />
-        )
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 
   // FIXME: sdkとnextをアップグレードしたら壊れた
   it.skip("getStaticPaths", async () => {

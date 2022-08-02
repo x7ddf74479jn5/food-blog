@@ -2,7 +2,6 @@ import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mo
 import type { NextRouter } from "jest/test-utils";
 import { act, render, screen, withMockedRouter } from "jest/test-utils";
 import { server } from "mocks/msw/server";
-import renderer from "react-test-renderer";
 
 import { formatPageTitle } from "@/utils/formatter";
 
@@ -29,23 +28,6 @@ describe("pages/search", () => {
       q: "keyword",
     },
   };
-
-  it("snapshot", () => {
-    const tree = renderer
-      .create(
-        withMockedRouter(
-          mockRouter,
-          <Search
-            categories={mockCategoryList}
-            config={mockConfig}
-            pickup={mockPickup}
-            popularArticles={mockPopularArticles}
-          />
-        )
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 
   // FIXME: sdkとnextをアップグレードしたら壊れた
   it.skip("getStaticProps", async () => {

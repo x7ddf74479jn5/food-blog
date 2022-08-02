@@ -18,14 +18,6 @@ describe("components/molecules/TOC", () => {
       {children}
     </div>
   );
-  it("snapshot", () => {
-    const { asFragment } = render(
-      <Wrapper>
-        <TOC />
-      </Wrapper>
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
 
   it("OK: 初期レンダリング ", () => {
     render(
