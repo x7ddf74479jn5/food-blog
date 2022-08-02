@@ -1,10 +1,10 @@
-import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
+import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 
 import { formatPageTitle } from "@/utils/formatter";
 
-import PopularPage, { getStaticProps } from "./index.page";
+import PopularPage from "./index.page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -21,21 +21,6 @@ jest.mock("next/head", () => {
 
 describe("pages/articles/popular", () => {
   const mockCategoryList = Object.values(mockCategories);
-  const mockArticleList = Object.values(mockArticles);
-
-  // FIXME: microcms-sdkをアップグレードしたら壊れた
-  it.skip("getStaticProps", async () => {
-    const result = await getStaticProps({});
-
-    if ("props" in result) {
-      const { categories, config, pickup, popularArticles } = result.props;
-      expect(pickup.articles).toStrictEqual(mockArticleList);
-      expect(categories).toStrictEqual(mockCategoryList);
-      expect(pickup).toStrictEqual(mockPickup);
-      expect(config).toStrictEqual(mockConfig);
-      expect(popularArticles).toStrictEqual(mockPopularArticles);
-    }
-  });
 
   it("OK: 初期レンダリング", async () => {
     const { unmount } = render(

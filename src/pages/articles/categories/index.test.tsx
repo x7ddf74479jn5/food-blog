@@ -4,7 +4,7 @@ import { server } from "mocks/msw/server";
 
 import { formatPageTitle } from "@/utils/formatter";
 
-import Categories, { getStaticProps } from "./index.page";
+import Categories from "./index.page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -21,23 +21,6 @@ jest.mock("next/head", () => {
 
 describe("pages/articles/categories", () => {
   const mockCategoryList = Object.values(mockCategories);
-  const mockCategoryRice = mockCategories.rice;
-
-  // FIXME: sdkとnextをアップグレードしたら壊れた
-  it.skip("getStaticProps", async () => {
-    const result = await getStaticProps({
-      params: {
-        slug: mockCategoryRice.slug,
-      },
-    });
-
-    if ("props" in result) {
-      const { categories, config, pickup } = result.props;
-      expect(categories).toStrictEqual(mockCategoryList);
-      expect(pickup).toStrictEqual(mockPickup);
-      expect(config).toStrictEqual(mockConfig);
-    }
-  });
 
   it("OK: 初期レンダリング", async () => {
     const { unmount } = render(
