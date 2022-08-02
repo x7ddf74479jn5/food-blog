@@ -2,7 +2,6 @@ import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "ne
 import { MDXRemote } from "next-mdx-remote";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
 import type { ParsedUrlQuery } from "node:querystring";
-import { memo } from "react";
 import { FaPen, FaRegCalendar } from "react-icons/fa";
 
 import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
@@ -167,4 +166,4 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
   }
 };
 
-export default memo(ArticleDetail);
+export default ArticleDetail;
