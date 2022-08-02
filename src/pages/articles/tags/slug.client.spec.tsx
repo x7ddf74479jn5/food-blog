@@ -11,9 +11,8 @@ import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 
 import { formatPageTitle } from "@/utils/formatter";
-import { urlTable } from "@/utils/paths/url";
 
-import Tags, { getStaticPaths, getStaticProps } from "./[slug].page";
+import Tags from "./[slug].page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -28,11 +27,10 @@ jest.mock("next/head", () => {
   };
 });
 
-describe("pages/articles/tags", () => {
+describe("pages/articles/tags/[slug]/client", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockTagRice = mockTags.rice;
   const mockArticleList = Object.values(mockArticles);
-  const mockTagList = Object.values(mockTags);
   const mockData = {
     contents: mockArticleList,
     totalCount: mockArticleList.length,
@@ -40,32 +38,6 @@ describe("pages/articles/tags", () => {
     limit: 10,
     offset: 0,
   };
-
-  // FIXME: sdkとnextをアップグレードしたら壊れた
-  it.skip("getStaticPaths", async () => {
-    const { paths, fallback } = await getStaticPaths({});
-    expect(fallback).toBe("blocking");
-    const expectedPaths = mockTagList.map((tag) => `${urlTable.tags}/${tag.slug}`);
-    expect(paths).toStrictEqual(expectedPaths);
-  });
-
-  // FIXME: sdkとnextをアップグレードしたら壊れた
-  it.skip("getStaticProps", async () => {
-    const result = await getStaticProps({
-      params: {
-        slug: mockTagRice.slug,
-      },
-    });
-
-    if ("props" in result) {
-      const { data, tag, categories, config, pickup } = result.props;
-      expect(data.contents).toStrictEqual(mockArticleList);
-      expect(tag).toBe(mockTagRice.slug);
-      expect(categories).toStrictEqual(mockCategoryList);
-      expect(pickup).toStrictEqual(mockPickup);
-      expect(config).toStrictEqual(mockConfig);
-    }
-  });
 
   it("OK: 初期レンダリング", async () => {
     const { unmount } = render(

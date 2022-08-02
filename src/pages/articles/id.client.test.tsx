@@ -4,9 +4,8 @@ import { server } from "mocks/msw/server";
 
 import { formatPageTitle } from "@/utils/formatter";
 import { mdx2html } from "@/utils/mdx/mdx2html";
-import { urlTable } from "@/utils/paths/url";
 
-import ArticleDetail, { getStaticPaths, getStaticProps } from "./[id].page";
+import ArticleDetail from "./[id].page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -43,35 +42,6 @@ describe("pages/articles", () => {
   const mockArticleList = Object.values(mockArticles);
   const mockArticleStock = mockArticles.stock;
   console.warn = jest.fn();
-
-  // FIXME: sdkとnextをアップグレードしたら壊れた
-  it.skip("getStaticPaths", async () => {
-    const { paths, fallback } = await getStaticPaths({});
-    expect(fallback).toBe("blocking");
-    const expectedPaths = mockArticleList.map((article) => `${urlTable.articles}/${article.id}`);
-    expect(paths).toStrictEqual(expectedPaths);
-  });
-
-  // FIXME: sdkとnextをアップグレードしたら壊れた
-  it.skip("getStaticProps", async () => {
-    const result = await getStaticProps({
-      params: {
-        id: mockArticleStock.id,
-      },
-      preview: undefined,
-      previewData: undefined,
-    });
-
-    if ("props" in result) {
-      const { article, categories, config, pickup, relatedArticles, isPreview } = result.props;
-      expect(article).toStrictEqual(mockArticleStock);
-      expect(categories).toStrictEqual(mockCategoryList);
-      expect(pickup).toStrictEqual(mockPickup);
-      expect(config).toStrictEqual(mockConfig);
-      expect(relatedArticles).toStrictEqual(mockArticleList);
-      expect(isPreview).toBeFalsy();
-    }
-  });
 
   it("OK: 初期レンダリング", async () => {
     const mdxSource = await mdx2html(mockArticleStock.body);

@@ -5,7 +5,7 @@ import { server } from "mocks/msw/server";
 
 import { formatPageTitle } from "@/utils/formatter";
 
-import Search, { getStaticProps } from "./index.page";
+import Search from "./index.page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -22,28 +22,11 @@ jest.mock("next/head", () => {
 
 describe("pages/search", () => {
   const mockCategoryList = Object.values(mockCategories);
-  const mockCategoryRice = mockCategories.rice;
   const mockRouter: Partial<NextRouter> = {
     query: {
       q: "keyword",
     },
   };
-
-  // FIXME: sdkとnextをアップグレードしたら壊れた
-  it.skip("getStaticProps", async () => {
-    const result = await getStaticProps({
-      params: {
-        slug: mockCategoryRice.slug,
-      },
-    });
-
-    if ("props" in result) {
-      const { categories, config, pickup } = result.props;
-      expect(categories).toStrictEqual(mockCategoryList);
-      expect(pickup).toStrictEqual(mockPickup);
-      expect(config).toStrictEqual(mockConfig);
-    }
-  });
 
   it("OK: 初期レンダリング", async () => {
     await act(async () => {

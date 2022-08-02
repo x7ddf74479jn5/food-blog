@@ -26,6 +26,7 @@ jest.mock("@/utils/mdx/mdx2html", () => {
     mdx2html: jest.fn(),
   };
 });
+
 jest.mock("next-mdx-remote", () => {
   return {
     // eslint-disable-next-line @typescript-eslint/naming-convention
