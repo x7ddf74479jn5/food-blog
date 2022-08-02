@@ -7,9 +7,8 @@ import {
   mockPopularArticles,
   mockTags,
 } from "@mocks/data";
-import { render, screen, withMockedRouter } from "jest/test-utils";
+import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
-import renderer from "react-test-renderer";
 
 import { formatPageTitle } from "@/utils/formatter";
 import { urlTable } from "@/utils/paths/url";
@@ -41,25 +40,6 @@ describe("pages/articles/tags", () => {
     limit: 10,
     offset: 0,
   };
-
-  it("snapshot", () => {
-    const tree = renderer
-      .create(
-        withMockedRouter(
-          { asPath: "/" },
-          <Tags
-            config={mockConfig}
-            data={mockData}
-            pickup={mockPickup}
-            tag={mockTagRice}
-            categories={mockCategoryList}
-            popularArticles={mockPopularArticles}
-          />
-        )
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 
   // FIXME: sdkとnextをアップグレードしたら壊れた
   it.skip("getStaticPaths", async () => {

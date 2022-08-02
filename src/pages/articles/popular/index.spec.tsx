@@ -1,7 +1,6 @@
 import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
-import { render, screen, withMockedRouter } from "jest/test-utils";
+import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
-import renderer from "react-test-renderer";
 
 import { formatPageTitle } from "@/utils/formatter";
 
@@ -23,23 +22,6 @@ jest.mock("next/head", () => {
 describe("pages/articles/popular", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockArticleList = Object.values(mockArticles);
-
-  it("snapshot", () => {
-    const tree = renderer
-      .create(
-        withMockedRouter(
-          { asPath: "/" },
-          <PopularPage
-            config={mockConfig}
-            pickup={mockPickup}
-            categories={mockCategoryList}
-            popularArticles={mockPopularArticles}
-          />
-        )
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 
   // FIXME: microcms-sdkをアップグレードしたら壊れた
   it.skip("getStaticProps", async () => {

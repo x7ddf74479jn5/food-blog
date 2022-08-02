@@ -1,5 +1,4 @@
 import { render, screen } from "jest/test-utils";
-import renderer from "react-test-renderer";
 
 import { urlTable } from "@/utils/paths/url";
 
@@ -8,13 +7,6 @@ import CustomLink from ".";
 describe("components/atoms/mdx/CustomLink", () => {
   const externalHref = "https://www.example.com/";
   const internalHref = urlTable.home;
-  it("snapshot", () => {
-    const external = renderer.create(<CustomLink href={externalHref}>external link</CustomLink>).toJSON();
-    expect(external).toMatchSnapshot();
-
-    const internal = renderer.create(<CustomLink href={internalHref}>Home</CustomLink>).toJSON();
-    expect(internal).toMatchSnapshot();
-  });
 
   it("OK: 外部リンクが正しく表示されている", () => {
     render(<CustomLink href={externalHref}>external link</CustomLink>);

@@ -2,7 +2,6 @@ import userEvent from "@testing-library/user-event";
 import type { UserEvent } from "@testing-library/user-event/dist/types/setup";
 import { render, screen } from "jest/test-utils";
 import React from "react";
-import renderer from "react-test-renderer";
 
 import Search from ".";
 
@@ -14,11 +13,6 @@ useRouter.mockImplementation(() => {
 });
 
 describe("components/molecules/Search", () => {
-  it("snapshot", () => {
-    const tree = renderer.create(<Search />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it("OK: 初期レンダリング", () => {
     render(<Search />);
     const input = screen.getByRole("searchbox");

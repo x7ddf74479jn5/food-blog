@@ -1,7 +1,6 @@
 import { dateCommon, mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
-import { render, screen, withMockedRouter } from "jest/test-utils";
+import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
-import renderer from "react-test-renderer";
 
 import Home, { getStaticProps } from "../index.page";
 
@@ -39,24 +38,6 @@ describe("pages/_offline", () => {
     limit: 10,
     offset: 0,
   };
-
-  it("snapshot", () => {
-    const tree = renderer
-      .create(
-        withMockedRouter(
-          { asPath: "/" },
-          <Home
-            categories={mockCategoryList}
-            config={mockConfig}
-            data={mockData}
-            pickup={mockPickup}
-            popularArticles={mockPopularArticles}
-          />
-        )
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 
   // FIXME: sdkとnextをアップグレードしたら壊れた
   it.skip("getStaticProps", async () => {

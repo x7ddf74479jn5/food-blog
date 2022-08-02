@@ -1,7 +1,6 @@
 import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
-import { render, screen, withMockedRouter } from "jest/test-utils";
+import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
-import renderer from "react-test-renderer";
 
 import { formatPageTitle } from "@/utils/formatter";
 
@@ -23,23 +22,6 @@ jest.mock("next/head", () => {
 describe("pages/articles/categories", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockCategoryRice = mockCategories.rice;
-
-  it("snapshot", () => {
-    const tree = renderer
-      .create(
-        withMockedRouter(
-          { asPath: "/" },
-          <Categories
-            categories={mockCategoryList}
-            config={mockConfig}
-            pickup={mockPickup}
-            popularArticles={mockPopularArticles}
-          />
-        )
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 
   // FIXME: sdkとnextをアップグレードしたら壊れた
   it.skip("getStaticProps", async () => {
