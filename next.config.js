@@ -22,7 +22,6 @@ module.exports = withBundleAnalyzer(
       runtimeCaching,
       buildExcludes: [/middleware-manifest.json$/],
     },
-    future: { strictPostcssConfiguration: true },
     swcMinify: true,
     experimental: {
       scrollRestoration: true,
