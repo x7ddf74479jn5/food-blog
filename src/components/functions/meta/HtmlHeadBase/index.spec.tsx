@@ -1,5 +1,6 @@
 import { mockArticles, mockConfig } from "@mocks/data";
 import { render } from "jest/test-utils";
+import renderer from "react-test-renderer";
 
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { urlTable } from "@/utils/paths/url";
@@ -22,6 +23,14 @@ describe("components/atoms/meta/HtmlHeadBase", () => {
   const { host: indexUrl, siteTitle } = mockConfig;
   const pageTitle = formatPageTitle(title, siteTitle);
   const url = formatPageUrl(`${urlTable.articles}/${id}`, indexUrl);
+  it("snapshot", () => {
+    const tree = renderer
+      .create(
+        <HtmlHeadBase indexUrl={indexUrl} pageTitle={pageTitle} url={url} description={description} image={imageUrl} />
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it("OK: 出力結果が正しい", () => {
     const { container } = render(

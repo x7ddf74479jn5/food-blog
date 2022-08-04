@@ -1,6 +1,7 @@
 import { mockCategories } from "@mocks/data";
 import { fireEvent, render, screen, withMockedRouter } from "jest/test-utils";
 import React from "react";
+import renderer from "react-test-renderer";
 
 import { urlTable } from "@/utils/paths/url";
 
@@ -8,6 +9,13 @@ import { CategoryMenu } from ".";
 
 describe("components/molecules/CategoryMenu", () => {
   const mockCategoryList = Object.values(mockCategories);
+
+  it("snapshot", () => {
+    const tree = renderer
+      .create(withMockedRouter({ asPath: "/" }, <CategoryMenu categories={mockCategoryList} />))
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it("OK: 初期レンダリングが正しい", () => {
     render(withMockedRouter({ asPath: "/" }, <CategoryMenu categories={mockCategoryList} />));

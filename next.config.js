@@ -10,6 +10,7 @@ module.exports = withBundleAnalyzer(
   withPWA({
     i18n: { locales: ["ja"], defaultLocale: "ja" },
     reactStrictMode: true,
+    typescript: { ignoreDevErrors: true },
     poweredByHeader: false,
     images: {
       domains: ["images.microcms-assets.io"],
@@ -21,6 +22,7 @@ module.exports = withBundleAnalyzer(
       runtimeCaching,
       buildExcludes: [/middleware-manifest.json$/],
     },
+    future: { strictPostcssConfiguration: true },
     swcMinify: true,
     experimental: {
       scrollRestoration: true,

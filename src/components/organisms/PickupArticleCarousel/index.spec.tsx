@@ -1,5 +1,6 @@
 import { mockPickup } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
+import renderer from "react-test-renderer";
 
 import { PickupArticleCarousel } from ".";
 
@@ -15,6 +16,10 @@ jest.mock("react-slick", () => {
 
 describe("components/organisms/PickupArticleCarousel", () => {
   const { description, articles } = mockPickup;
+  it("snapshot", () => {
+    const tree = renderer.create(<PickupArticleCarousel pickup={mockPickup} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it("OK: 初期表示が正しい", () => {
     const { container } = render(<PickupArticleCarousel pickup={mockPickup} />);

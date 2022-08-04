@@ -1,5 +1,6 @@
 import { mockArticles } from "@mocks/data";
 import { fireEvent, render, screen } from "jest/test-utils";
+import renderer from "react-test-renderer";
 
 import * as useGetArticleQuery from "@/hooks/useGetArticleListQuery";
 
@@ -30,6 +31,11 @@ describe("components/organisms/ArticleSWRContainer", () => {
       afterEach(() => {
         jest.clearAllMocks();
         jest.restoreAllMocks();
+      });
+
+      it("Snapshot", () => {
+        const tree = renderer.create(<ArticleSWRContainer />).toJSON();
+        expect(tree).toMatchSnapshot();
       });
 
       it("OK: 初期レンダリング", () => {
@@ -71,6 +77,10 @@ describe("components/organisms/ArticleSWRContainer", () => {
         jest.clearAllMocks();
         jest.restoreAllMocks();
       });
+      it("Snapshot", () => {
+        const tree = renderer.create(<ArticleSWRContainer />).toJSON();
+        expect(tree).toMatchSnapshot();
+      });
 
       it("OK: 初期レンダリング", () => {
         render(<ArticleSWRContainer />);
@@ -103,6 +113,11 @@ describe("components/organisms/ArticleSWRContainer", () => {
         jest.restoreAllMocks();
       });
 
+      it("Snapshot", () => {
+        const tree = renderer.create(<ArticleSWRContainer />).toJSON();
+        expect(tree).toMatchSnapshot();
+      });
+
       it("OK: 初期レンダリング", () => {
         render(<ArticleSWRContainer />);
         const button = screen.queryByRole("button");
@@ -127,6 +142,11 @@ describe("components/organisms/ArticleSWRContainer", () => {
         revalidate: jest.fn(),
         mutate: jest.fn(),
       });
+    });
+
+    it("Snapshot", () => {
+      const tree = renderer.create(<ArticleSWRContainer />).toJSON();
+      expect(tree).toMatchSnapshot();
     });
 
     it("OK: 初期レンダリング", () => {

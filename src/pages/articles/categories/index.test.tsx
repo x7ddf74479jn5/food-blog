@@ -1,10 +1,11 @@
 import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
-import { render, screen } from "jest/test-utils";
+import { render, screen, withMockedRouter } from "jest/test-utils";
 import { server } from "mocks/msw/server";
+import renderer from "react-test-renderer";
 
 import { formatPageTitle } from "@/utils/formatter";
 
-import Categories from "./index.page";
+import Categories, { getStaticProps } from "./index.page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -21,6 +22,40 @@ jest.mock("next/head", () => {
 
 describe("pages/articles/categories", () => {
   const mockCategoryList = Object.values(mockCategories);
+  const mockCategoryRice = mockCategories.rice;
+
+  it("snapshot", () => {
+    const tree = renderer
+      .create(
+        withMockedRouter(
+          { asPath: "/" },
+          <Categories
+            categories={mockCategoryList}
+            config={mockConfig}
+            pickup={mockPickup}
+            popularArticles={mockPopularArticles}
+          />
+        )
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  // FIXME: sdkとnextをアップグレードしたら壊れた
+  it.skip("getStaticProps", async () => {
+    const result = await getStaticProps({
+      params: {
+        slug: mockCategoryRice.slug,
+      },
+    });
+
+    if ("props" in result) {
+      const { categories, config, pickup } = result.props;
+      expect(categories).toStrictEqual(mockCategoryList);
+      expect(pickup).toStrictEqual(mockPickup);
+      expect(config).toStrictEqual(mockConfig);
+    }
+  });
 
   it("OK: 初期レンダリング", async () => {
     const { unmount } = render(

@@ -1,6 +1,7 @@
 import { render, screen, within } from "jest/test-utils";
 import { mockCategories } from "mocks/data";
 import React from "react";
+import renderer from "react-test-renderer";
 
 import { urlTable } from "@/utils/paths/url";
 
@@ -8,6 +9,11 @@ import { CategoryListSide } from ".";
 
 describe("components/molecules/CategoryMenu", () => {
   const mockCategoryList = Object.values(mockCategories);
+
+  it("snapshot", () => {
+    const tree = renderer.create(<CategoryListSide categories={mockCategoryList} columns={""} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it("OK: 表示が正しい", () => {
     render(<CategoryListSide categories={mockCategoryList} columns={""} />);

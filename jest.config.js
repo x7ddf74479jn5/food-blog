@@ -17,6 +17,7 @@ const customJestConfig = {
     "@/(.*)": "<rootDir>/src/$1",
     "jest/test-utils": "<rootDir>/jest/test-utils",
   }, // Handle module aliases (this will be automatically configured for you soon)
+  snapshotResolver: "<rootDir>/jest/jest.snapshot.js",
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

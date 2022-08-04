@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/atoms/containers/ContainerWithOrder snapshot 1`] = `
+<div
+  className="flex flex-col order-1 items-center w-full space-y-8 "
+>
+  children
+   
+</div>
+`;

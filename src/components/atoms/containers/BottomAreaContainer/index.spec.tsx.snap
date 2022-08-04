@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/atoms/containers/BottomAreaContainer snapshot 1`] = `
+<div
+  className="flex flex-col lg:flex-row gap-8 mb-16"
+>
+  children
+</div>
+`;

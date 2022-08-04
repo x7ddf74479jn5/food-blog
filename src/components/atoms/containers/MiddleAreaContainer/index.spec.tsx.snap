@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/atoms/containers/MiddleAreaContainer snapshot 1`] = `
+<div
+  className="flex flex-col md:flex-row gap-4 md:gap-16 justify-center items-center md:items-stretch mb-16"
+>
+  children
+</div>
+`;

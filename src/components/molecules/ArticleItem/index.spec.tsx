@@ -1,10 +1,15 @@
 import { mockArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
+import renderer from "react-test-renderer";
 
 import { ArticleItem } from ".";
 
 describe("components/molecules/ArticleItem", () => {
   const mockArticleStock = mockArticles.stock;
+  it("snapshot", () => {
+    const tree = renderer.create(<ArticleItem article={mockArticleStock} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it("OK: 表示が正しい", () => {
     render(<ArticleItem article={mockArticleStock} />);

@@ -1,5 +1,4 @@
-import path from "node:path";
-import webpack from "webpack";
+const path = require("path");
 
 const toPath = (_path) => path.resolve(__dirname, _path);
 
@@ -50,7 +49,6 @@ const config = {
       ...config,
       resolve: {
         ...config.resolve,
-        modules: [...config.resolve.modules, toPath("../")],
         alias: {
           ...config.resolve.alias,
           "@": toPath("../src"),
@@ -62,13 +60,8 @@ const config = {
           "@utils": toPath("../src/utils"),
           "@mocks": toPath("../mocks"),
         },
+        // roots: ["node_modules", toPath("../mocks/data")],
       },
-      plugins: [
-        ...config.plugins,
-        new webpack.ProvidePlugin({
-          Buffer: ["buffer", "Buffer"],
-        }),
-      ],
     };
   },
 };

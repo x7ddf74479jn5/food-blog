@@ -1,5 +1,6 @@
 import { mockPopularArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
+import renderer from "react-test-renderer";
 
 import { PopularArticleCarousel } from ".";
 
@@ -14,6 +15,11 @@ jest.mock("react-slick", () => {
 });
 
 describe("components/organisms/PopularArticleCarousel", () => {
+  it("snapshot", () => {
+    const tree = renderer.create(<PopularArticleCarousel articles={mockPopularArticles} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it("OK: 初期表示が正しい", () => {
     const { container } = render(<PopularArticleCarousel articles={mockPopularArticles} />);
     expect(container).toHaveTextContent("POPULAR");
