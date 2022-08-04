@@ -2,11 +2,10 @@ import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mo
 import type { NextRouter } from "jest/test-utils";
 import { act, render, screen, withMockedRouter } from "jest/test-utils";
 import { server } from "mocks/msw/server";
-import renderer from "react-test-renderer";
 
 import { formatPageTitle } from "@/utils/formatter";
 
-import Search, { getStaticProps } from "./index.page";
+import Search from "./index.page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -23,45 +22,11 @@ jest.mock("next/head", () => {
 
 describe("pages/search", () => {
   const mockCategoryList = Object.values(mockCategories);
-  const mockCategoryRice = mockCategories.rice;
   const mockRouter: Partial<NextRouter> = {
     query: {
       q: "keyword",
     },
   };
-
-  it("snapshot", () => {
-    const tree = renderer
-      .create(
-        withMockedRouter(
-          mockRouter,
-          <Search
-            categories={mockCategoryList}
-            config={mockConfig}
-            pickup={mockPickup}
-            popularArticles={mockPopularArticles}
-          />
-        )
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  // FIXME: sdkとnextをアップグレードしたら壊れた
-  it.skip("getStaticProps", async () => {
-    const result = await getStaticProps({
-      params: {
-        slug: mockCategoryRice.slug,
-      },
-    });
-
-    if ("props" in result) {
-      const { categories, config, pickup } = result.props;
-      expect(categories).toStrictEqual(mockCategoryList);
-      expect(pickup).toStrictEqual(mockPickup);
-      expect(config).toStrictEqual(mockConfig);
-    }
-  });
 
   it("OK: 初期レンダリング", async () => {
     await act(async () => {

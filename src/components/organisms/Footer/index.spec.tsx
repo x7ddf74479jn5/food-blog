@@ -1,15 +1,10 @@
 import { mockConfig } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
-import renderer from "react-test-renderer";
 
 import Footer from ".";
 
 describe("components/organisms/Footer", () => {
   const { organization, siteTitle } = mockConfig;
-  it("snapshot", () => {
-    const tree = renderer.create(<Footer organization={organization} siteTitle={siteTitle} />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 
   it("OK: 表示が正しい", () => {
     render(<Footer organization={organization} siteTitle={siteTitle} />);

@@ -1,17 +1,10 @@
 import { mockCategories, mockConfig } from "@mocks/data";
-import { render, screen, withMockedRouter } from "jest/test-utils";
-import renderer from "react-test-renderer";
+import { render, screen } from "jest/test-utils";
 
 import ErrorPage from "./index.page";
 
 describe("pages/_error", () => {
   const mockCategoryList = Object.values(mockCategories);
-  it("snapshot", () => {
-    const tree = renderer
-      .create(withMockedRouter({ asPath: "/" }, <ErrorPage config={mockConfig} categories={mockCategoryList} />))
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 
   it("OK: 初期レンダリング", async () => {
     const { unmount } = render(<ErrorPage config={mockConfig} categories={mockCategoryList} />);

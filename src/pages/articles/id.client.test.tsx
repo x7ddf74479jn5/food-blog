@@ -1,11 +1,11 @@
 import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
-import { render, screen, withMockedRouter } from "jest/test-utils";
+import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
-import renderer from "react-test-renderer";
 
+import { formatPageTitle } from "@/utils/formatter";
 import { mdx2html } from "@/utils/mdx/mdx2html";
 
-import ArticlePreview from "./[id].page";
+import ArticleDetail from "./[id].page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -27,6 +27,7 @@ jest.mock("@/utils/mdx/mdx2html", () => {
     mdx2html: jest.fn(),
   };
 });
+
 jest.mock("next-mdx-remote", () => {
   return {
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -36,39 +37,16 @@ jest.mock("next-mdx-remote", () => {
   };
 });
 
-describe("pages/preview", () => {
+describe("pages/articles", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockArticleList = Object.values(mockArticles);
   const mockArticleStock = mockArticles.stock;
   console.warn = jest.fn();
 
-  it("snapshot", async () => {
-    const mdxSource = await mdx2html(mockArticleStock.body);
-
-    const tree = renderer
-      .create(
-        withMockedRouter(
-          { asPath: "/" },
-          <ArticlePreview
-            categories={mockCategoryList}
-            config={mockConfig}
-            pickup={mockPickup}
-            article={mockArticleStock}
-            mdxSource={mdxSource}
-            relatedArticles={mockArticleList}
-            popularArticles={mockPopularArticles}
-            isPreview
-          />
-        )
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it("OK: 初期レンダリング", async () => {
     const mdxSource = await mdx2html(mockArticleStock.body);
     const { unmount } = render(
-      <ArticlePreview
+      <ArticleDetail
         categories={mockCategoryList}
         config={mockConfig}
         pickup={mockPickup}
@@ -76,14 +54,13 @@ describe("pages/preview", () => {
         mdxSource={mdxSource}
         relatedArticles={mockArticleList}
         popularArticles={mockPopularArticles}
-        isPreview
       />
     );
 
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent(mockArticleStock.title);
-    const previewNotification = screen.getByText("Preview mode enabled");
-    expect(previewNotification).toBeTruthy();
+    const expectedTitle = formatPageTitle(mockArticleStock.title, mockConfig.siteTitle);
+    expect(document.title).toBe(expectedTitle);
     unmount();
   });
 });
