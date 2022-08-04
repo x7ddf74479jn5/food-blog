@@ -1,6 +1,6 @@
 import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
 import type { NextRouter } from "jest/test-utils";
-import { act, render, screen, withMockedRouter } from "jest/test-utils";
+import { render, screen, withMockedRouter } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 
 import { formatPageTitle } from "@/utils/formatter";
@@ -28,26 +28,24 @@ describe("pages/search", () => {
     },
   };
 
-  it("OK: 初期レンダリング", async () => {
-    await act(async () => {
-      const result = await render(
-        withMockedRouter(
-          mockRouter,
-          <Search
-            categories={mockCategoryList}
-            config={mockConfig}
-            pickup={mockPickup}
-            popularArticles={mockPopularArticles}
-          />
-        )
-      );
+  it("OK: 初期レンダリング", () => {
+    const result = render(
+      withMockedRouter(
+        mockRouter,
+        <Search
+          categories={mockCategoryList}
+          config={mockConfig}
+          pickup={mockPickup}
+          popularArticles={mockPopularArticles}
+        />
+      )
+    );
 
-      const expectedHeading = `検索結果：keyword`;
-      const h1 = screen.getByRole("heading", { level: 1 });
-      expect(h1).toHaveTextContent(expectedHeading);
-      const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
-      expect(document.title).toBe(expectedTitle);
-      result.unmount();
-    });
+    const expectedHeading = `検索結果：keyword`;
+    const h1 = screen.getByRole("heading", { level: 1 });
+    expect(h1).toHaveTextContent(expectedHeading);
+    const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
+    expect(document.title).toBe(expectedTitle);
+    result.unmount();
   });
 });
