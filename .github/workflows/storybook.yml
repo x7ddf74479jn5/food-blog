@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,9 +28,21 @@ jobs:
       - name: Install dependencies
         run: pnpm install --shamefully-hoist
       - name: build storybook
-        run: yarn build-storybook
-      - name: deploy storybook
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+        run: pnpm build-storybook
+      - uses: actions/upload-pages-artifact@v1
         with:
-          branch: gh-pages
-          folder: storybook-static
+          path: storybook-static
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
