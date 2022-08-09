@@ -1,5 +1,5 @@
 import type { GetServerSideProps } from "next";
-import type { Params } from "next/dist/server/router";
+import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import type { ArticleDetailProps, ArticlesStaticProps } from "@/pages/articles/[id].page";

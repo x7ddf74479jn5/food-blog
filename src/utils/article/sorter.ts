@@ -7,6 +7,7 @@ export type ComparatorArticle = (a: TArticle, b: TArticle) => number;
 
 /** 記事を日付降順で並べ替える comparator */
 export const comparatorDateDesc = (a: TArticle, b: TArticle) => {
+  if (!a.publishedAt || !b.publishedAt) return 0;
   const dateA = new Date(a.publishedAt);
   const dateB = new Date(b.publishedAt);
 
