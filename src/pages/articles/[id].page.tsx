@@ -62,18 +62,18 @@ export const ArticleDetail = ({
         authorName={writerName}
         description={getExcerpt(description)}
       />
-      {isPreview && <div className="mb-4 text-center text-white bg-red-500">Preview mode enabled</div>}
+      {isPreview && <div className="mb-4 bg-red-500 text-center text-white">Preview mode enabled</div>}
       <article className="prose dark:prose-dark">
         <div className="mb-4">
           <Thumbnail src={image.url} title={title} />
         </div>
         <h1>{title}</h1>
-        <div className="flex flex-row justify-around mb-4">
-          <div className="flex flex-row gap-2 items-center">
+        <div className="mb-4 flex flex-row justify-around">
+          <div className="flex flex-row items-center gap-2">
             <FaRegCalendar />
             <TextDate date={safePublishedAt} />
           </div>
-          <div className="flex flex-row gap-2 items-center">
+          <div className="flex flex-row items-center gap-2">
             <FaPen />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -87,8 +87,8 @@ export const ArticleDetail = ({
             <span>{writerName}</span>
           </div>
         </div>
-        <div className="flex flex-col gap-4 p-2 bg-gray-50 dark:bg-gray-700 sm:p-4">
-          <div className="flex flex-row gap-2 items-center">
+        <div className="flex flex-col gap-4 bg-gray-50 p-2 dark:bg-gray-700 sm:p-4">
+          <div className="flex flex-row items-center gap-2">
             <span className="text-black dark:text-white">カテゴリー：</span>
             <ButtonCategory category={category} />
           </div>

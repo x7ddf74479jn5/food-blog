@@ -40,7 +40,7 @@ const Search: NextPage<Props> = ({ config, categories, pickup, popularArticles }
         {q ? (
           <ArticleSWRContainer queryOptions={queryOptions} />
         ) : (
-          <div className="flex justify-center mt-16">検索語句を入力してください。</div>
+          <div className="mt-16 flex justify-center">検索語句を入力してください。</div>
         )}
       </div>
     </DefaultLayout>

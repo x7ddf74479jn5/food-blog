@@ -11,9 +11,9 @@ type OfflineProps = InferGetStaticPropsType<typeof getStaticProps>;
 const Offline: NextPage<OfflineProps> = ({ config, categories }) => (
   <RootLayout config={config} categories={categories}>
     <HtmlHeadNoIndex />
-    <div className="flex flex-col gap-12 justify-center items-center mt-8" role="alert">
-      <FaRegTired className="w-32 h-32 text-gray-500" />
-      <div className="flex flex-col gap-8 mx-auto text-center">
+    <div className="mt-8 flex flex-col items-center justify-center gap-12" role="alert">
+      <FaRegTired className="h-32 w-32 text-gray-500" />
+      <div className="mx-auto flex flex-col gap-8 text-center">
         <h1>オフラインページ</h1>
         <p>インターネットに接続のうえ、ご利用ください。</p>
       </div>

@@ -13,7 +13,7 @@ const Pagination: React.FC<Props> = ({ hasNextPage, isValidating, onClick: handl
   return (
     <>
       {hasNextPage ? (
-        <div className="flex justify-center mt-8">
+        <div className="mt-8 flex justify-center">
           {isValidating ? <Spinner size="w-8 h-8" /> : <LoadMoreButton onClick={handleClick} />}
         </div>
       ) : null}

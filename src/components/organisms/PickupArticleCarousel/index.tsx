@@ -24,7 +24,7 @@ export const PickupArticleCarousel: React.FC<PickupArticleCarouselProps> = memo(
           <article className="px-2" key={article.id}>
             <div className="relative">
               <Thumbnail src={article.image.url} title={article.title} id={article.id} />
-              <h3 className="block absolute bottom-3 p-1 w-full text-sm font-semibold text-white truncate bg-black/25">
+              <h3 className="absolute bottom-3 block w-full truncate bg-black/25 p-1 text-sm font-semibold text-white">
                 {article.title}
               </h3>
             </div>

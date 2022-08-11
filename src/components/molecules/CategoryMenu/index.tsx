@@ -57,9 +57,9 @@ const CategoryMenuItems: React.FC<CategoryMenuItemsProps> = ({ open, categories 
       {open && (
         <Menu.Items
           static
-          className="absolute right-0 z-10 mt-1 w-28 bg-white dark:bg-gray-700 rounded-md border border-gray-200 dark:border-gray-600 outline-none shadow-lg"
+          className="absolute right-0 z-10 mt-1 w-28 rounded-md border border-gray-200 bg-white shadow-lg outline-none dark:border-gray-600 dark:bg-gray-700"
         >
-          <div className="py-1 divide-y divide-gray-100 dark:divide-gray-600">
+          <div className="divide-y divide-gray-100 py-1 dark:divide-gray-600">
             <div className="">
               <CategoryMenuItem text="一覧" href={urlTable.categories} disabled={asPath === urlTable.categories} />
             </div>
@@ -90,14 +90,14 @@ type CategoryMenuProps = {
 
 export const CategoryMenu: React.FC<CategoryMenuProps> = memo(({ categories }) => {
   return (
-    <div className="inline-block relative text-left">
+    <div className="relative inline-block text-left">
       <Menu>
         {({ open }) => (
           <>
             <span className="rounded-md shadow-sm">
-              <Menu.Button className="inline-flex justify-center py-1 px-3 w-full text-sm font-medium leading-5 text-gray-700 hover:text-gray-500 dark:text-gray-100 bg-white dark:bg-gray-700 rounded-md border border-gray-300 dark:border-gray-500 dark:hover:border-gray-400 focus:outline-none transition duration-150 ease-in-out">
+              <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-1 px-3 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none dark:border-gray-500 dark:bg-gray-700 dark:text-gray-100 dark:hover:border-gray-400">
                 <span>カテゴリー</span>
-                <svg className="-mr-1 ml-2 w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                <svg className="-mr-1 ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path
                     fillRule="evenodd"
                     d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"

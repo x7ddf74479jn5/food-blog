@@ -40,14 +40,14 @@ export const SlickContainer: React.FC<SlickContainerProps> = memo(({ children, d
 
   return (
     <section>
-      <div className="flex flex-row gap-2 items-center pl-1 mb-2">
+      <div className="mb-2 flex flex-row items-center gap-2 pl-1">
         <NextLink href={href}>
-          <div className="flex flex-row gap-2 items-center text-xl">
+          <div className="flex flex-row items-center gap-2 text-xl">
             {Icon}
             <h2 className="font-bold">{title}</h2>
           </div>
         </NextLink>
-        <span className="flex-1 text-sm text-center break-words">{description}</span>
+        <span className="flex-1 break-words text-center text-sm">{description}</span>
       </div>
       {/* FIXME: reason is upgrade to React 18 */}
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}

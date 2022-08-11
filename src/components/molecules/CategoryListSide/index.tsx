@@ -15,14 +15,14 @@ export const CategoryListSide: React.FC<CategoryListSideProps> = memo(({ categor
   return (
     <SideSectionContainer header="カテゴリー" href="/articles/categories">
       <ul
-        className={`grid grid-flow-row gap-2 md:max-h-[calc(28rem+8rem)] md:overflow-y-auto place-items-center ${columns}`}
+        className={`grid grid-flow-row place-items-center gap-2 md:max-h-[calc(28rem+8rem)] md:overflow-y-auto ${columns}`}
       >
         {categories.map((category) => (
           <li key={category.id}>
-            <div className="flex flex-col justify-center items-center w-24 h-full">
+            <div className="flex h-full w-24 flex-col items-center justify-center">
               <NextLink href={`${urlTable.categories}/${category.slug}`}>
                 <Image src={category.image.url} alt={category.slug} width={128} height={128} objectFit="cover" />
-                <p className="text-sm text-center">{category.name}</p>
+                <p className="text-center text-sm">{category.name}</p>
               </NextLink>
             </div>
           </li>
