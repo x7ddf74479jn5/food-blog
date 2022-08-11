@@ -10,7 +10,7 @@ export type Props = {
   }>;
 };
 
-const BackLinks: React.FC<Props> = ({ links }) => {
+export const BackLinks: React.FC<Props> = ({ links }) => {
   const router = useRouter();
 
   const handleBack = () => {

@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/classnames-order */
 import { FaFacebook, FaGetPocket, FaLine, FaTwitter } from "react-icons/fa";
 import { SiHatenabookmark } from "react-icons/si";
 import {
@@ -10,6 +9,7 @@ import {
 } from "react-share";
 
 import Tooltip from "@/components/atoms/Tooltip";
+import { classNames } from "@/utils/css";
 
 type Props = {
   url: string;
@@ -18,10 +18,10 @@ type Props = {
 };
 
 export const ShareButtons: React.FC<Props> = ({ url, title, direction = "row" }) => {
-  const _direction = direction === "row" ? "flex-row" : "flex-col";
-
   return (
-    <div className={`flex ${_direction} gap-4 justify-center items-center`}>
+    <div
+      className={classNames("flex items-center justify-center gap-4", direction === "row" ? "flex-row" : "flex-col")}
+    >
       <TwitterShareButton url={url} title={title}>
         <Tooltip label="Twitterでシェア">
           <FaTwitter className="text-gray-400 hover:text-[#1DA1F2]" size={24} />
@@ -50,3 +50,5 @@ export const ShareButtons: React.FC<Props> = ({ url, title, direction = "row" })
     </div>
   );
 };
+
+export default ShareButtons;

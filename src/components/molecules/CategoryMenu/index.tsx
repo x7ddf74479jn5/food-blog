@@ -4,6 +4,7 @@ import { memo } from "react";
 
 import NextLink from "@/components/atoms/NextLink";
 import type { TCategory } from "@/types";
+import { classNames } from "@/utils/css";
 import { urlTable } from "@/utils/paths/url";
 
 type CategoryMenuItemProps = {
@@ -12,19 +13,18 @@ type CategoryMenuItemProps = {
   disabled?: boolean;
 };
 
-const menuItemCss = {
-  activeTrue: "bg-gray-100 dark:bg-green-500 text-gray-900 dark:text-gray-100",
-  activeFalse: "text-gray-700 dark:text-gray-300",
-  common: "flex justify-between w-full px-4 py-2 text-sm leading-5 text-left focus:outline-none cursor-pointer",
-};
-
 export const CategoryMenuItem: React.FC<CategoryMenuItemProps> = ({ href, text, disabled }) => {
   return (
     <Menu.Item disabled={disabled}>
       {({ active }) => (
         <NextLink
           href={href}
-          className={`${active ? menuItemCss.activeTrue : menuItemCss.activeFalse} ${menuItemCss.common}`}
+          className={classNames(
+            "flex justify-between w-full px-4 py-2 text-sm leading-5 text-left focus:outline-none cursor-pointer",
+            active
+              ? "bg-gray-100 dark:bg-green-500 text-gray-900 dark:text-gray-100"
+              : "text-gray-700 dark:text-gray-300"
+          )}
         >
           {text}
         </NextLink>
