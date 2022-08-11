@@ -12,6 +12,7 @@ type ReportRow = {
 /**
  * 閲覧数の多いページの内、レシピ記事以外のページを除外して返す
  * 3ヶ月前から前日までの期間で算定
+ * @see https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport
  */
 export const runReport = async () => {
   const credentials = JSON.parse(Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, "base64").toString());
@@ -62,7 +63,6 @@ export const runReport = async () => {
 
   const result = response.rows?.reduce((acc, row, index) => {
     if (!row.dimensionValues || !row.metricValues) return acc;
-
     const pagePath = row.dimensionValues[0].value;
 
     if (pagePath?.startsWith("/articles/categories/") || pagePath?.startsWith("/articles/tags/")) return acc;
