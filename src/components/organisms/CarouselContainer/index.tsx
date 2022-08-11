@@ -1,3 +1,5 @@
+import dynamic from "next/dynamic";
+
 import type { TPickup, TRankedArticle } from "@/types";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

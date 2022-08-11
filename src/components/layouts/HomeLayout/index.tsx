@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { memo, useMemo } from "react";
+import { memo } from "react";
 
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
@@ -9,6 +9,10 @@ import { CategoryListSide } from "@/components/molecules/CategoryListSide";
 import { CarouselContainer } from "@/components/organisms/CarouselContainer";
 import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons").then((mod) => mod.ShareButtons));
 
 type HomeLayoutProps = {
   children: React.ReactNode;
@@ -30,7 +34,6 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({
   popularArticles,
 }: HomeLayoutProps) => {
   const isSmallOrDown = useMedia("<=", "sm");
-  const ShareButtons = useMemo(() => dynamic(() => import("@/components/atoms/ShareButtons")), []);
 
   return (
     <RootLayout config={config} categories={categories}>

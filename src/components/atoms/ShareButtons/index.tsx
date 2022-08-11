@@ -50,5 +50,3 @@ export const ShareButtons: React.FC<Props> = ({ url, title, direction = "row" })
     </div>
   );
 };
-
-export default ShareButtons;
