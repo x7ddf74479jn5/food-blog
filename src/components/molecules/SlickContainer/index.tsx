@@ -39,7 +39,7 @@ export const SlickContainer: React.FC<SlickContainerProps> = memo(({ children, d
   const isMobile = useMedia("<=", "sm");
 
   return (
-    <section>
+    <>
       <div className="mb-2 flex flex-row items-center gap-2 pl-1">
         <NextLink href={href}>
           <div className="flex flex-row items-center gap-2 text-xl">
@@ -53,7 +53,7 @@ export const SlickContainer: React.FC<SlickContainerProps> = memo(({ children, d
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
       <Slick {...getSettings(isMobile)}>{children}</Slick>
-    </section>
+    </>
   );
 });
 
