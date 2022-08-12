@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-import { mockArticles, mockConfig } from "../mocks/data";
+import { mockArticles, mockConfig } from "../../mocks/data";
 
 const { stock } = mockArticles;
 
