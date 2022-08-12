@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 
 test("index", async ({ page }) => {
   // Go to staging URL
-  await page.goto("https://food-blog-git-develop-x7ddf74479jn5.vercel.app/");
+  await page.goto("https://localhost:3000");
 
   // Load all images in the page
   await page.evaluate(async () => {
@@ -27,7 +27,7 @@ test("index", async ({ page }) => {
 test("articles/:id", async ({ page }) => {
   const { stock } = mockArticles;
   // Go to staging URL
-  await page.goto(`https://food-blog-git-develop-x7ddf74479jn5.vercel.app/articles/${stock.id}`);
+  await page.goto(`https://localhost:3000/articles/${stock.id}`);
 
   // Load all images in the page
   await page.evaluate(async () => {
