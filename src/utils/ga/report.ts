@@ -61,7 +61,8 @@ export const runReport = async () => {
 
   if (response?.rows?.length === 0) return;
 
-  const result = response.rows?.reduce((acc, row, index) => {
+  let order = 1;
+  const result = response.rows?.reduce((acc, row) => {
     if (!row.dimensionValues || !row.metricValues) return acc;
     const pagePath = row.dimensionValues[0].value;
 
@@ -71,8 +72,8 @@ export const runReport = async () => {
     const pageViews = row.metricValues[0].value;
 
     if (!id || !pageViews) return acc;
-    return [...acc, { id, pageViews, order: index }];
+    return [...acc, { id, pageViews, order: order++ }];
   }, [] as ReportRow[]);
 
-  return result;
+  return result?.slice(0, 5);
 };
