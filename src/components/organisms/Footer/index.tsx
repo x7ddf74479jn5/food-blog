@@ -9,7 +9,7 @@ type FooterProps = {
 
 const Footer: React.VFC<FooterProps> = ({ siteTitle, organization }) => {
   return (
-    <footer className="flex flex-row gap-2 place-content-center py-2 mx-auto mt-auto w-full text-xs bg-gray-50 dark:bg-gray-700">
+    <footer className="mx-auto mt-auto flex w-full flex-row place-content-center gap-2 bg-gray-50 py-2 text-xs dark:bg-gray-700">
       <SiteTitle title={siteTitle} size="text-xs" />
       <span className="">©︎ 2021 {organization}</span>
     </footer>

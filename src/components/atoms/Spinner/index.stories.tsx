@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof Spinner>;
 
 const Template: ComponentStory<typeof Spinner> = (args) => (
-  <div className="flex fixed inset-0 justify-center items-center w-full h-screen ">
+  <div className="fixed inset-0 flex h-screen w-full items-center justify-center ">
     <Spinner {...args} />
   </div>
 );

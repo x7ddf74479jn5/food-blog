@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof TOC>;
 
 const Template: ComponentStory<typeof TOC> = (args) => (
-  <div className="flex flex-row prose">
+  <div className="prose flex flex-row">
     <div id="js-toc-content" className="hidden">
       <h2>h2</h2>
       <h3>h3</h3>

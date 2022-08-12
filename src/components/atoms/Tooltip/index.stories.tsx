@@ -9,7 +9,7 @@ export default {
 
 const Template: ComponentStory<typeof Tooltip> = (args) => (
   <Tooltip {...args}>
-    <button className="p-1 text-black dark:text-white bg-green-500 rounded">children</button>
+    <button className="rounded bg-green-500 p-1 text-black dark:text-white">children</button>
   </Tooltip>
 );
 

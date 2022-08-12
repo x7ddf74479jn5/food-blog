@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { memo, useMemo } from "react";
+import { memo } from "react";
 
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
@@ -7,11 +7,16 @@ import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithO
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
 import { RootLayout } from "@/components/layouts/RootLayout";
+import { BackLinks } from "@/components/molecules/BackLinks";
 import { CategoryListSide } from "@/components/molecules/CategoryListSide";
 import { PickupArticles } from "@/components/organisms/PickupArticles/index";
 import { PopularArticles } from "@/components/organisms/PopularArticles";
 import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons").then((mod) => mod.ShareButtons));
 
 type Props = {
   children: React.ReactNode;
@@ -37,8 +42,6 @@ const DefaultLayout: React.FC<Props> = ({
   pickup,
   popularArticles,
 }: Props) => {
-  const BackLinks = useMemo(() => dynamic(() => import("@/components/molecules/BackLinks")), []);
-  const ShareButtons = useMemo(() => dynamic(() => import("@/components/atoms/ShareButtons")), []);
   const isSmallOrDown = useMedia("<=", "sm");
 
   return (

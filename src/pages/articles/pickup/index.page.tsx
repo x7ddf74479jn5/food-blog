@@ -32,7 +32,7 @@ const PickupPage: NextPage<Props> = ({ config, categories, pickup, popularArticl
       <div className="mb-8">
         <h1>{heading}</h1>
       </div>
-      <div className="w-full min-h-screen">
+      <div className="min-h-screen w-full">
         <section>
           <ArticleList articles={pickup.articles} />
         </section>

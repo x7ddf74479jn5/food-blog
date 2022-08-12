@@ -33,7 +33,7 @@ export const ArticleSWRContainer: React.VFC<ArticleSWRContainerProps> = ({ query
     );
 
   if (!isValidating && articles.length === 0)
-    return <div className="flex justify-center mt-16">レシピが見つかりませんでした。</div>;
+    return <div className="mt-16 flex justify-center">レシピが見つかりませんでした。</div>;
 
   return (
     <section>

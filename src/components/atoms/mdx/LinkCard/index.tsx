@@ -17,7 +17,7 @@ export const LinkCard: React.VFC<LinkCardProps> = ({ article }) => {
       <div className="my-8 border border-gray-300 dark:border-gray-700">
         <article className="flex flex-row">
           <Image src={image.url} alt={title} width={128} height={96} objectFit="cover" />
-          <div className="flex flex-col flex-wrap grow p-4">
+          <div className="flex grow flex-col flex-wrap p-4">
             <div className="flex flex-wrap">{title}</div>
             <div className="grow">
               <TagListPlain tags={tags} />

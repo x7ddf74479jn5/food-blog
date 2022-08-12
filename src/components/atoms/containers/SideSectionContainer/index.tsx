@@ -11,13 +11,13 @@ type SideSectionContainer = {
 
 export const SideSectionContainer: React.FC<SideSectionContainer> = memo(({ header, href, children }) => {
   return (
-    <section className="container p-2 dark:text-white bg-gray-50 dark:bg-gray-700">
+    <section className="container bg-gray-50 p-2 dark:bg-gray-700 dark:text-white">
       {href ? (
         <NextLink href={href}>
-          <h2 className="px-2 pb-2 mb-2 border-b-2">{header}</h2>
+          <h2 className="mb-2 border-b-2 px-2 pb-2">{header}</h2>
         </NextLink>
       ) : (
-        <h2 className="px-2 pb-2 mb-2 border-b-2">{header}</h2>
+        <h2 className="mb-2 border-b-2 px-2 pb-2">{header}</h2>
       )}
       {children}
     </section>

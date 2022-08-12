@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof ArticleItem>;
 
 const Template: ComponentStory<typeof ArticleItem> = (args) => (
-  <div className="w-96 h-96">
+  <div className="h-96 w-96">
     <ArticleItem {...args} />
   </div>
 );

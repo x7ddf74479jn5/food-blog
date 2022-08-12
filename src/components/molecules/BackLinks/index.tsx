@@ -10,7 +10,7 @@ export type Props = {
   }>;
 };
 
-const BackLinks: React.FC<Props> = ({ links }) => {
+export const BackLinks: React.FC<Props> = ({ links }) => {
   const router = useRouter();
 
   const handleBack = () => {
@@ -20,14 +20,14 @@ const BackLinks: React.FC<Props> = ({ links }) => {
   return (
     <ul className="flex flex-col space-y-2 align-top">
       <li>
-        <button onClick={handleBack} className="flex flex-row gap-2 items-center">
+        <button onClick={handleBack} className="flex flex-row items-center gap-2">
           <FaChevronLeft />
           前のページへ
         </button>
       </li>
       {links.map((link, index) => (
         <li key={index}>
-          <NextLink href={link.href} className="flex flex-row gap-2 items-center">
+          <NextLink href={link.href} className="flex flex-row items-center gap-2">
             <FaChevronLeft />
             {link.label}
           </NextLink>

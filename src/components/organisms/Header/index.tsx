@@ -14,7 +14,7 @@ type Props = {
 const Header: React.FC<Props> = ({ siteTitle, categories }) => {
   return (
     <header className="py-2">
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         <SiteTitle size="text-2xl" title={siteTitle} />
         <div className="hidden w-1/3 sm:block">
           <Search />
@@ -24,7 +24,7 @@ const Header: React.FC<Props> = ({ siteTitle, categories }) => {
           <CategoryMenu categories={categories} />
         </div>
       </div>
-      <div className="block mt-2 sm:hidden">
+      <div className="mt-2 block sm:hidden">
         <Search />
       </div>
     </header>

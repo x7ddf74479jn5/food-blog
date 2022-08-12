@@ -9,11 +9,11 @@ const Tooltip: React.FC<Props> = ({ label, children }) => {
   const hoverTransition = "opacity-0 invisible group-hover:visible group-hover:opacity-100 transition ease-in";
 
   return (
-    <div className="group inline-block relative cursor-pointer">
+    <div className="group relative inline-block cursor-pointer">
       {children}
       {/* triangle */}
       <div className={`${base} ${hoverTransition} -bottom-4 h-3 w-3 rotate-45`} />
-      <div className={`${base} ${hoverTransition} -bottom-8 p-1 text-xs leading-snug}`}>{label}</div>
+      <div className={`${base} ${hoverTransition} leading-snug} -bottom-8 p-1 text-xs`}>{label}</div>
     </div>
   );
 };
