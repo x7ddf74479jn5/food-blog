@@ -15,9 +15,8 @@ jest.mock("react-slick", () => {
 
 describe("components/organisms/PopularArticleCarousel", () => {
   it("OK: 初期表示が正しい", () => {
-    const { container } = render(<PopularArticleCarousel articles={mockPopularArticles} />);
-    expect(container).toHaveTextContent("POPULAR");
-    expect(container).toHaveTextContent("人気記事ランキング");
+    render(<PopularArticleCarousel articles={mockPopularArticles} />);
+
     const articleEls = screen.getAllByRole("article");
     expect(articleEls.length).toBe(mockPopularArticles.length);
   });

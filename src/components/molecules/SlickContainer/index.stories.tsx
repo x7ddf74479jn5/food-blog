@@ -1,5 +1,4 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
-import { FaLightbulb } from "react-icons/fa";
 
 import { SlickContainer } from ".";
 
@@ -19,9 +18,3 @@ const Template: ComponentStory<typeof SlickContainer> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  description: "description",
-  title: "title",
-  Icon: <FaLightbulb className="text-yellow-400" />,
-  href: "/",
-};

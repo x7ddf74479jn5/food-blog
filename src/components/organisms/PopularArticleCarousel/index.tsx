@@ -1,5 +1,4 @@
 import { memo } from "react";
-import { IoPodium } from "react-icons/io5";
 
 import Thumbnail from "@/components/atoms/Thumbnail";
 import { SlickContainer } from "@/components/molecules/SlickContainer";
@@ -11,12 +10,7 @@ type PopularArticleCarouselProps = {
 
 export const PopularArticleCarousel: React.FC<PopularArticleCarouselProps> = memo(({ articles }) => {
   return (
-    <SlickContainer
-      description="人気記事ランキング"
-      title="POPULAR"
-      href="/articles/popular"
-      Icon={<IoPodium className="text-yellow-400" />}
-    >
+    <SlickContainer>
       {articles.map((article) => (
         <article className="px-2" key={article.id}>
           <div className="relative">

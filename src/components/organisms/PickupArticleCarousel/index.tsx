@@ -1,5 +1,4 @@
 import { memo } from "react";
-import { FaLightbulb } from "react-icons/fa";
 
 import Thumbnail from "@/components/atoms/Thumbnail";
 import { SlickContainer } from "@/components/molecules/SlickContainer";
@@ -10,15 +9,10 @@ type PickupArticleCarouselProps = {
 };
 
 export const PickupArticleCarousel: React.FC<PickupArticleCarouselProps> = memo(({ pickup }) => {
-  const { articles, description } = pickup;
+  const { articles } = pickup;
 
   return (
-    <SlickContainer
-      description={description}
-      title="PICKUP"
-      href="/articles/pickup"
-      Icon={<FaLightbulb className="text-yellow-400" />}
-    >
+    <SlickContainer>
       {articles.map((article) => (
         <article className="px-2" key={article.id}>
           <div className="relative">
