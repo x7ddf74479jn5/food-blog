@@ -2,7 +2,7 @@ type MiddleAreaContainerProps = React.PropsWithChildren<object>;
 
 export const MiddleAreaContainer: React.FC<MiddleAreaContainerProps> = ({ children }) => {
   return (
-    <div className="flex flex-col gap-4 justify-center items-center mb-16 md:flex-row md:gap-16 md:items-stretch">
+    <div className="mb-16 flex flex-col items-center justify-center gap-4 md:flex-row md:items-stretch md:gap-16">
       {children}
     </div>
   );

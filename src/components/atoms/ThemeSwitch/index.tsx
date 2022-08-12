@@ -34,7 +34,7 @@ const ThemeSwitch: React.FC = () => {
       onHandleColor="#eee"
       handleDiameter={20}
       uncheckedIcon={
-        <div className="flex justify-center items-center h-full">
+        <div className="flex h-full items-center justify-center">
           <IconContext.Provider
             value={{
               color: "gold",
@@ -46,7 +46,7 @@ const ThemeSwitch: React.FC = () => {
         </div>
       }
       checkedIcon={
-        <div className="flex justify-center items-center h-full">
+        <div className="flex h-full items-center justify-center">
           <IconContext.Provider
             value={{
               color: "yellow",

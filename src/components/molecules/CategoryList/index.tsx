@@ -12,11 +12,11 @@ type CategoryListProps = {
 
 export const CategoryList: React.VFC<CategoryListProps> = ({ categories, width, height }) => {
   return (
-    <ul className="grid order-1 grid-cols-3 gap-2 mt-4 mb-12 sm:grid-cols-5 md:order-2 lg:grid-cols-6">
+    <ul className="order-1 mt-4 mb-12 grid grid-cols-3 gap-2 sm:grid-cols-5 md:order-2 lg:grid-cols-6">
       {categories.map((category) => (
         <li key={category.id}>
           <NextLink href={`${urlTable.categories}/${category.slug}`}>
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col items-center justify-center">
               <div className="w-auto">
                 <Image src={category.image.url} alt={category.slug} width={width} height={height} objectFit="cover" />
               </div>

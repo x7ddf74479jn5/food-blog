@@ -11,7 +11,7 @@ const ButtonCategory = ({ category }: Props) => {
   const borderColor = getBorderColor(category.color);
   return (
     <NextLink href={`${urlTable.categories}/${category.slug}`}>
-      <div className={`inline-block py-1 px-2 text-black dark:text-white rounded-lg border-2 ${borderColor}`}>
+      <div className={`inline-block rounded-lg border-2 py-1 px-2 text-black dark:text-white ${borderColor}`}>
         {category.name}
       </div>
     </NextLink>

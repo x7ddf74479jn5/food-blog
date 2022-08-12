@@ -7,7 +7,7 @@ type ContainerWithOrderProps = {
 };
 
 export const ContainerWithOrder: React.FC<ContainerWithOrderProps> = memo(({ order, children, className = "" }) => {
-  return <div className={`flex flex-col ${order} items-center w-full space-y-8 ${className}`}>{children} </div>;
+  return <div className={`flex flex-col ${order} w-full items-center space-y-8 ${className}`}>{children} </div>;
 });
 
 ContainerWithOrder.displayName = "ContainerWithOrder";

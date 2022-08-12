@@ -14,12 +14,11 @@ jest.mock("react-slick", () => {
 });
 
 describe("components/organisms/PickupArticleCarousel", () => {
-  const { description, articles } = mockPickup;
+  const { articles } = mockPickup;
 
   it("OK: 初期表示が正しい", () => {
-    const { container } = render(<PickupArticleCarousel pickup={mockPickup} />);
-    expect(container).toHaveTextContent("PICKUP");
-    expect(container).toHaveTextContent(description);
+    render(<PickupArticleCarousel pickup={mockPickup} />);
+
     const articleEls = screen.getAllByRole("article");
     expect(articleEls.length).toBe(articles.length);
   });

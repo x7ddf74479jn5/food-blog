@@ -18,7 +18,7 @@ export const ArticleItem: React.VFC<ArticleItem> = memo(({ article }) => {
       <h2 className="mb-4 text-2xl font-bold">
         <NextLink href={`${urlTable.articles}/${article.id}`}>{article.title}</NextLink>
       </h2>
-      <p className="dark:text-gray-300 line-clamp-2">{article.description}</p>
+      <p className="line-clamp-2 dark:text-gray-300">{article.description}</p>
     </article>
   );
 });
