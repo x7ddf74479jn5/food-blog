@@ -1,6 +1,6 @@
+import { fetchArticles, fetchPickupArticles } from "@/api";
 import { runReport } from "@/lib/google-analytics/report";
 import type { TArticle, TRankedArticle, TTag } from "@/types";
-import { fetchArticles, fetchPickupArticles } from "@/api";
 
 /**
  * 走査対象のタグを重複なし2個ずつにグループ化

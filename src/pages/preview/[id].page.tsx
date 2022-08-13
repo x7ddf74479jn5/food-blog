@@ -1,6 +1,7 @@
 import type { GetServerSideProps } from "next";
 import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
+import { fetchArticle, fetchCategories, fetchConfig } from "@/api";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import { mdx2html } from "@/lib/mdx";
 import type { ArticleDetailProps, ArticlesStaticProps } from "@/pages/articles/[id].page";
@@ -8,7 +9,6 @@ import ArticleDetail from "@/pages/articles/[id].page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import type { TArticle } from "@/types";
 import { isDraft } from "@/utils/article";
-import { fetchArticle, fetchCategories, fetchConfig } from "@/api";
 
 const ArticlePreview = (props: ArticleDetailProps) => {
   return (
