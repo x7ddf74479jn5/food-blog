@@ -6,9 +6,9 @@ import type { ArticleDetailProps, ArticlesStaticProps } from "@/pages/articles/[
 import ArticleDetail from "@/pages/articles/[id].page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import type { TArticle } from "@/types";
+import { isDraft } from "@/utils/article";
 import { fetchArticle, fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { mdx2html } from "@/utils/mdx/mdx2html";
-import { isDraft } from "@/utils/validator";
 
 const ArticlePreview = (props: ArticleDetailProps) => {
   return (
