@@ -2,8 +2,8 @@ import { Feed } from "feed";
 import { marked } from "marked";
 import fs from "node:fs";
 
+import { getSafeDate } from "@/lib/date";
 import type { TArticle, TConfig } from "@/types";
-import { getSafeDate } from "@/utils/date";
 import { urlTable } from "@/utils/paths/url";
 
 export const generatedRssFeed = (config: TConfig, articles: TArticle[]) => {
