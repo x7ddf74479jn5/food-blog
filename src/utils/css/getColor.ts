@@ -1,4 +1,10 @@
-import { isCategoryOrTagColor } from "@/utils/validator";
+import type { TCategoryOrTagColor } from "@/types";
+
+const colors = ["green", "yellow", "red", "pink", "blue", "purple", "indigo", "gray"];
+
+const isCategoryOrTagColor = (color: any): color is TCategoryOrTagColor => {
+  return colors.includes(color);
+};
 
 const BGColors = {
   green: "bg-green-700",

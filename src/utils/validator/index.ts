@@ -1,1 +1,0 @@
-export { isCategoryOrTagColor } from "./isCategoryOrTagColor";
