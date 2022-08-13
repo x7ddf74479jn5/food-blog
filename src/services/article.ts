@@ -1,4 +1,4 @@
-import { runReport } from "@/lib/google-analytics";
+import { runReport } from "@/lib/google-analytics/report";
 import type { TArticle, TRankedArticle, TTag } from "@/types";
 import { fetchArticles, fetchPickupArticles } from "@/utils/fetcher";
 
