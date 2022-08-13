@@ -1,12 +1,12 @@
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import type { ParsedUrlQuery } from "node:querystring";
 
+import { fetchArticles, fetchCategories, fetchConfig, fetchTag, fetchTags } from "@/api";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
-import { fetchArticles, fetchCategories, fetchConfig, fetchTag, fetchTags } from "@/api";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 

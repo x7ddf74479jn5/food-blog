@@ -1,12 +1,12 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useRouter } from "next/router";
 
+import { fetchCategories, fetchConfig } from "@/api";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import type { TCategory, TConfig, TPickup, TQueryOptions, TRankedArticle } from "@/types";
-import { fetchCategories, fetchConfig } from "@/api";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 

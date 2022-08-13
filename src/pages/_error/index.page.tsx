@@ -1,10 +1,10 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 
+import { fetchCategories, fetchConfig } from "@/api";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 import type { TCategory, TConfig } from "@/types";
-import { fetchCategories, fetchConfig } from "@/api";
 
 type ErrorProps = InferGetStaticPropsType<typeof getStaticProps>;
 
