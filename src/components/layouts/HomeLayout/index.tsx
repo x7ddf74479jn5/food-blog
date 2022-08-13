@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
@@ -13,6 +13,20 @@ import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons").then((mod) => mod.ShareButtons));
+
+const useShouldRenderCarousel = ({
+  pickup,
+  popularArticles,
+}: {
+  pickup: TPickup;
+  popularArticles: TRankedArticle[];
+}) => {
+  return useMemo(() => {
+    if (pickup && pickup.articles.length > 0) return false;
+    if (popularArticles.length > 0) return false;
+    return true;
+  }, [pickup, popularArticles]);
+};
 
 type HomeLayoutProps = {
   children: React.ReactNode;
@@ -32,12 +46,13 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({
   config,
   categories,
   popularArticles,
-}: HomeLayoutProps) => {
+}) => {
   const isSmallOrDown = useMedia("<=", "sm");
+  const shouldRenderCarousel = useShouldRenderCarousel({ pickup, popularArticles });
 
   return (
     <RootLayout config={config} categories={categories}>
-      <CarouselContainer pickup={pickup} popularArticles={popularArticles} />
+      {shouldRenderCarousel && <CarouselContainer pickup={pickup} popularArticles={popularArticles} />}
       <MiddleAreaContainer>
         <AsideContainer side="left">
           <ShareButtons url={url} title={pageTitle} direction={isSmallOrDown ? "row" : "column"} />
