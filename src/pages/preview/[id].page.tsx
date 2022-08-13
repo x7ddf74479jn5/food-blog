@@ -8,7 +8,7 @@ import ArticleDetail from "@/pages/articles/[id].page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import type { TArticle } from "@/types";
 import { isDraft } from "@/utils/article";
-import { fetchArticle, fetchCategories, fetchConfig } from "@/utils/fetcher";
+import { fetchArticle, fetchCategories, fetchConfig } from "@/api";
 
 const ArticlePreview = (props: ArticleDetailProps) => {
   return (

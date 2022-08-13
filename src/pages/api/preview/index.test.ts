@@ -2,7 +2,7 @@ import { mockReq, mockRes } from "jest/test-utils";
 import { mockArticles } from "mocks/data";
 import type { NextApiRequest } from "next";
 
-import * as fetchArticles from "@/utils/fetcher/fetchArticles";
+import * as fetchArticles from "@/api/fetchArticles";
 
 import preview from "./index.page";
 

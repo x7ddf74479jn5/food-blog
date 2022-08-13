@@ -1,7 +1,7 @@
 import type { MicroCMSQueries } from "microcms-js-sdk";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { fetchArticles } from "@/utils/fetcher";
+import { fetchArticles } from "@/api";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { limit, offset, filters } = req.query;

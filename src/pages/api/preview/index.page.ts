@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { fetchArticle } from "@/utils/fetcher/fetchArticles";
+import { fetchArticle } from "@/api/fetchArticles";
 import { urlTable } from "@/utils/paths/url";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

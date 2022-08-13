@@ -5,7 +5,7 @@ import HomeLayout from "@/components/layouts/HomeLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
-import { fetchArticles, fetchCategories, fetchConfig } from "@/utils/fetcher";
+import { fetchArticles, fetchCategories, fetchConfig } from "@/api";
 import { generatedRssFeed } from "@/utils/rss/rss";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;

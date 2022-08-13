@@ -15,7 +15,7 @@ import { getSafeDate } from "@/lib/date";
 import { mdx2html } from "@/lib/mdx";
 import { getPickupArticles, getPopularArticles, getRelatedArticles } from "@/services/article";
 import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
-import { fetchArticle, fetchArticles, fetchCategories, fetchConfig } from "@/utils/fetcher";
+import { fetchArticle, fetchArticles, fetchCategories, fetchConfig } from "@/api";
 import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 

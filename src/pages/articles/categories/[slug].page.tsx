@@ -6,7 +6,7 @@ import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
-import { fetchArticles, fetchCategories, fetchCategory, fetchConfig } from "@/utils/fetcher";
+import { fetchArticles, fetchCategories, fetchCategory, fetchConfig } from "@/api";
 import { formatPageTitle } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
