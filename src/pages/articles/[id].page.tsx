@@ -11,12 +11,12 @@ import Thumbnail from "@/components/atoms/Thumbnail";
 import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/functions/meta";
 import ArticleLayout from "@/components/layouts/ArticleLayout";
 import { TagListColored } from "@/components/molecules/TagList";
+import { mdx2html } from "@/lib/mdx";
 import { getPickupArticles, getPopularArticles, getRelatedArticles } from "@/services/article";
 import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 import { getSafeDate } from "@/utils/date";
 import { fetchArticle, fetchArticles, fetchCategories, fetchConfig } from "@/utils/fetcher";
 import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
-import { mdx2html } from "@/utils/mdx/mdx2html";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 export type ArticleDetailProps = InferGetStaticPropsType<typeof getStaticProps>;

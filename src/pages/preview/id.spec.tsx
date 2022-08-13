@@ -2,7 +2,7 @@ import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticl
 import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 
-import { mdx2html } from "@/utils/mdx/mdx2html";
+import { mdx2html } from "@/lib/mdx";
 
 import ArticlePreview from "./[id].page";
 
