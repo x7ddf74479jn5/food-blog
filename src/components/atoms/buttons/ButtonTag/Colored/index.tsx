@@ -1,6 +1,6 @@
 import NextLink from "@/components/atoms/NextLink";
 import type { TTag } from "@/types";
-import { getBGColor } from "@/utils/formatter";
+import { getBGColor } from "@/utils/css";
 import { urlTable } from "@/utils/paths/url";
 
 type Props = {
