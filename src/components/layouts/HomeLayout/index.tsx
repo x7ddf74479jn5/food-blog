@@ -22,8 +22,8 @@ const useShouldRenderCarousel = ({
   popularArticles: TRankedArticle[];
 }) => {
   return useMemo(() => {
-    if (pickup && pickup.articles.length > 0) return false;
-    if (popularArticles.length > 0) return false;
+    if (pickup && pickup.articles.length === 0) return false;
+    if (popularArticles.length === 0) return false;
     return true;
   }, [pickup, popularArticles]);
 };
