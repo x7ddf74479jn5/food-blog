@@ -1,4 +1,4 @@
-import { client } from "@/lib/client";
+import { client } from "@/lib/microcms";
 import type { TCategory, TCategoryListResponse } from "@/types";
 import { HttpError } from "@/utils/error/Http";
 

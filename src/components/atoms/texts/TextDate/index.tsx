@@ -1,6 +1,6 @@
 import { formatISO } from "date-fns";
 
-import { formatJpYYYYMD } from "@/utils/date/format";
+import { formatJpYYYYMD } from "@/lib/date";
 
 type Props = {
   date: Date;

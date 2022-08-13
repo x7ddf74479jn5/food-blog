@@ -4,7 +4,7 @@ import { TwoColumnLayout } from "@/components/layouts/TwoColumnLayout";
 import { CategoryList } from "@/components/molecules/CategoryList";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
-import { fetchCategories, fetchConfig } from "@/utils/fetcher";
+import { fetchCategories, fetchConfig } from "@/api";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
