@@ -1,6 +1,6 @@
 import type { MicroCMSQueries } from "microcms-js-sdk/dist/cjs/types";
 
-import { client } from "@/lib/client";
+import { client } from "@/lib/microcms";
 import type { TArticle, TArticleListResponse } from "@/types";
 import type { TPickupListResponse } from "@/types/pickup";
 import { HttpError } from "@/utils/error/Http";

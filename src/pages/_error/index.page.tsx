@@ -4,7 +4,7 @@ import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 import type { TCategory, TConfig } from "@/types";
-import { fetchCategories, fetchConfig } from "@/utils/fetcher";
+import { fetchCategories, fetchConfig } from "@/api";
 
 type ErrorProps = InferGetStaticPropsType<typeof getStaticProps>;
 

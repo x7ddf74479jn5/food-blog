@@ -7,7 +7,7 @@ import { DefaultSeo } from "next-seo";
 import { ThemeProvider } from "next-themes";
 
 import { SearchHistoryProvider } from "@/context/SearchHistoryContext";
-import { GoogleAnalytics, usePageView } from "@/lib/gtag";
+import { GoogleAnalytics, usePageView } from "@/lib/google-analytics";
 
 import SEO from "../../next-seo.config";
 

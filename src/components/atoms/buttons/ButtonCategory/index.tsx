@@ -1,6 +1,6 @@
 import NextLink from "@/components/atoms/NextLink";
 import type { TCategory } from "@/types";
-import { getBorderColor } from "@/utils/formatter/getColor";
+import { getBorderColor } from "@/utils/css";
 import { urlTable } from "@/utils/paths/url";
 
 type Props = {
