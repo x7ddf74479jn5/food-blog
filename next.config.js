@@ -25,6 +25,9 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
   },
+  sentry: {
+    hideSourceMaps: true,
+  },
 };
 
 const withSentryConfig = (config) => {
