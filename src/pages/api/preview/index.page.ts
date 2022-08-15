@@ -1,3 +1,4 @@
+import { withSentry } from "@sentry/nextjs";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { fetchArticle } from "@/api/fetchArticles";
@@ -27,4 +28,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.end("Preview mode enabled");
 };
 
-export default handler;
+export default withSentry(handler);
