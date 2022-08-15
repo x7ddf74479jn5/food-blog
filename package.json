@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "run-s -l -c build:next generate-sitemap delete-sourcemap",
+    "build": "run-s -l  build:next generate-sitemap delete-sourcemap",
     "build:next": "next build && next export",
     "generate-sitemap": "next-sitemap --config sitemap.config.js",
     "delete-sourcemap": "find ./out -name *.map -delete",
