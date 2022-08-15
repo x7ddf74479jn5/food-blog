@@ -1,18 +1,12 @@
 import { mockArticles } from "@mocks/data";
 import { server } from "mocks/msw/server";
 
-import { getTagFilters } from "@/services/article";
-
 import { fetchArticle, fetchArticles } from ".";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
 
-// FIXME: sdkとnextをアップグレードしたら壊れた
-// serviceDomain or endpoint may be wrong.
-// Details: FetchError: request to https://food-blog.microcms.io/api/v1/articles failed, reason: Invalid character in header field name
-
-describe.skip("utils/fetcher/fetchArticles", () => {
+describe("utils/fetcher/fetchArticles", () => {
   const testArticles = Object.values(mockArticles);
 
   describe("fetchArticles", () => {
@@ -80,32 +74,6 @@ describe.skip("utils/fetcher/fetchArticles", () => {
     });
     it("NG: 存在しないid", async () => {
       await expect(async () => await fetchArticle("invalid_id")).rejects.toThrow();
-    });
-  });
-
-  describe("getTagFilters", () => {
-    it("OK: 2ペアのタググループを作る", () => {
-      const filters = getTagFilters(mockArticles.tomatoSalad, "pairs");
-      expect(filters).toBe(
-        "(tags[contains]10[and]tags[contains]7)[or](tags[contains]10[and]tags[contains]12)[or](tags[contains]7[and]tags[contains]12)[and]id[not_equals]2"
-      );
-    });
-
-    it("OK: 3ペアのタググループを作る", () => {
-      const filters = getTagFilters(mockArticles.tomatoSalad, "trios");
-      expect(filters).toBe("(tags[contains]10[and]tags[contains]7[and]tags[contains]12)[and]id[not_equals]2");
-    });
-
-    it("OK: 3ペアを作れる記事が存在しない", () => {
-      const filters = getTagFilters(mockArticles.ohitashi, "trios");
-      expect(filters).toBe("id[not_equals]3");
-    });
-
-    it("OK: 除外する記事が含まれない", () => {
-      const filters1 = getTagFilters(mockArticles.ohitashi, "pairs", []);
-      expect(filters1).toBe("(tags[contains]6[and]tags[contains]1)[and]id[not_equals]3");
-      const filters2 = getTagFilters(mockArticles.ohitashi, "pairs", [mockArticles.tomatoSalad]);
-      expect(filters2).toBe("(tags[contains]6[and]tags[contains]1)[and]id[not_equals]3[and]id[not_equals]2");
     });
   });
 });
