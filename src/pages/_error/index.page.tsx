@@ -1,46 +1,34 @@
-import * as Sentry from "@sentry/nextjs";
-import type { NextPage } from "next";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 
+import { fetchCategories, fetchConfig } from "@/api";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
+import { RootLayout } from "@/components/layouts/RootLayout";
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
+import type { TCategory, TConfig } from "@/types";
 
-type ErrorPageProps = {
-  pageTitle: string;
-  message: string;
-};
+type ErrorProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const ErrorPage: NextPage<ErrorPageProps> = ({ pageTitle, message }) => (
-  <>
+const ErrorPage: NextPage<ErrorProps> = ({ config, categories }) => (
+  <RootLayout config={config} categories={categories}>
     <HtmlHeadNoIndex />
-    <ErrorFallback heading={pageTitle} message={message} />
-  </>
+    <ErrorFallback heading="Unhandled Error" message="サイト上で問題が発生しました。" />
+  </RootLayout>
 );
 
-ErrorPage.getInitialProps = async (contextData) => {
-  await Sentry.captureUnderscoreErrorException(contextData);
+type StaticProps = {
+  config: TConfig;
+  categories: TCategory[];
+};
 
-  const { err } = contextData;
-
-  let pageTitle;
-  let message;
-
-  switch (err?.statusCode) {
-    case 404:
-      pageTitle = "404 - Not Found";
-      message = "ページが見つかりませんでした";
-      break;
-    case 500:
-      pageTitle = "500 - Server Error";
-      message = "サーバーで問題が発生しました";
-      break;
-    default:
-      pageTitle = "Unhandled Error";
-      message = "サイト上で問題が発生しました";
-  }
+export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+  const config = await fetchConfig();
+  const categories = await fetchCategories();
 
   return {
-    pageTitle,
-    message,
+    props: {
+      config,
+      categories,
+    },
   };
 };
 

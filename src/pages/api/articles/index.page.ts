@@ -1,4 +1,3 @@
-import { withSentry } from "@sentry/nextjs";
 import type { MicroCMSQueries } from "microcms-js-sdk";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -28,4 +27,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json(data);
 };
 
-export default withSentry(handler);
+export default handler;
