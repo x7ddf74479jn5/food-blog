@@ -9,7 +9,7 @@ module.exports = {
     site_name: "Food Blog",
     images: [
       {
-        url: "https://food-blog-chi.vercel.app/assets/card-image.webp",
+        url: "https://food-blog-chi.vercel.app/images/site-logo-512x512.png",
       },
     ],
   },
