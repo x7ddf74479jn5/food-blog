@@ -1,10 +1,10 @@
-import type { InferGetStaticPropsType, NextPage } from "next";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { FaRegTired } from "react-icons/fa";
 
+import { fetchCategories, fetchConfig } from "@/api";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import { RootLayout } from "@/components/layouts/RootLayout";
-
-import { getStaticProps as _getStaticProps } from "../_error/index.page";
+import type { TCategory, TConfig } from "@/types";
 
 type OfflineProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -21,5 +21,20 @@ const Offline: NextPage<OfflineProps> = ({ config, categories }) => (
   </RootLayout>
 );
 
-export const getStaticProps = _getStaticProps;
+type StaticProps = {
+  config: TConfig;
+  categories: TCategory[];
+};
+
+export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+  const config = await fetchConfig();
+  const categories = await fetchCategories();
+
+  return {
+    props: {
+      config,
+      categories,
+    },
+  };
+};
 export default Offline;

@@ -52,3 +52,6 @@ _posts
 /playwright/.cache/
 credentials.json
 tsconfig.tsbuildinfo
+
+# Sentry
+.sentryclirc
