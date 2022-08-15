@@ -4,10 +4,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "run-s -l  build:next generate-sitemap delete-sourcemap",
-    "build:next": "next build && next export",
+    "build": "run-s -l build:next generate-sitemap",
+    "build:next": "next build",
     "generate-sitemap": "next-sitemap --config sitemap.config.js",
-    "delete-sourcemap": "find ./out -name *.map -delete",
     "start": "next start",
     "lint": "run-p -l -c --aggregate-output lint:*",
     "lint:eslint": "eslint --cache .",
