@@ -1,15 +1,15 @@
+export type { TQueryOptions } from "./microcms";
 export type {
   TArticle,
   TArticleListResponse,
   TArticleSWRResponse,
   TComparatorArticle,
   TRankedArticle,
-} from "./article";
-export type { TCategory, TCategoryListResponse } from "./category";
-export type { TConfig } from "./config";
-export type { TQueryOptions } from "./microcms";
+} from "./models/article";
+export type { TCategory, TCategoryListResponse } from "./models/category";
+export type { TConfig } from "./models/config";
+export type { TPickup } from "./models/pickup";
+export type { TTag, TTagListResponse } from "./models/tag";
+export type { TCategoryOrTagColor, ValueOf } from "./models/utils";
+export type { TWriter, TWriterListResponse } from "./models/writer";
 export type { TApiRoute, TAppUrl } from "./path";
-export type { TPickup } from "./pickup";
-export type { TTag, TTagListResponse } from "./tag";
-export type { TCategoryOrTagColor, ValueOf } from "./utils";
-export type { TWriter, TWriterListResponse } from "./writer";

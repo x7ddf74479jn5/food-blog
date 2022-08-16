@@ -1,6 +1,6 @@
 import type { MicroCMSListContent, MicroCMSListResponse } from "microcms-js-sdk";
 
-import type { TArticle } from "@/types/article";
+import type { TArticle } from "@/types/models/article";
 
 export type TPickup = {
   name: string;

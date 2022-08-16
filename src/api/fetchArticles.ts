@@ -2,7 +2,7 @@ import type { MicroCMSQueries } from "microcms-js-sdk/dist/cjs/types";
 
 import { client } from "@/lib/microcms";
 import type { TArticle, TArticleListResponse } from "@/types";
-import type { TPickupListResponse } from "@/types/pickup";
+import type { TPickupListResponse } from "@/types/models/pickup";
 
 export const fetchArticles = async (queries?: MicroCMSQueries): Promise<TArticleListResponse> => {
   const data = await client.get<TArticleListResponse>({
