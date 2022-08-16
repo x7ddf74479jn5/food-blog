@@ -11,7 +11,7 @@ type ArticleSWRContainerProps = {
   fallbackData?: TArticleListResponse;
 };
 
-export const ArticleSWRContainer: React.VFC<ArticleSWRContainerProps> = ({ queryOptions, fallbackData }) => {
+export const ArticleSWRContainer: React.FC<ArticleSWRContainerProps> = ({ queryOptions, fallbackData }) => {
   const {
     articles,
     hasNextPage,

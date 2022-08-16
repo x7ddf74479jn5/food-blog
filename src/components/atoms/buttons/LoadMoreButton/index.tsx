@@ -2,7 +2,7 @@ import { FaChevronDown } from "react-icons/fa";
 
 type LoadMoreButtonProps = JSX.IntrinsicElements["button"];
 
-export const LoadMoreButton: React.VFC<LoadMoreButtonProps> = ({ onClick: handleClick }) => {
+export const LoadMoreButton: React.FC<LoadMoreButtonProps> = ({ onClick: handleClick }) => {
   return (
     <button
       onClick={handleClick}

@@ -10,7 +10,7 @@ type LinkCardProps = {
   article: TArticle;
 };
 
-export const LinkCard: React.VFC<LinkCardProps> = ({ article }) => {
+export const LinkCard: React.FC<LinkCardProps> = ({ article }) => {
   const { id, title, tags, image } = article;
   return (
     <NextLink href={`${urlTable.articles}/${id}`}>

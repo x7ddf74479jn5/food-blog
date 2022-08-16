@@ -5,7 +5,7 @@ import { urlTable } from "@/utils/paths/url";
 
 type ErrorFallbackProps = { heading: string; message: string; onReset?: () => void };
 
-export const ErrorFallback: React.VFC<ErrorFallbackProps> = ({ heading, message, onReset }) => {
+export const ErrorFallback: React.FC<ErrorFallbackProps> = ({ heading, message, onReset }) => {
   const router = useRouter();
   const handleClick = () => {
     onReset && onReset();

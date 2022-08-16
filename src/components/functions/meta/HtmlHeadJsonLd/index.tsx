@@ -10,7 +10,7 @@ type HtmlHeadJsonLtJsonLdProps = {
   description: string;
 };
 
-export const HtmlHeadJsonLd: React.VFC<HtmlHeadJsonLtJsonLdProps> = ({
+export const HtmlHeadJsonLd: React.FC<HtmlHeadJsonLtJsonLdProps> = ({
   url,
   title,
   image,

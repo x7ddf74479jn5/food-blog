@@ -6,7 +6,7 @@ type Props = {
   alt?: string;
 } & ImageProps;
 
-const CustomImage: React.VFC<Props> = ({ src, alt = "", width, height, ...otherProps }) => {
+const CustomImage: React.FC<Props> = ({ src, alt = "", width, height, ...otherProps }) => {
   if (width && height) {
     return (
       <div className="relative mb-4 flex w-full items-center justify-center">

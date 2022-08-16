@@ -7,7 +7,7 @@ type ArticleListProps = {
   articles: TArticle[];
 };
 
-const ArticleList: React.VFC<ArticleListProps> = ({ articles }) => {
+const ArticleList: React.FC<ArticleListProps> = ({ articles }) => {
   return (
     <ul className="space-y-12">
       {articles.map((article) => (
