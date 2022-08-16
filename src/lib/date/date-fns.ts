@@ -1,3 +1,8 @@
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
+
+export const formatJpYYYYMD = (date: Date) => format(date, "yyyy年M月d日");
+
 // publishedAtが存在しないケースがあるための対策
 export const getSafeDate = (_date: any): Date => {
   const current = new Date();
@@ -9,4 +14,6 @@ export const getSafeDate = (_date: any): Date => {
   return Number.isNaN(date.getTime()) ? current : date;
 };
 
-export default getSafeDate;
+export const isValidISODate = (dateString: string) => {
+  return parseISO(dateString).toString() !== "Invalid Date";
+};

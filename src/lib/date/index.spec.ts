@@ -1,6 +1,24 @@
-import { isValidISODate } from "./is-valid";
+import { formatJpYYYYMD, getSafeDate, isValidISODate } from "./date-fns";
 
 describe("utils/date", () => {
+  describe("formatJpYYYYMDD", () => {
+    test("OK", () => {
+      expect(formatJpYYYYMD(new Date("2020-01-01"))).toBe("2020年1月1日");
+      expect(formatJpYYYYMD(new Date("2020-12-01"))).toBe("2020年12月1日");
+    });
+  });
+
+  describe("getSafeDate", () => {
+    test("OK: 渡した日付と同じ日付が変える", () => {
+      expect(getSafeDate(new Date("2020-01-01"))).toStrictEqual(new Date("2020-01-01T00:00:00.000Z"));
+    }),
+      test("OK: 日付が不正の場合現在時間が返される", () => {
+        const mockDate = new Date(2021, 1, 2, 2, 2, 2);
+        jest.spyOn(global, "Date").mockImplementation(() => mockDate as unknown as string);
+        expect(getSafeDate(undefined)).toStrictEqual(mockDate);
+      });
+  });
+
   describe("isValid", () => {
     test("OK: 日付である", () => {
       expect(isValidISODate("2020-01-01")).toBeTruthy();
