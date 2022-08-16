@@ -1,6 +1,8 @@
 import { formatJpYYYYMD, getSafeDate, isValidISODate } from "./date-fns";
 
 describe("utils/date", () => {
+  afterEach(() => jest.restoreAllMocks());
+
   describe("formatJpYYYYMDD", () => {
     test("OK", () => {
       expect(formatJpYYYYMD(new Date("2020-01-01"))).toBe("2020年1月1日");
