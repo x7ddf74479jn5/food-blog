@@ -1,11 +1,17 @@
-import { dateCommon, mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
+import {
+  dateCommon,
+  mockArticles,
+  mockCategories,
+  mockConfig,
+  mockPickup,
+  mockPopularArticles,
+  mockTags,
+} from "@mocks/data";
 import { render, screen } from "jest/test-utils";
-import { server } from "mocks/msw/server";
 
-import Home from "../index.page";
+import { formatPageTitle } from "@/utils/formatter";
 
-beforeAll(() => server.listen());
-afterAll(() => server.close());
+import { Tags } from ".";
 
 jest.mock("next/head", () => {
   return {
@@ -17,18 +23,9 @@ jest.mock("next/head", () => {
   };
 });
 
-jest.mock("react-slick", () => {
-  return {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    __esModule: true,
-    default: jest.fn((args) => {
-      return <div>{args.children}</div>;
-    }),
-  };
-});
-
-describe("pages/index", () => {
+describe("pages/articles/tags/[slug]/client", () => {
   const mockCategoryList = Object.values(mockCategories);
+  const mockTagRice = mockTags.rice;
   const mockArticleList = Object.values(mockArticles);
   const mockData = {
     contents: mockArticleList,
@@ -39,8 +36,9 @@ describe("pages/index", () => {
   };
 
   it("OK: 初期レンダリング", async () => {
-    const { unmount } = render(
-      <Home
+    render(
+      <Tags
+        tag={mockTagRice}
         categories={mockCategoryList}
         config={mockConfig}
         data={mockData}
@@ -49,7 +47,9 @@ describe("pages/index", () => {
       />
     );
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1).toHaveTextContent("レシピ一覧");
-    unmount();
+    const expectedHeading = `タグ：${mockTagRice.name}`;
+    expect(h1).toHaveTextContent(expectedHeading);
+    const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
+    expect(document.title).toBe(expectedTitle);
   });
 });

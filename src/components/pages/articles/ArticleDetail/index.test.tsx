@@ -1,14 +1,10 @@
 import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
-import { server } from "mocks/msw/server";
 
 import { mdx2html } from "@/lib/mdx";
 import { formatPageTitle } from "@/utils/formatter";
 
-import ArticleDetail from "./[id].page";
-
-beforeAll(() => server.listen());
-afterAll(() => server.close());
+import { ArticleDetail } from ".";
 
 jest.mock("next/head", () => {
   return {
@@ -17,14 +13,6 @@ jest.mock("next/head", () => {
     default: ({ children }: { children: Array<React.ReactElement> }) => {
       return <>{children}</>;
     },
-  };
-});
-
-jest.mock("@/utils/mdx/mdx2html", () => {
-  return {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    __esModule: true,
-    mdx2html: jest.fn(),
   };
 });
 
@@ -45,7 +33,7 @@ describe("pages/articles", () => {
 
   it("OK: 初期レンダリング", async () => {
     const mdxSource = await mdx2html(mockArticleStock.body);
-    const { unmount } = render(
+    render(
       <ArticleDetail
         categories={mockCategoryList}
         config={mockConfig}
@@ -61,6 +49,5 @@ describe("pages/articles", () => {
     expect(h1).toHaveTextContent(mockArticleStock.title);
     const expectedTitle = formatPageTitle(mockArticleStock.title, mockConfig.siteTitle);
     expect(document.title).toBe(expectedTitle);
-    unmount();
   });
 });

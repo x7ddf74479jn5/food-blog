@@ -1,21 +1,9 @@
-import {
-  dateCommon,
-  mockArticles,
-  mockCategories,
-  mockConfig,
-  mockPickup,
-  mockPopularArticles,
-  mockTags,
-} from "@mocks/data";
+import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
-import { server } from "mocks/msw/server";
 
 import { formatPageTitle } from "@/utils/formatter";
 
-import Tags from "./[slug].page";
-
-beforeAll(() => server.listen());
-afterAll(() => server.close());
+import { Popular } from ".";
 
 jest.mock("next/head", () => {
   return {
@@ -27,34 +15,22 @@ jest.mock("next/head", () => {
   };
 });
 
-describe("pages/articles/tags/[slug]/client", () => {
+describe("pages/articles/popular", () => {
   const mockCategoryList = Object.values(mockCategories);
-  const mockTagRice = mockTags.rice;
-  const mockArticleList = Object.values(mockArticles);
-  const mockData = {
-    contents: mockArticleList,
-    totalCount: mockArticleList.length,
-    dateCommon,
-    limit: 10,
-    offset: 0,
-  };
 
   it("OK: 初期レンダリング", async () => {
-    const { unmount } = render(
-      <Tags
-        tag={mockTagRice}
-        categories={mockCategoryList}
+    render(
+      <Popular
         config={mockConfig}
-        data={mockData}
         pickup={mockPickup}
+        categories={mockCategoryList}
         popularArticles={mockPopularArticles}
       />
     );
     const h1 = screen.getByRole("heading", { level: 1 });
-    const expectedHeading = `タグ：${mockTagRice.name}`;
+    const expectedHeading = "人気記事";
     expect(h1).toHaveTextContent(expectedHeading);
     const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
     expect(document.title).toBe(expectedTitle);
-    unmount();
   });
 });

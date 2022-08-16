@@ -1,13 +1,9 @@
 import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
-import { server } from "mocks/msw/server";
 
 import { formatPageTitle } from "@/utils/formatter";
 
-import PopularPage from "./index.page";
-
-beforeAll(() => server.listen());
-afterAll(() => server.close());
+import { Pickup } from ".";
 
 jest.mock("next/head", () => {
   return {
@@ -19,12 +15,12 @@ jest.mock("next/head", () => {
   };
 });
 
-describe("pages/articles/popular", () => {
+describe("pages/articles/", () => {
   const mockCategoryList = Object.values(mockCategories);
 
   it("OK: 初期レンダリング", async () => {
-    const { unmount } = render(
-      <PopularPage
+    render(
+      <Pickup
         config={mockConfig}
         pickup={mockPickup}
         categories={mockCategoryList}
@@ -32,10 +28,9 @@ describe("pages/articles/popular", () => {
       />
     );
     const h1 = screen.getByRole("heading", { level: 1 });
-    const expectedHeading = "人気記事";
+    const expectedHeading = "おすすめ記事";
     expect(h1).toHaveTextContent(expectedHeading);
     const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
     expect(document.title).toBe(expectedTitle);
-    unmount();
   });
 });

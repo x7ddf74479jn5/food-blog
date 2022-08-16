@@ -1,20 +1,21 @@
-import type { GetServerSideProps } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 import { fetchArticle, fetchCategories, fetchConfig } from "@/api";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
+import type { ArticleDetailProps } from "@/components/pages/articles/ArticleDetail";
 import { mdx2html } from "@/lib/mdx";
-import type { ArticleDetailProps, ArticlesStaticProps } from "@/pages/articles/[id].page";
-import ArticleDetail from "@/pages/articles/[id].page";
+import type { ArticlesStaticProps } from "@/pages/articles/[id].page";
+import { ArticleDetailPage } from "@/pages/articles/[id].page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import type { TArticle } from "@/types";
 import { isDraft } from "@/utils/article";
 
-const ArticlePreview = (props: ArticleDetailProps) => {
+const ArticlePreviewPage: NextPage<ArticleDetailProps> = (props) => {
   return (
     <>
       <HtmlHeadNoIndex />
-      <ArticleDetail {...props} />
+      <ArticleDetailPage {...props} />
     </>
   );
 };
@@ -57,4 +58,4 @@ export const getServerSideProps: GetServerSideProps<ArticlesStaticProps, Params>
   }
 };
 
-export default ArticlePreview;
+export default ArticlePreviewPage;

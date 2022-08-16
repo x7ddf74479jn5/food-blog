@@ -1,44 +1,13 @@
-import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { ParsedUrlQuery } from "node:querystring";
 
 import { fetchArticles, fetchCategories, fetchCategory, fetchConfig } from "@/api";
-import { HtmlHeadBase } from "@/components/functions/meta";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
-import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
+import { Categories } from "@/components/pages/articles/categories/Categories";
+import type { CategoryProps } from "@/components/pages/articles/categories/Category";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
-import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
-import { formatPageTitle } from "@/utils/formatter";
-import { getBackLinks, urlTable } from "@/utils/paths/url";
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
-
-const Category: NextPage<Props> = ({ data, category, config, categories, pickup, popularArticles }) => {
-  const { siteTitle, host } = config;
-  const heading = `カテゴリー：${category.name}`;
-  const pageTitle = formatPageTitle(heading, siteTitle);
-  const url = new URL(`${urlTable.categories}/${category.slug}`, host).toString();
-  const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
-  const queryOptions = { filters: `category[equals]${category.id}` };
-
-  return (
-    <DefaultLayout
-      config={config}
-      pageTitle={pageTitle}
-      url={url}
-      backLinks={backLinks}
-      categories={categories}
-      pickup={pickup}
-      popularArticles={popularArticles}
-    >
-      <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} image={category.image.url} />
-      <div className="mb-8">
-        <h1>{heading}</h1>
-      </div>
-      <div className="min-h-screen w-full">
-        <ArticleSWRContainer fallbackData={data} queryOptions={queryOptions} />
-      </div>
-    </DefaultLayout>
-  );
+const CategoryPage: NextPage<CategoryProps> = (props) => {
+  return <Categories {...props} />;
 };
 
 interface Params extends ParsedUrlQuery {
@@ -54,14 +23,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths, fallback: "blocking" };
 };
 
-type StaticProps = {
-  category: TCategory;
-  categories: TCategory[];
-  config: TConfig;
-  data: TArticleListResponse;
-  pickup: TPickup;
-  popularArticles: TRankedArticle[];
-};
+type StaticProps = CategoryProps;
 
 export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ params }) => {
   const slug = params?.slug;
@@ -91,4 +53,4 @@ export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ para
   };
 };
 
-export default Category;
+export default CategoryPage;

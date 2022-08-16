@@ -1,14 +1,10 @@
 import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
 import type { NextRouter } from "jest/test-utils";
 import { render, screen, withMockedRouter } from "jest/test-utils";
-import { server } from "mocks/msw/server";
 
 import { formatPageTitle } from "@/utils/formatter";
 
-import Search from "./index.page";
-
-beforeAll(() => server.listen());
-afterAll(() => server.close());
+import { Search } from ".";
 
 jest.mock("next/head", () => {
   return {
@@ -29,7 +25,7 @@ describe("pages/search", () => {
   };
 
   it("OK: 初期レンダリング", () => {
-    const result = render(
+    render(
       withMockedRouter(
         mockRouter,
         <Search
@@ -46,6 +42,5 @@ describe("pages/search", () => {
     expect(h1).toHaveTextContent(expectedHeading);
     const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
     expect(document.title).toBe(expectedTitle);
-    result.unmount();
   });
 });

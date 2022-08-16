@@ -1,26 +1,14 @@
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 import { fetchCategories, fetchConfig } from "@/api";
-import { HtmlHeadNoIndex } from "@/components/functions/meta";
-import { RootLayout } from "@/components/layouts/RootLayout";
-import { ErrorFallback } from "@/components/organisms/ErrorFallback";
-import type { TCategory, TConfig } from "@/types";
+import type { Error404Props } from "@/components/pages/error/404";
+import { Error404 } from "@/components/pages/error/404";
 
-type Error404Props = InferGetStaticPropsType<typeof getStaticProps>;
-
-const Error404Page: NextPage<Error404Props> = ({ config, categories }) => (
-  <RootLayout config={config} categories={categories}>
-    <HtmlHeadNoIndex />
-    <ErrorFallback heading="404 - Not Found" message="ページが見つかりませんでした" />
-  </RootLayout>
-);
+const Error404Page: NextPage<Error404Props> = (props) => <Error404 {...props} />;
 
 export default Error404Page;
 
-type StaticProps = {
-  config: TConfig;
-  categories: TCategory[];
-};
+type StaticProps = Error404Props;
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const config = await fetchConfig();

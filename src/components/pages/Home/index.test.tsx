@@ -1,13 +1,7 @@
 import { dateCommon, mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
-import { server } from "mocks/msw/server";
 
-import { formatPageTitle } from "@/utils/formatter";
-
-import Category from "./[slug].page";
-
-beforeAll(() => server.listen());
-afterAll(() => server.close());
+import { Home } from ".";
 
 jest.mock("next/head", () => {
   return {
@@ -19,9 +13,18 @@ jest.mock("next/head", () => {
   };
 });
 
-describe("pages/articles/categories/[slug]/client", () => {
+jest.mock("react-slick", () => {
+  return {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    __esModule: true,
+    default: jest.fn((args) => {
+      return <div>{args.children}</div>;
+    }),
+  };
+});
+
+describe("pages/index", () => {
   const mockCategoryList = Object.values(mockCategories);
-  const mockCategoryRice = mockCategories.rice;
   const mockArticleList = Object.values(mockArticles);
   const mockData = {
     contents: mockArticleList,
@@ -32,9 +35,8 @@ describe("pages/articles/categories/[slug]/client", () => {
   };
 
   it("OK: 初期レンダリング", async () => {
-    const { unmount } = render(
-      <Category
-        category={mockCategoryRice}
+    render(
+      <Home
         categories={mockCategoryList}
         config={mockConfig}
         data={mockData}
@@ -42,12 +44,7 @@ describe("pages/articles/categories/[slug]/client", () => {
         popularArticles={mockPopularArticles}
       />
     );
-
     const h1 = screen.getByRole("heading", { level: 1 });
-    const expectedHeading = `カテゴリー：${mockCategoryRice.name}`;
-    expect(h1).toHaveTextContent(expectedHeading);
-    const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
-    expect(document.title).toBe(expectedTitle);
-    unmount();
+    expect(h1).toHaveTextContent("レシピ一覧");
   });
 });
