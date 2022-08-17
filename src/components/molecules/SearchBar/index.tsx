@@ -6,7 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import { useSearchHistoryContext } from "@/context";
 import { urlTable } from "@/utils/paths/url";
 
-const Search: React.FC = () => {
+const SearchBar: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState("");
   const [isActive, setIsActive] = useState(false);
@@ -37,21 +37,21 @@ const Search: React.FC = () => {
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (query === "") {
+    if (query.trim() === "") {
       return;
     }
 
     if (event.key === "Enter") {
-      search(query);
+      search(query.trim());
     }
   };
 
   const handleSubmit = () => {
-    if (query === "") {
+    if (query.trim() === "") {
       return;
     }
 
-    search(query);
+    search(query.trim());
   };
 
   const handleClickInside = (history: string) => {
@@ -110,4 +110,4 @@ const Search: React.FC = () => {
   );
 };
 
-export default Search;
+export default SearchBar;

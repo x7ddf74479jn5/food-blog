@@ -3,7 +3,7 @@ import { memo } from "react";
 import { SiteTitle } from "@/components/atoms/SiteTitle";
 import ThemeSwitch from "@/components/atoms/ThemeSwitch";
 import { CategoryMenu } from "@/components/molecules/CategoryMenu";
-import Search from "@/components/molecules/Search";
+import SearchBar from "@/components/molecules/SearchBar";
 import type { TCategory } from "@/types";
 
 type Props = {
@@ -17,7 +17,7 @@ const Header: React.FC<Props> = ({ siteTitle, categories }) => {
       <div className="flex items-center justify-between">
         <SiteTitle size="text-2xl" title={siteTitle} />
         <div className="hidden w-1/3 sm:block">
-          <Search />
+          <SearchBar />
         </div>
         <div className="flex items-center space-x-4">
           <ThemeSwitch />
@@ -25,7 +25,7 @@ const Header: React.FC<Props> = ({ siteTitle, categories }) => {
         </div>
       </div>
       <div className="mt-2 block sm:hidden">
-        <Search />
+        <SearchBar />
       </div>
     </header>
   );

@@ -3,7 +3,7 @@ import type { UserEvent } from "@testing-library/user-event/dist/types/setup";
 import { render, screen } from "jest/test-utils";
 import React from "react";
 
-import Search from ".";
+import SearchBar from ".";
 
 const useRouter = jest.spyOn(require("next/router"), "useRouter");
 
@@ -14,7 +14,7 @@ useRouter.mockImplementation(() => {
 
 describe("components/molecules/Search", () => {
   it("OK: 初期レンダリング", () => {
-    render(<Search />);
+    render(<SearchBar />);
     const input = screen.getByRole("searchbox");
     expect(input).toHaveValue("");
     const placeholder = screen.getByPlaceholderText("Search...");
@@ -30,7 +30,7 @@ describe("components/molecules/Search", () => {
     });
 
     it("OK: 入力イベント", async () => {
-      render(<Search />);
+      render(<SearchBar />);
       const input = screen.getByRole("searchbox");
       expect(input).toHaveValue("");
 
@@ -40,7 +40,7 @@ describe("components/molecules/Search", () => {
     });
 
     it("OK: 検索イベント", async () => {
-      render(<Search />);
+      render(<SearchBar />);
       const input = screen.getByRole("searchbox");
       expect(input).toHaveValue("");
 
@@ -53,7 +53,7 @@ describe("components/molecules/Search", () => {
     });
 
     it("OK: フォーカスイベント", async () => {
-      const { container } = render(<Search />);
+      const { container } = render(<SearchBar />);
       const input = screen.getByRole("searchbox");
 
       expect(input).not.toHaveFocus();
