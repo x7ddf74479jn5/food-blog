@@ -1,6 +1,6 @@
 import type { MicroCMSObjectContent } from "microcms-js-sdk";
 
-import type { TImage } from "@/types/models/utils";
+import type { TImage } from "@/types/utils";
 
 export type TConfig = {
   host: string;

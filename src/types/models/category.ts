@@ -1,6 +1,6 @@
 import type { MicroCMSListContent, MicroCMSListResponse } from "microcms-js-sdk";
 
-import type { TCategoryOrTagColor, TImage } from "@/types/models/utils";
+import type { TCategoryOrTagColor, TImage } from "@/types/utils";
 
 export type TCategory = {
   slug: string;

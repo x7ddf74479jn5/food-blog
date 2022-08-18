@@ -1,4 +1,4 @@
-import type { MicroCMSQueries } from "microcms-js-sdk/dist/cjs/types";
+import type { MicroCMSQueries } from "microcms-js-sdk";
 
 import { client } from "@/lib/microcms";
 import type { TArticle, TArticleListResponse } from "@/types";

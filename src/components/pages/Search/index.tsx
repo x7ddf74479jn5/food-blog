@@ -1,9 +1,10 @@
+import type { MicroCMSQueries } from "microcms-js-sdk";
 import { useRouter } from "next/router";
 
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
-import type { TCategory, TConfig, TPickup, TQueryOptions, TRankedArticle } from "@/types";
+import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
@@ -22,7 +23,7 @@ export const Search: React.FC<SearchProps> = ({ config, categories, pickup, popu
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = formatPageUrl(`${urlTable.search}/q=${q ?? ""}`, host);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
-  const queryOptions: TQueryOptions = { q };
+  const queryOptions: MicroCMSQueries = { q };
 
   return (
     <DefaultLayout

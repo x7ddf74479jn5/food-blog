@@ -1,7 +1,8 @@
+import type { MicroCMSQueries } from "microcms-js-sdk";
 import { useCallback, useMemo, useRef } from "react";
 import useSWRInfinite from "swr/infinite";
 
-import type { TApiRoute, TArticleListResponse, TArticleSWRResponse, TQueryOptions } from "@/types";
+import type { TApiRoute, TArticleListResponse, TArticleSWRResponse } from "@/types";
 import { HttpError } from "@/utils/error/Http";
 
 const createURLSearchParams = (data: Record<string, string | number>) => {
@@ -16,7 +17,7 @@ const createURLSearchParams = (data: Record<string, string | number>) => {
 
 type Arguments = {
   endpoint: TApiRoute;
-  getKeyOptions?: TQueryOptions;
+  getKeyOptions?: Omit<MicroCMSQueries, "fields" | "ids">;
   fallbackData?: TArticleListResponse;
 };
 
