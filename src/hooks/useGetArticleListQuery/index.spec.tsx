@@ -24,7 +24,7 @@ afterEach(() => {
 });
 
 describe("hooks/useGetArticleListQuery", () => {
-  const q = "作り方";
+  const q = encodeURIComponent("作り方");
   const endpoint = apiRoute.apiArticles;
   const router: Partial<NextRouter> = {
     query: { q },
@@ -58,7 +58,7 @@ describe("hooks/useGetArticleListQuery", () => {
     const mockSetSize = jest.fn();
     const offset = 0;
     beforeEach(() => {
-      spyUseSWRInfinite.mockImplementationOnce((getKey, _fetcher, _options) => {
+      spyUseSWRInfinite.mockImplementationOnce((getKey) => {
         let size = 0;
         getKey(size, null);
         size++;
@@ -83,9 +83,7 @@ describe("hooks/useGetArticleListQuery", () => {
       const args = {
         endpoint,
         getKeyOptions: undefined,
-        fetcher: undefined,
         fallbackData: undefined,
-        options: undefined,
       };
 
       const { result } = renderHook(() => useGetArticleListQuery(args), {
@@ -113,9 +111,7 @@ describe("hooks/useGetArticleListQuery", () => {
       const args = {
         endpoint,
         getKeyOptions: { q },
-        fetcher: undefined,
         fallbackData: undefined,
-        options: undefined,
       };
 
       const { result } = renderHook(() => useGetArticleListQuery(args), {
@@ -126,7 +122,7 @@ describe("hooks/useGetArticleListQuery", () => {
 
       expect(spyUseSWRInfinite).toBeCalledTimes(1);
       const key = getCurrentKey();
-      const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&q=${q}&pageIndex=0`;
+      const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&q=${encodeURIComponent(q)}&pageIndex=0`;
       expect(key).toBe(expectedKey);
 
       expect(articles).toStrictEqual(mockArticleList.slice(0, 10));

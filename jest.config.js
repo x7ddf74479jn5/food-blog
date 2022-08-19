@@ -9,7 +9,7 @@ const createJestConfig = nextJest({ dir: "./" });
  **/
 const customJestConfig = {
   testEnvironment: "jest-environment-jsdom",
-  testPathIgnorePatterns: ["<rootDir>/e2e/"],
+  testPathIgnorePatterns: ["<rootDir>/tests/"],
   verbose: true,
   setupFilesAfterEnv: ["<rootDir>/jest/jest.setup.js"],
   moduleNameMapper: {

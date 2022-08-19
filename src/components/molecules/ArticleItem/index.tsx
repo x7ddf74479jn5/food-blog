@@ -9,7 +9,7 @@ type ArticleItem = {
   article: TArticle;
 };
 
-export const ArticleItem: React.VFC<ArticleItem> = memo(({ article }) => {
+export const ArticleItem: React.FC<ArticleItem> = memo(({ article }) => {
   return (
     <article>
       <div className="mb-4">

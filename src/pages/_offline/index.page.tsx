@@ -1,40 +1,41 @@
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import { FaRegTired } from "react-icons/fa";
+import type { GetStaticProps, NextPage } from "next";
 
 import { fetchCategories, fetchConfig } from "@/api";
-import { HtmlHeadNoIndex } from "@/components/functions/meta";
-import { RootLayout } from "@/components/layouts/RootLayout";
-import type { TCategory, TConfig } from "@/types";
+import type { OfflineProps } from "@/components/pages/Offline";
+import { Offline } from "@/components/pages/Offline";
+import { sentryLogServer } from "@/lib/sentry/logger";
+import ErrorPage from "@/pages/_error/index.page";
+import type { PagePropsOrError } from "@/types";
 
-type OfflineProps = InferGetStaticPropsType<typeof getStaticProps>;
+type OfflinePageProps = PagePropsOrError<OfflineProps>;
 
-const Offline: NextPage<OfflineProps> = ({ config, categories }) => (
-  <RootLayout config={config} categories={categories}>
-    <HtmlHeadNoIndex />
-    <div className="mt-8 flex flex-col items-center justify-center gap-12" role="alert">
-      <FaRegTired className="h-32 w-32 text-gray-500" />
-      <div className="mx-auto flex flex-col gap-8 text-center">
-        <h1>オフラインページ</h1>
-        <p>インターネットに接続のうえ、ご利用ください。</p>
-      </div>
-    </div>
-  </RootLayout>
-);
-
-type StaticProps = {
-  config: TConfig;
-  categories: TCategory[];
+const OfflinePage: NextPage<OfflinePageProps> = (props) => {
+  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Offline {...props} />;
 };
 
-export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const config = await fetchConfig();
-  const categories = await fetchCategories();
+export const getStaticProps: GetStaticProps<OfflinePageProps> = async () => {
+  try {
+    const config = await fetchConfig();
+    const categories = await fetchCategories();
 
-  return {
-    props: {
-      config,
-      categories,
-    },
-  };
+    return {
+      props: {
+        config,
+        categories,
+      },
+    };
+  } catch (error) {
+    if (error instanceof Error) {
+      await sentryLogServer(error);
+    }
+
+    return {
+      props: {
+        error: {
+          statusCode: 500,
+        },
+      },
+    };
+  }
 };
-export default Offline;
+export default OfflinePage;

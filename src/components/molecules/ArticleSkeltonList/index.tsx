@@ -1,6 +1,6 @@
 import { ArticleSkelton } from "@/components/atoms/ArticleSkelton";
 
-export const ArticleSkeltonList: React.VFC = () => {
+export const ArticleSkeltonList: React.FC = () => {
   const length = 5;
   const list = [];
 

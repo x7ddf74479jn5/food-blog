@@ -1,35 +1,45 @@
+import type { MicroCMSQueries } from "microcms-js-sdk";
 import { useCallback, useMemo, useRef } from "react";
-import type { SWRInfiniteConfiguration } from "swr/infinite";
 import useSWRInfinite from "swr/infinite";
 
-import type { TApiRoute, TArticleListResponse, TArticleSWRResponse, TQueryOptions } from "@/types";
+import type { TApiRoute, TArticleListResponse, TArticleSWRResponse } from "@/types";
+import { HttpError } from "@/utils/error/Http";
 
-const composeQueryString = (queries: Record<string, string | number>) =>
-  Object.entries(queries)
-    .map(([key, value]) => `${key}=${value}`)
-    .join("&");
+const createURLSearchParams = (data: Record<string, string | number>) => {
+  const params = new URLSearchParams();
+  Object.entries(data).forEach(([key, value]) => {
+    const v = typeof value === "string" ? value : value.toString();
+    params.append(key, v);
+  });
+
+  return params.toString();
+};
 
 type Arguments = {
   endpoint: TApiRoute;
-  getKeyOptions?: TQueryOptions;
-  fetcher?: (url?: string) => Promise<TArticleListResponse>;
+  getKeyOptions?: Omit<MicroCMSQueries, "fields" | "ids">;
   fallbackData?: TArticleListResponse;
-  options?: SWRInfiniteConfiguration;
 };
 
-const useGetArticleListQuery = ({ endpoint, fetcher, getKeyOptions, fallbackData, options }: Arguments) => {
+const useGetArticleListQuery = ({ endpoint, getKeyOptions, fallbackData }: Arguments) => {
   const keyRef = useRef("");
   const defaultLimit = 10;
   const defaultKeyOptions = {
     limit: defaultLimit,
   };
-  const defaultFetcher = (url: string): Promise<TArticleListResponse> => fetch(url).then((res) => res.json());
+  const defaultFetcher = (url: string): Promise<TArticleListResponse> =>
+    fetch(url).then((res) => {
+      if (!res.ok) {
+        throw new HttpError(res);
+      }
+      return res.json();
+    });
 
   const getKey = (pageIndex: number, previousPageData: TArticleSWRResponse) => {
     if (previousPageData && !previousPageData.contents) return null;
 
     if (pageIndex === 0) {
-      const key = `${endpoint}?${composeQueryString({ ...defaultKeyOptions, ...getKeyOptions, pageIndex })}`;
+      const key = `${endpoint}?${createURLSearchParams({ ...defaultKeyOptions, ...getKeyOptions, pageIndex })}`;
       keyRef.current = key;
 
       return key;
@@ -37,18 +47,17 @@ const useGetArticleListQuery = ({ endpoint, fetcher, getKeyOptions, fallbackData
 
     const offset =
       previousPageData?.offset !== undefined ? previousPageData.offset + (getKeyOptions?.limit ?? defaultLimit) : 0;
-    const key = `${endpoint}?${composeQueryString({ ...defaultKeyOptions, ...getKeyOptions, offset, pageIndex })}`;
+    const key = `${endpoint}?${createURLSearchParams({ ...defaultKeyOptions, ...getKeyOptions, offset, pageIndex })}`;
     keyRef.current = key;
 
     return key;
   };
 
-  const result = useSWRInfinite<TArticleSWRResponse, Error>(getKey, fetcher ?? defaultFetcher, {
+  const result = useSWRInfinite<TArticleSWRResponse, Error>(getKey, defaultFetcher, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
     fallbackData: fallbackData ? [fallbackData] : undefined,
-    ...options,
   });
 
   const { size, setSize, mutate, data, ...rest } = result;

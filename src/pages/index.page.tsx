@@ -1,64 +1,56 @@
-import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 import { fetchArticles, fetchCategories, fetchConfig } from "@/api";
-import { HtmlHeadBase } from "@/components/functions/meta";
-import HomeLayout from "@/components/layouts/HomeLayout";
-import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
+import type { HomeProps } from "@/components/pages/Home";
+import { Home } from "@/components/pages/Home";
+import { sentryLogServer } from "@/lib/sentry/logger";
+import ErrorPage from "@/pages/_error/index.page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
-import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+import type { PagePropsOrError } from "@/types";
 import { generatedRssFeed } from "@/utils/rss/rss";
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type HomePageProps = PagePropsOrError<HomeProps>;
 
-const Home = ({ data, config, pickup, categories, popularArticles }: Props) => {
-  const { siteTitle: title, host } = config;
-
-  return (
-    <HomeLayout
-      pickup={pickup}
-      url={host}
-      pageTitle={title}
-      config={config}
-      categories={categories}
-      popularArticles={popularArticles}
-    >
-      <HtmlHeadBase indexUrl={host} siteTitle={title} />
-      <div className="mb-8">
-        <h1>レシピ一覧</h1>
-      </div>
-      <ArticleSWRContainer fallbackData={data} />
-    </HomeLayout>
-  );
+const HomePage: NextPage<HomePageProps> = (props) => {
+  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Home {...props} />;
 };
 
-type StaticProps = {
-  data: TArticleListResponse;
-  categories: TCategory[];
-  config: TConfig;
-  pickup: TPickup;
-  popularArticles: TRankedArticle[];
-};
+export default HomePage;
+
+type StaticProps = HomePageProps;
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const [config, categories, data, pickup, popularArticles] = await Promise.all([
-    fetchConfig(),
-    fetchCategories(),
-    fetchArticles({ limit: 10, offset: 0 }),
-    getPickupArticles(new Date()),
-    getPopularArticles(),
-  ]);
+  try {
+    const [config, categories, data, pickup, popularArticles] = await Promise.all([
+      fetchConfig(),
+      fetchCategories(),
+      fetchArticles({ limit: 10, offset: 0 }),
+      getPickupArticles(new Date()),
+      getPopularArticles(),
+    ]);
 
-  generatedRssFeed(config, data.contents);
+    generatedRssFeed(config, data.contents);
 
-  return {
-    props: {
-      data,
-      categories,
-      config,
-      pickup,
-      popularArticles,
-    },
-  };
+    return {
+      props: {
+        data,
+        categories,
+        config,
+        pickup,
+        popularArticles,
+      },
+    };
+  } catch (error) {
+    if (error instanceof Error) {
+      await sentryLogServer(error);
+    }
+
+    return {
+      props: {
+        error: {
+          statusCode: 500,
+        },
+      },
+    };
+  }
 };
-
-export default Home;

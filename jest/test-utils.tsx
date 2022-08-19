@@ -40,6 +40,6 @@ export const reTestCase = {
 type ErrorComponentProps = {
   message?: string;
 };
-export const ErrorComponent: React.VFC<ErrorComponentProps> = ({ message }) => {
+export const ErrorComponent: React.FC<ErrorComponentProps> = ({ message }) => {
   throw new Error(message);
 };

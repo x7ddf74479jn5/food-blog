@@ -1,61 +1,49 @@
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 import { fetchCategories, fetchConfig } from "@/api";
-import { TwoColumnLayout } from "@/components/layouts/TwoColumnLayout";
-import { CategoryList } from "@/components/molecules/CategoryList";
+import type { CategoriesProps } from "@/components/pages/articles/categories/Categories";
+import { Categories } from "@/components/pages/articles/categories/Categories";
+import { sentryLogServer } from "@/lib/sentry/logger";
+import ErrorPage from "@/pages/_error/index.page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
-import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
-import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
-import { getBackLinks, urlTable } from "@/utils/paths/url";
+import type { PagePropsOrError } from "@/types";
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type CategoriesPageProps = PagePropsOrError<CategoriesProps>;
 
-const Categories: NextPage<Props> = ({ config, categories, pickup, popularArticles }) => {
-  const { siteTitle, host } = config;
-  const heading = "カテゴリー一覧";
-  const pageTitle = formatPageTitle(heading, siteTitle);
-  const url = formatPageUrl(urlTable.categories, host);
-  const backLinks = getBackLinks([urlTable.home]);
-  return (
-    <TwoColumnLayout
-      config={config}
-      pickup={pickup}
-      host={host}
-      url={url}
-      title={pageTitle}
-      backLinks={backLinks}
-      heading={heading}
-      categories={categories}
-      popularArticles={popularArticles}
-    >
-      <CategoryList categories={categories} width={128} height={128} />
-    </TwoColumnLayout>
-  );
+const CategoriesPage: NextPage<CategoriesPageProps> = (props) => {
+  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Categories {...props} />;
 };
 
-type StaticProps = {
-  config: TConfig;
-  categories: TCategory[];
-  pickup: TPickup;
-  popularArticles: TRankedArticle[];
+export const getStaticProps: GetStaticProps<CategoriesPageProps> = async () => {
+  try {
+    const [config, categories, pickup, popularArticles] = await Promise.all([
+      fetchConfig(),
+      fetchCategories(),
+      getPickupArticles(new Date()),
+      getPopularArticles(),
+    ]);
+
+    return {
+      props: {
+        config,
+        categories,
+        pickup,
+        popularArticles,
+      },
+    };
+  } catch (error) {
+    if (error instanceof Error) {
+      await sentryLogServer(error);
+    }
+
+    return {
+      props: {
+        error: {
+          statusCode: 500,
+        },
+      },
+    };
+  }
 };
 
-export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const [config, categories, pickup, popularArticles] = await Promise.all([
-    fetchConfig(),
-    fetchCategories(),
-    getPickupArticles(new Date()),
-    getPopularArticles(),
-  ]);
-
-  return {
-    props: {
-      config,
-      categories,
-      pickup,
-      popularArticles,
-    },
-  };
-};
-
-export default Categories;
+export default CategoriesPage;

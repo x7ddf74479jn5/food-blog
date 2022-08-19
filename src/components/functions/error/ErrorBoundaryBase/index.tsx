@@ -10,7 +10,7 @@ const FallbackComponent = ({ error, resetErrorBoundary }: FallbackProps) => {
 
   useEffect(() => {
     if (error) {
-      sentryLog(error);
+      sentryLog(error, { tags: { type: "UI" } });
     }
   }, [error]);
 

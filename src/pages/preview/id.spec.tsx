@@ -4,7 +4,7 @@ import { server } from "mocks/msw/server";
 
 import { mdx2html } from "@/lib/mdx";
 
-import ArticlePreview from "./[id].page";
+import ArticlePreviewPage from "./[id].page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -19,7 +19,7 @@ jest.mock("next/head", () => {
   };
 });
 
-jest.mock("@/utils/mdx/mdx2html", () => {
+jest.mock("@/lib/mdx", () => {
   return {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     __esModule: true,
@@ -45,7 +45,7 @@ describe("pages/preview", () => {
   it("OK: 初期レンダリング", async () => {
     const mdxSource = await mdx2html(mockArticleStock.body);
     const { unmount } = render(
-      <ArticlePreview
+      <ArticlePreviewPage
         categories={mockCategoryList}
         config={mockConfig}
         pickup={mockPickup}

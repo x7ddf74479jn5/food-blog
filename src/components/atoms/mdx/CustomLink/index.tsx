@@ -1,11 +1,9 @@
 import Link from "next/link";
+import type { ComponentPropsWithoutRef, FC, PropsWithChildren } from "react";
 
-type Props = {
-  href: string;
-  children: React.ReactNode;
-};
+type CustomLinkProps = PropsWithChildren<ComponentPropsWithoutRef<"a">>;
 
-const CustomLink: React.FC<Props> = ({ href, children }) => {
+export const CustomLink: FC<CustomLinkProps> = ({ href = "", children }) => {
   const isInternalLink = href.startsWith("/") ? true : false;
 
   return (
@@ -22,5 +20,3 @@ const CustomLink: React.FC<Props> = ({ href, children }) => {
     </>
   );
 };
-
-export default CustomLink;
