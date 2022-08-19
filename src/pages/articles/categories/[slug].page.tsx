@@ -4,10 +4,15 @@ import type { ParsedUrlQuery } from "node:querystring";
 import { fetchArticles, fetchCategories, fetchCategory, fetchConfig } from "@/api";
 import { Categories } from "@/components/pages/articles/categories/Categories";
 import type { CategoryProps } from "@/components/pages/articles/categories/Category";
+import { sentryLogServer } from "@/lib/sentry/logger";
+import ErrorPage from "@/pages/_error/index.page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
+import type { PagePropsOrError } from "@/types";
 
-const CategoryPage: NextPage<CategoryProps> = (props) => {
-  return <Categories {...props} />;
+type CategoryPageProps = PagePropsOrError<CategoryProps>;
+
+const CategoryPage: NextPage<CategoryPageProps> = (props) => {
+  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Categories {...props} />;
 };
 
 interface Params extends ParsedUrlQuery {
@@ -23,34 +28,53 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths, fallback: "blocking" };
 };
 
-type StaticProps = CategoryProps;
-
-export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<CategoryPageProps, Params> = async ({ params }) => {
   const slug = params?.slug;
+
   if (!slug) {
-    throw new Error("Error: ID not found");
+    return {
+      notFound: true,
+    };
   }
 
-  const category = await fetchCategory(slug);
+  try {
+    const category = await fetchCategory(slug);
 
-  const [data, config, categories, pickup, popularArticles] = await Promise.all([
-    fetchArticles({ filters: `category[equals]${category.id}` }),
-    fetchConfig(),
-    fetchCategories(),
-    getPickupArticles(new Date()),
-    getPopularArticles(),
-  ]);
+    if (!category) {
+      return { notFound: true };
+    }
 
-  return {
-    props: {
-      data,
-      category,
-      config,
-      categories,
-      pickup,
-      popularArticles,
-    },
-  };
+    const [data, config, categories, pickup, popularArticles] = await Promise.all([
+      fetchArticles({ filters: `category[equals]${category.id}` }),
+      fetchConfig(),
+      fetchCategories(),
+      getPickupArticles(new Date()),
+      getPopularArticles(),
+    ]);
+
+    return {
+      props: {
+        data,
+        category,
+        config,
+        categories,
+        pickup,
+        popularArticles,
+      },
+    };
+  } catch (error) {
+    if (error instanceof Error) {
+      await sentryLogServer(error);
+    }
+
+    return {
+      props: {
+        error: {
+          statusCode: 500,
+        },
+      },
+    };
+  }
 };
 
 export default CategoryPage;

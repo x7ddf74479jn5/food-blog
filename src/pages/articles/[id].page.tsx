@@ -5,10 +5,15 @@ import { fetchArticle, fetchArticles, fetchCategories, fetchConfig } from "@/api
 import type { ArticleDetailProps } from "@/components/pages/articles/ArticleDetail";
 import { ArticleDetail } from "@/components/pages/articles/ArticleDetail";
 import { mdx2html } from "@/lib/mdx";
+import { sentryLogServer } from "@/lib/sentry/logger";
+import ErrorPage from "@/pages/_error/index.page";
 import { getPickupArticles, getPopularArticles, getRelatedArticles } from "@/services/article";
+import type { PagePropsOrError } from "@/types";
 
-export const ArticleDetailPage: NextPage<ArticleDetailProps> = (props) => {
-  return <ArticleDetail {...props} />;
+export type ArticleDetailPageProps = PagePropsOrError<ArticleDetailProps>;
+
+export const ArticleDetailPage: NextPage<ArticleDetailPageProps> = (props) => {
+  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <ArticleDetail {...props} />;
 };
 
 interface Params extends ParsedUrlQuery {
@@ -24,26 +29,27 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths, fallback: "blocking" };
 };
 
-export type ArticlesStaticProps = ArticleDetailProps;
-
-export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<ArticleDetailPageProps, Params> = async ({ params }) => {
   const id = params?.id;
 
   if (!id) {
-    throw new Error("Error: ID not found");
+    return { notFound: true };
   }
 
   try {
-    const [config, categories, article, pickup, popularArticles] = await Promise.all([
+    const article = await fetchArticle(id);
+
+    if (!article) {
+      return { notFound: true };
+    }
+
+    const [config, categories, pickup, popularArticles, relatedArticles] = await Promise.all([
       fetchConfig(),
       fetchCategories(),
-      fetchArticle(id),
       getPickupArticles(new Date()),
       getPopularArticles(),
+      getRelatedArticles(article),
     ]);
-
-    const relatedArticles = await getRelatedArticles(article);
-
     const mdxSource = await mdx2html(article.body);
 
     return {
@@ -59,7 +65,17 @@ export const getStaticProps: GetStaticProps<ArticlesStaticProps, Params> = async
       },
     };
   } catch (error) {
-    return { notFound: true };
+    if (error instanceof Error) {
+      await sentryLogServer(error);
+    }
+
+    return {
+      props: {
+        error: {
+          statusCode: 500,
+        },
+      },
+    };
   }
 };
 

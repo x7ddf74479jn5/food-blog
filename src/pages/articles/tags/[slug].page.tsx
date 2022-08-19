@@ -1,15 +1,18 @@
-import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { ParsedUrlQuery } from "node:querystring";
 
 import { fetchArticles, fetchCategories, fetchConfig, fetchTag, fetchTags } from "@/api";
 import type { TagsProps } from "@/components/pages/articles/tags";
 import { Tags } from "@/components/pages/articles/tags";
+import { sentryLogServer } from "@/lib/sentry/logger";
+import ErrorPage from "@/pages/_error/index.page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
+import type { PagePropsOrError } from "@/types";
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type TagsPageProps = PagePropsOrError<TagsProps>;
 
-const TagsPage: NextPage<Props> = (props) => {
-  return <Tags {...props} />;
+const TagsPage: NextPage<TagsPageProps> = (props) => {
+  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Tags {...props} />;
 };
 
 interface Params extends ParsedUrlQuery {
@@ -25,33 +28,51 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths, fallback: "blocking" };
 };
 
-type StaticProps = TagsProps;
-
-export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<TagsPageProps, Params> = async ({ params }) => {
   const slug = params?.slug;
+
   if (!slug) {
-    throw new Error("Error: ID not found");
+    return { notFound: true };
   }
-  const tag = await fetchTag(slug);
 
-  const [data, config, categories, pickup, popularArticles] = await Promise.all([
-    fetchArticles({ filters: `tags[contains]${tag.id}` }),
-    fetchConfig(),
-    fetchCategories(),
-    getPickupArticles(new Date()),
-    getPopularArticles(),
-  ]);
+  try {
+    const tag = await fetchTag(slug);
 
-  return {
-    props: {
-      data,
-      tag,
-      config,
-      categories,
-      pickup,
-      popularArticles,
-    },
-  };
+    if (!tag) {
+      return { notFound: true };
+    }
+
+    const [data, config, categories, pickup, popularArticles] = await Promise.all([
+      fetchArticles({ filters: `tags[contains]${tag.id}` }),
+      fetchConfig(),
+      fetchCategories(),
+      getPickupArticles(new Date()),
+      getPopularArticles(),
+    ]);
+
+    return {
+      props: {
+        data,
+        tag,
+        config,
+        categories,
+        pickup,
+        popularArticles,
+      },
+    };
+  } catch (error) {
+    if (error instanceof Error) {
+      await sentryLogServer(error);
+    }
+
+    return {
+      props: {
+        error: {
+          statusCode: 500,
+        },
+      },
+    };
+  }
 };
 
 export default TagsPage;
