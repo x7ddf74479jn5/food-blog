@@ -10,11 +10,11 @@ type ReportRow = {
 };
 
 /**
- * 閲覧数の多いページの内、レシピ記事以外のページを除外して返す
+ * 閲覧数の多いページの内、レシピ記事以外のページを除外して返す(上限5)
  * 3ヶ月前から前日までの期間で算定
  * @see https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport
  */
-export const runReport = async () => {
+export const runReport = async (): Promise<ReportRow[] | undefined> => {
   const credentials = JSON.parse(Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, "base64").toString());
 
   const analyticsDataClient = new BetaAnalyticsDataClient({
@@ -61,19 +61,17 @@ export const runReport = async () => {
 
   if (response?.rows?.length === 0) return;
 
-  let order = 1;
-  const result = response.rows?.reduce((acc, row) => {
-    if (!row.dimensionValues || !row.metricValues) return acc;
-    const pagePath = row.dimensionValues[0].value;
+  const result = response.rows
+    ?.map((row) => {
+      const pagePath = row?.dimensionValues?.[0].value;
+      const pageViews = row?.metricValues?.[0].value;
+      if (!pagePath || !pageViews) return;
+      return { pagePath, pageViews };
+    })
+    .filter((obj): obj is NonNullable<{ pagePath: string; pageViews: string }> => obj !== undefined)
+    .filter(({ pagePath }) => !pagePath?.startsWith("/articles/categories/") && !pagePath?.startsWith("/articles/tags"))
+    .map(({ pageViews, pagePath }, idx) => ({ id: pagePath?.split("/")[2], pageViews, order: ++idx }))
+    .slice(0, 5);
 
-    if (pagePath?.startsWith("/articles/categories/") || pagePath?.startsWith("/articles/tags/")) return acc;
-
-    const id = pagePath?.split("/")[2];
-    const pageViews = row.metricValues[0].value;
-
-    if (!id || !pageViews) return acc;
-    return [...acc, { id, pageViews, order: order++ }];
-  }, [] as ReportRow[]);
-
-  return result?.slice(0, 5);
+  return result;
 };

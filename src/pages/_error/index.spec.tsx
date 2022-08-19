@@ -4,9 +4,9 @@ import ErrorPage from "./index.page";
 
 describe("pages/_error", () => {
   it("OK: 初期レンダリング", async () => {
-    render(<ErrorPage pageTitle="Unhandled Error" message="Error Message" />);
+    render(<ErrorPage />);
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent("Unhandled Error");
-    expect(screen.getByText("Error Message")).toBeInTheDocument();
+    expect(screen.getByText("サイト上で問題が発生しました")).toBeInTheDocument();
   });
 });

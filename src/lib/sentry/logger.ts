@@ -2,23 +2,30 @@ import * as Sentry from "@sentry/nextjs";
 
 import { HttpError } from "@/utils/error/Http";
 
-export const sentryLog = (err: Error | HttpError) => {
+const isSentryEnabled = process.env.NODE_ENV === "production";
+
+type CaptureOptions = { contexts?: Record<string, any>; tags?: Record<string, string> };
+
+export const sentryLog = (err: Error | HttpError, options?: CaptureOptions) => {
   console.error(err);
 
+  if (!isSentryEnabled) return;
+
   if (err instanceof HttpError) {
-    let contexts = {};
     const endpoint = err.url || "";
     const status = err.status;
-
-    contexts = { ...err };
-
     Sentry.withScope((scope) => {
       scope.setFingerprint(["{{ default }}", endpoint, String(status)]);
       Sentry.captureException(err, {
-        contexts,
+        ...options,
       });
     });
   } else {
-    Sentry.captureException(err);
+    Sentry.captureException(err, { ...options });
   }
+};
+
+export const sentryLogServer = async (err: Error | HttpError, options?: CaptureOptions) => {
+  sentryLog(err, options);
+  await Sentry.flush(2000);
 };

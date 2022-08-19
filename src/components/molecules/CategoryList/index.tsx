@@ -10,7 +10,7 @@ type CategoryListProps = {
   height: number;
 };
 
-export const CategoryList: React.VFC<CategoryListProps> = ({ categories, width, height }) => {
+export const CategoryList: React.FC<CategoryListProps> = ({ categories, width, height }) => {
   return (
     <ul className="order-1 mt-4 mb-12 grid grid-cols-3 gap-2 sm:grid-cols-5 md:order-2 lg:grid-cols-6">
       {categories.map((category) => (

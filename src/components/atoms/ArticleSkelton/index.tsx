@@ -1,4 +1,4 @@
-export const ArticleSkelton: React.VFC = () => {
+export const ArticleSkelton: React.FC = () => {
   return (
     <article className="w-full animate-pulse select-none shadow-lg">
       <div className="aspect-w-16 aspect-h-9 mb-4 w-full bg-gray-300"></div>

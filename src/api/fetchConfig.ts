@@ -1,18 +1,9 @@
 import { client } from "@/lib/microcms";
 import type { TConfig } from "@/types";
-import { HttpError } from "@/utils/error/Http";
 
 export const fetchConfig = async () => {
-  try {
-    const data = await client.get<TConfig>({ endpoint: "configs" });
-    return data;
-  } catch (error) {
-    if (error instanceof HttpError) {
-      console.error(error);
-      throw new Error("設定情報の取得に失敗しました。");
-    }
-    throw error;
-  }
+  const data = await client.get<TConfig>({ endpoint: "configs" });
+  return data;
 };
 
 export default fetchConfig;

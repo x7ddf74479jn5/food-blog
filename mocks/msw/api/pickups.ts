@@ -1,7 +1,7 @@
 import { mockPickup } from "@mocks/data";
 import type { ResponseResolver, RestContext, RestRequest } from "msw";
 
-import type { TPickupListResponse } from "@/types/pickup";
+import type { TPickupListResponse } from "@/types/models/pickup";
 
 import { getSearchParams } from "./utils";
 

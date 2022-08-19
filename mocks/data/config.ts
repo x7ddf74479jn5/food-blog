@@ -1,4 +1,4 @@
-import type { TConfig } from "@/types/config";
+import type { TConfig } from "@/types/models/config";
 
 import { dateCommon } from "./utils";
 

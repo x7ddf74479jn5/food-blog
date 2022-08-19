@@ -1,69 +1,49 @@
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 import { fetchCategories, fetchConfig } from "@/api";
-import { HtmlHeadBase } from "@/components/functions/meta";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
-import ArticleList from "@/components/molecules/ArticleList";
+import type { PopularProps } from "@/components/pages/articles/Popular";
+import { Popular } from "@/components/pages/articles/Popular";
+import { sentryLogServer } from "@/lib/sentry/logger";
+import ErrorPage from "@/pages/_error/index.page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
-import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
-import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
-import { getBackLinks, urlTable } from "@/utils/paths/url";
+import type { PagePropsOrError } from "@/types";
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type PopularPageProps = PagePropsOrError<PopularProps>;
 
-const PopularPage: NextPage<Props> = ({ config, categories, pickup, popularArticles }) => {
-  const { siteTitle, host } = config;
-  const heading = "人気記事";
-  const pageTitle = formatPageTitle(heading, siteTitle);
-  const url = formatPageUrl(`${urlTable.popular}`, host);
-  const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
-
-  return (
-    <DefaultLayout
-      config={config}
-      pageTitle={pageTitle}
-      url={url}
-      backLinks={backLinks}
-      categories={categories}
-      pickup={pickup}
-      popularArticles={popularArticles}
-    >
-      <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} />
-      <div className="mb-8">
-        <h1>{heading}</h1>
-      </div>
-      <div className="min-h-screen w-full">
-        <section>
-          <ArticleList articles={popularArticles} />
-        </section>
-      </div>
-    </DefaultLayout>
-  );
+const PopularPage: NextPage<PopularPageProps> = (props) => {
+  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Popular {...props} />;
 };
 
-type StaticProps = {
-  config: TConfig;
-  categories: TCategory[];
-  pickup: TPickup;
-  popularArticles: TRankedArticle[];
-};
+export const getStaticProps: GetStaticProps<PopularPageProps> = async () => {
+  try {
+    const [config, categories, pickup, popularArticles] = await Promise.all([
+      fetchConfig(),
+      fetchCategories(),
+      getPickupArticles(new Date()),
+      getPopularArticles(),
+    ]);
 
-export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const [config, categories, pickup, popularArticles] = await Promise.all([
-    fetchConfig(),
-    fetchCategories(),
-    getPickupArticles(new Date()),
-    getPopularArticles(),
-  ]);
+    return {
+      props: {
+        config,
+        categories,
+        pickup,
+        popularArticles,
+      },
+    };
+  } catch (error) {
+    if (error instanceof Error) {
+      await sentryLogServer(error);
+    }
 
-  return {
-    props: {
-      config,
-      categories,
-      pickup,
-      popularArticles,
-    },
-  };
+    return {
+      props: {
+        error: {
+          statusCode: 500,
+        },
+      },
+    };
+  }
 };
 
 export default PopularPage;

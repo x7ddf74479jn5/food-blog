@@ -1,17 +1,19 @@
+import type { MicroCMSQueries } from "microcms-js-sdk";
+
 import ArticleList from "@/components/molecules/ArticleList";
 import { ArticleSkeltonList } from "@/components/molecules/ArticleSkeltonList";
 import Pagination from "@/components/molecules/Pagination";
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
-import type { TArticleListResponse, TQueryOptions } from "@/types";
+import type { TArticleListResponse } from "@/types";
 import { apiRoute } from "@/utils/paths/url";
 
 type ArticleSWRContainerProps = {
-  queryOptions?: TQueryOptions;
+  queryOptions?: MicroCMSQueries;
   fallbackData?: TArticleListResponse;
 };
 
-export const ArticleSWRContainer: React.VFC<ArticleSWRContainerProps> = ({ queryOptions, fallbackData }) => {
+export const ArticleSWRContainer: React.FC<ArticleSWRContainerProps> = ({ queryOptions, fallbackData }) => {
   const {
     articles,
     hasNextPage,

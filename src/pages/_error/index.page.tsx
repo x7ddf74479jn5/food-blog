@@ -1,46 +1,55 @@
 import * as Sentry from "@sentry/nextjs";
 import type { NextPage } from "next";
+import { useMemo } from "react";
 
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 
-type ErrorPageProps = {
-  pageTitle: string;
-  message: string;
+const useErrorState = (statusCode: number | undefined) => {
+  return useMemo(() => {
+    let heading;
+    let message;
+
+    switch (statusCode) {
+      case 404:
+        heading = "404 - Not Found";
+        message = "ページが見つかりませんでした";
+        break;
+      case 500:
+        heading = "500 - Server Error";
+        message = "サーバーで問題が発生しました";
+        break;
+      default:
+        heading = "Unhandled Error";
+        message = "サイト上で問題が発生しました";
+    }
+
+    return { heading, message };
+  }, [statusCode]);
 };
 
-const ErrorPage: NextPage<ErrorPageProps> = ({ pageTitle, message }) => (
-  <>
-    <HtmlHeadNoIndex />
-    <ErrorFallback heading={pageTitle} message={message} />
-  </>
-);
+type ErrorPageProps = {
+  statusCode?: number | undefined;
+};
+
+const ErrorPage: NextPage<ErrorPageProps> = ({ statusCode }) => {
+  const state = useErrorState(statusCode);
+
+  return (
+    <>
+      <HtmlHeadNoIndex />
+      <ErrorFallback {...state} />
+    </>
+  );
+};
 
 ErrorPage.getInitialProps = async (contextData) => {
   await Sentry.captureUnderscoreErrorException(contextData);
 
-  const { err } = contextData;
-
-  let pageTitle;
-  let message;
-
-  switch (err?.statusCode) {
-    case 404:
-      pageTitle = "404 - Not Found";
-      message = "ページが見つかりませんでした";
-      break;
-    case 500:
-      pageTitle = "500 - Server Error";
-      message = "サーバーで問題が発生しました";
-      break;
-    default:
-      pageTitle = "Unhandled Error";
-      message = "サイト上で問題が発生しました";
-  }
+  const statusCode = contextData.err?.statusCode;
 
   return {
-    pageTitle,
-    message,
+    statusCode,
   };
 };
 

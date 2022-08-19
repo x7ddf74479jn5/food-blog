@@ -1,44 +1,18 @@
-import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { ParsedUrlQuery } from "node:querystring";
 
 import { fetchArticles, fetchCategories, fetchConfig, fetchTag, fetchTags } from "@/api";
-import { HtmlHeadBase } from "@/components/functions/meta";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
-import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
+import type { TagsProps } from "@/components/pages/articles/tags";
+import { Tags } from "@/components/pages/articles/tags";
+import { sentryLogServer } from "@/lib/sentry/logger";
+import ErrorPage from "@/pages/_error/index.page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
-import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
-import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
-import { getBackLinks, urlTable } from "@/utils/paths/url";
+import type { PagePropsOrError } from "@/types";
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type TagsPageProps = PagePropsOrError<TagsProps>;
 
-const Tags: NextPage<Props> = ({ data, tag, config, categories, pickup, popularArticles }) => {
-  const { siteTitle, host } = config;
-  const heading = `タグ：${tag.name}`;
-  const pageTitle = formatPageTitle(heading, siteTitle);
-  const url = formatPageUrl(`${urlTable.tags}/${tag.slug}`, host);
-  const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
-  const queryOptions = { filters: `tags[contains]${tag.id}` };
-
-  return (
-    <DefaultLayout
-      config={config}
-      pageTitle={pageTitle}
-      url={url}
-      backLinks={backLinks}
-      categories={categories}
-      pickup={pickup}
-      popularArticles={popularArticles}
-    >
-      <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} />
-      <div className="mb-8">
-        <h1>{heading}</h1>
-      </div>
-      <div className="min-h-screen w-full">
-        <ArticleSWRContainer fallbackData={data} queryOptions={queryOptions} />
-      </div>
-    </DefaultLayout>
-  );
+const TagsPage: NextPage<TagsPageProps> = (props) => {
+  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Tags {...props} />;
 };
 
 interface Params extends ParsedUrlQuery {
@@ -54,40 +28,51 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths, fallback: "blocking" };
 };
 
-type StaticProps = {
-  tag: TTag;
-  categories: TCategory[];
-  config: TConfig;
-  data: TArticleListResponse;
-  pickup: TPickup;
-  popularArticles: TRankedArticle[];
-};
-
-export const getStaticProps: GetStaticProps<StaticProps, Params> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<TagsPageProps, Params> = async ({ params }) => {
   const slug = params?.slug;
+
   if (!slug) {
-    throw new Error("Error: ID not found");
+    return { notFound: true };
   }
-  const tag = await fetchTag(slug);
 
-  const [data, config, categories, pickup, popularArticles] = await Promise.all([
-    fetchArticles({ filters: `tags[contains]${tag.id}` }),
-    fetchConfig(),
-    fetchCategories(),
-    getPickupArticles(new Date()),
-    getPopularArticles(),
-  ]);
+  try {
+    const tag = await fetchTag(slug);
 
-  return {
-    props: {
-      data,
-      tag,
-      config,
-      categories,
-      pickup,
-      popularArticles,
-    },
-  };
+    if (!tag) {
+      return { notFound: true };
+    }
+
+    const [data, config, categories, pickup, popularArticles] = await Promise.all([
+      fetchArticles({ filters: `tags[contains]${tag.id}` }),
+      fetchConfig(),
+      fetchCategories(),
+      getPickupArticles(new Date()),
+      getPopularArticles(),
+    ]);
+
+    return {
+      props: {
+        data,
+        tag,
+        config,
+        categories,
+        pickup,
+        popularArticles,
+      },
+    };
+  } catch (error) {
+    if (error instanceof Error) {
+      await sentryLogServer(error);
+    }
+
+    return {
+      props: {
+        error: {
+          statusCode: 500,
+        },
+      },
+    };
+  }
 };
 
-export default Tags;
+export default TagsPage;

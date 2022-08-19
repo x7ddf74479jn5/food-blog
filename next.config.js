@@ -35,6 +35,8 @@ const withSentryConfig = (config) => {
   return require("@sentry/nextjs").withSentryConfig(config, {
     silent: false,
     authToken: process.env.SENTRY_AUTH_TOKEN,
+    org: process.env.SENTRY_ORG,
+    project: process.env.SENTRY_PROJECT,
   });
 };
 
