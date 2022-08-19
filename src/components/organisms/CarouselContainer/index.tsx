@@ -49,7 +49,7 @@ export const CarouselContainer: React.FC<CarouselContainerProps> = ({ pickup, po
                 classNames(
                   "w-full flex items-center justify-center rounded-md py-1 text-sm font-medium leading-5 text-black dark:text-white",
                   "ring-white ring-opacity-60 ring-offset-2 ring-offset-green-400 focus:outline-none focus:ring-2",
-                  selected ? "bg-white dark:bg-gray-600 shadow" : "text-white hover:bg-white/[0.12]"
+                  selected ? "bg-white dark:bg-gray-600 shadow" : "dark:text-white hover:bg-white/[0.12]"
                 )
               }
             >

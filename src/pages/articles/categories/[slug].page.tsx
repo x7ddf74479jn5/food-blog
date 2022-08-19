@@ -2,8 +2,8 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { ParsedUrlQuery } from "node:querystring";
 
 import { fetchArticles, fetchCategories, fetchCategory, fetchConfig } from "@/api";
-import { Categories } from "@/components/pages/articles/categories/Categories";
 import type { CategoryProps } from "@/components/pages/articles/categories/Category";
+import { Category } from "@/components/pages/articles/categories/Category";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import ErrorPage from "@/pages/_error/index.page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
@@ -12,7 +12,7 @@ import type { PagePropsOrError } from "@/types";
 type CategoryPageProps = PagePropsOrError<CategoryProps>;
 
 const CategoryPage: NextPage<CategoryPageProps> = (props) => {
-  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Categories {...props} />;
+  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Category {...props} />;
 };
 
 interface Params extends ParsedUrlQuery {

@@ -12,7 +12,9 @@ import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons").then((mod) => mod.ShareButtons));
+const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons").then((mod) => mod.ShareButtons), {
+  ssr: false,
+});
 
 const useShouldRenderCarousel = ({
   pickup,
