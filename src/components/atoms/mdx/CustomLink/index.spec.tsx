@@ -2,7 +2,7 @@ import { render, screen } from "jest/test-utils";
 
 import { urlTable } from "@/utils/paths/url";
 
-import CustomLink from ".";
+import { CustomLink } from ".";
 
 describe("components/atoms/mdx/CustomLink", () => {
   const externalHref = "https://www.example.com/";

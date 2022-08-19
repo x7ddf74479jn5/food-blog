@@ -98,9 +98,6 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({
           <TagListColored tags={tags} />
         </div>
         <div id="js-toc-content">
-          {/* FIXME: reason is upgrade to React 18 */}
-          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-          {/* @ts-ignore */}
           <MDXRemote {...mdxSource} components={MDXCustomComponents} scope={data} />
         </div>
       </article>
