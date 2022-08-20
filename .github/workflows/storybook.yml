@@ -7,16 +7,24 @@ on:
   pull_request:
     types: [closed]
     branches: [develop]
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+      - ".github/"
+      - ".husky/"
+      - "test-results/"
+      - ".vscode/"
+      - "scripts/"
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     if: ${{!contains(github.event.pull_request.body, '[skip ci]')}}
     strategy:
       matrix:

@@ -4,9 +4,18 @@ on:
   pull_request:
     types: [opened]
     branches: [main]
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+      - ".github/"
+      - ".husky/"
+      - "test-results/"
+      - ".vscode/"
+      - "scripts/"
+  workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
   cancel-in-progress: true
 
 jobs:
@@ -33,7 +42,7 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Install Playwright Browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: npx playwright install --with-deps
+        run: pnpm dlx playwright install --with-deps
       - name: Run Playwright tests
         run: pnpm e2e
       - uses: actions/upload-artifact@v2
