@@ -4,9 +4,18 @@ on:
   pull_request:
     types: [opened]
     branches: [main]
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+      - ".github/"
+      - ".husky/"
+      - "test-results/"
+      - ".vscode/"
+      - "scripts/"
+  workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
   cancel-in-progress: true
 
 jobs:
