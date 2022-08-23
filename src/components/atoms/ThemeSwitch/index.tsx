@@ -1,33 +1,53 @@
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import { FaMoon, FaSun } from "react-icons/fa";
 import Switch from "react-switch";
 
-const ThemeSwitch: React.FC = () => {
-  const { theme, setTheme } = useTheme();
-
-  const isDark = theme === "dark" ? true : false;
-
-  const [isChecked, setChecked] = useState(isDark);
+const useMount = () => {
   const [isMounted, setMounted] = useState(false);
 
-  const handleChange = (nextChecked: boolean) => {
-    setChecked(nextChecked);
-  };
+  useEffect(() => {
+    if (!isMounted) setMounted(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), []);
+  return isMounted;
+};
+
+const useSwitch = (isMounted: boolean) => {
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const isSystem = theme === "system";
+  const isChecked = resolvedTheme === "dark";
+
+  const handleToggleSwitch = useCallback(() => {
+    setTheme(isChecked ? "light" : "dark");
+  }, [isChecked, setTheme]);
 
   useEffect(() => {
-    setTheme(isChecked ? "dark" : "light");
-  }, [isChecked, setTheme]);
+    let isCleanup = false;
+    // 初回はtheme="system"なのでスキップ
+    if (!isCleanup && !isSystem) {
+      setTheme(isChecked ? "dark" : "light");
+    }
+
+    return () => {
+      isCleanup = true;
+    };
+  }, [isChecked, isMounted, isSystem, setTheme]);
+
+  return { isMounted, isChecked, handleToggleSwitch };
+};
+
+export const ThemeSwitch: React.FC = () => {
+  const isMounted = useMount();
+  const { isChecked, handleToggleSwitch } = useSwitch(isMounted);
 
   if (!isMounted) return null;
 
   return (
     <Switch
-      onChange={handleChange}
+      onChange={handleToggleSwitch}
       checked={isChecked}
       aria-label="switch between day and night themes"
       offColor="#555"
@@ -62,5 +82,3 @@ const ThemeSwitch: React.FC = () => {
     />
   );
 };
-
-export default ThemeSwitch;
