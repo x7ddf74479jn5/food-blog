@@ -1,12 +1,17 @@
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "jest/test-utils";
+import { ThemeProvider } from "next-themes";
 
-import ThemeSwitch from ".";
+import { ThemeSwitch } from ".";
 
 describe("components/atoms/ThemeSwitch", () => {
   it("OK: スイッチが正常に切り替わる", async () => {
     const user = userEvent.setup();
-    render(<ThemeSwitch />);
+    render(
+      <ThemeProvider enableSystem>
+        <ThemeSwitch />
+      </ThemeProvider>
+    );
     const checkbox = screen.getByRole("switch");
     expect(checkbox).not.toBeChecked();
     await user.click(checkbox);
