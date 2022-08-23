@@ -1,31 +1,21 @@
 import * as Sentry from "@sentry/nextjs";
 import type { NextPage } from "next";
-import { useMemo } from "react";
 
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 
 const useErrorState = (statusCode: number | undefined) => {
-  return useMemo(() => {
-    let heading;
-    let message;
-
-    switch (statusCode) {
-      case 404:
-        heading = "404 - Not Found";
-        message = "ページが見つかりませんでした";
-        break;
-      case 500:
-        heading = "500 - Server Error";
-        message = "サーバーで問題が発生しました";
-        break;
-      default:
-        heading = "Unhandled Error";
-        message = "サイト上で問題が発生しました";
-    }
-
-    return { heading, message };
-  }, [statusCode]);
+  switch (statusCode) {
+    case 404:
+      return {
+        heading: "404 - Not Found",
+        message: "ページが見つかりませんでした",
+      };
+    case 500:
+      return { heading: "500 - Server Error", message: "サーバーで問題が発生しました" };
+    default:
+      return { heading: "Unhandled Error", message: "サイト上で問題が発生しました" };
+  }
 };
 
 type ErrorPageProps = {
