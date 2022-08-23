@@ -1,20 +1,14 @@
-import dynamic from "next/dynamic";
 import { memo, useMemo } from "react";
 
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
+import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { CategoryListSide } from "@/components/molecules/CategoryListSide";
 import { CarouselContainer } from "@/components/organisms/CarouselContainer";
 import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons").then((mod) => mod.ShareButtons), {
-  ssr: false,
-});
 
 const useShouldRenderCarousel = ({
   pickup,

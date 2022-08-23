@@ -9,6 +9,7 @@ import {
 } from "react-share";
 
 import Tooltip from "@/components/atoms/Tooltip";
+import { useMount } from "@/hooks/useMount";
 import { classNames } from "@/utils/css";
 
 type Props = {
@@ -18,6 +19,10 @@ type Props = {
 };
 
 export const ShareButtons: React.FC<Props> = ({ url, title, direction = "row" }) => {
+  const isMounted = useMount();
+
+  if (!isMounted) return null;
+
   return (
     <div
       className={classNames("flex items-center justify-center gap-4", direction === "row" ? "flex-row" : "flex-col")}
@@ -50,5 +55,3 @@ export const ShareButtons: React.FC<Props> = ({ url, title, direction = "row" })
     </div>
   );
 };
-
-export default ShareButtons;

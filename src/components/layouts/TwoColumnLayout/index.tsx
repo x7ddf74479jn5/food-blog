@@ -1,10 +1,10 @@
-import dynamic from "next/dynamic";
 import { memo } from "react";
 
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
+import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import BackLinks from "@/components/molecules/BackLinks";
@@ -12,12 +12,6 @@ import { PickupArticles } from "@/components/organisms/PickupArticles/index";
 import { PopularArticles } from "@/components/organisms/PopularArticles";
 import { useMedia } from "@/hooks/useMedia/index";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons").then((mod) => mod.ShareButtons), {
-  ssr: false,
-});
 
 type TwoColumnLayoutProps = {
   children: React.ReactNode;

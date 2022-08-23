@@ -1,19 +1,10 @@
 import { useTheme } from "next-themes";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { IconContext } from "react-icons";
 import { FaMoon, FaSun } from "react-icons/fa";
 import Switch from "react-switch";
 
-const useMount = () => {
-  const [isMounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    if (!isMounted) setMounted(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return isMounted;
-};
+import { useMount } from "@/hooks/useMount";
 
 const useSwitch = (isMounted: boolean) => {
   const { theme, setTheme, resolvedTheme } = useTheme();
