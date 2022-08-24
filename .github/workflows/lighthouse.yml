@@ -1,0 +1,46 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+    types: [opened]
+    branches: [main]
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+      - ".github/"
+      - ".husky/"
+      - "test-results/"
+      - ".vscode/"
+      - "scripts/"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
+  cancel-in-progress: true
+
+permissions: write-all
+
+jobs:
+  lighthouse-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: ${{!contains(github.event.pull_request.body, '[skip ci]')}}
+    steps:
+      - uses: actions/checkout@vs
+      - run: mkdir -p ${{ github.workspace }}/tmp/artifacts
+      - name: Run Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          gitAuthor: ${{ github.actor }}
+          gitBranch: ${{ github.ref }}
+          gitHubAccessToken: ${{ secrets.LIGHTHOUSE_CHECK_GITHUB_ACCESS_TOKEN }}
+          outputDirectory: ${{ github.workspace }}/tmp/artifacts
+          urls: 'https://food-blog-git-develop-x7ddf74479jn5.vercel.app/'
+          sha: ${{ github.sha }}
+          slackWebhookUrl: ${{ secrets.LIGHTHOUSE_CHECK_WEBHOOK_URL }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Lighthouse reports
+          path: ${{ github.workspace }}/tmp/artifacts
+          retention-days: 30
