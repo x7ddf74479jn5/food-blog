@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import { memo } from "react";
 
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
@@ -6,6 +5,7 @@ import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaCon
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
+import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { BackLinks } from "@/components/molecules/BackLinks";
 import { CategoryListSide } from "@/components/molecules/CategoryListSide";
@@ -13,12 +13,6 @@ import { PickupArticles } from "@/components/organisms/PickupArticles/index";
 import { PopularArticles } from "@/components/organisms/PopularArticles";
 import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const ShareButtons = dynamic(() => import("@/components/atoms/ShareButtons").then((mod) => mod.ShareButtons), {
-  ssr: false,
-});
 
 type Props = {
   children: React.ReactNode;

@@ -25,7 +25,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <div>
       <DefaultSeo {...SEO} />
       <GoogleAnalytics />
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="class" enableSystem>
         <SearchHistoryProvider>
           <Component {...pageProps} />
         </SearchHistoryProvider>
