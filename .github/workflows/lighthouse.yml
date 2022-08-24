@@ -26,7 +26,7 @@ jobs:
     timeout-minutes: 5
     if: ${{!contains(github.event.pull_request.body, '[skip ci]')}}
     steps:
-      - uses: actions/checkout@vs
+      - uses: actions/checkout@v3
       - run: mkdir -p ${{ github.workspace }}/tmp/artifacts
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
