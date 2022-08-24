@@ -31,6 +31,8 @@ jobs:
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
+          device: 'all'
+          locale: 'ja'
           gitAuthor: ${{ github.actor }}
           gitBranch: ${{ github.ref }}
           gitHubAccessToken: ${{ secrets.LIGHTHOUSE_CHECK_GITHUB_ACCESS_TOKEN }}
