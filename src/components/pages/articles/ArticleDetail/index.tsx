@@ -2,12 +2,12 @@ import { MDXRemote } from "next-mdx-remote";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
 import { FaPen, FaRegCalendar } from "react-icons/fa";
 
-import ButtonCategory from "@/components/atoms/buttons/ButtonCategory";
+import { ButtonCategory } from "@/components/atoms/buttons";
 import MDXCustomComponents from "@/components/atoms/mdx";
 import TextDate from "@/components/atoms/texts/TextDate";
 import Thumbnail from "@/components/atoms/Thumbnail";
 import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/functions/meta";
-import ArticleLayout from "@/components/layouts/ArticleLayout";
+import { ArticleLayout } from "@/components/layouts";
 import { TagListColored } from "@/components/molecules/TagList";
 import { getSafeDate } from "@/lib/date";
 import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";

@@ -2,8 +2,8 @@ import type { MicroCMSQueries } from "microcms-js-sdk";
 import { useRouter } from "next/router";
 
 import { HtmlHeadBase } from "@/components/functions/meta";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
-import { ArticleSWRContainer } from "@/components/organisms/ArticleSWRContainer";
+import { DefaultLayout } from "@/components/layouts";
+import { ArticleSWRContainer } from "@/components/organisms/article";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
@@ -17,9 +17,10 @@ export type SearchProps = {
 
 export const Search: React.FC<SearchProps> = ({ config, categories, pickup, popularArticles }) => {
   const router = useRouter();
-  const q = router.query.q?.toString();
+  const q = router.query.q ? String(router.query.q) : "";
   const { siteTitle, host } = config;
-  const heading = `検索結果：${q ?? ""}`;
+  const heading = router.isReady ? `検索結果：${q ?? ""}` : "検索結果：";
+  const fallbackText = router.isReady ? "検索語句を入力してください" : "";
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = formatPageUrl(`${urlTable.search}/q=${q ?? ""}`, host);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
@@ -43,7 +44,7 @@ export const Search: React.FC<SearchProps> = ({ config, categories, pickup, popu
         {q ? (
           <ArticleSWRContainer queryOptions={queryOptions} />
         ) : (
-          <div className="mt-16 flex justify-center">検索語句を入力してください。</div>
+          <div className="mt-16 flex justify-center">{fallbackText}</div>
         )}
       </div>
     </DefaultLayout>

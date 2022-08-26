@@ -1,15 +1,16 @@
 import { memo } from "react";
 
-import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
-import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
-import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
-import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
-import { ShareButtons } from "@/components/atoms/ShareButtons";
+import {
+  AsideContainer,
+  BottomAreaContainer,
+  ContainerWithOrder,
+  MiddleAreaContainer,
+} from "@/components/atoms/containers";
 import { HtmlHeadBase } from "@/components/functions/meta";
-import { RootLayout } from "@/components/layouts/RootLayout";
+import { RootLayout } from "@/components/layouts";
 import BackLinks from "@/components/molecules/BackLinks";
-import { PickupArticles } from "@/components/organisms/PickupArticles/index";
-import { PopularArticles } from "@/components/organisms/PopularArticles";
+import { ShareButtons } from "@/components/molecules/ShareButtons";
+import { PickupArticles, PopularArticles } from "@/components/organisms/article";
 import { useMedia } from "@/hooks/useMedia/index";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 

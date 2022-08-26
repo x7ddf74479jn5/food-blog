@@ -3,13 +3,11 @@ import { memo, useMemo } from "react";
 
 import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
-import { ShareButtons } from "@/components/atoms/ShareButtons/index";
-import { RootLayout } from "@/components/layouts/RootLayout";
-import { CategoryListSide } from "@/components/molecules/CategoryListSide";
-import { TOC } from "@/components/molecules/TOC/index";
-import { PickupArticles } from "@/components/organisms/PickupArticles/index";
-import { PopularArticles } from "@/components/organisms/PopularArticles";
-import { RelatedArticles } from "@/components/organisms/RelatedArticles";
+import { RootLayout } from "@/components/layouts";
+import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
+import { ShareButtons } from "@/components/molecules/ShareButtons";
+import { TOC } from "@/components/molecules/TOC";
+import { PickupArticles, PopularArticles, RelatedArticles } from "@/components/organisms/article";
 import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 
 type Props = {

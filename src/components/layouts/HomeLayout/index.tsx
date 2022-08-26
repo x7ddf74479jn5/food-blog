@@ -1,12 +1,10 @@
 import { memo, useMemo } from "react";
 
-import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
-import { MainContainer } from "@/components/atoms/containers/MainContainer";
-import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
-import { ShareButtons } from "@/components/atoms/ShareButtons";
-import { RootLayout } from "@/components/layouts/RootLayout";
-import { CategoryListSide } from "@/components/molecules/CategoryListSide";
-import { CarouselContainer } from "@/components/organisms/CarouselContainer";
+import { AsideContainer, MainContainer, MiddleAreaContainer } from "@/components/atoms/containers";
+import { RootLayout } from "@/components/layouts";
+import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
+import { ShareButtons } from "@/components/molecules/ShareButtons";
+import { CarouselContainer } from "@/components/organisms/article";
 import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 

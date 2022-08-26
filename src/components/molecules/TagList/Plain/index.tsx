@@ -1,4 +1,4 @@
-import { ButtonTagPlain } from "@/components/atoms/buttons/ButtonTag";
+import { ButtonTagPlain } from "@/components/atoms/buttons";
 import type { TTag } from "@/types";
 
 type Props = {

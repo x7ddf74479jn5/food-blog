@@ -1,7 +1,7 @@
 import { memo, useEffect, useRef, useState } from "react";
 import * as tocbot from "tocbot";
 
-import { SideSectionContainer } from "@/components/atoms/containers/SideSectionContainer";
+import { SideSectionContainer } from "@/components/atoms/containers";
 import { useMedia } from "@/hooks/useMedia";
 
 type Props = {

@@ -1,7 +1,7 @@
 import { FaRegTired } from "react-icons/fa";
 
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
-import { RootLayout } from "@/components/layouts/RootLayout";
+import { RootLayout } from "@/components/layouts";
 import type { TCategory, TConfig } from "@/types";
 
 export type OfflineProps = {

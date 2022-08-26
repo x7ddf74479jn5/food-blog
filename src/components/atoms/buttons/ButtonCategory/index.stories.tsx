@@ -1,10 +1,10 @@
 import { mockCategories } from "@mocks/data/categories";
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import ButtonCategory from ".";
+import { ButtonCategory } from ".";
 
 export default {
-  title: "Atoms/buttons/ButtonCategory",
+  title: "atoms/buttons/ButtonCategory",
   component: ButtonCategory,
 } as ComponentMeta<typeof ButtonCategory>;
 

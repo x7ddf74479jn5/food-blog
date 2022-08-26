@@ -4,7 +4,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ButtonTagColored } from ".";
 
 export default {
-  title: "Atoms/buttons/ButtonTag/Colored",
+  title: "atoms/buttons/ButtonTag/Colored",
   component: ButtonTagColored,
 } as ComponentMeta<typeof ButtonTagColored>;
 
