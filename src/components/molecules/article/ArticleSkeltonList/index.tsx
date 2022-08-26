@@ -1,4 +1,4 @@
-import { ArticleSkelton } from "../ArticleSkelton";
+import { ArticleSkelton } from "./ArticleSkelton";
 
 export const ArticleSkeltonList: React.FC = () => {
   const listItems = [...Array(5)].map((_, index) => (

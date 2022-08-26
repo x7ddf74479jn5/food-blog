@@ -1,6 +1,6 @@
 import { HtmlHeadBase } from "@/components/functions/meta";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
-import ArticleList from "@/components/molecules/article/ArticleList";
+import { ArticleList } from "@/components/molecules/article";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";

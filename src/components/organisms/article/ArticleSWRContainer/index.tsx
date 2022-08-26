@@ -1,7 +1,6 @@
 import type { MicroCMSQueries } from "microcms-js-sdk";
 
-import ArticleList from "@/components/molecules/article/ArticleList";
-import { ArticleSkeltonList } from "@/components/molecules/article/ArticleSkeltonList";
+import { ArticleList, ArticleSkeltonList } from "@/components/molecules/article";
 import Pagination from "@/components/molecules/Pagination";
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";

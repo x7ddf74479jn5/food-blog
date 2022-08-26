@@ -4,7 +4,7 @@ import { ThemeProvider } from "next-themes";
 
 import { ThemeSwitch } from ".";
 
-describe("components/atoms/ThemeSwitch", () => {
+describe("components/molecules/ThemeSwitch", () => {
   it("OK: スイッチが正常に切り替わる", async () => {
     const user = userEvent.setup();
     render(

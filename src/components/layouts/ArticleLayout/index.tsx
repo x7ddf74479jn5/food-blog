@@ -3,9 +3,9 @@ import { memo, useMemo } from "react";
 
 import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
-import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
+import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { TOC } from "@/components/molecules/TOC";
 import { PickupArticles, PopularArticles, RelatedArticles } from "@/components/organisms/article";
 import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
