@@ -17,9 +17,7 @@ const HomePage: NextPage<HomePageProps> = (props) => {
 
 export default HomePage;
 
-type StaticProps = HomePageProps;
-
-export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   try {
     const [config, categories, data, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
