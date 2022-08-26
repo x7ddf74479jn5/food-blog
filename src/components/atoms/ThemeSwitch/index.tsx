@@ -4,6 +4,7 @@ import { IconContext } from "react-icons";
 import { FaMoon, FaSun } from "react-icons/fa";
 import Switch from "react-switch";
 
+import { Skelton } from "@/components/atoms/Skelton";
 import { useMount } from "@/hooks/useMount";
 
 const useSwitch = (isMounted: boolean) => {
@@ -34,7 +35,7 @@ export const ThemeSwitch: React.FC = () => {
   const isMounted = useMount();
   const { isChecked, handleToggleSwitch } = useSwitch(isMounted);
 
-  if (!isMounted) return null;
+  if (!isMounted) return <Skelton className="h-6 w-12" />;
 
   return (
     <Switch
