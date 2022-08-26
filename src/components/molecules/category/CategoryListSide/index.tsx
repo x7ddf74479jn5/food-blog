@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { memo } from "react";
 
-import { SideSectionContainer } from "@/components/atoms/containers/SideSectionContainer/index";
+import { SideSectionContainer } from "@/components/atoms/containers";
 import NextLink from "@/components/atoms/NextLink";
 import type { TCategory } from "@/types";
 import { urlTable } from "@/utils/paths/url";

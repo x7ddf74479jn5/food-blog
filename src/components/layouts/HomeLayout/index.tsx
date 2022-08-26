@@ -1,8 +1,6 @@
 import { memo, useMemo } from "react";
 
-import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
-import { MainContainer } from "@/components/atoms/containers/MainContainer";
-import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
+import { AsideContainer, MainContainer, MiddleAreaContainer } from "@/components/atoms/containers";
 import { RootLayout } from "@/components/layouts";
 import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
 import { ShareButtons } from "@/components/molecules/ShareButtons";

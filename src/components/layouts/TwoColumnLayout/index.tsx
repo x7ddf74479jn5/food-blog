@@ -1,9 +1,11 @@
 import { memo } from "react";
 
-import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
-import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
-import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
-import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
+import {
+  AsideContainer,
+  BottomAreaContainer,
+  ContainerWithOrder,
+  MiddleAreaContainer,
+} from "@/components/atoms/containers";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import { RootLayout } from "@/components/layouts";
 import BackLinks from "@/components/molecules/BackLinks";

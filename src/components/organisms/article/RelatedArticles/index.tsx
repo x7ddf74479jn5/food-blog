@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-import { SideSectionContainer } from "@/components/atoms/containers/SideSectionContainer";
+import { SideSectionContainer } from "@/components/atoms/containers";
 import { ArticleTipWithThumbList } from "@/components/molecules/article";
 import type { TArticle } from "@/types/";
 

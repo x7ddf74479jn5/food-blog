@@ -1,10 +1,12 @@
 import { memo } from "react";
 
-import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
-import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
-import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
-import { MainContainer } from "@/components/atoms/containers/MainContainer";
-import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
+import {
+  AsideContainer,
+  BottomAreaContainer,
+  ContainerWithOrder,
+  MainContainer,
+  MiddleAreaContainer,
+} from "@/components/atoms/containers";
 import { RootLayout } from "@/components/layouts";
 import { BackLinks } from "@/components/molecules/BackLinks";
 import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
