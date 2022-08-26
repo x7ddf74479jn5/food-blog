@@ -4,7 +4,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ArticleItem } from ".";
 
 export default {
-  title: "molecules/ArticleItem",
+  title: "molecules/article/ArticleItem",
   component: ArticleItem,
 } as ComponentMeta<typeof ArticleItem>;
 

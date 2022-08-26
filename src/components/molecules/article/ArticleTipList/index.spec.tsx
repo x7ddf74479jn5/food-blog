@@ -2,9 +2,9 @@ import { mockArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 import React from "react";
 
-import { ArticleTipWithThumb, ArticleTipWithThumbList } from "../ArticleTipList";
+import { ArticleTipWithThumb, ArticleTipWithThumbList } from ".";
 
-describe("components/molecules/ArticleTipList", () => {
+describe("components/molecules/article/ArticleTipList", () => {
   const mockArticleList = Object.values(mockArticles);
   const mockArticleStock = mockArticles.stock;
 

@@ -3,7 +3,7 @@ import { render, screen } from "jest/test-utils";
 
 import { ArticleItem } from ".";
 
-describe("components/molecules/ArticleItem", () => {
+describe("components/molecules/article/ArticleItem", () => {
   const mockArticleStock = mockArticles.stock;
 
   it("OK: 表示が正しい", () => {

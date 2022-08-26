@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-import { ArticleItem } from "@/components/molecules/ArticleItem";
+import { ArticleItem } from "@/components/molecules/article/ArticleItem";
 import type { TArticle } from "@/types";
 
 type ArticleListProps = {
