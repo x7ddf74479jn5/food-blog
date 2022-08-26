@@ -3,7 +3,7 @@ import { memo, useMemo } from "react";
 
 import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
-import { RootLayout } from "@/components/layouts/RootLayout";
+import { RootLayout } from "@/components/layouts";
 import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
 import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { TOC } from "@/components/molecules/TOC";

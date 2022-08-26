@@ -1,5 +1,5 @@
 import { HtmlHeadBase } from "@/components/functions/meta";
-import HomeLayout from "@/components/layouts/HomeLayout";
+import { HomeLayout } from "@/components/layouts";
 import { ArticleSWRContainer } from "@/components/organisms/article";
 import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 

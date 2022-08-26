@@ -1,5 +1,5 @@
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
-import { RootLayout } from "@/components/layouts/RootLayout";
+import { RootLayout } from "@/components/layouts";
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 import type { TCategory, TConfig } from "@/types";
 

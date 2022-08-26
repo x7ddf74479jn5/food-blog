@@ -3,7 +3,7 @@ import { memo, useMemo } from "react";
 import { AsideContainer } from "@/components/atoms/containers/AsideContainer";
 import { MainContainer } from "@/components/atoms/containers/MainContainer";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
-import { RootLayout } from "@/components/layouts/RootLayout";
+import { RootLayout } from "@/components/layouts";
 import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
 import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { CarouselContainer } from "@/components/organisms/article";

@@ -1,5 +1,5 @@
 import { HtmlHeadBase } from "@/components/functions/meta";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
+import { DefaultLayout } from "@/components/layouts";
 import { ArticleSWRContainer } from "@/components/organisms/article";
 import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 import { formatPageTitle } from "@/utils/formatter";

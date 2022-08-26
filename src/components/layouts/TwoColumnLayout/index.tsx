@@ -5,7 +5,7 @@ import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaCon
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
 import { HtmlHeadBase } from "@/components/functions/meta";
-import { RootLayout } from "@/components/layouts/RootLayout";
+import { RootLayout } from "@/components/layouts";
 import BackLinks from "@/components/molecules/BackLinks";
 import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { PickupArticles, PopularArticles } from "@/components/organisms/article";

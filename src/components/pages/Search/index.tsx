@@ -2,7 +2,7 @@ import type { MicroCMSQueries } from "microcms-js-sdk";
 import { useRouter } from "next/router";
 
 import { HtmlHeadBase } from "@/components/functions/meta";
-import DefaultLayout from "@/components/layouts/DefaultLayout";
+import { DefaultLayout } from "@/components/layouts";
 import { ArticleSWRContainer } from "@/components/organisms/article";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";

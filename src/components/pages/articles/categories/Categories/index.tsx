@@ -1,4 +1,4 @@
-import { TwoColumnLayout } from "@/components/layouts/TwoColumnLayout";
+import { TwoColumnLayout } from "@/components/layouts";
 import { CategoryList } from "@/components/molecules/category/CategoryList";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
