@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-import { LoadMoreButton } from "@/components/atoms/buttons/LoadMoreButton/index";
+import { LoadMoreButton } from "@/components/atoms/buttons";
 import Spinner from "@/components/atoms/Spinner";
 
 type Props = {

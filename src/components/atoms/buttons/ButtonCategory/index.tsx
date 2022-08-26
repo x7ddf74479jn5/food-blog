@@ -3,11 +3,11 @@ import type { TCategory } from "@/types";
 import { getBorderColor } from "@/utils/css";
 import { urlTable } from "@/utils/paths/url";
 
-type Props = {
+type ButtonCategoryProps = {
   category: TCategory;
 };
 
-const ButtonCategory = ({ category }: Props) => {
+export const ButtonCategory: React.FC<ButtonCategoryProps> = ({ category }) => {
   const borderColor = getBorderColor(category.color);
   return (
     <NextLink href={`${urlTable.categories}/${category.slug}`}>
@@ -17,5 +17,3 @@ const ButtonCategory = ({ category }: Props) => {
     </NextLink>
   );
 };
-
-export default ButtonCategory;

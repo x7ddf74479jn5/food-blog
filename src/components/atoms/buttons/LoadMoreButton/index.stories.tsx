@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { LoadMoreButton } from ".";
 
 export default {
-  title: "Atoms/buttons/LoadMoreButton",
+  title: "atoms/buttons/LoadMoreButton",
   component: LoadMoreButton,
 } as ComponentMeta<typeof LoadMoreButton>;
 
