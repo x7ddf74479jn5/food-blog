@@ -3,9 +3,10 @@ import type { MicroCMSQueries } from "microcms-js-sdk";
 import { ArticleList, ArticleSkeltonList } from "@/components/molecules/article";
 import Pagination from "@/components/molecules/Pagination";
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
-import useGetArticleListQuery from "@/hooks/useGetArticleListQuery";
 import type { TArticleListResponse } from "@/types";
 import { apiRoute } from "@/utils/paths/url";
+
+import useGetArticleListQuery from "./useGetArticleListQuery";
 
 type ArticleSWRContainerProps = {
   queryOptions?: MicroCMSQueries;

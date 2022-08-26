@@ -1,9 +1,8 @@
 import { mockArticles } from "@mocks/data";
 import { fireEvent, render, screen } from "jest/test-utils";
 
-import * as useGetArticleQuery from "@/hooks/useGetArticleListQuery";
-
 import { ArticleSWRContainer } from ".";
+import * as useGetArticleQuery from "./useGetArticleListQuery";
 
 let spyUseGetArticleQuery: jest.SpyInstance;
 const mockPaginate = jest.fn();

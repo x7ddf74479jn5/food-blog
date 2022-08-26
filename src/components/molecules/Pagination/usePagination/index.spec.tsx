@@ -2,7 +2,7 @@ import type { RenderResult } from "@testing-library/react-hooks";
 import { act } from "@testing-library/react-hooks";
 import { renderHook } from "@testing-library/react-hooks";
 
-import usePagination from "@/hooks/usePagination";
+import usePagination from ".";
 
 describe("hooks/usePagination", () => {
   let renderResult: RenderResult<ReturnType<typeof usePagination>>;
