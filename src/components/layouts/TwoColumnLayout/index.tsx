@@ -8,8 +8,7 @@ import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import BackLinks from "@/components/molecules/BackLinks";
-import { PickupArticles } from "@/components/organisms/PickupArticles/index";
-import { PopularArticles } from "@/components/organisms/PopularArticles";
+import { PickupArticles, PopularArticles } from "@/components/organisms/article";
 import { useMedia } from "@/hooks/useMedia/index";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 

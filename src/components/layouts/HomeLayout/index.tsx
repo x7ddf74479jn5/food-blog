@@ -5,8 +5,8 @@ import { MainContainer } from "@/components/atoms/containers/MainContainer";
 import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaContainer";
 import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
-import { CategoryListSide } from "@/components/molecules/CategoryListSide";
-import { CarouselContainer } from "@/components/organisms/CarouselContainer";
+import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
+import { CarouselContainer } from "@/components/organisms/article";
 import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 

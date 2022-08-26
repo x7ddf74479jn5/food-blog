@@ -2,7 +2,7 @@ import { memo } from "react";
 
 import { SiteTitle } from "@/components/atoms/SiteTitle";
 import { ThemeSwitch } from "@/components/atoms/ThemeSwitch";
-import { CategoryMenu } from "@/components/molecules/CategoryMenu";
+import { CategoryMenu } from "@/components/molecules/category/CategoryMenu";
 import SearchBar from "@/components/molecules/SearchBar";
 import type { TCategory } from "@/types";
 

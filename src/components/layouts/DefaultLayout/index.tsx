@@ -8,9 +8,8 @@ import { MiddleAreaContainer } from "@/components/atoms/containers/MiddleAreaCon
 import { ShareButtons } from "@/components/atoms/ShareButtons";
 import { RootLayout } from "@/components/layouts/RootLayout";
 import { BackLinks } from "@/components/molecules/BackLinks";
-import { CategoryListSide } from "@/components/molecules/CategoryListSide";
-import { PickupArticles } from "@/components/organisms/PickupArticles/index";
-import { PopularArticles } from "@/components/organisms/PopularArticles";
+import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
+import { PickupArticles, PopularArticles } from "@/components/organisms/article";
 import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 

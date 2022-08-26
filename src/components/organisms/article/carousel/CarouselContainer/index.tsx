@@ -3,10 +3,11 @@ import { useMemo } from "react";
 import { FaLightbulb } from "react-icons/fa";
 import { IoPodium } from "react-icons/io5";
 
-import { PickupArticleCarousel } from "@/components/organisms/PickupArticleCarousel";
-import { PopularArticleCarousel } from "@/components/organisms/PopularArticleCarousel";
 import type { TPickup, TRankedArticle } from "@/types";
 import { classNames } from "@/utils/css";
+
+import { PickupArticleCarousel } from "../PickupArticleCarousel";
+import { PopularArticleCarousel } from "../PopularArticleCarousel";
 
 type CarouselContainerProps = { pickup: TPickup | undefined; popularArticles: TRankedArticle[] };
 

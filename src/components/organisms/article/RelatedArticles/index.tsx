@@ -1,7 +1,7 @@
 import { memo } from "react";
 
 import { SideSectionContainer } from "@/components/atoms/containers/SideSectionContainer";
-import { ArticleTipWithThumbList } from "@/components/molecules/ArticleTipList";
+import { ArticleTipWithThumbList } from "@/components/molecules/article/ArticleTipList";
 import type { TArticle } from "@/types/";
 
 type Props = {
