@@ -1,5 +1,5 @@
 import { TwoColumnLayout } from "@/components/layouts/TwoColumnLayout";
-import { CategoryList } from "@/components/molecules/CategoryList";
+import { CategoryList } from "@/components/molecules/category/CategoryList";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";

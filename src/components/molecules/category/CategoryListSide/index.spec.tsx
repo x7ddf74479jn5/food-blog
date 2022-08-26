@@ -6,7 +6,7 @@ import { urlTable } from "@/utils/paths/url";
 
 import { CategoryListSide } from ".";
 
-describe("components/molecules/CategoryMenu", () => {
+describe("components/molecules/category/CategoryMenu", () => {
   const mockCategoryList = Object.values(mockCategories);
 
   it("OK: 表示が正しい", () => {

@@ -4,7 +4,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { CategoryListSide } from ".";
 
 export default {
-  title: "molecules/CategoryListSide",
+  title: "molecules/category/CategoryListSide",
   component: CategoryListSide,
 } as ComponentMeta<typeof CategoryListSide>;
 

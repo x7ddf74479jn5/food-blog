@@ -1,11 +1,11 @@
 import { mockCategories } from "@mocks/data/categories";
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { withRouterContext } from "../../../../.storybook/mocks/context";
+import { withRouterContext } from "../../../../../.storybook/mocks/context";
 import { CategoryMenu } from ".";
 
 export default {
-  title: "molecules/CategoryMenu",
+  title: "molecules/category/CategoryMenu",
   component: CategoryMenu,
   decorators: [
     (storyFn) => {
