@@ -12,6 +12,17 @@ on:
       - "test-results/"
       - ".vscode/"
       - "scripts/"
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+      - ".github/"
+      - ".husky/"
+      - "test-results/"
+      - ".vscode/"
+      - "scripts/"
   workflow_dispatch:
 
 concurrency:
