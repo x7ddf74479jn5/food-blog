@@ -20,7 +20,7 @@ export const useSearch = () => {
     router.push(
       {
         pathname: urlTable.search,
-        query: { query },
+        query: { q: query },
       },
       undefined,
       { shallow: true }
