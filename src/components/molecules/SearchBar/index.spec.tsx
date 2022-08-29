@@ -49,7 +49,7 @@ describe("components/molecules/Search", () => {
       expect(input).toHaveValue(testText);
 
       await user.type(input, "{enter}");
-      expect(push).toBeCalledWith({ pathname: "/search", query: { q: testText } }, undefined, { shallow: true });
+      expect(push).toBeCalledWith({ pathname: "/search", query: { query: testText } }, undefined, { shallow: true });
     });
 
     it("OK: フォーカスイベント", async () => {

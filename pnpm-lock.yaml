@@ -20,7 +20,6 @@ specifiers:
   "@tailwindcss/typography": ^0.5.4
   "@testing-library/jest-dom": 5.16.4
   "@testing-library/react": 13.3.0
-  "@testing-library/react-hooks": 8.0.1
   "@testing-library/user-event": 14.4.1
   "@types/gtag.js": ^0.0.10
   "@types/jest": 28.1.6
@@ -126,7 +125,6 @@ devDependencies:
   "@storybook/react": 6.5.10_uuu3pjcj55tqwsqgmhkenx55cm
   "@testing-library/jest-dom": 5.16.4
   "@testing-library/react": 13.3.0_biqbaboplfbrettd7655fr4n2y
-  "@testing-library/react-hooks": 8.0.1_bb2bxwco6ptpubzwpazr52qf6i
   "@testing-library/user-event": 14.4.1
   "@types/gtag.js": 0.0.10
   "@types/jest": 28.1.6
@@ -4731,30 +4729,6 @@ packages:
       dom-accessibility-api: 0.5.14
       lodash: 4.17.21
       redent: 3.0.0
-    dev: true
-
-  /@testing-library/react-hooks/8.0.1_bb2bxwco6ptpubzwpazr52qf6i:
-    resolution:
-      { integrity: sha512-Aqhl2IVmLt8IovEVarNDFuJDVWVvhnr9/GCU6UUnrYXwgDFF9h2L2o2P9KBni1AST5sT6riAyoukFLyjQUgD/g== }
-    engines: { node: ">=12" }
-    peerDependencies:
-      "@types/react": ^16.9.0 || ^17.0.0
-      react: ^16.9.0 || ^17.0.0
-      react-dom: ^16.9.0 || ^17.0.0
-      react-test-renderer: ^16.9.0 || ^17.0.0
-    peerDependenciesMeta:
-      "@types/react":
-        optional: true
-      react-dom:
-        optional: true
-      react-test-renderer:
-        optional: true
-    dependencies:
-      "@babel/runtime": 7.18.9
-      "@types/react": 18.0.15
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      react-error-boundary: 3.1.4_react@18.2.0
     dev: true
 
   /@testing-library/react/13.3.0_biqbaboplfbrettd7655fr4n2y:
@@ -15263,6 +15237,7 @@ packages:
     dependencies:
       "@babel/runtime": 7.18.9
       react: 18.2.0
+    dev: false
 
   /react-icons/4.4.0_react@18.2.0:
     resolution:

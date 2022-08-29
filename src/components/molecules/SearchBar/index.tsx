@@ -1,28 +1,26 @@
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
 import { useSearchHistoryContext } from "@/context";
+import { usePopover } from "@/hooks/usePopover";
 import { urlTable } from "@/utils/paths/url";
 
-const SearchBar: React.FC = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [query, setQuery] = useState("");
-  const [isActive, setIsActive] = useState(false);
+import { SearchHistory } from "./SearchHistory";
 
+export const useSearch = () => {
+  const [query, _setQuery] = useState("");
   const router = useRouter();
   const { histories, setHistories } = useSearchHistoryContext();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setQuery(event.target.value);
+  const search = useCallback(() => {
+    if (query.trim() === "") return;
 
-  const handleFocus = () => setIsActive(true);
-
-  const search = (q: string) => {
     router.push(
       {
         pathname: urlTable.search,
-        query: { q },
+        query: { query },
       },
       undefined,
       { shallow: true }
@@ -32,43 +30,37 @@ const SearchBar: React.FC = () => {
       setHistories((prev) => [query, ...prev].slice(0, 5));
     }
 
-    setQuery("");
-    setIsActive(false);
+    _setQuery("");
+  }, [histories, query, router, setHistories]);
+
+  const setQuery = useCallback((query: string) => _setQuery(query), []);
+
+  return {
+    query,
+    setQuery,
+    search,
   };
+};
+
+const SearchBar: React.FC = () => {
+  const { query, setQuery, search } = useSearch();
+  const { isActive, setIsActive, ref } = usePopover<HTMLDivElement>();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setQuery(event.target.value);
+
+  const handleFocus = () => setIsActive(true);
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (query.trim() === "") {
-      return;
-    }
-
     if (event.key === "Enter") {
-      search(query.trim());
+      search();
+      setIsActive(false);
     }
   };
 
   const handleSubmit = () => {
-    if (query.trim() === "") {
-      return;
-    }
-
-    search(query.trim());
+    search();
+    setIsActive(false);
   };
-
-  const handleClickInside = (history: string) => {
-    search(history);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event: Event) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setIsActive(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  });
 
   return (
     <div ref={ref} className="relative">
@@ -94,18 +86,8 @@ const SearchBar: React.FC = () => {
           enterKeyHint="search"
         />
       </div>
-      {isActive && histories && histories.length > 0 && (
-        <ul className="fixed z-10 mt-1 mr-4 max-h-[50vh] overflow-y-auto rounded-md border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-600 dark:bg-gray-700">
-          {histories.map((history) => (
-            <li
-              key={history}
-              className="cursor-pointer py-2 px-4 text-left text-sm leading-5 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-green-500"
-            >
-              <button onClick={() => handleClickInside(history)}>{history}</button>
-            </li>
-          ))}
-        </ul>
-      )}
+
+      <SearchHistory isActive={isActive} setQuery={setQuery} />
     </div>
   );
 };
