@@ -1,10 +1,10 @@
 import { expect, test } from "@playwright/test";
 
-import { mockArticles, mockConfig } from "../../mocks/data";
+import { mockArticles, mockConfig } from "../../../mocks/data";
 
 const { stock } = mockArticles;
 
-test("search", async ({ page }) => {
+test("pc: search", async ({ page }) => {
   // Go to staging URL
   await page.goto("https://food-blog-git-develop-x7ddf74479jn5.vercel.app/");
   // Fill input[placeholder="Search\.\.\."]
