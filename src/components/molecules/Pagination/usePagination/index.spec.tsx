@@ -1,24 +1,31 @@
-import type { RenderResult } from "@testing-library/react-hooks";
-import { act } from "@testing-library/react-hooks";
-import { renderHook } from "@testing-library/react-hooks";
+import { act, renderHook } from "@testing-library/react";
 
 import usePagination from ".";
 
 describe("hooks/usePagination", () => {
-  let renderResult: RenderResult<ReturnType<typeof usePagination>>;
   const mockOnIntersect = jest.fn();
   window.IntersectionObserver = jest.fn();
+  const mockObserve = jest.fn();
+  const mockUnobserve = jest.fn();
+  (window.IntersectionObserver as jest.Mock).mockReturnValue({
+    observe: mockObserve,
+    unobserve: mockUnobserve,
+  });
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
   it("OK: APIが定義されている", () => {
-    renderResult = renderHook(() => usePagination({ onIntersect: mockOnIntersect })).result;
-    expect(renderResult.current.loadMoreRef).toBeDefined();
+    const { result } = renderHook(() => usePagination({ onIntersect: mockOnIntersect }));
+    expect(result.current.loadMoreRef).toBeDefined();
 
     const el = document.createElement("div");
-    act(() => renderResult.current.loadMoreRef(el));
+    act(() => result.current.loadMoreRef(el));
     expect(window.IntersectionObserver).toBeCalledWith(expect.any(Function), {
       root: null,
       onIntersect: mockOnIntersect(),
@@ -28,21 +35,16 @@ describe("hooks/usePagination", () => {
   });
 
   it("OK: observerのライフサイクル", () => {
-    const mockObserve = jest.fn();
-    const mockUnobserve = jest.fn();
-    (window.IntersectionObserver as jest.Mock).mockReturnValue({ observe: mockObserve, unobserve: mockUnobserve });
-
     const { result, unmount } = renderHook(() => usePagination({ onIntersect: mockOnIntersect }));
-    renderResult = result;
-    expect(renderResult.current.loadMoreRef).toBeDefined();
+    expect(result.current.loadMoreRef).toBeDefined();
 
     const el = document.createElement("div");
-    act(() => renderResult.current.loadMoreRef(el));
+    act(() => result.current.loadMoreRef(el));
     expect(window.IntersectionObserver).toBeCalledTimes(1);
     expect(mockObserve).toBeCalledWith(el);
 
     const el2 = document.createElement("div");
-    act(() => renderResult.current.loadMoreRef(el2));
+    act(() => result.current.loadMoreRef(el2));
     expect(window.IntersectionObserver).toBeCalledTimes(2);
     expect(mockObserve).toBeCalledWith(el2);
 

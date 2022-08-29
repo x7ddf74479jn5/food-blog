@@ -1,6 +1,5 @@
 import { mockArticles } from "@mocks/data";
-import type { RenderResult } from "@testing-library/react-hooks";
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook } from "@testing-library/react";
 import { withMockedRouter } from "jest/test-utils";
 import type { NextRouter } from "next/router";
 import { SWRConfig } from "swr";
@@ -15,7 +14,6 @@ let spyMutate: jest.SpyInstance;
 
 beforeAll(() => {
   spyUseSWRInfinite = jest.spyOn(useSWRInfinite, "default");
-  // spyMutate = jest.spyOn(swr, "mutate");
   spyMutate = jest.fn();
 });
 
@@ -29,13 +27,13 @@ describe("hooks/useGetArticleListQuery", () => {
   const router: Partial<NextRouter> = {
     query: { q },
   };
-  const Wrapper: React.ComponentType<{ children: React.ReactNode; router: Partial<NextRouter> }> = ({ children }) => {
+  const Wrapper: React.ComponentType<{ children: React.ReactNode; router?: Partial<NextRouter> }> = ({ children }) => {
     return withMockedRouter(
       router,
       <SWRConfig value={{ dedupingInterval: 0, provider: () => new Map() }}>{children}</SWRConfig>
     );
   };
-  let renderResult: RenderResult<ReturnType<typeof useGetArticleListQuery>>;
+
   // 4 * 3 articles
   const mockArticleList = [
     ...Object.values(mockArticles),
@@ -89,8 +87,8 @@ describe("hooks/useGetArticleListQuery", () => {
       const { result } = renderHook(() => useGetArticleListQuery(args), {
         wrapper: Wrapper,
       });
-      renderResult = result;
-      const { getCurrentKey, articles, hasNextPage, paginate, revalidate } = renderResult.current;
+
+      const { getCurrentKey, articles, hasNextPage, paginate, revalidate } = result.current;
 
       expect(spyUseSWRInfinite).toBeCalledTimes(1);
       const key = getCurrentKey();
@@ -117,8 +115,7 @@ describe("hooks/useGetArticleListQuery", () => {
       const { result } = renderHook(() => useGetArticleListQuery(args), {
         wrapper: Wrapper,
       });
-      renderResult = result;
-      const { getCurrentKey, articles, hasNextPage, paginate, revalidate } = renderResult.current;
+      const { getCurrentKey, articles, hasNextPage, paginate, revalidate } = result.current;
 
       expect(spyUseSWRInfinite).toBeCalledTimes(1);
       const key = getCurrentKey();
@@ -164,8 +161,7 @@ describe("hooks/useGetArticleListQuery", () => {
       const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
         wrapper: Wrapper,
       });
-      renderResult = result;
-      const { getCurrentKey, articles, hasNextPage } = renderResult.current;
+      const { getCurrentKey, articles, hasNextPage } = result.current;
 
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&pageIndex=0`;
@@ -207,8 +203,7 @@ describe("hooks/useGetArticleListQuery", () => {
       const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
         wrapper: Wrapper,
       });
-      renderResult = result;
-      const { getCurrentKey, articles, hasNextPage } = renderResult.current;
+      const { getCurrentKey, articles, hasNextPage } = result.current;
 
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&offset=${offset}&pageIndex=1`;
@@ -255,8 +250,7 @@ describe("hooks/useGetArticleListQuery", () => {
       const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
         wrapper: Wrapper,
       });
-      renderResult = result;
-      const { getCurrentKey, articles, hasNextPage } = renderResult.current;
+      const { getCurrentKey, articles, hasNextPage } = result.current;
 
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&offset=${offset}&pageIndex=2`;
