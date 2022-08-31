@@ -82,8 +82,6 @@ const SearchBar: React.FC = () => {
           onKeyPress={handleKeyPress}
           onSubmit={handleSubmit}
           value={query}
-          inputMode="text"
-          enterKeyHint="search"
         />
       </div>
 
