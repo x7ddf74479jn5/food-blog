@@ -4,13 +4,12 @@ import { fireEvent, render, screen } from "jest/test-utils";
 import { ArticleSWRContainer } from ".";
 import * as useGetArticleQuery from "./useGetArticleListQuery";
 
+jest.mock("./useGetArticleListQuery");
+
 let spyUseGetArticleQuery: jest.SpyInstance;
 const mockPaginate = jest.fn();
 
-// FIXME: jest.spyOnがエラー
-/* TypeError: Cannot redefine property: default
-        at Function.defineProperty (<anonymous>) */
-describe.skip("components/organisms/ArticleSWRContainer", () => {
+describe("components/organisms/ArticleSWRContainer", () => {
   describe("OK: データがある", () => {
     describe("次ページがある", () => {
       beforeEach(() => {
@@ -29,6 +28,7 @@ describe.skip("components/organisms/ArticleSWRContainer", () => {
           mutate: jest.fn(),
         });
       });
+
       afterEach(() => {
         jest.clearAllMocks();
         jest.restoreAllMocks();
