@@ -1,84 +1,86 @@
-import { mockReq, mockRes } from "jest/test-utils";
+// @jest-environment node
+
 import { mockArticles } from "mocks/data";
-import type { NextApiRequest } from "next";
+import { server } from "mocks/msw/server";
+import { testApiHandler } from "next-test-api-route-handler";
 
 import * as fetchArticles from "@/api/fetchArticles";
+import type { TArticleListResponse } from "@/types";
 
 import handler from "./index.page";
 
-// FIXME: jest.spyOnがエラー
-/* TypeError: Cannot redefine property: default
-        at Function.defineProperty (<anonymous>) */
-describe.skip("pages/api/articles", () => {
-  const spyFetchArticles = jest.spyOn(fetchArticles, "fetchArticles");
-  beforeEach(() => jest.clearAllMocks());
-  afterAll(() => jest.restoreAllMocks());
+jest.mock("@/api/fetchArticles");
 
-  it("OK: default", async () => {
-    const _mockReq = {
-      ...mockReq,
-      query: {
-        offset: "0",
-        limit: "1",
-      },
-    } as unknown as NextApiRequest;
+beforeAll(() => server.listen());
+afterAll(() => server.close());
 
-    const articles = Object.values(mockArticles);
-    spyFetchArticles.mockImplementation(async () => {
-      return { contents: articles, totalCount: articles.length, limit: 1, offset: 0 };
+describe("src/pages/api/posts/index.test.ts", () => {
+  const params = {
+    handler,
+    url: "/api/articles",
+  };
+
+  describe("GET", () => {
+    beforeEach(() => jest.clearAllMocks());
+    afterAll(() => jest.restoreAllMocks());
+
+    test("200", async () => {
+      const mockArticleList = Object.values(mockArticles);
+      const mockFetchArticlesReturn = { contents: mockArticleList } as unknown as TArticleListResponse;
+
+      jest.spyOn(fetchArticles, "fetchArticles").mockImplementationOnce(async () => mockFetchArticlesReturn);
+
+      await testApiHandler({
+        ...params,
+        params: { limit: "10", offset: "0", filters: "filters" },
+        test: async ({ fetch }) => {
+          const res = await fetch({ method: "GET" });
+          expect(res.status).toEqual(200);
+          await expect(res.json()).resolves.toStrictEqualmockFetchArticlesReturn;
+        },
+      });
     });
 
-    await handler(_mockReq, mockRes);
-
-    expect(spyFetchArticles).toBeCalledWith({
-      offset: 0,
-      limit: 1,
-      orders: "-publishedAt",
+    test("400", async () => {
+      await testApiHandler({
+        ...params,
+        params: {},
+        test: async ({ fetch }) => {
+          const res = await fetch({});
+          expect(res.status).toEqual(400);
+          await expect(res.json()).resolves.toStrictEqual({
+            message: "Bad Request",
+          });
+        },
+      });
     });
-    expect(mockRes.status).toBeCalledWith(200);
-    expect(mockRes.json).toBeCalledWith({ contents: articles, totalCount: articles.length, limit: 1, offset: 0 });
+
+    test("404", async () => {
+      await testApiHandler({
+        ...params,
+        params: { limit: "10", offset: "0", filters: "filters" },
+        test: async ({ fetch }) => {
+          const res = await fetch();
+          expect(res.status).toEqual(404);
+          await expect(res.json()).resolves.toStrictEqual({
+            message: "Not Found",
+          });
+        },
+      });
+    });
   });
 
-  it("OK: 正常系(検索)", async () => {
-    const _mockReq = {
-      ...mockReq,
-      query: {
-        q: "query",
-        offset: "0",
-        limit: "1",
-      },
-    } as unknown as NextApiRequest;
-
-    const articles = Object.values(mockArticles);
-    spyFetchArticles.mockImplementation(async () => {
-      return { contents: articles, totalCount: articles.length, limit: 1, offset: 0 };
+  describe("PUT", () => {
+    test("405", async () => {
+      await testApiHandler({
+        ...params,
+        test: async ({ fetch }) => {
+          const res = await fetch({ method: "PUT" });
+          await expect(res.json()).resolves.toStrictEqual({
+            message: "Method Not Allowed",
+          });
+        },
+      });
     });
-
-    await handler(_mockReq, mockRes);
-
-    expect(spyFetchArticles).toBeCalledWith({
-      q: "query",
-      offset: 0,
-      limit: 1,
-      orders: "-publishedAt",
-    });
-    expect(mockRes.status).toBeCalledWith(200);
-    expect(mockRes.json).toBeCalledWith({ contents: articles, totalCount: articles.length, limit: 1, offset: 0 });
-  });
-
-  it("NG: qが不正(検索)", async () => {
-    const _mockReq = {
-      ...mockReq,
-      query: {
-        q: undefined,
-        offset: "0",
-        limit: "1",
-      },
-    } as unknown as NextApiRequest;
-
-    await handler(_mockReq, mockRes);
-
-    expect(spyFetchArticles).not.toBeCalled();
-    expect(mockRes.status).toBeCalledWith(404);
   });
 });

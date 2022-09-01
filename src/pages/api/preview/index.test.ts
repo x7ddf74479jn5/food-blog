@@ -1,104 +1,101 @@
-import { mockReq, mockRes } from "jest/test-utils";
+// @jest-environment node
 import { mockArticles } from "mocks/data";
-import type { NextApiRequest } from "next";
+import { server } from "mocks/msw/server";
+import { rest } from "msw";
+import { testApiHandler } from "next-test-api-route-handler";
 
 import * as fetchArticles from "@/api/fetchArticles";
 
-import preview from "./index.page";
+import handler from "./index.page";
 
-// FIXME: jest.spyOnがエラー
-/* TypeError: Cannot redefine property: default
-        at Function.defineProperty (<anonymous>) */
-describe.skip("pages/api/preview", () => {
-  const spyFetchArticle = jest.spyOn(fetchArticles, "fetchArticle");
-  beforeEach(() => jest.clearAllMocks());
-  afterAll(() => jest.restoreAllMocks());
+jest.mock("@/api/fetchArticles");
 
-  it("OK: 正常系", async () => {
-    const _mockReq = {
-      ...mockReq,
-      query: {
-        id: "id",
-        draftKey: "draftKey",
-      },
-    } as unknown as NextApiRequest;
-    const articleStock = mockArticles.stock;
-    spyFetchArticle.mockImplementation(async () => {
-      return articleStock;
+beforeAll(() => server.listen());
+afterAll(() => server.close());
+
+describe("src/pages/api/posts/index.test.ts", () => {
+  const params = {
+    handler,
+    url: "/api/preview",
+  };
+
+  describe("GET", () => {
+    beforeEach(() => jest.clearAllMocks());
+    afterAll(() => jest.restoreAllMocks());
+
+    //  FiXME: res.setPreviewData
+    //  Error: invariant: invalid previewModeId
+    test("307", async () => {
+      jest.spyOn(fetchArticles, "fetchArticle").mockImplementationOnce(async () => mockArticles.stock);
+      const mockApi = rest.get("https://food-blog.microcms.io/api/v1/articles/:id", (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(mockArticles.stock));
+      });
+
+      server.use(mockApi);
+      await testApiHandler({
+        ...params,
+        params: { id: mockArticles.stock.id, draftKey: "draft" },
+        test: async ({ fetch }) => {
+          const res = await fetch({ method: "GET" });
+          expect(res.status).toEqual(307);
+          await expect(res.text).resolves.toEqual("Preview mode enabled");
+        },
+      });
     });
 
-    await preview(_mockReq, mockRes);
-
-    expect(spyFetchArticle).toBeCalledWith("id", { draftKey: "draftKey" });
-    expect(mockRes.setPreviewData).toBeCalledWith({
-      id: articleStock.id,
-      draftKey: "draftKey",
+    test("400", async () => {
+      await testApiHandler({
+        ...params,
+        params: { id: mockArticles.stock.id },
+        test: async ({ fetch }) => {
+          const res = await fetch({});
+          expect(res.status).toEqual(400);
+          await expect(res.json()).resolves.toStrictEqual({
+            message: "Bad Request",
+          });
+        },
+      });
     });
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    expect(mockRes.writeHead).toBeCalledWith(307, { Location: `/preview/${articleStock.id}` });
-    expect(mockRes.end).toBeCalledWith("Preview mode enabled");
+
+    test("401", async () => {
+      await testApiHandler({
+        ...params,
+        params: { id: "invalid", draftKey: "draft" },
+        test: async ({ fetch }) => {
+          const res = await fetch();
+          expect(res.status).toEqual(401);
+          await expect(res.json()).resolves.toStrictEqual({
+            message: "Invalid id",
+          });
+        },
+      });
+    });
+
+    test("404", async () => {
+      await testApiHandler({
+        ...params,
+        test: async ({ fetch }) => {
+          const res = await fetch({});
+          expect(res.status).toEqual(404);
+          await expect(res.json()).resolves.toStrictEqual({
+            message: "Bad Request",
+          });
+        },
+      });
+    });
   });
 
-  it("NG: idが不正", async () => {
-    const _mockReq = {
-      ...mockReq,
-      query: {
-        id: undefined,
-      },
-    } as unknown as NextApiRequest;
-
-    await preview(_mockReq, mockRes);
-
-    expect(spyFetchArticle).not.toBeCalled();
-    expect(mockRes.status).toBeCalledWith(404);
-  });
-
-  it("NG: draftKeyが不正", async () => {
-    const _mockReq = {
-      ...mockReq,
-      query: {
-        id: "id",
-        draftKey: undefined,
-      },
-    } as unknown as NextApiRequest;
-
-    await preview(_mockReq, mockRes);
-
-    expect(spyFetchArticle).not.toBeCalled();
-    expect(mockRes.status).toBeCalledWith(400);
-  });
-
-  it("NG: idが不正", async () => {
-    const _mockReq = {
-      ...mockReq,
-      query: {
-        id: undefined,
-      },
-    } as unknown as NextApiRequest;
-
-    await preview(_mockReq, mockRes);
-
-    expect(spyFetchArticle).not.toBeCalled();
-    expect(mockRes.status).toBeCalledWith(404);
-  });
-
-  it("NG: 記事が取得できない", async () => {
-    const _mockReq = {
-      ...mockReq,
-      query: {
-        id: "id",
-        draftKey: "draftKey",
-      },
-    } as unknown as NextApiRequest;
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    spyFetchArticle.mockReturnValue(undefined);
-
-    await preview(_mockReq, mockRes);
-
-    expect(spyFetchArticle).toBeCalledWith("id", { draftKey: "draftKey" });
-    expect(mockRes.status).toBeCalledWith(401);
-    expect(mockRes.json).toBeCalledWith({ message: "Invalid id" });
+  describe("PUT", () => {
+    test("405", async () => {
+      await testApiHandler({
+        ...params,
+        test: async ({ fetch }) => {
+          const res = await fetch({ method: "PUT" });
+          await expect(res.json()).resolves.toStrictEqual({
+            message: "Method Not Allowed",
+          });
+        },
+      });
+    });
   });
 });
