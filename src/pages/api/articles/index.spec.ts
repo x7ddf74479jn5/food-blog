@@ -2,14 +2,12 @@
 
 import { mockArticles } from "mocks/data";
 import { server } from "mocks/msw/server";
+import { rest } from "msw";
 import { testApiHandler } from "next-test-api-route-handler";
 
-import * as fetchArticles from "@/api/fetchArticles";
 import type { TArticleListResponse } from "@/types";
 
 import handler from "./index.page";
-
-jest.mock("@/api/fetchArticles");
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -26,9 +24,18 @@ describe("src/pages/api/posts/index.test.ts", () => {
 
     test("200", async () => {
       const mockArticleList = Object.values(mockArticles);
-      const mockFetchArticlesReturn = { contents: mockArticleList } as unknown as TArticleListResponse;
+      const mockFetchArticlesReturn = {
+        contents: mockArticleList,
+        limit: 10,
+        offset: 0,
+        totalCount: 4,
+      } as unknown as TArticleListResponse;
 
-      jest.spyOn(fetchArticles, "fetchArticles").mockImplementationOnce(async () => mockFetchArticlesReturn);
+      const mockApi = rest.get(`https://food-blog.microcms.io/api/v1/articles`, (_req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(mockFetchArticlesReturn));
+      });
+
+      server.use(mockApi);
 
       await testApiHandler({
         ...params,

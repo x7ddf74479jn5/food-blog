@@ -80,6 +80,7 @@ describe("src/pages/api/posts/index.test.ts", () => {
       });
 
       server.use(mockApi);
+
       await testApiHandler({
         ...params,
         params: { id: "id", draftKey: "draft" },
