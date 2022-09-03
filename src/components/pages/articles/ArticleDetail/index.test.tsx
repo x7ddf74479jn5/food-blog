@@ -28,7 +28,6 @@ describe("pages/articles", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockArticleList = Object.values(mockArticles);
   const mockArticleStock = mockArticles.stock;
-  console.warn = jest.fn();
 
   it("OK: 初期レンダリング", () => {
     const mdxSource = { compiledSource: "source" };
