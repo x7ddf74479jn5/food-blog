@@ -36,35 +36,7 @@ describe("src/pages/api/posts/index.test.ts", () => {
         test: async ({ fetch }) => {
           const res = await fetch({ method: "GET" });
           expect(res.status).toEqual(200);
-          await expect(res.json()).resolves.toStrictEqualmockFetchArticlesReturn;
-        },
-      });
-    });
-
-    test("400", async () => {
-      await testApiHandler({
-        ...params,
-        params: {},
-        test: async ({ fetch }) => {
-          const res = await fetch({});
-          expect(res.status).toEqual(400);
-          await expect(res.json()).resolves.toStrictEqual({
-            message: "Bad Request",
-          });
-        },
-      });
-    });
-
-    test("404", async () => {
-      await testApiHandler({
-        ...params,
-        params: { limit: "10", offset: "0", filters: "filters" },
-        test: async ({ fetch }) => {
-          const res = await fetch();
-          expect(res.status).toEqual(404);
-          await expect(res.json()).resolves.toStrictEqual({
-            message: "Not Found",
-          });
+          await expect(res.json()).resolves.toStrictEqual(mockFetchArticlesReturn);
         },
       });
     });

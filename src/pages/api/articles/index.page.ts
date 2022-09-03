@@ -9,33 +9,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(405).json({ message: "Method Not Allowed" });
   }
 
-  const { limit, offset, filters } = req.query;
+  const { limit, offset, filters, q } = req.query;
 
-  if (typeof limit !== "string" || typeof offset !== "string" || typeof filters !== "string") {
-    return res.status(400).json({ message: "Bad Request" });
-  }
-
-  let queries: MicroCMSQueries = {
-    limit: limit ? Number(limit) : undefined,
-    offset: offset ? Number(offset) : undefined,
+  const queries: MicroCMSQueries = {
+    limit: limit ? Number(limit) : 10,
+    offset: offset ? Number(offset) : 0,
     orders: "-publishedAt",
     filters: filters ? String(filters) : undefined,
+    q: q ? String(q) : undefined,
   };
 
-  if ("q" in req.query) {
-    const { q } = req.query;
-    if (typeof q !== "string") {
-      return res.status(400).json({ message: "Bad Request" });
-    }
-
-    queries = { q, ...queries };
-  }
-
   const data = await fetchArticles(queries);
-
-  if (!data) {
-    return res.status(404).json({ message: "Not Found" });
-  }
 
   res.status(200).json(data);
 };

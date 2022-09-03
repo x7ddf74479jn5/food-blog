@@ -10,7 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   if (!req.query.id) {
-    return res.status(404).json({ message: "Bad Request" });
+    return res.status(400).json({ message: "Bad Request" });
   }
 
   if (typeof req.query.id !== "string" || typeof req.query.draftKey !== "string") {
@@ -20,7 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const content = await fetchArticle(req.query.id, { draftKey: req.query.draftKey });
 
   if (!content) {
-    return res.status(401).json({ message: "Invalid id" });
+    return res.status(404).json({ message: "Not Found" });
   }
 
   res.setPreviewData({
