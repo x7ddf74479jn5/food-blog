@@ -1,5 +1,7 @@
 # Food Blog
 
+[![Storybook](https://github.com/x7ddf74479jn5/food-blog/actions/workflows/storybook.yml/badge.svg?branch=develop)](https://x7ddf74479jn5.github.io/food-blog/)
+
 Next.js, MDX, microCMSで作ったレシピブログです。要件として非エンジニアの方がCMSから入稿とサイトの基本設定の変更ができることを想定しています。
 
 ## Screenshot
@@ -25,15 +27,15 @@ Next.js, MDX, microCMSで作ったレシピブログです。要件として非�
   
 ## Sitemap
 
-| URL                         | Name                 | Note                                         | 
-| --------------------------- | -------------------- | -------------------------------------------- | 
-| /                           | ホーム               | ピックアップと最新記事を10件表示             | 
-| /articles/[id]              | 記事詳細             | MDX                                          | 
-| /articles/categories        | カテゴリー一覧       |                                              | 
-| /articles/categories/[slug] | カテゴリー別記事一覧 |                                              | 
-| /articles/tags/[slug]       | タグ別記事一覧       |                                              | 
-| /preview/[id]               | 記事プレビュー       | microCMSのコンテンツ管理ページからのみ参照可 | 
-| /search                     | 記事検索             |  ヘッダーの検索窓から遷移                    | 
+| URL                         | Name                 | Note                                         |
+| --------------------------- | -------------------- | -------------------------------------------- |
+| /                           | ホーム               | ピックアップと最新記事を10件表示             |
+| /articles/[id]              | 記事詳細             | MDX                                          |
+| /articles/categories        | カテゴリー一覧       |                                              |
+| /articles/categories/[slug] | カテゴリー別記事一覧 |                                              |
+| /articles/tags/[slug]       | タグ別記事一覧       |                                              |
+| /preview/[id]               | 記事プレビュー       | microCMSのコンテンツ管理ページからのみ参照可 |
+| /search                     | 記事検索             |  ヘッダーの検索窓から遷移                    |
 
 ## FYI
 
