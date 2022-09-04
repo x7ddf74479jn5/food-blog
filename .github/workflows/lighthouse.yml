@@ -39,6 +39,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: mkdir -p ${{ github.workspace }}/tmp/artifacts
+      - name: Add JP font
+        run:  sudo apt-get install fonts-noto
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:

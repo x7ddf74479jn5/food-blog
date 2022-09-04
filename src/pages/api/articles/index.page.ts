@@ -1,27 +1,46 @@
 import { withSentry } from "@sentry/nextjs";
 import type { MicroCMSQueries } from "microcms-js-sdk";
 import type { NextApiRequest, NextApiResponse } from "next";
+import z from "zod";
 
 import { fetchArticles } from "@/api";
 
+const articlesQuerySchema = z.object({
+  limit: z
+    .string()
+    .optional()
+    .default("10")
+    .transform((v) => Number(v)),
+  offset: z
+    .string()
+    .optional()
+    .default("0")
+    .transform((v) => Number(v)),
+  q: z
+    .string()
+    .refine((value) => Boolean(value.trim().length))
+    .optional(),
+  filters: z
+    .string()
+    .refine((value) => Boolean(value.trim().length))
+    .optional(),
+});
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { limit, offset, filters } = req.query;
-  let queries: MicroCMSQueries = {
-    limit: limit ? Number(limit) : undefined,
-    offset: offset ? Number(offset) : undefined,
-    orders: "-publishedAt",
-    filters: filters ? String(filters) : undefined,
-  };
-
-  if ("q" in req.query) {
-    const { q } = req.query;
-    if (typeof q !== "string") {
-      res.status(404).end();
-      return;
-    }
-
-    queries = { q, ...queries };
+  if (req.method !== "GET") {
+    return res.status(405).json({ message: "Method Not Allowed" });
   }
+
+  const parsed = articlesQuerySchema.safeParse(req.query);
+
+  if (!parsed.success) {
+    return res.status(400).json({ message: "Bad Request" });
+  }
+
+  const queries: MicroCMSQueries = {
+    orders: "-publishedAt",
+    ...parsed.data,
+  };
 
   const data = await fetchArticles(queries);
 

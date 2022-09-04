@@ -1,6 +1,8 @@
 import type Queries from "@testing-library/dom/types/queries";
 import type { RenderResult } from "@testing-library/react";
 import { render } from "@testing-library/react";
+import type { RequestHandler } from "msw";
+import { setupServer } from "msw/node";
 import { SWRConfig } from "swr";
 
 import { SearchHistoryProvider } from "@/context";
@@ -42,4 +44,12 @@ type ErrorComponentProps = {
 };
 export const ErrorComponent: React.FC<ErrorComponentProps> = ({ message }) => {
   throw new Error(message);
+};
+
+export const setupMockServer = (...handlers: RequestHandler[]) => {
+  const server = setupServer(...handlers);
+  beforeAll(() => server.listen());
+  afterEach(() => server.resetHandlers());
+  afterAll(() => server.close());
+  return server;
 };
