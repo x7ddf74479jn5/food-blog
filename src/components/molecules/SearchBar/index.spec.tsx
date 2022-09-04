@@ -1,5 +1,4 @@
 import userEvent from "@testing-library/user-event";
-import type { UserEvent } from "@testing-library/user-event/dist/types/setup";
 import { render, screen } from "jest/test-utils";
 import React from "react";
 
@@ -23,7 +22,7 @@ describe("components/molecules/Search", () => {
   });
 
   describe("interaction", () => {
-    let user: UserEvent;
+    let user: ReturnType<typeof userEvent["setup"]>;
 
     beforeEach(() => {
       user = userEvent.setup();
