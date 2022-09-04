@@ -16,7 +16,7 @@ const Header: React.FC<Props> = ({ siteTitle, categories }) => {
     <header className="py-2">
       <div className="flex items-center justify-between">
         <SiteTitle size="text-2xl" title={siteTitle} />
-        <div className="hidden w-1/3 sm:block">
+        <div className="hidden w-1/3 sm:block" aria-label="search-area-pc">
           <SearchBar />
         </div>
         <div className="flex items-center space-x-4">
@@ -24,7 +24,7 @@ const Header: React.FC<Props> = ({ siteTitle, categories }) => {
           <CategoryMenu categories={categories} />
         </div>
       </div>
-      <div className="mt-2 block sm:hidden">
+      <div className="mt-2 block sm:hidden" aria-label="search-area-mobile">
         <SearchBar />
       </div>
     </header>
