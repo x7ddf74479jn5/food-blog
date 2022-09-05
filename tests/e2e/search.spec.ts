@@ -4,7 +4,7 @@ import { mockArticles, mockConfig } from "../../mocks/data";
 
 const { stock } = mockArticles;
 
-test("検索、検索結果表示、詳細ページ遷移", async ({ page, context }) => {
+test("検索、検索結果表示、詳細ページ遷移", async ({ page }) => {
   // Go to staging URL
   await page.goto("https://food-blog-git-develop-x7ddf74479jn5.vercel.app/");
   // Detect the device viewport size and set the targe input
@@ -21,7 +21,6 @@ test("検索、検索結果表示、詳細ページ遷移", async ({ page, conte
   await Promise.all([
     SearchBox.press("Enter"),
     page.waitForNavigation(/*{ url: 'https://food-blog-git-develop-x7ddf74479jn5.vercel.app//search?q=基本の一番だしの作り方' }*/),
-    context.waitForEvent("page"),
   ]);
 
   await expect(page.locator("h1")).toContainText(stock.title);

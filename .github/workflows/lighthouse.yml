@@ -1,28 +1,7 @@
 name: Lighthouse CI
 
 on:
-  pull_request:
-    types: [opened, synchronize]
-    branches: [main]
-    paths-ignore:
-      - "README.md"
-      - "LICENSE"
-      - ".github/"
-      - ".husky/"
-      - "test-results/"
-      - ".vscode/"
-      - "scripts/"
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - "README.md"
-      - "LICENSE"
-      - ".github/"
-      - ".husky/"
-      - "test-results/"
-      - ".vscode/"
-      - "scripts/"
+  deployment_status:
   workflow_dispatch:
 
 concurrency:
@@ -35,7 +14,10 @@ jobs:
   lighthouse-check:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: ${{!contains(github.event.pull_request.body, '[skip ci]')}}
+    if: |
+      ${{!contains(github.event.pull_request.body, '[skip ci]')}} && 
+      github.ref == 'refs/heads/main' && 
+      github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v3
       - run: mkdir -p ${{ github.workspace }}/tmp/artifacts
@@ -50,7 +32,7 @@ jobs:
           gitBranch: ${{ github.ref }}
           gitHubAccessToken: ${{ secrets.LIGHTHOUSE_CHECK_GITHUB_ACCESS_TOKEN }}
           outputDirectory: ${{ github.workspace }}/tmp/artifacts
-          urls: 'https://food-blog-git-develop-x7ddf74479jn5.vercel.app/'
+          urls: ${{ github.event.deployment_status.target_url }}
           sha: ${{ github.sha }}
           slackWebhookUrl: ${{ secrets.LIGHTHOUSE_CHECK_WEBHOOK_URL }}
       - name: Upload artifacts
