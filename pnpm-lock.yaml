@@ -38,8 +38,8 @@ specifiers:
   eslint-config-next: 12.2.5
   eslint-config-prettier: 8.5.0
   eslint-plugin-import: 2.26.0
-  eslint-plugin-jsx-a11y: 6.6.1
   eslint-plugin-simple-import-sort: 8.0.0
+  eslint-plugin-sort-destructure-keys: 1.4.0
   eslint-plugin-tailwindcss: 3.6.1
   feed: 4.2.2
   husky: 8.0.1
@@ -145,8 +145,8 @@ devDependencies:
   eslint-config-next: 12.2.5_yqf6kl63nyoq5megxukfnom5rm
   eslint-config-prettier: 8.5.0_eslint@8.23.0
   eslint-plugin-import: 2.26.0_wyxuyzvlfep3lsyoibc4fosfq4
-  eslint-plugin-jsx-a11y: 6.6.1_eslint@8.23.0
   eslint-plugin-simple-import-sort: 8.0.0_eslint@8.23.0
+  eslint-plugin-sort-destructure-keys: 1.4.0_eslint@8.23.0
   eslint-plugin-tailwindcss: 3.6.1
   feed: 4.2.2
   husky: 8.0.1
@@ -7689,6 +7689,16 @@ packages:
       eslint: 8.23.0
     dev: true
 
+  /eslint-plugin-sort-destructure-keys/1.4.0_eslint@8.23.0:
+    resolution: {integrity: sha512-txU9l22mblz7YpyjJNYFy4wb5PVXiRMbc9lqFPPhvY4wKyBBYQvb31TIcduf7iRb4Bv01aiXcJiuCkOOrVY48Q==}
+    engines: {node: '>=6.0.0'}
+    peerDependencies:
+      eslint: 3 - 8
+    dependencies:
+      eslint: 8.23.0
+      natural-compare-lite: 1.4.0
+    dev: true
+
   /eslint-plugin-tailwindcss/3.6.1:
     resolution: {integrity: sha512-a44pb62X6wS3j5hLqedsroYrSyOuSZ7PaTl08gJVoChzHlgyZRVpDMCw17Kj6q2zQuDqqRbNZuo8VyNWlGlVLA==}
     engines: {node: '>=12.13.0'}
@@ -11875,6 +11885,10 @@ packages:
       to-regex: 3.0.2
     transitivePeerDependencies:
       - supports-color
+
+  /natural-compare-lite/1.4.0:
+    resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}
+    dev: true
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}

@@ -6,3 +6,6 @@ package-lock.json
 public
 *.md
 .github/workflows
+out
+playwright-report
+pnpm-lock.yaml
