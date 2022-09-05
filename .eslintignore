@@ -4,3 +4,6 @@
 **/.vercel/*
 /.eslintrc.js
 **/public/*
+out
+playwright-report
+pnpm-lock.yaml
