@@ -34,7 +34,7 @@ permissions: write-all
 jobs:
   test:
     timeout-minutes: 10
-    if: ${{!contains(github.event.pull_request.body, '[skip ci]')}}
+    if: ${{!contains( github.event.pull_request.body, '[skip ci]' )}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -43,22 +43,28 @@ jobs:
           version: 7
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '18.x'
           cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "::set-output name=version::$( sh .github/scripts/get-playwright-version.sh )"
       - name: Cache playwright binaries
         uses: actions/cache@v2
         id: playwright-cache
         with:
-          path: |
-            ~/.cache/ms-playwright
-          key: cache-playwright-linux
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-      - name: Install Playwright Browsers
+          path: ~/.cache/ms-playwright
+          key: '${{ runner.os }}-playwright-${{ steps.playwright-version.outputs.version }}'
+          restore-keys: ${{ runner.os }}-playwright-
+      - name: Install Playwright browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
+      - name: Install Playwright system dependencies
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps
       - name: Run Playwright tests
-        run: pnpm e2e
+        run: npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
         with:
