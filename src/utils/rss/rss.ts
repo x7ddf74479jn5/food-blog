@@ -1,6 +1,7 @@
+import fs from "node:fs";
+
 import { Feed } from "feed";
 import { marked } from "marked";
-import fs from "node:fs";
 
 import { getSafeDate } from "@/lib/date";
 import type { TArticle, TConfig } from "@/types";

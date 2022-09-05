@@ -1,5 +1,6 @@
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { ParsedUrlQuery } from "node:querystring";
+
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import { fetchArticles, fetchCategories, fetchCategory, fetchConfig } from "@/api";
 import type { CategoryProps } from "@/components/pages/articles/categories/Category";
