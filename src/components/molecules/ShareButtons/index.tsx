@@ -8,24 +8,11 @@ import {
   TwitterShareButton,
 } from "react-share";
 
-import { Skelton } from "@/components/atoms/Skelton";
 import Tooltip from "@/components/atoms/Tooltip";
 import { useMount } from "@/hooks/useMount";
 import { classNames } from "@/utils/css";
 
 type Direction = "row" | "column";
-
-const Wrapper = ({ direction, children }: React.PropsWithChildren<{ direction: Direction }>) => (
-  <div className={classNames("flex items-center justify-center gap-4", direction === "row" ? "flex-row" : "flex-col")}>
-    {children}
-  </div>
-);
-
-const SkeltonShareButtons = ({ direction }: { direction: Direction }) => {
-  const items = [...Array(5)].map((_, i) => <Skelton key={i} className="h-6 w-6 bg-gray-300" />);
-
-  return <Wrapper direction={direction}>{items}</Wrapper>;
-};
 
 type Props = {
   url: string;
@@ -36,12 +23,14 @@ type Props = {
 export const ShareButtons: React.FC<Props> = ({ url, title, direction = "row" }) => {
   const isMounted = useMount();
 
-  if (!isMounted) return <SkeltonShareButtons direction={direction} />;
+  if (!isMounted) return null;
 
   const buttonClassName = classNames("flex items-center justify-center", direction === "row" ? "flex-row" : "flex-col");
 
   return (
-    <Wrapper direction={direction}>
+    <div
+      className={classNames("flex items-center justify-center gap-4", direction === "row" ? "flex-row" : "flex-col")}
+    >
       <TwitterShareButton url={url} title={title} className={buttonClassName}>
         <Tooltip label="Twitterでシェア">
           <FaTwitter className="text-gray-400 hover:text-[#1DA1F2]" size={24} />
@@ -67,6 +56,6 @@ export const ShareButtons: React.FC<Props> = ({ url, title, direction = "row" })
           <SiHatenabookmark className="text-gray-400 hover:text-[#00A4DE]" size={24} />
         </Tooltip>
       </HatenaShareButton>
-    </Wrapper>
+    </div>
   );
 };
