@@ -56,7 +56,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({
       pickup={pickup}
       popularArticles={popularArticles}
     >
-      <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} image={image.url} />
+      <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} image={image.url} description={description} />
       <HtmlHeadJsonLd
         url={url}
         title={title}
