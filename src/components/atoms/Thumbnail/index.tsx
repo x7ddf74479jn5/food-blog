@@ -11,7 +11,17 @@ type Props = {
 };
 
 const Thumbnail: React.FC<Props> = ({ title, src, id }) => {
-  const image = <Image src={src} alt={title} width={640} height={360} objectFit="cover" />;
+  const image = (
+    <Image
+      src={src}
+      alt={title}
+      width={640}
+      height={360}
+      objectFit="cover"
+      placeholder="blur"
+      blurDataURL={`${src}?q=0`}
+    />
+  );
   return (
     <>
       {id ? (
