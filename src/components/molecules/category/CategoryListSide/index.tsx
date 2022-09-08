@@ -21,7 +21,15 @@ export const CategoryListSide: React.FC<CategoryListSideProps> = memo(({ categor
           <li key={category.id}>
             <div className="flex h-full w-24 flex-col items-center justify-center">
               <NextLink href={`${urlTable.categories}/${category.slug}`}>
-                <Image src={category.image.url} alt={category.slug} width={128} height={128} objectFit="cover" />
+                <Image
+                  src={category.image.url}
+                  alt={category.slug}
+                  width={128}
+                  height={128}
+                  objectFit="cover"
+                  placeholder="blur"
+                  blurDataURL={`${category.image.url}?q=0`}
+                />
                 <p className="text-center text-sm">{category.name}</p>
               </NextLink>
             </div>

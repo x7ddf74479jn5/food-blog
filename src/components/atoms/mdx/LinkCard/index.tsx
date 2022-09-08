@@ -16,7 +16,15 @@ export const LinkCard: React.FC<LinkCardProps> = ({ article }) => {
     <NextLink href={`${urlTable.articles}/${id}`}>
       <div className="my-8 border border-gray-300 dark:border-gray-700">
         <article className="flex flex-row">
-          <Image src={image.url} alt={title} width={128} height={96} objectFit="cover" />
+          <Image
+            src={image.url}
+            alt={title}
+            width={128}
+            height={96}
+            objectFit="cover"
+            placeholder="blur"
+            blurDataURL={`${image.url}?q=0`}
+          />
           <div className="flex grow flex-col flex-wrap p-4">
             <div className="flex flex-wrap">{title}</div>
             <div className="grow">

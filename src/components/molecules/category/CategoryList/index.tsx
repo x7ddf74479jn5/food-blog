@@ -18,7 +18,15 @@ export const CategoryList: React.FC<CategoryListProps> = ({ categories, width, h
           <NextLink href={`${urlTable.categories}/${category.slug}`}>
             <div className="flex flex-col items-center justify-center">
               <div className="w-auto">
-                <Image src={category.image.url} alt={category.slug} width={width} height={height} objectFit="cover" />
+                <Image
+                  src={category.image.url}
+                  alt={category.slug}
+                  width={width}
+                  height={height}
+                  objectFit="cover"
+                  placeholder="blur"
+                  blurDataURL={`${category.image.url}?q=0`}
+                />
               </div>
               <p className="text-sm">{category.name}</p>
             </div>
