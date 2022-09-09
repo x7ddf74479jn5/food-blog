@@ -4,17 +4,8 @@ on:
   push:
     branches:
       - develop
-  pull_request:
-    types: [closed]
-    branches: [develop]
-    paths-ignore:
-      - "README.md"
-      - "LICENSE"
-      - ".github/"
-      - ".husky/"
-      - "test-results/"
-      - ".vscode/"
-      - "scripts/"
+    paths:
+      - 'src/components/*'
   workflow_dispatch:
 
 concurrency:
