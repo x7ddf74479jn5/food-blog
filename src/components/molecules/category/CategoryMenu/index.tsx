@@ -16,14 +16,11 @@ type CategoryMenuItemProps = {
 
 export const CategoryMenuItem: React.FC<CategoryMenuItemProps> = ({ href, text, disabled }) => {
   return (
-    <Menu.Item disabled={disabled}>
+    <Menu.Item as="div" disabled={disabled}>
       {({ active }) => (
         <NextLink
           href={href}
-          className={classNames(
-            "flex justify-between w-full px-4 py-2 text-sm leading-5 text-left focus:outline-none cursor-pointer",
-            active ? "menubox-active" : "menubox-inactive"
-          )}
+          className={classNames("dropdown-option", active ? "dropdown-active" : "dropdown-inactive")}
         >
           {text}
         </NextLink>
@@ -54,26 +51,20 @@ const CategoryMenuItems: React.FC<CategoryMenuItemsProps> = ({ open, categories 
   return (
     <>
       {open && (
-        <Menu.Items static className="menubox-container absolute right-0 z-10 mt-1 w-28">
-          <div className="divide-y divide-gray-100 py-1 dark:divide-gray-600">
-            <div>
-              <CategoryMenuItem text="一覧" href={urlTable.categories} disabled={asPath === urlTable.categories} />
-            </div>
-            <div>
-              <CategoryMenuItem text="おすすめ" href={urlTable.pickup} disabled={asPath === urlTable.pickup} />
-              <CategoryMenuItem text="人気" href={urlTable.popular} disabled={asPath === urlTable.popular} />
-            </div>
-            <div>
-              {categories.map((category) => (
-                <CategoryMenuItem
-                  key={category.id}
-                  href={`${urlTable.categories}/${category.slug}`}
-                  text={category.name}
-                  disabled={isCurrentPage(category.slug)}
-                />
-              ))}
-            </div>
-          </div>
+        <Menu.Items static className="dropdown-options w-28">
+          <CategoryMenuItem text="一覧" href={urlTable.categories} disabled={asPath === urlTable.categories} />
+
+          <CategoryMenuItem text="おすすめ" href={urlTable.pickup} disabled={asPath === urlTable.pickup} />
+          <CategoryMenuItem text="人気" href={urlTable.popular} disabled={asPath === urlTable.popular} />
+
+          {categories.map((category) => (
+            <CategoryMenuItem
+              key={category.id}
+              href={`${urlTable.categories}/${category.slug}`}
+              text={category.name}
+              disabled={isCurrentPage(category.slug)}
+            />
+          ))}
         </Menu.Items>
       )}
     </>
@@ -86,22 +77,18 @@ type CategoryMenuProps = {
 
 export const CategoryMenu: React.FC<CategoryMenuProps> = memo(({ categories }) => {
   return (
-    <div className="relative inline-block text-left">
-      <Menu>
-        {({ open }) => (
-          <>
-            <span className="rounded-md shadow-sm">
-              <Menu.Button className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 bg-white py-1 px-3 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none dark:border-gray-500 dark:bg-gray-700 dark:text-gray-100 dark:hover:border-gray-400">
-                <span>カテゴリー</span>
-                {open ? <FaChevronUp className="hover:bg-gray-500" /> : <FaChevronDown className="hover:bg-gray-500" />}
-              </Menu.Button>
-            </span>
+    <Menu as="div" className="dropdown">
+      {({ open }) => (
+        <>
+          <Menu.Button className="dropdown-button">
+            <span>カテゴリー</span>
+            {open ? <FaChevronUp /> : <FaChevronDown />}
+          </Menu.Button>
 
-            <CategoryMenuItems open={open} categories={categories} />
-          </>
-        )}
-      </Menu>
-    </div>
+          <CategoryMenuItems open={open} categories={categories} />
+        </>
+      )}
+    </Menu>
   );
 });
 
