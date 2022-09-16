@@ -5,7 +5,7 @@ on:
     branches:
       - develop
     paths:
-      - 'src/components/*'
+      - 'src/components/**/*.tsx'
   workflow_dispatch:
 
 concurrency:
