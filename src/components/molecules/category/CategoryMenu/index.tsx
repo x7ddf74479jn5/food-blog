@@ -4,6 +4,7 @@ import { memo } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import NextLink from "@/components/atoms/NextLink";
+import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
 import type { TCategory } from "@/types";
 import { classNames } from "@/utils/css";
 import { urlTable } from "@/utils/paths/url";
@@ -53,7 +54,7 @@ export const CategoryMenu: React.FC<CategoryMenuProps> = memo(({ categories }) =
             {open ? <FaChevronUp /> : <FaChevronDown />}
           </Menu.Button>
 
-          {open && (
+          <DropdownTransition>
             <Menu.Items static className="dropdown-options w-28">
               <CategoryMenuItem label="一覧" href={urlTable.categories} disabled={matchPath(urlTable.categories)} />
 
@@ -69,7 +70,7 @@ export const CategoryMenu: React.FC<CategoryMenuProps> = memo(({ categories }) =
                 />
               ))}
             </Menu.Items>
-          )}
+          </DropdownTransition>
         </>
       )}
     </Menu>
