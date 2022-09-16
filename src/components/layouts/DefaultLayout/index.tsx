@@ -12,7 +12,6 @@ import { BackLinks } from "@/components/molecules/BackLinks";
 import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
 import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { PickupArticles, PopularArticles } from "@/components/organisms/article";
-import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 
 type Props = {
@@ -38,14 +37,12 @@ const DefaultLayout: React.FC<Props> = ({
   categories,
   pickup,
   popularArticles,
-}: Props) => {
-  const isSmallOrDown = useMedia("<=", "sm");
-
+}) => {
   return (
     <RootLayout config={config} categories={categories}>
       <MiddleAreaContainer>
         <AsideContainer side="left">
-          <ShareButtons url={url} title={pageTitle} direction={isSmallOrDown ? "row" : "column"} />
+          <ShareButtons url={url} title={pageTitle} />
         </AsideContainer>
         <MainContainer>{children}</MainContainer>
         <AsideContainer side="right">

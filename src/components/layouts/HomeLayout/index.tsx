@@ -5,7 +5,6 @@ import { RootLayout } from "@/components/layouts";
 import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
 import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { CarouselContainer } from "@/components/organisms/article";
-import { useMedia } from "@/hooks/useMedia";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 
 const useShouldRenderCarousel = ({
@@ -42,7 +41,6 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({
   categories,
   popularArticles,
 }) => {
-  const isSmallOrDown = useMedia("<=", "sm");
   const shouldRenderCarousel = useShouldRenderCarousel({ pickup, popularArticles });
 
   return (
@@ -50,7 +48,7 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({
       {shouldRenderCarousel && <CarouselContainer pickup={pickup} popularArticles={popularArticles} />}
       <MiddleAreaContainer>
         <AsideContainer side="left">
-          <ShareButtons url={url} title={pageTitle} direction={isSmallOrDown ? "row" : "column"} />
+          <ShareButtons url={url} title={pageTitle} />
         </AsideContainer>
         <MainContainer>{children}</MainContainer>
         <AsideContainer side="right">
