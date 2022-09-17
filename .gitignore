@@ -52,6 +52,7 @@ _posts
 /playwright/.cache/
 credentials.json
 tsconfig.tsbuildinfo
+storybook-static
 
 # Sentry
 .sentryclirc
