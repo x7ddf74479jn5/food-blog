@@ -1,5 +1,5 @@
 import { mockCategories } from "@mocks/data/categories";
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 
 import { CategoryList } from ".";
 
@@ -8,11 +8,10 @@ export default {
   component: CategoryList,
 } as ComponentMeta<typeof CategoryList>;
 
-const Template: ComponentStory<typeof CategoryList> = (args) => <CategoryList {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  categories: Object.values(mockCategories),
-  width: 128,
-  height: 128,
+export const Desktop: ComponentStoryObj<typeof CategoryList> = {
+  args: {
+    categories: Object.values(mockCategories),
+    width: 128,
+    height: 128,
+  },
 };

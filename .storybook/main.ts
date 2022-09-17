@@ -25,7 +25,7 @@ const config = {
     "storybook-addon-performance",
     "storybook-tailwind-dark-mode",
   ],
-  staticDirs: ["../public"],
+  staticDirs: ["../mocks/data/images"],
   core: {
     builder: {
       name: "webpack5",

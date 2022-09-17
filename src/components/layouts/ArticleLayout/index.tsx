@@ -1,9 +1,9 @@
-import dynamic from "next/dynamic";
-import { memo, useMemo } from "react";
+import { memo } from "react";
 
 import { BottomAreaContainer } from "@/components/atoms/containers/BottomAreaContainer";
 import { ContainerWithOrder } from "@/components/atoms/containers/ContainerWithOrder";
 import { RootLayout } from "@/components/layouts";
+import BackLinks from "@/components/molecules/BackLinks";
 import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
 import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { TOC } from "@/components/molecules/TOC";
@@ -35,8 +35,7 @@ const ArticleLayout: React.FC<Props> = ({
   categories,
   pickup,
   popularArticles,
-}: Props) => {
-  const BackLinks = useMemo(() => dynamic(() => import("@/components/molecules/BackLinks")), []);
+}) => {
   return (
     <RootLayout config={config} categories={categories}>
       <div className="mt-4 mb-8 flex flex-col items-center gap-16 lg:mb-16 lg:flex-row lg:items-start lg:justify-between ">

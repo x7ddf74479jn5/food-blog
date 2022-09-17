@@ -11,7 +11,6 @@ import { RootLayout } from "@/components/layouts";
 import BackLinks from "@/components/molecules/BackLinks";
 import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { PickupArticles, PopularArticles } from "@/components/organisms/article";
-import { useMedia } from "@/hooks/useMedia/index";
 import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
 
 type TwoColumnLayoutProps = {
@@ -32,8 +31,6 @@ type TwoColumnLayoutProps = {
 
 export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = memo(
   ({ children, config, pickup, host, title, heading, url, backLinks, categories, popularArticles }) => {
-    const isSmallOrDown = useMedia("<=", "sm");
-
     return (
       <RootLayout config={config} categories={categories}>
         <HtmlHeadBase indexUrl={host} pageTitle={title} url={url} />
@@ -42,7 +39,7 @@ export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = memo(
         </div>
         <MiddleAreaContainer>
           <AsideContainer className="lg:w-full" side="left">
-            <ShareButtons url={url} title={title} direction={isSmallOrDown ? "row" : "column"} />
+            <ShareButtons url={url} title={title} />
           </AsideContainer>
           <main>{children}</main>
         </MiddleAreaContainer>
