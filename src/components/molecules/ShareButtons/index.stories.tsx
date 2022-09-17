@@ -7,9 +7,22 @@ export default {
   component: ShareButtons,
 } as ComponentMeta<typeof ShareButtons>;
 
-export const Vertical: ComponentStoryObj<typeof ShareButtons> = {
+export const Desktop: ComponentStoryObj<typeof ShareButtons> = {
   args: {
     url: "url",
     title: "title",
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: "pchd",
+    },
+  },
+};
+export const Mobile: ComponentStoryObj<typeof ShareButtons> = {
+  ...Desktop,
+  parameters: {
+    viewport: {
+      defaultViewport: "iphone12",
+    },
   },
 };
