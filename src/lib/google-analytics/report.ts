@@ -69,7 +69,7 @@ export const runReport = async (): Promise<ReportRow[] | undefined> => {
       return { pagePath, pageViews };
     })
     .filter((obj): obj is NonNullable<{ pagePath: string; pageViews: string }> => obj !== undefined)
-    .filter(({ pagePath }) => !pagePath?.startsWith("/articles/categories/") && !pagePath?.startsWith("/articles/tags"))
+    .filter(({ pagePath }) => !pagePath?.startsWith("/articles/categories") && !pagePath?.startsWith("/articles/tags"))
     .map(({ pageViews, pagePath }, idx) => ({ id: pagePath?.split("/")[2], pageViews, order: ++idx }))
     .slice(0, 5);
 
