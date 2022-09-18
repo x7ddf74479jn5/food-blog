@@ -13,15 +13,15 @@ type Props = {
 export const ArticleTipWithThumb: React.FC<Props> = ({ article }) => {
   const { id, title, tags, image } = article;
   return (
-    <article className="flex max-h-36 flex-row ">
+    <div className="flex max-h-36 flex-row">
       <NextLink href={`${urlTable.articles}/${id}`}>
-        <div className="mt-1 mr-4 min-w-[max-content] shrink-0">
+        <div className="mt-1 mr-4 min-w-max">
           <Image
             src={image.url}
             alt={title}
             width={48}
             height={48}
-            className="aspect-square h-auto w-full object-cover"
+            className="aspect-square h-auto w-12 object-cover"
             placeholder="blur"
             blurDataURL={`${image.url}?q=0`}
           />
@@ -33,7 +33,7 @@ export const ArticleTipWithThumb: React.FC<Props> = ({ article }) => {
           <TagListPlain tags={tags} hasLink />
         </div>
       </div>
-    </article>
+    </div>
   );
 };
 
