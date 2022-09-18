@@ -47,11 +47,11 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({
     <RootLayout config={config} categories={categories}>
       {shouldRenderCarousel && <CarouselContainer pickup={pickup} popularArticles={popularArticles} />}
       <MiddleAreaContainer>
-        <AsideContainer side="left">
-          <ShareButtons url={url} title={pageTitle} />
+        <AsideContainer className="order-2 md:order-1">
+          <ShareButtons url={url} title={pageTitle} className="flex-row md:flex-col" />
         </AsideContainer>
-        <MainContainer>{children}</MainContainer>
-        <AsideContainer side="right">
+        <MainContainer className="order-1 md:order-2">{children}</MainContainer>
+        <AsideContainer className="order-3">
           <CategoryListSide categories={categories} columns="grid-cols-3 sm:grid-cols-5 md:grid-cols-1" />
         </AsideContainer>
       </MiddleAreaContainer>
