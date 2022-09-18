@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 
 import NextLink from "@/components/atoms/NextLink";
 import type { TCategory } from "@/types";
@@ -23,7 +23,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({ categories, width, h
                   alt={category.slug}
                   width={width}
                   height={height}
-                  objectFit="cover"
+                  className="h-auto w-full object-cover"
                   placeholder="blur"
                   blurDataURL={`${category.image.url}?q=0`}
                 />

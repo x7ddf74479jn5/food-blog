@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { memo } from "react";
 
 import { SideSectionContainer } from "@/components/atoms/containers";
@@ -26,7 +26,7 @@ export const CategoryListSide: React.FC<CategoryListSideProps> = memo(({ categor
                   alt={category.slug}
                   width={128}
                   height={128}
-                  objectFit="cover"
+                  className="h-auto w-full object-cover"
                   placeholder="blur"
                   blurDataURL={`${category.image.url}?q=0`}
                 />

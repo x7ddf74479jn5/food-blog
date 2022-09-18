@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { memo } from "react";
 
 import NextLink from "@/components/atoms/NextLink";
@@ -21,7 +21,7 @@ export const ArticleTipWithThumb: React.FC<Props> = ({ article }) => {
             alt={title}
             width={48}
             height={48}
-            objectFit="cover"
+            className="h-auto w-full object-cover"
             placeholder="blur"
             blurDataURL={`${image.url}?q=0`}
           />
