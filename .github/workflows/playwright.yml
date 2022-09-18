@@ -26,7 +26,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
+  group: ${{ github.workflow }}
   cancel-in-progress: true
 
 permissions: write-all
