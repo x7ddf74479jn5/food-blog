@@ -23,7 +23,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({ categories, width, h
                   alt={category.slug}
                   width={width}
                   height={height}
-                  className="h-auto w-full object-cover"
+                  className="aspect-square h-auto w-full object-cover"
                   placeholder="blur"
                   blurDataURL={`${category.image.url}?q=0`}
                 />

@@ -26,7 +26,7 @@ export const CategoryListSide: React.FC<CategoryListSideProps> = memo(({ categor
                   alt={category.slug}
                   width={128}
                   height={128}
-                  className="h-auto w-full object-cover"
+                  className="aspect-square h-auto w-full object-cover"
                   placeholder="blur"
                   blurDataURL={`${category.image.url}?q=0`}
                 />

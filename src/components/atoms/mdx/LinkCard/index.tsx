@@ -14,14 +14,14 @@ export const LinkCard: React.FC<LinkCardProps> = ({ article }) => {
   const { id, title, tags, image } = article;
   return (
     <NextLink href={`${urlTable.articles}/${id}`}>
-      <div className="my-8 border border-gray-300 dark:border-gray-700">
+      <div className="not-prose my-8 border border-gray-300 dark:border-gray-700">
         <article className="flex flex-row">
           <Image
             src={image.url}
             alt={title}
             width={128}
             height={96}
-            className="h-auto w-full object-cover"
+            className="h-auto w-24 object-cover sm:w-32"
             placeholder="blur"
             blurDataURL={`${image.url}?q=0`}
           />
