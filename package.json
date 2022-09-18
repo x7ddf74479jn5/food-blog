@@ -33,7 +33,6 @@
     "@google-analytics/data": "3.0.2",
     "@headlessui/react": "1.7.2",
     "@sentry/nextjs": "7.13.0",
-    "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/line-clamp": "0.4.2",
     "@tailwindcss/typography": "^0.5.7",
     "date-fns": "2.29.3",

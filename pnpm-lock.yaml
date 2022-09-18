@@ -15,7 +15,6 @@ specifiers:
   '@storybook/builder-webpack5': 6.5.12
   '@storybook/manager-webpack5': 6.5.12
   '@storybook/react': ^6.5.12
-  '@tailwindcss/aspect-ratio': 0.4.2
   '@tailwindcss/line-clamp': 0.4.2
   '@tailwindcss/typography': ^0.5.7
   '@testing-library/jest-dom': 5.16.5
@@ -87,7 +86,6 @@ dependencies:
   '@google-analytics/data': 3.0.2
   '@headlessui/react': 1.7.2_biqbaboplfbrettd7655fr4n2y
   '@sentry/nextjs': 7.13.0_z6h2urrzfzjemuinkf5bguhq3y
-  '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.1.8
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.1.8
   '@tailwindcss/typography': 0.5.7_tailwindcss@3.1.8
   date-fns: 2.29.3
@@ -4028,14 +4026,6 @@ packages:
     resolution: {integrity: sha512-rEUrBSGIoSFuYxwBYtlUFMlE2CwGhmW+w9355/5oduSw8e5h2+Tj4UrAGNNgP9915++wj5vkQo0UuOBqOAq4nw==}
     dependencies:
       tslib: 2.4.0
-
-  /@tailwindcss/aspect-ratio/0.4.2_tailwindcss@3.1.8:
-    resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==}
-    peerDependencies:
-      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
-    dependencies:
-      tailwindcss: 3.1.8_postcss@8.4.16
-    dev: false
 
   /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.1.8:
     resolution: {integrity: sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==}
