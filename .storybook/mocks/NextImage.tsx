@@ -5,17 +5,20 @@
 
 import React from "react";
 import * as NextImage from "next/future/image";
+import type { ImageProps } from "next/future/image";
 
 const OriginalNextImage = NextImage.default;
 
 Object.defineProperty(NextImage, "default", {
   configurable: true,
-  value: (/** @type {import('next/image').ImageProps} */ props) => {
-    if (typeof props.src === "string") {
-      return <OriginalNextImage {...props} unoptimized blurDataURL={props.src} />;
+  value: ({ src, ...props }: ImageProps) => {
+    if (typeof src === "string") {
+      const imgSrc = src.startsWith("/") ? src.substring(1) : src;
+
+      return <OriginalNextImage {...props} src={imgSrc} unoptimized blurDataURL={imgSrc} />;
     } else {
       // don't need blurDataURL here since it is already defined on the StaticImport type
-      return <OriginalNextImage {...props} unoptimized />;
+      return <OriginalNextImage {...props} src={src} unoptimized />;
     }
   },
 });
