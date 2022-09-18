@@ -1,6 +1,8 @@
 import Image from "next/future/image";
 import type { ComponentPropsWithoutRef, FC } from "react";
 
+import { getBlurDataURL } from "@/utils/image";
+
 type CustomImageProps = ComponentPropsWithoutRef<"img">;
 
 export const CustomImage: FC<CustomImageProps> = ({ src = "", alt = "", width, height }) => {
@@ -13,7 +15,7 @@ export const CustomImage: FC<CustomImageProps> = ({ src = "", alt = "", width, h
           width={width}
           height={height}
           placeholder="blur"
-          blurDataURL={`${src}?q=0`}
+          blurDataURL={getBlurDataURL()}
           className="h-auto max-w-full"
         />
       </div>

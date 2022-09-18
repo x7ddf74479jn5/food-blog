@@ -4,6 +4,7 @@ import { memo } from "react";
 import { SideSectionContainer } from "@/components/atoms/containers";
 import NextLink from "@/components/atoms/NextLink";
 import type { TCategory } from "@/types";
+import { getBlurDataURL } from "@/utils/image";
 import { urlTable } from "@/utils/paths/url";
 
 type CategoryListSideProps = {
@@ -28,7 +29,7 @@ export const CategoryListSide: React.FC<CategoryListSideProps> = memo(({ categor
                   height={128}
                   className="aspect-square h-auto w-full object-cover"
                   placeholder="blur"
-                  blurDataURL={`${category.image.url}?q=0`}
+                  blurDataURL={getBlurDataURL()}
                 />
                 <p className="text-center text-sm">{category.name}</p>
               </NextLink>

@@ -4,6 +4,7 @@ import { memo } from "react";
 import NextLink from "@/components/atoms/NextLink";
 import { TagListPlain } from "@/components/molecules/TagList";
 import type { TArticle } from "@/types";
+import { getBlurDataURL } from "@/utils/image";
 import { urlTable } from "@/utils/paths/url";
 
 type Props = {
@@ -23,7 +24,7 @@ export const ArticleTipWithThumb: React.FC<Props> = ({ article }) => {
             height={48}
             className="aspect-square h-auto w-12 object-cover"
             placeholder="blur"
-            blurDataURL={`${image.url}?q=0`}
+            blurDataURL={getBlurDataURL()}
           />
         </div>
       </NextLink>
