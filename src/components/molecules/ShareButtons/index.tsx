@@ -10,14 +10,15 @@ import {
 
 import Tooltip from "@/components/atoms/Tooltip";
 
-type Props = {
+type ShareButtonsProps = {
   url: string;
   title: string;
+  className: string;
 };
 
-export const ShareButtons: React.FC<Props> = ({ url, title }) => {
+export const ShareButtons: React.FC<ShareButtonsProps> = ({ url, title, className }) => {
   return (
-    <div className="flex flex-row place-items-center gap-4 md:flex-col">
+    <div className={`flex place-items-center gap-4 ${className}`}>
       <TwitterShareButton url={url} title={title}>
         <Tooltip label="Twitterでシェア">
           <FaTwitter className="text-gray-400 hover:text-[#1DA1F2]" size={24} />

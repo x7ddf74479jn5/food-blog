@@ -1,9 +1,11 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import type { ComponentPropsWithoutRef, FC } from "react";
+
+import { getBlurDataURL } from "@/utils/image";
 
 type CustomImageProps = ComponentPropsWithoutRef<"img">;
 
-export const CustomImage: FC<CustomImageProps> = ({ src = "", alt, width, height }) => {
+export const CustomImage: FC<CustomImageProps> = ({ src = "", alt = "", width, height }) => {
   if (width && height) {
     return (
       <div className="relative mb-4 flex w-full items-center justify-center">
@@ -12,9 +14,9 @@ export const CustomImage: FC<CustomImageProps> = ({ src = "", alt, width, height
           alt={alt}
           width={width}
           height={height}
-          layout="intrinsic"
           placeholder="blur"
-          blurDataURL={`${src}?q=0`}
+          blurDataURL={getBlurDataURL()}
+          className="h-auto max-w-full"
         />
       </div>
     );
@@ -22,7 +24,7 @@ export const CustomImage: FC<CustomImageProps> = ({ src = "", alt, width, height
 
   return (
     <div className="relative mb-4 flex h-48 w-full items-center justify-center lg:h-96">
-      <Image src={src} alt={alt} layout="fill" objectFit="contain" placeholder="blur" />
+      <Image src={src} alt={alt} sizes="100vw" fill className="object-contain" placeholder="blur" />
     </div>
   );
 };

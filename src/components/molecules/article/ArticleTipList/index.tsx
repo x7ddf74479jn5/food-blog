@@ -1,9 +1,10 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { memo } from "react";
 
 import NextLink from "@/components/atoms/NextLink";
 import { TagListPlain } from "@/components/molecules/TagList";
 import type { TArticle } from "@/types";
+import { getBlurDataURL } from "@/utils/image";
 import { urlTable } from "@/utils/paths/url";
 
 type Props = {
@@ -13,17 +14,17 @@ type Props = {
 export const ArticleTipWithThumb: React.FC<Props> = ({ article }) => {
   const { id, title, tags, image } = article;
   return (
-    <article className="flex max-h-36 flex-row ">
+    <div className="flex max-h-36 flex-row">
       <NextLink href={`${urlTable.articles}/${id}`}>
-        <div className="mt-1 mr-4 min-w-[max-content] shrink-0">
+        <div className="mt-1 mr-4 min-w-max">
           <Image
             src={image.url}
             alt={title}
             width={48}
             height={48}
-            objectFit="cover"
+            className="aspect-square h-auto w-12 object-cover"
             placeholder="blur"
-            blurDataURL={`${image.url}?q=0`}
+            blurDataURL={getBlurDataURL()}
           />
         </div>
       </NextLink>
@@ -33,7 +34,7 @@ export const ArticleTipWithThumb: React.FC<Props> = ({ article }) => {
           <TagListPlain tags={tags} hasLink />
         </div>
       </div>
-    </article>
+    </div>
   );
 };
 

@@ -45,7 +45,7 @@ const ArticleLayout: React.FC<Props> = ({
             <TOC isSide />
           </ContainerWithOrder>
           <ContainerWithOrder order="order-2 lg:order-3">
-            <ShareButtons url={url} title={pageTitle} />
+            <ShareButtons url={url} title={pageTitle} className="flex-row" />
           </ContainerWithOrder>
           <ContainerWithOrder order="order-3 lg:order-2">
             <RelatedArticles relatedArticles={relatedArticles} />

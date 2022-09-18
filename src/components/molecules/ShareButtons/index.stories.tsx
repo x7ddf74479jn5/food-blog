@@ -11,6 +11,7 @@ export const Desktop: ComponentStoryObj<typeof ShareButtons> = {
   args: {
     url: "url",
     title: "title",
+    className: "flex-col",
   },
   parameters: {
     viewport: {
@@ -19,7 +20,7 @@ export const Desktop: ComponentStoryObj<typeof ShareButtons> = {
   },
 };
 export const Mobile: ComponentStoryObj<typeof ShareButtons> = {
-  ...Desktop,
+  args: { ...Desktop.args, className: "flex-row" },
   parameters: {
     viewport: {
       defaultViewport: "iphone12",

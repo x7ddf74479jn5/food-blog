@@ -38,10 +38,10 @@ export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = memo(
           <h1>{heading}</h1>
         </div>
         <MiddleAreaContainer>
-          <AsideContainer className="lg:w-full" side="left">
-            <ShareButtons url={url} title={title} />
+          <AsideContainer className="order-2 md:order-1 lg:w-full">
+            <ShareButtons url={url} title={title} className="flex-row md:flex-col" />
           </AsideContainer>
-          <main>{children}</main>
+          <main className="order-1 md:order-2">{children}</main>
         </MiddleAreaContainer>
         <BottomAreaContainer>
           <ContainerWithOrder order="order-1 lg:order-2" className="grow">

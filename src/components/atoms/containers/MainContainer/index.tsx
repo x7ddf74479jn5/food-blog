@@ -1,8 +1,10 @@
-type MainContainerProps = React.PropsWithChildren<object>;
+type MainContainerProps = {
+  className: string;
+};
 
-export const MainContainer: React.FC<MainContainerProps> = ({ children }) => {
+export const MainContainer: React.FC<React.PropsWithChildren<MainContainerProps>> = ({ children, className }) => {
   return (
-    <main className="order-1 mt-8 mb-0 w-full max-w-prose flex-auto overflow-hidden pb-12 md:order-2 md:mt-16">
+    <main className={`mt-8 mb-0 w-full max-w-prose flex-auto overflow-hidden pb-12 md:mt-16 ${className}`}>
       {children}
     </main>
   );

@@ -1,11 +1,9 @@
 module.exports = {
-  mode: "jit",
-  content: ["./src/**/*.{ts,tsx}", "./src/**/*.html", "./index.html"],
-  darkMode: "class", // or 'media' or 'class'
+  content: ["./src/**/*.tsx"],
+  darkMode: "class",
   theme: {
     extend: {
       typography: (theme) => ({
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         DEFAULT: {
           css: {
             a: {
@@ -39,14 +37,5 @@ module.exports = {
       }),
     },
   },
-  variants: {
-    extend: {
-      typography: ["dark"],
-    },
-  },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/line-clamp"),
-    require("@tailwindcss/aspect-ratio"),
-  ],
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/line-clamp")],
 };

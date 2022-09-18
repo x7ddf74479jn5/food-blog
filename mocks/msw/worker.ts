@@ -1,11 +1,9 @@
-export {};
-
-(async () => {
+export const setupMSW = async () => {
   if (typeof window === "undefined") {
-    const { server } = await import("./server");
+    const { server } = await require("./server");
     server.listen();
   } else {
-    const { worker } = await import("./browser");
+    const { worker } = await require("./browser");
     worker.start();
   }
-})();
+};

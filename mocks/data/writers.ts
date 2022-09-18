@@ -17,6 +17,6 @@ export const mockWriters: TWriterCollection = {
     fullName: "pandashark",
     description: "description",
     twitterAccountName: "@pandashark",
-    avatar: { url: "pandashark_logo_180x180.png", width: 100, height: 100 },
+    avatar: { url: "/pandashark_logo_180x180.png", width: 100, height: 100 },
   },
 };

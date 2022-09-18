@@ -1,7 +1,8 @@
-import Image from "next/image";
+import Image from "next/future/image";
 
 import NextLink from "@/components/atoms/NextLink";
 import type { TCategory } from "@/types";
+import { getBlurDataURL } from "@/utils/image";
 import { urlTable } from "@/utils/paths/url";
 
 type CategoryListProps = {
@@ -23,9 +24,9 @@ export const CategoryList: React.FC<CategoryListProps> = ({ categories, width, h
                   alt={category.slug}
                   width={width}
                   height={height}
-                  objectFit="cover"
+                  className="aspect-square h-auto w-full object-cover"
                   placeholder="blur"
-                  blurDataURL={`${category.image.url}?q=0`}
+                  blurDataURL={getBlurDataURL()}
                 />
               </div>
               <p className="text-sm">{category.name}</p>

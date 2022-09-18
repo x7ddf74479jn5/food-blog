@@ -1,7 +1,8 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { memo } from "react";
 
 import NextLink from "@/components/atoms/NextLink";
+import { getBlurDataURL } from "@/utils/image";
 import { urlTable } from "@/utils/paths/url";
 
 type Props = {
@@ -17,9 +18,9 @@ const Thumbnail: React.FC<Props> = ({ title, src, id }) => {
       alt={title}
       width={640}
       height={360}
-      objectFit="cover"
+      className="aspect-video h-auto w-full object-cover"
       placeholder="blur"
-      blurDataURL={`${src}?q=0`}
+      blurDataURL={getBlurDataURL()}
     />
   );
   return (

@@ -11,12 +11,14 @@ import { GoogleAnalytics, usePageView } from "@/lib/google-analytics";
 
 import SEO from "../../next-seo.config";
 
-if (process.env.NEXT_PUBLIC_MSW_ENABLED === "true") {
-  (async () => {
-    await import("../../mocks/msw/worker");
-    console.info("MSW is enabled");
-  })();
-}
+// FIXME: MSW is broken "ERR_UNSUPPORTED_DIR_IMPORT"
+// if (process.env.NEXT_PUBLIC_MSW_ENABLED === "true") {
+//   (async () => {
+//     const { setupMSW } = await import("../../mocks/msw/worker");
+//     setupMSW();
+//     console.info("MSW is enabled");
+//   })();
+// }
 
 const App = ({ Component, pageProps }: AppProps) => {
   usePageView();

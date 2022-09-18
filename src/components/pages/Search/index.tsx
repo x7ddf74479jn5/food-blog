@@ -1,5 +1,6 @@
 import type { MicroCMSQueries } from "microcms-js-sdk";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 import { HtmlHeadBase } from "@/components/functions/meta";
 import { DefaultLayout } from "@/components/layouts";
@@ -16,15 +17,22 @@ export type SearchProps = {
 };
 
 export const Search: React.FC<SearchProps> = ({ config, categories, pickup, popularArticles }) => {
+  const [heading, setHeading] = useState("");
+  const [fallbackText, setFallbackText] = useState("");
   const router = useRouter();
   const q = router.query.q ? String(router.query.q) : "";
   const { siteTitle, host } = config;
-  const heading = router.isReady ? `検索結果：${q ?? ""}` : "検索結果：";
-  const fallbackText = router.isReady ? "検索語句を入力してください" : "";
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = formatPageUrl(`${urlTable.search}/q=${q ?? ""}`, host);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
   const queryOptions: MicroCMSQueries = { q };
+
+  useEffect(() => {
+    if (router.isReady) {
+      setHeading(`検索結果：${q ?? ""}`);
+      setFallbackText("検索語句を入力してください");
+    }
+  }, [q, router.isReady]);
 
   return (
     <DefaultLayout
