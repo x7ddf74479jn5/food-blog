@@ -1,11 +1,12 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { fetchArticles, fetchCategories, fetchConfig } from "@/api";
+import { fetchArticles, fetchConfig } from "@/api";
 import type { HomeProps } from "@/components/pages/Home";
 import { Home } from "@/components/pages/Home";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import ErrorPage from "@/pages/_error/index.page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
+import { getCategories } from "@/services/category";
 import type { PagePropsOrError } from "@/types";
 import { generatedRssFeed } from "@/utils/rss/rss";
 
@@ -21,13 +22,15 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   try {
     const [config, categories, data, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
-      fetchCategories(),
+      getCategories(),
       fetchArticles({ limit: 10, offset: 0 }),
       getPickupArticles(new Date()),
       getPopularArticles(),
     ]);
 
-    generatedRssFeed(config, data.contents);
+    if (process.env.NODE_ENV === "production") {
+      generatedRssFeed(config, data.contents);
+    }
 
     return {
       props: {
