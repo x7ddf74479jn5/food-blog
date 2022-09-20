@@ -41,7 +41,7 @@ const buildTagPairsFilter = (tags: TTag[], excludedId: string[] = []) => {
 
   const excluded = excludedId.map((id) => `id[not_equals]${id}`).join("[and]");
 
-  if (_pairs.length === 0) return excluded;
+  if (_pairs.length === 0) return "";
 
   return [_pairs.join("[or]"), excluded].join("[and]");
 };
@@ -65,7 +65,7 @@ const buildTagTriosFilter = (tags: TTag[], excludedId: string[] = []) => {
 
   const excluded = excludedId.map((id) => `id[not_equals]${id}`).join("[and]");
 
-  if (_trios.length === 0) return excluded;
+  if (_trios.length === 0) return "";
 
   return [_trios.join("[or]"), excluded].join("[and]");
 };
@@ -89,10 +89,14 @@ export const getTagFilters = (article: TArticle, variant: TFilterType, excluded:
 };
 
 export const getRelatedArticles = async (article: TArticle, limit = 4) => {
-  const trios = await fetchArticles({ filters: getTagFilters(article, "trios") });
-  const pairs = await fetchArticles({ filters: getTagFilters(article, "trios", trios.contents) });
+  const trioTagFilter = getTagFilters(article, "trios");
+  const trios = trioTagFilter ? await (await fetchArticles({ filters: trioTagFilter })).contents : [];
+  const pairTagFilter = getTagFilters(article, "pairs", trios);
+  const pairs = pairTagFilter ? (await fetchArticles({ filters: pairTagFilter })).contents : [];
+  const combinedArticles = [...trios, ...pairs].slice(0, limit);
+  const finalArticles = await Promise.all(combinedArticles.map(makeArticleWithPlaceholderImage));
 
-  return [...trios.contents, ...pairs.contents].slice(0, limit);
+  return finalArticles;
 };
 
 export const getPickupArticles = async (date: Date) => {

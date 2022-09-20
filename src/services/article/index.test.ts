@@ -21,7 +21,7 @@ describe("getTagFilters", () => {
 
   it("OK: 3ペアを作れる記事が存在しない", () => {
     const filters = getTagFilters(mockArticles.ohitashi, "trios");
-    expect(filters).toBe("id[not_equals]3y-w7i75kmd");
+    expect(filters).toBe("");
   });
 
   it("OK: 除外する記事が含まれない", () => {
