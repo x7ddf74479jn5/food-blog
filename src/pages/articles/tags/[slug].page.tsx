@@ -2,12 +2,13 @@ import type { ParsedUrlQuery } from "node:querystring";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { fetchArticles, fetchCategories, fetchConfig, fetchTag, fetchTags } from "@/api";
+import { fetchConfig, fetchTag, fetchTags } from "@/api";
 import type { TagsProps } from "@/components/pages/articles/tags";
 import { Tags } from "@/components/pages/articles/tags";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import ErrorPage from "@/pages/_error/index.page";
-import { getPickupArticles, getPopularArticles } from "@/services/article";
+import { getArticles, getPickupArticles, getPopularArticles } from "@/services/article";
+import { getCategories } from "@/services/category";
 import type { PagePropsOrError } from "@/types";
 
 type TagsPageProps = PagePropsOrError<TagsProps>;
@@ -44,9 +45,9 @@ export const getStaticProps: GetStaticProps<TagsPageProps, Params> = async ({ pa
     }
 
     const [data, config, categories, pickup, popularArticles] = await Promise.all([
-      fetchArticles({ filters: `tags[contains]${tag.id}` }),
+      getArticles({ filters: `tags[contains]${tag.id}` }),
       fetchConfig(),
-      fetchCategories(),
+      getCategories(),
       getPickupArticles(new Date()),
       getPopularArticles(),
     ]);

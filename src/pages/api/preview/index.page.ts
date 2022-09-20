@@ -2,7 +2,7 @@ import { withSentry } from "@sentry/nextjs";
 import type { NextApiRequest, NextApiResponse } from "next";
 import z from "zod";
 
-import { fetchArticle } from "@/api/fetchArticles";
+import { getArticle } from "@/services/article";
 import { urlTable } from "@/utils/paths/url";
 
 const previewQuerySchema = z.object({
@@ -23,7 +23,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { id, draftKey } = parsed.data;
 
-  const content = await fetchArticle(id, { draftKey: draftKey });
+  const content = await getArticle(id, { draftKey: draftKey });
 
   if (!content) {
     return res.status(404).json({ message: "Not Found" });

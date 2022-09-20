@@ -1,11 +1,12 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { fetchCategories, fetchConfig } from "@/api";
+import { fetchConfig } from "@/api";
 import type { PopularProps } from "@/components/pages/articles/Popular";
 import { Popular } from "@/components/pages/articles/Popular";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import ErrorPage from "@/pages/_error/index.page";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
+import { getCategories } from "@/services/category";
 import type { PagePropsOrError } from "@/types";
 
 type PopularPageProps = PagePropsOrError<PopularProps>;
@@ -18,7 +19,7 @@ export const getStaticProps: GetStaticProps<PopularPageProps> = async () => {
   try {
     const [config, categories, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
-      fetchCategories(),
+      getCategories(),
       getPickupArticles(new Date()),
       getPopularArticles(),
     ]);
