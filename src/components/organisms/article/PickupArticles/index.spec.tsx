@@ -10,8 +10,8 @@ describe("components/organisms/PickupArticles", () => {
       const { container } = render(<PickupArticles pickupArticles={mockArticleList} />);
 
       expect(container).toHaveTextContent("PICKUP");
-      const articles = screen.getAllByRole("article");
-      expect(articles.length).toBe(mockArticleList.length);
+      const articleImages = screen.getAllByRole("img");
+      expect(articleImages.length).toBe(mockArticleList.length);
     });
   });
 
