@@ -4,6 +4,7 @@ export type TImage = {
   url: string;
   width: number;
   height: number;
+  blurDataURL?: string;
 };
 
 export type TImageOption = {

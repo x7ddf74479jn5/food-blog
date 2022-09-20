@@ -1,14 +1,15 @@
 import type { GetServerSideProps, NextPage } from "next";
 import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-import { fetchArticle, fetchCategories, fetchConfig } from "@/api";
+import { fetchConfig } from "@/api";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import { mdx2html } from "@/lib/mdx";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import ErrorPage from "@/pages/_error/index.page";
 import type { ArticleDetailPageProps } from "@/pages/articles/[id].page";
 import { ArticleDetailPage } from "@/pages/articles/[id].page";
-import { getPickupArticles, getPopularArticles } from "@/services/article";
+import { getArticle, getPickupArticles, getPopularArticles } from "@/services/article";
+import { getCategories } from "@/services/category";
 import type { TArticle } from "@/types";
 import { isDraft } from "@/utils/article";
 
@@ -49,8 +50,8 @@ export const getServerSideProps: GetServerSideProps<ArticleDetailPageProps, Para
     const queries = { draftKey };
     const [config, categories, article, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
-      fetchCategories(),
-      fetchArticle(id, queries),
+      getCategories(),
+      getArticle(id, queries),
       getPickupArticles(new Date()),
       getPopularArticles(),
     ]);

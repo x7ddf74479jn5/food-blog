@@ -3,7 +3,7 @@ import type { MicroCMSQueries } from "microcms-js-sdk";
 import type { NextApiRequest, NextApiResponse } from "next";
 import z from "zod";
 
-import { fetchArticles } from "@/api";
+import { getArticles } from "@/services/article";
 
 const articlesQuerySchema = z.object({
   limit: z
@@ -42,7 +42,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     ...parsed.data,
   };
 
-  const data = await fetchArticles(queries);
+  const data = await getArticles(queries);
 
   res.status(200).json(data);
 };

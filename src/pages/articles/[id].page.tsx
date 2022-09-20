@@ -2,13 +2,14 @@ import type { ParsedUrlQuery } from "node:querystring";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { fetchArticle, fetchArticles, fetchCategories, fetchConfig } from "@/api";
+import { fetchArticles, fetchConfig } from "@/api";
 import type { ArticleDetailProps } from "@/components/pages/articles/ArticleDetail";
 import { ArticleDetail } from "@/components/pages/articles/ArticleDetail";
 import { mdx2html } from "@/lib/mdx";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import ErrorPage from "@/pages/_error/index.page";
-import { getPickupArticles, getPopularArticles, getRelatedArticles } from "@/services/article";
+import { getArticle, getPickupArticles, getPopularArticles, getRelatedArticles } from "@/services/article";
+import { getCategories } from "@/services/category";
 import type { PagePropsOrError } from "@/types";
 
 export type ArticleDetailPageProps = PagePropsOrError<ArticleDetailProps>;
@@ -38,7 +39,7 @@ export const getStaticProps: GetStaticProps<ArticleDetailPageProps, Params> = as
   }
 
   try {
-    const article = await fetchArticle(id);
+    const article = await getArticle(id);
 
     if (!article) {
       return { notFound: true };
@@ -46,7 +47,7 @@ export const getStaticProps: GetStaticProps<ArticleDetailPageProps, Params> = as
 
     const [config, categories, pickup, popularArticles, relatedArticles] = await Promise.all([
       fetchConfig(),
-      fetchCategories(),
+      getCategories(),
       getPickupArticles(new Date()),
       getPopularArticles(),
       getRelatedArticles(article),
