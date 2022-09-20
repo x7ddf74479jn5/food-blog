@@ -2,12 +2,13 @@ import type { ParsedUrlQuery } from "node:querystring";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { fetchArticles, fetchCategories, fetchCategory, fetchConfig } from "@/api";
+import { fetchCategories, fetchConfig } from "@/api";
 import type { CategoryProps } from "@/components/pages/articles/categories/Category";
 import { Category } from "@/components/pages/articles/categories/Category";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import ErrorPage from "@/pages/_error/index.page";
-import { getPickupArticles, getPopularArticles } from "@/services/article";
+import { getArticles, getPickupArticles, getPopularArticles } from "@/services/article";
+import { getCategories, getCategory } from "@/services/category";
 import type { PagePropsOrError } from "@/types";
 
 type CategoryPageProps = PagePropsOrError<CategoryProps>;
@@ -39,16 +40,16 @@ export const getStaticProps: GetStaticProps<CategoryPageProps, Params> = async (
   }
 
   try {
-    const category = await fetchCategory(slug);
+    const category = await getCategory(slug);
 
     if (!category) {
       return { notFound: true };
     }
 
     const [data, config, categories, pickup, popularArticles] = await Promise.all([
-      fetchArticles({ filters: `category[equals]${category.id}` }),
+      getArticles({ filters: `category[equals]${category.id}` }),
       fetchConfig(),
-      fetchCategories(),
+      getCategories(),
       getPickupArticles(new Date()),
       getPopularArticles(),
     ]);

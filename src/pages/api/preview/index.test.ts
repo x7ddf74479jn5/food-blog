@@ -4,11 +4,11 @@ import { server } from "mocks/msw/server";
 import { rest } from "msw";
 import { testApiHandler } from "next-test-api-route-handler";
 
-import * as fetchArticles from "@/api/fetchArticles";
+import * as ArticleService from "@/services/article";
 
 import handler from "./index.page";
 
-// jest.mock("@/api/fetchArticles");
+jest.mock("@/services/article");
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -26,7 +26,10 @@ describe("src/pages/api/posts/index.test.ts", () => {
     //  FiXME: res.setPreviewData
     //  Error: invariant: invalid previewModeId
     test.skip("307", async () => {
-      jest.spyOn(fetchArticles, "fetchArticle").mockImplementationOnce(async () => mockArticles.stock);
+      jest.spyOn(ArticleService, "getArticle").mockImplementationOnce(async () => ({
+        ...mockArticles.stock,
+        image: { ...mockArticles.stock.image, blurDataURL: "" },
+      }));
       const mockApi = rest.get(
         `https://food-blog.microcms.io/api/v1/articles/${mockArticles.stock.id}`,
         (_req, res, ctx) => {

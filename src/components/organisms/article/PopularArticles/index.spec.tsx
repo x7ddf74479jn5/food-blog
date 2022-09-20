@@ -10,8 +10,8 @@ describe("components/organisms/PopularArticles", () => {
       const { container } = render(<PopularArticles popularArticles={mockArticleList} />);
 
       expect(container).toHaveTextContent("人気レシピ");
-      const articles = screen.getAllByRole("article");
-      expect(articles.length).toBe(mockArticleList.length);
+      const articleImages = screen.getAllByRole("img");
+      expect(articleImages.length).toBe(mockArticleList.length);
     });
   });
 
@@ -21,8 +21,8 @@ describe("components/organisms/PopularArticles", () => {
 
       expect(container).toHaveTextContent("人気レシピ");
       expect(container).toHaveTextContent("レシピは見つかりませんでした");
-      const articles = screen.queryAllByRole("article");
-      expect(articles.length).toBe(0);
+      const articleImages = screen.queryAllByRole("img");
+      expect(articleImages.length).toBe(0);
     });
   });
 });

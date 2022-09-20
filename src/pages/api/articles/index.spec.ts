@@ -12,6 +12,11 @@ import handler from "./index.page";
 beforeAll(() => server.listen());
 afterAll(() => server.close());
 
+jest.mock("@/utils/image", () => {
+  const generateImageBlurDataURL = jest.fn((_src) => "blurDataURL");
+  return { generateImageBlurDataURL };
+});
+
 describe("src/pages/api/posts/index.test.ts", () => {
   const params = {
     handler,
@@ -24,6 +29,7 @@ describe("src/pages/api/posts/index.test.ts", () => {
 
     test("200", async () => {
       const mockArticleList = Object.values(mockArticles);
+      // console.log(mockArticleList);
       const mockFetchArticlesReturn = {
         contents: mockArticleList,
         limit: 10,

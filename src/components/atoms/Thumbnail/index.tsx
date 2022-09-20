@@ -2,25 +2,27 @@ import Image from "next/future/image";
 import { memo } from "react";
 
 import NextLink from "@/components/atoms/NextLink";
-import { getBlurDataURL } from "@/utils/image";
 import { urlTable } from "@/utils/paths/url";
 
 type Props = {
   title: string;
   src: string;
+  loading?: "eager" | "lazy";
+  blurDataURL?: string;
   id?: string;
 };
 
-const Thumbnail: React.FC<Props> = ({ title, src, id }) => {
+const Thumbnail: React.FC<Props> = ({ title, src, loading = "lazy", id, blurDataURL }) => {
   const image = (
     <Image
       src={src}
       alt={title}
       width={640}
       height={360}
+      loading={loading}
       className="aspect-video h-auto w-full object-cover"
-      placeholder="blur"
-      blurDataURL={getBlurDataURL()}
+      placeholder={blurDataURL ? "blur" : "empty"}
+      blurDataURL={blurDataURL}
     />
   );
   return (

@@ -1,6 +1,28 @@
-import { fetchArticles, fetchPickupArticles } from "@/api";
+import type { MicroCMSQueries } from "microcms-js-sdk";
+
+import { fetchArticle, fetchArticles, fetchPickupArticles } from "@/api";
 import { runReport } from "@/lib/google-analytics/report";
-import type { TArticle, TRankedArticle, TTag } from "@/types";
+import type { TArticle, TPickup, TRankedArticle, TTag } from "@/types";
+import { generateImageBlurDataURL } from "@/utils/image";
+
+const makeArticleWithPlaceholderImage = async (article: TArticle) => {
+  const blurDataURL = await generateImageBlurDataURL(article.image.url);
+
+  return { ...article, image: { ...article.image, blurDataURL } };
+};
+
+export const getArticle = async (id: string, queries?: MicroCMSQueries) => {
+  const article = await fetchArticle(id, queries);
+
+  return await makeArticleWithPlaceholderImage(article);
+};
+
+export const getArticles = async (queries: MicroCMSQueries) => {
+  const res = await fetchArticles(queries);
+  const articles: TArticle[] = await Promise.all(res.contents.map(await makeArticleWithPlaceholderImage));
+
+  return { ...res, contents: articles };
+};
 
 /**
  * 走査対象のタグを重複なし2個ずつにグループ化
@@ -19,7 +41,7 @@ const buildTagPairsFilter = (tags: TTag[], excludedId: string[] = []) => {
 
   const excluded = excludedId.map((id) => `id[not_equals]${id}`).join("[and]");
 
-  if (_pairs.length === 0) return excluded;
+  if (_pairs.length === 0) return "";
 
   return [_pairs.join("[or]"), excluded].join("[and]");
 };
@@ -43,7 +65,7 @@ const buildTagTriosFilter = (tags: TTag[], excludedId: string[] = []) => {
 
   const excluded = excludedId.map((id) => `id[not_equals]${id}`).join("[and]");
 
-  if (_trios.length === 0) return excluded;
+  if (_trios.length === 0) return "";
 
   return [_trios.join("[or]"), excluded].join("[and]");
 };
@@ -67,10 +89,14 @@ export const getTagFilters = (article: TArticle, variant: TFilterType, excluded:
 };
 
 export const getRelatedArticles = async (article: TArticle, limit = 4) => {
-  const trios = await fetchArticles({ filters: getTagFilters(article, "trios") });
-  const pairs = await fetchArticles({ filters: getTagFilters(article, "trios", trios.contents) });
+  const trioTagFilter = getTagFilters(article, "trios");
+  const trios = trioTagFilter ? await (await fetchArticles({ filters: trioTagFilter })).contents : [];
+  const pairTagFilter = getTagFilters(article, "pairs", trios);
+  const pairs = pairTagFilter ? (await fetchArticles({ filters: pairTagFilter })).contents : [];
+  const combinedArticles = [...trios, ...pairs].slice(0, limit);
+  const finalArticles = await Promise.all(combinedArticles.map(makeArticleWithPlaceholderImage));
 
-  return [...trios.contents, ...pairs.contents].slice(0, limit);
+  return finalArticles;
 };
 
 export const getPickupArticles = async (date: Date) => {
@@ -79,9 +105,11 @@ export const getPickupArticles = async (date: Date) => {
   const limit = 1;
 
   const res = await fetchPickupArticles({ filters, limit });
-  const articles = res.contents[limit - 1];
+  const pickup: TPickup = res.contents[limit - 1];
 
-  return articles;
+  const finalArticles: TArticle[] = await Promise.all(pickup.articles.map(makeArticleWithPlaceholderImage));
+
+  return { ...pickup, articles: finalArticles };
 };
 
 export const getPopularArticles = async () => {
@@ -95,7 +123,9 @@ export const getPopularArticles = async () => {
 
   const res = await fetchArticles({ filters, limit });
 
-  const articles: TRankedArticle[] = res.contents
+  const articles: TArticle[] = await Promise.all(res.contents.map(makeArticleWithPlaceholderImage));
+
+  const sortedArticles: TRankedArticle[] = articles
     .map((article) => {
       const r = report.find((row) => row.id === article.id);
 
@@ -110,5 +140,5 @@ export const getPopularArticles = async () => {
       return a.order < b.order ? -1 : 1;
     });
 
-  return articles;
+  return sortedArticles;
 };
