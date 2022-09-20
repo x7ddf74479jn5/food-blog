@@ -22,8 +22,8 @@ export const LinkCard: React.FC<LinkCardProps> = ({ article }) => {
             width={128}
             height={96}
             className="h-auto w-24 object-cover sm:w-32"
-            // placeholder="blur"
-            // blurDataURL={""}
+            placeholder="blur"
+            blurDataURL={image.blurDataURL}
           />
           <div className="flex grow flex-col flex-wrap p-4">
             <div className="flex flex-wrap">{title}</div>

@@ -13,7 +13,7 @@ export const ArticleItem: React.FC<ArticleItem> = memo(({ article }) => {
   return (
     <article>
       <div className="mb-4">
-        <Thumbnail src={article.image.url} title={article.title} id={article.id} />
+        <Thumbnail src={article.image.url} title={article.title} id={article.id} blurDataURL={article.image.url} />
       </div>
       <h2 className="mb-4 text-2xl font-bold">
         <NextLink href={`${urlTable.articles}/${article.id}`}>{article.title}</NextLink>

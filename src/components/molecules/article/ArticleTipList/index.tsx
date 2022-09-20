@@ -22,8 +22,8 @@ export const ArticleTipWithThumb: React.FC<Props> = ({ article }) => {
             width={48}
             height={48}
             className="aspect-square h-auto w-12 object-cover"
-            // placeholder="blur"
-            // blurDataURL={""}
+            placeholder="blur"
+            blurDataURL={image.blurDataURL}
           />
         </div>
       </NextLink>
