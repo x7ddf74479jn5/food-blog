@@ -31,7 +31,7 @@ export const getArticles = async (queries: MicroCMSQueries) => {
  * @param {string[]} [excludedId=[]] 除外する記事ID
  * @return {string[]} 検索フィルター
  */
-const buildTagPairsFilter = (tags: TTag[], excludedId: string[] = []) => {
+export const buildTagPairsFilter = (tags: TTag[], excludedId: string[] = []) => {
   const _pairs = [];
   for (let t = 0; t < tags.length; t++) {
     for (let tt = t + 1; tt < tags.length; tt++) {
@@ -53,7 +53,7 @@ const buildTagPairsFilter = (tags: TTag[], excludedId: string[] = []) => {
  * @param {string[]} [excludedId=[]] 除外する記事ID
  * @return {string[]} 検索フィルター
  */
-const buildTagTriosFilter = (tags: TTag[], excludedId: string[] = []) => {
+export const buildTagTriosFilter = (tags: TTag[], excludedId: string[] = []) => {
   const _trios = [];
   for (let t = 0; t < tags.length; t++) {
     for (let tt = t + 1; tt < tags.length; tt++) {
@@ -70,28 +70,10 @@ const buildTagTriosFilter = (tags: TTag[], excludedId: string[] = []) => {
   return [_trios.join("[or]"), excluded].join("[and]");
 };
 
-type TFilterType = "pairs" | "trios";
-
-export const getTagFilters = (article: TArticle, variant: TFilterType, excluded: TArticle[] = []) => {
-  // 自身と除外する記事
-  const _excludedIds = [article.id, ...excluded.map((article) => article.id)];
-  switch (variant) {
-    case "pairs": {
-      return buildTagPairsFilter(article.tags, _excludedIds);
-    }
-    case "trios": {
-      return buildTagTriosFilter(article.tags, _excludedIds);
-    }
-    default: {
-      throw new Error("Unexpected Error");
-    }
-  }
-};
-
 export const getRelatedArticles = async (article: TArticle, limit = 4) => {
-  const trioTagFilter = getTagFilters(article, "trios");
+  const trioTagFilter = buildTagTriosFilter(article.tags, [article.id]);
   const trios = trioTagFilter ? await (await fetchArticles({ filters: trioTagFilter })).contents : [];
-  const pairTagFilter = getTagFilters(article, "pairs", trios);
+  const pairTagFilter = buildTagPairsFilter(article.tags, [article.id, ...trios.map((article) => article.id)]);
   const pairs = pairTagFilter ? (await fetchArticles({ filters: pairTagFilter })).contents : [];
   const combinedArticles = [...trios, ...pairs].slice(0, limit);
   const finalArticles = await Promise.all(combinedArticles.map(makeArticleWithPlaceholderImage));
