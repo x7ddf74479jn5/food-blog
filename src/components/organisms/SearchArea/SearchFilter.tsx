@@ -1,7 +1,6 @@
 import { Disclosure } from "@headlessui/react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
 import type { TCategory, TTag } from "@/types";
 
 import { CategoryCombobox } from "./CategoryCombobox";
@@ -25,12 +24,14 @@ export const SearchFilter: React.FC<SearchFilterProps> = ({ categories, tags, on
               {open ? <FaChevronUp className="" /> : <FaChevronDown />}
             </Disclosure.Button>
 
-            <DropdownTransition>
-              <Disclosure.Panel className="pl-3 text-gray-100">
-                Category: <CategoryCombobox />
-                Tag: <CategoryCombobox />
-              </Disclosure.Panel>
-            </DropdownTransition>
+            <Disclosure.Panel className="mt-2 space-y-4 pl-3">
+              <div className="flex flex-col justify-between gap-y-2 md:flex-row md:gap-x-4">
+                <CategoryCombobox />
+              </div>
+              <div className="flex flex-col gap-y-2 md:flex-row md:gap-x-4">
+                <CategoryCombobox />
+              </div>
+            </Disclosure.Panel>
           </>
         );
       }}

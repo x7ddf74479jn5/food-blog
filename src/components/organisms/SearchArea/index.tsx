@@ -27,14 +27,14 @@ export const SearchArea: React.FC<Props> = (props) => {
       <SearchBar />
       <div
         className={classNames(
-          "mt-2 gap-2",
+          "mt-3 gap-2",
           isFilterOpen ? "flex flex-column flex-wrap" : "flex flex-row flex-wrap justify-between"
         )}
       >
         <div className={classNames(isFilterOpen ? "w-full" : "w-auto")}>
           <SearchFilter {...props} onToggle={handleToggle} />
         </div>
-        <div className={classNames("flex flex-row justify-end h-fit-content", isFilterOpen ? "w-full" : "w-auto")}>
+        <div className={classNames("flex flex-row justify-end h-fit-content", isFilterOpen ? "w-full mt-2" : "w-auto")}>
           <PrimaryButton size="sm" label="検索" onClick={handleClick} />
         </div>
       </div>
