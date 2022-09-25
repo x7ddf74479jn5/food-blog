@@ -1,4 +1,12 @@
-import { dateCommon, mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
+import {
+  dateCommon,
+  mockArticles,
+  mockCategories,
+  mockConfig,
+  mockPickup,
+  mockPopularArticles,
+  mockTags,
+} from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 
 import { Home } from ".";
@@ -26,6 +34,7 @@ jest.mock("react-slick", () => {
 describe("pages/index", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockArticleList = Object.values(mockArticles);
+  const mockTagList = Object.values(mockTags);
   const mockData = {
     contents: mockArticleList,
     totalCount: mockArticleList.length,
@@ -37,6 +46,7 @@ describe("pages/index", () => {
   it("OK: 初期レンダリング", async () => {
     render(
       <Home
+        tags={mockTagList}
         categories={mockCategoryList}
         config={mockConfig}
         data={mockData}

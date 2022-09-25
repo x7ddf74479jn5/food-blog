@@ -9,7 +9,7 @@ import type { TCategory, TTag } from "@/types";
 type HeaderProps = {
   siteTitle: string;
   categories: TCategory[];
-  tags?: TTag[];
+  tags: TTag[];
 };
 
 const Header: React.FC<HeaderProps> = ({ siteTitle, categories, tags }) => {
@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ siteTitle, categories, tags }) => {
       <div className="flex items-start justify-between">
         <SiteTitle size="text-2xl" title={siteTitle} />
         <div className="hidden w-1/2 sm:block" aria-label="search-area-pc">
-          <SearchArea categories={categories} tags={[]} />
+          <SearchArea categories={categories} tags={tags} />
         </div>
         <div className="flex items-center space-x-4">
           <ThemeSwitch />
@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ siteTitle, categories, tags }) => {
         </div>
       </div>
       <div className="mt-2 block sm:hidden" aria-label="search-area-mobile">
-        <SearchArea categories={categories} tags={[]} />
+        <SearchArea categories={categories} tags={tags} />
       </div>
     </header>
   );

@@ -30,9 +30,9 @@ export const SearchFilter: React.FC<SearchFilterProps> = ({ categories, tags, on
             </Disclosure.Button>
 
             <Disclosure.Panel className="mt-2 space-y-4 pl-3">
-              <CategoryListbox />
+              <CategoryListbox categories={categories} />
 
-              <TagCombobox />
+              <TagCombobox tags={tags} />
             </Disclosure.Panel>
           </>
         );

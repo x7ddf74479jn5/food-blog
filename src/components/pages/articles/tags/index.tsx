@@ -12,9 +12,10 @@ export type TagsProps = {
   data: TArticleListResponse;
   pickup: TPickup;
   popularArticles: TRankedArticle[];
+  tags: TTag[];
 };
 
-export const Tags: React.FC<TagsProps> = ({ data, tag, config, categories, pickup, popularArticles }) => {
+export const Tags: React.FC<TagsProps> = ({ data, tag, config, categories, pickup, popularArticles, tags }) => {
   const { siteTitle, host } = config;
   const heading = `タグ：${tag.name}`;
   const pageTitle = formatPageTitle(heading, siteTitle);
@@ -29,6 +30,7 @@ export const Tags: React.FC<TagsProps> = ({ data, tag, config, categories, picku
       url={url}
       backLinks={backLinks}
       categories={categories}
+      tags={tags}
       pickup={pickup}
       popularArticles={popularArticles}
     >

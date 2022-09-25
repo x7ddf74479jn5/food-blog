@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { fetchConfig } from "@/api";
+import { fetchConfig, fetchTags } from "@/api";
 import type { OfflineProps } from "@/components/pages/Offline";
 import { Offline } from "@/components/pages/Offline";
 import { sentryLogServer } from "@/lib/sentry/logger";
@@ -16,12 +16,13 @@ const OfflinePage: NextPage<OfflinePageProps> = (props) => {
 
 export const getStaticProps: GetStaticProps<OfflinePageProps> = async () => {
   try {
-    const [config, categories] = await Promise.all([fetchConfig(), getCategories()]);
+    const [config, categories, tags] = await Promise.all([fetchConfig(), getCategories(), fetchTags()]);
 
     return {
       props: {
         config,
         categories,
+        tags,
       },
     };
   } catch (error) {

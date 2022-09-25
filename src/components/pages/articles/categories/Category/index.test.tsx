@@ -1,4 +1,12 @@
-import { dateCommon, mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
+import {
+  dateCommon,
+  mockArticles,
+  mockCategories,
+  mockConfig,
+  mockPickup,
+  mockPopularArticles,
+  mockTags,
+} from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 
 import { formatPageTitle } from "@/utils/formatter";
@@ -19,6 +27,7 @@ describe("pages/articles/categories/[slug]/client", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockCategoryRice = mockCategories.rice;
   const mockArticleList = Object.values(mockArticles);
+  const mockTagList = Object.values(mockTags);
   const mockData = {
     contents: mockArticleList,
     totalCount: mockArticleList.length,
@@ -33,6 +42,7 @@ describe("pages/articles/categories/[slug]/client", () => {
         category={mockCategoryRice}
         categories={mockCategoryList}
         config={mockConfig}
+        tags={mockTagList}
         data={mockData}
         pickup={mockPickup}
         popularArticles={mockPopularArticles}

@@ -8,7 +8,7 @@ import { CategoryListSide } from "@/components/molecules/category/CategoryListSi
 import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { TOC } from "@/components/molecules/TOC";
 import { PickupArticles, PopularArticles, RelatedArticles } from "@/components/organisms/article";
-import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 
 type Props = {
   url: string;
@@ -21,6 +21,7 @@ type Props = {
   }>;
   relatedArticles: TArticle[];
   categories: TCategory[];
+  tags: TTag[];
   pickup: TPickup;
   popularArticles: TRankedArticle[];
 };
@@ -33,11 +34,12 @@ const ArticleLayout: React.FC<Props> = ({
   backLinks,
   relatedArticles,
   categories,
+  tags,
   pickup,
   popularArticles,
 }) => {
   return (
-    <RootLayout config={config} categories={categories}>
+    <RootLayout config={config} categories={categories} tags={tags}>
       <div className="mt-4 mb-8 flex flex-col items-center gap-16 lg:mb-16 lg:flex-row lg:items-start lg:justify-between ">
         <main className="pb-12">{children}</main>
         <aside className="top-8 flex h-full w-full flex-col items-center gap-y-8 lg:sticky lg:w-1/3">

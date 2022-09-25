@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from "next";
 import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-import { fetchConfig } from "@/api";
+import { fetchConfig, fetchTags } from "@/api";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import { mdx2html } from "@/lib/mdx";
 import { sentryLogServer } from "@/lib/sentry/logger";
@@ -48,9 +48,10 @@ export const getServerSideProps: GetServerSideProps<ArticleDetailPageProps, Para
   try {
     const { id, draftKey } = previewData;
     const queries = { draftKey };
-    const [config, categories, article, pickup, popularArticles] = await Promise.all([
+    const [config, categories, tags, article, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
       getCategories(),
+      fetchTags(),
       getArticle(id, queries),
       getPickupArticles(new Date()),
       getPopularArticles(),
@@ -64,6 +65,7 @@ export const getServerSideProps: GetServerSideProps<ArticleDetailPageProps, Para
         article,
         mdxSource,
         categories,
+        tags,
         config,
         isPreview,
         relatedArticles,

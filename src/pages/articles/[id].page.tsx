@@ -2,7 +2,7 @@ import type { ParsedUrlQuery } from "node:querystring";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { fetchArticles, fetchConfig } from "@/api";
+import { fetchArticles, fetchConfig, fetchTags } from "@/api";
 import type { ArticleDetailProps } from "@/components/pages/articles/ArticleDetail";
 import { ArticleDetail } from "@/components/pages/articles/ArticleDetail";
 import { mdx2html } from "@/lib/mdx";
@@ -45,9 +45,10 @@ export const getStaticProps: GetStaticProps<ArticleDetailPageProps, Params> = as
       return { notFound: true };
     }
 
-    const [config, categories, pickup, popularArticles, relatedArticles] = await Promise.all([
+    const [config, categories, tags, pickup, popularArticles, relatedArticles] = await Promise.all([
       fetchConfig(),
       getCategories(),
+      fetchTags(),
       getPickupArticles(new Date()),
       getPopularArticles(),
       getRelatedArticles(article),
@@ -59,6 +60,7 @@ export const getStaticProps: GetStaticProps<ArticleDetailPageProps, Params> = as
         article,
         mdxSource,
         categories,
+        tags,
         config,
         isPreview: false,
         relatedArticles,

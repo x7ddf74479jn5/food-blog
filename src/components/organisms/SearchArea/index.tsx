@@ -7,12 +7,12 @@ import { classNames } from "@/utils/css";
 
 import { SearchFilter } from "./SearchFilter";
 
-type Props = {
+type SearchAreaProps = {
   categories: TCategory[];
   tags: TTag[];
 };
 
-export const SearchArea: React.FC<Props> = (props) => {
+export const SearchArea: React.FC<SearchAreaProps> = (props) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const handleClick = useCallback(() => {
     console.log("clicked");

@@ -4,46 +4,51 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 
 import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
+import type { TTag } from "@/types";
 
-const people = [
-  { id: 1, name: "Durward Reynolds" },
-  { id: 2, name: "Kenton Towne" },
-  { id: 3, name: "Therese Wunsch" },
-  { id: 4, name: "Benedict Kessler" },
-  { id: 5, name: "Katelyn Rohan" },
-];
+// const people = [
+//   { id: 1, name: "Durward Reynolds" },
+//   { id: 2, name: "Kenton Towne" },
+//   { id: 3, name: "Therese Wunsch" },
+//   { id: 4, name: "Benedict Kessler" },
+//   { id: 5, name: "Katelyn Rohan" },
+// ];
 
-type P = {
-  id: number;
-  name: string;
+// type TTag = {
+//   id: number;
+//   name: string;
+// };
+
+type TagComboboxProps = {
+  tags: TTag[];
 };
 
-export const TagCombobox = () => {
-  const [selectedPeople, setSelectedPeople] = useState<Array<P>>([]);
+export const TagCombobox: React.FC<TagComboboxProps> = ({ tags }) => {
+  const [selectedTags, setSelectedTags] = useState<Array<TTag>>([]);
   const [query, setQuery] = useState("");
-  const selectedPersonNames = selectedPeople.map((selectedPerson) => selectedPerson.name.toLowerCase());
+  const selectedTagNames = selectedTags.map((tag) => tag.name.toLowerCase());
 
-  const notSelectedPeople = people.filter((person) => !selectedPersonNames.includes(person.name.toLowerCase()));
+  const notSelectedTags = tags.filter((tag) => !selectedTagNames.includes(tag.name.toLowerCase()));
 
-  const filteredPeople =
+  const filteredTags =
     query === ""
-      ? notSelectedPeople
-      : notSelectedPeople.filter((person) => {
-          return person.name.toLowerCase().includes(query.toLowerCase());
+      ? notSelectedTags
+      : notSelectedTags.filter((tag) => {
+          return tag.name.toLowerCase().includes(query.toLowerCase());
         });
 
-  const handleSelect = (v: P[]) => setSelectedPeople((prev) => Array.from(new Set([...prev, ...v])));
+  const handleSelect = (tags: TTag[]) => setSelectedTags((prev) => Array.from(new Set([...prev, ...tags])));
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => setQuery(event.target.value);
 
-  const handleUnselect = (s: P) => {
-    setSelectedPeople((prev) => prev.filter((person) => person.id !== s.id));
+  const handleUnselect = (tag: TTag) => {
+    setSelectedTags((prev) => prev.filter((person) => person.id !== tag.id));
   };
 
-  console.log(selectedPeople);
+  console.log(selectedTags);
 
   return (
-    <Combobox as="div" className="flex flex-col" value={selectedPeople} onChange={handleSelect} multiple>
+    <Combobox as="div" className="flex flex-col" value={selectedTags} onChange={handleSelect} multiple>
       {({ open }) => (
         <>
           <div className="flex flex-col items-start justify-between gap-y-2 md:flex-row md:items-center md:gap-x-4">
@@ -61,18 +66,18 @@ export const TagCombobox = () => {
               </div>
               <DropdownTransition afterLeave={() => setQuery("")}>
                 <Combobox.Options className="dropdown-options w-full">
-                  {filteredPeople.length === 0 && query !== "" ? (
+                  {filteredTags.length === 0 && query !== "" ? (
                     <div className="dropdown-inactive dropdown-option">該当するタグが見つかりませんでした</div>
                   ) : (
-                    filteredPeople.map((person) => (
+                    filteredTags.map((tag) => (
                       <Combobox.Option
                         className={({ active }) =>
                           `dropdown-option ${active ? "dropdown-active" : "dropdown-inactive"}`
                         }
-                        key={person.id}
-                        value={person}
+                        key={tag.id}
+                        value={tag}
                       >
-                        {person.name}
+                        {tag.name}
                       </Combobox.Option>
                     ))
                   )}
@@ -81,9 +86,9 @@ export const TagCombobox = () => {
             </div>
           </div>
 
-          {selectedPeople.length > 0 && (
+          {selectedTags.length > 0 && (
             <div className="mt-2 flex flex-row flex-wrap gap-x-2 gap-y-1 text-gray-700 dark:text-gray-100">
-              {selectedPeople.map((person) => (
+              {selectedTags.map((person) => (
                 <div key={person.id} className="flex flex-row items-center justify-between gap-1">
                   <button onClick={() => handleUnselect(person)}>
                     <IoCloseCircle className="h-6 w-6" />

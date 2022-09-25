@@ -1,4 +1,4 @@
-import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
+import { mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "@mocks/data";
 import type { NextRouter } from "jest/test-utils";
 import { render, screen, withMockedRouter } from "jest/test-utils";
 
@@ -18,6 +18,7 @@ jest.mock("next/head", () => {
 
 describe("pages/search", () => {
   const mockCategoryList = Object.values(mockCategories);
+  const mockTagList = Object.values(mockTags);
   const mockRouter: Partial<NextRouter> = {
     query: {
       q: "keyword",
@@ -29,6 +30,7 @@ describe("pages/search", () => {
       withMockedRouter(
         mockRouter,
         <Search
+          tags={mockTagList}
           categories={mockCategoryList}
           config={mockConfig}
           pickup={mockPickup}

@@ -1,17 +1,18 @@
 import { HtmlHeadBase } from "@/components/functions/meta";
 import { HomeLayout } from "@/components/layouts";
 import { ArticleSWRContainer } from "@/components/organisms/article";
-import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 
 export type HomeProps = {
   data: TArticleListResponse;
   categories: TCategory[];
+  tags: TTag[];
   config: TConfig;
   pickup: TPickup;
   popularArticles: TRankedArticle[];
 };
 
-export const Home: React.FC<HomeProps> = ({ data, config, pickup, categories, popularArticles }) => {
+export const Home: React.FC<HomeProps> = ({ data, config, pickup, categories, popularArticles, tags }) => {
   const { siteTitle: title, host } = config;
 
   return (
@@ -21,6 +22,7 @@ export const Home: React.FC<HomeProps> = ({ data, config, pickup, categories, po
       pageTitle={title}
       config={config}
       categories={categories}
+      tags={tags}
       popularArticles={popularArticles}
     >
       <HtmlHeadBase indexUrl={host} siteTitle={title} />

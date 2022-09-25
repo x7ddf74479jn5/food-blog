@@ -5,18 +5,20 @@ import { useEffect, useState } from "react";
 import { HtmlHeadBase } from "@/components/functions/meta";
 import { DefaultLayout } from "@/components/layouts";
 import { ArticleSWRContainer } from "@/components/organisms/article";
-import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+import type { TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 export type SearchProps = {
   config: TConfig;
   categories: TCategory[];
+  tags: TTag[];
+
   pickup: TPickup;
   popularArticles: TRankedArticle[];
 };
 
-export const Search: React.FC<SearchProps> = ({ config, categories, pickup, popularArticles }) => {
+export const Search: React.FC<SearchProps> = ({ config, categories, pickup, popularArticles, tags }) => {
   const [heading, setHeading] = useState("");
   const [fallbackText, setFallbackText] = useState("");
   const router = useRouter();
@@ -41,6 +43,7 @@ export const Search: React.FC<SearchProps> = ({ config, categories, pickup, popu
       url={url}
       backLinks={backLinks}
       categories={categories}
+      tags={tags}
       pickup={pickup}
       popularArticles={popularArticles}
     >

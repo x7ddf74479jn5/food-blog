@@ -2,15 +2,16 @@ import { FaRegTired } from "react-icons/fa";
 
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import { RootLayout } from "@/components/layouts";
-import type { TCategory, TConfig } from "@/types";
+import type { TCategory, TConfig, TTag } from "@/types";
 
 export type OfflineProps = {
   config: TConfig;
   categories: TCategory[];
+  tags: TTag[];
 };
 
-export const Offline: React.FC<OfflineProps> = ({ config, categories }) => (
-  <RootLayout config={config} categories={categories}>
+export const Offline: React.FC<OfflineProps> = ({ config, categories, tags }) => (
+  <RootLayout config={config} categories={categories} tags={tags}>
     <HtmlHeadNoIndex />
     <div className="mt-8 flex flex-col items-center justify-center gap-12" role="alert">
       <FaRegTired className="h-32 w-32 text-gray-500" />
