@@ -34,7 +34,7 @@ export const SearchArea: React.FC<Props> = (props) => {
         <div className={classNames(isFilterOpen ? "w-full" : "w-auto")}>
           <SearchFilter {...props} onToggle={handleToggle} />
         </div>
-        <div className={classNames("flex flex-row justify-end h-fit-content", isFilterOpen ? "w-full mt-2" : "w-auto")}>
+        <div className={classNames("flex flex-row justify-end max-h-fit", isFilterOpen ? "w-full mt-2" : "w-auto")}>
           <PrimaryButton size="sm" label="検索" onClick={handleClick} />
         </div>
       </div>

@@ -8,7 +8,7 @@
   a,
   button,
   input {
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-green-300;
   }
 
   h1 {
@@ -25,16 +25,20 @@
     @apply rounded-md border border-gray-200 bg-white shadow-md dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-400;
   }
 
+  .dropdown-textfield {
+    @apply w-full border-none bg-white py-2 pl-3 pr-10 text-sm leading-5 text-black dark:bg-gray-700 dark:text-white;
+  }
+
+  .dropdown-label {
+    @apply w-20 shrink-0 border-b-2 md:border-r-2 md:border-b-0 border-green-600 text-gray-700 dark:text-gray-100;
+  }
+
   .dropdown-button {
     @apply flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 bg-white py-1 px-3 text-sm font-medium leading-5 text-gray-700 hover:text-gray-500 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-100 dark:hover:border-gray-400 shadow-md;
   }
 
   .dropdown-icon-button {
     @apply absolute inset-y-0 right-0 flex items-center pr-2;
-  }
-
-  .drop-down-input {
-    @apply w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-black focus:ring-0 dark:text-white;
   }
 
   .dropdown-options {
