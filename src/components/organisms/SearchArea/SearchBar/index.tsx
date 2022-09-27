@@ -85,7 +85,7 @@ const SearchBar: React.FC = () => {
         />
       </div>
 
-      <SearchHistory isActive={isActive} setQuery={setQuery} />
+      <SearchHistory show={isActive} setQuery={setQuery} />
     </div>
   );
 };
