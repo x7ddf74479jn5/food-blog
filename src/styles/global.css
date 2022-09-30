@@ -7,7 +7,9 @@
 @layer base {
   a,
   button,
-  input {
+  input,
+  ul,
+  div {
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-green-300;
   }
 
@@ -42,7 +44,7 @@
   }
 
   .dropdown-options {
-    @apply absolute right-0 z-10 mt-1 rounded-md border border-gray-200 bg-white shadow-md dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-400 divide-y divide-gray-100 py-1 dark:divide-gray-600;
+    @apply absolute right-0 z-10 mt-1 overflow-y-scroll max-h-[50vh] rounded-md border border-gray-200 bg-white shadow-md dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-400 divide-y divide-gray-100 py-1 dark:divide-gray-600;
   }
 
   .dropdown-option {
