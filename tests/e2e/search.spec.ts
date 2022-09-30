@@ -10,7 +10,7 @@ test("検索、検索結果表示、詳細ページ遷移", async ({ page }) => 
   // Detect the device viewport size and set the targe input
   const view = page.viewportSize();
   if (!view) throw Error();
-  const isMobile = view.width < 767;
+  const isMobile = view.width < 1024;
   const SearchArea = isMobile
     ? page.locator('[aria-label="search-area-mobile"]')
     : page.locator('[aria-label="search-area-pc"]');

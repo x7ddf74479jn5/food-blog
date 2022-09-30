@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ siteTitle, categories, tags }) => {
     <header className="py-2">
       <div className="flex items-start justify-between">
         <SiteTitle size="text-2xl" title={siteTitle} />
-        <div className="hidden w-1/2 sm:block" aria-label="search-area-pc">
+        <div className="hidden w-1/2 lg:block" aria-label="search-area-pc">
           <SearchArea categories={categories} tags={tags} />
         </div>
         <div className="flex items-center space-x-4">
@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ siteTitle, categories, tags }) => {
           <CategoryMenu categories={categories} />
         </div>
       </div>
-      <div className="mt-2 block sm:hidden" aria-label="search-area-mobile">
+      <div className="mt-2 block lg:hidden" aria-label="search-area-mobile">
         <SearchArea categories={categories} tags={tags} />
       </div>
     </header>
