@@ -2,10 +2,10 @@ import React from "react";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import { StoryFnReactReturnType } from "@storybook/react/dist/ts3.9/client/preview/types";
 import { NextRouter } from "next/router";
-import { SearchHistoryProvider } from "@/context";
+import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
 
 export const withContext = (storyFn: () => StoryFnReactReturnType) => {
-  return <SearchHistoryProvider>{storyFn()}</SearchHistoryProvider>;
+  return <SearchProvider>{storyFn()}</SearchProvider>;
 };
 
 export const withRouterContext = (storyFn: () => StoryFnReactReturnType, options?: Partial<NextRouter>) => {

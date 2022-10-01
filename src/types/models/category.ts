@@ -10,3 +10,10 @@ export type TCategory = {
 } & MicroCMSListContent;
 
 export type TCategoryListResponse = MicroCMSListResponse<TCategory>;
+
+export type AllOrCategory =
+  | {
+      id: "all";
+      name: "すべて";
+    }
+  | TCategory;
