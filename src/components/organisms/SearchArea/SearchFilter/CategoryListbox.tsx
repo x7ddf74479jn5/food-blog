@@ -1,28 +1,28 @@
 import { Listbox } from "@headlessui/react";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
-import type { TCategory } from "@/types";
+import type { AllOrCategory, TCategory } from "@/types";
+
+import { useSearchMutation, useSearchState } from "../SearchContext";
 
 const allCategory = { id: "all", name: "すべて" } as const;
 
-type AllOrCategory =
-  | {
-      id: "all";
-      name: "すべて";
-    }
-  | TCategory;
 type CategoryListboxProps = {
   categories: TCategory[];
 };
 
 export const CategoryListbox: React.FC<CategoryListboxProps> = ({ categories }) => {
-  const [selectedCategory, setSelectedCategory] = useState<AllOrCategory>(allCategory);
+  const { selectedCategory } = useSearchState();
+  const { setSelectedCategory } = useSearchMutation();
 
-  const handleSelect = useCallback((category: AllOrCategory) => {
-    setSelectedCategory(category);
-  }, []);
+  const handleSelect = useCallback(
+    (category: AllOrCategory) => {
+      setSelectedCategory(category);
+    },
+    [setSelectedCategory]
+  );
 
   return (
     <Listbox

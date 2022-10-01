@@ -1,9 +1,9 @@
 import { Disclosure } from "@headlessui/react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-import { CategoryListbox } from "@/components/organisms/SearchArea/CategoryListbox";
 import type { TCategory, TTag } from "@/types";
 
+import { CategoryListbox } from "./CategoryListbox";
 import { TagCombobox } from "./TagCombobox";
 
 type SearchFilterProps = {
