@@ -1,7 +1,9 @@
 import { Disclosure } from "@headlessui/react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
+import { usePath } from "@/hooks/usePath";
 import type { TCategory, TTag } from "@/types";
+import { urlTable } from "@/utils/paths/url";
 
 import { CategoryListbox } from "./CategoryListbox";
 import { TagCombobox } from "./TagCombobox";
@@ -13,8 +15,11 @@ type SearchFilterProps = {
 };
 
 export const SearchFilter: React.FC<SearchFilterProps> = ({ categories, tags, onToggle }) => {
+  const { matchPath } = usePath();
+  const isSearchPage = matchPath(urlTable.search);
+
   return (
-    <Disclosure>
+    <Disclosure defaultOpen={isSearchPage}>
       {({ open }) => {
         onToggle(open);
 
