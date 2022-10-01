@@ -29,7 +29,6 @@ describe("src/pages/api/posts/index.test.ts", () => {
 
     test("200", async () => {
       const mockArticleList = Object.values(mockArticles);
-      // console.log(mockArticleList);
       const mockFetchArticlesReturn = {
         contents: mockArticleList,
         limit: 10,

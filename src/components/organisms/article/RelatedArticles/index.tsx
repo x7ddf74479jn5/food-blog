@@ -9,8 +9,6 @@ type Props = {
 };
 
 export const RelatedArticles: React.FC<Props> = memo(({ relatedArticles }) => {
-  // console.log("relatedArticles: ", relatedArticles);
-
   return (
     <SideSectionContainer header="関連レシピ">
       {relatedArticles.length > 0 ? (
