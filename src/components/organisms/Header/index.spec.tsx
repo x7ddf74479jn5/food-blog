@@ -17,6 +17,6 @@ describe("components/organisms/Header", () => {
     expect(anchor).toHaveTextContent(siteTitle);
     expect(anchor).toHaveAttribute("href", "/");
     const searchBoxes = screen.getAllByRole("searchbox");
-    expect(searchBoxes.length).toBe(2);
+    expect(searchBoxes.length).toBe(1);
   });
 });
