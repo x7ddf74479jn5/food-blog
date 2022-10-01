@@ -30,7 +30,7 @@ describe("components/molecules/category/CategoryMenu", () => {
       urlTable.popular,
       ...mockCategoryList.map((category) => `${urlTable.categories}/${category.slug}`),
     ];
-    screen.debug();
+
     menuItems.forEach((item, index) => {
       expect(item).toHaveTextContent(labels[index]);
       const link = within(item).getByRole("link");
