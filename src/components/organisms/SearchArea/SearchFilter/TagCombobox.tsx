@@ -1,35 +1,18 @@
 import { Combobox } from "@headlessui/react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 
 import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
 import type { TTag } from "@/types";
 
-// const people = [
-//   { id: 1, name: "Durward Reynolds" },
-//   { id: 2, name: "Kenton Towne" },
-//   { id: 3, name: "Therese Wunsch" },
-//   { id: 4, name: "Benedict Kessler" },
-//   { id: 5, name: "Katelyn Rohan" },
-// ];
+import { useSearchMutation, useSearchState } from "../SearchContext";
 
-// type TTag = {
-//   id: number;
-//   name: string;
-// };
-
-type TagComboboxProps = {
-  tags: TTag[];
-};
-
-export const TagCombobox: React.FC<TagComboboxProps> = ({ tags }) => {
-  const [selectedTags, setSelectedTags] = useState<Array<TTag>>([]);
-  const [query, setQuery] = useState("");
+const useSelectTags = (tags: TTag[], query = "") => {
+  const { selectedTags } = useSearchState();
+  const { setSelectedTags } = useSearchMutation();
   const selectedTagNames = selectedTags.map((tag) => tag.name.toLowerCase());
-
   const notSelectedTags = tags.filter((tag) => !selectedTagNames.includes(tag.name.toLowerCase()));
-
   const filteredTags =
     query === ""
       ? notSelectedTags
@@ -37,15 +20,36 @@ export const TagCombobox: React.FC<TagComboboxProps> = ({ tags }) => {
           return tag.name.toLowerCase().includes(query.toLowerCase());
         });
 
-  const handleSelect = (tags: TTag[]) => setSelectedTags((prev) => Array.from(new Set([...prev, ...tags])));
+  const select = useCallback(
+    (tags: TTag[]) => {
+      setSelectedTags((prev) => Array.from(new Set([...prev, ...tags])));
+    },
+    [setSelectedTags]
+  );
+
+  const unselect = useCallback(
+    (tag: TTag) => {
+      setSelectedTags((prev) => prev.filter((person) => person.id !== tag.id));
+    },
+    [setSelectedTags]
+  );
+
+  return { selectedTags, filteredTags, select, unselect };
+};
+
+type TagComboboxProps = {
+  tags: TTag[];
+};
+
+export const TagCombobox: React.FC<TagComboboxProps> = ({ tags }) => {
+  const [query, setQuery] = useState("");
+  const { selectedTags, filteredTags, select, unselect } = useSelectTags(tags, query);
+
+  const handleSelect = (tags: TTag[]) => select(tags);
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => setQuery(event.target.value);
 
-  const handleUnselect = (tag: TTag) => {
-    setSelectedTags((prev) => prev.filter((person) => person.id !== tag.id));
-  };
-
-  console.log(selectedTags);
+  const handleUnselect = (tag: TTag) => unselect(tag);
 
   return (
     <Combobox as="div" className="flex flex-col" value={selectedTags} onChange={handleSelect} multiple>
@@ -58,9 +62,17 @@ export const TagCombobox: React.FC<TagComboboxProps> = ({ tags }) => {
                 <Combobox.Input className="dropdown-textfield" onChange={handleChangeQuery} id="category-input" />
                 <Combobox.Button className="dropdown-icon-button">
                   {open ? (
-                    <FaChevronUp aria-hidden="true" className="text-gray-700 dark:text-gray-100" />
+                    <FaChevronUp
+                      aria-hidden="true"
+                      className="text-gray-700 dark:text-gray-100"
+                      aria-label="タグドロップダウン開く"
+                    />
                   ) : (
-                    <FaChevronDown aria-hidden="true" className="text-gray-700 dark:text-gray-100" />
+                    <FaChevronDown
+                      aria-hidden="true"
+                      className="text-gray-700 dark:text-gray-100"
+                      aria-label="タグドロップダウン閉じる"
+                    />
                   )}
                 </Combobox.Button>
               </div>
@@ -88,12 +100,12 @@ export const TagCombobox: React.FC<TagComboboxProps> = ({ tags }) => {
 
           {selectedTags.length > 0 && (
             <div className="mt-2 flex flex-row flex-wrap gap-x-2 gap-y-1 text-gray-700 dark:text-gray-100">
-              {selectedTags.map((person) => (
-                <div key={person.id} className="flex flex-row items-center justify-between gap-1">
-                  <button onClick={() => handleUnselect(person)}>
+              {selectedTags.map((tag) => (
+                <div key={tag.id} className="flex flex-row items-center justify-between gap-1">
+                  <button onClick={() => handleUnselect(tag)}>
                     <IoCloseCircle className="h-6 w-6" />
                   </button>
-                  <div>{person.name}</div>
+                  <div>{tag.name}</div>
                 </div>
               ))}
             </div>
