@@ -1,10 +1,10 @@
-import { mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "@mocks/data";
+import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "@mocks/data";
 import type { NextRouter } from "jest/test-utils";
-import { render, screen, withMockedRouter } from "jest/test-utils";
+import { render, renderHook, screen, withMockedRouter } from "jest/test-utils";
 
 import { formatPageTitle } from "@/utils/formatter";
 
-import { Search } from ".";
+import { Search, useQueryOption } from ".";
 
 jest.mock("next/head", () => {
   return {
@@ -44,5 +44,36 @@ describe("pages/search", () => {
     expect(h1).toHaveTextContent(expectedHeading);
     const expectedTitle = formatPageTitle(expectedHeading, mockConfig.siteTitle);
     expect(document.title).toBe(expectedTitle);
+  });
+
+  describe("useQueryOption", () => {
+    it("OK: タグで検索したときのクエリが正しい", () => {
+      const query = { tags: mockArticles.stock.tags.map((tag) => tag.id).join(",") };
+
+      const { current } = renderHook(() => useQueryOption(query)).result;
+
+      expect(current.filters).toEqual("tags[contains]11[and]tags[contains]9[and]tags[contains]8");
+    });
+
+    it("OK: カテゴリーで検索したときのクエリが正しい", () => {
+      const query = { category: mockArticles.stock.category.id };
+
+      const { current } = renderHook(() => useQueryOption(query)).result;
+
+      expect(current.filters).toEqual(`categories[equals]${mockCategories.rice.id}`);
+    });
+
+    it("OK: 複数のフィルターを組み合わせたときのクエリが正しい", () => {
+      const query = {
+        q: "基本の",
+        category: mockArticles.stock.category.id,
+        tags: mockArticles.stock.tags.map((tag) => tag.id).join(","),
+      };
+
+      const { current } = renderHook(() => useQueryOption(query)).result;
+
+      expect(current.q).toBe("基本の");
+      expect(current.filters).toBe("categories[equals]1[and]tags[contains]11[and]tags[contains]9[and]tags[contains]8");
+    });
   });
 });

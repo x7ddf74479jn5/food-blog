@@ -1,5 +1,6 @@
 import type { MicroCMSQueries } from "microcms-js-sdk";
 import { useRouter } from "next/router";
+import type { ParsedUrlQuery } from "querystring";
 import { useEffect, useState } from "react";
 
 import { HtmlHeadBase } from "@/components/functions/meta";
@@ -8,6 +9,51 @@ import { ArticleSWRContainer } from "@/components/organisms/article";
 import type { TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
+
+const useSearchPage = (config: TConfig, query: ParsedUrlQuery) => {
+  const [heading, setHeading] = useState("");
+  const router = useRouter();
+  const q = query.q ? String(query.q) : "";
+  const { siteTitle, host } = config;
+  const pageTitle = formatPageTitle(heading, siteTitle);
+  const url = formatPageUrl(`${urlTable.search}/q=${q ?? ""}`, host);
+
+  useEffect(() => {
+    if (router.isReady) {
+      setHeading(`検索結果：${q ?? ""}`);
+    }
+  }, [q, router.isReady]);
+
+  return {
+    pageTitle,
+    url,
+    heading,
+  };
+};
+
+export const useQueryOption = (query: ParsedUrlQuery) => {
+  const queryFilters = [];
+
+  const q = query.q ? String(query.q) : "";
+
+  if (query.category) {
+    const searchCategory = `categories[equals]${String(query.category)}`;
+    queryFilters.push(searchCategory);
+  }
+
+  if (query.tags) {
+    const searchTags = String(query.tags)
+      .split(",")
+      .map((tag) => `tags[contains]${tag}`)
+      .join("[and]");
+    queryFilters.push(searchTags);
+  }
+
+  const filters = queryFilters.length > 1 ? queryFilters.join("[and]") : queryFilters.join("");
+  const queryOptions: MicroCMSQueries = { q, filters };
+
+  return queryOptions;
+};
 
 export type SearchProps = {
   config: TConfig;
@@ -19,22 +65,11 @@ export type SearchProps = {
 };
 
 export const Search: React.FC<SearchProps> = ({ config, categories, pickup, popularArticles, tags }) => {
-  const [heading, setHeading] = useState("");
-  const [fallbackText, setFallbackText] = useState("");
-  const router = useRouter();
-  const q = router.query.q ? String(router.query.q) : "";
-  const { siteTitle, host } = config;
-  const pageTitle = formatPageTitle(heading, siteTitle);
-  const url = formatPageUrl(`${urlTable.search}/q=${q ?? ""}`, host);
+  const { host } = config;
+  const { query } = useRouter();
+  const { pageTitle, url, heading } = useSearchPage(config, query);
+  const queryOptions = useQueryOption(query);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
-  const queryOptions: MicroCMSQueries = { q };
-
-  useEffect(() => {
-    if (router.isReady) {
-      setHeading(`検索結果：${q ?? ""}`);
-      setFallbackText("検索語句を入力してください");
-    }
-  }, [q, router.isReady]);
 
   return (
     <DefaultLayout
@@ -52,11 +87,7 @@ export const Search: React.FC<SearchProps> = ({ config, categories, pickup, popu
         <h1>{heading}</h1>
       </div>
       <div className="w-full">
-        {q ? (
-          <ArticleSWRContainer queryOptions={queryOptions} />
-        ) : (
-          <div className="mt-16 flex justify-center">{fallbackText}</div>
-        )}
+        <ArticleSWRContainer queryOptions={queryOptions} />
       </div>
     </DefaultLayout>
   );
