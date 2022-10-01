@@ -3,64 +3,71 @@ import { useCallback, useState } from "react";
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
-import { useSearchHistoryContext } from "@/context";
 import { usePopover } from "@/hooks/usePopover";
 import { urlTable } from "@/utils/paths/url";
 
+import { useSearchMutation, useSearchState } from "../SearchContext";
 import { SearchHistory } from "./SearchHistory";
 
-export const useSearch = () => {
-  const [query, _setQuery] = useState("");
+const useSearch = () => {
   const router = useRouter();
-  const { histories, setHistories } = useSearchHistoryContext();
+  const { text, history } = useSearchState();
+  const { setText, setHistory } = useSearchMutation();
 
-  const search = useCallback(() => {
-    if (query.trim() === "") return;
+  const textSearch = useCallback(() => {
+    if (text.trim() === "") return;
 
     router.push(
       {
         pathname: urlTable.search,
-        query: { q: query },
+        query: { q: text },
       },
       undefined,
       { shallow: true }
     );
 
-    if (!histories.includes(query) && query !== "") {
-      setHistories((prev) => [query, ...prev].slice(0, 5));
+    if (!history.includes(text) && text !== "") {
+      setHistory((prev) => [text, ...prev].slice(0, 5));
     }
-
-    _setQuery("");
-  }, [histories, query, router, setHistories]);
-
-  const setQuery = useCallback((query: string) => _setQuery(query), []);
+  }, [text, router, history, setHistory]);
 
   return {
-    query,
-    setQuery,
-    search,
+    text,
+    setText,
+    textSearch,
   };
 };
 
 const SearchBar: React.FC = () => {
-  const { query, setQuery, search } = useSearch();
+  const { text, setText, textSearch } = useSearch();
   const { isActive, setIsActive, ref } = usePopover<HTMLDivElement>();
+  const [isShow, setIsShow] = useState(isActive);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setQuery(event.target.value);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setText(event.target.value);
 
   const handleFocus = () => setIsActive(true);
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      search();
-      setIsActive(false);
+    switch (event.key) {
+      case "Enter": {
+        textSearch();
+        setIsActive(false);
+        setIsShow(false);
+      }
+      case "ArrowDown": {
+        setIsActive(false);
+        setIsShow(true);
+      }
     }
   };
 
   const handleSubmit = () => {
-    search();
+    textSearch();
     setIsActive(false);
+    setIsShow(false);
   };
+
+  const handleCloseSearch = useCallback(() => setIsShow(false), []);
 
   return (
     <div ref={ref} className="relative">
@@ -74,18 +81,18 @@ const SearchBar: React.FC = () => {
         </IconContext.Provider>
 
         <input
-          type="search"
+          type="textSearch"
           placeholder="Search..."
           className="w-full bg-gray-100 focus:outline-none dark:bg-gray-700 dark:text-gray-100"
           onChange={handleChange}
           onFocus={handleFocus}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
           onSubmit={handleSubmit}
-          value={query}
+          value={text}
         />
       </div>
 
-      <SearchHistory show={isActive} setQuery={setQuery} />
+      <SearchHistory show={isShow} onClose={handleCloseSearch} />
     </div>
   );
 };

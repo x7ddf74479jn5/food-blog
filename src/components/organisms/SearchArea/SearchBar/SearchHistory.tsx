@@ -2,16 +2,19 @@ import { Listbox } from "@headlessui/react";
 import { useEffect, useRef } from "react";
 
 import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
-import { useSearchHistoryContext } from "@/context";
+
+import { useSearchMutation, useSearchState } from "../SearchContext";
 
 type SearchHistoryProps = {
   show: boolean;
-  setQuery: (query: string) => void;
+  onClose: () => void;
 };
-export const SearchHistory: React.FC<SearchHistoryProps> = ({ show, setQuery }) => {
-  const { histories } = useSearchHistoryContext();
+export const SearchHistory: React.FC<SearchHistoryProps> = ({ show, onClose }) => {
+  const { history } = useSearchState();
+  const { setText } = useSearchMutation();
+
   const handleClick = (history: string) => {
-    setQuery(history);
+    setText(history);
   };
 
   const ref = useRef<HTMLButtonElement>(null);
@@ -22,19 +25,19 @@ export const SearchHistory: React.FC<SearchHistoryProps> = ({ show, setQuery }) 
     }
   }, [show]);
 
-  if (!show || !histories || histories.length === 0) return null;
+  if (!show || !history || history.length === 0) return null;
 
   return (
     <Listbox onChange={handleClick}>
       <Listbox.Button ref={ref} className="hidden">
         検索履歴
       </Listbox.Button>
-      <DropdownTransition>
+      <DropdownTransition afterLeave={onClose}>
         <Listbox.Options
           static
           className="fixed z-10 mt-1 mr-4 max-h-[50vh] overflow-y-auto rounded-md border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-600 dark:bg-gray-700"
         >
-          {histories.map((history) => (
+          {history.map((history) => (
             <Listbox.Option
               key={history}
               value={history}
