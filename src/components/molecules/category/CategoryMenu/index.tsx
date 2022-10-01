@@ -1,10 +1,10 @@
 import { Menu } from "@headlessui/react";
-import { useRouter } from "next/router";
 import { memo } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import NextLink from "@/components/atoms/NextLink";
 import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
+import { usePath } from "@/hooks/usePath";
 import type { TCategory } from "@/types";
 import { classNames } from "@/utils/css";
 import { urlTable } from "@/utils/paths/url";
@@ -28,14 +28,6 @@ export const CategoryMenuItem: React.FC<CategoryMenuItemProps> = ({ href, label,
       )}
     </Menu.Item>
   );
-};
-
-const usePath = () => {
-  const { asPath } = useRouter();
-
-  const matchPath = (path: string) => asPath === path;
-
-  return { matchPath };
 };
 
 type CategoryMenuProps = {
