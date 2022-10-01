@@ -16,10 +16,7 @@ const articlesQuerySchema = z.object({
     .optional()
     .default("0")
     .transform((v) => Number(v)),
-  q: z
-    .string()
-    .refine((value) => Boolean(value.trim().length))
-    .optional(),
+  q: z.string(),
   filters: z
     .string()
     .refine((value) => Boolean(value.trim().length))
