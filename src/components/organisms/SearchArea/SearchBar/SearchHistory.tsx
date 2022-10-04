@@ -1,5 +1,5 @@
 import { Listbox } from "@headlessui/react";
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 
 import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
 
@@ -9,7 +9,7 @@ type SearchHistoryProps = {
   show: boolean;
   onClose: () => void;
 };
-export const SearchHistory: React.FC<SearchHistoryProps> = ({ show, onClose }) => {
+export const SearchHistory: React.FC<SearchHistoryProps> = memo(({ show, onClose }) => {
   const { history } = useSearchState();
   const { setText } = useSearchMutation();
 
@@ -29,7 +29,7 @@ export const SearchHistory: React.FC<SearchHistoryProps> = ({ show, onClose }) =
 
   return (
     <Listbox onChange={handleClick}>
-      <Listbox.Button ref={ref} className="hidden">
+      <Listbox.Button ref={ref} className="sr-only">
         検索履歴
       </Listbox.Button>
       <DropdownTransition afterLeave={onClose}>
@@ -54,4 +54,6 @@ export const SearchHistory: React.FC<SearchHistoryProps> = ({ show, onClose }) =
       </DropdownTransition>
     </Listbox>
   );
-};
+});
+
+SearchHistory.displayName = "SearchHistory";

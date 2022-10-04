@@ -1,35 +1,23 @@
-import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
 import { usePopover } from "@/hooks/usePopover";
-import { urlTable } from "@/utils/paths/url";
 
 import { useSearchMutation, useSearchState } from "../SearchContext";
+import { useSearch } from "../useSearch";
 import { SearchHistory } from "./SearchHistory";
 
-const useSearch = () => {
-  const router = useRouter();
-  const { text, history } = useSearchState();
-  const { setText, setHistory } = useSearchMutation();
+const useSearchBar = () => {
+  const { text } = useSearchState();
+  const { setText } = useSearchMutation();
+  const q = text.trim();
+  const { search } = useSearch({ q });
 
-  const textSearch = useCallback(() => {
-    if (text.trim() === "") return;
-
-    router.push(
-      {
-        pathname: urlTable.search,
-        query: { q: text },
-      },
-      undefined,
-      { shallow: true }
-    );
-
-    if (!history.includes(text) && text !== "") {
-      setHistory((prev) => [text, ...prev].slice(0, 5));
-    }
-  }, [text, router, history, setHistory]);
+  const textSearch = () => {
+    if (q === "") return;
+    search();
+  };
 
   return {
     text,
@@ -39,7 +27,7 @@ const useSearch = () => {
 };
 
 const SearchBar: React.FC = () => {
-  const { text, setText, textSearch } = useSearch();
+  const { text, setText, textSearch } = useSearchBar();
   const { isActive, setIsActive, ref } = usePopover<HTMLDivElement>();
   const [isShow, setIsShow] = useState(isActive);
 
@@ -47,15 +35,13 @@ const SearchBar: React.FC = () => {
 
   const handleFocus = () => setIsActive(true);
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     switch (event.key) {
       case "Enter": {
         textSearch();
-        setIsActive(false);
         setIsShow(false);
       }
       case "ArrowDown": {
-        setIsActive(false);
         setIsShow(true);
       }
     }
@@ -63,7 +49,6 @@ const SearchBar: React.FC = () => {
 
   const handleSubmit = () => {
     textSearch();
-    setIsActive(false);
     setIsShow(false);
   };
 
@@ -81,12 +66,12 @@ const SearchBar: React.FC = () => {
         </IconContext.Provider>
 
         <input
-          type="textSearch"
+          type="search"
           placeholder="Search..."
           className="w-full bg-gray-100 focus:outline-none dark:bg-gray-700 dark:text-gray-100"
           onChange={handleChange}
           onFocus={handleFocus}
-          onKeyDown={handleKeyPress}
+          onKeyDown={handleKeyDown}
           onSubmit={handleSubmit}
           value={text}
         />

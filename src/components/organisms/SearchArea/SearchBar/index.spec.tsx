@@ -1,4 +1,5 @@
 import userEvent from "@testing-library/user-event";
+import { it } from "date-fns/locale";
 import { render, screen } from "jest/test-utils";
 import React from "react";
 
@@ -11,7 +12,7 @@ useRouter.mockImplementation(() => {
   return { push };
 });
 
-describe("components/molecules/Search", () => {
+describe("components/organisms/SearchArea/SearchBar", () => {
   it("OK: 初期レンダリング", () => {
     render(<SearchBar />);
     const input = screen.getByRole("searchbox");
@@ -61,6 +62,26 @@ describe("components/molecules/Search", () => {
 
       await user.click(container);
       expect(input).not.toHaveFocus();
+    });
+
+    it("OK: 検索履歴から補完できる", async () => {
+      render(<SearchBar />);
+      const input = screen.getByRole("searchbox");
+      expect(input).toHaveValue("");
+
+      const testText = "test";
+      await user.type(input, testText);
+      expect(input).toHaveValue(testText);
+
+      await user.type(input, "{enter}");
+      const option = screen.getByRole("option");
+      expect(option).toHaveTextContent("test");
+
+      await user.clear(input);
+      expect(input).toHaveValue("");
+
+      await user.click(option);
+      expect(input).toHaveValue(testText);
     });
   });
 });
