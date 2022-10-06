@@ -1,17 +1,18 @@
 import { TwoColumnLayout } from "@/components/layouts";
 import { CategoryList } from "@/components/molecules/category/CategoryList";
-import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+import type { TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 export type CategoriesProps = {
   config: TConfig;
   categories: TCategory[];
+  tags: TTag[];
   pickup: TPickup;
   popularArticles: TRankedArticle[];
 };
 
-export const Categories: React.FC<CategoriesProps> = ({ config, categories, pickup, popularArticles }) => {
+export const Categories: React.FC<CategoriesProps> = ({ config, categories, pickup, popularArticles, tags }) => {
   const { siteTitle, host } = config;
   const heading = "カテゴリー一覧";
   const pageTitle = formatPageTitle(heading, siteTitle);
@@ -27,6 +28,7 @@ export const Categories: React.FC<CategoriesProps> = ({ config, categories, pick
       backLinks={backLinks}
       heading={heading}
       categories={categories}
+      tags={tags}
       popularArticles={popularArticles}
     >
       <CategoryList categories={categories} width={128} height={128} />

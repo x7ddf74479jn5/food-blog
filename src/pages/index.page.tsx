@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { fetchConfig } from "@/api";
+import { fetchConfig, fetchTags } from "@/api";
 import type { HomeProps } from "@/components/pages/Home";
 import { Home } from "@/components/pages/Home";
 import { sentryLogServer } from "@/lib/sentry/logger";
@@ -20,9 +20,10 @@ export default HomePage;
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   try {
-    const [config, categories, data, pickup, popularArticles] = await Promise.all([
+    const [config, categories, tags, data, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
       getCategories(),
+      fetchTags(),
       getArticles({ limit: 10, offset: 0 }),
       getPickupArticles(new Date()),
       getPopularArticles(),
@@ -36,6 +37,7 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
       props: {
         data,
         categories,
+        tags,
         config,
         pickup,
         popularArticles,

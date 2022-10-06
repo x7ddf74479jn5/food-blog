@@ -3,6 +3,7 @@ import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 
 import Header from ".";
 import { withRouterContext } from ".storybook/mocks/context";
+import { device } from ".storybook/mocks/device";
 
 export default {
   title: "organisms/Header",
@@ -25,7 +26,7 @@ export const Mobile: ComponentStoryObj<typeof Header> = {
   ...Desktop,
   parameters: {
     viewport: {
-      defaultViewport: "iphone12",
+      defaultViewport: device.mobile,
     },
   },
 };

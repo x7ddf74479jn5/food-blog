@@ -1,7 +1,7 @@
 import { HtmlHeadBase } from "@/components/functions/meta";
 import { DefaultLayout } from "@/components/layouts";
 import { ArticleList } from "@/components/molecules/article";
-import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+import type { TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
@@ -9,10 +9,12 @@ export type PopularProps = {
   config: TConfig;
   categories: TCategory[];
   pickup: TPickup;
+  tags: TTag[];
+
   popularArticles: TRankedArticle[];
 };
 
-export const Popular: React.FC<PopularProps> = ({ config, categories, pickup, popularArticles }) => {
+export const Popular: React.FC<PopularProps> = ({ config, categories, pickup, popularArticles, tags }) => {
   const { siteTitle, host } = config;
   const heading = "人気記事";
   const pageTitle = formatPageTitle(heading, siteTitle);
@@ -25,6 +27,7 @@ export const Popular: React.FC<PopularProps> = ({ config, categories, pickup, po
       pageTitle={pageTitle}
       url={url}
       backLinks={backLinks}
+      tags={tags}
       categories={categories}
       pickup={pickup}
       popularArticles={popularArticles}

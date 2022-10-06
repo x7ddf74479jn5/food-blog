@@ -1,4 +1,4 @@
-import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
+import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 
 import { formatPageTitle } from "@/utils/formatter";
@@ -28,6 +28,7 @@ describe("pages/articles", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockArticleList = Object.values(mockArticles);
   const mockArticleStock = mockArticles.stock;
+  const mockTagList = Object.values(mockTags);
 
   it("OK: 初期レンダリング", () => {
     const mdxSource = { compiledSource: "source" };
@@ -38,6 +39,7 @@ describe("pages/articles", () => {
         config={mockConfig}
         pickup={mockPickup}
         article={mockArticleStock}
+        tags={mockTagList}
         mdxSource={mdxSource}
         relatedArticles={mockArticleList}
         popularArticles={mockPopularArticles}

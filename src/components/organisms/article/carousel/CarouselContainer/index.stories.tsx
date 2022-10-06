@@ -2,6 +2,7 @@ import { mockPickup, mockPopularArticles } from "@mocks/data";
 import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 
 import { CarouselContainer } from ".";
+import { device } from ".storybook/mocks/device";
 
 export default {
   title: "organisms/article/carousel/CarouselContainer",
@@ -19,7 +20,7 @@ export const Mobile: ComponentStoryObj<typeof CarouselContainer> = {
   ...Desktop,
   parameters: {
     viewport: {
-      defaultViewport: "iphone12",
+      defaultViewport: device.mobile,
     },
   },
 };

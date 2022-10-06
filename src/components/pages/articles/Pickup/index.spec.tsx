@@ -1,4 +1,4 @@
-import { mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
+import { mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 
 import { formatPageTitle } from "@/utils/formatter";
@@ -17,6 +17,7 @@ jest.mock("next/head", () => {
 
 describe("pages/articles/", () => {
   const mockCategoryList = Object.values(mockCategories);
+  const mockTagList = Object.values(mockTags);
 
   it("OK: 初期レンダリング", async () => {
     render(
@@ -24,6 +25,7 @@ describe("pages/articles/", () => {
         config={mockConfig}
         pickup={mockPickup}
         categories={mockCategoryList}
+        tags={mockTagList}
         popularArticles={mockPopularArticles}
       />
     );

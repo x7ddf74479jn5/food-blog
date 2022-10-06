@@ -1,7 +1,7 @@
 import { HtmlHeadBase } from "@/components/functions/meta";
 import { DefaultLayout } from "@/components/layouts";
 import { ArticleSWRContainer } from "@/components/organisms/article";
-import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+import type { TArticleListResponse, TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 import { formatPageTitle } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
@@ -12,9 +12,18 @@ export type CategoryProps = {
   data: TArticleListResponse;
   pickup: TPickup;
   popularArticles: TRankedArticle[];
+  tags: TTag[];
 };
 
-export const Category: React.FC<CategoryProps> = ({ data, category, config, categories, pickup, popularArticles }) => {
+export const Category: React.FC<CategoryProps> = ({
+  data,
+  category,
+  config,
+  categories,
+  pickup,
+  tags,
+  popularArticles,
+}) => {
   const { siteTitle, host } = config;
   const heading = `カテゴリー：${category.name}`;
   const pageTitle = formatPageTitle(heading, siteTitle);
@@ -27,6 +36,7 @@ export const Category: React.FC<CategoryProps> = ({ data, category, config, cate
       config={config}
       pageTitle={pageTitle}
       url={url}
+      tags={tags}
       backLinks={backLinks}
       categories={categories}
       pickup={pickup}

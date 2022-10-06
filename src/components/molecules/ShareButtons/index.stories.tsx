@@ -1,6 +1,7 @@
 import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 
 import { ShareButtons } from ".";
+import { device } from ".storybook/mocks/device";
 
 export default {
   title: "molecules/ShareButtons",
@@ -13,17 +14,12 @@ export const Desktop: ComponentStoryObj<typeof ShareButtons> = {
     title: "title",
     className: "flex-col",
   },
-  parameters: {
-    viewport: {
-      defaultViewport: "pchd",
-    },
-  },
 };
 export const Mobile: ComponentStoryObj<typeof ShareButtons> = {
   args: { ...Desktop.args, className: "flex-row" },
   parameters: {
     viewport: {
-      defaultViewport: "iphone12",
+      defaultViewport: device.mobile,
     },
   },
 };

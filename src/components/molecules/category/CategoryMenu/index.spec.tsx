@@ -1,5 +1,5 @@
 import { mockCategories } from "@mocks/data";
-import { fireEvent, render, screen, withMockedRouter } from "jest/test-utils";
+import { fireEvent, render, screen, within, withMockedRouter } from "jest/test-utils";
 import React from "react";
 
 import { urlTable } from "@/utils/paths/url";
@@ -10,14 +10,14 @@ describe("components/molecules/category/CategoryMenu", () => {
   const mockCategoryList = Object.values(mockCategories);
 
   it("OK: 初期レンダリングが正しい", () => {
-    render(withMockedRouter({ asPath: "/" }, <CategoryMenu categories={mockCategoryList} />));
+    render(withMockedRouter({ pathname: "/" }, <CategoryMenu categories={mockCategoryList} />));
     const button = screen.getByRole("button", { name: "カテゴリー" });
     expect(button).toHaveTextContent("カテゴリー");
     expect(button).toBeEnabled();
   });
 
   it("OK: メニュー展開後の表示が正しい", () => {
-    render(withMockedRouter({ asPath: "/" }, <CategoryMenu categories={mockCategoryList} />));
+    render(withMockedRouter({ pathname: "/" }, <CategoryMenu categories={mockCategoryList} />));
     const button = screen.getByRole("button", { name: "カテゴリー" });
     expect(button).toBeEnabled();
 
@@ -33,7 +33,8 @@ describe("components/molecules/category/CategoryMenu", () => {
 
     menuItems.forEach((item, index) => {
       expect(item).toHaveTextContent(labels[index]);
-      expect(item).toHaveAttribute("href", hrefs[index]);
+      const link = within(item).getByRole("link");
+      expect(link).toHaveAttribute("href", hrefs[index]);
     });
   });
 });

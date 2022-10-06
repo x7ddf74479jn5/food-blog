@@ -6,7 +6,6 @@ import type { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import { ThemeProvider } from "next-themes";
 
-import { SearchHistoryProvider } from "@/context/SearchHistoryContext";
 import { GoogleAnalytics, usePageView } from "@/lib/google-analytics";
 
 import SEO from "../../next-seo.config";
@@ -28,9 +27,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <DefaultSeo {...SEO} />
       <GoogleAnalytics />
       <ThemeProvider attribute="class" enableSystem>
-        <SearchHistoryProvider>
-          <Component {...pageProps} />
-        </SearchHistoryProvider>
+        <Component {...pageProps} />
       </ThemeProvider>
     </div>
   );

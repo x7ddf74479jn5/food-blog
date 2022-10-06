@@ -1,13 +1,14 @@
-import { mockCategories, mockConfig } from "@mocks/data";
+import { mockCategories, mockConfig, mockTags } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 
 import { Error404 } from ".";
 
 describe("pages/404", () => {
   const mockCategoryList = Object.values(mockCategories);
+  const mockTagList = Object.values(mockTags);
 
   it("OK: 初期レンダリング", async () => {
-    render(<Error404 config={mockConfig} categories={mockCategoryList} />);
+    render(<Error404 config={mockConfig} categories={mockCategoryList} tags={mockTagList} />);
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent("404 - Not Found");
     expect(screen.getByText("ページが見つかりませんでした")).toBeInTheDocument();

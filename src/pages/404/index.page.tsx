@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { fetchConfig } from "@/api";
+import { fetchConfig, fetchTags } from "@/api";
 import type { Error404Props } from "@/components/pages/error/404";
 import { Error404 } from "@/components/pages/error/404";
 import { getCategories } from "@/services/category";
@@ -12,12 +12,13 @@ export default Error404Page;
 type StaticProps = Error404Props;
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const [config, categories] = await Promise.all([fetchConfig(), getCategories()]);
+  const [config, categories, tags] = await Promise.all([fetchConfig(), getCategories(), fetchTags()]);
 
   return {
     props: {
       config,
       categories,
+      tags,
     },
   };
 };
