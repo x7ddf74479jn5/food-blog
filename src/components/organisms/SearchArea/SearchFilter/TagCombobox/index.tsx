@@ -1,12 +1,12 @@
 import { Combobox } from "@headlessui/react";
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 
 import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
 import type { TTag } from "@/types";
 
-import { useSearchMutation, useSearchState } from "../SearchContext";
+import { useSearchMutation, useSearchState } from "../../SearchContext";
 
 const useSelectTags = (tags: TTag[], query = "") => {
   const { selectedTags } = useSearchState();
@@ -41,7 +41,7 @@ type TagComboboxProps = {
   tags: TTag[];
 };
 
-export const TagCombobox: React.FC<TagComboboxProps> = ({ tags }) => {
+export const TagCombobox: React.FC<TagComboboxProps> = memo(({ tags }) => {
   const [query, setQuery] = useState("");
   const { selectedTags, filteredTags, select, unselect } = useSelectTags(tags, query);
 
@@ -56,10 +56,10 @@ export const TagCombobox: React.FC<TagComboboxProps> = ({ tags }) => {
       {({ open }) => (
         <>
           <div className="flex flex-col items-start justify-between gap-y-2 md:flex-row md:items-center md:gap-x-4">
-            <Combobox.Label className="dropdown-label">Tag</Combobox.Label>
+            <Combobox.Label className="dropdown-label">タグ</Combobox.Label>
             <div className="dropdown w-full">
               <div className="dropdown-container">
-                <Combobox.Input className="dropdown-textfield" onChange={handleChangeQuery} id="category-input" />
+                <Combobox.Input className="dropdown-textfield" onChange={handleChangeQuery} />
                 <Combobox.Button className="dropdown-icon-button">
                   {open ? (
                     <FaChevronUp
@@ -105,7 +105,7 @@ export const TagCombobox: React.FC<TagComboboxProps> = ({ tags }) => {
                   <button onClick={() => handleUnselect(tag)}>
                     <IoCloseCircle className="h-6 w-6" />
                   </button>
-                  <div>{tag.name}</div>
+                  <div data-testid="current-tag-name">{tag.name}</div>
                 </div>
               ))}
             </div>
@@ -114,4 +114,6 @@ export const TagCombobox: React.FC<TagComboboxProps> = ({ tags }) => {
       )}
     </Combobox>
   );
-};
+});
+
+TagCombobox.displayName = "TagCombobox";
