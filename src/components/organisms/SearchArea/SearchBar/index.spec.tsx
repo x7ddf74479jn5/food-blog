@@ -1,5 +1,4 @@
 import userEvent from "@testing-library/user-event";
-import { it } from "date-fns/locale";
 import { render, screen } from "jest/test-utils";
 import React from "react";
 

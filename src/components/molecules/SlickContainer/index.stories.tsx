@@ -1,6 +1,7 @@
 import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 
 import { SlickContainer } from ".";
+import { device } from ".storybook/mocks/device";
 
 export default {
   title: "molecules/SlickContainer",
@@ -21,7 +22,7 @@ export const Mobile: ComponentStoryObj<typeof SlickContainer> = {
   ...Desktop,
   parameters: {
     viewport: {
-      defaultViewport: "iphone12",
+      defaultViewport: device.mobile,
     },
   },
 };

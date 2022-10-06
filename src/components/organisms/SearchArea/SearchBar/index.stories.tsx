@@ -4,7 +4,7 @@ import { withContext } from "../../../../../.storybook/mocks/context";
 import SearchBar from ".";
 
 export default {
-  title: "Molecules/Search",
+  title: "organisms/SearchArea/SearchBar",
   component: SearchBar,
   decorators: [
     (storyFn) => {
