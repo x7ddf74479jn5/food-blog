@@ -1,40 +1,35 @@
-import { useRouter } from "next/router";
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
 import { PrimaryButton } from "@/components/atoms/buttons";
 import type { TCategory, TTag } from "@/types";
 import { classNames } from "@/utils/css";
-import { urlTable } from "@/utils/paths/url";
 
 import SearchBar from "./SearchBar";
-import { SearchProvider, useSearchMutation, useSearchState } from "./SearchContext";
+import { SearchProvider, useSearchState } from "./SearchContext";
 import { SearchFilter } from "./SearchFilter";
+import { useSearch } from "./useSearch";
 
-const useSearch = () => {
-  const router = useRouter();
-  const { text, history, selectedCategory, selectedTags } = useSearchState();
-  const { setHistory } = useSearchMutation();
-  const category = selectedCategory?.id === "all" ? undefined : selectedCategory?.id ? "" : "";
+export const useSearchArea = () => {
+  const { text, selectedCategory, selectedTags } = useSearchState();
+  const q = text.trim();
+  const category = selectedCategory.id === "all" ? "" : selectedCategory.id ?? "";
   const tags = selectedTags?.map((tag) => tag.id).join(",");
 
-  const search = useCallback(() => {
-    router.push(
-      {
-        pathname: urlTable.search,
-        query: { q: text, category, tags },
-      },
-      undefined,
-      { shallow: true }
-    );
-
-    if (!history.includes(text) && text !== "") {
-      setHistory((prev) => [text, ...prev].slice(0, 5));
-    }
-  }, [router, text, category, tags, history, setHistory]);
+  const { search } = useSearch({ q, category, tags });
 
   return {
     search,
   };
+};
+
+const useSearchFilter = () => {
+  const [isFilterEnabled, setIsFilterEnabled] = useState(false);
+
+  const toggleFilter = useCallback((open: boolean) => {
+    setIsFilterEnabled(open);
+  }, []);
+
+  return [isFilterEnabled, toggleFilter] as const;
 };
 
 type SearchAreaProps = {
@@ -42,18 +37,15 @@ type SearchAreaProps = {
   tags: TTag[];
 };
 
-export const SearchArea: React.FC<SearchAreaProps> = (props) => {
-  const [isFilterEnabled, setIsFilterEnabled] = useState(false);
-  const { search } = useSearch();
+const SearchAreaCore: React.FC<SearchAreaProps> = (props) => {
+  const [isFilterEnabled, toggleFilter] = useSearchFilter();
+  const { search } = useSearchArea();
 
   const handleClick = search;
-
-  const handleToggle = useCallback((open: boolean) => {
-    setIsFilterEnabled(open);
-  }, []);
+  const handleToggle = toggleFilter;
 
   return (
-    <SearchProvider>
+    <>
       <SearchBar />
       <div
         className={classNames(
@@ -61,13 +53,21 @@ export const SearchArea: React.FC<SearchAreaProps> = (props) => {
           isFilterEnabled ? "flex flex-column flex-wrap" : "flex flex-row flex-wrap justify-between"
         )}
       >
-        <div className={classNames(isFilterEnabled ? "w-full" : "w-auto")}>
+        <div aria-label="検索フィルター" className={classNames(isFilterEnabled ? "w-full" : "w-auto")}>
           <SearchFilter {...props} onToggle={handleToggle} />
         </div>
         <div className={classNames("flex flex-row justify-end max-h-fit", isFilterEnabled ? "w-full mt-2" : "w-auto")}>
           <PrimaryButton size="sm" label="検索" onClick={handleClick} />
         </div>
       </div>
-    </SearchProvider>
+    </>
   );
 };
+
+export const SearchArea: React.FC<SearchAreaProps> = memo((props) => (
+  <SearchProvider>
+    <SearchAreaCore {...props} />
+  </SearchProvider>
+));
+
+SearchArea.displayName = "SearchArea";
