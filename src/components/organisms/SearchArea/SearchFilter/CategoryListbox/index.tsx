@@ -1,11 +1,11 @@
 import { Listbox } from "@headlessui/react";
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
 import type { AllOrCategory, TCategory } from "@/types";
 
-import { useSearchMutation, useSearchState } from "../SearchContext";
+import { useSearchMutation, useSearchState } from "../../SearchContext";
 
 const allCategory = { id: "all", name: "すべて" } as const;
 
@@ -13,7 +13,7 @@ type CategoryListboxProps = {
   categories: TCategory[];
 };
 
-export const CategoryListbox: React.FC<CategoryListboxProps> = ({ categories }) => {
+export const CategoryListbox: React.FC<CategoryListboxProps> = memo(({ categories }) => {
   const { selectedCategory } = useSearchState();
   const { setSelectedCategory } = useSearchMutation();
 
@@ -33,7 +33,7 @@ export const CategoryListbox: React.FC<CategoryListboxProps> = ({ categories }) 
     >
       {({ open }) => (
         <>
-          <Listbox.Label className="dropdown-label">Category</Listbox.Label>
+          <Listbox.Label className="dropdown-label">カテゴリー</Listbox.Label>
           <div className="dropdown w-full">
             <div className="dropdown-container">
               <div className="dropdown-textfield">{selectedCategory.name}</div>
@@ -69,4 +69,6 @@ export const CategoryListbox: React.FC<CategoryListboxProps> = ({ categories }) 
       )}
     </Listbox>
   );
-};
+});
+
+CategoryListbox.displayName = "CategoryListbox";
