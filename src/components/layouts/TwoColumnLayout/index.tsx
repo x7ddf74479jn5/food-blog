@@ -11,7 +11,7 @@ import { RootLayout } from "@/components/layouts";
 import BackLinks from "@/components/molecules/BackLinks";
 import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { PickupArticles, PopularArticles } from "@/components/organisms/article";
-import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+import type { TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 
 type TwoColumnLayoutProps = {
   children: React.ReactNode;
@@ -26,13 +26,15 @@ type TwoColumnLayoutProps = {
     label: string;
   }>;
   categories: TCategory[];
+  tags: TTag[];
+
   popularArticles: TRankedArticle[];
 };
 
 export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = memo(
-  ({ children, config, pickup, host, title, heading, url, backLinks, categories, popularArticles }) => {
+  ({ children, config, pickup, host, title, heading, url, backLinks, categories, tags, popularArticles }) => {
     return (
-      <RootLayout config={config} categories={categories}>
+      <RootLayout config={config} categories={categories} tags={tags}>
         <HtmlHeadBase indexUrl={host} pageTitle={title} url={url} />
         <div className="my-8">
           <h1>{heading}</h1>

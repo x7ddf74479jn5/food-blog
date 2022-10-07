@@ -29,7 +29,6 @@ describe("src/pages/api/posts/index.test.ts", () => {
 
     test("200", async () => {
       const mockArticleList = Object.values(mockArticles);
-      // console.log(mockArticleList);
       const mockFetchArticlesReturn = {
         contents: mockArticleList,
         limit: 10,
@@ -45,7 +44,7 @@ describe("src/pages/api/posts/index.test.ts", () => {
 
       await testApiHandler({
         ...params,
-        params: { limit: "10", offset: "0", filters: "filters" },
+        params: { q: "", limit: "10", offset: "0", filters: "filters" },
         test: async ({ fetch }) => {
           const res = await fetch({ method: "GET" });
           expect(res.status).toEqual(200);

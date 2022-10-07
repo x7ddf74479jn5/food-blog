@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { fetchConfig } from "@/api";
+import { fetchConfig, fetchTags } from "@/api";
 import type { SearchProps } from "@/components/pages/Search";
 import { Search } from "@/components/pages/Search";
 import { sentryLogServer } from "@/lib/sentry/logger";
@@ -17,9 +17,11 @@ const SearchPage: NextPage<SearchPageProps> = (props) => {
 
 export const getStaticProps: GetStaticProps<SearchPageProps> = async () => {
   try {
-    const [config, categories, pickup, popularArticles] = await Promise.all([
+    const [config, categories, tags, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
       getCategories(),
+      fetchTags(),
+
       getPickupArticles(new Date()),
       getPopularArticles(),
     ]);
@@ -28,6 +30,7 @@ export const getStaticProps: GetStaticProps<SearchPageProps> = async () => {
       props: {
         config,
         categories,
+        tags,
         pickup,
         popularArticles,
       },

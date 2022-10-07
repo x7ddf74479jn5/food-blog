@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { fetchConfig } from "@/api";
+import { fetchConfig, fetchTags } from "@/api";
 import type { CategoriesProps } from "@/components/pages/articles/categories/Categories";
 import { Categories } from "@/components/pages/articles/categories/Categories";
 import { sentryLogServer } from "@/lib/sentry/logger";
@@ -17,9 +17,10 @@ const CategoriesPage: NextPage<CategoriesPageProps> = (props) => {
 
 export const getStaticProps: GetStaticProps<CategoriesPageProps> = async () => {
   try {
-    const [config, categories, pickup, popularArticles] = await Promise.all([
+    const [config, categories, tags, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
       getCategories(),
+      fetchTags(),
       getPickupArticles(new Date()),
       getPopularArticles(),
     ]);
@@ -28,6 +29,7 @@ export const getStaticProps: GetStaticProps<CategoriesPageProps> = async () => {
       props: {
         config,
         categories,
+        tags,
         pickup,
         popularArticles,
       },

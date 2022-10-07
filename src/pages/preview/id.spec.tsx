@@ -1,4 +1,4 @@
-import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles } from "@mocks/data";
+import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
 import { server } from "mocks/msw/server";
 
@@ -39,6 +39,7 @@ jest.mock("next-mdx-remote", () => {
 describe("pages/preview", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockArticleList = Object.values(mockArticles);
+  const mockTagList = Object.values(mockTags);
   const mockArticleStock = mockArticles.stock;
   console.warn = jest.fn();
 
@@ -47,6 +48,7 @@ describe("pages/preview", () => {
     const { unmount } = render(
       <ArticlePreviewPage
         categories={mockCategoryList}
+        tags={mockTagList}
         config={mockConfig}
         pickup={mockPickup}
         article={mockArticleStock}

@@ -12,7 +12,7 @@ import { BackLinks } from "@/components/molecules/BackLinks";
 import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
 import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { PickupArticles, PopularArticles } from "@/components/organisms/article";
-import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+import type { TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 
 type Props = {
   children: React.ReactNode;
@@ -24,6 +24,7 @@ type Props = {
     label: string;
   }>;
   categories: TCategory[];
+  tags: TTag[];
   pickup: TPickup;
   popularArticles: TRankedArticle[];
 };
@@ -35,11 +36,12 @@ const DefaultLayout: React.FC<Props> = ({
   config,
   backLinks,
   categories,
+  tags,
   pickup,
   popularArticles,
 }) => {
   return (
-    <RootLayout config={config} categories={categories}>
+    <RootLayout config={config} categories={categories} tags={tags}>
       <MiddleAreaContainer>
         <AsideContainer className="order-2 md:order-1">
           <ShareButtons url={url} title={pageTitle} className="flex-row md:flex-col" />

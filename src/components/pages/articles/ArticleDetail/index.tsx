@@ -11,7 +11,7 @@ import { HtmlHeadBase, HtmlHeadJsonLd } from "@/components/functions/meta";
 import { ArticleLayout } from "@/components/layouts";
 import { TagListColored } from "@/components/molecules/TagList";
 import { getSafeDate } from "@/lib/date";
-import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
@@ -19,6 +19,7 @@ export type ArticleDetailProps = {
   article: TArticle;
   mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>;
   categories: TCategory[];
+  tags: TTag[];
   config: TConfig;
   isPreview?: boolean;
   relatedArticles: TArticle[];
@@ -35,6 +36,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({
   relatedArticles,
   pickup,
   popularArticles,
+  tags: tagsAtSearch,
 }) => {
   const { id, image, title, description, category, tags, writer, linkCardArticles, publishedAt, updatedAt } = article;
   const { siteTitle, host } = config;
@@ -54,6 +56,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({
       backLinks={backLinks}
       relatedArticles={relatedArticles}
       categories={categoriesAtMenu}
+      tags={tagsAtSearch}
       pickup={pickup}
       popularArticles={popularArticles}
     >

@@ -1,12 +1,13 @@
 import { memo } from "react";
 
-import { LoadMoreButton } from "@/components/atoms/buttons";
 import Spinner from "@/components/atoms/Spinner";
+
+import { LoadMoreButton } from "./LoadMoreButton";
 
 type Props = {
   hasNextPage: boolean;
   isValidating: boolean;
-  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick: () => void;
 };
 
 const Pagination: React.FC<Props> = ({ hasNextPage, isValidating, onClick: handleClick }: Props) => {

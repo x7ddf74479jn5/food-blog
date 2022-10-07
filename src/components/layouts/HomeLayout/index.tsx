@@ -5,7 +5,7 @@ import { RootLayout } from "@/components/layouts";
 import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
 import { ShareButtons } from "@/components/molecules/ShareButtons";
 import { CarouselContainer } from "@/components/organisms/article";
-import type { TCategory, TConfig, TPickup, TRankedArticle } from "@/types";
+import type { TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 
 const useShouldRenderCarousel = ({
   pickup,
@@ -29,6 +29,8 @@ type HomeLayoutProps = {
   url: string;
   pickup: TPickup;
   categories: TCategory[];
+  tags: TTag[];
+
   popularArticles: TRankedArticle[];
 };
 
@@ -39,12 +41,13 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({
   children,
   config,
   categories,
+  tags,
   popularArticles,
 }) => {
   const shouldRenderCarousel = useShouldRenderCarousel({ pickup, popularArticles });
 
   return (
-    <RootLayout config={config} categories={categories}>
+    <RootLayout config={config} categories={categories} tags={tags}>
       {shouldRenderCarousel && <CarouselContainer pickup={pickup} popularArticles={popularArticles} />}
       <MiddleAreaContainer>
         <AsideContainer className="order-2 md:order-1">

@@ -5,7 +5,7 @@ export type {
   TComparatorArticle,
   TRankedArticle,
 } from "./models/article";
-export type { TCategory, TCategoryListResponse } from "./models/category";
+export type { AllOrCategory, TCategory, TCategoryListResponse } from "./models/category";
 export type { TConfig } from "./models/config";
 export type { TPickup } from "./models/pickup";
 export type { TTag, TTagListResponse } from "./models/tag";

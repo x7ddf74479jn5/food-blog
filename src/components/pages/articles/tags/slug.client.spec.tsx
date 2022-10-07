@@ -27,6 +27,8 @@ describe("pages/articles/tags/[slug]/client", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockTagRice = mockTags.rice;
   const mockArticleList = Object.values(mockArticles);
+  const mockTagList = Object.values(mockTags);
+
   const mockData = {
     contents: mockArticleList,
     totalCount: mockArticleList.length,
@@ -40,6 +42,7 @@ describe("pages/articles/tags/[slug]/client", () => {
       <Tags
         tag={mockTagRice}
         categories={mockCategoryList}
+        tags={mockTagList}
         config={mockConfig}
         data={mockData}
         pickup={mockPickup}

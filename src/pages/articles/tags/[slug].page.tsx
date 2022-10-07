@@ -44,10 +44,12 @@ export const getStaticProps: GetStaticProps<TagsPageProps, Params> = async ({ pa
       return { notFound: true };
     }
 
-    const [data, config, categories, pickup, popularArticles] = await Promise.all([
+    const [data, config, categories, tags, pickup, popularArticles] = await Promise.all([
       getArticles({ filters: `tags[contains]${tag.id}` }),
       fetchConfig(),
       getCategories(),
+      fetchTags(),
+
       getPickupArticles(new Date()),
       getPopularArticles(),
     ]);
@@ -58,6 +60,7 @@ export const getStaticProps: GetStaticProps<TagsPageProps, Params> = async ({ pa
         tag,
         config,
         categories,
+        tags,
         pickup,
         popularArticles,
       },

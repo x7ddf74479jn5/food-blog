@@ -2,7 +2,7 @@ import type { ParsedUrlQuery } from "node:querystring";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { fetchCategories, fetchConfig } from "@/api";
+import { fetchCategories, fetchConfig, fetchTags } from "@/api";
 import type { CategoryProps } from "@/components/pages/articles/categories/Category";
 import { Category } from "@/components/pages/articles/categories/Category";
 import { sentryLogServer } from "@/lib/sentry/logger";
@@ -46,10 +46,12 @@ export const getStaticProps: GetStaticProps<CategoryPageProps, Params> = async (
       return { notFound: true };
     }
 
-    const [data, config, categories, pickup, popularArticles] = await Promise.all([
+    const [data, config, categories, tags, pickup, popularArticles] = await Promise.all([
       getArticles({ filters: `category[equals]${category.id}` }),
       fetchConfig(),
       getCategories(),
+      fetchTags(),
+
       getPickupArticles(new Date()),
       getPopularArticles(),
     ]);
@@ -60,6 +62,7 @@ export const getStaticProps: GetStaticProps<CategoryPageProps, Params> = async (
         category,
         config,
         categories,
+        tags,
         pickup,
         popularArticles,
       },
