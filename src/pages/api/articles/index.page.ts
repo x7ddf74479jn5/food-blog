@@ -17,10 +17,7 @@ const articlesQuerySchema = z.object({
     .default("0")
     .transform((v) => Number(v)),
   q: z.string(),
-  filters: z
-    .string()
-    .refine((value) => Boolean(value.trim().length))
-    .optional(),
+  filters: z.string().optional(),
 });
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
