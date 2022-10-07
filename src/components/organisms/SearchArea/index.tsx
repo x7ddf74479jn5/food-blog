@@ -5,7 +5,7 @@ import type { TCategory, TTag } from "@/types";
 import { classNames } from "@/utils/css";
 
 import SearchBar from "./SearchBar";
-import { SearchProvider, useSearchState } from "./SearchContext";
+import { useSearchState } from "./SearchContext";
 import { SearchFilter } from "./SearchFilter";
 import { useSearch } from "./useSearch";
 
@@ -37,7 +37,7 @@ type SearchAreaProps = {
   tags: TTag[];
 };
 
-const SearchAreaCore: React.FC<SearchAreaProps> = (props) => {
+export const SearchArea: React.FC<SearchAreaProps> = memo((props) => {
   const [isFilterEnabled, toggleFilter] = useSearchFilter();
   const { search } = useSearchArea();
 
@@ -62,12 +62,6 @@ const SearchAreaCore: React.FC<SearchAreaProps> = (props) => {
       </div>
     </>
   );
-};
-
-export const SearchArea: React.FC<SearchAreaProps> = memo((props) => (
-  <SearchProvider>
-    <SearchAreaCore {...props} />
-  </SearchProvider>
-));
+});
 
 SearchArea.displayName = "SearchArea";
