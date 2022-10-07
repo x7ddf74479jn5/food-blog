@@ -2,11 +2,11 @@ import type { ParsedUrlQuery } from "node:querystring";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { fetchConfig, fetchTag, fetchTags } from "@/api";
 import type { TagsProps } from "@/components/pages/articles/tags";
 import { Tags } from "@/components/pages/articles/tags";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import ErrorPage from "@/pages/_error/index.page";
+import { fetchConfig, fetchTag, fetchTags } from "@/repositories";
 import { getArticles, getPickupArticles, getPopularArticles } from "@/services/article";
 import { getCategories } from "@/services/category";
 import type { PagePropsOrError } from "@/types";

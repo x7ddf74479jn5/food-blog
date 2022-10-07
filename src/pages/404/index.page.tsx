@@ -1,8 +1,8 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { fetchConfig, fetchTags } from "@/api";
 import type { Error404Props } from "@/components/pages/error/404";
 import { Error404 } from "@/components/pages/error/404";
+import { fetchConfig, fetchTags } from "@/repositories";
 import { getCategories } from "@/services/category";
 
 const Error404Page: NextPage<Error404Props> = (props) => <Error404 {...props} />;

@@ -1,4 +1,4 @@
-import { fetchCategories, fetchCategory } from "@/api";
+import { fetchCategories, fetchCategory } from "@/repositories";
 import type { TCategory } from "@/types";
 import { generateImageBlurDataURL } from "@/utils/image";
 

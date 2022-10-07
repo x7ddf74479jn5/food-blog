@@ -1,7 +1,7 @@
 import type { MicroCMSQueries } from "microcms-js-sdk";
 
-import { fetchArticle, fetchArticles, fetchPickupArticles } from "@/api";
 import { runReport } from "@/lib/google-analytics/report";
+import { fetchArticle, fetchArticles, fetchPickupArticles } from "@/repositories";
 import type { TArticle, TPickup, TRankedArticle, TTag } from "@/types";
 import { generateImageBlurDataURL } from "@/utils/image";
 
