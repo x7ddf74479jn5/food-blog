@@ -1,61 +1,64 @@
+import { Combobox } from "@headlessui/react";
 import { useCallback, useState } from "react";
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
-import { usePopover } from "@/hooks/usePopover";
+import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
 
 import { useSearchMutation, useSearchState } from "../SearchContext";
 import { useSearch } from "../useSearch";
-import { SearchHistory } from "./SearchHistory";
 
 const useSearchBar = () => {
-  const { text } = useSearchState();
+  const { text, history } = useSearchState();
   const { setText } = useSearchMutation();
   const q = text.trim();
   const { search } = useSearch({ q });
 
-  const textSearch = () => {
+  const textSearch = useCallback(() => {
     if (q === "") return;
     search();
-  };
+  }, [q, search]);
 
   return {
     text,
     setText,
+    history,
     textSearch,
   };
 };
 
 const SearchBar: React.FC = () => {
-  const { text, setText, textSearch } = useSearchBar();
-  const { isActive, setIsActive, ref } = usePopover<HTMLDivElement>();
-  const [isShow, setIsShow] = useState(isActive);
+  const { text, setText, history, textSearch } = useSearchBar();
+  const [isShow, setIsShow] = useState(false);
+  const [isComposing, setIsComposing] = useState(false);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setText(event.target.value);
+  const handleChangeInput = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => setText(event.target.value),
+    [setText]
+  );
 
-  const handleFocus = () => setIsActive(true);
+  const handleFocus = useCallback(() => setIsShow(true), []);
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    switch (event.key) {
-      case "Enter": {
-        textSearch();
-        setIsShow(false);
+  const handleComposing = useCallback((isComposing: boolean) => setIsComposing(isComposing), []);
+
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      switch (event.key) {
+        case "Enter": {
+          if (isComposing) return;
+          textSearch();
+        }
       }
-      case "ArrowDown": {
-        setIsShow(true);
-      }
-    }
-  };
+    },
+    [isComposing, textSearch]
+  );
 
-  const handleSubmit = () => {
-    textSearch();
-    setIsShow(false);
-  };
+  const handleChangeCombobox = useCallback((text: string) => setText(text), [setText]);
 
-  const handleCloseSearch = useCallback(() => setIsShow(false), []);
+  const handleBlur = useCallback(() => setIsShow(false), []);
 
   return (
-    <div ref={ref} className="relative">
+    <Combobox as="div" className="relative" value={text} onChange={handleChangeCombobox}>
       <div className="flex items-center space-x-2 rounded-full bg-gray-100 py-2 px-3 dark:bg-gray-700">
         <IconContext.Provider
           value={{
@@ -65,20 +68,53 @@ const SearchBar: React.FC = () => {
           <FaSearch />
         </IconContext.Provider>
 
-        <input
+        <Combobox.Input
           type="search"
           placeholder="Search..."
           className="w-full bg-gray-100 focus:outline-none dark:bg-gray-700 dark:text-gray-100"
-          onChange={handleChange}
+          onChange={handleChangeInput}
           onFocus={handleFocus}
+          onBlur={handleBlur}
           onKeyDown={handleKeyDown}
-          onSubmit={handleSubmit}
+          onCompositionStart={() => handleComposing(true)}
+          onCompositionEnd={() => handleComposing(false)}
           value={text}
         />
       </div>
 
-      <SearchHistory show={isShow} onClose={handleCloseSearch} />
-    </div>
+      <DropdownTransition show={isShow}>
+        <Combobox.Options
+          static
+          className="fixed z-10 mt-1 mr-4 max-h-[50vh] overflow-y-auto rounded-md border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-600 dark:bg-gray-700"
+        >
+          {text.length > 0 && !history.includes(text) && (
+            <Combobox.Option
+              value={text}
+              className={({ active }) =>
+                `cursor-pointer py-2 px-4 text-left text-sm leading-5  dark:text-gray-100 ${
+                  active ? "bg-gray-100 dark:bg-green-500" : "bg-white dark:bg-gray-700"
+                } `
+              }
+            >
+              {text}
+            </Combobox.Option>
+          )}
+          {history.map((history) => (
+            <Combobox.Option
+              key={history}
+              value={history}
+              className={({ active }) =>
+                `cursor-pointer py-2 px-4 text-left text-sm leading-5  dark:text-gray-100 ${
+                  active ? "bg-gray-100 dark:bg-green-500" : "bg-white dark:bg-gray-700"
+                } `
+              }
+            >
+              {history}
+            </Combobox.Option>
+          ))}
+        </Combobox.Options>
+      </DropdownTransition>
+    </Combobox>
   );
 };
 

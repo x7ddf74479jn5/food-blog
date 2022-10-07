@@ -14,7 +14,7 @@ useRouter.mockImplementation(() => {
 describe("components/organisms/SearchArea/SearchBar", () => {
   it("OK: 初期レンダリング", () => {
     render(<SearchBar />);
-    const input = screen.getByRole("searchbox");
+    const input = screen.getByRole("combobox");
     expect(input).toHaveValue("");
     const placeholder = screen.getByPlaceholderText("Search...");
     expect(placeholder).toBeTruthy();
@@ -30,7 +30,7 @@ describe("components/organisms/SearchArea/SearchBar", () => {
 
     it("OK: 入力イベント", async () => {
       render(<SearchBar />);
-      const input = screen.getByRole("searchbox");
+      const input = screen.getByRole("combobox");
       expect(input).toHaveValue("");
 
       const testText = "test";
@@ -40,7 +40,7 @@ describe("components/organisms/SearchArea/SearchBar", () => {
 
     it("OK: 検索イベント", async () => {
       render(<SearchBar />);
-      const input = screen.getByRole("searchbox");
+      const input = screen.getByRole("combobox");
       expect(input).toHaveValue("");
 
       const testText = "test";
@@ -53,7 +53,7 @@ describe("components/organisms/SearchArea/SearchBar", () => {
 
     it("OK: フォーカスイベント", async () => {
       const { container } = render(<SearchBar />);
-      const input = screen.getByRole("searchbox");
+      const input = screen.getByRole("combobox");
 
       expect(input).not.toHaveFocus();
       await user.click(input);
@@ -65,7 +65,7 @@ describe("components/organisms/SearchArea/SearchBar", () => {
 
     it("OK: 検索履歴から補完できる", async () => {
       render(<SearchBar />);
-      const input = screen.getByRole("searchbox");
+      const input = screen.getByRole("combobox");
       expect(input).toHaveValue("");
 
       const testText = "test";
@@ -80,7 +80,7 @@ describe("components/organisms/SearchArea/SearchBar", () => {
       expect(input).toHaveValue("");
 
       await user.click(option);
-      expect(input).toHaveValue(testText);
+      expect(option).not.toBeInTheDocument();
     });
   });
 });

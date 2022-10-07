@@ -2,7 +2,7 @@ import type { TransitionEvents } from "@headlessui/react";
 import { Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
-type DropdownTransitionProps = TransitionEvents;
+type DropdownTransitionProps = TransitionEvents & { show?: boolean | undefined; appear?: boolean | undefined };
 
 export const DropdownTransition: React.FC<React.PropsWithChildren<DropdownTransitionProps>> = (props) => {
   return (
