@@ -6,7 +6,7 @@ import { testApiHandler } from "next-test-api-route-handler";
 
 import * as ArticleService from "@/services/article";
 
-import handler from "./index.page";
+import handler from ".";
 
 jest.mock("@/services/article");
 

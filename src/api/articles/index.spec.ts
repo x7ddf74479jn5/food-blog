@@ -7,7 +7,7 @@ import { testApiHandler } from "next-test-api-route-handler";
 
 import type { TArticleListResponse } from "@/types";
 
-import handler from "./index.page";
+import handler from ".";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
