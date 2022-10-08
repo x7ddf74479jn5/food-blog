@@ -21,7 +21,6 @@ const articlesQuerySchema = z.object({
 });
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log("req: ", req);
   if (req.method !== "GET") {
     return res.status(405).json({ message: "Method Not Allowed" });
   }

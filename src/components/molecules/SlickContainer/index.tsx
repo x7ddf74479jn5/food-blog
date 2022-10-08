@@ -1,16 +1,14 @@
 import type { Settings } from "react-slick";
 import Slick from "react-slick";
 
-import { useMedia } from "@/hooks/useMedia";
-
-const getSettings = (isMobile: boolean): Settings => {
+const getSettings = (): Settings => {
   return {
     pauseOnHover: true,
     arrows: false,
     dots: true,
     infinite: true,
     slidesToShow: 2,
-    autoplay: isMobile ? false : true,
+    autoplay: false,
     speed: 500,
     cssEase: "ease-out",
     responsive: [
@@ -29,7 +27,5 @@ type SlickContainerProps = {
 };
 
 export const SlickContainer: React.FC<SlickContainerProps> = ({ children }) => {
-  const isMobile = useMedia("<=", "sm");
-
-  return <Slick {...getSettings(isMobile)}>{children}</Slick>;
+  return <Slick {...getSettings()}>{children}</Slick>;
 };
