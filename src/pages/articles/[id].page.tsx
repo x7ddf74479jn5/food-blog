@@ -2,12 +2,12 @@ import type { ParsedUrlQuery } from "node:querystring";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-import { fetchArticles, fetchConfig, fetchTags } from "@/api";
 import type { ArticleDetailProps } from "@/components/pages/articles/ArticleDetail";
 import { ArticleDetail } from "@/components/pages/articles/ArticleDetail";
 import { mdx2html } from "@/lib/mdx";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import ErrorPage from "@/pages/_error/index.page";
+import { fetchArticles, fetchConfig, fetchTags } from "@/repositories";
 import { getArticle, getPickupArticles, getPopularArticles, getRelatedArticles } from "@/services/article";
 import { getCategories } from "@/services/category";
 import type { PagePropsOrError } from "@/types";

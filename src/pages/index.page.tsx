@@ -1,10 +1,10 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { fetchConfig, fetchTags } from "@/api";
 import type { HomeProps } from "@/components/pages/Home";
 import { Home } from "@/components/pages/Home";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import ErrorPage from "@/pages/_error/index.page";
+import { fetchConfig, fetchTags } from "@/repositories";
 import { getArticles, getPickupArticles, getPopularArticles } from "@/services/article";
 import { getCategories } from "@/services/category";
 import type { PagePropsOrError } from "@/types";
