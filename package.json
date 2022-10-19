@@ -63,6 +63,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.19.1",
+    "@builder.io/partytown": "0.7.1",
     "@next/bundle-analyzer": "12.3.0",
     "@playwright/test": "1.25.2",
     "@storybook/addon-a11y": "6.5.12",

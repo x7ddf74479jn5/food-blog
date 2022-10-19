@@ -23,6 +23,7 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     scrollRestoration: true,
+    nextScriptWorkers: true,
   },
   sentry: {
     hideSourceMaps: true,
