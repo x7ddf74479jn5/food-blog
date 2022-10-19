@@ -7,11 +7,12 @@ type Props = {
   "aria-label"?: string;
   onClick?: () => void;
   children?: React.ReactNode;
+  prefetch?: boolean;
 };
 
-const NextLink: React.FC<Props> = ({ href, children, ...rest }: Props) => {
+const NextLink: React.FC<Props> = ({ href, children, prefetch = false, ...rest }) => {
   return (
-    <Link href={href}>
+    <Link href={href} prefetch={prefetch}>
       <a {...rest}>{children}</a>
     </Link>
   );
