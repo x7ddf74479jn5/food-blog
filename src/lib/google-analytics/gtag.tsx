@@ -51,7 +51,7 @@ export const GoogleAnalytics = () => (
   <>
     {existsGaId && (
       <>
-        <Script defer src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script defer src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="worker" />
         <Script
           id="gtag"
           defer
@@ -64,7 +64,7 @@ export const GoogleAnalytics = () => (
               gtag('config', '${GA_ID}', {'debug_mode': ${process.env.NODE_ENV === "development"}});
             `,
           }}
-          strategy="afterInteractive"
+          strategy="worker"
         />
       </>
     )}
