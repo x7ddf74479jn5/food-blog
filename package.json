@@ -122,5 +122,9 @@
   },
   "msw": {
     "workerDirectory": "public"
-  }
+  },
+  "browserslist": [
+    "> 1% in JP",
+    "not IE 11"
+  ]
 }
