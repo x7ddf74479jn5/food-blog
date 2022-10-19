@@ -28,14 +28,6 @@ export const useMediaQuery = (query: string) => {
       setMatch(media.matches);
     }
 
-    const listener = () => setMatch(media.matches);
-    /**
-     * addListener は非推奨だが、古いブラウザのために使用している。
-     * 古いブラウザを切るなら window.addEventListener("resize", listener) が推奨。
-     */
-    media.addListener(listener);
-    return () => media.removeListener(listener);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
