@@ -4,13 +4,14 @@ import { ErrorBoundary } from "react-error-boundary";
 
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 import { sentryLog } from "@/lib/sentry";
+import { toIdleTask } from "@/utils";
 
 const FallbackComponent = ({ error, resetErrorBoundary }: FallbackProps) => {
   const handleReset = () => resetErrorBoundary();
 
   useEffect(() => {
     if (error) {
-      sentryLog(error, { tags: { type: "UI" } });
+      toIdleTask(() => sentryLog(error, { tags: { type: "UI" } }));
     }
   }, [error]);
 
