@@ -1,13 +1,13 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { useEffect } from "react";
 
 import type Event from "@/types/gtm-event";
+import { toIdleTask } from "@/utils";
 
 export const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 
-export const existsGaId = GA_ID !== "";
+export const isExistsGaId = GA_ID !== "";
 
 export const pageview = (path: string) => {
   window.gtag("config", GA_ID, {
@@ -16,7 +16,7 @@ export const pageview = (path: string) => {
 };
 
 export const event = ({ action, category, label, value = "" }: Event) => {
-  if (!existsGaId) {
+  if (!isExistsGaId) {
     return;
   }
 
@@ -31,12 +31,12 @@ export const usePageView = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!existsGaId) {
+    if (!isExistsGaId) {
       return;
     }
 
     const handleRouteChange = (path: string) => {
-      pageview(path);
+      toIdleTask(() => pageview(path));
     };
 
     router.events.on("routeChangeComplete", handleRouteChange);
@@ -46,17 +46,15 @@ export const usePageView = () => {
   }, [router.events]);
 };
 
-// _app.tsx で読み込む
 export const GoogleAnalytics = () => (
   <>
-    {existsGaId && (
+    {isExistsGaId && (
       <>
         <Script defer src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="worker" />
         <Script
           id="gtag"
           defer
           dangerouslySetInnerHTML={{
-            // eslint-disable-next-line @typescript-eslint/naming-convention
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
