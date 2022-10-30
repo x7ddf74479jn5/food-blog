@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import type { ComponentPropsWithoutRef, FC } from "react";
 
 type CustomImageProps = ComponentPropsWithoutRef<"img">;
