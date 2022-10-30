@@ -1,8 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./toc.css";
-@import "./carousel.css";
 
 @layer base {
   a,
@@ -58,4 +56,16 @@
   .dropdown-inactive {
     @apply text-gray-700 dark:text-gray-300 cursor-default;
   }
+}
+
+.toc {
+  @apply relative px-4 pb-2;
+}
+
+.toc-list {
+  @apply ml-4 space-y-4 list-disc;
+}
+
+.toc-list .toc-list-item {
+  @apply mx-0 p-0;
 }
