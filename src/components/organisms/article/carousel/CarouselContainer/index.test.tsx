@@ -3,16 +3,6 @@ import { fireEvent, render, screen } from "jest/test-utils";
 
 import { CarouselContainer } from ".";
 
-jest.mock("react-slick", () => {
-  return {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    __esModule: true,
-    default: jest.fn((args) => {
-      return <div>{args.children}</div>;
-    }),
-  };
-});
-
 describe("components/organisms/CarouselContainer", () => {
   const { description, articles } = mockPickup;
 

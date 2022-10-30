@@ -21,16 +21,6 @@ jest.mock("next/head", () => {
   };
 });
 
-jest.mock("react-slick", () => {
-  return {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    __esModule: true,
-    default: jest.fn((args) => {
-      return <div>{args.children}</div>;
-    }),
-  };
-});
-
 describe("pages/index", () => {
   const mockCategoryList = Object.values(mockCategories);
   const mockArticleList = Object.values(mockArticles);
