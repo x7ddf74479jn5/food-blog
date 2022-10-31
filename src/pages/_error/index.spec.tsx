@@ -1,6 +1,6 @@
 import { render, screen } from "jest/test-utils";
 
-import ErrorPage from "./index.page";
+import ErrorPage from "./page";
 
 describe("pages/_error", () => {
   it("OK: 初期レンダリング", async () => {

@@ -1,21 +1,21 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import type { CategoriesProps } from "@/components/pages/articles/categories/Categories";
-import { Categories } from "@/components/pages/articles/categories/Categories";
+import type { PopularProps } from "@/components/pages/articles/Popular";
+import { Popular } from "@/components/pages/articles/Popular";
 import { sentryLogServer } from "@/lib/sentry/logger";
-import ErrorPage from "@/pages/_error/index.page";
+import ErrorPage from "@/pages/_error/page";
 import { fetchConfig, fetchTags } from "@/repositories";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import { getCategories } from "@/services/category";
 import type { PagePropsOrError } from "@/types";
 
-type CategoriesPageProps = PagePropsOrError<CategoriesProps>;
+type PopularPageProps = PagePropsOrError<PopularProps>;
 
-const CategoriesPage: NextPage<CategoriesPageProps> = (props) => {
-  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Categories {...props} />;
+const PopularPage: NextPage<PopularPageProps> = (props) => {
+  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Popular {...props} />;
 };
 
-export const getStaticProps: GetStaticProps<CategoriesPageProps> = async () => {
+export const getStaticProps: GetStaticProps<PopularPageProps> = async () => {
   try {
     const [config, categories, tags, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
@@ -49,4 +49,4 @@ export const getStaticProps: GetStaticProps<CategoriesPageProps> = async () => {
   }
 };
 
-export default CategoriesPage;
+export default PopularPage;

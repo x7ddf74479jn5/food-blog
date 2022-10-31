@@ -4,7 +4,7 @@ import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { HtmlHeadNoIndex } from "@/components/functions/meta";
 import { mdx2html } from "@/lib/mdx";
 import { sentryLogServer } from "@/lib/sentry/logger";
-import ErrorPage from "@/pages/_error/index.page";
+import ErrorPage from "@/pages/_error/page";
 import type { ArticleDetailPageProps } from "@/pages/articles/[id].page";
 import { ArticleDetailPage } from "@/pages/articles/[id].page";
 import { fetchConfig, fetchTags } from "@/repositories";

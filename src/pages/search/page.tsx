@@ -3,7 +3,7 @@ import type { GetStaticProps, NextPage } from "next";
 import type { SearchProps } from "@/components/pages/Search";
 import { Search } from "@/components/pages/Search";
 import { sentryLogServer } from "@/lib/sentry/logger";
-import ErrorPage from "@/pages/_error/index.page";
+import ErrorPage from "@/pages/_error/page";
 import { fetchConfig, fetchTags } from "@/repositories";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import { getCategories } from "@/services/category";

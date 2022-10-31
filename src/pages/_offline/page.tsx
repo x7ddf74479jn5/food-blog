@@ -3,7 +3,7 @@ import type { GetStaticProps, NextPage } from "next";
 import type { OfflineProps } from "@/components/pages/Offline";
 import { Offline } from "@/components/pages/Offline";
 import { sentryLogServer } from "@/lib/sentry/logger";
-import ErrorPage from "@/pages/_error/index.page";
+import ErrorPage from "@/pages/_error/page";
 import { fetchConfig, fetchTags } from "@/repositories";
 import { getCategories } from "@/services/category";
 import type { PagePropsOrError } from "@/types";
