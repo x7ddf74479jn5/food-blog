@@ -1,9 +1,9 @@
 import type { GetStaticProps, NextPage } from "next";
 
+import ErrorPage from "@/app/_error/page";
 import type { CategoriesProps } from "@/components/pages/articles/categories/Categories";
 import { Categories } from "@/components/pages/articles/categories/Categories";
 import { sentryLogServer } from "@/lib/sentry/logger";
-import ErrorPage from "@/pages/_error/page";
 import { fetchConfig, fetchTags } from "@/repositories";
 import { getPickupArticles, getPopularArticles } from "@/services/article";
 import { getCategories } from "@/services/category";

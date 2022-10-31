@@ -4,7 +4,7 @@ import { server } from "mocks/msw/server";
 
 import { mdx2html } from "@/lib/mdx";
 
-import ArticlePreviewPage from "./[id].page";
+import ArticlePreviewPage from "./page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());

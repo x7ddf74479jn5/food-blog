@@ -1,21 +1,21 @@
 // @jest-environment node
 
-import { mockCategories } from "@mocks/data";
+import { mockTags } from "@mocks/data";
 import { server } from "mocks/msw/server";
 
-import { getStaticPaths } from "./[slug].page";
+import { getStaticPaths } from "./page";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
 
-describe("pages/articles/categories/[slug]/server", () => {
-  const mockCategoryList = Object.values(mockCategories);
+describe("pages/articles/tags/[slug]/server", () => {
+  const mockTagList = Object.values(mockTags);
 
   it("getStaticPaths", async () => {
     const { paths, fallback } = await getStaticPaths({});
     expect(fallback).toBe("blocking");
 
-    const expectedPaths = mockCategoryList.map((category) => category.slug);
+    const expectedPaths = mockTagList.map((tag) => tag.slug);
 
     for (const path of paths) {
       if (typeof path === "string") return;
