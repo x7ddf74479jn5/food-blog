@@ -2,19 +2,10 @@ import "@/styles/global.css";
 
 import { DefaultSeo } from "next-seo";
 import SEO from "next-seo.config";
-import { ThemeProvider } from "next-themes";
 
-import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
 import { GoogleAnalytics } from "@/lib/google-analytics";
 
-// FIXME: MSW is broken "ERR_UNSUPPORTED_DIR_IMPORT"
-// if (process.env.NEXT_PUBLIC_MSW_ENABLED === "true") {
-//   (async () => {
-//     const { setupMSW } = await import("../../mocks/msw/worker");
-//     setupMSW();
-//     console.info("MSW is enabled");
-//   })();
-// }
+import { RootProvider } from "./provider";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -22,16 +13,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <head />
       <DefaultSeo {...SEO} />
       <GoogleAnalytics />
-      <ThemeProvider attribute="class" enableSystem>
-        <SearchProvider>
-          <body
-            className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"
-            style={{ overflowAnchor: "none" }}
-          >
-            {children}
-          </body>
-        </SearchProvider>
-      </ThemeProvider>
+      <RootProvider>
+        <body className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100" style={{ overflowAnchor: "none" }}>
+          {children}
+        </body>
+      </RootProvider>
     </html>
   );
 };
