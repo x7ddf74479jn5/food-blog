@@ -1,24 +1,24 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { usePathname } from "next/navigation";
 import Script from "next/script";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import type Event from "@/types/gtm-event";
 import { toIdleTask } from "@/utils";
 
-export const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 
-export const isExistsGaId = GA_ID !== "";
+const isExistsGaId = GA_ID !== "";
 
-export const pageview = (path: string) => {
+const pageview = (path: string) => {
   window.gtag("config", GA_ID, {
     page_path: path,
   });
 };
 
 export const event = ({ action, category, label, value = "" }: Event) => {
-  if (!isExistsGaId) {
-    return;
-  }
+  if (!isExistsGaId) return;
 
   window.gtag("event", action, {
     event_category: category,
@@ -27,44 +27,41 @@ export const event = ({ action, category, label, value = "" }: Event) => {
   });
 };
 
-export const usePageView = () => {
-  const router = useRouter();
+const usePageView = () => {
+  const pathname = usePathname();
+  const prevPathRef = useRef(pathname);
 
   useEffect(() => {
-    if (!isExistsGaId) {
-      return;
-    }
+    if (!isExistsGaId || prevPathRef.current === pathname) return;
 
-    const handleRouteChange = (path: string) => {
-      toIdleTask(() => pageview(path));
-    };
-
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
+    toIdleTask(() => pageview(pathname));
+    prevPathRef.current = pathname;
+  }, [pathname]);
 };
 
-export const GoogleAnalytics = () => (
-  <>
-    {isExistsGaId && (
-      <>
-        <Script defer src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-        <Script
-          id="gtag"
-          defer
-          dangerouslySetInnerHTML={{
-            __html: `
+export const GoogleAnalytics = () => {
+  usePageView();
+
+  return (
+    <>
+      {isExistsGaId && (
+        <>
+          <Script defer src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+          <Script
+            id="gtag"
+            defer
+            dangerouslySetInnerHTML={{
+              __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());    
               gtag('config', '${GA_ID}', {'debug_mode': ${process.env.NODE_ENV === "development"}});
             `,
-          }}
-          strategy="afterInteractive"
-        />
-      </>
-    )}
-  </>
-);
+            }}
+            strategy="afterInteractive"
+          />
+        </>
+      )}
+    </>
+  );
+};
