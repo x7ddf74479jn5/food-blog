@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { useEffect, useRef } from "react";
 
@@ -29,14 +29,16 @@ export const event = ({ action, category, label, value = "" }: Event) => {
 
 const usePageView = () => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const prevPathRef = useRef(pathname);
+  const url = pathname + searchParams.toString();
 
   useEffect(() => {
-    if (!isExistsGaId || prevPathRef.current === pathname) return;
+    if (!isExistsGaId || prevPathRef.current === url) return;
 
-    toIdleTask(() => pageview(pathname));
-    prevPathRef.current = pathname;
-  }, [pathname]);
+    toIdleTask(() => pageview(url));
+    prevPathRef.current = url;
+  }, [url]);
 };
 
 export const GoogleAnalytics = () => {
