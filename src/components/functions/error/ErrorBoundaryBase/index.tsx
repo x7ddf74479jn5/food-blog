@@ -1,17 +1,27 @@
+import dynamic from "next/dynamic";
 import { memo, useEffect } from "react";
 import type { FallbackProps } from "react-error-boundary";
 import { ErrorBoundary } from "react-error-boundary";
 
-import { ErrorFallback } from "@/components/organisms/ErrorFallback";
-import { sentryLog } from "@/lib/sentry";
-import { toIdleTask } from "@/utils";
+const ErrorFallback = dynamic(
+  () => import("@/components/organisms/ErrorFallback").then(({ ErrorFallback }) => ErrorFallback),
+  { ssr: false }
+);
 
 const FallbackComponent = ({ error, resetErrorBoundary }: FallbackProps) => {
   const handleReset = () => resetErrorBoundary();
 
   useEffect(() => {
     if (error) {
-      toIdleTask(() => sentryLog(error, { tags: { type: "UI" } }));
+      const sendError = async () => {
+        const { toIdleTask } = await import("@/utils");
+        toIdleTask(async () => {
+          const { sentryLog } = await import("@/lib/sentry");
+          toIdleTask(() => sentryLog(error, { tags: { type: "UI" } }));
+        });
+      };
+
+      sendError();
     }
   }, [error]);
 
