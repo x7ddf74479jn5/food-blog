@@ -15,7 +15,6 @@ module.exports = {
     "no-restricted-syntax": ["error", { selector: "TSEnumDeclaration", message: "Don't declare enums" }],
     "prefer-arrow-callback": "error",
     "prefer-const": "error",
-    "func-style": ["error", "expression"],
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/display-name": "error",

@@ -3,6 +3,7 @@ import type { MicroCMSQueries } from "microcms-js-sdk";
 import { runReport } from "@/lib/google-analytics/report";
 import { fetchArticle, fetchArticles, fetchPickupArticles } from "@/repositories";
 import type { TArticle, TPickup, TRankedArticle, TTag } from "@/types";
+import { combination } from "@/utils";
 import { generateImageBlurDataURL } from "@/utils/image";
 
 const makeArticleWithPlaceholderImage = async (article: TArticle) => {
@@ -24,59 +25,40 @@ export const getArticles = async (queries: MicroCMSQueries) => {
   return { ...res, contents: articles };
 };
 
-/**
- * 走査対象のタグを重複なし2個ずつにグループ化
- *
- * @param {TTag[]} tags 走査対象のタグ
- * @param {string[]} [excludedId=[]] 除外する記事ID
- * @return {string[]} 検索フィルター
- */
-export const buildTagPairsFilter = (tags: TTag[], excludedId: string[] = []) => {
-  const _pairs = [];
-  for (let t = 0; t < tags.length; t++) {
-    for (let tt = t + 1; tt < tags.length; tt++) {
-      _pairs.push(`(tags[contains]${tags[t].id}[and]tags[contains]${tags[tt].id})`);
-    }
-  }
+const buildTagFilterString = (tagsList: TTag[][]) => {
+  if (tagsList.length < 1) return "";
 
-  const excluded = excludedId.map((id) => `id[not_equals]${id}`).join("[and]");
+  const tagFilterString = tagsList
+    .map((tags) => {
+      const partial = "(" + tags.map((tag) => `tags[contains]${tag.id}`).join("[and]") + ")";
+      return partial;
+    })
+    .join("[or]");
 
-  if (_pairs.length === 0) return "";
-
-  return [_pairs.join("[or]"), excluded].join("[and]");
+  return tagFilterString;
 };
 
-/**
- * 走査対象のタグを重複なし３個ずつにグループ化
- *
- * @param {TTag[]} tags 走査対象のタグ
- * @param {string[]} [excludedId=[]] 除外する記事ID
- * @return {string[]} 検索フィルター
- */
-export const buildTagTriosFilter = (tags: TTag[], excludedId: string[] = []) => {
-  const _trios = [];
-  for (let t = 0; t < tags.length; t++) {
-    for (let tt = t + 1; tt < tags.length; tt++) {
-      for (let ttt = tt + 1; ttt < tags.length; ttt++) {
-        _trios.push(`(tags[contains]${tags[t].id}[and]tags[contains]${tags[tt].id}[and]tags[contains]${tags[ttt].id})`);
-      }
-    }
-  }
+export const concatTagsThroughCombination = (tags: TTag[]) => {
+  const trioTags = Array.from(combination(tags, 3));
+  const pairTags = Array.from(combination(tags, 2));
+  return [...trioTags, ...pairTags];
+};
 
-  const excluded = excludedId.map((id) => `id[not_equals]${id}`).join("[and]");
-
-  if (_trios.length === 0) return "";
-
-  return [_trios.join("[or]"), excluded].join("[and]");
+export const buildFilterString = (tagsList: TTag[][], excludedArticleId: string) => {
+  const tagFilterString = buildTagFilterString(tagsList);
+  const excludedArticleFilterString = `id[not_equals]${excludedArticleId}`;
+  return tagFilterString + "[and]" + excludedArticleFilterString;
 };
 
 export const getRelatedArticles = async (article: TArticle, limit = 4) => {
-  const trioTagFilter = buildTagTriosFilter(article.tags, [article.id]);
-  const trios = trioTagFilter ? await (await fetchArticles({ filters: trioTagFilter })).contents : [];
-  const pairTagFilter = buildTagPairsFilter(article.tags, [article.id, ...trios.map((article) => article.id)]);
-  const pairs = pairTagFilter ? (await fetchArticles({ filters: pairTagFilter })).contents : [];
-  const combinedArticles = [...trios, ...pairs].slice(0, limit);
-  const finalArticles = await Promise.all(combinedArticles.map(makeArticleWithPlaceholderImage));
+  const concatenatedTags = concatTagsThroughCombination(article.tags);
+
+  if (concatenatedTags.length === 0) return [];
+
+  const filters = buildFilterString(concatenatedTags.slice(0, limit), article.id);
+  const resArticles = (await fetchArticles({ filters })).contents;
+  const distinct = [...new Set(resArticles)];
+  const finalArticles = await Promise.all(distinct.map(makeArticleWithPlaceholderImage));
 
   return finalArticles;
 };
