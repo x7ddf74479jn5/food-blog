@@ -2,7 +2,7 @@ import type { MicroCMSQueries } from "microcms-js-sdk";
 
 import { runReport } from "@/lib/google-analytics/report";
 import { fetchArticle, fetchArticles, fetchPickupArticles } from "@/repositories";
-import type { TArticle, TPickup, TRankedArticle, TTag } from "@/types";
+import type { TArticle, TPickup, TRankedArticle } from "@/types";
 import { combination } from "@/utils";
 import { generateImageBlurDataURL } from "@/utils/image";
 
@@ -25,12 +25,12 @@ export const getArticles = async (queries: MicroCMSQueries) => {
   return { ...res, contents: articles };
 };
 
-const buildTagFilterString = (tagsList: TTag[][]) => {
-  if (tagsList.length < 1) return "";
+const buildTagFilterString = (tagIdsList: string[][]) => {
+  if (tagIdsList.length < 1) return "";
 
-  const tagFilterString = tagsList
-    .map((tags) => {
-      const partial = "(" + tags.map((tag) => `tags[contains]${tag.id}`).join("[and]") + ")";
+  const tagFilterString = tagIdsList
+    .map((tagIds) => {
+      const partial = "(" + tagIds.map((id) => `tags[contains]${id}`).join("[and]") + ")";
       return partial;
     })
     .join("[or]");
@@ -38,27 +38,28 @@ const buildTagFilterString = (tagsList: TTag[][]) => {
   return tagFilterString;
 };
 
-export const concatTagsThroughCombination = (tags: TTag[]) => {
-  const trioTags = Array.from(combination(tags, 3));
-  const pairTags = Array.from(combination(tags, 2));
+export const concatTagGroupThroughCombination = (tagIds: string[]) => {
+  const trioTags = Array.from(combination(tagIds, 3));
+  const pairTags = Array.from(combination(tagIds, 2));
   return [...trioTags, ...pairTags];
 };
 
-export const buildFilterString = (tagsList: TTag[][], excludedArticleId: string) => {
-  const tagFilterString = buildTagFilterString(tagsList);
+export const buildFilterString = (tagIdsList: string[][], excludedArticleId: string) => {
+  const tagFilterString = buildTagFilterString(tagIdsList);
   const excludedArticleFilterString = `id[not_equals]${excludedArticleId}`;
   return tagFilterString + "[and]" + excludedArticleFilterString;
 };
 
 export const getRelatedArticles = async (article: TArticle, limit = 4) => {
-  const concatenatedTags = concatTagsThroughCombination(article.tags);
+  const tagIds = article.tags.map((tag) => tag.id);
+  const tagGroups = concatTagGroupThroughCombination(tagIds);
 
-  if (concatenatedTags.length === 0) return [];
+  if (tagGroups.length === 0) return [];
 
-  const filters = buildFilterString(concatenatedTags.slice(0, limit), article.id);
+  const filters = buildFilterString(tagGroups, article.id);
   const resArticles = (await fetchArticles({ filters })).contents;
-  const distinct = [...new Set(resArticles)];
-  const finalArticles = await Promise.all(distinct.map(makeArticleWithPlaceholderImage));
+  const descByRelevance = resArticles.slice(0, limit);
+  const finalArticles = await Promise.all(descByRelevance.map(makeArticleWithPlaceholderImage));
 
   return finalArticles;
 };
