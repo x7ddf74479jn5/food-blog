@@ -50,7 +50,7 @@ export const CarouselCore: React.FC<Props> = ({ children }) => {
         <PrevButton onClick={handleScrollPrev} enabled={isPrevBtnEnabled} />
         <NextButton onClick={handleScrollNext} enabled={isNextBtnEnabled} />
       </div>
-      <div className="flex list-none justify-center pt-2">
+      <div className="flex list-none justify-center pt-2 h-4">
         {scrollSnaps.map((_, index) => (
           <DotButton key={index} selected={index === isSelectedIndex} onClick={() => handleScrollTo(index)} />
         ))}
