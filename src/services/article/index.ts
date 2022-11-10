@@ -41,12 +41,14 @@ const buildTagFilterString = (tagIdsList: string[][]) => {
 export const concatTagGroupThroughCombination = (tagIds: string[]) => {
   const trioTags = Array.from(combination(tagIds, 3));
   const pairTags = Array.from(combination(tagIds, 2));
+
   return [...trioTags, ...pairTags];
 };
 
 export const buildFilterString = (tagIdsList: string[][], excludedArticleId: string) => {
   const tagFilterString = buildTagFilterString(tagIdsList);
   const excludedArticleFilterString = `id[not_equals]${excludedArticleId}`;
+
   return tagFilterString + "[and]" + excludedArticleFilterString;
 };
 
@@ -68,10 +70,8 @@ export const getPickupArticles = async (date: Date) => {
   const _date = date.toISOString();
   const filters = `startDate[less_than]${_date}[and]endDate[greater_than]${_date}`;
   const limit = 1;
-
   const res = await fetchPickupArticles({ filters, limit });
   const pickup: TPickup = res.contents[limit - 1];
-
   const finalArticles: TArticle[] = await Promise.all(pickup.articles.map(makeArticleWithPlaceholderImage));
 
   return { ...pickup, articles: finalArticles };
@@ -80,16 +80,13 @@ export const getPickupArticles = async (date: Date) => {
 export const getPopularArticles = async () => {
   const report = await runReport();
 
-  if (!report) return [];
+  if (!report || report.length === 0) return [];
 
   const ids = report.map((item) => item.id);
   const filters = ids.map((id) => `contentId[equals]${id}`).join("[or]");
   const limit = 5;
-
   const res = await fetchArticles({ filters, limit });
-
   const articles: TArticle[] = await Promise.all(res.contents.map(makeArticleWithPlaceholderImage));
-
   const sortedArticles: TRankedArticle[] = articles
     .map((article) => {
       const r = report.find((row) => row.id === article.id);
