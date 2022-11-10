@@ -22,9 +22,9 @@ export const CarouselCore: React.FC<Props> = ({ children }) => {
   const [isSelectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
-  const handleScrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
-  const handleScrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
-  const handleScrollTo = useCallback((index: number) => embla && embla.scrollTo(index), [embla]);
+  const handleScrollPrev = useCallback(() => embla?.scrollPrev(), [embla]);
+  const handleScrollNext = useCallback(() => embla?.scrollNext(), [embla]);
+  const handleScrollTo = useCallback((index: number) => embla?.scrollTo(index), [embla]);
 
   const onSelect = useCallback(() => {
     if (!embla) return;
@@ -50,7 +50,7 @@ export const CarouselCore: React.FC<Props> = ({ children }) => {
         <PrevButton onClick={handleScrollPrev} enabled={isPrevBtnEnabled} />
         <NextButton onClick={handleScrollNext} enabled={isNextBtnEnabled} />
       </div>
-      <div className="flex list-none justify-center pt-2">
+      <div className="flex h-4 list-none justify-center pt-2">
         {scrollSnaps.map((_, index) => (
           <DotButton key={index} selected={index === isSelectedIndex} onClick={() => handleScrollTo(index)} />
         ))}

@@ -9,7 +9,7 @@
     "generate-sitemap": "next-sitemap --config sitemap.config.js",
     "start": "next start",
     "lint": "run-p -l -c --aggregate-output lint:*",
-    "lint:eslint": "eslint",
+    "lint:eslint": "next lint",
     "lint:prettier": "prettier --check",
     "fix": "run-s -l -c fix:eslint fix:prettier",
     "fix:eslint": "yarn lint:eslint --fix",
