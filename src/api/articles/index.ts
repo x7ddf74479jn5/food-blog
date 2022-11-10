@@ -16,7 +16,8 @@ const articlesQuerySchema = z.object({
     .optional()
     .default("0")
     .transform((v) => Number(v)),
-  q: z.string(),
+  pageIndex: z.string().optional(),
+  q: z.string().optional(),
   filters: z.string().optional(),
 });
 
