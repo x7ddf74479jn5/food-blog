@@ -9,8 +9,6 @@ type PopularArticleCarouselProps = {
 };
 
 export const PopularArticleCarousel: React.FC<PopularArticleCarouselProps> = memo(({ articles }) => {
-  const orders=articles.map(article=>article.order)
-  console.log('orders: ', orders);
   return (
     <CarouselCore>
       {articles.map((article) => (
