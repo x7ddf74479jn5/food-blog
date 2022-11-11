@@ -1,5 +1,5 @@
-import { mockConfig } from "@mocks/data/config";
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import { mockConfig } from "mocks/data/config";
 
 import { SiteTitle } from ".";
 

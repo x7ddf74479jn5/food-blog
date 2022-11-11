@@ -1,4 +1,4 @@
-import { mockArticles } from "@mocks/data";
+import { mockArticles } from "mocks/data";
 import type { ResponseResolver, RestContext, RestRequest } from "msw";
 
 import type { TArticle } from "@/types";

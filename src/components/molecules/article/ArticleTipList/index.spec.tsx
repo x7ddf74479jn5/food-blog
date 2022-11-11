@@ -1,6 +1,5 @@
-import { mockArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
-import React from "react";
+import { mockArticles } from "mocks/data";
 
 import { ArticleTipWithThumb, ArticleTipWithThumbList } from ".";
 

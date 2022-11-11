@@ -1,6 +1,6 @@
 // @jest-environment node
 
-import { mockTags } from "@mocks/data";
+import { mockTags } from "mocks/data";
 import { server } from "mocks/msw/server";
 
 import { getStaticPaths } from "./[slug].page";

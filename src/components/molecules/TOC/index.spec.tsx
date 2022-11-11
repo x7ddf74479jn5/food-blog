@@ -1,5 +1,4 @@
 import { render, screen } from "jest/test-utils";
-import React from "react";
 
 import { TOC } from ".";
 

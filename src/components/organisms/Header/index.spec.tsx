@@ -1,5 +1,5 @@
-import { mockCategories, mockConfig, mockTags } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
+import { mockCategories, mockConfig, mockTags } from "mocks/data";
 
 import Header from "../Header";
 

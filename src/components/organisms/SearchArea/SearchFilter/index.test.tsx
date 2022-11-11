@@ -1,8 +1,7 @@
-import { mockCategories, mockTags } from "@mocks/data";
 import userEvent from "@testing-library/user-event";
 import type { NextRouter } from "jest/test-utils";
 import { render, screen, withMockedRouter } from "jest/test-utils";
-import React from "react";
+import { mockCategories, mockTags } from "mocks/data";
 
 import { SearchFilter } from ".";
 

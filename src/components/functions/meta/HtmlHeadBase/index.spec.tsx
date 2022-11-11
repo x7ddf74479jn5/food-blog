@@ -1,5 +1,5 @@
-import { mockArticles, mockConfig } from "@mocks/data";
 import { render } from "jest/test-utils";
+import { mockArticles, mockConfig } from "mocks/data";
 
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { urlTable } from "@/utils/paths/url";

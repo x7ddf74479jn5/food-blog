@@ -1,5 +1,5 @@
-import { dateCommon } from "@mocks/data/utils";
 import type { MicroCMSListContent } from "microcms-js-sdk";
+import { dateCommon } from "mocks/data/utils";
 
 import type { TWriter } from "@/types";
 

@@ -1,6 +1,5 @@
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "jest/test-utils";
-import React from "react";
 
 import SearchBar from ".";
 

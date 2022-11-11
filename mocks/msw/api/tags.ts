@@ -1,5 +1,5 @@
-import { mockTags } from "@mocks/data";
-import { getSearchParams, isMatchedAgainstFilters } from "@mocks/msw/api/utils";
+import { mockTags } from "mocks/data";
+import { getSearchParams, isMatchedAgainstFilters } from "mocks/msw/api/utils";
 import type { ResponseResolver, RestContext, RestRequest } from "msw";
 
 import type { TTag } from "@/types";

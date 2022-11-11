@@ -1,5 +1,5 @@
-import { mockConfig } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
+import { mockConfig } from "mocks/data";
 
 import Footer from ".";
 

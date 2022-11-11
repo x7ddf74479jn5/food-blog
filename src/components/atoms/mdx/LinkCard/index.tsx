@@ -1,5 +1,4 @@
 import Image from "next/future/image";
-import React from "react";
 
 import NextLink from "@/components/atoms/NextLink";
 import { TagListPlain } from "@/components/molecules/TagList";

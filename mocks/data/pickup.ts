@@ -1,5 +1,5 @@
-import { mockArticles } from "@mocks/data";
-import { dateCommon } from "@mocks/data/utils";
+import { mockArticles } from "mocks/data";
+import { dateCommon } from "mocks/data/utils";
 
 export const mockPickup = {
   articles: Object.values(mockArticles),

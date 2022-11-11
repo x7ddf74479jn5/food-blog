@@ -1,5 +1,5 @@
-import { mockCategories } from "@mocks/data";
 import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import { mockCategories } from "mocks/data";
 
 import Header from ".";
 import { withRouterContext } from ".storybook/mocks/context";

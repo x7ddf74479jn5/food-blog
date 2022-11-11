@@ -1,6 +1,6 @@
-import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "@mocks/data";
 import type { NextRouter } from "jest/test-utils";
 import { render, renderHook, screen, withMockedRouter } from "jest/test-utils";
+import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "mocks/data";
 
 import { formatPageTitle } from "@/utils/formatter";
 
