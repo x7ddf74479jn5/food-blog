@@ -2,14 +2,25 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import { useEffect } from "react";
 
-import type Event from "@/types/gtm-event";
 import { toIdleTask } from "@/utils";
 
-export const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+type ClickEvent = {
+  action: "click";
+  category: "Other";
+  label: string;
+  value?: string;
+};
 
-export const isExistsGaId = GA_ID !== "";
+type SearchEvent = {
+  term: string;
+};
 
-export const pageview = (path: string) => {
+type Event = ClickEvent;
+
+const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+const isExistsGaId = GA_ID !== "";
+
+const pageview = (path: string) => {
   window.gtag("config", GA_ID, {
     page_path: path,
   });
@@ -24,6 +35,12 @@ export const event = ({ action, category, label, value = "" }: Event) => {
     event_category: category,
     event_label: label ? JSON.stringify(label) : "",
     value,
+  });
+};
+
+export const search = ({ term }: SearchEvent) => {
+  window.gtag("event", "search", {
+    search_term: term,
   });
 };
 
