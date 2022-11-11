@@ -1,5 +1,5 @@
-import { mockTags } from "@mocks/data/tags";
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import { mockTags } from "mocks/data/tags";
 
 import { ButtonTagColored } from ".";
 

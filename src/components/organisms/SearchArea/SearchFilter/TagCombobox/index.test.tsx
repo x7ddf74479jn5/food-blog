@@ -1,7 +1,6 @@
-import { mockTags } from "@mocks/data";
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "jest/test-utils";
-import React from "react";
+import { mockTags } from "mocks/data";
 
 import { TagCombobox } from ".";
 
@@ -47,9 +46,8 @@ describe("components/organisms/SearchArea/SearchFilter/TagCombobox", () => {
 
       const button = screen.getByRole("button");
       await user.click(button);
-
       const options = screen.getAllByRole("option");
-      const rice = options[4];
+      const rice = options[9];
       await user.click(rice);
       const currentTag = screen.getByTestId("current-tag-name");
       expect(currentTag).toHaveTextContent("ごはん");

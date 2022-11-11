@@ -1,5 +1,5 @@
-import { mockPopularArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
+import { mockPopularArticles } from "mocks/data";
 
 import { PopularArticleCarousel } from ".";
 

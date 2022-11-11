@@ -16,10 +16,9 @@ export default {
 
 export const Medium: ComponentStoryObj<typeof PrimaryButton> = {
   args: {
-    
     label: "Label",
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-onClick: () => {},
+    onClick: () => {},
     size: "md",
   },
 };

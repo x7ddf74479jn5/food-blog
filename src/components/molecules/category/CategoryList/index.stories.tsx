@@ -1,5 +1,5 @@
-import { mockCategories } from "@mocks/data/categories";
 import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import { mockCategories } from "mocks/data/categories";
 
 import { CategoryList } from ".";
 

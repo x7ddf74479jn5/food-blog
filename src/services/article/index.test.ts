@@ -1,4 +1,4 @@
-import { mockArticles, mockTags } from "@mocks/data";
+import { mockArticles, mockTags } from "mocks/data";
 
 import { buildFilterString, concatTagGroupThroughCombination } from ".";
 

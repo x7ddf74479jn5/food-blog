@@ -1,7 +1,6 @@
 import { NextSeo } from "next-seo";
 import type { NextSeoProps } from "next-seo/lib/types";
 import { memo } from "react";
-import React from "react";
 
 type HtmlHeadBaseProps = {
   indexUrl: string;

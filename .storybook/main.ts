@@ -1,7 +1,7 @@
 import path from "node:path";
 import webpack from "webpack";
 
-const toPath = (_path) => path.resolve(__dirname, _path);
+const toPath = (_path: string) => path.resolve(__dirname, _path);
 
 /**
  * @type {import('@storybook/react/types').StorybookConfig}
@@ -54,13 +54,6 @@ const config = {
         alias: {
           ...config.resolve.alias,
           "@": toPath("../src"),
-          "@styles": toPath("../src/styles"),
-          "@pages": toPath("../src/pages"),
-          "@types": toPath("../src/types"),
-          "@components": toPath("../src/components"),
-          "@context": toPath("../src/context"),
-          "@utils": toPath("../src/utils"),
-          "@mocks": toPath("../mocks"),
         },
       },
       plugins: [

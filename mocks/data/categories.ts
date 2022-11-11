@@ -1,4 +1,4 @@
-import { dateCommon } from "@mocks/data/utils";
+import { dateCommon } from "mocks/data/utils";
 
 import type { TCategory } from "@/types";
 

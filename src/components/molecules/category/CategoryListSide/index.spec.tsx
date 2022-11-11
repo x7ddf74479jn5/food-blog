@@ -1,6 +1,5 @@
 import { render, screen, within } from "jest/test-utils";
 import { mockCategories } from "mocks/data";
-import React from "react";
 
 import { urlTable } from "@/utils/paths/url";
 

@@ -1,5 +1,5 @@
-import { mockWriters } from "@mocks/data";
 import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import { mockWriters } from "mocks/data";
 
 import { Avatar } from ".";
 

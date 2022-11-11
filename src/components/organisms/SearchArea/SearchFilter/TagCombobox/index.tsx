@@ -77,7 +77,7 @@ export const TagCombobox: React.FC<TagComboboxProps> = memo(({ tags }) => {
                 </Combobox.Button>
               </div>
               <DropdownTransition afterLeave={() => setQuery("")}>
-                <Combobox.Options className="dropdown-options w-full">
+                <Combobox.Options className="dropdown-options mt-24 w-full">
                   {filteredTags.length === 0 && query !== "" ? (
                     <div className="dropdown-inactive dropdown-option">該当するタグが見つかりませんでした</div>
                   ) : (

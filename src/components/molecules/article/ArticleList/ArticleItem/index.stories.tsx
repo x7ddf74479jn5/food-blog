@@ -1,5 +1,5 @@
-import { mockArticles } from "@mocks/data/articles";
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import { mockArticles } from "mocks/data/articles";
 
 import { ArticleItem } from ".";
 

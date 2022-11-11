@@ -1,5 +1,5 @@
-import { mockConfig } from "@mocks/data";
-import { getSearchParams } from "@mocks/msw/api/utils";
+import { mockConfig } from "mocks/data";
+import { getSearchParams } from "mocks/msw/api/utils";
 import type { ResponseResolver, RestContext, RestRequest } from "msw";
 
 export const mockGetConfig: ResponseResolver<RestRequest, RestContext> = async (req, res, ctx) => {

@@ -1,7 +1,6 @@
-import { mockCategories } from "@mocks/data";
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "jest/test-utils";
-import React from "react";
+import { mockCategories } from "mocks/data";
 
 import { CategoryListbox } from ".";
 

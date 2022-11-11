@@ -1,5 +1,5 @@
-import { mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
+import { mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "mocks/data";
 
 import { formatPageTitle } from "@/utils/formatter";
 

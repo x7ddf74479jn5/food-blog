@@ -1,4 +1,4 @@
-import { mockArticles } from "@mocks/data";
+import { mockArticles } from "mocks/data";
 import { expect, test } from "@playwright/test";
 
 test("index", async ({ page }) => {
