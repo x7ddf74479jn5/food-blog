@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 
+import { search as sendSearchEvent } from "@/lib/google-analytics/gtag";
+import { toIdleTask } from "@/utils";
 import { urlTable } from "@/utils/paths/url";
 
 import { useSearchMutation, useSearchState } from "./SearchContext";
@@ -24,6 +26,10 @@ export const useSearch = (query?: { q: string; category?: string; tags?: string 
 
     if (q && !history.includes(q)) {
       setHistory((prev) => [q, ...prev].slice(0, 5));
+    }
+
+    if (q) {
+      toIdleTask(() => sendSearchEvent({ term: q }));
     }
   }, [router, query, history, setHistory]);
 
