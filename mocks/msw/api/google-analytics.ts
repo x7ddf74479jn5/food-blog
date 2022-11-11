@@ -1,4 +1,4 @@
-import { mockArticles } from "@mocks/data";
+import { mockArticles } from "mocks/data";
 import type { ResponseResolver, RestContext, RestRequest } from "msw";
 
 export const mockGetAnalyticsReport: ResponseResolver<RestRequest, RestContext> = async (_req, res, ctx) => {

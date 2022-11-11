@@ -1,5 +1,5 @@
-import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
+import { mockArticles, mockCategories, mockConfig, mockPickup, mockPopularArticles, mockTags } from "mocks/data";
 import { server } from "mocks/msw/server";
 
 import { mdx2html } from "@/lib/mdx";

@@ -1,5 +1,5 @@
-import { mockArticles } from "@mocks/data";
 import { fireEvent, render, screen } from "jest/test-utils";
+import { mockArticles } from "mocks/data";
 
 import { ArticleSWRContainer } from ".";
 import * as useGetArticleQuery from "./useGetArticleListQuery";

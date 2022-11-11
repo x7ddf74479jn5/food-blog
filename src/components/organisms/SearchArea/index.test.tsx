@@ -1,8 +1,7 @@
-import { mockCategories, mockTags } from "@mocks/data";
 import userEvent from "@testing-library/user-event";
 import { Providers, waitFor } from "jest/test-utils";
 import { act, render, renderHook, screen } from "jest/test-utils";
-import React from "react";
+import { mockCategories, mockTags } from "mocks/data";
 
 import { useSearchMutation, useSearchState } from "@/components/organisms/SearchArea/SearchContext";
 

@@ -1,3 +1,4 @@
+import { render, screen } from "jest/test-utils";
 import {
   dateCommon,
   mockArticles,
@@ -6,8 +7,7 @@ import {
   mockPickup,
   mockPopularArticles,
   mockTags,
-} from "@mocks/data";
-import { render, screen } from "jest/test-utils";
+} from "mocks/data";
 
 import { formatPageTitle } from "@/utils/formatter";
 

@@ -1,5 +1,5 @@
-import { mockPickup, mockPopularArticles } from "@mocks/data";
 import { fireEvent, render, screen } from "jest/test-utils";
+import { mockPickup, mockPopularArticles } from "mocks/data";
 
 import { CarouselContainer } from ".";
 

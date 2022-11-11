@@ -1,6 +1,6 @@
-import { mockArticles } from "@mocks/data";
 import { renderHook } from "@testing-library/react";
 import { withMockedRouter } from "jest/test-utils";
+import { mockArticles } from "mocks/data";
 import type { NextRouter } from "next/router";
 import { SWRConfig } from "swr";
 import * as useSWRInfinite from "swr/infinite";

@@ -7,3 +7,5 @@
 out
 playwright-report
 pnpm-lock.yaml
+storybook-static
+.swc

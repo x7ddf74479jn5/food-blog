@@ -1,7 +1,6 @@
 import type { StoryFnReactReturnType } from "@storybook/react/dist/ts3.9/client/preview/types";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import type { NextRouter } from "next/router";
-import React from "react";
 
 import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
 

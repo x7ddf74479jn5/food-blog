@@ -1,6 +1,5 @@
-import { mockCategories } from "@mocks/data";
 import { fireEvent, render, screen, within, withMockedRouter } from "jest/test-utils";
-import React from "react";
+import { mockCategories } from "mocks/data";
 
 import { urlTable } from "@/utils/paths/url";
 

@@ -1,5 +1,5 @@
-import { mockArticles } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
+import { mockArticles } from "mocks/data";
 
 import { RelatedArticles } from ".";
 

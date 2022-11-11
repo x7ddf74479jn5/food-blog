@@ -1,4 +1,4 @@
-import { mockCategories } from "@mocks/data";
+import { mockCategories } from "mocks/data";
 import type { ResponseResolver, RestContext, RestRequest } from "msw";
 
 import type { TCategory } from "@/types";

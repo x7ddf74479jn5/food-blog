@@ -1,4 +1,4 @@
-import { mockConfig } from "@mocks/data";
+import { mockConfig } from "mocks/data";
 import { server } from "mocks/msw/server";
 
 import { fetchConfig } from ".";

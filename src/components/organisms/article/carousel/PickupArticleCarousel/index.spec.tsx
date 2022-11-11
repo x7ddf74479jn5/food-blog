@@ -1,5 +1,5 @@
-import { mockPickup } from "@mocks/data";
 import { render, screen } from "jest/test-utils";
+import { mockPickup } from "mocks/data";
 
 import { PickupArticleCarousel } from ".";
 
