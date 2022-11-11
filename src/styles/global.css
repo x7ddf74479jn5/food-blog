@@ -42,7 +42,7 @@
   }
 
   .dropdown-options {
-    @apply absolute right-0 z-10 mt-1 overflow-y-scroll max-h-[50vh] rounded-md border border-gray-200 bg-white shadow-md dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-400 divide-y divide-gray-100 py-1 dark:divide-gray-600;
+    @apply absolute right-0 z-20 mt-1 overflow-y-scroll max-h-[50vh] rounded-md border border-gray-200 bg-white shadow-md dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-400 divide-y divide-gray-100 py-1 dark:divide-gray-600;
   }
 
   .dropdown-option {
