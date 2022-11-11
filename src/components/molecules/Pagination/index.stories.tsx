@@ -3,8 +3,8 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import Pagination from ".";
 
 export default {
-  title: "molecules/Pagination",
   component: Pagination,
+  title: "molecules/Pagination",
 } as ComponentMeta<typeof Pagination>;
 
 const Template: ComponentStory<typeof Pagination> = (args) => <Pagination {...args} />;

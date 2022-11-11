@@ -31,7 +31,7 @@ const FallbackComponent = ({ error, resetErrorBoundary }: FallbackProps) => {
 };
 
 export const ErrorBoundaryBase: React.FC<{ children: React.ReactNode; callback?: () => void }> = memo(
-  ({ children, callback }) => {
+  ({ callback, children }) => {
     const handleReset = () => {
       callback?.();
     };

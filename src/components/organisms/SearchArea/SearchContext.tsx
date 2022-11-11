@@ -18,10 +18,10 @@ type SearchMutation = {
 };
 
 const SearchContext = createContext<SearchState>({
-  text: "",
   history: [],
   selectedCategory: { id: "all", name: "すべて" },
   selectedTags: [],
+  text: "",
 });
 
 const SearchMutationContext = createContext<SearchMutation>({} as SearchMutation);
@@ -42,18 +42,18 @@ export const SearchProvider = ({ children }: Props): ReactElement => {
   return (
     <SearchContext.Provider
       value={{
-        text,
         history,
         selectedCategory,
         selectedTags,
+        text,
       }}
     >
       <SearchMutationContext.Provider
         value={{
-          setText,
           setHistory,
           setSelectedCategory,
           setSelectedTags,
+          setText,
         }}
       >
         {children}

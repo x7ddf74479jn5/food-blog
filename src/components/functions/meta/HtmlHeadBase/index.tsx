@@ -13,65 +13,65 @@ type HtmlHeadBaseProps = {
 };
 
 export const HtmlHeadBase: React.FC<HtmlHeadBaseProps> = memo(
-  ({ indexUrl, pageTitle, siteTitle, description, url, image }) => {
+  ({ description, image, indexUrl, pageTitle, siteTitle, url }) => {
     const seoProps: NextSeoProps = {
-      title: pageTitle,
-      description: description,
-      openGraph: {
-        title: pageTitle ?? siteTitle,
-        description,
-      },
       additionalLinkTags: [
         {
+          href: "/favicon/apple-touch-icon.png",
           rel: "apple-touch-icon",
           sizes: "180x180",
-          href: "/favicon/apple-touch-icon.png",
         },
         {
-          rel: "icon",
-          type: "image/png",
-          sizes: "32x32",
           href: "/favicon/favicon-32x32.png",
-        },
-        {
           rel: "icon",
+          sizes: "32x32",
           type: "image/png",
-          sizes: "16x16",
+        },
+        {
           href: "/favicon/favicon-16x16.png",
-        },
-        {
           rel: "icon",
+          sizes: "16x16",
+          type: "image/png",
+        },
+        {
           href: "/favicon/favicon.ico",
+          rel: "icon",
         },
         {
-          rel: "manifest",
           href: "/favicon/site.webmanifest",
+          rel: "manifest",
         },
-        { rel: "mask-icon", href: "/favicon/safari-pinned-tab.svg", color: "#5bbad5" },
+        { color: "#5bbad5", href: "/favicon/safari-pinned-tab.svg", rel: "mask-icon" },
         {
+          href: "/feed.xml",
           rel: "alternate",
           type: "application/rss+xml",
-          href: "/feed.xml",
         },
         {
-          rel: "canonical",
           href: url || indexUrl,
+          rel: "canonical",
         },
       ],
       additionalMetaTags: [
         {
-          name: "msapplication-TileColor",
           content: "#00a300",
+          name: "msapplication-TileColor",
         },
         {
-          name: "msapplication-config",
           content: "/favicon/browserconfig.xml",
+          name: "msapplication-config",
         },
         {
-          name: "theme-color",
           content: "#fff",
+          name: "theme-color",
         },
       ],
+      description: description,
+      openGraph: {
+        description,
+        title: pageTitle ?? siteTitle,
+      },
+      title: pageTitle,
     };
 
     if (seoProps.openGraph) {

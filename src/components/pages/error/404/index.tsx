@@ -9,7 +9,7 @@ export type Error404Props = {
   tags: TTag[];
 };
 
-export const Error404: React.FC<Error404Props> = ({ config, categories, tags }) => (
+export const Error404: React.FC<Error404Props> = ({ categories, config, tags }) => (
   <RootLayout config={config} categories={categories} tags={tags}>
     <HtmlHeadNoIndex />
     <ErrorFallback heading="404 - Not Found" message="ページが見つかりませんでした" />

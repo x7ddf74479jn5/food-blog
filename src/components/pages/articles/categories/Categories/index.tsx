@@ -12,8 +12,8 @@ export type CategoriesProps = {
   popularArticles: TRankedArticle[];
 };
 
-export const Categories: React.FC<CategoriesProps> = ({ config, categories, pickup, popularArticles, tags }) => {
-  const { siteTitle, host } = config;
+export const Categories: React.FC<CategoriesProps> = ({ categories, config, pickup, popularArticles, tags }) => {
+  const { host, siteTitle } = config;
   const heading = "カテゴリー一覧";
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = formatPageUrl(urlTable.categories, host);

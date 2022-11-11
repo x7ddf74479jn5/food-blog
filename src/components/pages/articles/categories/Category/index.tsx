@@ -16,15 +16,15 @@ export type CategoryProps = {
 };
 
 export const Category: React.FC<CategoryProps> = ({
-  data,
+  categories,
   category,
   config,
-  categories,
+  data,
   pickup,
-  tags,
   popularArticles,
+  tags,
 }) => {
-  const { siteTitle, host } = config;
+  const { host, siteTitle } = config;
   const heading = `カテゴリー：${category.name}`;
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = new URL(`${urlTable.categories}/${category.slug}`, host).toString();

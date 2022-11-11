@@ -8,7 +8,7 @@ import { Skelton } from "@/components/atoms/Skelton";
 import { useMount } from "@/hooks/useMount";
 
 const useSwitch = (isMounted: boolean) => {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { resolvedTheme, setTheme, theme } = useTheme();
   const isSystem = theme === "system";
   const isChecked = resolvedTheme === "dark";
 
@@ -28,12 +28,12 @@ const useSwitch = (isMounted: boolean) => {
     };
   }, [isChecked, isMounted, isSystem, setTheme]);
 
-  return { isMounted, isChecked, handleToggleSwitch };
+  return { handleToggleSwitch, isChecked, isMounted };
 };
 
 export const ThemeSwitch: React.FC = () => {
   const isMounted = useMount();
-  const { isChecked, handleToggleSwitch } = useSwitch(isMounted);
+  const { handleToggleSwitch, isChecked } = useSwitch(isMounted);
 
   if (!isMounted) return <Skelton className="h-6 w-12" />;
 

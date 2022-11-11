@@ -2,7 +2,7 @@ import { mockArticles } from "@mocks/data";
 import type { ResponseResolver, RestContext, RestRequest } from "msw";
 
 export const mockGetAnalyticsReport: ResponseResolver<RestRequest, RestContext> = async (_req, res, ctx) => {
-  const { stock, tomatoSalad, tacoRice } = mockArticles;
+  const { stock, tacoRice, tomatoSalad } = mockArticles;
 
   // @see https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/RunReportResponse
   const data = [

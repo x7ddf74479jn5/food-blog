@@ -4,8 +4,8 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { LinkCard } from ".";
 
 export default {
-  title: "Atoms/mdx/LinkCard",
   component: LinkCard,
+  title: "Atoms/mdx/LinkCard",
 } as ComponentMeta<typeof LinkCard>;
 
 const Template: ComponentStory<typeof LinkCard> = (args) => (

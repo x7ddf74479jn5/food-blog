@@ -4,21 +4,22 @@ import { FaChevronDown } from "react-icons/fa";
 import { PrimaryButton } from ".";
 
 export default {
-  title: "atoms/buttons/PrimaryButton",
-  component: PrimaryButton,
   argTypes: {
     size: {
-      options: ["sm", "md"],
       control: { type: "radio" },
+      options: ["sm", "md"],
     },
   },
+  component: PrimaryButton,
+  title: "atoms/buttons/PrimaryButton",
 } as ComponentMeta<typeof PrimaryButton>;
 
 export const Medium: ComponentStoryObj<typeof PrimaryButton> = {
   args: {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    onClick: () => {},
+    
     label: "Label",
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+onClick: () => {},
     size: "md",
   },
 };

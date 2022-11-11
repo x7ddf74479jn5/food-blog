@@ -31,8 +31,8 @@ export * from "@testing-library/react";
 export { customRender as render };
 
 export const reTestCase = {
-  anyWord: expect.stringMatching(/\w+/),
   anyImage: expect.stringMatching(/^(data:image\/gif)|\.(png|webp|jpeg|jpg|svg)$/),
+  anyWord: expect.stringMatching(/\w+/),
 };
 
 type ErrorComponentProps = {

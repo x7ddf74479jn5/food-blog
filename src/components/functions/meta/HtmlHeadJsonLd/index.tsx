@@ -11,13 +11,13 @@ type HtmlHeadJsonLtJsonLdProps = {
 };
 
 export const HtmlHeadJsonLd: React.FC<HtmlHeadJsonLtJsonLdProps> = ({
-  url,
-  title,
-  image,
-  datePublished,
-  dateModified,
   authorName,
+  dateModified,
+  datePublished,
   description,
+  image,
+  title,
+  url,
 }) => {
   return (
     <ArticleJsonLd

@@ -5,16 +5,17 @@ import { SearchFilter } from ".";
 import { withRouterContext } from ".storybook/mocks/context";
 
 export default {
-  title: "organisms/SearchArea/SearchFilter",
   component: SearchFilter,
+  title: "organisms/SearchArea/SearchFilter",
 } as ComponentMeta<typeof SearchFilter>;
 
 export const Default: ComponentStoryObj<typeof SearchFilter> = {
   args: {
     categories: Object.values(mockCategories),
-    tags: Object.values(mockTags),
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    onToggle: () => {},
+onToggle: () => {},
+    
+    tags: Object.values(mockTags),
   },
   decorators: [
     (storyFn) => {

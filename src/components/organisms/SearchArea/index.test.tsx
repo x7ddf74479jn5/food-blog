@@ -25,11 +25,11 @@ jest.mock("next/router", () => {
 const mockTagList = Object.values(mockTags);
 const mockCategoryList = Object.values(mockCategories);
 const defaultRouterParams = {
+  as: undefined,
+  options: { shallow: true },
   url: {
     pathname: "/search",
   },
-  as: undefined,
-  options: { shallow: true },
 };
 
 beforeEach(() => {
@@ -69,7 +69,7 @@ describe("components/organisms/SearchArea", () => {
       expect(mockRouterPush).toBeCalledWith(
         {
           ...defaultRouterParams.url,
-          query: { q: "タコライス", category: mockCategories.rice.id, tags: mockTags.rice.id },
+          query: { category: mockCategories.rice.id, q: "タコライス", tags: mockTags.rice.id },
         },
         defaultRouterParams.as,
         defaultRouterParams.options
@@ -83,8 +83,8 @@ describe("useSearch", () => {
     const { result } = renderHook(
       () =>
         useSearch({
-          q: "タコライス",
           category: mockCategories.rice.id,
+          q: "タコライス",
           tags: mockTags.rice.id,
         }),
       {
@@ -102,8 +102,8 @@ describe("useSearch", () => {
       {
         ...defaultRouterParams.url,
         query: {
-          q: "タコライス",
           category: mockCategories.rice.id,
+          q: "タコライス",
           tags: mockTags.rice.id,
         },
       },
@@ -117,11 +117,11 @@ describe("useSearch", () => {
       return { ...useSearchState(), ...useSearch(query) };
     };
 
-    const { result, rerender } = renderHook(
+    const { rerender, result } = renderHook(
       () =>
         useAggregateSearchHook({
-          q: "タコライス",
           category: mockCategories.rice.id,
+          q: "タコライス",
           tags: mockTags.rice.id,
         }),
       {
@@ -139,8 +139,8 @@ describe("useSearch", () => {
 
     // すでに登録している場合に重複しない
     rerender({
-      q: "タコライス",
       category: mockCategories.rice.id,
+      q: "タコライス",
       tags: mockTags.rice.id,
     });
 
@@ -157,7 +157,7 @@ describe("useSearchArea", () => {
 
     const { result } = renderHook(() => useAggregateSearchHook(), { wrapper });
 
-    const { setText, setSelectedCategory, setSelectedTags } = result.current;
+    const { setSelectedCategory, setSelectedTags, setText } = result.current;
 
     act(() => {
       setText(" タコライス ");
@@ -174,8 +174,8 @@ describe("useSearchArea", () => {
       {
         ...defaultRouterParams.url,
         query: {
-          q: "タコライス",
           category: mockCategories.rice.id,
+          q: "タコライス",
           tags: mockTags.rice.id,
         },
       },

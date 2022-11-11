@@ -6,7 +6,7 @@ type Props = {
   hasLink?: boolean;
 };
 
-export const TagListPlain: React.FC<Props> = ({ tags, hasLink = false }) => {
+export const TagListPlain: React.FC<Props> = ({ hasLink = false, tags }) => {
   return (
     <ul className="flex flex-wrap gap-x-2 gap-y-1">
       {(tags || []).map((tag) => (

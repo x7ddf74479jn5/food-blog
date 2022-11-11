@@ -15,7 +15,7 @@ type CategoryMenuItemProps = {
   disabled?: boolean;
 };
 
-export const CategoryMenuItem: React.FC<CategoryMenuItemProps> = ({ href, label, disabled }) => {
+export const CategoryMenuItem: React.FC<CategoryMenuItemProps> = ({ disabled, href, label }) => {
   return (
     <Menu.Item as="div" disabled={disabled}>
       {({ active }) => (

@@ -62,17 +62,17 @@ describe("hooks/useGetArticleListQuery", () => {
         size++;
 
         return {
-          mutate: spyMutate,
-          size,
-          setSize: mockSetSize,
           data: [
             {
               contents: mockArticleList.slice(offset, offset + limit),
-              totalCount: mockArticleList.length,
-              offset,
               limit,
+              offset,
+              totalCount: mockArticleList.length,
             },
           ],
+          mutate: spyMutate,
+          setSize: mockSetSize,
+          size,
         };
       });
     });
@@ -80,15 +80,15 @@ describe("hooks/useGetArticleListQuery", () => {
     it("default", () => {
       const args = {
         endpoint,
-        getKeyOptions: undefined,
         fallbackData: undefined,
+        getKeyOptions: undefined,
       };
 
       const { result } = renderHook(() => useGetArticleListQuery(args), {
         wrapper: Wrapper,
       });
 
-      const { getCurrentKey, articles, hasNextPage, paginate, revalidate } = result.current;
+      const { articles, getCurrentKey, hasNextPage, paginate, revalidate } = result.current;
 
       expect(spyUseSWRInfinite).toBeCalledTimes(1);
       const key = getCurrentKey();
@@ -108,14 +108,14 @@ describe("hooks/useGetArticleListQuery", () => {
     it("custom", () => {
       const args = {
         endpoint,
-        getKeyOptions: { q },
         fallbackData: undefined,
+        getKeyOptions: { q },
       };
 
       const { result } = renderHook(() => useGetArticleListQuery(args), {
         wrapper: Wrapper,
       });
-      const { getCurrentKey, articles, hasNextPage, paginate, revalidate } = result.current;
+      const { articles, getCurrentKey, hasNextPage, paginate, revalidate } = result.current;
 
       expect(spyUseSWRInfinite).toBeCalledTimes(1);
       const key = getCurrentKey();
@@ -145,23 +145,23 @@ describe("hooks/useGetArticleListQuery", () => {
         size++;
 
         return {
-          size,
-          setSize: mockSetSize,
           data: [
             {
               contents: mockArticleList.slice(0, 10),
-              totalCount: mockArticleList.length,
-              offset,
               limit,
+              offset,
+              totalCount: mockArticleList.length,
             },
           ],
+          setSize: mockSetSize,
+          size,
         };
       });
 
       const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
         wrapper: Wrapper,
       });
-      const { getCurrentKey, articles, hasNextPage } = result.current;
+      const { articles, getCurrentKey, hasNextPage } = result.current;
 
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&pageIndex=0`;
@@ -176,34 +176,34 @@ describe("hooks/useGetArticleListQuery", () => {
       let offset = 10;
       spyUseSWRInfinite.mockImplementation((getKey) => {
         let size = 1;
-        getKey(size, { contents: mockArticleList.slice(0, 10), offset, limit });
+        getKey(size, { contents: mockArticleList.slice(0, 10), limit, offset });
         size++;
         offset += limit;
 
         return {
-          size,
-          setSize: mockSetSize,
           data: [
             {
               contents: mockArticleList.slice(0, 10),
-              totalCount: mockArticleList.length,
-              offset: 0,
               limit,
+              offset: 0,
+              totalCount: mockArticleList.length,
             },
             {
               contents: mockArticleList.slice(10, 12),
-              totalCount: mockArticleList.length,
-              offset: 10,
               limit,
+              offset: 10,
+              totalCount: mockArticleList.length,
             },
           ],
+          setSize: mockSetSize,
+          size,
         };
       });
 
       const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
         wrapper: Wrapper,
       });
-      const { getCurrentKey, articles, hasNextPage } = result.current;
+      const { articles, getCurrentKey, hasNextPage } = result.current;
 
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&offset=${offset}&pageIndex=1`;
@@ -218,39 +218,39 @@ describe("hooks/useGetArticleListQuery", () => {
       let offset = 12;
       spyUseSWRInfinite.mockImplementation((getKey) => {
         const size = 2;
-        getKey(size, { contents: mockArticleList.slice(2, 4), offset, limit });
+        getKey(size, { contents: mockArticleList.slice(2, 4), limit, offset });
         offset += limit;
 
         return {
-          size,
-          setSize: mockSetSize,
           data: [
             {
               contents: mockArticleList.slice(0, 10),
-              totalCount: mockArticleList.length,
-              offset: 0,
               limit,
+              offset: 0,
+              totalCount: mockArticleList.length,
             },
             {
               contents: mockArticleList.slice(10, 12),
-              totalCount: mockArticleList.length,
-              offset: 10,
               limit,
+              offset: 10,
+              totalCount: mockArticleList.length,
             },
             {
               contents: [],
-              totalCount: mockArticleList.length,
-              offset: 12,
               limit,
+              offset: 12,
+              totalCount: mockArticleList.length,
             },
           ],
+          setSize: mockSetSize,
+          size,
         };
       });
 
       const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
         wrapper: Wrapper,
       });
-      const { getCurrentKey, articles, hasNextPage } = result.current;
+      const { articles, getCurrentKey, hasNextPage } = result.current;
 
       const key = getCurrentKey();
       const expectedKey = `${apiRoute.apiArticles}?limit=${limit}&offset=${offset}&pageIndex=2`;

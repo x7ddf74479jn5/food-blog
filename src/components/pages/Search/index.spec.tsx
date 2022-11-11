@@ -65,8 +65,8 @@ describe("pages/search", () => {
 
     it("OK: 複数のフィルターを組み合わせたときのクエリが正しい", () => {
       const query = {
-        q: "基本の",
         category: mockArticles.stock.category.id,
+        q: "基本の",
         tags: mockArticles.stock.tags.map((tag) => tag.id).join(","),
       };
 

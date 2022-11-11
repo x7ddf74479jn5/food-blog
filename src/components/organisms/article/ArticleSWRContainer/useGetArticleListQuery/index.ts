@@ -21,7 +21,7 @@ type Arguments = {
   fallbackData?: TArticleListResponse;
 };
 
-const useGetArticleListQuery = ({ endpoint, getKeyOptions, fallbackData }: Arguments) => {
+const useGetArticleListQuery = ({ endpoint, fallbackData, getKeyOptions }: Arguments) => {
   const keyRef = useRef("");
   const defaultLimit = 10;
   const defaultKeyOptions = {
@@ -54,13 +54,13 @@ const useGetArticleListQuery = ({ endpoint, getKeyOptions, fallbackData }: Argum
   };
 
   const result = useSWRInfinite<TArticleSWRResponse, Error>(getKey, defaultFetcher, {
+    fallbackData: fallbackData ? [fallbackData] : undefined,
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-    fallbackData: fallbackData ? [fallbackData] : undefined,
   });
 
-  const { size, setSize, mutate, data, ...rest } = result;
+  const { data, mutate, setSize, size, ...rest } = result;
 
   const getCurrentKey = useCallback(() => {
     return keyRef.current;
@@ -86,7 +86,7 @@ const useGetArticleListQuery = ({ endpoint, getKeyOptions, fallbackData }: Argum
     return totalCount ? articles.length !== totalCount : false;
   }, [articles.length, totalCount]);
 
-  return { ...rest, getCurrentKey, revalidate, paginate, hasNextPage, articles } as const;
+  return { ...rest, articles, getCurrentKey, hasNextPage, paginate, revalidate } as const;
 };
 
 export default useGetArticleListQuery;

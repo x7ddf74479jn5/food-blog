@@ -9,7 +9,7 @@ type SideSectionContainer = {
   href?: UrlTableValue | undefined;
 };
 
-export const SideSectionContainer: React.FC<SideSectionContainer> = memo(({ header, href, children }) => {
+export const SideSectionContainer: React.FC<SideSectionContainer> = memo(({ children, header, href }) => {
   return (
     <section className="container bg-gray-50 p-2 dark:bg-gray-700 dark:text-white">
       {href ? (

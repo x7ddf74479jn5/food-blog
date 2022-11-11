@@ -10,7 +10,7 @@ type Props = {
   prefetch?: boolean;
 };
 
-const NextLink: React.FC<Props> = ({ href, children, prefetch = false, ...rest }) => {
+const NextLink: React.FC<Props> = ({ children, href, prefetch = false, ...rest }) => {
   return (
     <Link href={href} prefetch={prefetch}>
       <a {...rest}>{children}</a>

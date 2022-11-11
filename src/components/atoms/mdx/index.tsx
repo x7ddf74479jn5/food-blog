@@ -8,10 +8,10 @@ import { Callout } from "./Callout";
 import { LinkCard } from "./LinkCard";
 
 export const MDXCustomComponents = {
-  img: (props: ComponentProps<typeof CustomImage>) => <CustomImage {...props} />,
-  a: (props: ComponentProps<typeof CustomLink>) => <CustomLink {...props} />,
   Callout,
   LinkCard,
+  a: (props: ComponentProps<typeof CustomLink>) => <CustomLink {...props} />,
+  img: (props: ComponentProps<typeof CustomImage>) => <CustomImage {...props} />,
 };
 
 export default MDXCustomComponents;

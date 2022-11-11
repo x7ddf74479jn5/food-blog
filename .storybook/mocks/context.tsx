@@ -1,7 +1,8 @@
-import React from "react";
+import type { StoryFnReactReturnType } from "@storybook/react/dist/ts3.9/client/preview/types";
 import { RouterContext } from "next/dist/shared/lib/router-context";
-import { StoryFnReactReturnType } from "@storybook/react/dist/ts3.9/client/preview/types";
-import { NextRouter } from "next/router";
+import type { NextRouter } from "next/router";
+import React from "react";
+
 import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
 
 export const withContext = (storyFn: () => StoryFnReactReturnType) => {
@@ -10,32 +11,32 @@ export const withContext = (storyFn: () => StoryFnReactReturnType) => {
 
 export const withRouterContext = (storyFn: () => StoryFnReactReturnType, options?: Partial<NextRouter>) => {
   const mockedRouter: NextRouter = {
-    route: "/",
-    pathname: "/",
-    query: {},
     asPath: "/",
+    back: () => {},
     basePath: "/",
-    isLocaleDomain: true,
-    isReady: true,
-    push: () => {
-      return Promise.resolve(true);
+    beforePopState: () => {},
+    events: {
+      emit: () => {},
+      off: () => {},
+      on: () => {},
     },
+    isFallback: false,
+    isLocaleDomain: true,
+    isPreview: false,
+    isReady: true,
+    pathname: "/",
     prefetch: () => {
       return Promise.resolve();
     },
+    push: () => {
+      return Promise.resolve(true);
+    },
+    query: {},
+    reload: () => {},
     replace: () => {
       return Promise.resolve(true);
     },
-    reload: () => {},
-    back: () => {},
-    beforePopState: () => {},
-    events: {
-      on: () => {},
-      off: () => {},
-      emit: () => {},
-    },
-    isFallback: false,
-    isPreview: false,
+    route: "/",
     ...options,
   };
   return <RouterContext.Provider value={mockedRouter}>{storyFn()}</RouterContext.Provider>;

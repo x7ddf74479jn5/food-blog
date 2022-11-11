@@ -19,8 +19,8 @@ export const usePopover = <E extends HTMLElement>() => {
   const setIsActive = useCallback((flag: boolean) => _setIsActive(flag), []);
 
   return {
-    ref,
     isActive,
+    ref,
     setIsActive,
   };
 };

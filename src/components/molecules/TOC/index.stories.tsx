@@ -3,8 +3,8 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import TOC from ".";
 
 export default {
-  title: "Molecules/TOC",
   component: TOC,
+  title: "Molecules/TOC",
 } as ComponentMeta<typeof TOC>;
 
 const Template: ComponentStory<typeof TOC> = (args) => (

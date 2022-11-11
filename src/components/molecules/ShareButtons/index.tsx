@@ -16,7 +16,7 @@ type ShareButtonsProps = {
   className: string;
 };
 
-export const ShareButtons: React.FC<ShareButtonsProps> = ({ url, title, className }) => {
+export const ShareButtons: React.FC<ShareButtonsProps> = ({ className, title, url }) => {
   return (
     <div className={`flex place-items-center gap-4 ${className}`}>
       <TwitterShareButton url={url} title={title}>

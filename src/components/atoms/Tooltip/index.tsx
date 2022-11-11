@@ -5,7 +5,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Tooltip: React.FC<Props> = ({ label, children }) => {
+const Tooltip: React.FC<Props> = ({ children, label }) => {
   return (
     <div className="group relative inline-block cursor-pointer">
       {children}

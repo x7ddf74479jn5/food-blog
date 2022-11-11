@@ -40,7 +40,7 @@ describe("src/pages/api/posts/index.test.ts", () => {
       server.use(mockApi);
       await testApiHandler({
         ...params,
-        params: { id: mockArticles.stock.id, draftKey: "draft" },
+        params: { draftKey: "draft", id: mockArticles.stock.id },
         test: async ({ fetch }) => {
           const res = await fetch({ method: "GET" });
           expect(res.status).toEqual(307);
@@ -86,7 +86,7 @@ describe("src/pages/api/posts/index.test.ts", () => {
 
       await testApiHandler({
         ...params,
-        params: { id: "id", draftKey: "draft" },
+        params: { draftKey: "draft", id: "id" },
         test: async ({ fetch }) => {
           expect(fetch()).rejects.toThrow();
         },

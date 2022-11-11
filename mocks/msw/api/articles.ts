@@ -13,7 +13,7 @@ const searchArticlesByQ = (q: string): TArticle[] => {
 };
 
 export const mockGetArticles: ResponseResolver<RestRequest, RestContext> = async (req, res, ctx) => {
-  const { apiKey, q, limit, offset } = getSearchParams(req);
+  const { apiKey, limit, offset, q } = getSearchParams(req);
 
   if (!apiKey) {
     res(ctx.status(400, "Invalid X_MICROCMS_API_KEY"));
@@ -27,9 +27,9 @@ export const mockGetArticles: ResponseResolver<RestRequest, RestContext> = async
       ctx.status(200),
       ctx.json({
         contents: articles,
-        totalCount: articles.length,
-        offset: offset,
         limit: limit,
+        offset: offset,
+        totalCount: articles.length,
       })
     );
   }
@@ -40,9 +40,9 @@ export const mockGetArticles: ResponseResolver<RestRequest, RestContext> = async
     ctx.status(200),
     ctx.json({
       contents: articles,
-      totalCount: articles.length,
-      offset: offset,
       limit: limit,
+      offset: offset,
+      totalCount: articles.length,
     })
   );
 };

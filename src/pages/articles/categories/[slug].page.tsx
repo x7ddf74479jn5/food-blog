@@ -27,7 +27,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     return { params: { slug: category.slug } };
   });
 
-  return { paths, fallback: "blocking" };
+  return { fallback: "blocking", paths };
 };
 
 export const getStaticProps: GetStaticProps<CategoryPageProps, Params> = async ({ params }) => {
@@ -58,13 +58,13 @@ export const getStaticProps: GetStaticProps<CategoryPageProps, Params> = async (
 
     return {
       props: {
-        data,
+        categories,
         category,
         config,
-        categories,
-        tags,
+        data,
         pickup,
         popularArticles,
+        tags,
       },
     };
   } catch (error) {

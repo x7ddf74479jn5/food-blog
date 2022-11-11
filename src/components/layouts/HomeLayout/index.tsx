@@ -35,14 +35,14 @@ type HomeLayoutProps = {
 };
 
 const HomeLayout: React.FC<HomeLayoutProps> = ({
-  pickup,
-  url,
-  pageTitle,
+  categories,
   children,
   config,
-  categories,
-  tags,
+  pageTitle,
+  pickup,
   popularArticles,
+  tags,
+  url,
 }) => {
   const shouldRenderCarousel = useShouldRenderCarousel({ pickup, popularArticles });
 

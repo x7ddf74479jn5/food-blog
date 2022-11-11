@@ -3,7 +3,7 @@ import type { ComponentPropsWithoutRef, FC } from "react";
 
 type CustomImageProps = ComponentPropsWithoutRef<"img">;
 
-export const CustomImage: FC<CustomImageProps> = ({ src = "", alt = "", width, height }) => {
+export const CustomImage: FC<CustomImageProps> = ({ alt = "", height, src = "", width }) => {
   if (width && height) {
     return (
       <div className="relative mb-4 flex w-full items-center justify-center">

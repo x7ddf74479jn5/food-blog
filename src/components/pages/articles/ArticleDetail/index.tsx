@@ -29,22 +29,22 @@ export type ArticleDetailProps = {
 
 export const ArticleDetail: React.FC<ArticleDetailProps> = ({
   article,
-  mdxSource,
   categories: categoriesAtMenu,
   config,
   isPreview,
-  relatedArticles,
+  mdxSource,
   pickup,
   popularArticles,
+  relatedArticles,
   tags: tagsAtSearch,
 }) => {
-  const { id, image, title, description, category, tags, writer, linkCardArticles, publishedAt, updatedAt } = article;
-  const { siteTitle, host } = config;
+  const { category, description, id, image, linkCardArticles, publishedAt, tags, title, updatedAt, writer } = article;
+  const { host, siteTitle } = config;
   const url = formatPageUrl(`${urlTable.articles}/${id}`, host);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
   const safePublishedAt = getSafeDate(publishedAt);
   const safeModifiedAt = getSafeDate(updatedAt);
-  const { name: writerName, avatar } = writer;
+  const { avatar, name: writerName } = writer;
   const data = { articles: linkCardArticles };
   const pageTitle = formatPageTitle(title, siteTitle);
 
