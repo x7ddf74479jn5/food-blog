@@ -6,8 +6,8 @@ import { getArticle } from "@/services/article";
 import { urlTable } from "@/utils/paths/url";
 
 const previewQuerySchema = z.object({
-  id: z.string().refine((value) => Boolean(value.trim().length)),
   draftKey: z.string().refine((value) => Boolean(value.trim().length)),
+  id: z.string().refine((value) => Boolean(value.trim().length)),
 });
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -21,7 +21,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ message: "Bad Request" });
   }
 
-  const { id, draftKey } = parsed.data;
+  const { draftKey, id } = parsed.data;
 
   const content = await getArticle(id, { draftKey: draftKey });
 

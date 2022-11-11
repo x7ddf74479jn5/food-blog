@@ -6,8 +6,8 @@ import type { TTag } from "@/types";
 import { TagListColored } from ".";
 
 export default {
-  title: "Molecules/TagList/Colored",
   component: TagListColored,
+  title: "Molecules/TagList/Colored",
 } as ComponentMeta<typeof TagListColored>;
 
 const Template: ComponentStory<typeof TagListColored> = (args) => <TagListColored {...args} />;

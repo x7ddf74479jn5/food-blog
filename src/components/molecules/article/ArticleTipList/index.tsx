@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const ArticleTipWithThumb: React.FC<Props> = ({ article }) => {
-  const { id, title, tags, image } = article;
+  const { id, image, tags, title } = article;
   return (
     <div className="flex max-h-36 flex-row">
       <NextLink href={`${urlTable.articles}/${id}`}>

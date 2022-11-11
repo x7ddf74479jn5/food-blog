@@ -9,13 +9,13 @@ type Props = {
 
 export const CarouselCore: React.FC<Props> = ({ children }) => {
   const [viewportRef, embla] = useEmblaCarousel({
-    skipSnaps: false,
-    loop: true,
-    slidesToScroll: 1,
-    draggable: true,
     breakpoints: {
       "(min-width: 640px)": { slidesToScroll: 2 },
     },
+    draggable: true,
+    loop: true,
+    skipSnaps: false,
+    slidesToScroll: 1,
   });
   const [isPrevBtnEnabled, setIsPrevBtnEnabled] = useState(false);
   const [isNextBtnEnabled, setIsNextBtnEnabled] = useState(false);

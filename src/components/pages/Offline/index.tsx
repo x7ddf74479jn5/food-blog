@@ -10,7 +10,7 @@ export type OfflineProps = {
   tags: TTag[];
 };
 
-export const Offline: React.FC<OfflineProps> = ({ config, categories, tags }) => (
+export const Offline: React.FC<OfflineProps> = ({ categories, config, tags }) => (
   <RootLayout config={config} categories={categories} tags={tags}>
     <HtmlHeadNoIndex />
     <div className="mt-8 flex flex-col items-center justify-center gap-12" role="alert">

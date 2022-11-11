@@ -13,8 +13,8 @@ export type PickupProps = {
   tags: TTag[];
 };
 
-export const Pickup: React.FC<PickupProps> = ({ config, categories, pickup, popularArticles, tags }) => {
-  const { siteTitle, host } = config;
+export const Pickup: React.FC<PickupProps> = ({ categories, config, pickup, popularArticles, tags }) => {
+  const { host, siteTitle } = config;
   const heading = "おすすめ記事";
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = formatPageUrl(`${urlTable.pickup}`, host);

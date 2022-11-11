@@ -3,8 +3,8 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { SideSectionContainer } from ".";
 
 export default {
-  title: "atoms/buttons/ButtonTag/Colored",
   component: SideSectionContainer,
+  title: "atoms/buttons/ButtonTag/Colored",
 } as ComponentMeta<typeof SideSectionContainer>;
 
 const Template: ComponentStory<typeof SideSectionContainer> = (args) => (

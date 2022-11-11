@@ -14,8 +14,8 @@ export const fetchArticles = async (queries?: MicroCMSQueries): Promise<TArticle
 
 export const fetchArticle = async (id: string, queries?: MicroCMSQueries): Promise<TArticle> => {
   const data = await client.get<TArticle>({
-    endpoint: `articles`,
     contentId: id,
+    endpoint: `articles`,
     queries: {
       depth: 2,
       ...queries,
@@ -28,8 +28,8 @@ export const fetchPickupArticles = async (queries: MicroCMSQueries) => {
   const data = await client.get<TPickupListResponse>({
     endpoint: "pickups",
     queries: {
-      orders: "-publishedAt",
       depth: 2,
+      orders: "-publishedAt",
       ...queries,
     },
   });

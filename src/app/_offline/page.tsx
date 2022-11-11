@@ -20,8 +20,8 @@ export const getStaticProps: GetStaticProps<OfflinePageProps> = async () => {
 
     return {
       props: {
-        config,
         categories,
+        config,
         tags,
       },
     };

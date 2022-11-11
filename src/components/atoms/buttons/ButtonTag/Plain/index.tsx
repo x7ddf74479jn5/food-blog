@@ -7,7 +7,7 @@ type Props = {
   hasLink?: boolean;
 };
 
-export const ButtonTagPlain: React.FC<Props> = ({ tag, hasLink = false }) => {
+export const ButtonTagPlain: React.FC<Props> = ({ hasLink = false, tag }) => {
   if (hasLink) {
     return (
       <NextLink href={`${urlTable.tags}/${tag.slug}`}>

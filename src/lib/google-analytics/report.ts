@@ -22,27 +22,27 @@ export const runReport = async (): Promise<ReportRow[] | undefined> => {
     projectId,
   });
   const [response] = await analyticsDataClient.runReport({
-    property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: "90daysAgo",
         endDate: "1daysAgo",
+        startDate: "90daysAgo",
       },
     ],
+    dimensionFilter: {
+      filter: {
+        fieldName: "pagePath",
+        stringFilter: {
+          matchType: "CONTAINS",
+          value: "articles",
+        },
+      },
+    },
     dimensions: [
       {
         name: "pagePath",
       },
     ],
-    dimensionFilter: {
-      filter: {
-        stringFilter: {
-          value: "articles",
-          matchType: "CONTAINS",
-        },
-        fieldName: "pagePath",
-      },
-    },
+    limit: 100,
     metrics: [
       {
         name: "screenPageViews",
@@ -56,7 +56,7 @@ export const runReport = async (): Promise<ReportRow[] | undefined> => {
         },
       },
     ],
-    limit: 100,
+    property: `properties/${propertyId}`,
   });
 
   if (response?.rows?.length === 0) return;
@@ -70,7 +70,7 @@ export const runReport = async (): Promise<ReportRow[] | undefined> => {
     })
     .filter((obj): obj is NonNullable<{ pagePath: string; pageViews: string }> => obj !== undefined)
     .filter(({ pagePath }) => !pagePath?.startsWith("/articles/categories") && !pagePath?.startsWith("/articles/tags"))
-    .map(({ pageViews, pagePath }, idx) => ({ id: pagePath?.split("/")[2], pageViews, order: ++idx }))
+    .map(({ pagePath, pageViews }, idx) => ({ id: pagePath?.split("/")[2], order: ++idx, pageViews }))
     .slice(0, 5);
 
   return result;

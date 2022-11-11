@@ -16,16 +16,16 @@ describe("components/organisms/ArticleSWRContainer", () => {
         spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
         spyUseGetArticleQuery.mockReturnValue({
           articles: [mockArticles.stock],
-          hasNextPage: true,
+          data: [],
           error: undefined,
+          getCurrentKey: jest.fn(),
+          hasNextPage: true,
           isValidating: false,
+          mutate: jest.fn(),
           paginate: mockPaginate,
+          revalidate: jest.fn(),
           setSize: jest.fn(),
           size: 1,
-          data: [],
-          getCurrentKey: jest.fn(),
-          revalidate: jest.fn(),
-          mutate: jest.fn(),
         });
       });
 
@@ -57,16 +57,16 @@ describe("components/organisms/ArticleSWRContainer", () => {
         spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
         spyUseGetArticleQuery.mockReturnValue({
           articles: [mockArticles.stock],
-          hasNextPage: false,
+          data: [],
           error: undefined,
+          getCurrentKey: jest.fn(),
+          hasNextPage: false,
           isValidating: false,
+          mutate: jest.fn(),
           paginate: mockPaginate,
+          revalidate: jest.fn(),
           setSize: jest.fn(),
           size: 1,
-          data: [],
-          getCurrentKey: jest.fn(),
-          revalidate: jest.fn(),
-          mutate: jest.fn(),
         });
       });
       afterEach(() => {
@@ -88,16 +88,16 @@ describe("components/organisms/ArticleSWRContainer", () => {
         spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
         spyUseGetArticleQuery.mockReturnValue({
           articles: [mockArticles.stock],
-          hasNextPage: true,
+          data: [],
           error: undefined,
+          getCurrentKey: jest.fn(),
+          hasNextPage: true,
           isValidating: true,
+          mutate: jest.fn(),
           paginate: mockPaginate,
+          revalidate: jest.fn(),
           setSize: jest.fn(),
           size: 1,
-          data: [],
-          getCurrentKey: jest.fn(),
-          revalidate: jest.fn(),
-          mutate: jest.fn(),
         });
       });
       afterEach(() => {
@@ -118,16 +118,16 @@ describe("components/organisms/ArticleSWRContainer", () => {
       spyUseGetArticleQuery = jest.spyOn(useGetArticleQuery, "default");
       spyUseGetArticleQuery.mockReturnValue({
         articles: [],
-        hasNextPage: false,
+        data: [],
         error: undefined,
+        getCurrentKey: jest.fn(),
+        hasNextPage: false,
         isValidating: false,
+        mutate: jest.fn(),
         paginate: mockPaginate,
+        revalidate: jest.fn(),
         setSize: jest.fn(),
         size: 1,
-        data: [],
-        getCurrentKey: jest.fn(),
-        revalidate: jest.fn(),
-        mutate: jest.fn(),
       });
     });
 

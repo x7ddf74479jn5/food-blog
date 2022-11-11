@@ -33,13 +33,13 @@ export const TOC = ({ isSide = false }: Props) => {
     }
 
     tocbot.init({
-      tocSelector: "#js-toc",
       contentSelector: "#js-toc-content",
-      headingSelector: TARGET_NODES,
       hasInnerContainers: true,
-      orderedList: false,
+      headingSelector: TARGET_NODES,
       headingsOffset: 100,
+      orderedList: false,
       scrollSmoothOffset: -48,
+      tocSelector: "#js-toc",
     });
 
     return () => {

@@ -28,11 +28,11 @@ export const getStaticProps: GetStaticProps<SearchPageProps> = async () => {
 
     return {
       props: {
-        config,
         categories,
-        tags,
+        config,
         pickup,
         popularArticles,
+        tags,
       },
     };
   } catch (error) {

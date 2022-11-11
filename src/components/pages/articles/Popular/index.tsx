@@ -14,8 +14,8 @@ export type PopularProps = {
   popularArticles: TRankedArticle[];
 };
 
-export const Popular: React.FC<PopularProps> = ({ config, categories, pickup, popularArticles, tags }) => {
-  const { siteTitle, host } = config;
+export const Popular: React.FC<PopularProps> = ({ categories, config, pickup, popularArticles, tags }) => {
+  const { host, siteTitle } = config;
   const heading = "人気記事";
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = formatPageUrl(`${urlTable.popular}`, host);

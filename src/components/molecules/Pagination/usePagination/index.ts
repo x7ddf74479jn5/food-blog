@@ -14,11 +14,11 @@ type Response = {
 };
 
 const usePagination = ({
-  root = null,
-  onIntersect,
-  threshold = 1.0,
-  rootMargin = "0px",
   enabled = true,
+  onIntersect,
+  root = null,
+  rootMargin = "0px",
+  threshold = 1.0,
 }: Argument): Response => {
   const [target, setTarget] = useState<Element | null>(null);
 

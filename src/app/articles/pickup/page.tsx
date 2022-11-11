@@ -27,11 +27,11 @@ export const getStaticProps: GetStaticProps<PickupPageProps> = async () => {
 
     return {
       props: {
-        config,
         categories,
-        tags,
+        config,
         pickup,
         popularArticles,
+        tags,
       },
     };
   } catch (error) {

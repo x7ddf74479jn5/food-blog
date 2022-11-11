@@ -12,8 +12,8 @@ export type HomeProps = {
   popularArticles: TRankedArticle[];
 };
 
-export const Home: React.FC<HomeProps> = ({ data, config, pickup, categories, popularArticles, tags }) => {
-  const { siteTitle: title, host } = config;
+export const Home: React.FC<HomeProps> = ({ categories, config, data, pickup, popularArticles, tags }) => {
+  const { host, siteTitle: title } = config;
 
   return (
     <HomeLayout

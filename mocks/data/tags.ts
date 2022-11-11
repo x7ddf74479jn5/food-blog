@@ -23,16 +23,16 @@ type TTagCollection = {
 };
 
 export const mockTags: TTagCollection = {
-  komatsuna: { ...dateCommon, id: "1", slug: "komatshna", name: "小松菜", color: "green" as const },
-  mozzarella: { ...dateCommon, id: "2", slug: "mozzarella", name: "モッツァレラ", color: "pink" as const },
-  lettuce: { ...dateCommon, id: "3", slug: "lettuce", name: "レタス", color: "green" as const },
-  mincedMeat: { ...dateCommon, id: "4", slug: "minced_meat", name: "挽き肉", color: "red" as const },
-  rice: { ...dateCommon, id: "5", slug: "rice", name: "ごはん", color: "yellow" as const },
-  aburaage: { ...dateCommon, id: "6", slug: "aburaage", name: "油揚げ", color: "gray" as const },
-  onion: { ...dateCommon, id: "7", slug: "onion", name: "玉ねぎ", color: "green" as const },
-  udon: { ...dateCommon, id: "8", slug: "udon", name: "うどん", color: "yellow" as const },
-  misoSoup: { ...dateCommon, id: "9", slug: "miso_soup", name: "味噌汁", color: "gray" as const },
-  tomato: { ...dateCommon, id: "10", slug: "tomato", name: "トマト", color: "green" as const },
-  preparation: { ...dateCommon, id: "11", slug: "preparation", name: "仕込み", color: "gray" as const },
-  ooba: { ...dateCommon, id: "12", slug: "ooba", name: "大葉", color: "green" as const },
+  aburaage: { ...dateCommon, color: "gray" as const, id: "6", name: "油揚げ", slug: "aburaage" },
+  komatsuna: { ...dateCommon, color: "green" as const, id: "1", name: "小松菜", slug: "komatshna" },
+  lettuce: { ...dateCommon, color: "green" as const, id: "3", name: "レタス", slug: "lettuce" },
+  mincedMeat: { ...dateCommon, color: "red" as const, id: "4", name: "挽き肉", slug: "minced_meat" },
+  misoSoup: { ...dateCommon, color: "gray" as const, id: "9", name: "味噌汁", slug: "miso_soup" },
+  mozzarella: { ...dateCommon, color: "pink" as const, id: "2", name: "モッツァレラ", slug: "mozzarella" },
+  onion: { ...dateCommon, color: "green" as const, id: "7", name: "玉ねぎ", slug: "onion" },
+  ooba: { ...dateCommon, color: "green" as const, id: "12", name: "大葉", slug: "ooba" },
+  preparation: { ...dateCommon, color: "gray" as const, id: "11", name: "仕込み", slug: "preparation" },
+  rice: { ...dateCommon, color: "yellow" as const, id: "5", name: "ごはん", slug: "rice" },
+  tomato: { ...dateCommon, color: "green" as const, id: "10", name: "トマト", slug: "tomato" },
+  udon: { ...dateCommon, color: "yellow" as const, id: "8", name: "うどん", slug: "udon" },
 };

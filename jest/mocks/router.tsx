@@ -5,26 +5,26 @@ export type { NextRouter };
 export { RouterContext };
 
 export const mockRouter: NextRouter = {
-  route: "/",
-  pathname: "/",
-  query: {},
   asPath: "/",
   basePath: "/",
   isLocaleDomain: true,
-  isReady: true,
-  push: jest.fn(),
-  prefetch: jest.fn(),
-  replace: jest.fn(),
-  reload: jest.fn(),
   back: jest.fn(),
+  isReady: true,
   beforePopState: jest.fn(),
+  pathname: "/",
   events: {
-    on: jest.fn(),
-    off: jest.fn(),
     emit: jest.fn(),
+    off: jest.fn(),
+    on: jest.fn(),
   },
+  prefetch: jest.fn(),
   isFallback: false,
+  route: "/",
   isPreview: false,
+  query: {},
+  push: jest.fn(),
+  reload: jest.fn(),
+  replace: jest.fn(),
 };
 
 export const withMockedRouter = (

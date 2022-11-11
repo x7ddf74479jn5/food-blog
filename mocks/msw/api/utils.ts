@@ -9,7 +9,7 @@ export const getSearchParams = (req: RestRequest<DefaultBodyType, Record<string,
   const q = req.url.searchParams.get("q");
   const id = String(req.params.id);
 
-  return { apiKey, limit, offset, filters, q, id };
+  return { apiKey, filters, id, limit, offset, q };
 };
 
 export const findContent = <T extends Record<string, any>>(id: string, objects: Record<string, T>): T | undefined => {

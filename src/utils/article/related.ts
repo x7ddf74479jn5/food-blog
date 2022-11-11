@@ -47,9 +47,9 @@ export const getPrevAndNextTArticle = (
 ): { prevTArticle: TArticle | null; nextTArticle: TArticle | null } => {
   const articlesOrderByDate = sortArticles(articles, comparator ?? comparatorDateDesc);
   const articleIndex = articlesOrderByDate.findIndex((a) => a.id === src.id);
-  if (articleIndex < 0) return { prevTArticle: null, nextTArticle: null };
+  if (articleIndex < 0) return { nextTArticle: null, prevTArticle: null };
 
   const prevTArticle = articlesOrderByDate[articleIndex - 1] ?? null;
   const nextTArticle = articlesOrderByDate[articleIndex + 1] ?? null;
-  return { prevTArticle, nextTArticle };
+  return { nextTArticle, prevTArticle };
 };

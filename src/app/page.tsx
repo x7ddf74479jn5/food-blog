@@ -35,12 +35,12 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
 
     return {
       props: {
-        data,
         categories,
-        tags,
         config,
+        data,
         pickup,
         popularArticles,
+        tags,
       },
     };
   } catch (error) {

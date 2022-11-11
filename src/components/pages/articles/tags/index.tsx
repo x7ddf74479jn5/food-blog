@@ -15,8 +15,8 @@ export type TagsProps = {
   tags: TTag[];
 };
 
-export const Tags: React.FC<TagsProps> = ({ data, tag, config, categories, pickup, popularArticles, tags }) => {
-  const { siteTitle, host } = config;
+export const Tags: React.FC<TagsProps> = ({ categories, config, data, pickup, popularArticles, tag, tags }) => {
+  const { host, siteTitle } = config;
   const heading = `タグ：${tag.name}`;
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = formatPageUrl(`${urlTable.tags}/${tag.slug}`, host);

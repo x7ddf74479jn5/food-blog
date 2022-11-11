@@ -28,7 +28,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     return { params: { id: article.id } };
   });
 
-  return { paths, fallback: "blocking" };
+  return { fallback: "blocking", paths };
 };
 
 export const getStaticProps: GetStaticProps<ArticleDetailPageProps, Params> = async ({ params }) => {
@@ -58,14 +58,14 @@ export const getStaticProps: GetStaticProps<ArticleDetailPageProps, Params> = as
     return {
       props: {
         article,
-        mdxSource,
         categories,
-        tags,
         config,
         isPreview: false,
-        relatedArticles,
+        mdxSource,
         pickup,
         popularArticles,
+        relatedArticles,
+        tags,
       },
     };
   } catch (error) {

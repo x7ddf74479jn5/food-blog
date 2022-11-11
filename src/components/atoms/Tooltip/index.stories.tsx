@@ -3,8 +3,8 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import Tooltip from "./index";
 
 export default {
-  title: "Atoms/Tooltip",
   component: Tooltip,
+  title: "Atoms/Tooltip",
 } as ComponentMeta<typeof Tooltip>;
 
 const Template: ComponentStory<typeof Tooltip> = (args) => (

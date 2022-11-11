@@ -1,18 +1,18 @@
 export const apiRoute = {
-  apiPreview: "/api/preview",
   apiArticles: "/api/articles",
+  apiPreview: "/api/preview",
 } as const;
 
 export const urlTable = {
-  home: "/",
-  root: "/",
   articles: "/articles",
   categories: "/articles/categories",
-  tags: "/articles/tags",
+  home: "/",
   pickup: "/articles/pickup",
   popular: "/articles/popular",
   preview: "/preview",
+  root: "/",
   search: "/search",
+  tags: "/articles/tags",
 } as const;
 
 export type UrlTableValue = typeof urlTable[keyof typeof urlTable];

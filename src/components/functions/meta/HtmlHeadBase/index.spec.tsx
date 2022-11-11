@@ -17,7 +17,7 @@ jest.mock("next/head", () => {
 });
 
 describe("components/atoms/meta/HtmlHeadBase", () => {
-  const { title, description, image, id } = mockArticles.stock;
+  const { description, id, image, title } = mockArticles.stock;
   const imageUrl = image.url;
   const { host: indexUrl, siteTitle } = mockConfig;
   const pageTitle = formatPageTitle(title, siteTitle);

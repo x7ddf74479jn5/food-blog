@@ -12,7 +12,7 @@ type Props = {
   id?: string;
 };
 
-const Thumbnail: React.FC<Props> = ({ title, src, loading = "lazy", id, blurDataURL }) => {
+const Thumbnail: React.FC<Props> = ({ blurDataURL, id, loading = "lazy", src, title }) => {
   const image = (
     <Image
       src={src}

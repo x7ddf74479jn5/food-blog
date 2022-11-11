@@ -30,10 +30,10 @@ describe("pages/articles/categories/[slug]/client", () => {
   const mockTagList = Object.values(mockTags);
   const mockData = {
     contents: mockArticleList,
-    totalCount: mockArticleList.length,
     dateCommon,
     limit: 10,
     offset: 0,
+    totalCount: mockArticleList.length,
   };
 
   it("OK: 初期レンダリング", async () => {

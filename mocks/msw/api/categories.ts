@@ -6,7 +6,7 @@ import type { TCategory } from "@/types";
 import { findContentsBySlug, getSearchParams, isMatchedAgainstFilters } from "./utils";
 
 export const mockGetCategories: ResponseResolver<RestRequest, RestContext> = async (req, res, ctx) => {
-  const { apiKey, limit, offset, filters } = getSearchParams(req);
+  const { apiKey, filters, limit, offset } = getSearchParams(req);
 
   if (!apiKey) {
     res(ctx.status(400, "Invalid X_MICROCMS_API_KEY"));
@@ -22,9 +22,9 @@ export const mockGetCategories: ResponseResolver<RestRequest, RestContext> = asy
         ctx.status(200),
         ctx.json({
           contents: categories,
-          totalCount: categories.length,
-          offset: offset,
           limit: limit,
+          offset: offset,
+          totalCount: categories.length,
         })
       );
     }
@@ -35,9 +35,9 @@ export const mockGetCategories: ResponseResolver<RestRequest, RestContext> = asy
       ctx.status(200),
       ctx.json({
         contents: categories,
-        totalCount: categories.length,
-        offset: offset,
         limit: limit,
+        offset: offset,
+        totalCount: categories.length,
       })
     );
   }
@@ -48,9 +48,9 @@ export const mockGetCategories: ResponseResolver<RestRequest, RestContext> = asy
     ctx.status(200),
     ctx.json({
       contents: categories,
-      totalCount: categories.length,
-      offset: offset,
       limit: limit,
+      offset: offset,
+      totalCount: categories.length,
     })
   );
 };

@@ -12,7 +12,7 @@ describe("pages/articles/tags/[slug]/server", () => {
   const mockTagList = Object.values(mockTags);
 
   it("getStaticPaths", async () => {
-    const { paths, fallback } = await getStaticPaths({});
+    const { fallback, paths } = await getStaticPaths({});
     expect(fallback).toBe("blocking");
 
     const expectedPaths = mockTagList.map((tag) => tag.slug);
