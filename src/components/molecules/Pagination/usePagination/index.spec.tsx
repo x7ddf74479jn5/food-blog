@@ -27,8 +27,8 @@ describe("hooks/usePagination", () => {
     const el = document.createElement("div");
     act(() => result.current.loadMoreRef(el));
     expect(window.IntersectionObserver).toBeCalledWith(expect.any(Function), {
-      root: null,
       onIntersect: mockOnIntersect(),
+      root: null,
       rootMargin: "0px",
       threshold: 1.0,
     });

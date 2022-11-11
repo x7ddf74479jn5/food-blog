@@ -4,8 +4,8 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ButtonTagColored } from ".";
 
 export default {
-  title: "atoms/buttons/ButtonTag/Colored",
   component: ButtonTagColored,
+  title: "atoms/buttons/ButtonTag/Colored",
 } as ComponentMeta<typeof ButtonTagColored>;
 
 const Template: ComponentStory<typeof ButtonTagColored> = (args) => <ButtonTagColored {...args} />;

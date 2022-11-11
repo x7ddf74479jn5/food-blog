@@ -11,7 +11,7 @@ type LinkCardProps = {
 };
 
 export const LinkCard: React.FC<LinkCardProps> = ({ article }) => {
-  const { id, title, tags, image } = article;
+  const { id, image, tags, title } = article;
   return (
     <NextLink href={`${urlTable.articles}/${id}`}>
       <div className="not-prose my-8 border border-gray-300 dark:border-gray-700">

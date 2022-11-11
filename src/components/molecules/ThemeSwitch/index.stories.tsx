@@ -4,8 +4,8 @@ import { ThemeProvider } from "next-themes";
 import { ThemeSwitch } from ".";
 
 export default {
-  title: "molecules/ThemeSwitch",
   component: ThemeSwitch,
+  title: "molecules/ThemeSwitch",
 } as ComponentMeta<typeof ThemeSwitch>;
 
 const Template: ComponentStory<typeof ThemeSwitch> = (args) => (

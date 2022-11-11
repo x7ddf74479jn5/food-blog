@@ -4,8 +4,8 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ArticleItem } from ".";
 
 export default {
-  title: "molecules/article/ArticleList/ArticleItem",
   component: ArticleItem,
+  title: "molecules/article/ArticleList/ArticleItem",
 } as ComponentMeta<typeof ArticleItem>;
 
 const Template: ComponentStory<typeof ArticleItem> = (args) => (

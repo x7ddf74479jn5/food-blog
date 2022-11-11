@@ -9,7 +9,7 @@ import { useSearchMutation, useSearchState } from "../SearchContext";
 import { useSearch } from "../useSearch";
 
 const useSearchBar = () => {
-  const { text, history } = useSearchState();
+  const { history, text } = useSearchState();
   const { setText } = useSearchMutation();
   const q = text.trim();
   const { search } = useSearch({ q });
@@ -20,15 +20,15 @@ const useSearchBar = () => {
   }, [q, search]);
 
   return {
-    text,
-    setText,
     history,
+    setText,
+    text,
     textSearch,
   };
 };
 
 const SearchBar: React.FC = () => {
-  const { text, setText, history, textSearch } = useSearchBar();
+  const { history, setText, text, textSearch } = useSearchBar();
   const [isShow, setIsShow] = useState(false);
   const [isComposing, setIsComposing] = useState(false);
 

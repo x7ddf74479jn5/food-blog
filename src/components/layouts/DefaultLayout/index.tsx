@@ -30,15 +30,15 @@ type Props = {
 };
 
 const DefaultLayout: React.FC<Props> = ({
-  url,
-  pageTitle,
-  children,
-  config,
   backLinks,
   categories,
-  tags,
+  children,
+  config,
+  pageTitle,
   pickup,
   popularArticles,
+  tags,
+  url,
 }) => {
   return (
     <RootLayout config={config} categories={categories} tags={tags}>

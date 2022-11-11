@@ -12,8 +12,8 @@ type RootLayoutProps = {
   children: React.ReactNode;
 };
 
-export const RootLayout: React.FC<RootLayoutProps> = memo(({ config, categories, tags, children }) => {
-  const { siteTitle, organization } = config;
+export const RootLayout: React.FC<RootLayoutProps> = memo(({ categories, children, config, tags }) => {
+  const { organization, siteTitle } = config;
   return (
     <div className="mx-auto mb-16 flex min-h-screen max-w-screen-xl flex-col px-4">
       <Header siteTitle={siteTitle} categories={categories} tags={tags} />

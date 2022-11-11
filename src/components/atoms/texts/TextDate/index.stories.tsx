@@ -3,11 +3,11 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import TextDate from ".";
 
 export default {
-  title: "Atoms/texts/TextDate",
-  component: TextDate,
   argTypes: {
     date: { control: { type: "date" } },
   },
+  component: TextDate,
+  title: "Atoms/texts/TextDate",
 } as ComponentMeta<typeof TextDate>;
 
 const Template: ComponentStory<typeof TextDate> = (args) => <TextDate {...args} />;

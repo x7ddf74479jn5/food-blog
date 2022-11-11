@@ -11,38 +11,38 @@ export const generatedRssFeed = (config: TConfig, articles: TArticle[]) => {
   const baseUrl = config.host;
   const date = new Date();
   const author = {
-    name: config.organization,
     email: config.email,
     link: config.officialSite,
+    name: config.organization,
   };
 
   const feed = new Feed({
-    title: config.siteTitle,
-    description: config.siteDescription,
-    id: baseUrl,
-    link: baseUrl,
-    language: "ja",
-    image: `${baseUrl}/favicon/favicon-32x32.png`,
-    copyright: `All rights reserved ${date.getFullYear()}, ${author.name}`,
-    updated: date,
-    feedLinks: {
-      rss2: `${baseUrl}/rss/feed.xml`,
-      json: `${baseUrl}/rss/feed.json`,
-      atom: `${baseUrl}/rss/atom.xml`,
-    },
     author: author,
+    copyright: `All rights reserved ${date.getFullYear()}, ${author.name}`,
+    description: config.siteDescription,
+    feedLinks: {
+      atom: `${baseUrl}/rss/atom.xml`,
+      json: `${baseUrl}/rss/feed.json`,
+      rss2: `${baseUrl}/rss/feed.xml`,
+    },
+    id: baseUrl,
+    image: `${baseUrl}/favicon/favicon-32x32.png`,
+    language: "ja",
+    link: baseUrl,
+    title: config.siteTitle,
+    updated: date,
   });
 
   articles.forEach((article) => {
     const url = `${baseUrl}/${urlTable.articles}/${article.id}`;
 
     feed.addItem({
-      title: article.title,
+      content: marked(article.body),
+      date: new Date(getSafeDate(article.publishedAt)),
       description: article.description,
       id: article.id,
       link: url,
-      content: marked(article.body),
-      date: new Date(getSafeDate(article.publishedAt)),
+      title: article.title,
     });
   });
 

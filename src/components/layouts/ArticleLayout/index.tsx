@@ -27,16 +27,16 @@ type Props = {
 };
 
 const ArticleLayout: React.FC<Props> = ({
-  url,
+  backLinks,
+  categories,
   children,
   config,
   pageTitle,
-  backLinks,
-  relatedArticles,
-  categories,
-  tags,
   pickup,
   popularArticles,
+  relatedArticles,
+  tags,
+  url,
 }) => {
   return (
     <RootLayout config={config} categories={categories} tags={tags}>

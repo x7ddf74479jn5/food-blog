@@ -13,18 +13,18 @@ type ArticleSWRContainerProps = {
   fallbackData?: TArticleListResponse;
 };
 
-export const ArticleSWRContainer: React.FC<ArticleSWRContainerProps> = ({ queryOptions, fallbackData }) => {
+export const ArticleSWRContainer: React.FC<ArticleSWRContainerProps> = ({ fallbackData, queryOptions }) => {
   const {
     articles,
+    error,
     hasNextPage,
     isValidating,
     paginate: handlePaginate,
     revalidate: handleReset,
-    error,
   } = useGetArticleListQuery({
     endpoint: apiRoute.apiArticles,
+    fallbackData: fallbackData,
     getKeyOptions: queryOptions,
-    fallbackData: fallbackData && fallbackData,
   });
 
   if (isValidating && articles.length === 0) return <ArticleSkeltonList />;

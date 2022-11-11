@@ -46,7 +46,7 @@ export const getServerSideProps: GetServerSideProps<ArticleDetailPageProps, Para
   }
 
   try {
-    const { id, draftKey } = previewData;
+    const { draftKey, id } = previewData;
     const queries = { draftKey };
     const [config, categories, tags, article, pickup, popularArticles] = await Promise.all([
       fetchConfig(),
@@ -63,14 +63,14 @@ export const getServerSideProps: GetServerSideProps<ArticleDetailPageProps, Para
     return {
       props: {
         article,
-        mdxSource,
         categories,
-        tags,
         config,
         isPreview,
-        relatedArticles,
+        mdxSource,
         pickup,
         popularArticles,
+        relatedArticles,
+        tags,
       },
     };
   } catch (error) {

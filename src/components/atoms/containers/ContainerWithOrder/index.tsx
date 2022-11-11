@@ -6,7 +6,7 @@ type ContainerWithOrderProps = {
   className?: string;
 };
 
-export const ContainerWithOrder: React.FC<ContainerWithOrderProps> = memo(({ order, children, className = "" }) => {
+export const ContainerWithOrder: React.FC<ContainerWithOrderProps> = memo(({ children, className = "", order }) => {
   return <div className={`flex flex-col ${order} w-full items-center space-y-8 ${className}`}>{children} </div>;
 });
 

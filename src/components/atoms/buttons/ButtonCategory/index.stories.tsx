@@ -4,8 +4,8 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ButtonCategory } from ".";
 
 export default {
-  title: "atoms/buttons/ButtonCategory",
   component: ButtonCategory,
+  title: "atoms/buttons/ButtonCategory",
 } as ComponentMeta<typeof ButtonCategory>;
 
 const Template: ComponentStory<typeof ButtonCategory> = (args) => <ButtonCategory {...args} />;

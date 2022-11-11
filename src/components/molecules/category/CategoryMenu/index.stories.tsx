@@ -5,13 +5,13 @@ import { withRouterContext } from "../../../../../.storybook/mocks/context";
 import { CategoryMenu } from ".";
 
 export default {
-  title: "molecules/category/CategoryMenu",
   component: CategoryMenu,
   decorators: [
     (storyFn) => {
       return withRouterContext(storyFn, { asPath: "/" });
     },
   ],
+  title: "molecules/category/CategoryMenu",
 } as ComponentMeta<typeof CategoryMenu>;
 
 const Template: ComponentStory<typeof CategoryMenu> = (args) => <CategoryMenu {...args} />;

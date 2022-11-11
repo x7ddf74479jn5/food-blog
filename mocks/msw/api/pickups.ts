@@ -14,9 +14,9 @@ export const mockGetPickups: ResponseResolver<RestRequest, RestContext> = async 
 
   const resJson: TPickupListResponse = {
     contents: [mockPickup],
-    totalCount: 1,
     limit: 1,
     offset: 0,
+    totalCount: 1,
   };
 
   return res(ctx.status(200), ctx.json(resJson));

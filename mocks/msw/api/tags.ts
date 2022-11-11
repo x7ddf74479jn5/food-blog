@@ -7,7 +7,7 @@ import type { TTag } from "@/types";
 import { findContentsBySlug } from "./utils";
 
 export const mockGetTags: ResponseResolver<RestRequest, RestContext> = async (req, res, ctx) => {
-  const { apiKey, limit, offset, filters } = getSearchParams(req);
+  const { apiKey, filters, limit, offset } = getSearchParams(req);
 
   if (!apiKey) {
     res(ctx.status(400, "Invalid X_MICROCMS_API_KEY"));
@@ -23,9 +23,9 @@ export const mockGetTags: ResponseResolver<RestRequest, RestContext> = async (re
         ctx.status(200),
         ctx.json({
           contents: tags,
-          totalCount: tags.length,
-          offset: offset,
           limit: limit,
+          offset: offset,
+          totalCount: tags.length,
         })
       );
     }
@@ -36,9 +36,9 @@ export const mockGetTags: ResponseResolver<RestRequest, RestContext> = async (re
       ctx.status(200),
       ctx.json({
         contents: tags,
-        totalCount: tags.length,
-        offset: offset,
         limit: limit,
+        offset: offset,
+        totalCount: tags.length,
       })
     );
   }
@@ -49,9 +49,9 @@ export const mockGetTags: ResponseResolver<RestRequest, RestContext> = async (re
     ctx.status(200),
     ctx.json({
       contents: tags,
-      totalCount: tags.length,
-      offset: offset,
       limit: limit,
+      offset: offset,
+      totalCount: tags.length,
     })
   );
 };

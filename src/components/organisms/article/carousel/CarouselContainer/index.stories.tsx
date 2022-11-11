@@ -5,8 +5,8 @@ import { CarouselContainer } from ".";
 import { device } from ".storybook/mocks/device";
 
 export default {
-  title: "organisms/article/carousel/CarouselContainer",
   component: CarouselContainer,
+  title: "organisms/article/carousel/CarouselContainer",
 } as ComponentMeta<typeof CarouselContainer>;
 
 export const Desktop: ComponentStoryObj<typeof CarouselContainer> = {

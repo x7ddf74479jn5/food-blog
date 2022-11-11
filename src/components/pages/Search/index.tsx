@@ -14,7 +14,7 @@ const useSearchPage = (config: TConfig, query: ParsedUrlQuery) => {
   const [heading, setHeading] = useState("");
   const router = useRouter();
   const q = query.q ? String(query.q) : "";
-  const { siteTitle, host } = config;
+  const { host, siteTitle } = config;
   const pageTitle = formatPageTitle(heading, siteTitle);
   const url = formatPageUrl(`${urlTable.search}/q=${q ?? ""}`, host);
 
@@ -25,9 +25,9 @@ const useSearchPage = (config: TConfig, query: ParsedUrlQuery) => {
   }, [q, router.isReady]);
 
   return {
+    heading,
     pageTitle,
     url,
-    heading,
   };
 };
 
@@ -50,7 +50,7 @@ export const useQueryOption = (query: ParsedUrlQuery) => {
   }
 
   const filters = queryFilters.length > 1 ? queryFilters.join("[and]") : queryFilters.join("");
-  const queryOptions: MicroCMSQueries = { q, filters };
+  const queryOptions: MicroCMSQueries = { filters, q };
 
   return queryOptions;
 };
@@ -64,10 +64,10 @@ export type SearchProps = {
   popularArticles: TRankedArticle[];
 };
 
-export const Search: React.FC<SearchProps> = ({ config, categories, pickup, popularArticles, tags }) => {
+export const Search: React.FC<SearchProps> = ({ categories, config, pickup, popularArticles, tags }) => {
   const { host } = config;
   const { query } = useRouter();
-  const { pageTitle, url, heading } = useSearchPage(config, query);
+  const { heading, pageTitle, url } = useSearchPage(config, query);
   const queryOptions = useQueryOption(query);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
 

@@ -16,9 +16,9 @@ test("index", async ({ page }) => {
   await page.evaluate(() => window.scrollTo(0, 0));
 
   await expect(page).toHaveScreenshot({
+    animations: "disabled",
     fullPage: true,
     scale: "device",
-    animations: "disabled",
     threshold: 0.2,
     timeout: 20000,
   });
@@ -40,9 +40,9 @@ test("articles/:id", async ({ page }) => {
   await page.evaluate(() => window.scrollTo(0, 0));
 
   await expect(page).toHaveScreenshot({
+    animations: "disabled",
     fullPage: true,
     scale: "device",
-    animations: "disabled",
     threshold: 0.2,
     timeout: 20000,
   });

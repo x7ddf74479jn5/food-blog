@@ -6,14 +6,14 @@ import { withRouterContext } from ".storybook/mocks/context";
 import { device } from ".storybook/mocks/device";
 
 export default {
-  title: "organisms/Header",
   component: Header,
+  title: "organisms/Header",
 } as ComponentMeta<typeof Header>;
 
 export const Desktop: ComponentStoryObj<typeof Header> = {
   args: {
-    siteTitle: "Title",
     categories: Object.values(mockCategories),
+    siteTitle: "Title",
   },
   decorators: [
     (storyFn) => {

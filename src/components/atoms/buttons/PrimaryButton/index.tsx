@@ -7,7 +7,7 @@ type PrimaryButtonProps = {
   size?: "sm" | "md";
 };
 
-export const PrimaryButton: React.FC<PrimaryButtonProps> = ({ label, Icon, size = "md", ...props }) => {
+export const PrimaryButton: React.FC<PrimaryButtonProps> = ({ Icon, label, size = "md", ...props }) => {
   return (
     <button
       {...props}

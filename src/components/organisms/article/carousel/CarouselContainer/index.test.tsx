@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from "jest/test-utils";
 import { CarouselContainer } from ".";
 
 describe("components/organisms/CarouselContainer", () => {
-  const { description, articles } = mockPickup;
+  const { articles, description } = mockPickup;
 
   it("OK: PICKUP(4)と人気記事(4)のとき初期表示が正しい", () => {
     const { container, getByRole } = render(

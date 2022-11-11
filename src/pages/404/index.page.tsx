@@ -16,8 +16,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
 
   return {
     props: {
-      config,
       categories,
+      config,
       tags,
     },
   };

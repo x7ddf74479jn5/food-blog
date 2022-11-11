@@ -14,7 +14,7 @@ type SearchFilterProps = {
   onToggle: (open: boolean) => void;
 };
 
-export const SearchFilter: React.FC<SearchFilterProps> = ({ categories, tags, onToggle }) => {
+export const SearchFilter: React.FC<SearchFilterProps> = ({ categories, onToggle, tags }) => {
   const { matchPath } = usePath();
   const isSearchPage = matchPath(urlTable.search);
 

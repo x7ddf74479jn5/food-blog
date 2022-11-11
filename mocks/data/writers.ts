@@ -12,11 +12,11 @@ type TWriterCollection = {
 export const mockWriters: TWriterCollection = {
   pandashark: {
     ...dateCommon,
+    avatar: { height: 100, url: "/pandashark_logo_180x180.png", width: 100 },
+    description: "description",
+    fullName: "pandashark",
     id: "1",
     name: "pandashark",
-    fullName: "pandashark",
-    description: "description",
     twitterAccountName: "@pandashark",
-    avatar: { url: "/pandashark_logo_180x180.png", width: 100, height: 100 },
   },
 };

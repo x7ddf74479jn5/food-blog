@@ -6,6 +6,7 @@ import z from "zod";
 import { getArticles } from "@/services/article";
 
 const articlesQuerySchema = z.object({
+  filters: z.string().optional(),
   limit: z
     .string()
     .optional()
@@ -18,7 +19,6 @@ const articlesQuerySchema = z.object({
     .transform((v) => Number(v)),
   pageIndex: z.string().optional(),
   q: z.string().optional(),
-  filters: z.string().optional(),
 });
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

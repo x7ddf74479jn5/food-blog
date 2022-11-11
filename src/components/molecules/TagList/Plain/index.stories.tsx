@@ -4,14 +4,14 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { TagListPlain } from ".";
 
 export default {
-  title: "Molecules/TagList/Plain",
   component: TagListPlain,
+  title: "Molecules/TagList/Plain",
 } as ComponentMeta<typeof TagListPlain>;
 
 const Template: ComponentStory<typeof TagListPlain> = (args) => <TagListPlain {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  tags: [mockTags.rice, mockTags.komatsuna, mockTags.mozzarella, mockTags.preparation],
   hasLink: true,
+  tags: [mockTags.rice, mockTags.komatsuna, mockTags.mozzarella, mockTags.preparation],
 };

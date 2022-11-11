@@ -12,7 +12,7 @@ type HeaderProps = {
   tags: TTag[];
 };
 
-const Header: React.FC<HeaderProps> = ({ siteTitle, categories, tags }) => {
+const Header: React.FC<HeaderProps> = ({ categories, siteTitle, tags }) => {
   return (
     <header className="py-2">
       <div className="grid auto-rows-auto grid-cols-5">

@@ -3,8 +3,8 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Callout } from ".";
 
 export default {
-  title: "Atoms/mdx/Callout",
   component: Callout,
+  title: "Atoms/mdx/Callout",
 } as ComponentMeta<typeof Callout>;
 
 const Template: ComponentStory<typeof Callout> = (args) => (

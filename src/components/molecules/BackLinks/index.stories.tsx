@@ -4,13 +4,13 @@ import { withRouterContext } from "../../../../.storybook/mocks/context";
 import BackLinks from ".";
 
 export default {
-  title: "molecules/BackLinks",
   component: BackLinks,
   decorators: [
     (storyFn) => {
       return withRouterContext(storyFn, { asPath: "/" });
     },
   ],
+  title: "molecules/BackLinks",
 } as ComponentMeta<typeof BackLinks>;
 
 const Template: ComponentStory<typeof BackLinks> = (args) => <BackLinks {...args} />;

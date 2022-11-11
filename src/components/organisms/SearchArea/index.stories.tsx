@@ -6,8 +6,8 @@ import { withRouterContext } from ".storybook/mocks/context";
 import { device } from ".storybook/mocks/device";
 
 export default {
-  title: "organisms/SearchArea",
   component: SearchArea,
+  title: "organisms/SearchArea",
 } as ComponentMeta<typeof SearchArea>;
 
 export const Desktop: ComponentStoryObj<typeof SearchArea> = {

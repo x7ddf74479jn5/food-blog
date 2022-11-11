@@ -34,7 +34,7 @@ const useSelectTags = (tags: TTag[], query = "") => {
     [setSelectedTags]
   );
 
-  return { selectedTags, filteredTags, select, unselect };
+  return { filteredTags, select, selectedTags, unselect };
 };
 
 type TagComboboxProps = {
@@ -43,7 +43,7 @@ type TagComboboxProps = {
 
 export const TagCombobox: React.FC<TagComboboxProps> = memo(({ tags }) => {
   const [query, setQuery] = useState("");
-  const { selectedTags, filteredTags, select, unselect } = useSelectTags(tags, query);
+  const { filteredTags, select, selectedTags, unselect } = useSelectTags(tags, query);
 
   const handleSelect = (tags: TTag[]) => select(tags);
 

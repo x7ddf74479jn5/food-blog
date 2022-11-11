@@ -16,21 +16,21 @@ export const CarouselContainer: React.FC<CarouselContainerProps> = ({ pickup, po
     const items = [];
     if (pickup && pickup.articles.length > 0) {
       items.push({
-        id: "pickup",
-        label: "PICKUP",
+        Carousel: <PickupArticleCarousel pickup={pickup} />,
         Icon: <FaLightbulb className="h-4 w-4 text-yellow-400" />,
         description: pickup?.description,
-        Carousel: <PickupArticleCarousel pickup={pickup} />,
+        id: "pickup",
+        label: "PICKUP",
       });
     }
 
     if (popularArticles.length > 0) {
       items.push({
-        id: "popular",
-        label: "POPULAR",
+        Carousel: <PopularArticleCarousel articles={popularArticles} />,
         Icon: <IoPodium className="h-4 w-4 text-yellow-400" />,
         description: "人気記事ランキング",
-        Carousel: <PopularArticleCarousel articles={popularArticles} />,
+        id: "popular",
+        label: "POPULAR",
       });
     }
 
@@ -43,7 +43,7 @@ export const CarouselContainer: React.FC<CarouselContainerProps> = ({ pickup, po
     <section className="mt-8 px-0 md:mt-16 md:px-16">
       <Tab.Group>
         <Tab.List className="flex space-x-2 rounded-md bg-gray-50 p-1 dark:bg-gray-700">
-          {tabItems.map(({ id, label, Icon }) => (
+          {tabItems.map(({ Icon, id, label }) => (
             <Tab
               key={id}
               className={({ selected }) =>
@@ -62,7 +62,7 @@ export const CarouselContainer: React.FC<CarouselContainerProps> = ({ pickup, po
           ))}
         </Tab.List>
         <Tab.Panels>
-          {tabItems.map(({ id, description, Carousel }) => (
+          {tabItems.map(({ Carousel, description, id }) => (
             <Tab.Panel key={id} className="mt-2 space-y-2">
               <>
                 <p className="break-words text-center text-sm sm:text-lg">{description}</p>

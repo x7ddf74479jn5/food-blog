@@ -10,12 +10,12 @@ import { SearchFilter } from "./SearchFilter";
 import { useSearch } from "./useSearch";
 
 export const useSearchArea = () => {
-  const { text, selectedCategory, selectedTags } = useSearchState();
+  const { selectedCategory, selectedTags, text } = useSearchState();
   const q = text.trim();
   const category = selectedCategory.id === "all" ? "" : selectedCategory.id ?? "";
   const tags = selectedTags?.map((tag) => tag.id).join(",");
 
-  const { search } = useSearch({ q, category, tags });
+  const { search } = useSearch({ category, q, tags });
 
   return {
     search,

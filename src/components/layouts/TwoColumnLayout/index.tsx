@@ -32,7 +32,7 @@ type TwoColumnLayoutProps = {
 };
 
 export const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = memo(
-  ({ children, config, pickup, host, title, heading, url, backLinks, categories, tags, popularArticles }) => {
+  ({ backLinks, categories, children, config, heading, host, pickup, popularArticles, tags, title, url }) => {
     return (
       <RootLayout config={config} categories={categories} tags={tags}>
         <HtmlHeadBase indexUrl={host} pageTitle={title} url={url} />

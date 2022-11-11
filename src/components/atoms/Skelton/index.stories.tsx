@@ -3,8 +3,8 @@ import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { Skelton } from ".";
 
 export default {
-  title: "atoms/Skelton",
   component: Skelton,
+  title: "atoms/Skelton",
 } as ComponentMeta<typeof Skelton>;
 
 export const Default: ComponentStoryObj<typeof Skelton> = {
