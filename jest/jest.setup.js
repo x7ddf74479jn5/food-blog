@@ -14,3 +14,5 @@ window.matchMedia = jest.fn().mockImplementation((query) => {
     removeListener: jest.fn(),
   };
 });
+
+window.gtag = jest.fn();
