@@ -91,7 +91,7 @@ const SearchBar: React.FC = () => {
               : "fixed z-10 mt-1 mr-4 max-h-[50vh] overflow-y-auto rounded-md border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-600 dark:bg-gray-700"
           }`}
         >
-          {text.length > 0 && !history.includes(text) && (
+          {text.length > 0 && (
             <Combobox.Option
               value={text}
               className={({ active }) =>
@@ -103,19 +103,20 @@ const SearchBar: React.FC = () => {
               {text}
             </Combobox.Option>
           )}
-          {history.map((history) => (
-            <Combobox.Option
-              key={history}
-              value={history}
-              className={({ active }) =>
-                `cursor-pointer py-2 px-4 text-left text-sm leading-5  dark:text-gray-100 ${
-                  active ? "bg-gray-100 dark:bg-green-500" : "bg-white dark:bg-gray-700"
-                } `
-              }
-            >
-              {history}
-            </Combobox.Option>
-          ))}
+          {text === "" &&
+            history.map((history) => (
+              <Combobox.Option
+                key={history}
+                value={history}
+                className={({ active }) =>
+                  `cursor-pointer py-2 px-4 text-left text-sm leading-5  dark:text-gray-100 ${
+                    active ? "bg-gray-100 dark:bg-green-500" : "bg-white dark:bg-gray-700"
+                  } `
+                }
+              >
+                {history}
+              </Combobox.Option>
+            ))}
         </Combobox.Options>
       </DropdownTransition>
     </Combobox>
