@@ -1,18 +1,19 @@
 import type { MicroCMSQueries } from "microcms-js-sdk";
+import { cache } from "react";
 
 import { client } from "@/lib/microcms";
 import type { TArticle, TArticleListResponse } from "@/types";
 import type { TPickupListResponse } from "@/types/models/pickup";
 
-export const fetchArticles = async (queries?: MicroCMSQueries): Promise<TArticleListResponse> => {
+export const fetchArticles = cache(async (queries?: MicroCMSQueries): Promise<TArticleListResponse> => {
   const data = await client.get<TArticleListResponse>({
     endpoint: "articles",
     queries: { limit: 1000, ...queries },
   });
   return data;
-};
+});
 
-export const fetchArticle = async (id: string, queries?: MicroCMSQueries): Promise<TArticle> => {
+export const fetchArticle = cache(async (id: string, queries?: MicroCMSQueries): Promise<TArticle> => {
   const data = await client.get<TArticle>({
     contentId: id,
     endpoint: `articles`,
@@ -22,9 +23,9 @@ export const fetchArticle = async (id: string, queries?: MicroCMSQueries): Promi
     },
   });
   return data;
-};
+});
 
-export const fetchPickupArticles = async (queries: MicroCMSQueries) => {
+export const fetchPickupArticles = cache(async (queries: MicroCMSQueries) => {
   const data = await client.get<TPickupListResponse>({
     endpoint: "pickups",
     queries: {
@@ -34,4 +35,4 @@ export const fetchPickupArticles = async (queries: MicroCMSQueries) => {
     },
   });
   return data;
-};
+});
