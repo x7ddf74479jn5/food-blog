@@ -3,8 +3,9 @@
  * https://github.com/vercel/next.js/issues/18393#issuecomment-955577890
  */
 
-import * as NextImage from "next/future/image";
-import type { ImageProps } from "next/future/image";
+import * as NextImage from "next/image";
+import type { ImageProps } from "next/image";
+import React from "react";
 
 const OriginalNextImage = NextImage.default;
 

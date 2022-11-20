@@ -1,42 +1,30 @@
 import type { StoryFnReactReturnType } from "@storybook/react/dist/ts3.9/client/preview/types";
-import { RouterContext } from "next/dist/shared/lib/router-context";
-import type { NextRouter } from "next/router";
+import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import { AppRouterContext } from "next/dist/shared/lib/app-router-context";
+
+export const defaultMockRouter: AppRouterInstance = {
+  back: jest.fn(),
+  forward: jest.fn(),
+  prefetch: jest.fn(),
+  push: jest.fn(),
+  refresh: jest.fn(),
+  replace: jest.fn(),
+};
 
 import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
 
 export const withContext = (storyFn: () => StoryFnReactReturnType) => {
-  return <SearchProvider>{storyFn()}</SearchProvider>;
+  return (
+    <AppRouterContext.Provider value={defaultMockRouter}>
+      <SearchProvider>{storyFn()}</SearchProvider>
+    </AppRouterContext.Provider>
+  );
 };
 
-export const withRouterContext = (storyFn: () => StoryFnReactReturnType, options?: Partial<NextRouter>) => {
-  const mockedRouter: NextRouter = {
-    asPath: "/",
-    back: () => {},
-    basePath: "/",
-    beforePopState: () => {},
-    events: {
-      emit: () => {},
-      off: () => {},
-      on: () => {},
-    },
-    isFallback: false,
-    isLocaleDomain: true,
-    isPreview: false,
-    isReady: true,
-    pathname: "/",
-    prefetch: () => {
-      return Promise.resolve();
-    },
-    push: () => {
-      return Promise.resolve(true);
-    },
-    query: {},
-    reload: () => {},
-    replace: () => {
-      return Promise.resolve(true);
-    },
-    route: "/",
+export const withRouterContext = (storyFn: () => StoryFnReactReturnType, options?: Partial<AppRouterInstance>) => {
+  const mockedRouter: AppRouterInstance = {
+    ...defaultMockRouter,
     ...options,
   };
-  return <RouterContext.Provider value={mockedRouter}>{storyFn()}</RouterContext.Provider>;
+  return <AppRouterContext.Provider value={mockedRouter}>{storyFn()}</AppRouterContext.Provider>;
 };
