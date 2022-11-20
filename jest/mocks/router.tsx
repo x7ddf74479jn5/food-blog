@@ -23,3 +23,4 @@ export const withMockRouter = (
 };
 
 export { AppRouterContext };
+export type { AppRouterInstance };
