@@ -1,15 +1,13 @@
 import { render, screen } from "jest/test-utils";
-import { mockCategories, mockConfig, mockTags } from "mocks/data";
+import { mockConfig } from "mocks/data";
 
-import Header from "../Header";
+import { Header } from ".";
 
 describe("components/organisms/Header", () => {
   const { siteTitle } = mockConfig;
-  const categoryList = Object.values(mockCategories);
-  const mockTagList = Object.values(mockTags);
 
-  it("OK: 初期表示が正しい", () => {
-    render(<Header categories={categoryList} siteTitle={siteTitle} tags={mockTagList} />);
+  it("OK: 初期表示が正しい", async () => {
+    render(await Header());
     const header = screen.getByRole("banner");
     expect(header).toBeInTheDocument();
     expect(header.tagName).toBe("HEADER");

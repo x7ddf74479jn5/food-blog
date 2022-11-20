@@ -1,19 +1,18 @@
 import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { mockCategories } from "mocks/data";
 
-import Header from ".";
+import { HeaderView } from "./HeaderView";
 import { withRouterContext } from ".storybook/mocks/context";
 import { device } from ".storybook/mocks/device";
 
 export default {
-  component: Header,
+  component: HeaderView,
   title: "organisms/Header",
-} as ComponentMeta<typeof Header>;
+} as ComponentMeta<typeof HeaderView>;
 
-export const Desktop: ComponentStoryObj<typeof Header> = {
+export const Desktop: ComponentStoryObj<typeof HeaderView> = {
   args: {
     categories: Object.values(mockCategories),
-    siteTitle: "Title",
   },
   decorators: [
     (storyFn) => {
@@ -22,7 +21,7 @@ export const Desktop: ComponentStoryObj<typeof Header> = {
   ],
 };
 
-export const Mobile: ComponentStoryObj<typeof Header> = {
+export const Mobile: ComponentStoryObj<typeof HeaderView> = {
   ...Desktop,
   parameters: {
     viewport: {
