@@ -10,8 +10,8 @@ import { useSearch } from "./useSearch";
 
 const mockRouterPush = jest.fn();
 
-jest.mock("next/router", () => {
-  const originalModule = jest.requireActual("next/router");
+jest.mock("next/navigation", () => {
+  const originalModule = jest.requireActual("next/navigation");
 
   return {
     useRouter: () => ({

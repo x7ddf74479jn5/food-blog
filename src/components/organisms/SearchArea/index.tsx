@@ -1,3 +1,5 @@
+"use client";
+
 import { memo, useCallback, useState } from "react";
 
 import { PrimaryButton } from "@/components/atoms/buttons";

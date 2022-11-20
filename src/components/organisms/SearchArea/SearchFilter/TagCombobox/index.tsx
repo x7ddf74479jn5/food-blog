@@ -1,3 +1,5 @@
+"use client";
+
 import { Combobox } from "@headlessui/react";
 import { memo, useCallback, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";

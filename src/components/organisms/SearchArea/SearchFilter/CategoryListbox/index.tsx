@@ -1,3 +1,5 @@
+"use client";
+
 import { Listbox } from "@headlessui/react";
 import { memo, useCallback } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";

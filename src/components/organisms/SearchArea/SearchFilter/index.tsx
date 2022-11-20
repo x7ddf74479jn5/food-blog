@@ -1,3 +1,5 @@
+"use client";
+
 import { Disclosure } from "@headlessui/react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
