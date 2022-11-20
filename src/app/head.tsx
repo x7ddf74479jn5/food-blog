@@ -1,4 +1,4 @@
-import { HtmlHeadBase, HtmlHeadSeo } from "@/components/meta";
+import { HtmlHeadBase, HtmlHeadSeo } from "@/components/meta/HtmlHead";
 import { fetchConfig } from "@/repositories";
 
 const Head = async () => {
