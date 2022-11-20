@@ -1,21 +1,9 @@
-import { memo } from "react";
+import { fetchConfig } from "@/repositories";
 
-import { SiteTitle } from "@/components/atoms/SiteTitle";
+import { FooterView } from "./FooterView";
 
-type FooterProps = {
-  organization: string;
-  siteTitle: string;
+export const Footer = async function () {
+  const { organization } = await fetchConfig();
+
+  return <FooterView organization={organization} />;
 };
-
-const Footer: React.FC<FooterProps> = ({ organization, siteTitle }) => {
-  return (
-    <footer className="mx-auto mt-auto flex w-full flex-row place-content-center gap-2 bg-gray-50 py-2 text-xs dark:bg-gray-700">
-      <SiteTitle title={siteTitle} size="text-xs" />
-      <span className="">
-        ©︎ {new Date().getFullYear()} {organization}
-      </span>
-    </footer>
-  );
-};
-
-export default memo(Footer);

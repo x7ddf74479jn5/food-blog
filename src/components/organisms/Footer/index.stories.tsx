@@ -1,15 +1,14 @@
 import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 
-import Footer from ".";
+import { FooterView } from "./FooterView";
 
 export default {
-  component: Footer,
   title: "organisms/Footer",
-} as ComponentMeta<typeof Footer>;
+  component: FooterView,
+} as ComponentMeta<typeof FooterView>;
 
-export const Default: ComponentStoryObj<typeof Footer> = {
+export const Default: ComponentStoryObj<typeof FooterView> = {
   args: {
     organization: "Pandashark",
-    siteTitle: "Title",
   },
 };
