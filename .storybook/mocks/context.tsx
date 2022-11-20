@@ -1,30 +1,15 @@
-import type { StoryFnReactReturnType } from "@storybook/react/dist/ts3.9/client/preview/types";
-import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
-import { AppRouterContext } from "next/dist/shared/lib/app-router-context";
-
-export const defaultMockRouter: AppRouterInstance = {
-  back: jest.fn(),
-  forward: jest.fn(),
-  prefetch: jest.fn(),
-  push: jest.fn(),
-  refresh: jest.fn(),
-  replace: jest.fn(),
-};
-
+import { defaultMockRouter } from "mocks/next/router";
+import { AppRouterContext } from "mocks/next/router";
 import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
+import { createMockRouterHoc } from "mocks/next/router";
+import React from "react";
 
-export const withContext = (storyFn: () => StoryFnReactReturnType) => {
+export const withContext = (Story: React.ReactElement) => {
   return (
     <AppRouterContext.Provider value={defaultMockRouter}>
-      <SearchProvider>{storyFn()}</SearchProvider>
+      <SearchProvider>{Story}</SearchProvider>
     </AppRouterContext.Provider>
   );
 };
 
-export const withRouterContext = (storyFn: () => StoryFnReactReturnType, options?: Partial<AppRouterInstance>) => {
-  const mockedRouter: AppRouterInstance = {
-    ...defaultMockRouter,
-    ...options,
-  };
-  return <AppRouterContext.Provider value={mockedRouter}>{storyFn()}</AppRouterContext.Provider>;
-};
+export const withRouterContext = createMockRouterHoc();
