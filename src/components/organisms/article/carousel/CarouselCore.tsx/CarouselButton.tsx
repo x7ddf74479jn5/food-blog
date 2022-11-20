@@ -1,3 +1,5 @@
+"use client";
+
 export const DotButton = ({ onClick: handleClick, selected }: { selected: boolean; onClick: () => void }) => (
   <button
     className={`relative mx-2 flex h-8 w-8 cursor-pointer items-center border-none bg-transparent p-0 outline-none content-none after:h-1 after:w-full after:rounded-sm after:bg-gray-500 ${

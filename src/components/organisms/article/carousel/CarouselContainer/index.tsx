@@ -1,3 +1,5 @@
+"use client";
+
 import { Tab } from "@headlessui/react";
 import { useMemo } from "react";
 import { FaLightbulb } from "react-icons/fa";
