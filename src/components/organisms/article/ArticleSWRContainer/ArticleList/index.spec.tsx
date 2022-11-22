@@ -1,9 +1,9 @@
 import { render, screen } from "jest/test-utils";
 import { mockArticles } from "mocks/data";
 
-import ArticleList from ".";
+import { ArticleList } from ".";
 
-describe("components/molecules/article/ArticleList", () => {
+describe("components/article/ArticleList", () => {
   const mockArticleList = Object.values(mockArticles);
 
   it("OK: 表示が正しい", () => {

@@ -1,11 +1,13 @@
+"use client";
+
 import type { MicroCMSQueries } from "microcms-js-sdk";
 
-import { ArticleList, ArticleSkeltonList } from "@/components/molecules/article";
 import Pagination from "@/components/molecules/Pagination";
-import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 import type { TArticleListResponse } from "@/types";
 import { apiRoute } from "@/utils/paths/url";
 
+import { ArticleList } from "./ArticleList";
+import { ArticleSkeltonList } from "./ArticleSkeltonList";
 import useGetArticleListQuery from "./useGetArticleListQuery";
 
 type ArticleSWRContainerProps = {
@@ -16,23 +18,16 @@ type ArticleSWRContainerProps = {
 export const ArticleSWRContainer: React.FC<ArticleSWRContainerProps> = ({ fallbackData, queryOptions }) => {
   const {
     articles,
-    error,
     hasNextPage,
     isValidating,
     paginate: handlePaginate,
-    revalidate: handleReset,
   } = useGetArticleListQuery({
     endpoint: apiRoute.apiArticles,
-    fallbackData: fallbackData,
+    fallbackData,
     getKeyOptions: queryOptions,
   });
 
   if (isValidating && articles.length === 0) return <ArticleSkeltonList />;
-
-  if (error)
-    return (
-      <ErrorFallback heading="Something went wrong" message="サイト上で問題が発生しました。" onReset={handleReset} />
-    );
 
   if (!isValidating && articles.length === 0)
     return <div className="mt-16 flex justify-center">レシピが見つかりませんでした。</div>;

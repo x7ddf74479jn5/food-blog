@@ -8,7 +8,7 @@ type ArticleListProps = {
   articles: TArticle[];
 };
 
-const ArticleList: React.FC<ArticleListProps> = ({ articles }) => {
+export const ArticleList: React.FC<ArticleListProps> = memo(({ articles }) => {
   return (
     <ul className="space-y-12">
       {articles.map((article) => (
@@ -18,6 +18,6 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles }) => {
       ))}
     </ul>
   );
-};
+});
 
-export default memo(ArticleList);
+ArticleList.displayName = "ArticleList";

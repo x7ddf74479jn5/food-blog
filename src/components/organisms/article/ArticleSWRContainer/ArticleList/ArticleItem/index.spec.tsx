@@ -3,7 +3,7 @@ import { mockArticles } from "mocks/data";
 
 import { ArticleItem } from ".";
 
-describe("components/molecules/article/ArticleItem", () => {
+describe("components/article/ArticleItem", () => {
   const mockArticleStock = mockArticles.stock;
 
   it("OK: 表示が正しい", () => {

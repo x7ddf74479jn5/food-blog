@@ -4,7 +4,7 @@ import { ArticleSkelton } from ".";
 
 export default {
   component: ArticleSkelton,
-  title: "molecules/article/ArticleSkeltonList/ArticleSkelton",
+  title: "article/ArticleSkeltonList/ArticleSkelton",
 } as ComponentMeta<typeof ArticleSkelton>;
 
 const Template: ComponentStory<typeof ArticleSkelton> = (args) => (
