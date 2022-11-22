@@ -1,14 +1,11 @@
-import { memo } from "react";
-
 import { SideSectionContainer } from "@/components/atoms/containers";
-import { ArticleTipWithThumbList } from "@/components/molecules/article";
-import type { TRankedArticle } from "@/types/";
+import { getPopularArticles } from "@/services/article";
 
-type Props = {
-  popularArticles: TRankedArticle[];
-};
+import { ArticleTipWithThumbList } from "../ArticleTipList";
 
-export const PopularArticles: React.FC<Props> = memo(({ popularArticles }) => {
+export const PopularArticles = async () => {
+  const popularArticles = await getPopularArticles();
+
   return (
     <SideSectionContainer header="人気レシピ" href="/articles/popular">
       {popularArticles.length > 0 ? (
@@ -18,6 +15,4 @@ export const PopularArticles: React.FC<Props> = memo(({ popularArticles }) => {
       )}
     </SideSectionContainer>
   );
-});
-
-PopularArticles.displayName = "PopularArticles";
+};

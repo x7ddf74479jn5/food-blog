@@ -3,11 +3,11 @@ import { mockArticles } from "mocks/data";
 
 import { PopularArticles } from ".";
 
-describe("components/organisms/PopularArticles", () => {
+describe("components/article/PopularArticles", () => {
   const mockArticleList = Object.values(mockArticles).map((article, index) => ({ ...article, order: ++index }));
   describe("記事がある", () => {
-    it("OK: 初期表示が正しい", () => {
-      const { container } = render(<PopularArticles popularArticles={mockArticleList} />);
+    it("OK: 初期表示が正しい", async () => {
+      const { container } = render(await PopularArticles());
 
       expect(container).toHaveTextContent("人気レシピ");
       const articleImages = screen.getAllByRole("img");
@@ -16,8 +16,8 @@ describe("components/organisms/PopularArticles", () => {
   });
 
   describe("記事がない", () => {
-    it("OK: 初期表示が正しい", () => {
-      const { container } = render(<PopularArticles popularArticles={[]} />);
+    it("OK: 初期表示が正しい", async () => {
+      const { container } = render(await PopularArticles());
 
       expect(container).toHaveTextContent("人気レシピ");
       expect(container).toHaveTextContent("レシピは見つかりませんでした");
