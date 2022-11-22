@@ -8,8 +8,8 @@ import { CategoryListSide } from ".";
 describe("components/molecules/category/CategoryListSide", () => {
   const mockCategoryList = Object.values(mockCategories);
 
-  it("OK: 表示が正しい", () => {
-    render(<CategoryListSide categories={mockCategoryList} columns={""} />);
+  it("OK: 表示が正しい", async () => {
+    render(await CategoryListSide({ columns: "grid-cols-3 sm:grid-cols-5 md:grid-cols-1" }));
 
     const header = screen.getByRole("heading");
     expect(header).toHaveTextContent("カテゴリー");
