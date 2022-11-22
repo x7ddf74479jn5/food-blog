@@ -1,17 +1,23 @@
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { mockConfig } from "mocks/data/config";
 
-import { SiteTitle } from ".";
+import { SiteTitleView } from "./SiteTitleView";
 
 export default {
-  component: SiteTitle,
-  title: "Atoms/SiteTitle",
-} as ComponentMeta<typeof SiteTitle>;
+  component: SiteTitleView,
+  title: "atoms/SiteTitle",
+} as ComponentMeta<typeof SiteTitleView>;
 
-const Template: ComponentStory<typeof SiteTitle> = (args) => <SiteTitle {...args} />;
+export const Large: ComponentStoryObj<typeof SiteTitleView> = {
+  args: {
+    siteTitle: mockConfig.siteTitle,
+    size: "lg",
+  },
+};
 
-export const Default = Template.bind({});
-Default.args = {
-  size: "text-2xl",
-  title: mockConfig.siteTitle,
+export const Small: ComponentStoryObj<typeof SiteTitleView> = {
+  args: {
+    siteTitle: mockConfig.siteTitle,
+    size: "sm",
+  },
 };

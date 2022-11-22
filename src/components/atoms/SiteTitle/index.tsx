@@ -1,14 +1,9 @@
-import NextLink from "@/components/atoms/NextLink";
+import { fetchConfig } from "@/repositories";
 
-type SiteTitleProps = {
-  size: string;
-  title: string;
-};
+import { SiteTitleView } from "./SiteTitleView";
 
-export const SiteTitle: React.FC<SiteTitleProps> = ({ size, title }) => {
-  return (
-    <NextLink href="/" className={`${size} font-bold text-green-600`}>
-      {title}
-    </NextLink>
-  );
+export const SiteTitle = async ({ size = "lg" }: { size: "lg" | "sm" }) => {
+  const { siteTitle } = await fetchConfig();
+
+  return <SiteTitleView siteTitle={siteTitle} size={size} />;
 };
