@@ -1,3 +1,5 @@
+"use client";
+
 import { FaFacebook, FaGetPocket, FaLine, FaTwitter } from "react-icons/fa";
 import { SiHatenabookmark } from "react-icons/si";
 import {
