@@ -1,14 +1,16 @@
-import { memo } from "react";
-
 import { SideSectionContainer } from "@/components/atoms/containers";
-import { ArticleTipWithThumbList } from "@/components/molecules/article";
-import type { TArticle } from "@/types/";
+import { getRelatedArticles } from "@/services/article";
+import type { TArticle } from "@/types";
+
+import { ArticleTipWithThumbList } from "../ArticleTipList";
 
 type Props = {
-  relatedArticles: TArticle[];
+  thisArticle: TArticle;
 };
 
-export const RelatedArticles: React.FC<Props> = memo(({ relatedArticles }) => {
+export const RelatedArticles = async ({ thisArticle }: Props) => {
+  const relatedArticles = await getRelatedArticles(thisArticle);
+
   return (
     <SideSectionContainer header="関連レシピ">
       {relatedArticles.length > 0 ? (
@@ -18,6 +20,4 @@ export const RelatedArticles: React.FC<Props> = memo(({ relatedArticles }) => {
       )}
     </SideSectionContainer>
   );
-});
-
-RelatedArticles.displayName = "RelatedArticles";
+};
