@@ -3,11 +3,11 @@ import { mockArticles } from "mocks/data";
 
 import { PickupArticles } from ".";
 
-describe("components/organisms/PickupArticles", () => {
+describe("components/article/PickupArticles", () => {
   const mockArticleList = Object.values(mockArticles);
   describe("記事がある", () => {
-    it("OK: 初期表示が正しい", () => {
-      const { container } = render(<PickupArticles pickupArticles={mockArticleList} />);
+    it("OK: 初期表示が正しい", async () => {
+      const { container } = render(await PickupArticles());
 
       expect(container).toHaveTextContent("PICKUP");
       const articleImages = screen.getAllByRole("img");
@@ -16,8 +16,8 @@ describe("components/organisms/PickupArticles", () => {
   });
 
   describe("記事がない", () => {
-    it("OK: 初期表示が正しい", () => {
-      const { container } = render(<PickupArticles pickupArticles={[]} />);
+    it("OK: 初期表示が正しい", async () => {
+      const { container } = render(await PickupArticles());
 
       expect(container).toHaveTextContent("PICKUP");
       expect(container).toHaveTextContent("おすすめ記事は見つかりませんでした");

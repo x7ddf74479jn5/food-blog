@@ -1,23 +1,18 @@
-import { memo } from "react";
-
 import { SideSectionContainer } from "@/components/atoms/containers";
-import { ArticleTipWithThumbList } from "@/components/molecules/article";
-import type { TArticle } from "@/types/";
+import { getPickupArticles } from "@/services/article";
 
-type PickupArticlesProps = {
-  pickupArticles: TArticle[];
-};
+import { ArticleTipWithThumbList } from "../ArticleTipList";
 
-export const PickupArticles: React.FC<PickupArticlesProps> = memo(({ pickupArticles }) => {
+export const PickupArticles = async () => {
+  const pickup = await getPickupArticles();
+
   return (
     <SideSectionContainer header="PICKUP" href="/articles/pickup">
-      {pickupArticles.length > 0 ? (
-        <ArticleTipWithThumbList articles={pickupArticles} />
+      {pickup?.articles.length > 0 ? (
+        <ArticleTipWithThumbList articles={pickup.articles} />
       ) : (
         <p className="text-center">おすすめ記事は見つかりませんでした</p>
       )}
     </SideSectionContainer>
   );
-});
-
-PickupArticles.displayName = "PickupArticles";
+};
