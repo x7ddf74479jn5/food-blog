@@ -1,4 +1,4 @@
-import { CategoryListSideView } from "@/components/molecules/category/CategoryListSide/CategoryListSideView";
+import { CategoryListSideView } from "@/components/model/category/CategoryListSide/CategoryListSideView";
 import { getCategories } from "@/services/category";
 
 type Props = {

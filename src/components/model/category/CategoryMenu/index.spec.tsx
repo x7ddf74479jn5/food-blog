@@ -1,22 +1,22 @@
-import { fireEvent, render, screen, within, withMockedRouter } from "jest/test-utils";
+import { fireEvent, render, screen, within, withMockRouter } from "jest/test-utils";
 import { mockCategories } from "mocks/data";
 
 import { urlTable } from "@/utils/paths/url";
 
 import { CategoryMenu } from ".";
 
-describe("components/molecules/category/CategoryMenu", () => {
+describe("components/model/category/CategoryMenu", () => {
   const mockCategoryList = Object.values(mockCategories);
 
   it("OK: 初期レンダリングが正しい", () => {
-    render(withMockedRouter({ pathname: "/" }, <CategoryMenu categories={mockCategoryList} />));
+    render(withMockRouter(<CategoryMenu categories={mockCategoryList} />), { context: { pathname: "/" } });
     const button = screen.getByRole("button", { name: "カテゴリー" });
     expect(button).toHaveTextContent("カテゴリー");
     expect(button).toBeEnabled();
   });
 
   it("OK: メニュー展開後の表示が正しい", () => {
-    render(withMockedRouter({ pathname: "/" }, <CategoryMenu categories={mockCategoryList} />));
+    render(withMockRouter(<CategoryMenu categories={mockCategoryList} />), { context: { pathname: "/" } });
     const button = screen.getByRole("button", { name: "カテゴリー" });
     expect(button).toBeEnabled();
 

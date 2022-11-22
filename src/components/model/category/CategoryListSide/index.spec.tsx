@@ -5,7 +5,7 @@ import { urlTable } from "@/utils/paths/url";
 
 import { CategoryListSide } from ".";
 
-describe("components/molecules/category/CategoryListSide", () => {
+describe("components/model/category/CategoryListSide", () => {
   const mockCategoryList = Object.values(mockCategories);
 
   it("OK: 表示が正しい", async () => {

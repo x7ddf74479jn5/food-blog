@@ -1,14 +1,14 @@
 import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { mockCategories } from "mocks/data/categories";
 
-import { CategoryList } from ".";
+import { CategoryListView } from "./CategoryListView";
 
 export default {
-  component: CategoryList,
-  title: "molecules/category/CategoryList",
-} as ComponentMeta<typeof CategoryList>;
+  component: CategoryListView,
+  title: "model/category/CategoryList",
+} as ComponentMeta<typeof CategoryListView>;
 
-export const Desktop: ComponentStoryObj<typeof CategoryList> = {
+export const Desktop: ComponentStoryObj<typeof CategoryListView> = {
   args: {
     categories: Object.values(mockCategories),
     height: 128,

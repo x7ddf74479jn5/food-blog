@@ -5,7 +5,7 @@ import { CategoryListSideView } from "./CategoryListSideView";
 
 export default {
   component: CategoryListSideView,
-  title: "molecules/category/CategoryListSide",
+  title: "model/category/CategoryListSide",
 } as ComponentMeta<typeof CategoryListSideView>;
 
 export const Default: ComponentStoryObj<typeof CategoryListSideView> = {

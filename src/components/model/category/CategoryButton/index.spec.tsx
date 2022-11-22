@@ -3,18 +3,18 @@ import { mockCategories } from "mocks/data/categories";
 
 import { urlTable } from "@/utils/paths/url";
 
-import { ButtonCategory } from ".";
+import { CategoryButton } from ".";
 
-describe("components/atoms/buttons/ButtonCategory", () => {
+describe("components/model/category/CategoryButton", () => {
   const categoryRice = mockCategories.rice;
 
   it("OK: ラベルが表示されている", () => {
-    const { container } = render(<ButtonCategory category={categoryRice} />);
+    const { container } = render(<CategoryButton category={categoryRice} />);
     expect(container).toHaveTextContent(categoryRice.name);
   });
 
   it("OK: aタグのhrefが正しい", () => {
-    render(<ButtonCategory category={categoryRice} />);
+    render(<CategoryButton category={categoryRice} />);
     const anchor = screen.getByRole("link");
     expect(anchor).toHaveAttribute("href", `${urlTable.categories}/${categoryRice.slug}`);
   });
