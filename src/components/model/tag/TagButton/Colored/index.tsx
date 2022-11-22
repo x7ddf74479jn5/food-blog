@@ -7,7 +7,7 @@ type Props = {
   tag: TTag;
 };
 
-export const ButtonTagColored = ({ tag }: Props) => {
+export const TagButtonColored = ({ tag }: Props) => {
   const BGColor = getBGColor(tag.color);
 
   return (
