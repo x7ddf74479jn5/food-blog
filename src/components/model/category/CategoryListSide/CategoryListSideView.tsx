@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { SideSectionContainer } from "@/components/atoms/containers";
-import NextLink from "@/components/atoms/NextLink";
+import { SideSectionContainer } from "@/components/ui/containers";
+import NextLink from "@/components/ui/NextLink";
 import type { TCategory } from "@/types";
 import { urlTable } from "@/utils/paths/url";
 

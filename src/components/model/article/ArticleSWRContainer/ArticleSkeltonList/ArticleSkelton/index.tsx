@@ -1,4 +1,4 @@
-import { Skelton } from "@/components/atoms/Skelton";
+import { Skelton } from "@/components/ui/Skelton";
 
 export const ArticleSkelton: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import NextLink from "@/components/atoms/NextLink";
+import NextLink from "@/components/ui/NextLink";
 import type { TCategory } from "@/types";
 import { urlTable } from "@/utils/paths/url";
 

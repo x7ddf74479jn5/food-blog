@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { memo } from "react";
 
-import NextLink from "@/components/atoms/NextLink";
-import { TagListPlain } from "@/components/molecules/TagList";
+import { TagListPlain } from "@/components/model/tag/TagList";
+import NextLink from "@/components/ui/NextLink";
 import type { TArticle } from "@/types";
 import { urlTable } from "@/utils/paths/url";
 

@@ -1,7 +1,7 @@
 import { memo } from "react";
 
-import Thumbnail from "@/components/atoms/Thumbnail";
 import { CarouselCore } from "@/components/model/article/carousel/CarouselCore.tsx";
+import Thumbnail from "@/components/ui/Thumbnail";
 import type { TRankedArticle } from "@/types";
 
 type PopularArticleCarouselProps = {

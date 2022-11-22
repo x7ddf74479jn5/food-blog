@@ -1,7 +1,7 @@
 import { memo } from "react";
 
-import NextLink from "@/components/atoms/NextLink";
-import Thumbnail from "@/components/atoms/Thumbnail";
+import NextLink from "@/components/ui/NextLink";
+import Thumbnail from "@/components/ui/Thumbnail";
 import type { TArticle } from "@/types";
 import { urlTable } from "@/utils/paths/url";
 

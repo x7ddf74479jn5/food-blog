@@ -1,4 +1,4 @@
-import NextLink from "@/components/atoms/NextLink";
+import NextLink from "@/components/ui/NextLink";
 import type { TCategory } from "@/types";
 import { getBorderColor } from "@/utils/css";
 import { urlTable } from "@/utils/paths/url";

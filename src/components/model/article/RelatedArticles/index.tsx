@@ -1,4 +1,4 @@
-import { SideSectionContainer } from "@/components/atoms/containers";
+import { SideSectionContainer } from "@/components/ui/containers";
 import { getRelatedArticles } from "@/services/article";
 import type { TArticle } from "@/types";
 

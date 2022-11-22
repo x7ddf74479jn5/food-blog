@@ -1,4 +1,4 @@
-import { SideSectionContainer } from "@/components/atoms/containers";
+import { SideSectionContainer } from "@/components/ui/containers";
 import { getPopularArticles } from "@/services/article";
 
 import { ArticleTipWithThumbList } from "../ArticleTipList";

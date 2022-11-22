@@ -2,7 +2,7 @@
 
 import type { MicroCMSQueries } from "microcms-js-sdk";
 
-import Pagination from "@/components/molecules/Pagination";
+import Pagination from "@/components/feature/Pagination";
 import type { TArticleListResponse } from "@/types";
 import { apiRoute } from "@/utils/paths/url";
 

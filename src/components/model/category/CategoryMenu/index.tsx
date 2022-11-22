@@ -4,8 +4,8 @@ import { Menu } from "@headlessui/react";
 import { memo } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-import NextLink from "@/components/atoms/NextLink";
-import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
+import NextLink from "@/components/ui/NextLink";
+import { DropdownTransition } from "@/components/ui/transition/DropdownTransition";
 import { usePath } from "@/hooks/usePath";
 import type { TCategory } from "@/types";
 import { classNames } from "@/utils/css";

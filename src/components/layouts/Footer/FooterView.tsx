@@ -1,4 +1,4 @@
-import { SiteTitle } from "@/components/atoms/SiteTitle";
+import { SiteTitle } from "@/components/ui/SiteTitle";
 
 type Props = {
   organization: string;

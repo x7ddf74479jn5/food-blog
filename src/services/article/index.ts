@@ -67,7 +67,7 @@ export const getRelatedArticles = cache(async (article: TArticle, limit = 4) => 
   return finalArticles;
 });
 
-export const getPickupArticles = cache(async (date: Date) => {
+export const getPickupArticles = cache(async (date: Date = new Date()) => {
   const _date = date.toISOString();
   const filters = `startDate[less_than]${_date}[and]endDate[greater_than]${_date}`;
   const limit = 1;
