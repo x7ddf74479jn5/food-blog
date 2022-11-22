@@ -3,7 +3,7 @@ import { mockConfig } from "mocks/data";
 
 import { Header } from ".";
 
-describe("components/organisms/Header", () => {
+describe("components/layouts/Header", () => {
   const { siteTitle } = mockConfig;
 
   it("OK: 初期表示が正しい", async () => {

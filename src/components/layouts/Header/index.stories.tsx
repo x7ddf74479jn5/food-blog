@@ -7,7 +7,7 @@ import { device } from ".storybook/mocks/device";
 
 export default {
   component: HeaderView,
-  title: "organisms/Header",
+  title: "layouts/Header",
 } as ComponentMeta<typeof HeaderView>;
 
 export const Desktop: ComponentStoryObj<typeof HeaderView> = {

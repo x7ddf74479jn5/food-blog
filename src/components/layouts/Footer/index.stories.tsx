@@ -4,7 +4,7 @@ import { FooterView } from "./FooterView";
 
 export default {
   component: FooterView,
-  title: "organisms/Footer",
+  title: "layouts/Footer",
 } as ComponentMeta<typeof FooterView>;
 
 export const Default: ComponentStoryObj<typeof FooterView> = {

@@ -1,7 +1,7 @@
 import { SiteTitle } from "@/components/atoms/SiteTitle";
-import { CategoryMenu } from "@/components/molecules/category/CategoryMenu";
+import { CategoryMenu } from "@/components/model/category/CategoryMenu";
 import { ThemeSwitch } from "@/components/molecules/ThemeSwitch";
-import { SearchArea } from "@/components/organisms/SearchArea";
+import { SearchArea } from "@/components/feature/SearchArea";
 import type { TCategory, TTag } from "@/types";
 
 type Props = {
