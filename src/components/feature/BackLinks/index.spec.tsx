@@ -2,9 +2,9 @@ import { render, screen } from "jest/test-utils";
 
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
-import BackLinks from "../BackLinks";
+import BackLinks from ".";
 
-describe("components/molecules/BackLinks", () => {
+describe("components/feature/BackLinks", () => {
   const mockBackLinks = getBackLinks([urlTable.home]);
 
   it("OK: 表示が正しい", () => {

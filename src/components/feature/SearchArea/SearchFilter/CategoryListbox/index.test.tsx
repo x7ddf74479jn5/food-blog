@@ -4,7 +4,7 @@ import { mockCategories } from "mocks/data";
 
 import { CategoryListbox } from ".";
 
-describe("components/organisms/SearchArea/SearchFilter/CategoryListbox", () => {
+describe("components/feature/SearchArea/SearchFilter/CategoryListbox", () => {
   const mockCategoryList = Object.values(mockCategories);
   it("OK: 初期レンダリング", () => {
     const { container } = render(<CategoryListbox categories={mockCategoryList} />);

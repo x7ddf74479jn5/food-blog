@@ -4,7 +4,7 @@ import { mockTags } from "mocks/data";
 
 import { TagCombobox } from ".";
 
-describe("components/organisms/SearchArea/SearchFilter/TagCombobox", () => {
+describe("components/feature/SearchArea/SearchFilter/TagCombobox", () => {
   const mockTagList = Object.values(mockTags);
   it("OK: 初期レンダリング", () => {
     const { container } = render(<TagCombobox tags={mockTagList} />);

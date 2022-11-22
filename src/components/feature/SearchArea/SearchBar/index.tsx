@@ -1,9 +1,11 @@
+"use client";
+
 import { Combobox } from "@headlessui/react";
 import { useCallback, useState } from "react";
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
-import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
+import { DropdownTransition } from "@/components/ui/transition/DropdownTransition";
 
 import { useSearchMutation, useSearchState } from "../SearchContext";
 import { useSearch } from "../useSearch";

@@ -6,7 +6,7 @@ import { withRouterContext } from ".storybook/mocks/context";
 
 export default {
   component: SearchFilter,
-  title: "organisms/SearchArea/SearchFilter",
+  title: "feature/SearchArea/SearchFilter",
 } as ComponentMeta<typeof SearchFilter>;
 
 export const Default: ComponentStoryObj<typeof SearchFilter> = {

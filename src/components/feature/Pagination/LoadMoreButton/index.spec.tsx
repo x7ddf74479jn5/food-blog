@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "jest/test-utils";
 
 import { LoadMoreButton } from ".";
 
-describe("components/molecules/Pagination/LoadMoreButton", () => {
+describe("components/feature/Pagination/LoadMoreButton", () => {
   const mockHandleClick = jest.fn();
 
   it("OK: ラベルが表示されている", () => {

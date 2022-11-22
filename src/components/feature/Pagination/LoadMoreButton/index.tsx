@@ -1,6 +1,6 @@
 import { FaChevronDown } from "react-icons/fa";
 
-import { PrimaryButton } from "@/components/atoms/buttons";
+import { PrimaryButton } from "@/components/ui/buttons";
 
 type LoadMoreButtonProps = {
   onClick: () => void;

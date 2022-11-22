@@ -5,7 +5,7 @@ import { device } from ".storybook/mocks/device";
 
 export default {
   component: ShareButtons,
-  title: "molecules/ShareButtons",
+  title: "fewature/ShareButtons",
 } as ComponentMeta<typeof ShareButtons>;
 
 export const Desktop: ComponentStoryObj<typeof ShareButtons> = {

@@ -10,7 +10,7 @@ import {
   TwitterShareButton,
 } from "react-share";
 
-import Tooltip from "@/components/atoms/Tooltip";
+import Tooltip from "@/components/ui/Tooltip";
 
 type ShareButtonsProps = {
   url: string;

@@ -38,7 +38,7 @@ beforeEach(() => {
 
 const wrapper = ({ children }: { children: React.ReactNode }) => <Providers>{children}</Providers>;
 
-describe("components/organisms/SearchArea", () => {
+describe("components/feature/SearchArea", () => {
   it("OK: 初期レンダリング", () => {
     render(<SearchArea categories={mockCategoryList} tags={mockTagList} />);
 

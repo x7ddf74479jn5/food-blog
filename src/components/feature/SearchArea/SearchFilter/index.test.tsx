@@ -4,7 +4,7 @@ import { mockCategories, mockTags } from "mocks/data";
 
 import { SearchFilter } from ".";
 
-describe("components/organisms/SearchArea/SearchFilter", () => {
+describe("components/feature/SearchArea/SearchFilter", () => {
   const mockTagList = Object.values(mockTags);
   const mockCategoryList = Object.values(mockCategories);
   const fakeOnToggle = jest.fn();

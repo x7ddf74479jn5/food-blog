@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-import Spinner from "@/components/atoms/Spinner";
+import Spinner from "@/components/ui/Spinner";
 
 import { LoadMoreButton } from "./LoadMoreButton";
 
@@ -10,7 +10,7 @@ type Props = {
   onClick: () => void;
 };
 
-const Pagination: React.FC<Props> = ({ hasNextPage, isValidating, onClick: handleClick }: Props) => {
+const Pagination: React.FC<Props> = ({ hasNextPage, isValidating, onClick: handleClick }) => {
   return (
     <>
       {hasNextPage ? (

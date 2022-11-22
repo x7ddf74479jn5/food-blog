@@ -2,7 +2,7 @@
 
 import { memo, useCallback, useState } from "react";
 
-import { PrimaryButton } from "@/components/atoms/buttons";
+import { PrimaryButton } from "@/components/ui/buttons";
 import type { TCategory, TTag } from "@/types";
 import { classNames } from "@/utils/css";
 

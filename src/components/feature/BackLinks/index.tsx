@@ -1,7 +1,9 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { FaChevronLeft } from "react-icons/fa";
 
-import NextLink from "@/components/atoms/NextLink";
+import NextLink from "@/components/ui/NextLink";
 
 export type Props = {
   links: Array<{

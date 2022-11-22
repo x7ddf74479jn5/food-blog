@@ -2,7 +2,7 @@ import { act, renderHook } from "@testing-library/react";
 
 import usePagination from ".";
 
-describe("hooks/usePagination", () => {
+describe("components/feature/Pagination/usePagination", () => {
   const mockOnIntersect = jest.fn();
   window.IntersectionObserver = jest.fn();
   const mockObserve = jest.fn();

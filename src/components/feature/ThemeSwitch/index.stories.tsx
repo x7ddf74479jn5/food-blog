@@ -5,7 +5,7 @@ import { ThemeSwitch } from ".";
 
 export default {
   component: ThemeSwitch,
-  title: "molecules/ThemeSwitch",
+  title: "feature/ThemeSwitch",
 } as ComponentMeta<typeof ThemeSwitch>;
 
 const Template: ComponentStory<typeof ThemeSwitch> = (args) => (

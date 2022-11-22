@@ -3,7 +3,7 @@ import { render, screen } from "jest/test-utils";
 
 import Pagination from ".";
 
-describe("components/molecules/Pagination", () => {
+describe("components/feature/Pagination", () => {
   const mockHandleClick = jest.fn();
 
   it("OK: 初期レンダリングが正しい", () => {

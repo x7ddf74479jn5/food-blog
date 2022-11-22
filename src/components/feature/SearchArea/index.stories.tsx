@@ -7,7 +7,7 @@ import { device } from ".storybook/mocks/device";
 
 export default {
   component: SearchArea,
-  title: "organisms/SearchArea",
+  title: "feature/SearchArea",
 } as ComponentMeta<typeof SearchArea>;
 
 export const Desktop: ComponentStoryObj<typeof SearchArea> = {

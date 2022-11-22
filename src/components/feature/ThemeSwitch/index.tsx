@@ -6,7 +6,7 @@ import { IconContext } from "react-icons";
 import { FaMoon, FaSun } from "react-icons/fa";
 import Switch from "react-switch";
 
-import { Skelton } from "@/components/atoms/Skelton";
+import { Skelton } from "@/components/ui/Skelton";
 import { useMount } from "@/hooks/useMount";
 
 const useSwitch = (isMounted: boolean) => {

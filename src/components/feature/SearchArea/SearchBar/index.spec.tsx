@@ -10,7 +10,7 @@ useRouter.mockImplementation(() => {
   return { push };
 });
 
-describe("components/organisms/SearchArea/SearchBar", () => {
+describe("components/feature/SearchArea/SearchBar", () => {
   it("OK: 初期レンダリング", () => {
     render(<SearchBar />);
     const input = screen.getByRole("combobox");

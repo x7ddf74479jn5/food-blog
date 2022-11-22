@@ -1,18 +1,16 @@
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 
-import { withContext } from "../../../../../.storybook/mocks/context";
 import SearchBar from ".";
+import { withContext } from ".storybook/mocks/context";
 
 export default {
   component: SearchBar,
   decorators: [
     (storyFn) => {
-      return withContext(storyFn);
+      return withContext(storyFn());
     },
   ],
-  title: "organisms/SearchArea/SearchBar",
+  title: "feature/SearchArea/SearchBar",
 } as ComponentMeta<typeof SearchBar>;
 
-const Template: ComponentStory<typeof SearchBar> = (args) => <SearchBar {...args} />;
-
-export const Default = Template.bind({});
+export const Default: ComponentStoryObj<typeof SearchBar> = {};
