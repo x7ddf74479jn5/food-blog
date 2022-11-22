@@ -31,11 +31,9 @@ describe("components/organisms/SearchArea/SearchFilter", () => {
 
     it("OK: ディスクロージャー展開後の表示が正しい", async () => {
       render(
-        withMockRouter(
-          { options: { pathname: "/" } },
-
-          <SearchFilter categories={mockCategoryList} tags={mockTagList} onToggle={fakeOnToggle} />
-        )
+        withMockRouter(<SearchFilter categories={mockCategoryList} tags={mockTagList} onToggle={fakeOnToggle} />, {
+          context: { pathname: "/" },
+        })
       );
 
       const button = screen.getByRole("button", { name: "詳細検索" });
@@ -48,10 +46,9 @@ describe("components/organisms/SearchArea/SearchFilter", () => {
     });
     it("OK: 検索結果ページでのディスクロージャー展開後の表示が正しい", async () => {
       render(
-        withMockRouter(
-          { options: { pathname: "/search" } },
-          <SearchFilter categories={mockCategoryList} tags={mockTagList} onToggle={fakeOnToggle} />
-        )
+        withMockRouter(<SearchFilter categories={mockCategoryList} tags={mockTagList} onToggle={fakeOnToggle} />, {
+          context: { pathname: "/search" },
+        })
       );
 
       const categoryLabel = screen.getByText("カテゴリー");
