@@ -1,3 +1,5 @@
+"use client";
+
 import { Menu } from "@headlessui/react";
 import { memo } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
