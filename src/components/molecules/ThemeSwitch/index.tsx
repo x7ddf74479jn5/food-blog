@@ -1,3 +1,5 @@
+"use client";
+
 import { useTheme } from "next-themes";
 import { useCallback, useEffect } from "react";
 import { IconContext } from "react-icons";
