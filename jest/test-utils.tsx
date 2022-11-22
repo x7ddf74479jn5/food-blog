@@ -7,14 +7,12 @@ import { SWRConfig } from "swr";
 
 import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
 
-import { AppRouterContext, defaultMockRouter } from "./mocks";
+import { withMockRouter } from "./mocks";
 
 export const Providers: React.ComponentType<{ children?: React.ReactNode }> = ({ children }) => {
-  return (
+  return withMockRouter(
     <SWRConfig value={{ dedupingInterval: 0, provider: () => new Map() }}>
-      <AppRouterContext.Provider value={defaultMockRouter}>
-        <SearchProvider>{children}</SearchProvider>
-      </AppRouterContext.Provider>
+      <SearchProvider>{children}</SearchProvider>
     </SWRConfig>
   );
 };
