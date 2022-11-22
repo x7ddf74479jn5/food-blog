@@ -4,7 +4,7 @@ import TOC from ".";
 
 export default {
   component: TOC,
-  title: "Molecules/TOC",
+  title: "model/article/TOC",
 } as ComponentMeta<typeof TOC>;
 
 const Template: ComponentStory<typeof TOC> = (args) => (

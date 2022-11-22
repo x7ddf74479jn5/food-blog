@@ -2,7 +2,7 @@ import { render, screen } from "jest/test-utils";
 
 import { TOC } from ".";
 
-describe("components/molecules/TOC", () => {
+describe("components/model/article/TOC", () => {
   console.warn = jest.fn();
 
   const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (

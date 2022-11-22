@@ -1,7 +1,9 @@
+"use client";
+
 import { memo, useEffect, useRef, useState } from "react";
 import * as tocbot from "tocbot";
 
-import { SideSectionContainer } from "@/components/atoms/containers";
+import { SideSectionContainer } from "@/components/ui/containers";
 import { useMedia } from "@/hooks/useMedia";
 
 type Props = {
@@ -28,8 +30,7 @@ export const TOC = ({ isSide = false }: Props) => {
 
   useEffect(() => {
     if (isHidden) {
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      return () => {};
+      return;
     }
 
     tocbot.init({
