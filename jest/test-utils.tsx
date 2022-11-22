@@ -5,7 +5,7 @@ import type { RequestHandler } from "msw";
 import { setupServer } from "msw/node";
 import { SWRConfig } from "swr";
 
-import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
+import { SearchProvider } from "@/components/feature/SearchArea/SearchContext";
 
 import { withMockRouter } from "./mocks";
 

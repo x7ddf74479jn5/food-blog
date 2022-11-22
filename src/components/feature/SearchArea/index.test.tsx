@@ -3,7 +3,7 @@ import { Providers, waitFor } from "jest/test-utils";
 import { act, render, renderHook, screen } from "jest/test-utils";
 import { mockCategories, mockTags } from "mocks/data";
 
-import { useSearchMutation, useSearchState } from "@/components/organisms/SearchArea/SearchContext";
+import { useSearchMutation, useSearchState } from "@/components/feature/SearchArea/SearchContext";
 
 import { SearchArea, useSearchArea } from ".";
 import { useSearch } from "./useSearch";

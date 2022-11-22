@@ -1,6 +1,6 @@
 import { defaultMockRouter } from "mocks/next/router";
 import { AppRouterContext } from "mocks/next/router";
-import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
+import { SearchProvider } from "@/components/feature/SearchArea/SearchContext";
 import { createMockRouterHoc } from "mocks/next/router";
 import React from "react";
 
