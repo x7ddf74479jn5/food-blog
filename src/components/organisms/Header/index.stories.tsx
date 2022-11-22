@@ -16,7 +16,7 @@ export const Desktop: ComponentStoryObj<typeof HeaderView> = {
   },
   decorators: [
     (storyFn) => {
-      return withRouterContext(storyFn, { asPath: "/" });
+      return withRouterContext(storyFn(), { context: { pathname: "/" } });
     },
   ],
 };
