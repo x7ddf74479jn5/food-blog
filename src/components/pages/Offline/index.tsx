@@ -1,7 +1,6 @@
 import { FaRegTired } from "react-icons/fa";
 
-import { HtmlHeadNoIndex } from "@/components/functions/meta";
-import { RootLayout } from "@/components/layouts";
+import { HtmlHeadNoIndex } from "@/components/meta/HtmlHead";
 import type { TCategory, TConfig, TTag } from "@/types";
 
 export type OfflineProps = {
@@ -10,8 +9,8 @@ export type OfflineProps = {
   tags: TTag[];
 };
 
-export const Offline: React.FC<OfflineProps> = ({ categories, config, tags }) => (
-  <RootLayout config={config} categories={categories} tags={tags}>
+export const Offline: React.FC<OfflineProps> = () => (
+  <div className="grid place-items-center">
     <HtmlHeadNoIndex />
     <div className="mt-8 flex flex-col items-center justify-center gap-12" role="alert">
       <FaRegTired className="h-32 w-32 text-gray-500" />
@@ -20,5 +19,5 @@ export const Offline: React.FC<OfflineProps> = ({ categories, config, tags }) =>
         <p>インターネットに接続のうえ、ご利用ください</p>
       </div>
     </div>
-  </RootLayout>
+  </div>
 );

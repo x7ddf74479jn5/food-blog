@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import ErrorPage from "@/app/_error/page";
+import { Error as ErrorPage } from "@/components/pages/Error";
 import type { OfflineProps } from "@/components/pages/Offline";
 import { Offline } from "@/components/pages/Offline";
 import { sentryLogServer } from "@/lib/sentry/logger";
@@ -11,7 +11,7 @@ import type { PagePropsOrError } from "@/types";
 type OfflinePageProps = PagePropsOrError<OfflineProps>;
 
 const OfflinePage: NextPage<OfflinePageProps> = (props) => {
-  return props.error ? <ErrorPage statusCode={props.error.statusCode} /> : <Offline {...props} />;
+  return props.error ? <ErrorPage status={props.error.statusCode} /> : <Offline {...props} />;
 };
 
 export const getStaticProps: GetStaticProps<OfflinePageProps> = async () => {
