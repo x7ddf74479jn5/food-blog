@@ -1,3 +1,3 @@
-import { Pickup } from "@/components/pages/articles/Pickup";
+import { Pickup } from "@/components/pages/Pickup";
 
 export default Pickup;

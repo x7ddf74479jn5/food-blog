@@ -2,7 +2,7 @@ import type { ParsedUrlQuery } from "node:querystring";
 
 import { notFound } from "next/navigation";
 
-import { Category } from "@/components/pages/articles/categories/Category";
+import { Category } from "@/components/pages/categories/Category";
 import { fetchCategories } from "@/repositories";
 
 const CategoryPage = ({ slug }: Params) => {

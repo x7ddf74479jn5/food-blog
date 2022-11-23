@@ -5,7 +5,7 @@ import { formatPageTitle } from "@/utils/formatter";
 
 import { Category } from ".";
 
-describe("pages/articles/categories/[slug]/client", () => {
+describe("pages/categories/[slug]", () => {
   const mockCategoryRice = mockCategories.rice;
 
   it("OK: 初期レンダリング", async () => {

@@ -1,3 +1,3 @@
-import { Popular } from "@/components/pages/articles/Popular";
+import { Popular } from "@/components/pages/Popular";
 
 export default Popular;

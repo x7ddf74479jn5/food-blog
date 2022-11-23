@@ -1,3 +1,3 @@
-import { Categories } from "@/components/pages/articles/categories/Categories";
+import { Categories } from "@/components/pages/categories/Categories";
 
 export default Categories;

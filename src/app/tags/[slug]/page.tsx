@@ -2,7 +2,7 @@ import type { ParsedUrlQuery } from "node:querystring";
 
 import { notFound } from "next/navigation";
 
-import { Tag } from "@/components/pages/articles/Tag";
+import { Tag } from "@/components/pages/Tag";
 import { fetchTags } from "@/repositories";
 
 const TagsPage = ({ slug }: Params) => {

@@ -5,7 +5,7 @@ import { formatPageTitle } from "@/utils/formatter";
 
 import { Tag } from ".";
 
-describe("pages/articles/tags/[slug]/client", () => {
+describe("pages/tags/[slug]", () => {
   const mockTagRice = mockTags.rice;
 
   it("OK: 初期レンダリング", async () => {
