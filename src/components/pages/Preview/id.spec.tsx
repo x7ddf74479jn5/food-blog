@@ -4,7 +4,7 @@ import { server } from "mocks/msw/server";
 
 import { mdx2html } from "@/lib/mdx";
 
-import ArticlePreviewPage from "./page";
+import { ArticleDetailPreview } from ".";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
@@ -46,7 +46,7 @@ describe("pages/preview", () => {
   it("OK: 初期レンダリング", async () => {
     const mdxSource = await mdx2html(mockArticleStock.body);
     const { unmount } = render(
-      <ArticlePreviewPage
+      <ArticleDetailPreview
         categories={mockCategoryList}
         tags={mockTagList}
         config={mockConfig}

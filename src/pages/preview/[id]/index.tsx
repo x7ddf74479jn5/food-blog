@@ -1,10 +1,10 @@
 import type { GetServerSideProps, NextPage } from "next";
 import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-import ErrorPage from "@/app/_error/page";
-import type { ArticleDetailPageProps } from "@/app/articles/[id]/page";
-import { ArticleDetailPage } from "@/app/articles/[id]/page";
-import { HtmlHeadNoIndex } from "@/components/functions/meta";
+import { HtmlHeadNoIndex } from "@/components/meta/HtmlHead";
+import { Error as ErrorPage } from "@/components/pages/Error";
+import type { ArticleDetailPreviewProps } from "@/components/pages/Preview";
+import { ArticleDetailPreview } from "@/components/pages/Preview";
 import { mdx2html } from "@/lib/mdx";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import { fetchConfig, fetchTags } from "@/repositories";
@@ -13,18 +13,21 @@ import { getCategories } from "@/services/category";
 import type { TArticle } from "@/types";
 import { isDraft } from "@/utils/article";
 
-const ArticlePreviewPage: NextPage<ArticleDetailPageProps> = (props) => {
-  return props.error ? (
-    <ErrorPage statusCode={props.error.statusCode} />
+type PagePropsOrError<T extends object> = (T & { error?: undefined }) | { error: { statusCode: number } };
+type Props = PagePropsOrError<ArticleDetailPreviewProps>;
+
+const ArticlePreviewPage: NextPage<Props> = (props) => {
+  return props?.error ? (
+    <ErrorPage />
   ) : (
     <>
       <HtmlHeadNoIndex />
-      <ArticleDetailPage {...props} />
+      <ArticleDetailPreview {...props} />
     </>
   );
 };
 
-export const getServerSideProps: GetServerSideProps<ArticleDetailPageProps, Params> = async (context) => {
+export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
   const { preview: isPreview, previewData } = context;
 
   if (!isPreview || !isDraft(previewData)) {
