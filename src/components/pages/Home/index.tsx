@@ -45,8 +45,8 @@ export const composeCarouselItems = ({
 };
 
 export const Home = async () => {
-  const fallbackData = await getArticles({ limit: 10, offset: 0 });
-  const [config, pickup, popularArticles] = await Promise.all([
+  const [fallbackData, config, pickup, popularArticles] = await Promise.all([
+    getArticles({ limit: 10, offset: 0 }),
     fetchConfig(),
     getPickupArticles(new Date()),
     getPopularArticles(),
