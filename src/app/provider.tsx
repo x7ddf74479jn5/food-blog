@@ -2,7 +2,7 @@
 
 import { ThemeProvider } from "next-themes";
 
-import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
+import { SearchProvider } from "@/components/feature/SearchArea/SearchContext";
 
 export const RootProvider = ({ children }: { children: React.ReactNode }) => {
   return (

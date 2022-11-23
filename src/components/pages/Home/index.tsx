@@ -1,12 +1,12 @@
 import { FaLightbulb } from "react-icons/fa";
 import { IoPodium } from "react-icons/io5";
 
-import { AsideContainer, MainContainer, MiddleAreaContainer } from "@/components/atoms/containers";
-import { CategoryListSide } from "@/components/molecules/category/CategoryListSide";
-import { ShareButtons } from "@/components/molecules/ShareButtons";
-import { ArticleSWRContainer, CarouselContainer } from "@/components/organisms/article";
-import { PickupArticleCarousel } from "@/components/organisms/article/carousel/PickupArticleCarousel";
-import { PopularArticleCarousel } from "@/components/organisms/article/carousel/PopularArticleCarousel";
+import { ShareButtons } from "@/components/feature/ShareButtons";
+import { ArticleSWRContainer, CarouselContainer } from "@/components/model/article";
+import { PickupArticleCarousel } from "@/components/model/article/carousel/PickupArticleCarousel";
+import { PopularArticleCarousel } from "@/components/model/article/carousel/PopularArticleCarousel";
+import { CategoryListSide } from "@/components/model/category/CategoryListSide";
+import { AsideContainer, MainContainer, MiddleAreaContainer } from "@/components/ui/containers";
 import { fetchConfig } from "@/repositories";
 import { getArticles, getPickupArticles, getPopularArticles } from "@/services/article";
 import type { TPickup, TRankedArticle } from "@/types";
