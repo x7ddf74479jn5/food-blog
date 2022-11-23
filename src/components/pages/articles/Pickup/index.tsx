@@ -1,19 +1,12 @@
-import { HtmlHeadBase } from "@/components/functions/meta";
 import { DefaultLayout } from "@/components/layouts";
-import { ArticleList } from "@/components/molecules/article";
-import type { TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
+import { ArticleList } from "@/components/model/article/ArticleList";
+import { fetchConfig } from "@/repositories";
+import { getPickupArticles } from "@/services/article";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
-export type PickupProps = {
-  config: TConfig;
-  categories: TCategory[];
-  pickup: TPickup;
-  popularArticles: TRankedArticle[];
-  tags: TTag[];
-};
-
-export const Pickup: React.FC<PickupProps> = ({ categories, config, pickup, popularArticles, tags }) => {
+export const Pickup = async () => {
+  const [config, pickup] = await Promise.all([fetchConfig(), getPickupArticles()]);
   const { host, siteTitle } = config;
   const heading = "おすすめ記事";
   const pageTitle = formatPageTitle(heading, siteTitle);
@@ -21,25 +14,11 @@ export const Pickup: React.FC<PickupProps> = ({ categories, config, pickup, popu
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
 
   return (
-    <DefaultLayout
-      config={config}
-      pageTitle={pageTitle}
-      url={url}
-      backLinks={backLinks}
-      categories={categories}
-      tags={tags}
-      pickup={pickup}
-      popularArticles={popularArticles}
-    >
-      <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} />
-      <div className="mb-8">
-        <h1>{heading}</h1>
-      </div>
-      <div className="min-h-screen w-full">
-        <section>
-          <ArticleList articles={pickup.articles} />
-        </section>
-      </div>
+    <DefaultLayout pageTitle={pageTitle} url={url} backLinks={backLinks}>
+      <h1 className="mb-8">{heading}</h1>
+      <section className="min-h-screen w-full">
+        <ArticleList articles={pickup.articles} />
+      </section>
     </DefaultLayout>
   );
 };
