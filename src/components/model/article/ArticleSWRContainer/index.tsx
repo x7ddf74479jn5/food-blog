@@ -6,8 +6,8 @@ import Pagination from "@/components/feature/Pagination";
 import type { TArticleListResponse } from "@/types";
 import { apiRoute } from "@/utils/paths/url";
 
-import { ArticleList } from "./ArticleList";
-import { ArticleSkeltonList } from "./ArticleSkeltonList";
+import { ArticleList } from "../ArticleList";
+import { ArticleSkeltonList } from "../ArticleList/ArticleSkeltonList";
 import useGetArticleListQuery from "./useGetArticleListQuery";
 
 type ArticleSWRContainerProps = {
