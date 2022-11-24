@@ -1,3 +1,5 @@
-import { HtmlHeadJsonLd } from "./HtmlHeadJsonLd";
+import { ArticleJsonLd } from "./ArticleJsonLd";
+import { RecipeJsonLd } from "./RecipeJsonLd";
+import { WebpageJsonLd } from "./WebpageJsonLd";
 
-export { HtmlHeadJsonLd };
+export { ArticleJsonLd, RecipeJsonLd, WebpageJsonLd };

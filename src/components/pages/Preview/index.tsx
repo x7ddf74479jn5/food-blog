@@ -5,7 +5,6 @@ import { FaRegCalendar } from "react-icons/fa";
 
 import { ArticleLayout } from "@/components/layouts";
 import { HtmlHeadBase } from "@/components/meta/HtmlHead";
-import { HtmlHeadJsonLd } from "@/components/meta/JsonLd";
 import { CategoryButton } from "@/components/model/category/CategoryButton";
 import { TagListColored } from "@/components/model/tag/TagList";
 import { Avatar } from "@/components/ui/Avatar";
@@ -14,7 +13,7 @@ import TextDate from "@/components/ui/texts/TextDate";
 import Thumbnail from "@/components/ui/Thumbnail";
 import { getSafeDate } from "@/lib/date";
 import type { TArticle, TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
-import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
+import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 export type ArticleDetailPreviewProps = {
@@ -35,12 +34,11 @@ export const ArticleDetailPreview: React.FC<ArticleDetailPreviewProps> = ({
   isPreview,
   mdxSource,
 }) => {
-  const { category, description, id, image, linkCardArticles, publishedAt, tags, title, updatedAt, writer } = article;
+  const { category, id, image, linkCardArticles, publishedAt, tags, title, writer } = article;
   const { host, siteTitle } = config;
   const url = formatPageUrl(`${urlTable.articles}/${id}`, host);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
   const safePublishedAt = getSafeDate(publishedAt);
-  const safeModifiedAt = getSafeDate(updatedAt);
   const { avatar, name: writerName } = writer;
   const data = { articles: linkCardArticles };
   const pageTitle = formatPageTitle(title, siteTitle);
@@ -49,15 +47,6 @@ export const ArticleDetailPreview: React.FC<ArticleDetailPreviewProps> = ({
     <ArticleLayout articleId={id} url={url} pageTitle={pageTitle} backLinks={backLinks}>
       <Head>
         <HtmlHeadBase />
-        <HtmlHeadJsonLd
-          url={url}
-          title={title}
-          image={image.url}
-          datePublished={safePublishedAt.toISOString()}
-          dateModified={safeModifiedAt.toISOString()}
-          authorName={writerName}
-          description={getExcerpt(description)}
-        />
       </Head>
       {isPreview && <div className="mb-4 bg-red-500 text-center text-white">Preview mode enabled</div>}
       <article className="prose dark:prose-dark">

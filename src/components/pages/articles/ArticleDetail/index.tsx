@@ -2,7 +2,6 @@ import { MDXRemote } from "next-mdx-remote";
 import { FaRegCalendar } from "react-icons/fa";
 
 import { ArticleLayout } from "@/components/layouts";
-import { HtmlHeadJsonLd } from "@/components/meta/JsonLd";
 import { CategoryButton } from "@/components/model/category/CategoryButton";
 import { TagListColored } from "@/components/model/tag/TagList";
 import { Avatar } from "@/components/ui/Avatar";
@@ -12,7 +11,6 @@ import Thumbnail from "@/components/ui/Thumbnail";
 import { getSafeDate } from "@/lib/date";
 import { mdx2html } from "@/lib/mdx";
 import { getArticle } from "@/services/article";
-import { getExcerpt } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 import { getArticleDetailPageMeta } from "./meta";
@@ -23,11 +21,10 @@ type Props = {
 
 export const ArticleDetail = async ({ articleId }: Props) => {
   const article = await getArticle(articleId);
-  const { category, description, image, linkCardArticles, publishedAt, tags, title, updatedAt, writer } = article;
+  const { category, image, linkCardArticles, publishedAt, tags, title, writer } = article;
   const { title: pageTitle, url } = await getArticleDetailPageMeta(articleId);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
   const safePublishedAt = getSafeDate(publishedAt);
-  const safeModifiedAt = getSafeDate(updatedAt);
   const { avatar, name: writerName } = writer;
   const data = { articles: linkCardArticles };
   const mdxSource = await mdx2html(article.body);
@@ -36,15 +33,6 @@ export const ArticleDetail = async ({ articleId }: Props) => {
 
   return (
     <ArticleLayout articleId={article.id} url={url} pageTitle={pageTitle} backLinks={backLinks}>
-      <HtmlHeadJsonLd
-        url={url}
-        title={pageTitle}
-        image={image.url}
-        datePublished={safePublishedAt.toISOString()}
-        dateModified={safeModifiedAt.toISOString()}
-        authorName={writerName}
-        description={getExcerpt(description)}
-      />
       {isPreview && <div className="mb-4 bg-red-500 text-center text-white">Preview mode enabled</div>}
       <article className="prose dark:prose-dark">
         <div className="mb-4">
