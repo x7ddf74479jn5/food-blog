@@ -5,14 +5,14 @@ import { notFound } from "next/navigation";
 import { Category } from "@/components/pages/categories/Category";
 import { fetchCategories } from "@/repositories";
 
-const CategoryPage = ({ slug }: Params) => {
+const CategoryPage = ({ slug }: CategoryPageParams) => {
   if (!slug) notFound();
 
   // @ts-expect-error server component
   return <Category slug={slug} />;
 };
 
-interface Params extends ParsedUrlQuery {
+export interface CategoryPageParams extends ParsedUrlQuery {
   slug?: string;
 }
 

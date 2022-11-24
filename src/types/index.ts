@@ -11,4 +11,4 @@ export type { TPickup } from "./models/pickup";
 export type { TTag, TTagListResponse } from "./models/tag";
 export type { TWriter, TWriterListResponse } from "./models/writer";
 export type { TApiRoute, TAppUrl } from "./path";
-export type { TCategoryOrTagColor, ValueOf } from "./utils";
+export type { PageMeta, TCategoryOrTagColor, ValueOf } from "./utils";

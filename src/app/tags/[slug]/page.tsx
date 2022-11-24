@@ -5,14 +5,14 @@ import { notFound } from "next/navigation";
 import { Tag } from "@/components/pages/Tag";
 import { fetchTags } from "@/repositories";
 
-const TagsPage = ({ slug }: Params) => {
+const TagsPage = ({ slug }: TagPageParams) => {
   if (slug) notFound();
 
   // @ts-expect-error server component
   return <Tag slug={slug} />;
 };
 
-interface Params extends ParsedUrlQuery {
+export interface TagPageParams extends ParsedUrlQuery {
   slug?: string;
 }
 

@@ -16,3 +16,10 @@ export type ValueOf<T> = T[keyof T];
 export type MappedConst<T extends string> = {
   [K in T]: K;
 };
+
+export type PageMeta = {
+  description: string;
+  image: string;
+  url: string;
+  title: string;
+};

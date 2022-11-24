@@ -11,26 +11,25 @@ import TextDate from "@/components/ui/texts/TextDate";
 import Thumbnail from "@/components/ui/Thumbnail";
 import { getSafeDate } from "@/lib/date";
 import { mdx2html } from "@/lib/mdx";
-import { fetchConfig } from "@/repositories";
 import { getArticle } from "@/services/article";
-import { formatPageTitle, formatPageUrl, getExcerpt } from "@/utils/formatter";
+import { getExcerpt } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
+
+import { getArticleDetailPageMeta } from "./meta";
 
 type Props = {
   articleId: string;
 };
 
 export const ArticleDetail = async ({ articleId }: Props) => {
-  const [article, config] = await Promise.all([getArticle(articleId), fetchConfig()]);
-  const { category, description, id, image, linkCardArticles, publishedAt, tags, title, updatedAt, writer } = article;
-  const { host, siteTitle } = config;
-  const url = formatPageUrl(`${urlTable.articles}/${id}`, host);
+  const article = await getArticle(articleId);
+  const { category, description, image, linkCardArticles, publishedAt, tags, title, updatedAt, writer } = article;
+  const { title: pageTitle, url } = await getArticleDetailPageMeta(articleId);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
   const safePublishedAt = getSafeDate(publishedAt);
   const safeModifiedAt = getSafeDate(updatedAt);
   const { avatar, name: writerName } = writer;
   const data = { articles: linkCardArticles };
-  const pageTitle = formatPageTitle(title, siteTitle);
   const mdxSource = await mdx2html(article.body);
   // TODO: Preview mode not implemented in Next.js@13 yet
   const isPreview = false;
@@ -39,7 +38,7 @@ export const ArticleDetail = async ({ articleId }: Props) => {
     <ArticleLayout articleId={article.id} url={url} pageTitle={pageTitle} backLinks={backLinks}>
       <HtmlHeadJsonLd
         url={url}
-        title={title}
+        title={pageTitle}
         image={image.url}
         datePublished={safePublishedAt.toISOString()}
         dateModified={safeModifiedAt.toISOString()}

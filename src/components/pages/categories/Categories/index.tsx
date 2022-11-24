@@ -8,14 +8,12 @@ import {
   ContainerWithOrder,
   MiddleAreaContainer,
 } from "@/components/ui/containers";
-import { fetchConfig } from "@/repositories";
-import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
+import { getCategoriesPageMeta } from "./meta";
+
 export const Categories = async () => {
-  const { host, siteTitle } = await fetchConfig();
-  const pageTitle = formatPageTitle("カテゴリー一覧", siteTitle);
-  const url = formatPageUrl(urlTable.categories, host);
+  const { pageTitle, url } = await getCategoriesPageMeta();
   const backLinks = getBackLinks([urlTable.home]);
 
   return (

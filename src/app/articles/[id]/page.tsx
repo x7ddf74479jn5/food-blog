@@ -5,13 +5,13 @@ import { notFound } from "next/navigation";
 import { ArticleDetail } from "@/components/pages/articles/ArticleDetail";
 import { fetchArticles } from "@/repositories";
 
-export const ArticleDetailPage = async ({ id }: Params) => {
+export const ArticleDetailPage = async ({ id }: ArticleDetailParams) => {
   if (!id) notFound();
   // @ts-expect-error server component
   return <ArticleDetail articleId={id} />;
 };
 
-interface Params extends ParsedUrlQuery {
+export interface ArticleDetailParams extends ParsedUrlQuery {
   id?: string;
 }
 

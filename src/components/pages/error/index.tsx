@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect } from "react";
 import { FaChevronLeft, FaRegTired } from "react-icons/fa";
@@ -60,7 +61,9 @@ export const Error: React.FC<Props> = (props) => {
 
   return (
     <>
-      <HtmlHeadNoIndex />
+      <Head>
+        <HtmlHeadNoIndex />
+      </Head>
       <div className="mt-8 flex flex-col items-center justify-center gap-12" role="alert">
         <FaRegTired className="h-32 w-32 text-gray-500" />
         <div className="mx-auto flex flex-col gap-8 text-center">

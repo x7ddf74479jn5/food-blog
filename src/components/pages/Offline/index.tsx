@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { FaRegTired } from "react-icons/fa";
 
 import { HtmlHeadNoIndex } from "@/components/meta/HtmlHead";
@@ -11,7 +12,9 @@ export type OfflineProps = {
 
 export const Offline: React.FC<OfflineProps> = () => (
   <div className="grid place-items-center">
-    <HtmlHeadNoIndex />
+    <Head>
+      <HtmlHeadNoIndex />
+    </Head>
     <div className="mt-8 flex flex-col items-center justify-center gap-12" role="alert">
       <FaRegTired className="h-32 w-32 text-gray-500" />
       <div className="mx-auto flex flex-col gap-8 text-center">

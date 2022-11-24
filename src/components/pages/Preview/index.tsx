@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { MDXRemote } from "next-mdx-remote";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
 import { FaRegCalendar } from "react-icons/fa";
@@ -46,16 +47,18 @@ export const ArticleDetailPreview: React.FC<ArticleDetailPreviewProps> = ({
 
   return (
     <ArticleLayout articleId={id} url={url} pageTitle={pageTitle} backLinks={backLinks}>
-      <HtmlHeadBase />
-      <HtmlHeadJsonLd
-        url={url}
-        title={title}
-        image={image.url}
-        datePublished={safePublishedAt.toISOString()}
-        dateModified={safeModifiedAt.toISOString()}
-        authorName={writerName}
-        description={getExcerpt(description)}
-      />
+      <Head>
+        <HtmlHeadBase />
+        <HtmlHeadJsonLd
+          url={url}
+          title={title}
+          image={image.url}
+          datePublished={safePublishedAt.toISOString()}
+          dateModified={safeModifiedAt.toISOString()}
+          authorName={writerName}
+          description={getExcerpt(description)}
+        />
+      </Head>
       {isPreview && <div className="mb-4 bg-red-500 text-center text-white">Preview mode enabled</div>}
       <article className="prose dark:prose-dark">
         <div className="mb-4">
