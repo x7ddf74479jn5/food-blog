@@ -7,13 +7,13 @@ import { getPopularPageMeta } from "./meta";
 
 export const Popular = async () => {
   const [meta, popularArticles] = await Promise.all([getPopularPageMeta(), getPopularArticles()]);
-  const { url, title } = meta;
+  const { title, url } = meta;
 
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
 
   return (
     <DefaultLayout pageTitle={title} url={url} backLinks={backLinks}>
-      <h1 className="mb-8">"人気記事"</h1>
+      <h1 className="mb-8">人気記事</h1>
       <section className="min-h-screen w-full">
         <ArticleList articles={popularArticles} />
       </section>
