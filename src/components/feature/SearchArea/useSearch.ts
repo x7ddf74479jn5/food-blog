@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 
 import { search as sendSearchEvent } from "@/lib/google-analytics/gtag";
@@ -13,14 +13,9 @@ export const useSearch = (query?: { q: string; category?: string; tags?: string 
   const { setHistory } = useSearchMutation();
 
   const search = useCallback(() => {
-    router.push(
-      {
-        pathname: urlTable.search,
-        query: { ...query },
-      },
-      undefined,
-      { shallow: true }
-    );
+    const params = new URLSearchParams({ ...query });
+
+    router.push(`${urlTable.search}?${params.toString()}`);
 
     const q = query?.q;
 
