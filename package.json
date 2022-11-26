@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "run-s -l build:next generate-sitemap",
     "build:next": "next build",
     "generate-sitemap": "next-sitemap --config sitemap.config.js",
