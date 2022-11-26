@@ -3,18 +3,14 @@ import type { BlogPosting, Person, WebPage, WithContext } from "schema-dts";
 import type { TArticle, TConfig } from "@/types";
 import { urlTable } from "@/utils/paths/url";
 
-import { generateJsonLdScript, getCommonJsonLdFragment, transformOrganization } from "./common";
+import { getCommonJsonLdFragment, transformOrganization } from "./common";
 
 type Props = {
   article: TArticle;
   config: TConfig;
 };
 
-export const ArticleJsonLd: React.FC<Props> = (props) => {
-  return generateJsonLdScript("json-ld-article", props, generateJsonLd);
-};
-
-const generateJsonLd = ({ article, config }: Props) => {
+export const generateBlogJsonLd = ({ article, config }: Props) => {
   const { host: siteUrl } = config;
   const org = transformOrganization(config);
   const path = `${urlTable.articles}/${article.id}`;
@@ -48,5 +44,5 @@ const generateJsonLd = ({ article, config }: Props) => {
     url,
   };
 
-  return JSON.stringify(jsonLd);
+  return jsonLd;
 };

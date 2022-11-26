@@ -1,25 +1,18 @@
 import type { HowToStep, Person, Recipe, WithContext } from "schema-dts";
 
-import { mdx2html } from "@/lib/mdx";
+import { mdx2html } from "@/lib/mdx/mdx2html";
 import type { TArticle, TConfig } from "@/types";
 import { parseRecipeHtml } from "@/utils/article/parse";
 import { urlTable } from "@/utils/paths/url";
 
-import { generateJsonLdScript, getCommonJsonLdFragment, transformOrganization } from "./common";
+import { getCommonJsonLdFragment, transformOrganization } from "./common";
 
 type Props = {
   article: TArticle;
   config: TConfig;
 };
 
-export const RecipeJsonLd = async (props: Props) => {
-  const mdxResult = await mdx2html(props.article.body);
-  const htmlSrc = mdxResult.compiledSource;
-
-  return generateJsonLdScript("json-ld-article", { ...props, htmlSrc }, generateJsonLd);
-};
-
-const generateJsonLd = ({ article, config, htmlSrc }: Props & { htmlSrc: string }) => {
+export const generateRecipeJsonLd = async ({ article, config }: Props) => {
   const { host: siteUrl } = config;
   const org = transformOrganization(config);
   const path = `${urlTable.articles}/${article.id}`;
@@ -33,7 +26,8 @@ const generateJsonLd = ({ article, config, htmlSrc }: Props & { htmlSrc: string 
 
   const { organizationFragment } = getCommonJsonLdFragment({ org, siteUrl });
   const keywords = article.tags.map((tag) => tag.name).join(", ");
-  const { ingredients, instructions } = parseRecipeHtml(htmlSrc);
+  const mdxResult = await mdx2html(article.body);
+  const { ingredients, instructions } = parseRecipeHtml(mdxResult.compiledSource);
 
   const instructionsFragment: HowToStep[] = instructions.map((instruction) => ({
     "@type": "HowToStep",
@@ -58,5 +52,5 @@ const generateJsonLd = ({ article, config, htmlSrc }: Props & { htmlSrc: string 
     url,
   };
 
-  return JSON.stringify(jsonLd);
+  return jsonLd;
 };

@@ -1,4 +1,3 @@
-import Script from "next/script";
 import type { ImageObject, Organization, SearchAction } from "schema-dts";
 
 import type { TConfig, TOrganization } from "@/types";
@@ -12,20 +11,6 @@ export const transformOrganization = (config: TConfig) => {
   };
 
   return org;
-};
-
-export const generateJsonLdScript = (id: string, props: Record<string, any>, generator: (obj: any) => string) => {
-  return (
-    <Script
-      id={id}
-      type="application/ld+json"
-      defer
-      dangerouslySetInnerHTML={{
-        __html: generator(props),
-      }}
-      strategy="afterInteractive"
-    />
-  );
 };
 
 export const getCommonJsonLdFragment = ({ org, siteUrl }: { org: TOrganization; siteUrl: string }) => {
