@@ -5,7 +5,10 @@ class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head />
-        <body className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100" style={{ overflowAnchor: "none" }}>
+        <body
+          className="mx-auto mb-16 flex min-h-screen max-w-screen-xl flex-col bg-white px-4 text-gray-900 dark:bg-gray-900 dark:text-gray-100"
+          style={{ overflowAnchor: "none" }}
+        >
           <Main />
           <NextScript />
         </body>

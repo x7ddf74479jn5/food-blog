@@ -4,7 +4,6 @@ import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 
 import { SearchProvider } from "@/components/feature/SearchArea/SearchContext";
-import { GoogleAnalytics } from "@/lib/google-analytics";
 
 // FIXME: MSW is broken "ERR_UNSUPPORTED_DIR_IMPORT"
 // if (process.env.NEXT_PUBLIC_MSW_ENABLED === "true") {
@@ -17,14 +16,11 @@ import { GoogleAnalytics } from "@/lib/google-analytics";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <div>
-      <GoogleAnalytics />
-      <ThemeProvider attribute="class" enableSystem>
-        <SearchProvider>
-          <Component {...pageProps} />
-        </SearchProvider>
-      </ThemeProvider>
-    </div>
+    <ThemeProvider attribute="class" enableSystem>
+      <SearchProvider>
+        <Component {...pageProps} />
+      </SearchProvider>
+    </ThemeProvider>
   );
 };
 
