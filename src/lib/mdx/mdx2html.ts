@@ -1,4 +1,5 @@
-import "server-only";
+// NOTE: src/pages/previewで使うため
+// import "server-only";
 
 import { serialize } from "next-mdx-remote/serialize";
 import remarkBreaks from "remark-breaks";
