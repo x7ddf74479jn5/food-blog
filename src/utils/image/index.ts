@@ -1,3 +1,5 @@
+// import "server-only";
+
 import { getPlaiceholder } from "plaiceholder";
 
 export const generateImageBlurDataURL = async (src: string) => {

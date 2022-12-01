@@ -1,40 +1,18 @@
-import { RouterContext } from "next/dist/shared/lib/router-context";
-import type { NextRouter } from "next/router";
+import type { AppRouterInstance, HooksClientContext } from "mocks/next/router";
+import { AppRouterContext, createMockRouterHoc } from "mocks/next/router";
 
-export type { NextRouter };
-export { RouterContext };
-
-export const mockRouter: NextRouter = {
-  asPath: "/",
-  basePath: "/",
-  isLocaleDomain: true,
+export const defaultMockRouter: AppRouterInstance = {
   back: jest.fn(),
-  isReady: true,
-  beforePopState: jest.fn(),
-  pathname: "/",
-  events: {
-    emit: jest.fn(),
-    off: jest.fn(),
-    on: jest.fn(),
-  },
+  forward: jest.fn(),
   prefetch: jest.fn(),
-  isFallback: false,
-  route: "/",
-  isPreview: false,
-  query: {},
   push: jest.fn(),
-  reload: jest.fn(),
+  refresh: jest.fn(),
   replace: jest.fn(),
 };
 
-export const withMockedRouter = (
-  router: Partial<NextRouter> = {},
-  children: React.ReactElement
-): React.ReactElement => {
-  const mockedRouter: NextRouter = {
-    ...mockRouter,
-    ...router,
-  };
+export const withMockRouter = createMockRouterHoc({
+  initialMockRouter: defaultMockRouter,
+});
 
-  return <RouterContext.Provider value={mockedRouter}>{children}</RouterContext.Provider>;
-};
+export { AppRouterContext };
+export type { AppRouterInstance, HooksClientContext };

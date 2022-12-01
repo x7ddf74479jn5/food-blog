@@ -17,4 +17,13 @@ export type MappedConst<T extends string> = {
   [K in T]: K;
 };
 
-export type PagePropsOrError<T extends object> = (T & { error?: undefined }) | { error: { statusCode: number } };
+export type PageMeta = {
+  description: string;
+  image: string;
+  url: string;
+  title: string;
+};
+
+export type PagePropsOrError<T extends object> =
+  | (T & { error?: undefined })
+  | { error: { statusCode: 404 | 500 | undefined } };

@@ -5,14 +5,14 @@ export const apiRoute = {
 
 export const urlTable = {
   articles: "/articles",
-  categories: "/articles/categories",
+  categories: "/categories",
   home: "/",
-  pickup: "/articles/pickup",
-  popular: "/articles/popular",
+  pickup: "/pickup",
+  popular: "/popular",
   preview: "/preview",
   root: "/",
   search: "/search",
-  tags: "/articles/tags",
+  tags: "/tags",
 } as const;
 
 export type UrlTableValue = typeof urlTable[keyof typeof urlTable];
