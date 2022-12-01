@@ -1,4 +1,5 @@
-import "server-only";
+// FIXME: API RoutesをClient Componentとして認識してしまう
+// import "server-only";
 
 import { createClient } from "microcms-js-sdk";
 

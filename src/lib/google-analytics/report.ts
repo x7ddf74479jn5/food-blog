@@ -1,4 +1,5 @@
-import "server-only";
+// FIXME: API RoutesをClient Componentとして認識してしまう
+// import "server-only";
 
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 
