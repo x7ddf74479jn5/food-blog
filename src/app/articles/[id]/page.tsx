@@ -5,7 +5,11 @@ import { notFound } from "next/navigation";
 import { ArticleDetail } from "@/components/pages/articles/ArticleDetail";
 import { fetchArticles } from "@/repositories";
 
-export const ArticleDetailPage = async ({ id }: ArticleDetailParams) => {
+export type ArticleDetailProps = { params: ArticleDetailParams };
+
+export const ArticleDetailPage = async ({ params }: ArticleDetailProps) => {
+  const { id } = params;
+
   if (!id) notFound();
   // @ts-expect-error server component
   return <ArticleDetail articleId={id} />;

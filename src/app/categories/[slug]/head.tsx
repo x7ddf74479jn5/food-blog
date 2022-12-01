@@ -6,9 +6,11 @@ import { fetchConfig } from "@/repositories";
 import type { CategoryPageParams } from "./page";
 
 const Head = async ({ params }: { params: CategoryPageParams }) => {
+  const { slug } = params;
+
   if (!slug) throw Error("Slug not provided");
 
-  const [config, meta] = await Promise.all([fetchConfig(), getCategoryPageMeta(params.slug)]);
+  const [config, meta] = await Promise.all([fetchConfig(), getCategoryPageMeta(slug)]);
 
   return (
     <head>
