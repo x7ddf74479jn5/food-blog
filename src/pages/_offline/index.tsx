@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import { Error as ErrorPage } from "@/components/pages/Error";
+import { Error as ErrorPage } from "@/components/pages/Errorw";
 import type { OfflineProps } from "@/components/pages/Offline";
 import { Offline } from "@/components/pages/Offline";
 import { sentryLogServer } from "@/lib/sentry/logger";

@@ -1,8 +1,8 @@
 import type { Thing } from "schema-dts";
 
-import { generateBlogJsonLd } from "./blogJsonLd";
-import { generateRecipeJsonLd } from "./recipeJsonLd";
-import { generateWebpageJsonLd } from "./webpageJsonLd";
+import { generateBlogJsonLd } from "./BlogJsonLt";
+import { generateRecipeJsonLd } from "./RecipeJsonLd";
+import { generateWebpageJsonLd } from "./WebpageJsonLd";
 
 export { generateBlogJsonLd, generateRecipeJsonLd, generateWebpageJsonLd };
 
