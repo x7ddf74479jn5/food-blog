@@ -1,6 +1,6 @@
 import type { Thing } from "schema-dts";
 
-import { generateBlogJsonLd } from "./BlogJsonLt";
+import { generateBlogJsonLd } from "./BlogJsonLd";
 import { generateRecipeJsonLd } from "./RecipeJsonLd";
 import { generateWebpageJsonLd } from "./WebpageJsonLd";
 

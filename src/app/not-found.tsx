@@ -1,4 +1,4 @@
-import { Error } from "@/components/pages/Errorw";
+import { Error } from "@/components/pages/Error";
 
 const NotFound = () => {
   return <Error status={404} />;

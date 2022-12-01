@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from "next";
 import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 import { HtmlHeadNoIndex } from "@/components/meta/HtmlHead";
-import { Error as ErrorPage } from "@/components/pages/Errorw";
+import { Error as ErrorPage } from "@/components/pages/Error";
 import type { ArticleDetailPreviewProps } from "@/components/pages/Preview";
 import { ArticleDetailPreview } from "@/components/pages/Preview";
 import { mdx2html } from "@/lib/mdx";
