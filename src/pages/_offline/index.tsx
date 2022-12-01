@@ -6,7 +6,7 @@ import { Offline } from "@/components/pages/Offline";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import { fetchConfig, fetchTags } from "@/repositories";
 import { getCategories } from "@/services/category";
-import type { PagePropsOrError } from "@/types";
+import type { PagePropsOrError } from "@/types/utils";
 
 type OfflinePageProps = PagePropsOrError<OfflineProps>;
 

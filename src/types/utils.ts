@@ -23,3 +23,7 @@ export type PageMeta = {
   url: string;
   title: string;
 };
+
+export type PagePropsOrError<T extends object> =
+  | (T & { error?: undefined })
+  | { error: { statusCode: 404 | 500 | undefined } };
