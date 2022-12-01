@@ -12,7 +12,7 @@ type Props = {
 
 export const CategoryListSideView: React.FC<Props> = ({ categories, columns }) => {
   return (
-    <SideSectionContainer header="カテゴリー" href="/articles/categories">
+    <SideSectionContainer header="カテゴリー" href={urlTable.categories}>
       <ul
         className={`grid grid-flow-row place-items-center gap-2 md:max-h-[calc(28rem+8rem)] md:overflow-y-auto ${columns}`}
       >
