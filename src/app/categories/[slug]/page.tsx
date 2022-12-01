@@ -5,7 +5,9 @@ import { notFound } from "next/navigation";
 import { Category } from "@/components/pages/categories/Category";
 import { fetchCategories } from "@/repositories";
 
-const CategoryPage = ({ slug }: CategoryPageParams) => {
+const CategoryPage = ({ params }: { params: CategoryPageParams }) => {
+  const { slug } = params;
+
   if (!slug) notFound();
 
   // @ts-expect-error server component

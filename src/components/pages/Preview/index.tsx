@@ -44,7 +44,7 @@ export const ArticleDetailPreview: React.FC<ArticleDetailPreviewProps> = ({
   const pageTitle = formatPageTitle(title, siteTitle);
 
   return (
-    <ArticleLayout articleId={id} url={url} pageTitle={pageTitle} backLinks={backLinks}>
+    <ArticleLayout article={article} url={url} pageTitle={pageTitle} backLinks={backLinks}>
       <Head>
         <HtmlHeadBase />
       </Head>
