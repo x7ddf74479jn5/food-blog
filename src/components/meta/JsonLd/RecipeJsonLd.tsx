@@ -1,8 +1,8 @@
 import type { HowToStep, Person, Recipe, WithContext } from "schema-dts";
 
 import { mdx2html } from "@/lib/mdx/mdx2html";
+import { parseRecipeHtml } from "@/services/article/parse";
 import type { TArticle, TConfig } from "@/types";
-import { parseRecipeHtml } from "@/utils/article/parse";
 import { urlTable } from "@/utils/paths/url";
 
 import { getCommonJsonLdFragment, transformOrganization } from "./common";

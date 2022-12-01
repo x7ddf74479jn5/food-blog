@@ -9,9 +9,9 @@ import { mdx2html } from "@/lib/mdx";
 import { sentryLogServer } from "@/lib/sentry/logger";
 import { fetchConfig, fetchTags } from "@/repositories";
 import { getArticle, getPickupArticles, getPopularArticles } from "@/services/article";
+import { isDraft } from "@/services/article/isDraft";
 import { getCategories } from "@/services/category";
 import type { TArticle } from "@/types";
-import { isDraft } from "@/utils/article";
 
 type PagePropsOrError<T extends object> = (T & { error?: undefined }) | { error: { statusCode: number } };
 type Props = PagePropsOrError<ArticleDetailPreviewProps>;
