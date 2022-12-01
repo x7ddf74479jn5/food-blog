@@ -22,7 +22,6 @@ afterEach(() => {
 
 describe("model/article/ArticleSWRContainer/useGetArticleListQuery", () => {
   const q = encodeURIComponent("作り方");
-  const endpoint = apiRoute.apiArticles;
   const params = new URLSearchParams({ q });
 
   const Wrapper: React.ComponentType<{ children: React.ReactNode; router?: Partial<NextRouter> }> = ({ children }) => {
@@ -37,7 +36,7 @@ describe("model/article/ArticleSWRContainer/useGetArticleListQuery", () => {
   ];
 
   it("OK: useSWRInfiniteが呼び出される", () => {
-    const { result, unmount } = renderHook(() => useGetArticleListQuery({ endpoint }), {
+    const { result, unmount } = renderHook(() => useGetArticleListQuery({}), {
       wrapper: Wrapper,
     });
 
@@ -74,9 +73,8 @@ describe("model/article/ArticleSWRContainer/useGetArticleListQuery", () => {
 
     it("default", () => {
       const args = {
-        endpoint,
         fallbackData: undefined,
-        getKeyOptions: undefined,
+        queries: undefined,
       };
 
       const { result } = renderHook(() => useGetArticleListQuery(args), {
@@ -102,9 +100,8 @@ describe("model/article/ArticleSWRContainer/useGetArticleListQuery", () => {
 
     it("custom", () => {
       const args = {
-        endpoint,
         fallbackData: undefined,
-        getKeyOptions: { q },
+        queries: { q },
       };
 
       const { result } = renderHook(() => useGetArticleListQuery(args), {
@@ -153,7 +150,7 @@ describe("model/article/ArticleSWRContainer/useGetArticleListQuery", () => {
         };
       });
 
-      const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
+      const { result } = renderHook(() => useGetArticleListQuery({}), {
         wrapper: Wrapper,
       });
       const { articles, getCurrentKey, hasNextPage } = result.current;
@@ -195,7 +192,7 @@ describe("model/article/ArticleSWRContainer/useGetArticleListQuery", () => {
         };
       });
 
-      const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
+      const { result } = renderHook(() => useGetArticleListQuery({}), {
         wrapper: Wrapper,
       });
       const { articles, getCurrentKey, hasNextPage } = result.current;
@@ -242,7 +239,7 @@ describe("model/article/ArticleSWRContainer/useGetArticleListQuery", () => {
         };
       });
 
-      const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
+      const { result } = renderHook(() => useGetArticleListQuery({}), {
         wrapper: Wrapper,
       });
       const { articles, getCurrentKey, hasNextPage } = result.current;

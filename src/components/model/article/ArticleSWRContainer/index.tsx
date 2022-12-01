@@ -3,34 +3,33 @@
 import type { MicroCMSQueries } from "microcms-js-sdk";
 
 import Pagination from "@/components/feature/Pagination";
+import { useSelectQueries } from "@/components/model/article/ArticleSWRContainer/useQueryOption";
 import type { TArticleListResponse } from "@/types";
-import { apiRoute } from "@/utils/paths/url";
 
 import { ArticleList } from "../ArticleList";
 import { ArticleSkeltonList } from "../ArticleList/ArticleSkeltonList";
 import useGetArticleListQuery from "./useGetArticleListQuery";
 
 type ArticleSWRContainerProps = {
-  queryOptions?: MicroCMSQueries;
   fallbackData?: TArticleListResponse;
+  queryOptions?: MicroCMSQueries;
 };
 
 export const ArticleSWRContainer: React.FC<ArticleSWRContainerProps> = ({ fallbackData, queryOptions }) => {
-  const {
-    articles,
-    hasNextPage,
-    isValidating,
-    paginate: handlePaginate,
-  } = useGetArticleListQuery({
-    endpoint: apiRoute.apiArticles,
+  const queries = useSelectQueries(queryOptions);
+  const data = useGetArticleListQuery({
     fallbackData,
-    getKeyOptions: queryOptions,
+    queries,
   });
+  const { articles, hasNextPage, isValidating, paginate } = data;
+  const handlePaginate = paginate;
+
+  if (!queries) return <div className="mt-16 flex justify-center">検索項目を入力してください</div>;
 
   if (isValidating && articles.length === 0) return <ArticleSkeltonList />;
 
   if (!isValidating && articles.length === 0)
-    return <div className="mt-16 flex justify-center">レシピが見つかりませんでした。</div>;
+    return <div className="mt-16 flex justify-center">レシピが見つかりませんでした</div>;
 
   return (
     <section>

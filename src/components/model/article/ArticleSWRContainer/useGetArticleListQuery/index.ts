@@ -2,8 +2,9 @@ import type { MicroCMSQueries } from "microcms-js-sdk";
 import { useCallback, useMemo, useRef } from "react";
 import useSWRInfinite from "swr/infinite";
 
-import type { TApiRoute, TArticleListResponse, TArticleSWRResponse } from "@/types";
+import type { TArticleListResponse, TArticleSWRResponse } from "@/types";
 import { HttpError } from "@/utils/error/Http";
+import { apiRoute } from "@/utils/paths/url";
 
 const createURLSearchParams = (data: Record<string, string | number>) => {
   const params = new URLSearchParams();
@@ -16,12 +17,12 @@ const createURLSearchParams = (data: Record<string, string | number>) => {
 };
 
 type Arguments = {
-  endpoint: TApiRoute;
-  getKeyOptions?: Omit<MicroCMSQueries, "fields" | "ids">;
+  queries?: Omit<MicroCMSQueries, "fields" | "ids">;
   fallbackData?: TArticleListResponse;
 };
 
-const useGetArticleListQuery = ({ endpoint, fallbackData, getKeyOptions }: Arguments) => {
+const useGetArticleListQuery = ({ fallbackData, queries }: Arguments) => {
+  const endpoint = apiRoute.apiArticles;
   const keyRef = useRef("");
   const defaultLimit = 10;
   const defaultKeyOptions = {
@@ -39,15 +40,15 @@ const useGetArticleListQuery = ({ endpoint, fallbackData, getKeyOptions }: Argum
     if (previousPageData && !previousPageData.contents) return null;
 
     if (pageIndex === 0) {
-      const key = `${endpoint}?${createURLSearchParams({ ...defaultKeyOptions, ...getKeyOptions, pageIndex })}`;
+      const key = `${endpoint}?${createURLSearchParams({ ...defaultKeyOptions, ...queries, pageIndex })}`;
       keyRef.current = key;
 
       return key;
     }
 
     const offset =
-      previousPageData?.offset !== undefined ? previousPageData.offset + (getKeyOptions?.limit ?? defaultLimit) : 0;
-    const key = `${endpoint}?${createURLSearchParams({ ...defaultKeyOptions, ...getKeyOptions, offset, pageIndex })}`;
+      previousPageData?.offset !== undefined ? previousPageData.offset + (queries?.limit ?? defaultLimit) : 0;
+    const key = `${endpoint}?${createURLSearchParams({ ...defaultKeyOptions, ...queries, offset, pageIndex })}`;
     keyRef.current = key;
 
     return key;
