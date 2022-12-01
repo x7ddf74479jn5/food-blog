@@ -6,7 +6,7 @@ import type { TArticle, TArticleListResponse } from "@/types";
 import type { TPickupListResponse } from "@/types/models/pickup";
 
 export const fetchArticles = cache(async (queries?: MicroCMSQueries): Promise<TArticleListResponse> => {
-  const data = await client.get<TArticleListResponse>({
+  const data = await client.getList<TArticle>({
     endpoint: "articles",
     queries: { limit: 1000, ...queries },
   });
@@ -14,7 +14,7 @@ export const fetchArticles = cache(async (queries?: MicroCMSQueries): Promise<TA
 });
 
 export const fetchArticle = cache(async (id: string, queries?: MicroCMSQueries): Promise<TArticle> => {
-  const data = await client.get<TArticle>({
+  const data = await client.getListDetail<TArticle>({
     contentId: id,
     endpoint: `articles`,
     queries: {

@@ -9,6 +9,6 @@ export const fetchTag = cache(async (slug: string): Promise<TTag> => {
 });
 
 export const fetchTags = cache(async (): Promise<TTag[]> => {
-  const data = await client.get<TTagListResponse>({ endpoint: "tags", queries: { limit: 100 } });
+  const data = await client.getList<TTag>({ endpoint: "tags", queries: { limit: 100 } });
   return data.contents;
 });
