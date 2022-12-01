@@ -1,8 +1,6 @@
-"use client";
-
-import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import Script from "next/script";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 import { toIdleTask } from "@/utils";
 
@@ -29,7 +27,9 @@ const pageview = (path: string) => {
 };
 
 export const event = ({ action, category, label, value = "" }: Event) => {
-  if (!isExistsGaId) return;
+  if (!isExistsGaId) {
+    return;
+  }
 
   window.gtag("event", action, {
     event_category: category,
@@ -44,42 +44,44 @@ export const search = ({ term }: SearchEvent) => {
   });
 };
 
-const usePageView = () => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const prevPathRef = useRef(pathname);
-  const url = pathname + searchParams.toString();
+export const usePageView = () => {
+  const router = useRouter();
 
   useEffect(() => {
-    if (!isExistsGaId || prevPathRef.current === url) return;
+    if (!isExistsGaId) {
+      return;
+    }
 
-    toIdleTask(() => pageview(url));
-    prevPathRef.current = url;
-  }, [url]);
+    const handleRouteChange = (path: string) => {
+      toIdleTask(() => pageview(path));
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 };
 
-export const GoogleAnalytics = () => {
-  usePageView();
-
-  return (
-    <>
-      {isExistsGaId && (
-        <>
-          <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-          <Script
-            id="gtag"
-            dangerouslySetInnerHTML={{
-              __html: `
+export const GoogleAnalytics = () => (
+  <>
+    {isExistsGaId && (
+      <>
+        <Script defer src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="worker" />
+        <Script
+          id="gtag"
+          defer
+          dangerouslySetInnerHTML={{
+            __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());    
               gtag('config', '${GA_ID}', {'debug_mode': ${process.env.NODE_ENV === "development"}});
             `,
-            }}
-            strategy="afterInteractive"
-          />
-        </>
-      )}
-    </>
-  );
-};
+          }}
+          strategy="worker"
+        />
+      </>
+    )}
+  </>
+);

@@ -1,5 +1,4 @@
 import type { MicroCMSQueries } from "microcms-js-sdk";
-import { cache } from "react";
 
 import { runReport } from "@/lib/google-analytics/report";
 import { fetchArticle, fetchArticles, fetchPickupArticles } from "@/repositories";
@@ -13,18 +12,18 @@ const makeArticleWithPlaceholderImage = async (article: TArticle) => {
   return { ...article, image: { ...article.image, blurDataURL } };
 };
 
-export const getArticle = cache(async (id: string, queries?: MicroCMSQueries) => {
+export const getArticle = async (id: string, queries?: MicroCMSQueries) => {
   const article = await fetchArticle(id, queries);
 
   return await makeArticleWithPlaceholderImage(article);
-});
+};
 
-export const getArticles = cache(async (queries: MicroCMSQueries) => {
+export const getArticles = async (queries: MicroCMSQueries) => {
   const res = await fetchArticles(queries);
   const articles: TArticle[] = await Promise.all(res.contents.map(await makeArticleWithPlaceholderImage));
 
   return { ...res, contents: articles };
-});
+};
 
 const buildTagFilterString = (tagIdsList: string[][]) => {
   if (tagIdsList.length < 1) return "";
@@ -53,7 +52,7 @@ export const buildFilterString = (tagIdsList: string[][], excludedArticleId: str
   return tagFilterString + "[and]" + excludedArticleFilterString;
 };
 
-export const getRelatedArticles = cache(async (article: TArticle, limit = 4) => {
+export const getRelatedArticles = async (article: TArticle, limit = 4) => {
   const tagIds = article.tags.map((tag) => tag.id);
   const tagGroups = concatTagGroupThroughCombination(tagIds);
 
@@ -65,9 +64,9 @@ export const getRelatedArticles = cache(async (article: TArticle, limit = 4) => 
   const finalArticles = await Promise.all(descByRelevance.map(makeArticleWithPlaceholderImage));
 
   return finalArticles;
-});
+};
 
-export const getPickupArticles = cache(async (date: Date = new Date()) => {
+export const getPickupArticles = async (date: Date) => {
   const _date = date.toISOString();
   const filters = `startDate[less_than]${_date}[and]endDate[greater_than]${_date}`;
   const limit = 1;
@@ -76,9 +75,9 @@ export const getPickupArticles = cache(async (date: Date = new Date()) => {
   const finalArticles: TArticle[] = await Promise.all(pickup.articles.map(makeArticleWithPlaceholderImage));
 
   return { ...pickup, articles: finalArticles };
-});
+};
 
-export const getPopularArticles = cache(async () => {
+export const getPopularArticles = async () => {
   const report = await runReport();
 
   if (!report || report.length === 0) return [];
@@ -104,4 +103,4 @@ export const getPopularArticles = cache(async () => {
     });
 
   return sortedArticles;
-});
+};

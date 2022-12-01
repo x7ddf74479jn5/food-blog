@@ -5,14 +5,16 @@ import type { RequestHandler } from "msw";
 import { setupServer } from "msw/node";
 import { SWRConfig } from "swr";
 
-import { SearchProvider } from "@/components/feature/SearchArea/SearchContext";
+import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
 
-import { withMockRouter } from "./mocks";
+import { mockRouter, RouterContext } from "./mocks";
 
 export const Providers: React.ComponentType<{ children?: React.ReactNode }> = ({ children }) => {
-  return withMockRouter(
+  return (
     <SWRConfig value={{ dedupingInterval: 0, provider: () => new Map() }}>
-      <SearchProvider>{children}</SearchProvider>
+      <RouterContext.Provider value={mockRouter}>
+        <SearchProvider>{children}</SearchProvider>
+      </RouterContext.Provider>
     </SWRConfig>
   );
 };

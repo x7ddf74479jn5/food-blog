@@ -1,5 +1,3 @@
-import "server-only";
-
 import { serialize } from "next-mdx-remote/serialize";
 import remarkBreaks from "remark-breaks";
 import remarkEmoji from "remark-emoji";

@@ -2,12 +2,6 @@ import type { MicroCMSObjectContent } from "microcms-js-sdk";
 
 import type { TImage } from "@/types/utils";
 
-export type TOrganization = {
-  name: string;
-  url: string;
-  imageUrl?: string;
-};
-
 export type TConfig = {
   host: string;
   apiHost: string;

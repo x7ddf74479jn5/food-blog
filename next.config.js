@@ -13,6 +13,7 @@ const nextConfig = {
   images: {
     domains: ["images.microcms-assets.io"],
   },
+  pageExtensions: ["page.tsx", "page.ts"],
   pwa: {
     disable: process.env.NODE_ENV !== "production",
     dest: "public",
@@ -21,7 +22,6 @@ const nextConfig = {
   },
   swcMinify: true,
   experimental: {
-    appDir: true,
     scrollRestoration: true,
     nextScriptWorkers: true,
     browsersListForSwc: true,
