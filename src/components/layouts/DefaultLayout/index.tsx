@@ -1,6 +1,7 @@
 import { BackLinks } from "@/components/feature/BackLinks";
 import { ShareButtons } from "@/components/feature/ShareButtons";
-import { PickupArticles, PopularArticles } from "@/components/model/article";
+import { PickupArticles } from "@/components/model/article/PickupArticles";
+import { PopularArticles } from "@/components/model/article/PopularArticles";
 import { CategoryListSide } from "@/components/model/category/CategoryListSide";
 import {
   AsideContainer,

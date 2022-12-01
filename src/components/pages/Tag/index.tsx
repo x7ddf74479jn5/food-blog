@@ -1,5 +1,5 @@
 import { DefaultLayout } from "@/components/layouts";
-import { ArticleSWRContainer } from "@/components/model/article";
+import { ArticleSWRContainer } from "@/components/model/article/ArticleSWRContainer";
 import { fetchTag } from "@/repositories";
 import { getArticles } from "@/services/article";
 import { getBackLinks, urlTable } from "@/utils/paths/url";

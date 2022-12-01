@@ -1,13 +1,16 @@
 import BackLinks from "@/components/feature/BackLinks";
 import { ShareButtons } from "@/components/feature/ShareButtons";
-import { PickupArticles, PopularArticles, RelatedArticles } from "@/components/model/article";
+import { PickupArticles } from "@/components/model/article/PickupArticles";
+import { PopularArticles } from "@/components/model/article/PopularArticles";
+import { RelatedArticles } from "@/components/model/article/RelatedArticles";
 import { TOC } from "@/components/model/article/TOC";
 import { CategoryListSide } from "@/components/model/category/CategoryListSide";
 import { BottomAreaContainer } from "@/components/ui/containers/BottomAreaContainer";
 import { ContainerWithOrder } from "@/components/ui/containers/ContainerWithOrder";
+import type { TArticle } from "@/types";
 
 type Props = {
-  articleId: string;
+  article: TArticle;
   url: string;
   children: React.ReactNode;
   pageTitle: string;
@@ -17,7 +20,7 @@ type Props = {
   }>;
 };
 
-const ArticleLayout: React.FC<Props> = ({ backLinks, children, pageTitle, url }) => {
+const ArticleLayout = ({ article, backLinks, children, pageTitle, url }: Props) => {
   return (
     <>
       <div className="mt-4 mb-8 flex flex-col items-center gap-16 lg:mb-16 lg:flex-row lg:items-start lg:justify-between ">
@@ -31,7 +34,7 @@ const ArticleLayout: React.FC<Props> = ({ backLinks, children, pageTitle, url })
           </ContainerWithOrder>
           <ContainerWithOrder order="order-3 lg:order-2">
             {/* @ts-expect-error server component */}
-            <RelatedArticles thisArticleId={articleId} />
+            <RelatedArticles thisArticle={article} />
           </ContainerWithOrder>
           <ContainerWithOrder order="order-4 lg:order-1">
             {/* @ts-expect-error server component */}

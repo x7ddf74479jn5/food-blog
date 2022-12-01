@@ -2,7 +2,8 @@ import { FaLightbulb } from "react-icons/fa";
 import { IoPodium } from "react-icons/io5";
 
 import { ShareButtons } from "@/components/feature/ShareButtons";
-import { ArticleSWRContainer, CarouselContainer } from "@/components/model/article";
+import { ArticleSWRContainer } from "@/components/model/article/ArticleSWRContainer";
+import { CarouselContainer } from "@/components/model/article/carousel/CarouselContainer";
 import { PickupArticleCarousel } from "@/components/model/article/carousel/PickupArticleCarousel";
 import { PopularArticleCarousel } from "@/components/model/article/carousel/PopularArticleCarousel";
 import { CategoryListSide } from "@/components/model/category/CategoryListSide";

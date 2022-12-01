@@ -1,5 +1,5 @@
 import { DefaultLayout } from "@/components/layouts";
-import { ArticleSWRContainer } from "@/components/model/article";
+import { ArticleSWRContainer } from "@/components/model/article/ArticleSWRContainer";
 import { getCategoryPageMeta } from "@/components/pages/categories/Category/meta";
 import { getArticles } from "@/services/article";
 import { getCategory } from "@/services/category";
