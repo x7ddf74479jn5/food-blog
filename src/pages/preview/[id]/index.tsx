@@ -1,100 +1,102 @@
-import type { GetServerSideProps, NextPage } from "next";
-import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+export default <div>WIP</div>;
 
-import { HtmlHeadNoIndex } from "@/components/meta/HtmlHead";
-import { Error as ErrorPage } from "@/components/pages/Error";
-import type { ArticleDetailPreviewProps } from "@/components/pages/Preview";
-import { ArticleDetailPreview } from "@/components/pages/Preview";
-import { mdx2html } from "@/lib/mdx";
-import { sentryLogServer } from "@/lib/sentry/logger";
-import { fetchConfig, fetchTags } from "@/repositories";
-import { getArticle, getPickupArticles, getPopularArticles } from "@/services/article";
-import { isDraft } from "@/services/article/isDraft";
-import { getCategories } from "@/services/category";
-import type { TArticle } from "@/types";
+// import type { GetServerSideProps, NextPage } from "next";
+// import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-type PagePropsOrError<T extends object> = (T & { error?: undefined }) | { error: { statusCode: number } };
-type Props = PagePropsOrError<ArticleDetailPreviewProps>;
+// import { HtmlHeadNoIndex } from "@/components/meta/HtmlHead";
+// import { Error as ErrorPage } from "@/components/pages/Error";
+// import type { ArticleDetailPreviewProps } from "@/components/pages/Preview";
+// import { ArticleDetailPreview } from "@/components/pages/Preview";
+// import { mdx2html } from "@/lib/mdx";
+// import { sentryLogServer } from "@/lib/sentry/logger";
+// import { fetchConfig, fetchTags } from "@/repositories";
+// import { getArticle, getPickupArticles, getPopularArticles } from "@/services/article";
+// import { isDraft } from "@/services/article/isDraft";
+// import { getCategories } from "@/services/category";
+// import type { TArticle } from "@/types";
 
-const ArticlePreviewPage: NextPage<Props> = (props) => {
-  return props?.error ? (
-    <ErrorPage />
-  ) : (
-    <>
-      <HtmlHeadNoIndex />
-      <ArticleDetailPreview {...props} />
-    </>
-  );
-};
+// type PagePropsOrError<T extends object> = (T & { error?: undefined }) | { error: { statusCode: number } };
+// type Props = PagePropsOrError<ArticleDetailPreviewProps>;
 
-export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
-  const { preview: isPreview, previewData } = context;
+// const ArticlePreviewPage: NextPage<Props> = (props) => {
+//   return props?.error ? (
+//     <ErrorPage />
+//   ) : (
+//     <>
+//       <HtmlHeadNoIndex />
+//       <ArticleDetailPreview {...props} />
+//     </>
+//   );
+// };
 
-  if (!isPreview || !isDraft(previewData)) {
-    await sentryLogServer(new Error("PreviewData not found"), {
-      contexts: {
-        get_server_side_props_context: {
-          context,
-        },
-      },
-    });
+// export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+//   const { preview: isPreview, previewData } = context;
 
-    return {
-      props: {
-        error: {
-          statusCode: 500,
-        },
-      },
-    };
-  }
+//   if (!isPreview || !isDraft(previewData)) {
+//     await sentryLogServer(new Error("PreviewData not found"), {
+//       contexts: {
+//         get_server_side_props_context: {
+//           context,
+//         },
+//       },
+//     });
 
-  try {
-    const { draftKey, id } = previewData;
-    const queries = { draftKey };
-    const [config, categories, tags, article, pickup, popularArticles] = await Promise.all([
-      fetchConfig(),
-      getCategories(),
-      fetchTags(),
-      getArticle(id, queries),
-      getPickupArticles(new Date()),
-      getPopularArticles(),
-    ]);
+//     return {
+//       props: {
+//         error: {
+//           statusCode: 500,
+//         },
+//       },
+//     };
+//   }
 
-    const relatedArticles: TArticle[] = [];
-    const mdxSource = await mdx2html(article.body);
+//   try {
+//     const { draftKey, id } = previewData;
+//     const queries = { draftKey };
+//     const [config, categories, tags, article, pickup, popularArticles] = await Promise.all([
+//       fetchConfig(),
+//       getCategories(),
+//       fetchTags(),
+//       getArticle(id, queries),
+//       getPickupArticles(new Date()),
+//       getPopularArticles(),
+//     ]);
 
-    return {
-      props: {
-        article,
-        categories,
-        config,
-        isPreview,
-        mdxSource,
-        pickup,
-        popularArticles,
-        relatedArticles,
-        tags,
-      },
-    };
-  } catch (error) {
-    if (error instanceof Error) {
-      await sentryLogServer(error, {
-        contexts: {
-          get_server_side_props_context: {
-            context,
-          },
-        },
-      });
-    }
+//     const relatedArticles: TArticle[] = [];
+//     const mdxSource = await mdx2html(article.body);
 
-    return {
-      props: {
-        error: {
-          statusCode: 500,
-        },
-      },
-    };
-  }
-};
+//     return {
+//       props: {
+//         article,
+//         categories,
+//         config,
+//         isPreview,
+//         mdxSource,
+//         pickup,
+//         popularArticles,
+//         relatedArticles,
+//         tags,
+//       },
+//     };
+//   } catch (error) {
+//     if (error instanceof Error) {
+//       await sentryLogServer(error, {
+//         contexts: {
+//           get_server_side_props_context: {
+//             context,
+//           },
+//         },
+//       });
+//     }
 
-export default ArticlePreviewPage;
+//     return {
+//       props: {
+//         error: {
+//           statusCode: 500,
+//         },
+//       },
+//     };
+//   }
+// };
+
+// export default ArticlePreviewPage;
