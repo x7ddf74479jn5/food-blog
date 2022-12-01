@@ -1,18 +1,17 @@
-import { MDXRemote } from "next-mdx-remote";
 import { FaRegCalendar } from "react-icons/fa";
 
 import { ArticleLayout } from "@/components/layouts";
 import { CategoryButton } from "@/components/model/category/CategoryButton";
 import { TagListColored } from "@/components/model/tag/TagList";
 import { Avatar } from "@/components/ui/Avatar";
-import MDXCustomComponents from "@/components/ui/mdx";
 import TextDate from "@/components/ui/texts/TextDate";
 import Thumbnail from "@/components/ui/Thumbnail";
 import { getSafeDate } from "@/lib/date";
-import { mdx2html } from "@/lib/mdx";
+import { mdx2html } from "@/lib/mdx/mdx2html";
 import { getArticle } from "@/services/article";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
+import { MdxContainer } from "./MdxContainer";
 import { getArticleDetailPageMeta } from "./meta";
 
 type Props = {
@@ -26,13 +25,13 @@ export const ArticleDetail = async ({ articleId }: Props) => {
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
   const safePublishedAt = getSafeDate(publishedAt);
   const { avatar, name: writerName } = writer;
-  const data = { articles: linkCardArticles };
+  const customData = { articles: linkCardArticles };
   const mdxSource = await mdx2html(article.body);
   // TODO: Preview mode not implemented in Next.js@13 yet
   const isPreview = false;
 
   return (
-    <ArticleLayout articleId={article.id} url={url} pageTitle={pageTitle} backLinks={backLinks}>
+    <ArticleLayout article={article} url={url} pageTitle={pageTitle} backLinks={backLinks}>
       {isPreview && <div className="mb-4 bg-red-500 text-center text-white">Preview mode enabled</div>}
       <article className="prose dark:prose-dark">
         <div className="mb-4">
@@ -56,9 +55,7 @@ export const ArticleDetail = async ({ articleId }: Props) => {
           </div>
           <TagListColored tags={tags} />
         </div>
-        <div id="js-toc-content">
-          <MDXRemote {...mdxSource} components={MDXCustomComponents} scope={data} />
-        </div>
+        <MdxContainer src={mdxSource} customData={customData} />
       </article>
     </ArticleLayout>
   );
