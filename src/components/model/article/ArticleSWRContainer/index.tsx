@@ -24,8 +24,6 @@ export const ArticleSWRContainer: React.FC<ArticleSWRContainerProps> = ({ fallba
   const { articles, hasNextPage, isValidating, paginate } = data;
   const handlePaginate = paginate;
 
-  if (!queries) return <div className="mt-16 flex justify-center">検索項目を入力してください</div>;
-
   if (isValidating && articles.length === 0) return <ArticleSkeltonList />;
 
   if (!isValidating && articles.length === 0)
