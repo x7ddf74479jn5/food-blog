@@ -15,7 +15,7 @@ describe("useNewSearchQueries", () => {
     };
     const { current } = renderHook(() => useNewSearchQueries(), { wrapper: Wrapper }).result;
 
-    expect(current.filters).toEqual("tags[contains]11[and]tags[contains]9[and]tags[contains]8");
+    expect(current?.filters).toEqual("tags[contains]11[and]tags[contains]9[and]tags[contains]8");
   });
 
   it("OK: カテゴリーで検索したときのクエリが正しい", () => {
@@ -27,7 +27,7 @@ describe("useNewSearchQueries", () => {
     };
     const { current } = renderHook(() => useNewSearchQueries(), { wrapper: Wrapper }).result;
 
-    expect(current.filters).toEqual(`categories[equals]${mockCategories.rice.id}`);
+    expect(current?.filters).toEqual(`categories[equals]${mockCategories.rice.id}`);
   });
 
   it("OK: 複数のフィルターを組み合わせたときのクエリが正しい", () => {
@@ -43,8 +43,20 @@ describe("useNewSearchQueries", () => {
     };
     const { current } = renderHook(() => useNewSearchQueries(), { wrapper: Wrapper }).result;
 
-    expect(current.q).toBe("基本の");
-    expect(current.filters).toBe("categories[equals]1[and]tags[contains]11[and]tags[contains]9[and]tags[contains]8");
+    expect(current?.q).toBe("基本の");
+    expect(current?.filters).toBe("categories[equals]1[and]tags[contains]11[and]tags[contains]9[and]tags[contains]8");
+  });
+
+  it("空クエリの場合undefinedを返す", () => {
+    const params = new URLSearchParams({});
+    const Wrapper: React.ComponentType<{ children: React.ReactNode; router?: Partial<AppRouterInstance> }> = ({
+      children,
+    }) => {
+      return withMockRouter(<>{children}</>, { context: { searchParams: params } });
+    };
+    const { current } = renderHook(() => useNewSearchQueries(), { wrapper: Wrapper }).result;
+
+    expect(current).toBeUndefined();
   });
 });
 
