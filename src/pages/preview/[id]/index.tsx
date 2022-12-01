@@ -1,4 +1,6 @@
-export default <div>WIP</div>;
+const WIP = () => <div>WIP</div>;
+
+export default WIP;
 
 // import type { GetServerSideProps, NextPage } from "next";
 // import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
