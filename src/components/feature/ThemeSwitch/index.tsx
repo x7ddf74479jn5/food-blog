@@ -18,8 +18,9 @@ const useSwitch = (isMounted: boolean) => {
     setTheme(isChecked ? "light" : "dark");
   }, [isChecked, setTheme]);
 
+  let isCleanup = false;
+
   useEffect(() => {
-    let isCleanup = false;
     // 初回はtheme="system"なのでスキップ
     if (!isCleanup && !isSystem) {
       setTheme(isChecked ? "dark" : "light");
