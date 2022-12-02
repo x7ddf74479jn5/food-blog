@@ -12,8 +12,8 @@ type Props = {
 
 const NextLink: React.FC<Props> = ({ children, href, prefetch = false, ...rest }) => {
   return (
-    <Link href={href} prefetch={prefetch}>
-      <a {...rest}>{children}</a>
+    <Link href={href} prefetch={prefetch} {...rest}>
+      {children}
     </Link>
   );
 };
