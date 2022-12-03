@@ -1,25 +1,21 @@
 import type { MicroCMSQueries } from "microcms-js-sdk";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 import { HtmlHeadBase } from "@/components/functions/meta";
 import { DefaultLayout } from "@/components/layouts";
 import { ArticleSWRContainer } from "@/components/organisms/article";
+import { useLastSearchHistory } from "@/components/organisms/SearchArea/useSearch";
+import { SearchedQueryOptions } from "@/components/pages/Search/SearchResult";
 import type { TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
 const useSearchPage = (config: TConfig) => {
-  const [heading, setHeading] = useState("");
-  const params = useSearchParams();
-  const q = params.get("q") ?? "";
+  const lastSearchText = useLastSearchHistory();
+  const heading = `検索結果：${lastSearchText ?? ""}`;
   const { host, siteTitle } = config;
   const pageTitle = formatPageTitle(heading, siteTitle);
-  const url = formatPageUrl(`${urlTable.search}/q=${q ?? ""}`, host);
-
-  useEffect(() => {
-    setHeading(`検索結果：${q ?? ""}`);
-  }, [q]);
+  const url = formatPageUrl(`${urlTable.search}/q=${lastSearchText ?? ""}`, host);
 
   return {
     heading,
@@ -81,7 +77,10 @@ export const Search: React.FC<SearchProps> = ({ categories, config, pickup, popu
       popularArticles={popularArticles}
     >
       <HtmlHeadBase indexUrl={host} pageTitle={pageTitle} url={url} />
-      <h1 className="mb-8">{heading}</h1>
+      <div className="mb-8 flex flex-col space-y-4">
+        <h1>{heading}</h1>
+        <SearchedQueryOptions />
+      </div>
       <div className="w-full">
         <ArticleSWRContainer queryOptions={queryOptions} />
       </div>
