@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 
 import { search as sendSearchEvent } from "@/lib/google-analytics/gtag";
@@ -13,27 +13,32 @@ export const useSearch = (query?: { q: string; category?: string; tags?: string 
   const { setHistory } = useSearchMutation();
 
   const search = useCallback(() => {
-    router.push(
-      {
-        pathname: urlTable.search,
-        query: { ...query },
-      },
-      undefined,
-      { shallow: true }
-    );
+    const params = new URLSearchParams({ ...query });
+
+    router.push(`${urlTable.search}?${params.toString()}`);
 
     const q = query?.q;
 
-    if (q && !history.includes(q)) {
+    if (!q) return;
+
+    if (history.includes(q)) {
+      setHistory((prev) => {
+        const newHistory = [q, ...prev.filter((h) => h !== q)].slice(0, 5);
+        return newHistory;
+      });
+    } else {
       setHistory((prev) => [q, ...prev].slice(0, 5));
     }
 
-    if (q) {
-      toIdleTask(() => sendSearchEvent({ term: q }));
-    }
+    toIdleTask(() => sendSearchEvent({ term: q }));
   }, [router, query, history, setHistory]);
 
   return {
     search,
   };
+};
+
+export const useLastSearchHistory = () => {
+  const { history } = useSearchState();
+  return history.at(0);
 };

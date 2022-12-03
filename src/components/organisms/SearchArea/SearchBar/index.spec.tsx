@@ -1,14 +1,7 @@
 import userEvent from "@testing-library/user-event";
-import { render, screen } from "jest/test-utils";
+import { defaultMockRouter, render, screen, withMockRouter } from "jest/test-utils";
 
 import SearchBar from ".";
-
-const useRouter = jest.spyOn(require("next/router"), "useRouter");
-
-const push = jest.fn();
-useRouter.mockImplementation(() => {
-  return { push };
-});
 
 describe("components/organisms/SearchArea/SearchBar", () => {
   it("OK: 初期レンダリング", () => {
@@ -38,7 +31,7 @@ describe("components/organisms/SearchArea/SearchBar", () => {
     });
 
     it("OK: 検索イベント", async () => {
-      render(<SearchBar />);
+      render(withMockRouter(<SearchBar />));
       const input = screen.getByRole("combobox");
       expect(input).toHaveValue("");
 
@@ -47,7 +40,7 @@ describe("components/organisms/SearchArea/SearchBar", () => {
       expect(input).toHaveValue(testText);
 
       await user.type(input, "{enter}");
-      expect(push).toBeCalledWith({ pathname: "/search", query: { q: testText } }, undefined, { shallow: true });
+      expect(defaultMockRouter.push).toBeCalledWith("/search?q=test");
     });
 
     it("OK: フォーカスイベント", async () => {

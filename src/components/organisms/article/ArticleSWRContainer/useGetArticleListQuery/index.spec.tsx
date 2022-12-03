@@ -1,8 +1,6 @@
 import { renderHook } from "@testing-library/react";
-import { withMockedRouter } from "jest/test-utils";
+import { withMockRouter } from "jest/test-utils";
 import { mockArticles } from "mocks/data";
-import type { NextRouter } from "next/router";
-import { SWRConfig } from "swr";
 import * as useSWRInfinite from "swr/infinite";
 
 import { apiRoute } from "@/utils/paths/url";
@@ -21,17 +19,12 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-describe("hooks/useGetArticleListQuery", () => {
+describe("model/article/ArticleSWRContainer/useGetArticleListQuery", () => {
   const q = encodeURIComponent("作り方");
-  const endpoint = apiRoute.apiArticles;
-  const router: Partial<NextRouter> = {
-    query: { q },
-  };
-  const Wrapper: React.ComponentType<{ children: React.ReactNode; router?: Partial<NextRouter> }> = ({ children }) => {
-    return withMockedRouter(
-      router,
-      <SWRConfig value={{ dedupingInterval: 0, provider: () => new Map() }}>{children}</SWRConfig>
-    );
+  const params = new URLSearchParams({ q });
+
+  const Wrapper: React.ComponentType<{ children: React.ReactNode }> = ({ children }) => {
+    return withMockRouter(<>{children}</>, { context: { searchParams: params } });
   };
 
   // 4 * 3 articles
@@ -42,7 +35,7 @@ describe("hooks/useGetArticleListQuery", () => {
   ];
 
   it("OK: useSWRInfiniteが呼び出される", () => {
-    const { result, unmount } = renderHook(() => useGetArticleListQuery({ endpoint }), {
+    const { result, unmount } = renderHook(() => useGetArticleListQuery({}), {
       wrapper: Wrapper,
     });
 
@@ -78,13 +71,7 @@ describe("hooks/useGetArticleListQuery", () => {
     });
 
     it("default", () => {
-      const args = {
-        endpoint,
-        fallbackData: undefined,
-        getKeyOptions: undefined,
-      };
-
-      const { result } = renderHook(() => useGetArticleListQuery(args), {
+      const { result } = renderHook(() => useGetArticleListQuery({}), {
         wrapper: Wrapper,
       });
 
@@ -106,13 +93,7 @@ describe("hooks/useGetArticleListQuery", () => {
     });
 
     it("custom", () => {
-      const args = {
-        endpoint,
-        fallbackData: undefined,
-        getKeyOptions: { q },
-      };
-
-      const { result } = renderHook(() => useGetArticleListQuery(args), {
+      const { result } = renderHook(() => useGetArticleListQuery({ getKeyOptions: { q } }), {
         wrapper: Wrapper,
       });
       const { articles, getCurrentKey, hasNextPage, paginate, revalidate } = result.current;
@@ -158,7 +139,7 @@ describe("hooks/useGetArticleListQuery", () => {
         };
       });
 
-      const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
+      const { result } = renderHook(() => useGetArticleListQuery({}), {
         wrapper: Wrapper,
       });
       const { articles, getCurrentKey, hasNextPage } = result.current;
@@ -200,7 +181,7 @@ describe("hooks/useGetArticleListQuery", () => {
         };
       });
 
-      const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
+      const { result } = renderHook(() => useGetArticleListQuery({}), {
         wrapper: Wrapper,
       });
       const { articles, getCurrentKey, hasNextPage } = result.current;
@@ -247,7 +228,7 @@ describe("hooks/useGetArticleListQuery", () => {
         };
       });
 
-      const { result } = renderHook(() => useGetArticleListQuery({ endpoint }), {
+      const { result } = renderHook(() => useGetArticleListQuery({}), {
         wrapper: Wrapper,
       });
       const { articles, getCurrentKey, hasNextPage } = result.current;
