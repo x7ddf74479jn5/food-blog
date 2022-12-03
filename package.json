@@ -126,5 +126,10 @@
   "browserslist": [
     "> 1% in JP",
     "not IE 11"
-  ]
+  ],
+  "nextBundleAnalysis": {
+    "budget": 358400,
+    "budgetPercentIncreaseRed": 20,
+    "showDetails": true
+  }
 }
