@@ -19,7 +19,7 @@ export const Default: ComponentStoryObj<typeof SearchFilter> = {
   },
   decorators: [
     (storyFn) => {
-      return withRouterContext(storyFn, { asPath: "/" });
+      return withRouterContext(storyFn());
     },
   ],
 };

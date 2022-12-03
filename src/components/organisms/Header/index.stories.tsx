@@ -17,7 +17,7 @@ export const Desktop: ComponentStoryObj<typeof Header> = {
   },
   decorators: [
     (storyFn) => {
-      return withRouterContext(storyFn, { asPath: "/" });
+      return withRouterContext(storyFn());
     },
   ],
 };

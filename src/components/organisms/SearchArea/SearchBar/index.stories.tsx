@@ -1,13 +1,13 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { withContext } from "../../../../../.storybook/mocks/context";
 import SearchBar from ".";
+import { withContext } from ".storybook/mocks/context";
 
 export default {
   component: SearchBar,
   decorators: [
     (storyFn) => {
-      return withContext(storyFn);
+      return withContext(storyFn());
     },
   ],
   title: "organisms/SearchArea/SearchBar",
