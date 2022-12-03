@@ -17,15 +17,10 @@ const useSwitch = (isMounted: boolean) => {
   }, [isChecked, setTheme]);
 
   useEffect(() => {
-    let isCleanup = false;
     // 初回はtheme="system"なのでスキップ
-    if (!isCleanup && !isSystem) {
+    if (!isSystem) {
       setTheme(isChecked ? "dark" : "light");
     }
-
-    return () => {
-      isCleanup = true;
-    };
   }, [isChecked, isMounted, isSystem, setTheme]);
 
   return { handleToggleSwitch, isChecked, isMounted };
