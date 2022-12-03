@@ -6,7 +6,7 @@ import SEO from "next-seo.config";
 import { ThemeProvider } from "next-themes";
 
 import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
-import { GoogleAnalytics, usePageView } from "@/lib/google-analytics";
+import { GoogleAnalytics } from "@/lib/google-analytics";
 
 // FIXME: MSW is broken "ERR_UNSUPPORTED_DIR_IMPORT"
 // if (process.env.NEXT_PUBLIC_MSW_ENABLED === "true") {
@@ -18,8 +18,6 @@ import { GoogleAnalytics, usePageView } from "@/lib/google-analytics";
 // }
 
 const App = ({ Component, pageProps }: AppProps) => {
-  usePageView();
-
   return (
     <div>
       <DefaultSeo {...SEO} />
