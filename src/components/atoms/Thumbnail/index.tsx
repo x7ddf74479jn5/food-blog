@@ -1,3 +1,4 @@
+import type { ImageProps } from "next/image";
 import Image from "next/image";
 import { memo } from "react";
 
@@ -6,13 +7,9 @@ import { urlTable } from "@/utils/paths/url";
 
 type Props = {
   title: string;
-  src: string;
-  loading?: "eager" | "lazy";
-  blurDataURL?: string;
-  id?: string;
-};
+} & ImageProps;
 
-const Thumbnail: React.FC<Props> = ({ blurDataURL, id, loading = "lazy", src, title }) => {
+const Thumbnail: React.FC<Props> = ({ blurDataURL, id, loading = "lazy", priority = false, src, title }) => {
   const image = (
     <Image
       src={src}
@@ -23,6 +20,7 @@ const Thumbnail: React.FC<Props> = ({ blurDataURL, id, loading = "lazy", src, ti
       className="aspect-video h-auto w-full object-cover"
       placeholder={blurDataURL ? "blur" : "empty"}
       blurDataURL={blurDataURL}
+      priority={priority}
     />
   );
   return (

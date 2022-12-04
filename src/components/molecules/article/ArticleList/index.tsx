@@ -11,9 +11,9 @@ type ArticleListProps = {
 const ArticleList: React.FC<ArticleListProps> = ({ articles }) => {
   return (
     <ul className="space-y-12">
-      {articles.map((article) => (
+      {articles.map((article, index) => (
         <li key={article.id}>
-          <ArticleItem article={article} />
+          <ArticleItem article={article} isHighPriority={index === 0} />
         </li>
       ))}
     </ul>
