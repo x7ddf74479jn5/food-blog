@@ -1,4 +1,5 @@
 import "@/styles/global.css";
+import "./index.css";
 
 import { withPerformance } from "storybook-addon-performance";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
