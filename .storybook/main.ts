@@ -20,8 +20,6 @@ const config = {
       },
     },
     "@storybook/addon-a11y",
-    // FIXME: conflict with @storybook/addon-postcss
-    // "storybook-addon-next",
     "storybook-addon-performance",
     "storybook-tailwind-dark-mode",
   ],

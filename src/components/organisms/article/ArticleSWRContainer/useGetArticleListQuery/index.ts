@@ -2,8 +2,9 @@ import type { MicroCMSQueries } from "microcms-js-sdk";
 import { useCallback, useMemo, useRef } from "react";
 import useSWRInfinite from "swr/infinite";
 
-import type { TApiRoute, TArticleListResponse, TArticleSWRResponse } from "@/types";
+import type { TArticleListResponse, TArticleSWRResponse } from "@/types";
 import { HttpError } from "@/utils/error/Http";
+import { apiRoute } from "@/utils/paths/url";
 
 const createURLSearchParams = (data: Record<string, string | number>) => {
   const params = new URLSearchParams();
@@ -16,13 +17,13 @@ const createURLSearchParams = (data: Record<string, string | number>) => {
 };
 
 type Arguments = {
-  endpoint: TApiRoute;
   getKeyOptions?: Omit<MicroCMSQueries, "fields" | "ids">;
   fallbackData?: TArticleListResponse;
 };
 
-const useGetArticleListQuery = ({ endpoint, fallbackData, getKeyOptions }: Arguments) => {
+const useGetArticleListQuery = ({ fallbackData, getKeyOptions }: Arguments) => {
   const keyRef = useRef("");
+  const endpoint = apiRoute.apiArticles;
   const defaultLimit = 10;
   const defaultKeyOptions = {
     limit: defaultLimit,

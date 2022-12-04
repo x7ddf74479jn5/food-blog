@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote/dist/types";
-import { FaPen, FaRegCalendar } from "react-icons/fa";
+import { FaRegCalendar } from "react-icons/fa";
 
 import { Avatar } from "@/components/atoms/Avatar";
 import { ButtonCategory } from "@/components/atoms/buttons";
@@ -82,7 +82,6 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({
             <TextDate date={safePublishedAt} />
           </div>
           <div className="flex flex-row items-center gap-2">
-            <FaPen />
             <Avatar src={avatar.url} alt={writerName} width={32} height={32} />
             <span>{writerName}</span>
           </div>

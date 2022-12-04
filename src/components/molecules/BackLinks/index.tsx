@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { FaChevronLeft } from "react-icons/fa";
 
 import NextLink from "@/components/atoms/NextLink";

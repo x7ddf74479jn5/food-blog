@@ -1,7 +1,7 @@
 import { mockArticles } from "mocks/data";
 import { server } from "mocks/msw/server";
 
-import { fetchArticle, fetchArticles } from ".";
+import { fetchArticle, fetchArticles } from "..";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());

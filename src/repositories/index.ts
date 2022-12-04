@@ -1,7 +1,7 @@
-import { fetchArticle, fetchArticles, fetchPickupArticles } from "./fetchArticles";
-import { fetchCategories, fetchCategory } from "./fetchCategories";
-import { fetchConfig } from "./fetchConfig";
-import { fetchTag, fetchTags } from "./fetchTags";
+import { fetchArticle, fetchArticles, fetchPickupArticles } from "./article";
+import { fetchCategories, fetchCategory } from "./category";
+import { fetchConfig } from "./config";
+import { fetchTag, fetchTags } from "./tag";
 
 export {
   fetchArticle,

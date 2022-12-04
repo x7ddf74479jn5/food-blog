@@ -1,1 +1,1 @@
-export { GoogleAnalytics, usePageView } from "./gtag";
+export { GoogleAnalytics } from "./gtag";

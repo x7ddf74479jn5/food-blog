@@ -38,7 +38,7 @@ export const CategoryMenu: React.FC<CategoryMenuProps> = memo(({ categories }) =
   const { matchPath } = usePath();
 
   return (
-    <Menu as="div" className="dropdown">
+    <Menu as="div" className="dropdown w-32">
       {({ open }) => (
         <>
           <Menu.Button className="dropdown-button">

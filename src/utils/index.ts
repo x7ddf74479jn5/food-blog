@@ -23,3 +23,5 @@ export function* combination<T>(ary: T[], len: number) {
 
   yield* gfn([], ary);
 }
+
+export const isSafeNumber = (u: string | number) => !Number.isNaN(Number(u));

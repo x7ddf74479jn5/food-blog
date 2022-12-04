@@ -17,7 +17,7 @@ export const Desktop: ComponentStoryObj<typeof SearchArea> = {
   },
   decorators: [
     (storyFn) => {
-      return withRouterContext(storyFn, { asPath: "/" });
+      return withRouterContext(storyFn());
     },
   ],
 };

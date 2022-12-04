@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 
 import NextLink from "@/components/atoms/NextLink";
 import { TagListPlain } from "@/components/molecules/TagList";

@@ -1,7 +1,7 @@
 import { mockTags } from "mocks/data";
 import { server } from "mocks/msw/server";
 
-import { fetchTag, fetchTags } from ".";
+import { fetchTag, fetchTags } from "..";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());

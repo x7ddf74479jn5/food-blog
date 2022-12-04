@@ -4,7 +4,6 @@ import { ArticleList, ArticleSkeltonList } from "@/components/molecules/article"
 import Pagination from "@/components/molecules/Pagination";
 import { ErrorFallback } from "@/components/organisms/ErrorFallback";
 import type { TArticleListResponse } from "@/types";
-import { apiRoute } from "@/utils/paths/url";
 
 import useGetArticleListQuery from "./useGetArticleListQuery";
 
@@ -22,7 +21,6 @@ export const ArticleSWRContainer: React.FC<ArticleSWRContainerProps> = ({ fallba
     paginate: handlePaginate,
     revalidate: handleReset,
   } = useGetArticleListQuery({
-    endpoint: apiRoute.apiArticles,
     fallbackData: fallbackData,
     getKeyOptions: queryOptions,
   });

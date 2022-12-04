@@ -1,7 +1,7 @@
 import { mockCategories } from "mocks/data";
 import { server } from "mocks/msw/server";
 
-import { fetchCategories, fetchCategory } from ".";
+import { fetchCategories, fetchCategory } from "..";
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());

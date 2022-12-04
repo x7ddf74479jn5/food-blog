@@ -1,42 +1,25 @@
 import userEvent from "@testing-library/user-event";
-import { Providers, waitFor } from "jest/test-utils";
-import { act, render, renderHook, screen } from "jest/test-utils";
+import { Providers, waitFor, withMockRouter } from "jest/test-utils";
+import { act, defaultMockRouter, render, renderHook, screen } from "jest/test-utils";
 import { mockCategories, mockTags } from "mocks/data";
 
 import { useSearchMutation, useSearchState } from "@/components/organisms/SearchArea/SearchContext";
+import { urlTable } from "@/utils/paths/url";
 
 import { SearchArea, useSearchArea } from ".";
 import { useSearch } from "./useSearch";
 
-const mockRouterPush = jest.fn();
-
-jest.mock("next/router", () => {
-  const originalModule = jest.requireActual("next/router");
-
-  return {
-    useRouter: () => ({
-      ...originalModule["useRouter"](),
-      push: mockRouterPush,
-    }),
-  };
-});
-
 const mockTagList = Object.values(mockTags);
 const mockCategoryList = Object.values(mockCategories);
-const defaultRouterParams = {
-  as: undefined,
-  options: { shallow: true },
-  url: {
-    pathname: "/search",
-  },
-};
 
 beforeEach(() => {
   jest.clearAllMocks();
   jest.resetAllMocks();
 });
 
-const wrapper = ({ children }: { children: React.ReactNode }) => <Providers>{children}</Providers>;
+const wrapper = ({ children }: { children: React.ReactNode }) => (
+  <Providers>{withMockRouter(children, { router: defaultMockRouter })}</Providers>
+);
 
 describe("components/organisms/SearchArea", () => {
   it("OK: 初期レンダリング", () => {
@@ -65,14 +48,13 @@ describe("components/organisms/SearchArea", () => {
       await user.selectOptions(screen.getByRole("listbox"), "ごはん");
       await user.click(screen.getByRole("button", { name: "検索" }));
 
-      expect(mockRouterPush).toBeCalledWith(
-        {
-          ...defaultRouterParams.url,
-          query: { category: mockCategories.rice.id, q: "タコライス", tags: mockTags.rice.id },
-        },
-        defaultRouterParams.as,
-        defaultRouterParams.options
-      );
+      const params = new URLSearchParams({
+        category: mockCategories.rice.id,
+        q: "タコライス",
+        tags: mockTags.rice.id,
+      });
+
+      expect(defaultMockRouter.push).toBeCalledWith(`${urlTable.search}?${params.toString()}`);
     });
   });
 });
@@ -97,18 +79,13 @@ describe("useSearch", () => {
       search();
     });
 
-    expect(mockRouterPush).toBeCalledWith(
-      {
-        ...defaultRouterParams.url,
-        query: {
-          category: mockCategories.rice.id,
-          q: "タコライス",
-          tags: mockTags.rice.id,
-        },
-      },
-      defaultRouterParams.as,
-      defaultRouterParams.options
-    );
+    const params = new URLSearchParams({
+      category: mockCategories.rice.id,
+      q: "タコライス",
+      tags: mockTags.rice.id,
+    });
+
+    expect(defaultMockRouter.push).toBeCalledWith(`${urlTable.search}?${params.toString()}`);
   });
 
   it("OK: 検索履歴に登録できる", () => {
@@ -168,18 +145,14 @@ describe("useSearchArea", () => {
 
     act(() => result.current.search());
 
-    expect(mockRouterPush).toBeCalledTimes(1);
-    expect(mockRouterPush).toBeCalledWith(
-      {
-        ...defaultRouterParams.url,
-        query: {
-          category: mockCategories.rice.id,
-          q: "タコライス",
-          tags: mockTags.rice.id,
-        },
-      },
-      defaultRouterParams.as,
-      defaultRouterParams.options
-    );
+    expect(defaultMockRouter.push).toBeCalledTimes(1);
+
+    const params = new URLSearchParams({
+      category: mockCategories.rice.id,
+      q: "タコライス",
+      tags: mockTags.rice.id,
+    });
+
+    expect(defaultMockRouter.push).toBeCalledWith(`${urlTable.search}?${params.toString()}`);
   });
 });
