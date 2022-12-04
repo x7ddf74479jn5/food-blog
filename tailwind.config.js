@@ -1,8 +1,14 @@
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./src/**/*.tsx"],
   darkMode: "class",
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/line-clamp")],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-noto-sans-jp)", ...fontFamily.sans],
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
@@ -14,6 +20,9 @@ module.exports = {
         },
         dark: {
           css: {
+            a: {
+              color: theme("colors.green.400"),
+            },
             color: theme("colors.gray.300"),
             h1: {
               color: theme("colors.gray.100"),
@@ -21,21 +30,17 @@ module.exports = {
             h2: {
               color: theme("colors.gray.100"),
             },
-            strong: {
-              color: theme("colors.gray.300"),
-            },
-            a: {
-              color: theme("colors.green.400"),
-            },
             li: {
               "&::before": {
                 color: theme("colors.gray.300"),
               },
+            },
+            strong: {
+              color: theme("colors.gray.300"),
             },
           },
         },
       }),
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/line-clamp")],
 };
