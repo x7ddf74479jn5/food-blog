@@ -13,13 +13,16 @@ export const PickupArticleCarousel: React.FC<PickupArticleCarouselProps> = memo(
 
   return (
     <CarouselCore>
-      {articles.map((article) => (
+      {articles.map((article, index) => (
         <article className="relative max-h-48 w-full min-w-full overflow-hidden pl-2 sm:min-w-[50%]" key={article.id}>
           <Thumbnail
             src={article.image.url}
             title={article.title}
             id={article.id}
             blurDataURL={article.image.blurDataURL}
+            alt={article.title}
+            loading={index === 0 ? "eager" : "lazy"}
+            priority={index === 0}
           />
           <h3 className="absolute bottom-3 block w-full truncate bg-black/25 p-1 text-sm font-semibold text-white">
             {article.title}
