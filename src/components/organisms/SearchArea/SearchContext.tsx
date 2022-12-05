@@ -3,34 +3,49 @@ import { createContext, useContext, useState } from "react";
 
 import type { AllOrCategory, TTag } from "@/types";
 
-type SearchState = {
+export type SearchState = {
   text: string;
   history: string[];
   selectedCategory: AllOrCategory;
   selectedTags: TTag[];
 };
 
-type SearchMutation = {
+export type SearchMutation = {
   setText: Dispatch<SetStateAction<string>>;
   setHistory: Dispatch<SetStateAction<Array<string>>>;
   setSelectedCategory: Dispatch<SetStateAction<AllOrCategory>>;
   setSelectedTags: Dispatch<SetStateAction<Array<TTag>>>;
 };
 
-const SearchContext = createContext<SearchState>({
+export const defaultSearchState: SearchState = {
   history: [],
   selectedCategory: { id: "all", name: "すべて" },
   selectedTags: [],
   text: "",
-});
+};
+
+const SearchContext = createContext<SearchState>(defaultSearchState);
 
 const SearchMutationContext = createContext<SearchMutation>({} as SearchMutation);
 
-type Props = {
+export type SearchProviderInnerProps = {
+  children: React.ReactNode;
+  state: SearchState;
+  mutation: SearchMutation;
+};
+export const SearchProviderInner = ({ children, mutation, state }: SearchProviderInnerProps) => {
+  return (
+    <SearchContext.Provider value={state}>
+      <SearchMutationContext.Provider value={mutation}>{children}</SearchMutationContext.Provider>
+    </SearchContext.Provider>
+  );
+};
+
+type SearchProviderProps = {
   children: ReactNode;
 };
 
-export const SearchProvider = ({ children }: Props): ReactElement => {
+export const SearchProvider = ({ children }: SearchProviderProps): ReactElement => {
   const [text, setText] = useState<string>("");
   const [history, setHistory] = useState<Array<string>>([]);
   const [selectedCategory, setSelectedCategory] = useState<AllOrCategory>({
@@ -40,25 +55,12 @@ export const SearchProvider = ({ children }: Props): ReactElement => {
   const [selectedTags, setSelectedTags] = useState<Array<TTag>>([]);
 
   return (
-    <SearchContext.Provider
-      value={{
-        history,
-        selectedCategory,
-        selectedTags,
-        text,
-      }}
+    <SearchProviderInner
+      state={{ history, selectedCategory, selectedTags, text }}
+      mutation={{ setHistory, setSelectedCategory, setSelectedTags, setText }}
     >
-      <SearchMutationContext.Provider
-        value={{
-          setHistory,
-          setSelectedCategory,
-          setSelectedTags,
-          setText,
-        }}
-      >
-        {children}
-      </SearchMutationContext.Provider>
-    </SearchContext.Provider>
+      {children}
+    </SearchProviderInner>
   );
 };
 

@@ -1,21 +1,21 @@
 import type { MicroCMSQueries } from "microcms-js-sdk";
-import { useSearchParams } from "next/navigation";
 
 import { HtmlHeadBase } from "@/components/functions/meta";
 import { DefaultLayout } from "@/components/layouts";
 import { ArticleSWRContainer } from "@/components/organisms/article";
-import { useLastSearchHistory } from "@/components/organisms/SearchArea/useSearch";
+import type { SearchQueryParams } from "@/components/organisms/SearchArea/useSearch";
+import { useGetSearchQueryParamsLegacy } from "@/components/organisms/SearchArea/useSearch";
 import { SearchedQueryOptions } from "@/components/pages/Search/SearchResult";
 import type { TCategory, TConfig, TPickup, TRankedArticle, TTag } from "@/types";
 import { formatPageTitle, formatPageUrl } from "@/utils/formatter";
 import { getBackLinks, urlTable } from "@/utils/paths/url";
 
-const useSearchPage = (config: TConfig) => {
-  const lastSearchText = useLastSearchHistory();
-  const heading = `検索結果：${lastSearchText ?? ""}`;
+const useSearchPage = (config: TConfig, params: SearchQueryParams) => {
+  const { q } = params;
+  const heading = `検索結果：${q ?? ""}`;
   const { host, siteTitle } = config;
   const pageTitle = formatPageTitle(heading, siteTitle);
-  const url = formatPageUrl(`${urlTable.search}/q=${lastSearchText ?? ""}`, host);
+  const url = formatPageUrl(`${urlTable.search}/q=${q ?? ""}`, host);
 
   return {
     heading,
@@ -24,20 +24,16 @@ const useSearchPage = (config: TConfig) => {
   };
 };
 
-export const useNewSearchQueries = (): MicroCMSQueries | undefined => {
+export const useNewSearchQueries = (params: SearchQueryParams): MicroCMSQueries | undefined => {
   const queryFilters = [];
-  const params = useSearchParams();
-  const q = params.get("q") ?? "";
-  const categoryParam = params.get("category");
-  const tagsParam = params.get("tags");
-
-  if (categoryParam) {
-    const searchCategory = `categories[equals]${categoryParam}`;
+  const { category, q, tags } = params;
+  if (category) {
+    const searchCategory = `categories[equals]${category}`;
     queryFilters.push(searchCategory);
   }
 
-  if (tagsParam) {
-    const searchTags = tagsParam
+  if (tags) {
+    const searchTags = tags
       .split(",")
       .map((tag) => `tags[contains]${tag}`)
       .join("[and]");
@@ -45,6 +41,7 @@ export const useNewSearchQueries = (): MicroCMSQueries | undefined => {
   }
 
   const filters = queryFilters.length > 1 ? queryFilters.join("[and]") : queryFilters.join("");
+
   if (!filters && !q) return;
 
   return { filters, q };
@@ -54,15 +51,15 @@ export type SearchProps = {
   config: TConfig;
   categories: TCategory[];
   tags: TTag[];
-
   pickup: TPickup;
   popularArticles: TRankedArticle[];
 };
 
 export const Search: React.FC<SearchProps> = ({ categories, config, pickup, popularArticles, tags }) => {
   const { host } = config;
-  const { heading, pageTitle, url } = useSearchPage(config);
-  const queryOptions = useNewSearchQueries();
+  const params = useGetSearchQueryParamsLegacy();
+  const { heading, pageTitle, url } = useSearchPage(config, params);
+  const queryOptions = useNewSearchQueries(params);
   const backLinks = getBackLinks([urlTable.home, urlTable.categories]);
 
   return (

@@ -21,7 +21,6 @@ export const getStaticProps: GetStaticProps<SearchPageProps> = async () => {
       fetchConfig(),
       getCategories(),
       fetchTags(),
-
       getPickupArticles(new Date()),
       getPopularArticles(),
     ]);

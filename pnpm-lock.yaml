@@ -6,6 +6,7 @@ specifiers:
   '@google-analytics/data': 3.1.1
   '@headlessui/react': 1.7.4
   '@next/bundle-analyzer': 13.0.6
+  '@next/font': 13.0.6
   '@playwright/test': 1.28.1
   '@sentry/nextjs': 7.23.0
   '@storybook/addon-a11y': 6.5.14
@@ -74,8 +75,6 @@ specifiers:
   remark-slug: 7.0.1
   remark-unwrap-images: 3.0.1
   sharp: 0.31.2
-  slick-carousel: 1.8.1
-  storybook-addon-next: 1.7.1
   storybook-addon-performance: 0.16.1
   storybook-tailwind-dark-mode: 1.0.15
   swr: ^1.3.0
@@ -88,6 +87,7 @@ specifiers:
 dependencies:
   '@google-analytics/data': 3.1.1
   '@headlessui/react': 1.7.4_biqbaboplfbrettd7655fr4n2y
+  '@next/font': 13.0.6
   '@sentry/nextjs': 7.23.0_ivfizlltnf5oincobffrvntlsq
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.4
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
@@ -112,7 +112,6 @@ dependencies:
   remark-slug: 7.0.1
   remark-unwrap-images: 3.0.1
   sharp: 0.31.2
-  slick-carousel: 1.8.1
   swr: 1.3.0_react@18.2.0
   tocbot: 4.19.0
   zod: 3.19.1
@@ -165,7 +164,6 @@ devDependencies:
   npm-run-all: 4.1.5
   postcss: 8.4.19
   prettier: 2.8.0
-  storybook-addon-next: 1.7.1_qecw2j3r6s2t7xkqh4ufvbdp24
   storybook-addon-performance: 0.16.1_2zx2umvpluuhvlq44va5bta2da
   storybook-tailwind-dark-mode: 1.0.15_biqbaboplfbrettd7655fr4n2y
   tailwindcss: 3.2.4_postcss@8.4.19
@@ -2125,6 +2123,10 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
+
+  /@next/font/13.0.6:
+    resolution: {integrity: sha512-5vxNmvnV0CbYjQGtztD5Axft9C7npKihbQpiFhnDwdb99f9K/QSFfcJqxz0E5QBkf67O2niVGJ5lApJDu78w0w==}
+    dev: false
 
   /@next/swc-android-arm-eabi/13.0.6:
     resolution: {integrity: sha512-FGFSj3v2Bluw8fD/X+1eXIEB0PhoJE0zfutsAauRhmNpjjZshLDgoXMWm1jTRL/04K/o9gwwO2+A8+sPVCH1uw==}
@@ -4964,14 +4966,6 @@ packages:
   /address/1.2.1:
     resolution: {integrity: sha512-B+6bi5D34+fDYENiH5qOlA0cV2rAGKuWZ9LeyUUehbXy8e0VS9e498yO0Jeeh+iM+6KbfudHTFjXw2MmJD4QRA==}
     engines: {node: '>= 10.0.0'}
-    dev: true
-
-  /adjust-sourcemap-loader/4.0.0:
-    resolution: {integrity: sha512-OXwN5b9pCUXNQHJpwwD2qP40byEmSgzj8B4ydSN0uMNYWiFmJ6x6KwUllMmfk8Rwu/HJDFR7U8ubsWBoN0Xp0A==}
-    engines: {node: '>=8.9'}
-    dependencies:
-      loader-utils: 2.0.4
-      regex-parser: 2.2.11
     dev: true
 
   /agent-base/6.0.2:
@@ -9440,6 +9434,7 @@ packages:
     hasBin: true
     dependencies:
       queue: 6.0.2
+    dev: false
 
   /immediate/3.0.6:
     resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
@@ -11011,11 +11006,6 @@ packages:
       big.js: 5.2.2
       emojis-list: 3.0.0
       json5: 2.2.1
-
-  /loader-utils/3.2.1:
-    resolution: {integrity: sha512-ZvFw1KWS3GVyYBYb7qkmRM/WwL2TQQBxgCK62rlvm4WpVQ23Nb4tYjApUlfjrEGvOs7KHEsmyUn75OHZrJMWPw==}
-    engines: {node: '>= 12.13.0'}
-    dev: true
 
   /localforage/1.10.0:
     resolution: {integrity: sha512-14/H1aX7hzBBmmh7sGPd+AOMkkIrHM3Z1PAyGgZigA1H1p5O5ANnMyWzvpAETtG68/dC4pC0ncy3+PPGzXZHPg==}
@@ -13122,20 +13112,6 @@ packages:
       webpack: 5.75.0
     dev: true
 
-  /postcss-loader/7.0.2_upg3rk2kpasnbk27hkqapxaxfq:
-    resolution: {integrity: sha512-fUJzV/QH7NXUAqV8dWJ9Lg4aTkDCezpTS5HgJ2DvqznexTbSTxgi/dTECvTZ15BwKTtk8G/bqI/QTu2HPd3ZCg==}
-    engines: {node: '>= 14.15.0'}
-    peerDependencies:
-      postcss: ^7.0.0 || ^8.0.1
-      webpack: ^5.0.0
-    dependencies:
-      cosmiconfig: 7.1.0
-      klona: 2.0.5
-      postcss: 8.4.19
-      semver: 7.3.8
-      webpack: 5.75.0
-    dev: true
-
   /postcss-modules-extract-imports/2.0.0:
     resolution: {integrity: sha512-LaYLDNS4SG8Q5WAWqIJgdHPJrDDr/Lv775rMBFUbgjTz6j34lUznACHcdRWroPvXANP2Vj7yNK57vp9eFqzLWQ==}
     engines: {node: '>= 6'}
@@ -13569,6 +13545,7 @@ packages:
     resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
     dependencies:
       inherits: 2.0.4
+    dev: false
 
   /quick-lru/5.1.1:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
@@ -13890,10 +13867,6 @@ packages:
       safe-regex: 1.1.0
     dev: true
 
-  /regex-parser/2.2.11:
-    resolution: {integrity: sha512-jbD/FT0+9MBU2XAZluI7w2OBs1RBi6p9M83nkoZayQXXU9e8Robt69FcZc7wU4eJD/YFTjn1JdCk3rbMJajz8Q==}
-    dev: true
-
   /regexp.prototype.flags/1.4.3:
     resolution: {integrity: sha512-fjggEOO3slI6Wvgjwflkc4NFRCTZAu5CnNfBd5qOMYhWdn67nJBBu34/TkD++eeFmd8C9r9jfXJ27+nSiRkSUA==}
     engines: {node: '>= 0.4'}
@@ -14152,17 +14125,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /resolve-url-loader/5.0.0:
-    resolution: {integrity: sha512-uZtduh8/8srhBoMx//5bwqjQ+rfYOUq8zC9NrMUGtjBiGTtFJM42s58/36+hTqeqINcnYe08Nj3LkK9lW4N8Xg==}
-    engines: {node: '>=12'}
-    dependencies:
-      adjust-sourcemap-loader: 4.0.0
-      convert-source-map: 1.9.0
-      loader-utils: 2.0.4
-      postcss: 8.4.19
-      source-map: 0.6.1
-    dev: true
-
   /resolve-url/0.2.1:
     resolution: {integrity: sha512-ZuF55hVUQaaczgOIwqWzkEcEidmlD/xl44x1UZnhOXcYuFN2S6+rcxpG+C1N3So0wvNI3DmJICUFfu2SxhBmvg==}
     deprecated: https://github.com/lydell/resolve-url#deprecated
@@ -14346,30 +14308,6 @@ packages:
       walker: 1.0.8
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /sass-loader/13.2.0_webpack@5.75.0:
-    resolution: {integrity: sha512-JWEp48djQA4nbZxmgC02/Wh0eroSUutulROUusYJO9P9zltRbNN80JCBHqRGzjd4cmZCa/r88xgfkjGD0TXsHg==}
-    engines: {node: '>= 14.15.0'}
-    peerDependencies:
-      fibers: '>= 3.1.0'
-      node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
-      sass: ^1.3.0
-      sass-embedded: '*'
-      webpack: ^5.0.0
-    peerDependenciesMeta:
-      fibers:
-        optional: true
-      node-sass:
-        optional: true
-      sass:
-        optional: true
-      sass-embedded:
-        optional: true
-    dependencies:
-      klona: 2.0.5
-      neo-async: 2.6.2
-      webpack: 5.75.0
     dev: true
 
   /sax/1.2.4:
@@ -14676,12 +14614,6 @@ packages:
       is-fullwidth-code-point: 4.0.0
     dev: true
 
-  /slick-carousel/1.8.1:
-    resolution: {integrity: sha512-XB9Ftrf2EEKfzoQXt3Nitrt/IPbT+f1fgqBdoxO3W/+JYvtEOW6EgxnWfr9GH6nmULv7Y2tPmEX3koxThVmebA==}
-    peerDependencies:
-      jquery: '>=1.8.0'
-    dev: false
-
   /snapdragon-node/2.1.1:
     resolution: {integrity: sha512-O27l4xaMYt/RSQ5TR3vpWCAB5Kb/czIcqUFOM/C4fYcLnbZUc1PkjTAMjof2pBWaSTwOUd6qUHcFGVGj7aIwnw==}
     engines: {node: '>=0.10.0'}
@@ -14863,36 +14795,6 @@ packages:
 
   /store2/2.14.2:
     resolution: {integrity: sha512-siT1RiqlfQnGqgT/YzXVUNsom9S0H1OX+dpdGN1xkyYATo4I6sep5NmsRD/40s3IIOvlCq6akxkqG82urIZW1w==}
-    dev: true
-
-  /storybook-addon-next/1.7.1_qecw2j3r6s2t7xkqh4ufvbdp24:
-    resolution: {integrity: sha512-SSbD91CUNSKiTMYfbqBGUkbRuSiC7+q7D4bRqDgHI2kSJn4wi99/ccFVGCegTRJoJqljwtEJ/vEqQ253L64hVQ==}
-    peerDependencies:
-      '@storybook/addon-actions': ^6.0.0
-      next: ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@storybook/addon-actions': 6.5.14_biqbaboplfbrettd7655fr4n2y
-      '@storybook/addons': 6.5.14_biqbaboplfbrettd7655fr4n2y
-      image-size: 1.0.2
-      loader-utils: 3.2.1
-      next: 13.0.6_672uxklweod7ene3nqtsh262ca
-      postcss-loader: 7.0.2_upg3rk2kpasnbk27hkqapxaxfq
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      resolve-url-loader: 5.0.0
-      sass-loader: 13.2.0_webpack@5.75.0
-      semver: 7.3.8
-      tsconfig-paths: 4.1.1
-      tsconfig-paths-webpack-plugin: 4.0.0
-    transitivePeerDependencies:
-      - fibers
-      - node-sass
-      - postcss
-      - sass
-      - sass-embedded
-      - webpack
     dev: true
 
   /storybook-addon-performance/0.16.1_2zx2umvpluuhvlq44va5bta2da:
@@ -15705,29 +15607,11 @@ packages:
       typescript: 4.9.3
     dev: true
 
-  /tsconfig-paths-webpack-plugin/4.0.0:
-    resolution: {integrity: sha512-fw/7265mIWukrSHd0i+wSwx64kYUSAKPfxRDksjKIYTxSAp9W9/xcZVBF4Kl0eqQd5eBpAQ/oQrc5RyM/0c1GQ==}
-    engines: {node: '>=10.13.0'}
-    dependencies:
-      chalk: 4.1.2
-      enhanced-resolve: 5.12.0
-      tsconfig-paths: 4.1.1
-    dev: true
-
   /tsconfig-paths/3.14.1:
     resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==}
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.1
-      minimist: 1.2.7
-      strip-bom: 3.0.0
-    dev: true
-
-  /tsconfig-paths/4.1.1:
-    resolution: {integrity: sha512-VgPrtLKpRgEAJsMj5Q/I/mXouC6A/7eJ/X4Nuk6o0cRPwBtznYxTCU4FodbexbzH9somBPEXYi0ZkUViUpJ21Q==}
-    engines: {node: '>=6'}
-    dependencies:
-      json5: 2.2.1
       minimist: 1.2.7
       strip-bom: 3.0.0
     dev: true

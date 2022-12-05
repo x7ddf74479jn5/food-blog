@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 
 import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
 import { GoogleAnalytics } from "@/lib/google-analytics";
+import { notoSansJP } from "@/styles/font";
 
 // FIXME: MSW is broken "ERR_UNSUPPORTED_DIR_IMPORT"
 // if (process.env.NEXT_PUBLIC_MSW_ENABLED === "true") {
@@ -19,15 +20,17 @@ import { GoogleAnalytics } from "@/lib/google-analytics";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <div>
+    <>
       <DefaultSeo {...SEO} />
       <GoogleAnalytics />
       <ThemeProvider attribute="class" enableSystem>
         <SearchProvider>
-          <Component {...pageProps} />
+          <div className={`${notoSansJP.variable} font-sans`}>
+            <Component {...pageProps} />
+          </div>
         </SearchProvider>
       </ThemeProvider>
-    </div>
+    </>
   );
 };
 

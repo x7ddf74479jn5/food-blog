@@ -1,0 +1,7 @@
+:root {
+  --font-noto-sans-jp: "__Noto_Sans_JP_299c68", "__Noto_Sans_JP_Fallback_299c68";
+}
+
+body {
+  font-family: var(--font-noto-sans-jp);
+}

@@ -88,7 +88,7 @@ const SearchBar: React.FC = () => {
           className={`${
             text.length === 0 && history.length === 0
               ? "hidden"
-              : "fixed z-10 mt-1 mr-4 max-h-[50vh] overflow-y-auto rounded-md border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-600 dark:bg-gray-700"
+              : "absolute z-10 mt-1 mr-4 max-h-[50vh] overflow-y-auto rounded-md border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-600 dark:bg-gray-700"
           }`}
         >
           {text.length > 0 && (
