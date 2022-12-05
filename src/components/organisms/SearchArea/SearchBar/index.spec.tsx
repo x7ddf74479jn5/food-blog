@@ -1,5 +1,5 @@
 import userEvent from "@testing-library/user-event";
-import { defaultMockRouter, render, screen, withMockRouter } from "jest/test-utils";
+import { defaultMockLegacyRouter, render, screen, withMockLegacyRouter, withMockRouter } from "jest/test-utils";
 
 import SearchBar from ".";
 
@@ -31,7 +31,7 @@ describe("components/organisms/SearchArea/SearchBar", () => {
     });
 
     it("OK: 検索イベント", async () => {
-      render(withMockRouter(<SearchBar />));
+      render(withMockRouter(withMockLegacyRouter(<SearchBar />)));
       const input = screen.getByRole("combobox");
       expect(input).toHaveValue("");
 
@@ -40,7 +40,9 @@ describe("components/organisms/SearchArea/SearchBar", () => {
       expect(input).toHaveValue(testText);
 
       await user.type(input, "{enter}");
-      expect(defaultMockRouter.push).toBeCalledWith("/search?q=test");
+      expect(defaultMockLegacyRouter.push).toBeCalledWith({ pathname: "/search", query: { q: testText } }, undefined, {
+        shallow: true,
+      });
     });
 
     it("OK: フォーカスイベント", async () => {
