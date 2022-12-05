@@ -2,7 +2,7 @@ import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { mockCategories } from "mocks/data";
 
 import Header from ".";
-import { withRouterContext } from ".storybook/mocks/context";
+import { withContext } from ".storybook/mocks/context";
 import { device } from ".storybook/mocks/device";
 
 export default {
@@ -17,7 +17,7 @@ export const Desktop: ComponentStoryObj<typeof Header> = {
   },
   decorators: [
     (storyFn) => {
-      return withRouterContext(storyFn());
+      return withContext(storyFn());
     },
   ],
 };

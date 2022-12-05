@@ -2,7 +2,7 @@ import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { mockCategories, mockTags } from "mocks/data";
 
 import { SearchArea } from ".";
-import { withRouterContext } from ".storybook/mocks/context";
+import { withContext } from ".storybook/mocks/context";
 import { device } from ".storybook/mocks/device";
 
 export default {
@@ -17,7 +17,7 @@ export const Desktop: ComponentStoryObj<typeof SearchArea> = {
   },
   decorators: [
     (storyFn) => {
-      return withRouterContext(storyFn());
+      return withContext(storyFn());
     },
   ],
 };

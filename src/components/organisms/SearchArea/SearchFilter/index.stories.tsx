@@ -2,7 +2,7 @@ import type { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { mockCategories, mockTags } from "mocks/data";
 
 import { SearchFilter } from ".";
-import { withRouterContext } from ".storybook/mocks/context";
+import { withContext } from ".storybook/mocks/context";
 
 export default {
   component: SearchFilter,
@@ -19,7 +19,7 @@ export const Default: ComponentStoryObj<typeof SearchFilter> = {
   },
   decorators: [
     (storyFn) => {
-      return withRouterContext(storyFn());
+      return withContext(storyFn());
     },
   ],
 };
