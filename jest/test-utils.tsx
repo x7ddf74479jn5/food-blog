@@ -7,13 +7,15 @@ import { SWRConfig } from "swr";
 
 import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
 
-import { withMockRouter } from "./mocks";
+import { withMockLegacyRouter, withMockRouter } from "./mocks";
 
 export const Providers: React.ComponentType<{ children?: React.ReactNode }> = ({ children }) => {
   return withMockRouter(
-    <SWRConfig value={{ dedupingInterval: 0, provider: () => new Map() }}>
-      <SearchProvider>{children}</SearchProvider>
-    </SWRConfig>
+    withMockLegacyRouter(
+      <SWRConfig value={{ dedupingInterval: 0, provider: () => new Map() }}>
+        <SearchProvider>{children}</SearchProvider>
+      </SWRConfig>
+    )
   );
 };
 
@@ -26,7 +28,7 @@ export * from "./mocks";
 export * from "@testing-library/react";
 
 // override render method
-export { customRender as render };
+export { render as originalRender, customRender as render };
 
 export const reTestCase = {
   anyImage: expect.stringMatching(/^(data:image\/gif)|\.(png|webp|jpeg|jpg|svg)$/),
