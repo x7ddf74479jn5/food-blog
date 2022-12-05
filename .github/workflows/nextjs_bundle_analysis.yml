@@ -47,12 +47,14 @@ jobs:
 
       - name: Build next.js app
         # change this if your site requires a custom build command
-        run: ./node_modules/.bin/next build
-        with: 
-          X_MICROCMS_API_KEY: ${{ secrets.X_MICROCMS_API_KEY }}
-          SERVICE_DOMAIN: ${{ secrets.SERVICE_DOMAIN }}
-          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: |
+          touch .env
+          echo X_MICROCMS_API_KEY=${{ secrets.X_MICROCMS_API_KEY }} >> .env
+          echo SERVICE_DOMAIN=${{ secrets.SERVICE_DOMAIN }} >> .env
+          echo GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} >> .env
+          echo GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }} >> .env
+          echo NODE_ENV="production" >> .env
+          pnpm build
 
       # Here's the first place where next-bundle-analysis' own script is used
       # This step pulls the raw bundle stats for the current bundle
