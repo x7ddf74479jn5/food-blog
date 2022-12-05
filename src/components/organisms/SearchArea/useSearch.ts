@@ -1,5 +1,7 @@
-import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { useCallback } from "react";
+import z from "zod";
 
 import { search as sendSearchEvent } from "@/lib/google-analytics/gtag";
 import { toIdleTask } from "@/utils";
@@ -7,15 +9,28 @@ import { urlTable } from "@/utils/paths/url";
 
 import { useSearchMutation, useSearchState } from "./SearchContext";
 
-export const useSearch = (query?: { q: string; category?: string; tags?: string }) => {
+const searchQueryParamsSchema = z.object({
+  category: z.string().optional(),
+  q: z.string().optional(),
+  tags: z.string().optional(),
+});
+
+export type SearchQueryParams = z.infer<typeof searchQueryParamsSchema>;
+
+export const useSearch = (query?: SearchQueryParams) => {
   const router = useRouter();
   const { history } = useSearchState();
   const { setHistory } = useSearchMutation();
 
   const search = useCallback(() => {
-    const params = new URLSearchParams({ ...query });
-
-    router.push(`${urlTable.search}?${params.toString()}`);
+    router.push(
+      {
+        pathname: urlTable.search,
+        query: { ...query },
+      },
+      undefined,
+      { shallow: true }
+    );
 
     const q = query?.q;
 
@@ -38,7 +53,12 @@ export const useSearch = (query?: { q: string; category?: string; tags?: string 
   };
 };
 
-export const useLastSearchHistory = () => {
-  const { history } = useSearchState();
-  return history.at(0);
+export const useGetSearchQueryParams = (): SearchQueryParams => {
+  const params = useSearchParams();
+  return searchQueryParamsSchema.parse(params);
+};
+
+export const useGetSearchQueryParamsLegacy = (): SearchQueryParams => {
+  const { query } = useRouter();
+  return searchQueryParamsSchema.parse(query);
 };
