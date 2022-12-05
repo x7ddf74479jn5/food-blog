@@ -1,4 +1,4 @@
-import { withMockLegacyRouter } from "mocks/next/legacy-router";
+import { withMockLegacyRouter as BaseWithMockLegacyRouter } from "mocks/next/legacy-router";
 import type { AppRouterInstance, HooksClientContext } from "mocks/next/router";
 import { AppRouterContext, createMockRouterHoc } from "mocks/next/router";
 import type { NextRouter } from "next/router";
@@ -41,6 +41,14 @@ export const defaultMockLegacyRouter: NextRouter = {
   reload: jest.fn(),
   replace: jest.fn(),
   route: "/",
+};
+
+const withMockLegacyRouter = (children: React.ReactElement, router?: Partial<NextRouter>) => {
+  const mockRouter = {
+    ...defaultMockLegacyRouter,
+    ...router,
+  };
+  return BaseWithMockLegacyRouter(children, mockRouter);
 };
 
 export type { NextRouter };

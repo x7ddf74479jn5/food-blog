@@ -6,3 +6,4 @@ export {
   withMockLegacyRouter,
   withMockRouter,
 } from "./router";
+export { defaultMockSearchMutation, defaultSearchState, withMockSearchContext } from "./search";
