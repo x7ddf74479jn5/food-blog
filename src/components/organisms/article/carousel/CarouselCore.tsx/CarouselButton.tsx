@@ -11,7 +11,7 @@ export const DotButton = ({ onClick: handleClick, selected }: { selected: boolea
 
 export const PrevButton = ({ enabled, onClick: handleClick }: { enabled: boolean; onClick: () => void }) => (
   <button
-    className="absolute left-4 top-1/2 z-10 hidden h-8 w-8 -translate-y-1/2 cursor-pointer touch-manipulation items-center justify-center border-none bg-transparent fill-green-500 p-0 outline-none disabled:cursor-default disabled:opacity-30 sm:block"
+    className="absolute left-4 top-1/2 z-10 hidden h-8 w-8 -translate-y-1/2 cursor-pointer touch-manipulation items-center justify-center border-none bg-transparent fill-gray-300/70 stroke-black stroke-2 p-0 outline-none drop-shadow-lg hover:fill-green-500 disabled:cursor-default disabled:opacity-30 sm:block"
     onClick={handleClick}
     disabled={!enabled}
     data-testid="carousel-prev-button"
@@ -24,7 +24,7 @@ export const PrevButton = ({ enabled, onClick: handleClick }: { enabled: boolean
 
 export const NextButton = ({ enabled, onClick: handleClick }: { enabled: boolean; onClick: () => void }) => (
   <button
-    className="absolute top-1/2 right-4 z-10 hidden h-8 w-8 -translate-y-1/2 cursor-pointer touch-manipulation items-center justify-center border-none bg-transparent fill-green-500 p-0 outline-none disabled:cursor-default disabled:opacity-30 sm:block"
+    className="absolute top-1/2 right-4 z-10 hidden h-8 w-8 -translate-y-1/2 cursor-pointer touch-manipulation items-center justify-center border-none bg-transparent fill-gray-300/70 stroke-black stroke-2 p-0 hover:fill-green-500 disabled:cursor-default disabled:opacity-30 sm:block"
     onClick={handleClick}
     disabled={!enabled}
     data-testid="carousel-next-button"
