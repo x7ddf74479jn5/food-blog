@@ -49,7 +49,7 @@ export const CategoryListbox: React.FC<CategoryListboxProps> = memo(({ categorie
               <Listbox.Options className="dropdown-options w-full">
                 <Listbox.Option
                   className={({ active }) => `dropdown-option ${active ? "dropdown-active" : "dropdown-inactive"}`}
-                  value={allCategory.id}
+                  value={allCategory}
                 >
                   {allCategory.name}
                 </Listbox.Option>
