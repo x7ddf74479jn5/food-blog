@@ -28,7 +28,7 @@ export const useNewSearchQueries = (params: SearchQueryParams): MicroCMSQueries 
   const queryFilters = [];
   const { category, q, tags } = params;
   if (category) {
-    const searchCategory = `categories[equals]${category}`;
+    const searchCategory = `category[equals]${category}`;
     queryFilters.push(searchCategory);
   }
 

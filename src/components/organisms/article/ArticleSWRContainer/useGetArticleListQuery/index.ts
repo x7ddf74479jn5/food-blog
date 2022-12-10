@@ -76,7 +76,7 @@ const useGetArticleListQuery = ({ fallbackData, getKeyOptions }: Arguments) => {
   }, [setSize, size]);
 
   const articles = useMemo(() => {
-    return data ? data.map((r) => (r ? r.contents : [])).flat() : [];
+    return data?.flatMap((r) => r?.contents ?? []) ?? [];
   }, [data]);
 
   const totalCount = useMemo(() => {

@@ -17,6 +17,7 @@ export const ArticleSWRContainer: React.FC<ArticleSWRContainerProps> = ({ fallba
     articles,
     error,
     hasNextPage,
+    isLoading,
     isValidating,
     paginate: handlePaginate,
     revalidate: handleReset,
@@ -25,15 +26,15 @@ export const ArticleSWRContainer: React.FC<ArticleSWRContainerProps> = ({ fallba
     getKeyOptions: queryOptions,
   });
 
-  if (isValidating && articles.length === 0) return <ArticleSkeltonList />;
+  /* fallbackDataはloadされたデータと見なされない */
+  if (isLoading && !fallbackData) return <ArticleSkeltonList />;
 
   if (error)
     return (
-      <ErrorFallback heading="Something went wrong" message="サイト上で問題が発生しました。" onReset={handleReset} />
+      <ErrorFallback heading="Something went wrong" message="サイト上で問題が発生しました" onReset={handleReset} />
     );
 
-  if (!isValidating && articles.length === 0)
-    return <div className="mt-16 flex justify-center">レシピが見つかりませんでした。</div>;
+  if (articles.length === 0) return <div className="mt-16 flex justify-center">レシピが見つかりませんでした</div>;
 
   return (
     <section>
