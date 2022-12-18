@@ -13,7 +13,7 @@ jest.mock("@/services/article");
 beforeAll(() => server.listen());
 afterAll(() => server.close());
 
-describe("src/pages/api/posts/index.test.ts", () => {
+describe("src/pages/api/preview", () => {
   const params = {
     handler,
     url: "/api/preview",

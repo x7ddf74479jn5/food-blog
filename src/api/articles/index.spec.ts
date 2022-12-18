@@ -17,7 +17,7 @@ jest.mock("@/utils/image", () => {
   return { generateImageBlurDataURL };
 });
 
-describe("src/pages/api/posts/index.test.ts", () => {
+describe("src/pages/api/articles", () => {
   const params = {
     handler,
     url: "/api/articles",
