@@ -20,7 +20,7 @@ const handler: NextApiHandler = async (req, res) => {
 
   const expectedSignature = crypto
     .createHmac("sha256", process.env.ON_DEMAND_SECRET_TOKEN)
-    .update(req.body)
+    .update(JSON.stringify(req.body))
     .digest("hex");
   const headerResult = headerSchema.safeParse(req.headers);
 
@@ -38,7 +38,7 @@ const handler: NextApiHandler = async (req, res) => {
     return res.status(401).json({ message: "Invalid token" });
   }
 
-  const queryResult = bodySchema.safeParse(JSON.parse(req.body));
+  const queryResult = bodySchema.safeParse(req.body);
 
   if (!queryResult.success) {
     return res.status(404).json({ message: "Not Found" });
