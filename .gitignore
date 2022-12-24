@@ -53,6 +53,7 @@ _posts
 credentials.json
 tsconfig.tsbuildinfo
 storybook-static
+__screenshots__
 
 # Sentry
 .sentryclirc

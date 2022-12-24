@@ -20,7 +20,7 @@
     "vrt": "playwright test tests/vrt",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "vrt:storybook": "storycap http://localhost:6006 -i 'atoms/**'"
+    "cap-storybook": "storycap"
   },
   "babel": {
     "presets": [
