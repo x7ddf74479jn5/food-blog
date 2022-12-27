@@ -54,6 +54,7 @@ credentials.json
 tsconfig.tsbuildinfo
 storybook-static
 __screenshots__
+.reg
 
 # Sentry
 .sentryclirc

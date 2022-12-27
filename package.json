@@ -19,8 +19,7 @@
     "e2e": "playwright test",
     "vrt": "playwright test tests/vrt",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "cap-storybook": "storycap"
+    "build-storybook": "build-storybook"
   },
   "babel": {
     "presets": [
@@ -111,6 +110,10 @@
     "postcss": "8.4.19",
     "prettier": "2.8.1",
     "puppeteer": "19.4.1",
+    "reg-keygen-git-hash-plugin": "0.12.1",
+    "reg-notify-github-plugin": "0.12.1",
+    "reg-publish-gcs-plugin": "0.12.1",
+    "reg-suit": "0.12.1",
     "storybook-addon-performance": "0.16.1",
     "storybook-dark-mode": "2.0.4",
     "storycap": "3.1.9",

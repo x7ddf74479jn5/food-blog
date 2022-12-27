@@ -1,0 +1,24 @@
+{
+  "core": {
+    "workingDir": ".reg",
+    "actualDir": "__screenshots__",
+    "thresholdRate": 0.01,
+    "addIgnore": true,
+    "ximgdiff": {
+      "invocationType": "client"
+    }
+  },
+  "plugins": {
+    "reg-keygen-git-hash-plugin": true,
+    "reg-notify-github-plugin": {
+      "prComment": true,
+      "prCommentBehavior": "default",
+      "clientId": "$REG_SUIT_CLIENT_ID",
+      "setCommitStatus": false,
+      "shortDescription": true
+    },
+    "reg-publish-gcs-plugin": {
+      "bucketName": "$REG_SUIT_GCP_BUCKET_NAME"
+    }
+  }
+}
