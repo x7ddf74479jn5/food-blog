@@ -4,7 +4,7 @@ import { SideSectionContainer } from ".";
 
 export default {
   component: SideSectionContainer,
-  title: "atoms/buttons/ButtonTag/Colored",
+  title: "atoms/containers/SideSectionContainer",
 } as ComponentMeta<typeof SideSectionContainer>;
 
 const Template: ComponentStory<typeof SideSectionContainer> = (args) => (

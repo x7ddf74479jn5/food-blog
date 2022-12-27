@@ -4,7 +4,7 @@ import Tooltip from "./index";
 
 export default {
   component: Tooltip,
-  title: "Atoms/Tooltip",
+  title: "atoms/Tooltip",
 } as ComponentMeta<typeof Tooltip>;
 
 const Template: ComponentStory<typeof Tooltip> = (args) => (

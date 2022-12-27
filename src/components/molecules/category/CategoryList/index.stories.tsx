@@ -8,7 +8,7 @@ export default {
   title: "molecules/category/CategoryList",
 } as ComponentMeta<typeof CategoryList>;
 
-export const Desktop: ComponentStoryObj<typeof CategoryList> = {
+export const Default: ComponentStoryObj<typeof CategoryList> = {
   args: {
     categories: Object.values(mockCategories),
     height: 128,
