@@ -17,27 +17,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     if: ${{!contains(github.event.pull_request.body, '[skip ci]')}}
-    strategy:
-      matrix:
-        node-version: [16]
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install --shamefully-hoist
+      - uses: ./.github/actions/setup-node-and-restore-packages
       - name: Build storybook
         run: pnpm build-storybook
       - uses: actions/upload-pages-artifact@v1
         with:
           path: storybook-static
-
+  
   deploy:
     timeout-minutes: 5
     needs: build
@@ -55,6 +43,36 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
   
+  vrt:
+    runs-on: ubuntu-latest
+    needs: deploy
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    env: 
+      REG_SUIT_CLIENT_ID: ${{secret.REG_SUIT_CLIENT_ID}}
+      REG_SUIT_GCS_BUCKET_NAME: ${{secret.REG_SUIT_GCS_BUCKET_NAME}}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - uses: ./.github/actions/setup-node-and-restore-packages
+      - name: workaround for detached HEAD
+        run: |
+          git checkout ${GITHUB_REF#refs/heads/} || git checkout -b ${GITHUB_REF#refs/heads/} && git pull
+      - id: auth
+        uses: google-github-actions/auth@v01
+        with:
+          credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+      - name: Capture screenshots
+        run: pnpm exec storycap ${{ needs.deploy.outputs.url }}
+      - name: Run reg-suit
+        run: pnpm exec reg-suit run
+
   set-status: 
     runs-on: ubuntu-latest
     needs: deploy
