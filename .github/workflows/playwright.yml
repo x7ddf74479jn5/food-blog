@@ -38,15 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - uses: ./.github/actions/setup-node-and-restore-packages
       - name: Get installed Playwright version
         id: playwright-version
         run: echo "::set-output name=version::$( sh .github/scripts/get-playwright-version.sh )"
