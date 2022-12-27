@@ -21,14 +21,14 @@ const config = {
     },
     "@storybook/addon-a11y",
     "storybook-addon-performance",
-    "storybook-tailwind-dark-mode",
+    "storybook-dark-mode",
+    "storycap",
   ],
   staticDirs: ["../mocks/data/images"],
   core: {
     builder: {
       name: "webpack5",
       options: {
-        lazyCompilation: true,
         fsCache: true,
       },
     },

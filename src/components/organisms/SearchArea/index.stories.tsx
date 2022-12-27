@@ -3,14 +3,14 @@ import { mockCategories, mockTags } from "mocks/data";
 
 import { SearchArea } from ".";
 import { withContext } from ".storybook/mocks/context";
-import { device } from ".storybook/mocks/device";
+import { screenshotViewportVariants } from ".storybook/screenshot";
 
 export default {
   component: SearchArea,
   title: "organisms/SearchArea",
 } as ComponentMeta<typeof SearchArea>;
 
-export const Desktop: ComponentStoryObj<typeof SearchArea> = {
+export const Default: ComponentStoryObj<typeof SearchArea> = {
   args: {
     categories: Object.values(mockCategories),
     tags: Object.values(mockTags),
@@ -20,22 +20,9 @@ export const Desktop: ComponentStoryObj<typeof SearchArea> = {
       return withContext(storyFn());
     },
   ],
-};
-
-export const Mobile: ComponentStoryObj<typeof SearchArea> = {
-  ...Desktop,
   parameters: {
-    viewport: {
-      defaultViewport: device.mobile,
-    },
-  },
-};
-
-export const Tablet: ComponentStoryObj<typeof SearchArea> = {
-  ...Desktop,
-  parameters: {
-    viewport: {
-      defaultViewport: device.tablet,
+    screenshot: {
+      variants: screenshotViewportVariants,
     },
   },
 };

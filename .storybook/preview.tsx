@@ -1,10 +1,11 @@
 import "@/styles/global.css";
 import "./index.css";
 
-import { withPerformance } from "storybook-addon-performance";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import type { StoryFn } from "@storybook/react";
 import React from "react";
+import { withPerformance } from "storybook-addon-performance";
+import { withScreenshot } from "storycap";
 
 import "./mocks/NextImage";
 
@@ -14,16 +15,6 @@ export const withWrapper = (Story: StoryFn) => (
   </div>
 );
 
-const customViewports = {
-  pchd: {
-    name: "PC HD",
-    styles: {
-      width: "1280px",
-      height: "720px",
-    },
-  },
-};
-
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -32,9 +23,20 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  darkMode: {
+    darkClass: "dark",
+    stylePreview: true,
+  },
   viewport: {
-    viewports: { ...INITIAL_VIEWPORTS, ...customViewports },
+    viewports: INITIAL_VIEWPORTS,
+  },
+  screenshot: {
+    viewport: {
+      width: 375,
+      height: 668,
+    },
+    fullPage: false,
   },
 };
 
-export const decorators = [withWrapper, withPerformance];
+export const decorators = [withWrapper, withPerformance, withScreenshot];

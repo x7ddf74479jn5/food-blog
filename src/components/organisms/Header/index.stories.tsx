@@ -3,14 +3,14 @@ import { mockCategories } from "mocks/data";
 
 import Header from ".";
 import { withContext } from ".storybook/mocks/context";
-import { device } from ".storybook/mocks/device";
+import { screenshotViewportVariants } from ".storybook/screenshot";
 
 export default {
   component: Header,
   title: "organisms/Header",
 } as ComponentMeta<typeof Header>;
 
-export const Desktop: ComponentStoryObj<typeof Header> = {
+export const Default: ComponentStoryObj<typeof Header> = {
   args: {
     categories: Object.values(mockCategories),
     siteTitle: "Title",
@@ -20,13 +20,9 @@ export const Desktop: ComponentStoryObj<typeof Header> = {
       return withContext(storyFn());
     },
   ],
-};
-
-export const Mobile: ComponentStoryObj<typeof Header> = {
-  ...Desktop,
   parameters: {
-    viewport: {
-      defaultViewport: device.mobile,
+    screenshot: {
+      variants: screenshotViewportVariants,
     },
   },
 };
