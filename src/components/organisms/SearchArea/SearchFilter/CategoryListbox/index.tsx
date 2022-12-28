@@ -3,9 +3,8 @@ import { memo, useCallback } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
+import { useSearchMutation, useSearchState } from "@/contexts/search/SearchContext";
 import type { AllOrCategory, TCategory } from "@/types";
-
-import { useSearchMutation, useSearchState } from "../../SearchContext";
 
 const allCategory = { id: "all", name: "すべて" } as const;
 

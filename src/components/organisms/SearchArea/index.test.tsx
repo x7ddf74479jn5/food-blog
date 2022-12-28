@@ -9,7 +9,7 @@ import {
 import { act, render, renderHook, screen } from "jest/test-utils";
 import { mockCategories, mockTags } from "mocks/data";
 
-import { useSearchState } from "@/components/organisms/SearchArea/SearchContext";
+import { useSearchState } from "@/contexts/search/SearchContext";
 
 import { SearchArea, useSearchArea } from ".";
 import { useSearch } from "./useSearch";

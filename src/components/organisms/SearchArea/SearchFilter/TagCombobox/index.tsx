@@ -4,9 +4,8 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 
 import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
+import { useSearchMutation, useSearchState } from "@/contexts/search/SearchContext";
 import type { TTag } from "@/types";
-
-import { useSearchMutation, useSearchState } from "../../SearchContext";
 
 const useSelectTags = (tags: TTag[], query = "") => {
   const { selectedTags } = useSearchState();

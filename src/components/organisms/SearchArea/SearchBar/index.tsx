@@ -4,8 +4,8 @@ import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
 import { DropdownTransition } from "@/components/atoms/transition/DropdownTransition";
+import { useSearchMutation, useSearchState } from "@/contexts/search/SearchContext";
 
-import { useSearchMutation, useSearchState } from "../SearchContext";
 import { useSearch } from "../useSearch";
 
 const useSearchBar = () => {
