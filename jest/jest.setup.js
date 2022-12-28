@@ -7,10 +7,12 @@ import "@testing-library/jest-dom/extend-expect";
 
 window.matchMedia = jest.fn().mockImplementation((query) => {
   return {
+    addEventListener: jest.fn(),
     addListener: jest.fn(),
     matches: false,
     media: query,
     onchange: null,
+    removeEventListener: jest.fn(),
     removeListener: jest.fn(),
   };
 });

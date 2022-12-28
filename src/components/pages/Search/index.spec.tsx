@@ -69,7 +69,7 @@ describe("useNewSearchQueries", () => {
     };
     const { current } = renderHook(() => useNewSearchQueries(query), { wrapper: Wrapper }).result;
 
-    expect(current?.filters).toEqual(`categories[equals]${mockCategories.rice.id}`);
+    expect(current?.filters).toEqual(`category[equals]${mockCategories.rice.id}`);
   });
 
   it("OK: 複数のフィルターを組み合わせたときのクエリが正しい", () => {
@@ -86,7 +86,7 @@ describe("useNewSearchQueries", () => {
     const { current } = renderHook(() => useNewSearchQueries(query), { wrapper: Wrapper }).result;
 
     expect(current?.q).toBe("基本の");
-    expect(current?.filters).toBe("categories[equals]1[and]tags[contains]11[and]tags[contains]9[and]tags[contains]8");
+    expect(current?.filters).toBe("category[equals]1[and]tags[contains]11[and]tags[contains]9[and]tags[contains]8");
   });
 
   it("空クエリの場合undefinedを返す", () => {

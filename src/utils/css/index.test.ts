@@ -12,7 +12,7 @@ describe("utils/css/classNames", () => {
   });
 });
 
-describe.only("utils/css/color", () => {
+describe("utils/css/color", () => {
   describe("getBGColor", () => {
     it.each`
       color        | expected
@@ -28,9 +28,9 @@ describe.only("utils/css/color", () => {
   describe("getBorderColor", () => {
     it.each`
       color        | expected
-      ${"green"}   | ${"bg-green-700 dark:border-green-300"}
-      ${'""'}      | ${"bg-gray-700 dark:border-gray-300"}
-      ${undefined} | ${"bg-gray-700 dark:border-gray-300"}
+      ${"green"}   | ${"border-green-700 dark:border-green-300"}
+      ${'""'}      | ${"border-gray-700 dark:border-gray-300"}
+      ${undefined} | ${"border-gray-700 dark:border-gray-300"}
     `("$colorのとき'$expected'", ({ color, expected }) => {
       const result = getBorderColor(color);
       expect(result).toStrictEqual(expected);

@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 
-import { useMedia } from "./";
+import { getQuery, useMedia } from "./";
 
 const breakpoints = {
   "2xl": { max: 999999, min: 1536 },
@@ -15,31 +15,46 @@ type Size = keyof typeof breakpoints;
 type MatchType = ">=" | "<=" | "=";
 
 describe("hooks/useMedia", () => {
-  afterAll(() => jest.restoreAllMocks());
-
-  it("OK: getQueryの返り値が正しい", async () => {
-    window.matchMedia = jest.fn().mockReturnValue({
-      addListener: jest.fn(),
-      matches: true,
-      removeListener: jest.fn(),
+  describe("getQuery", () => {
+    it.each`
+      matchType | size    | expected
+      ${">="}   | ${"sm"} | ${`(min-width: ${breakpoints["sm"].min}px)`}
+      ${"<="}   | ${"sm"} | ${`(max-width: ${breakpoints["sm"].max}px)`}
+      ${"="}    | ${"sm"} | ${`(min-width: ${breakpoints["sm"].min}px) and (max-width: ${breakpoints["sm"].max}px)`}
+    `("matchType:'$matchType', size:'$size'のとき$expected", ({ expected, matchType, size }) => {
+      const result = getQuery(matchType, size);
+      expect(result).toBe(expected);
     });
+  });
 
-    const { rerender, result } = renderHook(
-      ({ matchType, size }: { matchType: MatchType; size: Size }) => useMedia(matchType, size),
-      { initialProps: { matchType: "<=", size: "sm" } }
-    );
-    const query = `(max-width: ${breakpoints["sm"].max}px)`;
-    expect(result.current).toBeTruthy();
-    expect(window.matchMedia).toBeCalledWith(query);
+  describe("useMedia", () => {
+    afterAll(() => jest.restoreAllMocks());
 
-    rerender({ matchType: ">=", size: "sm" });
-    const query2 = `(min-width: ${breakpoints["sm"].min}px)`;
-    expect(result.current).toBeTruthy();
-    expect(window.matchMedia).toBeCalledWith(query2);
+    it("指定したメディアクエリにマッチする", async () => {
+      window.matchMedia = jest.fn().mockImplementation((query) => {
+        return {
+          addEventListener: jest.fn(),
+          addListener: jest.fn(),
+          matches: query,
+          media: query,
+          onchange: null,
+          removeEventListener: jest.fn(),
+          removeListener: jest.fn(),
+        };
+      });
 
-    rerender({ matchType: "=", size: "sm" });
-    const query3 = `(min-width: ${breakpoints["sm"].min}px) and (max-width: ${breakpoints["sm"].max}px)`;
-    expect(result.current).toBeTruthy();
-    expect(window.matchMedia).toBeCalledWith(query3);
+      const { result } = renderHook(
+        ({ matchType, size }: { matchType: MatchType; size: Size }) => useMedia(matchType, size),
+        { initialProps: { matchType: "<=", size: "sm" } }
+      );
+      const matchedQuery = `(max-width: ${breakpoints["sm"].max}px)`;
+      // queryとwindow.matchMedia.matchesが一致するかで正誤判定
+      expect(result.current).toStrictEqual(matchedQuery);
+      expect(window.matchMedia).toBeCalledWith(matchedQuery);
+
+      const unmatchedQuery = `(min-width: ${breakpoints["sm"].min}px)`;
+      expect(result.current).not.toStrictEqual(unmatchedQuery);
+      expect(window.matchMedia).not.toBeCalledWith(unmatchedQuery);
+    });
   });
 });

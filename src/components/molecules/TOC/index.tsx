@@ -27,10 +27,7 @@ export const TOC = ({ isSide = false }: Props) => {
   }, [isLargeOrUp, isSide]);
 
   useEffect(() => {
-    if (isHidden) {
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      return () => {};
-    }
+    if (isHidden) return;
 
     tocbot.init({
       contentSelector: "#js-toc-content",
@@ -46,7 +43,7 @@ export const TOC = ({ isSide = false }: Props) => {
       tocbot.destroy();
     };
   });
-  // eslint-disable-next-line tailwindcss/no-custom-classname
+
   return isHidden ? null : (
     <SideSectionContainer header="目次">
       <div id="js-toc" className="toc" />
