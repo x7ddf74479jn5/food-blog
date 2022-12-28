@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 
-import { getQuery, useMedia } from "./";
+import { getQuery, useMedia } from "./useMedia";
 
 const breakpoints = {
   "2xl": { max: 999999, min: 1536 },

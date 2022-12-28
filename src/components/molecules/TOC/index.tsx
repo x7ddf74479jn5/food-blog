@@ -2,7 +2,7 @@ import { memo, useEffect, useRef, useState } from "react";
 import * as tocbot from "tocbot";
 
 import { SideSectionContainer } from "@/components/atoms/containers";
-import { useMedia } from "@/hooks/useMedia";
+import { useViewport } from "@/contexts/viewport/ViewportContext";
 
 type Props = {
   isSide?: boolean;
@@ -13,7 +13,7 @@ const TARGET_NODES = "h1, h2, h3, h4, h5, h6";
 // @see https://tscanlin.github.io/tocbot/
 export const TOC = ({ isSide = false }: Props) => {
   const unmountRef = useRef(false);
-  const isLargeOrUp = useMedia(">=", "lg");
+  const { isPC } = useViewport();
   const [isHidden, setIsHidden] = useState(true);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const TOC = ({ isSide = false }: Props) => {
     return () => {
       unmountRef.current = true;
     };
-  }, [isLargeOrUp, isSide]);
+  }, [isPC, isSide]);
 
   useEffect(() => {
     if (isHidden) return;
