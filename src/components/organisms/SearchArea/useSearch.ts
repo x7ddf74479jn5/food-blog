@@ -3,11 +3,10 @@ import { useRouter } from "next/router";
 import { useCallback } from "react";
 import z from "zod";
 
+import { useSearchMutation, useSearchState } from "@/contexts/search/SearchContext";
 import { search as sendSearchEvent } from "@/lib/google-analytics/gtag";
 import { toIdleTask } from "@/utils";
 import { urlTable } from "@/utils/paths/url";
-
-import { useSearchMutation, useSearchState } from "./SearchContext";
 
 const searchQueryParamsSchema = z.object({
   category: z.string().optional(),

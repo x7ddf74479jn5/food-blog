@@ -138,7 +138,7 @@ describe("components/organisms/ArticleSWRContainer", () => {
       expect(article).not.toBeInTheDocument();
       const button = screen.queryByRole("button");
       expect(button).not.toBeInTheDocument();
-      expect(container).toHaveTextContent("レシピが見つかりませんでした。");
+      expect(container).toHaveTextContent("レシピが見つかりませんでした");
     });
   });
 });

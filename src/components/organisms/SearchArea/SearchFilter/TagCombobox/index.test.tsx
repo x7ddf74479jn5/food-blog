@@ -37,7 +37,7 @@ describe("components/organisms/SearchArea/SearchFilter/TagCombobox", () => {
       const rice = options[4];
       expect(rice).toHaveClass("dropdown-inactive");
 
-      await user.hover(rice);
+      await user.click(rice);
       expect(rice).toHaveClass("dropdown-active");
     });
 

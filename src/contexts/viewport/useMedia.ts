@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useMemo, useSyncExternalStore } from "react";
 
 const breakpoints = {
   "2xl": { max: 999999, min: 1536 },
@@ -20,21 +20,24 @@ type MatchType = ">=" | "<=" | "=";
  * const isLargeOrUp = useMedia("(min-width: 1024px)")
  */
 export const useMediaQuery = (query: string) => {
-  const [isMatch, setMatch] = useState(typeof window === "undefined" ? false : window.matchMedia(query).matches);
+  const matchMediaList = useMemo(() => (typeof window === "undefined" ? undefined : window.matchMedia(query)), [query]);
 
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    if (media.matches !== isMatch) {
-      setMatch(media.matches);
-    }
+  const subscribe = useCallback(
+    (onStoreChange: () => void) => {
+      matchMediaList?.addEventListener("change", onStoreChange);
+      return () => matchMediaList?.removeEventListener("change", onStoreChange);
+    },
+    [matchMediaList]
+  );
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
-
-  return isMatch;
+  return useSyncExternalStore(
+    subscribe,
+    () => matchMediaList?.matches ?? false,
+    () => false
+  );
 };
 
-const getQuery = (matchType: MatchType, size: Size) => {
+export const getQuery = (matchType: MatchType, size: Size) => {
   if (matchType === ">=") {
     return `(min-width: ${breakpoints[size].min}px)`;
   } else if (matchType === "<=") {

@@ -34,10 +34,11 @@ describe("components/organisms/SearchArea/SearchFilter/CategoryListbox", () => {
       const options = screen.getAllByRole("option");
       expect(options).toHaveLength(4);
       const gohanmono = options[1];
+      screen.debug();
       expect(gohanmono).toHaveClass("dropdown-inactive");
-
-      await user.hover(gohanmono);
-      expect(gohanmono).toHaveClass("dropdown-active");
+      await user.click(gohanmono);
+      screen.debug();
+      expect(gohanmono).not.toBeInTheDocument();
     });
 
     it("OK: ポインタ操作で値を設定できる", async () => {
