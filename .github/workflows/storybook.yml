@@ -52,8 +52,8 @@ jobs:
       id-token: write
       pull-requests: write
     env: 
-      REG_SUIT_CLIENT_ID: ${{secret.REG_SUIT_CLIENT_ID}}
-      REG_SUIT_GCS_BUCKET_NAME: ${{secret.REG_SUIT_GCS_BUCKET_NAME}}
+      REG_SUIT_CLIENT_ID: ${{secrets.REG_SUIT_CLIENT_ID}}
+      REG_SUIT_GCS_BUCKET_NAME: ${{secrets.REG_SUIT_GCS_BUCKET_NAME}}
     steps:
       - uses: actions/checkout@v3
         with:
