@@ -2,7 +2,7 @@ import { memo, useEffect, useRef, useState } from "react";
 import * as tocbot from "tocbot";
 
 import { SideSectionContainer } from "@/components/atoms/containers";
-import { useMedia } from "@/hooks/useMedia";
+import { useViewport } from "@/contexts/viewport/ViewportContext";
 
 type Props = {
   isSide?: boolean;
@@ -13,7 +13,7 @@ const TARGET_NODES = "h1, h2, h3, h4, h5, h6";
 // @see https://tscanlin.github.io/tocbot/
 export const TOC = ({ isSide = false }: Props) => {
   const unmountRef = useRef(false);
-  const isLargeOrUp = useMedia(">=", "lg");
+  const { isPC } = useViewport();
   const [isHidden, setIsHidden] = useState(true);
 
   useEffect(() => {
@@ -24,13 +24,10 @@ export const TOC = ({ isSide = false }: Props) => {
     return () => {
       unmountRef.current = true;
     };
-  }, [isLargeOrUp, isSide]);
+  }, [isPC, isSide]);
 
   useEffect(() => {
-    if (isHidden) {
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      return () => {};
-    }
+    if (isHidden) return;
 
     tocbot.init({
       contentSelector: "#js-toc-content",
@@ -46,7 +43,7 @@ export const TOC = ({ isSide = false }: Props) => {
       tocbot.destroy();
     };
   });
-  // eslint-disable-next-line tailwindcss/no-custom-classname
+
   return isHidden ? null : (
     <SideSectionContainer header="目次">
       <div id="js-toc" className="toc" />

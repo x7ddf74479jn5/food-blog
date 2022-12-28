@@ -5,7 +5,8 @@ import type { RequestHandler } from "msw";
 import { setupServer } from "msw/node";
 import { SWRConfig } from "swr";
 
-import { SearchProvider } from "@/components/organisms/SearchArea/SearchContext";
+import { SearchProvider } from "@/contexts/search/SearchContext";
+import { ViewportProvider } from "@/contexts/viewport/ViewportContext";
 
 import { withMockLegacyRouter, withMockRouter } from "./mocks";
 
@@ -13,7 +14,9 @@ export const Providers: React.ComponentType<{ children?: React.ReactNode }> = ({
   return withMockRouter(
     withMockLegacyRouter(
       <SWRConfig value={{ dedupingInterval: 0, provider: () => new Map() }}>
-        <SearchProvider>{children}</SearchProvider>
+        <SearchProvider>
+          <ViewportProvider>{children}</ViewportProvider>
+        </SearchProvider>
       </SWRConfig>
     )
   );

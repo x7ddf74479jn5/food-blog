@@ -1,9 +1,5 @@
-import type {
-  SearchMutation,
-  SearchProviderInnerProps,
-  SearchState,
-} from "@/components/organisms/SearchArea/SearchContext";
-import { defaultSearchState, SearchProviderInner } from "@/components/organisms/SearchArea/SearchContext";
+import type { SearchMutation, SearchProviderInnerProps, SearchState } from "@/contexts/search/SearchContext";
+import { defaultSearchState, SearchProviderInner } from "@/contexts/search/SearchContext";
 
 export const defaultMockSearchMutation: SearchMutation = {
   setHistory: jest.fn(),

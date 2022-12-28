@@ -1,11 +1,11 @@
 import { memo, useCallback, useState } from "react";
 
 import { PrimaryButton } from "@/components/atoms/buttons";
+import { useSearchState } from "@/contexts/search/SearchContext";
 import type { TCategory, TTag } from "@/types";
 import { classNames } from "@/utils/css";
 
 import SearchBar from "./SearchBar";
-import { useSearchState } from "./SearchContext";
 import { SearchFilter } from "./SearchFilter";
 import { useSearch } from "./useSearch";
 

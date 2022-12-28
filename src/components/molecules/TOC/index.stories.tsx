@@ -1,10 +1,16 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import TOC from ".";
+import { withContext } from ".storybook/mocks/context";
 
 export default {
   component: TOC,
-  title: "Molecules/TOC",
+  decorators: [
+    (storyFn) => {
+      return withContext(storyFn());
+    },
+  ],
+  title: "molecules/TOC",
 } as ComponentMeta<typeof TOC>;
 
 const Template: ComponentStory<typeof TOC> = (args) => (
