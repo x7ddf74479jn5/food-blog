@@ -18,7 +18,7 @@ const useShouldRenderCarousel = ({
     const hasPickup = pickup && pickup.articles.length > 0;
     const hasPopularArticles = popularArticles.length > 0;
 
-    return hasPickup || hasPopularArticles ? true : false;
+    return hasPickup || hasPopularArticles;
   }, [pickup, popularArticles]);
 };
 
