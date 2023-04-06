@@ -56,7 +56,6 @@ const useGetArticleListQuery = ({ fallbackData, getKeyOptions }: Arguments) => {
 
   const result = useSWRInfinite<TArticleSWRResponse, Error>(getKey, defaultFetcher, {
     fallbackData: fallbackData ? [fallbackData] : undefined,
-    revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
   });
