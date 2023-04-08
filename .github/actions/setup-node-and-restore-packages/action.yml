@@ -1,5 +1,6 @@
 name: Setup
 description: Setup Node.js and restore packages
+
 runs:
   using: composite
   steps:
@@ -7,23 +8,26 @@ runs:
       uses: actions/setup-node@v3
       with:
         node-version: 18
-        cache: 'pnpm'
-    - uses: pnpm/action-setup@v2.2.2
+    - uses: pnpm/action-setup@v2.2.4
       with:
-        version: 7
+        version: 8
         run_install: false
     - name: Get pnpm store directory
-      id: pnpm-cache
+      id: pnpm-store
       shell: bash
       run: |
         echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
     - uses: actions/cache@v3
       name: Setup pnpm cache
+      id: pnpm-cache
       with:
-        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+        path: ${{ steps.pnpm-store.outputs.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
     - name: Install dependencies
-      run: pnpm install --shamefully-hoist --frozen-lockfile
       shell: bash
+      run: |
+        if ${{ steps.pnpm-cache.outputs.cache-hit != true }}; then
+         pnpm install --shamefully-hoist --frozen-lockfile
+        fi
