@@ -1,7 +1,5 @@
 const withBundleAnalyzer =
   process.env.ANALYZE === "true" ? require("@next/bundle-analyzer")({ enabled: true }) : (config) => config;
-const withPWA = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
 
 /**
  * @type {import('next').NextConfig}
@@ -18,12 +16,6 @@ const nextConfig = {
   },
   pageExtensions: ["page.tsx", "page.ts"],
   poweredByHeader: false,
-  pwa: {
-    buildExcludes: [/middleware-manifest.json$/],
-    dest: "public",
-    disable: process.env.NODE_ENV !== "production",
-    runtimeCaching,
-  },
   reactStrictMode: true,
   sentry: {
     hideSourceMaps: process.env.NODE_ENV !== "production",
@@ -31,6 +23,12 @@ const nextConfig = {
   },
   swcMinify: true,
 };
+
+const withPWA = require("next-pwa")({
+  buildExcludes: [/middleware-manifest.json$/],
+  dest: "public",
+  disable: process.env.NODE_ENV !== "production",
+});
 
 const withSentryConfig = (config) => {
   // withBundleAnalyzer とのバッティング回避
