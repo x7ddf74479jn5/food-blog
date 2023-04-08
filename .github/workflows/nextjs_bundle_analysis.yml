@@ -2,9 +2,8 @@ name: 'Next.js Bundle Analysis'
 
 on:
   pull_request:
-  push:
     branches:
-      - main # change this if your default branch is named differently
+      - main
   workflow_dispatch:
 
 defaults:
@@ -46,7 +45,7 @@ jobs:
         run: npx -p nextjs-bundle-analysis report
 
       - name: Upload bundle
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: bundle
           path: .next/analyze/__bundle_analysis.json
