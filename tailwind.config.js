@@ -3,7 +3,7 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/**/*.{ts,tsx}"],
   darkMode: "class",
-  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/line-clamp")],
+  plugins: [require("@tailwindcss/typography")],
   theme: {
     extend: {
       fontFamily: {

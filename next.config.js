@@ -1,4 +1,3 @@
-const withPlugins = require("next-compose-plugins");
 const withBundleAnalyzer =
   process.env.ANALYZE === "true" ? require("@next/bundle-analyzer")({ enabled: true }) : (config) => config;
 const withPWA = require("next-pwa");
@@ -8,39 +7,46 @@ const runtimeCaching = require("next-pwa/cache");
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-  reactStrictMode: true,
-  poweredByHeader: false,
+  experimental: {
+    browsersListForSwc: true,
+    legacyBrowsers: false,
+    nextScriptWorkers: true,
+    scrollRestoration: true,
+  },
   images: {
     domains: ["images.microcms-assets.io"],
   },
   pageExtensions: ["page.tsx", "page.ts"],
+  poweredByHeader: false,
   pwa: {
-    disable: process.env.NODE_ENV !== "production",
-    dest: "public",
-    runtimeCaching,
     buildExcludes: [/middleware-manifest.json$/],
+    dest: "public",
+    disable: process.env.NODE_ENV !== "production",
+    runtimeCaching,
+  },
+  reactStrictMode: true,
+  sentry: {
+    hideSourceMaps: process.env.NODE_ENV !== "production",
+    widenClientFileUpload: true,
   },
   swcMinify: true,
-  experimental: {
-    scrollRestoration: true,
-    nextScriptWorkers: true,
-    browsersListForSwc: true,
-    legacyBrowsers: false,
-  },
-  sentry: {
-    hideSourceMaps: true,
-  },
 };
 
 const withSentryConfig = (config) => {
   // withBundleAnalyzer とのバッティング回避
   if (process.env.ANALYZE === "true") return config;
   return require("@sentry/nextjs").withSentryConfig(config, {
-    silent: false,
     authToken: process.env.SENTRY_AUTH_TOKEN,
+    dryRun: process.env.NODE_ENV !== "production",
     org: process.env.SENTRY_ORG,
     project: process.env.SENTRY_PROJECT,
+    silent: false,
   });
 };
 
-module.exports = withPlugins([withSentryConfig, withBundleAnalyzer, withPWA], nextConfig);
+const withPlugins = (defaultConfig) => {
+  const plugins = [withBundleAnalyzer, withSentryConfig, withPWA];
+  return plugins.reduce((acc, plugin) => plugin(acc), defaultConfig);
+};
+
+module.exports = withPlugins(nextConfig);
