@@ -4,17 +4,23 @@ description: Install Chromium
 runs:
   using: composite
   steps:
+    - name: Get installed Playwright version
+      shell: bash
+      id: puppeteer-version
+      run: echo "PUPPETEER_VERSION=$( sh .github/scripts/get-puppeteer-version.sh )" >> $GITHUB_OUTPUT
     - uses: actions/cache@v3
       name: Setup puppeteer cache
       id: puppeteer-cache
       with:
         path: ${{ env.PUPPETEER_CACHE_DIRECTORY }}
-        key: ${{ runner.os }}-puppeteer-${{ hashFiles('**/pnpm-lock.yaml') }}
+        key: ${{ runner.os }}-puppeteer-${{ steps.puppeteer-version.outputs.PUPPETEER_VERSION }}
         restore-keys: |
           ${{ runner.os }}-puppeteer-
       env:
         PUPPETEER_CACHE_DIRECTORY: "/home/runner/.cache/puppeteer"
     - name: Install Chrome
-      if: ${{ steps.puppeteer-cache.outputs.cache-hit != 'true' }}
-      run: pnpm install:chrome
+      run: |
+        if ${{ steps.puppeteer-cache.outputs.cache-hit != true }}; then
+        pnpm install:chrome
+        fi
       shell: bash
