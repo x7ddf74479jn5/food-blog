@@ -1,0 +1,20 @@
+name: Setup puppeteer
+description: Install Chromium
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/cache@v3
+      name: Setup puppeteer cache
+      id: puppeteer-cache
+      with:
+        path: ${{ env.PUPPETEER_CACHE_DIRECTORY }}
+        key: ${{ runner.os }}-puppeteer-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-puppeteer-
+      env:
+        PUPPETEER_CACHE_DIRECTORY: "/home/runner/.cache/puppeteer"
+    - name: Install Chrome
+      if: ${{ steps.puppeteer-cache.outputs.cache-hit != 'true' }}
+      run: pnpm install:chrome
+      shell: bash
