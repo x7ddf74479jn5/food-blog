@@ -6,6 +6,11 @@ on:
       - develop
     paths:
       - 'src/components/**/*.tsx'
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - 'src/components/**/*.tsx'
   workflow_dispatch:
 
 concurrency:
@@ -13,10 +18,62 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  prepare-vrt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    env: 
+      REG_SUIT_CLIENT_ID: ${{ secrets.REG_SUIT_CLIENT_ID }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+      - name: Check commit hash
+        id: commithash
+        run: echo 'hash=$(git rev-parse HEAD)' >> $GITHUB_OUTPUT
+      - name: restore reg-suit screenshots
+        uses: actions/cache@v3
+        with:
+          path: .reg/
+          key: reg-${{ steps.commithash.outputs.hash }}
+      - name: Check file existence
+        id: check-files
+        uses: andstor/file-existence-action@v2
+        with:
+          files: '.reg/'
+      - name: Install on main branch
+        if: steps.check-files.outputs.files_exists == 'false'
+        uses: ./.github/actions/setup-node-and-restore-packages
+      - name: Setup puppeteer
+        if: steps.check-files.outputs.files_exists == 'false'
+        uses: ./.github/actions/setup-puppeteer
+      - name: Screenshots on main branch
+        if: steps.check-files.outputs.files_exists == 'false'
+        run: pnpm exec storycap ${STORYBOOK_URL}
+        env:
+          STORYBOOK_URL: 'https://x7ddf74479jn5.github.io/food-blog/'
+      - name: Run reg-suit main branch
+        if: steps.check-files.outputs.files_exists == 'false'
+        run: pnpm exec reg-suit run
+      - name: Set reg-suit expected
+        if: steps.check-files.outputs.files_exists == 'false'
+        run: |
+          rm -rf .reg/expected/
+          mv -f .reg/actual/ .reg/expected/
+          mkdir .reg/actual/
+          ls -l .reg/
+      - name: Upload .reg/
+        uses: actions/upload-artifact@v3
+        with:
+          name: reg-expected
+          path: .reg/
+
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: ${{!contains(github.event.pull_request.body, '[skip ci]')}}
+    needs: prepare-vrt
+    if: ${{ !contains(github.event.pull_request.body, '[skip ci]') }}
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/setup-node-and-restore-packages
@@ -43,35 +100,41 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
   
+  
   vrt:
     runs-on: ubuntu-latest
     needs: deploy
     timeout-minutes: 10
     permissions:
       contents: read
-      id-token: write
       pull-requests: write
     env: 
-      REG_SUIT_CLIENT_ID: ${{secrets.REG_SUIT_CLIENT_ID}}
-      REG_SUIT_GCS_BUCKET_NAME: ${{secrets.REG_SUIT_GCS_BUCKET_NAME}}
+      REG_SUIT_CLIENT_ID: ${{ secrets.REG_SUIT_CLIENT_ID }}
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2
-      - uses: ./.github/actions/setup-node-and-restore-packages
+      - name: Setup Node and restore pacakges
+        uses: ./.github/actions/setup-node-and-restore-packages
+      - name: Setup puppeteer
+        uses: ./.github/actions/setup-puppeteer
       - name: workaround for detached HEAD
         run: |
           git checkout ${GITHUB_REF#refs/heads/} || git checkout -b ${GITHUB_REF#refs/heads/} && git pull
-      - id: auth
-        uses: google-github-actions/auth@v01
+      - name: Load reg-suit expecteds
+        uses: actions/download-artifact@v3
         with:
-          credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
+          name: reg-expected
+          path: .reg/
       - name: Capture screenshots
         run: pnpm exec storycap ${{ needs.deploy.outputs.url }}
       - name: Run reg-suit
         run: pnpm exec reg-suit run
+      - name: Upload reg-suit
+        uses: actions/upload-artifact@v3
+        with:
+          name: Visual regression test result
+          path: .reg/
 
   set-status: 
     runs-on: ubuntu-latest

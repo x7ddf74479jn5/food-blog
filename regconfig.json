@@ -16,9 +16,6 @@
       "clientId": "$REG_SUIT_CLIENT_ID",
       "setCommitStatus": false,
       "shortDescription": true
-    },
-    "reg-publish-gcs-plugin": {
-      "bucketName": "$REG_SUIT_GCP_BUCKET_NAME"
     }
   }
 }
