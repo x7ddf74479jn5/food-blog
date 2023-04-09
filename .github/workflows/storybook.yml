@@ -12,6 +12,11 @@ on:
     paths:
       - 'src/components/**/*.tsx'
   workflow_dispatch:
+    inputs:
+      skip-vrt:
+        description: Only build and deploy storybook
+        required: false
+        type: boolean
 
 concurrency:
   group: ${{ github.workflow }}
@@ -23,6 +28,7 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write
+    if: ${{ github.event.inputs.skip-vrt != 'true' }}
     env: 
       REG_SUIT_CLIENT_ID: ${{ secrets.REG_SUIT_CLIENT_ID }}
     steps:
@@ -48,12 +54,13 @@ jobs:
       - name: Setup puppeteer
         if: steps.check-files.outputs.files_exists == 'false'
         uses: ./.github/actions/setup-puppeteer
+      - name: Build Storybook on main branch
+        if: steps.check-files.outputs.files_exists == 'false'
+        run: pnpm run build-storybook
       - name: Screenshots on main branch
         if: steps.check-files.outputs.files_exists == 'false'
-        run: pnpm exec storycap ${STORYBOOK_URL}
-        env:
-          STORYBOOK_URL: 'https://x7ddf74479jn5.github.io/food-blog/'
-      - name: Run reg-suit main branch
+        run: pnpm screenshot
+      - name: Run reg-suit on main branch
         if: steps.check-files.outputs.files_exists == 'false'
         run: pnpm exec reg-suit run
       - name: Set reg-suit expected
@@ -64,6 +71,7 @@ jobs:
           mkdir .reg/actual/
           ls -l .reg/
       - name: Upload .reg/
+        if: steps.check-files.outputs.files_exists == 'false'
         uses: actions/upload-artifact@v3
         with:
           name: reg-expected
@@ -72,13 +80,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    needs: prepare-vrt
     if: ${{ !contains(github.event.pull_request.body, '[skip ci]') }}
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/setup-node-and-restore-packages
+      - uses: ./.github/actions/setup-node-and-restore-packages    
+      - uses: actions/cache@v3
+        name: Setup storybook cache
+        id: storybook-cache
+        with:
+          path: ${{ env.STORYBOOK_PATH }}
+          key: storybook-${{ github.sha }}
+          restore-keys: |
+            storybook-
+        env: 
+          STORYBOOK_PATH: 'storybook-staic'
       - name: Build storybook
-        run: pnpm build-storybook
+        run: pnpm run build-storybook
       - uses: actions/upload-pages-artifact@v1
         with:
           path: storybook-static
@@ -103,11 +120,12 @@ jobs:
   
   vrt:
     runs-on: ubuntu-latest
-    needs: deploy
-    timeout-minutes: 10
+    needs: build
+    timeout-minutes: 5
     permissions:
       contents: read
       pull-requests: write
+    if: ${{ github.event.inputs.skip-vrt != 'true' }}
     env: 
       REG_SUIT_CLIENT_ID: ${{ secrets.REG_SUIT_CLIENT_ID }}
     steps:
@@ -126,8 +144,21 @@ jobs:
         with:
           name: reg-expected
           path: .reg/
+      - name: Restore storybook
+        id: storybook-cache
+        uses: actions/cache/restore@v3
+        with:
+          path: ${{ env.STORYBOOK_PATH }}
+          key: storybook-${{ github.sha }}
+          restore-keys: |
+            storybook-
+        env: 
+          STORYBOOK_PATH: 'storybook-staic'
+      - name: Check cache hit
+        if: steps.storybook-cache.outputs.cache-hit != 'true'
+        run: exit 1
       - name: Capture screenshots
-        run: pnpm exec storycap ${{ needs.deploy.outputs.url }}
+        run: pnpm screenshot
       - name: Run reg-suit
         run: pnpm exec reg-suit run
       - name: Upload reg-suit

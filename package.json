@@ -21,6 +21,7 @@
     "vrt": "playwright test tests/vrt",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "screenshot": "storycap --serverTimeout 60000 --captureTimeout 10000 --serverCmd 'npx http-server storybook-static --ci -p 6006' http://localhost:6006",
     "install:chrome": "node node_modules/puppeteer/install.js"
   },
   "babel": {
