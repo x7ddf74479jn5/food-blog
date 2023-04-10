@@ -20,7 +20,7 @@ runs:
         PUPPETEER_CACHE_DIRECTORY: "/home/runner/.cache/puppeteer"
     - name: Install Chrome
       run: |
-        if ${{ steps.puppeteer-cache.outputs.cache-hit != true }}; then
-        pnpm install:chrome
+        if ${{ steps.puppeteer-cache.outputs.cache-hit != 'true' }}; then
+          pnpm install:chrome
         fi
       shell: bash

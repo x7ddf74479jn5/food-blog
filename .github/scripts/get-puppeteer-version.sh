@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pnpm list -D | grep puppeteer | tr -d 'puppeteer '
+cat package.json| grep "\"puppeteer\"" | head -n 1 | tr -d ' \":,' | tr -d 'puppeteer'

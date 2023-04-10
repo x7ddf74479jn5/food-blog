@@ -28,6 +28,6 @@ runs:
     - name: Install dependencies
       shell: bash
       run: |
-        if ${{ steps.pnpm-cache.outputs.cache-hit != true }}; then
+        if ${{ steps.pnpm-cache.outputs.cache-hit != 'true' }}; then
          pnpm install --shamefully-hoist --frozen-lockfile
         fi
