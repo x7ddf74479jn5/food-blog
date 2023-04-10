@@ -12,7 +12,7 @@ type ArticleItem = {
 
 export const ArticleItem: React.FC<ArticleItem> = memo(({ article, isHighPriority }) => {
   return (
-    <article>
+    <article className="mx-auto max-w-lg">
       <div className="mb-4">
         <Thumbnail
           src={article.image.url}

@@ -72,7 +72,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({
       />
       {isPreview && <div className="mb-4 bg-red-500 text-center text-white">Preview mode enabled</div>}
       <article className="prose dark:prose-dark">
-        <div className="mb-4">
+        <div className="mx-auto mb-4 max-w-lg">
           <Thumbnail
             src={image.url}
             title={title}
