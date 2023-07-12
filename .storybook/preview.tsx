@@ -7,8 +7,6 @@ import React from "react";
 import { withPerformance } from "storybook-addon-performance";
 import { withScreenshot } from "storycap";
 
-import "./mocks/NextImage";
-
 export const withWrapper = (Story: StoryFn) => (
   <div style={{ maxWidth: "42rem" }}>
     <Story />
