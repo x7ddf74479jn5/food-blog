@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 import { AppRouterContext } from "next/dist/shared/lib/app-router-context";
-import {
-  LayoutSegmentsContext,
-  ParamsContext,
-  PathnameContext,
-  SearchParamsContext,
-} from "next/dist/shared/lib/hooks-client-context";
+import { PathnameContext, SearchParamsContext } from "next/dist/shared/lib/hooks-client-context";
 
 type HooksClientContext = {
   params: any;
@@ -48,7 +43,7 @@ export type MockRouterHocOptions = {
 
 type MockRouterHoc = (
   children: React.ReactElement | React.ReactNode,
-  options?: MockRouterHocOptions
+  options?: MockRouterHocOptions,
 ) => React.ReactElement;
 
 type CreateMockRouterHoc = (init?: CreateMockRouterHocParams) => MockRouterHoc;
@@ -69,13 +64,9 @@ export const createMockRouterHoc: CreateMockRouterHoc =
     return (
       <AppRouterContext.Provider value={mockRouter}>
         <PathnameContext.Provider value={mockHooksClientContext.pathname}>
-          <ParamsContext.Provider value={mockHooksClientContext.params}>
-            <SearchParamsContext.Provider value={mockHooksClientContext.searchParams}>
-              <LayoutSegmentsContext.Provider value={mockHooksClientContext.layoutSegments}>
-                {children}
-              </LayoutSegmentsContext.Provider>
-            </SearchParamsContext.Provider>
-          </ParamsContext.Provider>
+          <SearchParamsContext.Provider value={mockHooksClientContext.searchParams}>
+            {children}
+          </SearchParamsContext.Provider>
         </PathnameContext.Provider>
       </AppRouterContext.Provider>
     );
