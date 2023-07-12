@@ -1,7 +1,7 @@
 import { memo } from "react";
 
 import Thumbnail from "@/components/atoms/Thumbnail";
-import { CarouselCore } from "@/components/organisms/article/carousel/CarouselCore.tsx";
+import { CarouselCore } from "@/components/organisms/article/carousel/CarouselCore";
 import type { TPickup } from "@/types";
 
 type PickupArticleCarouselProps = {

@@ -12,7 +12,7 @@ export const CarouselCore: React.FC<Props> = ({ children }) => {
     breakpoints: {
       "(min-width: 640px)": { slidesToScroll: 2 },
     },
-    draggable: true,
+    dragFree: true,
     loop: true,
     skipSnaps: false,
     slidesToScroll: 1,
