@@ -8,14 +8,6 @@ import { AppProviders } from "@/contexts";
 import { GoogleAnalytics } from "@/lib/google-analytics";
 import { notoSansJP } from "@/styles/font";
 
-// if (process.env.NEXT_PUBLIC_MSW_ENABLED === "true") {
-//   (async () => {
-//     const { setupMSW } = await import("../../mocks/msw/worker");
-//     setupMSW();
-//     console.info("MSW is enabled");
-//   })();
-// }
-
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
